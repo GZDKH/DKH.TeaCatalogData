@@ -7,9 +7,9 @@
     "filterable": true,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Tea Type" },
-      { "lang": "ru", "name": "Тип чая" },
-      { "lang": "zh", "name": "茶类" }
+      { "lang": "en-US", "name": "Tea Type" },
+      { "lang": "ru-RU", "name": "Тип чая" },
+      { "lang": "zh-CN", "name": "茶类" }
     ]
   },
   {
@@ -20,9 +20,9 @@
     "filterable": true,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Fermentation Level" },
-      { "lang": "ru", "name": "Уровень ферментации" },
-      { "lang": "zh", "name": "发酵程度" }
+      { "lang": "en-US", "name": "Fermentation Level" },
+      { "lang": "ru-RU", "name": "Уровень ферментации" },
+      { "lang": "zh-CN", "name": "发酵程度" }
     ]
   },
   {
@@ -33,9 +33,9 @@
     "filterable": true,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Kill-green Method" },
-      { "lang": "ru", "name": "Метод фиксации (杀青)" },
-      { "lang": "zh", "name": "杀青方式" }
+      { "lang": "en-US", "name": "Kill-green Method" },
+      { "lang": "ru-RU", "name": "Метод фиксации (杀青)" },
+      { "lang": "zh-CN", "name": "杀青方式" }
     ]
   },
   {
@@ -46,9 +46,9 @@
     "filterable": true,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Roast Level" },
-      { "lang": "ru", "name": "Степень обжарки" },
-      { "lang": "zh", "name": "烘焙程度" }
+      { "lang": "en-US", "name": "Roast Level" },
+      { "lang": "ru-RU", "name": "Степень обжарки" },
+      { "lang": "zh-CN", "name": "烘焙程度" }
     ]
   },
   {
@@ -59,9 +59,9 @@
     "filterable": true,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Harvest Season" },
-      { "lang": "ru", "name": "Сезон сбора" },
-      { "lang": "zh", "name": "采摘季节" }
+      { "lang": "en-US", "name": "Harvest Season" },
+      { "lang": "ru-RU", "name": "Сезон сбора" },
+      { "lang": "zh-CN", "name": "采摘季节" }
     ]
   },
   {
@@ -73,9 +73,9 @@
     "filterable": true,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Growing Altitude" },
-      { "lang": "ru", "name": "Высота произрастания" },
-      { "lang": "zh", "name": "种植海拔" }
+      { "lang": "en-US", "name": "Growing Altitude" },
+      { "lang": "ru-RU", "name": "Высота произрастания" },
+      { "lang": "zh-CN", "name": "种植海拔" }
     ]
   },
   {
@@ -86,9 +86,9 @@
     "filterable": true,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Cultivar" },
-      { "lang": "ru", "name": "Культивар" },
-      { "lang": "zh", "name": "品种" }
+      { "lang": "en-US", "name": "Cultivar" },
+      { "lang": "ru-RU", "name": "Культивар" },
+      { "lang": "zh-CN", "name": "品种" }
     ]
   },
   {
@@ -99,9 +99,9 @@
     "filterable": true,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Aroma Profile" },
-      { "lang": "ru", "name": "Ароматический профиль" },
-      { "lang": "zh", "name": "香气类型" }
+      { "lang": "en-US", "name": "Aroma Profile" },
+      { "lang": "ru-RU", "name": "Ароматический профиль" },
+      { "lang": "zh-CN", "name": "香气类型" }
     ]
   },
   {
@@ -112,9 +112,9 @@
     "filterable": true,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Body" },
-      { "lang": "ru", "name": "Тело" },
-      { "lang": "zh", "name": "茶体" }
+      { "lang": "en-US", "name": "Body" },
+      { "lang": "ru-RU", "name": "Тело" },
+      { "lang": "zh-CN", "name": "茶体" }
     ]
   },
   {
@@ -125,9 +125,9 @@
     "filterable": true,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Caffeine Level" },
-      { "lang": "ru", "name": "Уровень кофеина" },
-      { "lang": "zh", "name": "咖啡因含量" }
+      { "lang": "en-US", "name": "Caffeine Level" },
+      { "lang": "ru-RU", "name": "Уровень кофеина" },
+      { "lang": "zh-CN", "name": "咖啡因含量" }
     ]
   },
   {
@@ -139,9 +139,9 @@
     "filterable": true,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "GABA Content" },
-      { "lang": "ru", "name": "Содержание ГАМК" },
-      { "lang": "zh", "name": "GABA含量" }
+      { "lang": "en-US", "name": "GABA Content" },
+      { "lang": "ru-RU", "name": "Содержание ГАМК" },
+      { "lang": "zh-CN", "name": "GABA含量" }
     ]
   },
   {
@@ -152,9 +152,9 @@
     "filterable": true,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Anthocyanin Content" },
-      { "lang": "ru", "name": "Содержание антоцианов" },
-      { "lang": "zh", "name": "花青素含量" }
+      { "lang": "en-US", "name": "Anthocyanin Content" },
+      { "lang": "ru-RU", "name": "Содержание антоцианов" },
+      { "lang": "zh-CN", "name": "花青素含量" }
     ]
   },
   {
@@ -166,9 +166,9 @@
     "filterable": false,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Brewing Temperature" },
-      { "lang": "ru", "name": "Температура заваривания" },
-      { "lang": "zh", "name": "冲泡温度" }
+      { "lang": "en-US", "name": "Brewing Temperature" },
+      { "lang": "ru-RU", "name": "Температура заваривания" },
+      { "lang": "zh-CN", "name": "冲泡温度" }
     ]
   },
   {
@@ -180,9 +180,9 @@
     "filterable": false,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Brewing Time" },
-      { "lang": "ru", "name": "Время заваривания" },
-      { "lang": "zh", "name": "冲泡时间" }
+      { "lang": "en-US", "name": "Brewing Time" },
+      { "lang": "ru-RU", "name": "Время заваривания" },
+      { "lang": "zh-CN", "name": "冲泡时间" }
     ]
   },
   {
@@ -194,9 +194,9 @@
     "filterable": false,
     "comparable": false,
     "translations": [
-      { "lang": "en", "name": "Tea Amount" },
-      { "lang": "ru", "name": "Количество чая" },
-      { "lang": "zh", "name": "茶量" }
+      { "lang": "en-US", "name": "Tea Amount" },
+      { "lang": "ru-RU", "name": "Количество чая" },
+      { "lang": "zh-CN", "name": "茶量" }
     ]
   },
   {
@@ -207,9 +207,9 @@
     "filterable": false,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Number of Infusions" },
-      { "lang": "ru", "name": "Количество проливов" },
-      { "lang": "zh", "name": "冲泡次数" }
+      { "lang": "en-US", "name": "Number of Infusions" },
+      { "lang": "ru-RU", "name": "Количество проливов" },
+      { "lang": "zh-CN", "name": "冲泡次数" }
     ]
   },
   {
@@ -220,9 +220,9 @@
     "filterable": false,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Liquor Color" },
-      { "lang": "ru", "name": "Цвет настоя" },
-      { "lang": "zh", "name": "汤色" }
+      { "lang": "en-US", "name": "Liquor Color" },
+      { "lang": "ru-RU", "name": "Цвет настоя" },
+      { "lang": "zh-CN", "name": "汤色" }
     ]
   },
   {
@@ -233,9 +233,9 @@
     "filterable": false,
     "comparable": true,
     "translations": [
-      { "lang": "en", "name": "Taste Profile" },
-      { "lang": "ru", "name": "Вкусовой профиль" },
-      { "lang": "zh", "name": "滋味特点" }
+      { "lang": "en-US", "name": "Taste Profile" },
+      { "lang": "ru-RU", "name": "Вкусовой профиль" },
+      { "lang": "zh-CN", "name": "滋味特点" }
     ]
   },
   {
@@ -246,9 +246,9 @@
     "filterable": false,
     "comparable": false,
     "translations": [
-      { "lang": "en", "name": "Storage Temperature" },
-      { "lang": "ru", "name": "Температура хранения" },
-      { "lang": "zh", "name": "储存温度" }
+      { "lang": "en-US", "name": "Storage Temperature" },
+      { "lang": "ru-RU", "name": "Температура хранения" },
+      { "lang": "zh-CN", "name": "储存温度" }
     ]
   },
   {
@@ -260,9 +260,9 @@
     "filterable": false,
     "comparable": false,
     "translations": [
-      { "lang": "en", "name": "Shelf Life" },
-      { "lang": "ru", "name": "Срок хранения" },
-      { "lang": "zh", "name": "保质期" }
+      { "lang": "en-US", "name": "Shelf Life" },
+      { "lang": "ru-RU", "name": "Срок хранения" },
+      { "lang": "zh-CN", "name": "保质期" }
     ]
   }
 ]

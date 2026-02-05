@@ -4,9 +4,9 @@
     "order": 1,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Top 10 Famous Teas of China" },
-      { "lang": "ru", "name": "Топ-10 знаменитых чаёв Китая" },
-      { "lang": "zh", "name": "中国十大名茶" }
+      { "lang": "en-US", "name": "Top 10 Famous Teas of China" },
+      { "lang": "ru-RU", "name": "Топ-10 знаменитых чаёв Китая" },
+      { "lang": "zh-CN", "name": "中国十大名茶" }
     ]
   },
   {
@@ -14,9 +14,9 @@
     "order": 2,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "UNESCO Heritage" },
-      { "lang": "ru", "name": "Наследие ЮНЕСКО" },
-      { "lang": "zh", "name": "联合国非遗" }
+      { "lang": "en-US", "name": "UNESCO Heritage" },
+      { "lang": "ru-RU", "name": "Наследие ЮНЕСКО" },
+      { "lang": "zh-CN", "name": "联合国非遗" }
     ]
   },
   {
@@ -24,9 +24,9 @@
     "order": 3,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "GI Protected" },
-      { "lang": "ru", "name": "Защищённое географическое указание" },
-      { "lang": "zh", "name": "地理标志保护" }
+      { "lang": "en-US", "name": "GI Protected" },
+      { "lang": "ru-RU", "name": "Защищённое географическое указание" },
+      { "lang": "zh-CN", "name": "地理标志保护" }
     ]
   },
   {
@@ -34,9 +34,9 @@
     "order": 4,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Organic" },
-      { "lang": "ru", "name": "Органический" },
-      { "lang": "zh", "name": "有机" }
+      { "lang": "en-US", "name": "Organic" },
+      { "lang": "ru-RU", "name": "Органический" },
+      { "lang": "zh-CN", "name": "有机" }
     ]
   },
   {
@@ -44,9 +44,9 @@
     "order": 5,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "High Mountain" },
-      { "lang": "ru", "name": "Высокогорный" },
-      { "lang": "zh", "name": "高山" }
+      { "lang": "en-US", "name": "High Mountain" },
+      { "lang": "ru-RU", "name": "Высокогорный" },
+      { "lang": "zh-CN", "name": "高山" }
     ]
   },
   {
@@ -54,9 +54,9 @@
     "order": 6,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Ancient Tree" },
-      { "lang": "ru", "name": "Древние деревья" },
-      { "lang": "zh", "name": "古树" }
+      { "lang": "en-US", "name": "Ancient Tree" },
+      { "lang": "ru-RU", "name": "Древние деревья" },
+      { "lang": "zh-CN", "name": "古树" }
     ]
   },
   {
@@ -64,9 +64,9 @@
     "order": 7,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Single Origin" },
-      { "lang": "ru", "name": "Одно происхождение" },
-      { "lang": "zh", "name": "单一产地" }
+      { "lang": "en-US", "name": "Single Origin" },
+      { "lang": "ru-RU", "name": "Одно происхождение" },
+      { "lang": "zh-CN", "name": "单一产地" }
     ]
   },
   {
@@ -74,9 +74,9 @@
     "order": 8,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Limited Edition" },
-      { "lang": "ru", "name": "Лимитированное издание" },
-      { "lang": "zh", "name": "限量版" }
+      { "lang": "en-US", "name": "Limited Edition" },
+      { "lang": "ru-RU", "name": "Лимитированное издание" },
+      { "lang": "zh-CN", "name": "限量版" }
     ]
   },
   {
@@ -84,9 +84,9 @@
     "order": 9,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Spring 2024" },
-      { "lang": "ru", "name": "Весна 2024" },
-      { "lang": "zh", "name": "2024春" }
+      { "lang": "en-US", "name": "Spring 2024" },
+      { "lang": "ru-RU", "name": "Весна 2024" },
+      { "lang": "zh-CN", "name": "2024春" }
     ]
   },
   {
@@ -94,9 +94,9 @@
     "order": 10,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Competition Grade" },
-      { "lang": "ru", "name": "Конкурсное качество" },
-      { "lang": "zh", "name": "竞赛级" }
+      { "lang": "en-US", "name": "Competition Grade" },
+      { "lang": "ru-RU", "name": "Конкурсное качество" },
+      { "lang": "zh-CN", "name": "竞赛级" }
     ]
   },
   {
@@ -104,9 +104,9 @@
     "order": 11,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Award Winner" },
-      { "lang": "ru", "name": "Лауреат премий" },
-      { "lang": "zh", "name": "获奖" }
+      { "lang": "en-US", "name": "Award Winner" },
+      { "lang": "ru-RU", "name": "Лауреат премий" },
+      { "lang": "zh-CN", "name": "获奖" }
     ]
   },
   {
@@ -114,9 +114,9 @@
     "order": 12,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Wild Grown" },
-      { "lang": "ru", "name": "Дикорастущий" },
-      { "lang": "zh", "name": "野生" }
+      { "lang": "en-US", "name": "Wild Grown" },
+      { "lang": "ru-RU", "name": "Дикорастущий" },
+      { "lang": "zh-CN", "name": "野生" }
     ]
   },
   {
@@ -124,9 +124,9 @@
     "order": 13,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Shade Grown" },
-      { "lang": "ru", "name": "Выращен в тени" },
-      { "lang": "zh", "name": "遮阴种植" }
+      { "lang": "en-US", "name": "Shade Grown" },
+      { "lang": "ru-RU", "name": "Выращен в тени" },
+      { "lang": "zh-CN", "name": "遮阴种植" }
     ]
   },
   {
@@ -134,9 +134,9 @@
     "order": 14,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Hand Picked" },
-      { "lang": "ru", "name": "Ручной сбор" },
-      { "lang": "zh", "name": "手工采摘" }
+      { "lang": "en-US", "name": "Hand Picked" },
+      { "lang": "ru-RU", "name": "Ручной сбор" },
+      { "lang": "zh-CN", "name": "手工采摘" }
     ]
   },
   {
@@ -144,9 +144,9 @@
     "order": 15,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Hand Crafted" },
-      { "lang": "ru", "name": "Ручная обработка" },
-      { "lang": "zh", "name": "手工制作" }
+      { "lang": "en-US", "name": "Hand Crafted" },
+      { "lang": "ru-RU", "name": "Ручная обработка" },
+      { "lang": "zh-CN", "name": "手工制作" }
     ]
   }
 ]
