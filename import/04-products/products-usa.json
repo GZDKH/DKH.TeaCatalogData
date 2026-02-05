@@ -1,0 +1,62 @@
+﻿[
+    {
+        "sku":  "SKU-571824",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # HAWAII ONOMEA BLACK TEA  # HAWAII ONOMEA BLACK TEA  **1. Классификация и Происхождение:**  *   **Тип:** Черный чай. *   **Категория:** Региональный терруарный чай, органический чай. *   **Происхождение:** Чай выращивается и производится компанией Onomea Tea Company на Большом острове Гавайи, США, в уникальной прибрежной зоне залива Онимеа. Основой служат чайные кусты вида *Camellia sinensis*, преимущественно китайской разновидности (*var. sinensis*), но также включает гибриды с ассамской раз",
+                                 "name":  "hawaii-onomea-black-tea",
+                                 "seoName":  "hawaii-onomea-black-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-USA-HAWAIIONOMEA",
+        "catalog":  "CATALOG-AMERICAS",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-317593",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # HAWAII ONOMEA GREEN TEA  # HAWAII ONOMEA GREEN TEA  **1. Классификация и Происхождение:**  *   **Тип:** Зеленый чай, неферментированный. Производится из листьев чайного куста *Camellia sinensis var. sinensis*. *   **Категория:** Органический чай, чай с уникальным терруаром, относящийся к категории \"новомирских\" чаев, выращенных вне традиционных азиатских регионов. *   **Происхождение:** Соединенные Штаты Америки, штат Гавайи, Большой остров, побережье Хамакуа, бухта Ономеа. Выращивается и пр",
+                                 "name":  "hawaii-onomea-green-tea",
+                                 "seoName":  "hawaii-onomea-green-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-USA-HAWAIIONOMEA",
+        "catalog":  "CATALOG-AMERICAS",
+        "origins":  [
+
+                    ]
+    }
+]

@@ -1,0 +1,30 @@
+﻿{
+    "sku":  "SKU-325453",
+    "published":  true,
+    "order":  1,
+    "tags":  [
+
+             ],
+    "translations":  [
+                         {
+                             "lang":  "ru",
+                             "description":  "# # Ban Komaen (Blue) Gu Shu Raw Puerh Cake 200g  # Ban Komaen (Blue) Gu Shu Raw Puerh Cake 200g  **1. Классификация и Происхождение:**  *   **Тип:** Шэн Пуэр (Sheng Puerh, сырой, необработанный). Относится к категории постферментируемых чаев, предназначенных для длительного созревания. *   **Категория:** Гу Шу (Gu Shu, 古树) – чай со старых (древних) деревьев. *   **Происхождение:** Деревня Бан Комаен (Ban Komaen), провинция Пхонгсали (Phongsaly), Северный Лаос. Этот регион граничит с известным ч",
+                             "name":  "ban-komaen",
+                             "seoName":  "ban-komaen"
+                         }
+                     ],
+    "specs":  [
+                  {
+                      "option":  "SPEC-TYPE-GREEN",
+                      "type":  "Option",
+                      "showOnPage":  true,
+                      "attribute":  "SPEC-TEA-TYPE",
+                      "order":  1
+                  }
+              ],
+    "code":  "TEA-LAO-BANKOMAEN",
+    "catalog":  "CATALOG-ASIA-OTHER",
+    "origins":  [
+
+                ]
+}

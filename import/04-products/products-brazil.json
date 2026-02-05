@@ -1,0 +1,30 @@
+﻿{
+    "sku":  "SKU-143976",
+    "published":  true,
+    "order":  1,
+    "tags":  [
+
+             ],
+    "translations":  [
+                         {
+                             "lang":  "ru",
+                             "description":  "# # Чёрный Чай Бабушки Умэ (Grandma Ume\u0027s Black Tea)  # Чёрный Чай Бабушки Умэ (Grandma Ume\u0027s Black Tea)  **1. Классификация и Происхождение:**  *   **Тип:** Чёрный чай (ортодоксальный, цельнолистовой). *   **Категория:** Артизанальный чай, органический чай. *   **Степень ферментации:** Полная (80-90%). *   **Происхождение:** Плантация семьи Симада, муниципалитет Регистру, штат Сан-Паулу, Бразилия. Чайные кусты являются потомками растений, завезенных японскими иммигрантами.  **2. История и Культ",
+                             "name":  "grandma-umes-black-tea",
+                             "seoName":  "grandma-umes-black-tea"
+                         }
+                     ],
+    "specs":  [
+                  {
+                      "option":  "SPEC-TYPE-GREEN",
+                      "type":  "Option",
+                      "showOnPage":  true,
+                      "attribute":  "SPEC-TEA-TYPE",
+                      "order":  1
+                  }
+              ],
+    "code":  "TEA-BRA-GRANDMAUMESB",
+    "catalog":  "CATALOG-AMERICAS",
+    "origins":  [
+
+                ]
+}

@@ -1,0 +1,331 @@
+{
+  "regions": [
+    {
+      "code": "REG-CHINA",
+      "country": "CN",
+      "folder": "china",
+      "translations": {
+        "en": "China",
+        "ru": "Китай",
+        "zh": "中国"
+      },
+      "subregions": [
+        { "code": "REG-FUJIAN", "folder": "fujian", "en": "Fujian", "ru": "Фуцзянь", "zh": "福建" },
+        { "code": "REG-ZHEJIANG", "folder": "zhejiang", "en": "Zhejiang", "ru": "Чжэцзян", "zh": "浙江" },
+        { "code": "REG-YUNNAN", "folder": "yunnan", "en": "Yunnan", "ru": "Юньнань", "zh": "云南" },
+        { "code": "REG-ANHUI", "folder": "anhui", "en": "Anhui", "ru": "Аньхой", "zh": "安徽" },
+        { "code": "REG-JIANGSU", "folder": "jiangsu", "en": "Jiangsu", "ru": "Цзянсу", "zh": "江苏" },
+        { "code": "REG-SICHUAN", "folder": "sichuan", "en": "Sichuan", "ru": "Сычуань", "zh": "四川" },
+        { "code": "REG-GUANGDONG", "folder": "guangdong", "en": "Guangdong", "ru": "Гуандун", "zh": "广东" },
+        { "code": "REG-GUANGXI", "folder": "guangxi", "en": "Guangxi", "ru": "Гуанси", "zh": "广西" },
+        { "code": "REG-HUNAN", "folder": "hunan", "en": "Hunan", "ru": "Хунань", "zh": "湖南" },
+        { "code": "REG-HUBEI", "folder": "hubei", "en": "Hubei", "ru": "Хубэй", "zh": "湖北" },
+        { "code": "REG-JIANGXI", "folder": "jiangxi", "en": "Jiangxi", "ru": "Цзянси", "zh": "江西" },
+        { "code": "REG-GUIZHOU", "folder": "guizhou", "en": "Guizhou", "ru": "Гуйчжоу", "zh": "贵州" },
+        { "code": "REG-HENAN", "folder": "henan", "en": "Henan", "ru": "Хэнань", "zh": "河南" },
+        { "code": "REG-SHANDONG", "folder": "shandong", "en": "Shandong", "ru": "Шаньдун", "zh": "山东" },
+        { "code": "REG-HAINAN", "folder": "hainan", "en": "Hainan", "ru": "Хайнань", "zh": "海南" }
+      ],
+      "teaTypes": ["green-tea", "white-tea", "oolong-tea", "red-tea", "dark-tea", "puerh-tea", "yellow-tea", "jasmine-tea"]
+    },
+    {
+      "code": "REG-TAIWAN",
+      "country": "TW",
+      "folder": "taiwan",
+      "translations": {
+        "en": "Taiwan",
+        "ru": "Тайвань",
+        "zh": "台湾"
+      },
+      "subregions": [
+        { "code": "REG-ALISHAN", "en": "Alishan", "ru": "Алишань", "zh": "阿里山" },
+        { "code": "REG-LISHAN", "en": "Lishan", "ru": "Лишань", "zh": "梨山" },
+        { "code": "REG-DONGDING", "en": "Dongding", "ru": "Дундин", "zh": "冻顶" },
+        { "code": "REG-SANXIA", "en": "Sanxia", "ru": "Саньсия", "zh": "三峡" }
+      ]
+    },
+    {
+      "code": "REG-JAPAN",
+      "country": "JP",
+      "folder": "japan",
+      "translations": {
+        "en": "Japan",
+        "ru": "Япония",
+        "zh": "日本"
+      },
+      "subregions": [
+        { "code": "REG-SHIZUOKA", "en": "Shizuoka", "ru": "Сидзуока", "zh": "静冈" },
+        { "code": "REG-KYOTO", "en": "Kyoto (Uji)", "ru": "Киото (Удзи)", "zh": "京都（宇治）" },
+        { "code": "REG-KAGOSHIMA", "en": "Kagoshima", "ru": "Кагосима", "zh": "�的岛" },
+        { "code": "REG-FUKUOKA", "en": "Fukuoka (Yame)", "ru": "Фукуока (Ямэ)", "zh": "福冈（八女）" },
+        { "code": "REG-MIE", "en": "Mie", "ru": "Миэ", "zh": "三重" },
+        { "code": "REG-NARA", "en": "Nara", "ru": "Нара", "zh": "奈良" }
+      ]
+    },
+    {
+      "code": "REG-INDIA",
+      "country": "IN",
+      "folder": "india",
+      "translations": {
+        "en": "India",
+        "ru": "Индия",
+        "zh": "印度"
+      },
+      "subregions": [
+        { "code": "REG-DARJEELING", "en": "Darjeeling", "ru": "Дарджилинг", "zh": "大吉岭" },
+        { "code": "REG-ASSAM", "en": "Assam", "ru": "Ассам", "zh": "阿萨姆" },
+        { "code": "REG-NILGIRI", "en": "Nilgiri", "ru": "Нилгири", "zh": "尼尔吉里" },
+        { "code": "REG-SIKKIM", "en": "Sikkim", "ru": "Сикким", "zh": "锡金" },
+        { "code": "REG-KANGRA", "en": "Kangra", "ru": "Кангра", "zh": "康格拉" }
+      ]
+    },
+    {
+      "code": "REG-SRILANKA",
+      "country": "LK",
+      "folder": "srilanka",
+      "translations": {
+        "en": "Sri Lanka (Ceylon)",
+        "ru": "Шри-Ланка (Цейлон)",
+        "zh": "斯里兰卡（锡兰）"
+      },
+      "subregions": [
+        { "code": "REG-NUWARA-ELIYA", "en": "Nuwara Eliya", "ru": "Нувара Элия", "zh": "努瓦拉埃利耶" },
+        { "code": "REG-UVA", "en": "Uva", "ru": "Ува", "zh": "乌瓦" },
+        { "code": "REG-DIMBULA", "en": "Dimbula", "ru": "Димбула", "zh": "汀布拉" },
+        { "code": "REG-KANDY", "en": "Kandy", "ru": "Канди", "zh": "康提" },
+        { "code": "REG-RUHUNA", "en": "Ruhuna", "ru": "Рухуна", "zh": "卢哈纳" }
+      ]
+    },
+    {
+      "code": "REG-KOREA",
+      "country": "KR",
+      "folder": "korea",
+      "translations": {
+        "en": "South Korea",
+        "ru": "Южная Корея",
+        "zh": "韩国"
+      },
+      "subregions": [
+        { "code": "REG-BOSEONG", "en": "Boseong", "ru": "Посон", "zh": "宝城" },
+        { "code": "REG-JEJU", "en": "Jeju", "ru": "Чеджу", "zh": "济州" },
+        { "code": "REG-HADONG", "en": "Hadong", "ru": "Хадон", "zh": "河东" }
+      ]
+    },
+    {
+      "code": "REG-VIETNAM",
+      "country": "VN",
+      "folder": "vietnam",
+      "translations": {
+        "en": "Vietnam",
+        "ru": "Вьетнам",
+        "zh": "越南"
+      },
+      "subregions": [
+        { "code": "REG-THAINGUYEN", "en": "Thai Nguyen", "ru": "Тхай Нгуен", "zh": "太原" },
+        { "code": "REG-LAOCAI", "en": "Lao Cai", "ru": "Лао Кай", "zh": "老街" },
+        { "code": "REG-HAGIANG", "en": "Ha Giang", "ru": "Ха Занг", "zh": "河江" }
+      ]
+    },
+    {
+      "code": "REG-NEPAL",
+      "country": "NP",
+      "folder": "nepal",
+      "translations": {
+        "en": "Nepal",
+        "ru": "Непал",
+        "zh": "尼泊尔"
+      },
+      "subregions": [
+        { "code": "REG-ILAM", "en": "Ilam", "ru": "Илам", "zh": "伊拉姆" },
+        { "code": "REG-DHANKUTA", "en": "Dhankuta", "ru": "Дханкута", "zh": "丹库塔" }
+      ]
+    },
+    {
+      "code": "REG-INDONESIA",
+      "country": "ID",
+      "folder": "indonesia",
+      "translations": {
+        "en": "Indonesia",
+        "ru": "Индонезия",
+        "zh": "印度尼西亚"
+      },
+      "subregions": [
+        { "code": "REG-JAVA", "en": "Java", "ru": "Ява", "zh": "爪哇" },
+        { "code": "REG-SUMATRA", "en": "Sumatra", "ru": "Суматра", "zh": "苏门答腊" }
+      ]
+    },
+    {
+      "code": "REG-KENYA",
+      "country": "KE",
+      "folder": "kenya",
+      "translations": {
+        "en": "Kenya",
+        "ru": "Кения",
+        "zh": "肯尼亚"
+      }
+    },
+    {
+      "code": "REG-MALAWI",
+      "country": "MW",
+      "folder": "malawi",
+      "translations": {
+        "en": "Malawi",
+        "ru": "Малави",
+        "zh": "马拉维"
+      }
+    },
+    {
+      "code": "REG-RWANDA",
+      "country": "RW",
+      "folder": "rwanda",
+      "translations": {
+        "en": "Rwanda",
+        "ru": "Руанда",
+        "zh": "卢旺达"
+      }
+    },
+    {
+      "code": "REG-TANZANIA",
+      "country": "TZ",
+      "folder": "tanzania",
+      "translations": {
+        "en": "Tanzania",
+        "ru": "Танзания",
+        "zh": "坦桑尼亚"
+      }
+    },
+    {
+      "code": "REG-GEORGIA",
+      "country": "GE",
+      "folder": "georgia",
+      "translations": {
+        "en": "Georgia",
+        "ru": "Грузия",
+        "zh": "格鲁吉亚"
+      }
+    },
+    {
+      "code": "REG-AZERBAIJAN",
+      "country": "AZ",
+      "folder": "azerbaijan",
+      "translations": {
+        "en": "Azerbaijan",
+        "ru": "Азербайджан",
+        "zh": "阿塞拜疆"
+      }
+    },
+    {
+      "code": "REG-THAILAND",
+      "country": "TH",
+      "folder": "thailand",
+      "translations": {
+        "en": "Thailand",
+        "ru": "Таиланд",
+        "zh": "泰国"
+      }
+    },
+    {
+      "code": "REG-LAOS",
+      "country": "LA",
+      "folder": "laos",
+      "translations": {
+        "en": "Laos",
+        "ru": "Лаос",
+        "zh": "老挝"
+      }
+    },
+    {
+      "code": "REG-MYANMAR",
+      "country": "MM",
+      "folder": "myanmar",
+      "translations": {
+        "en": "Myanmar (Burma)",
+        "ru": "Мьянма (Бирма)",
+        "zh": "缅甸"
+      }
+    },
+    {
+      "code": "REG-BANGLADESH",
+      "country": "BD",
+      "folder": "bangladesh",
+      "translations": {
+        "en": "Bangladesh",
+        "ru": "Бангладеш",
+        "zh": "孟加拉国"
+      }
+    },
+    {
+      "code": "REG-AUSTRALIA",
+      "country": "AU",
+      "folder": "australia",
+      "translations": {
+        "en": "Australia",
+        "ru": "Австралия",
+        "zh": "澳大利亚"
+      }
+    },
+    {
+      "code": "REG-USA",
+      "country": "US",
+      "folder": "usa",
+      "translations": {
+        "en": "United States",
+        "ru": "США",
+        "zh": "美国"
+      },
+      "subregions": [
+        { "code": "REG-HAWAII", "en": "Hawaii", "ru": "Гавайи", "zh": "夏威夷" }
+      ]
+    },
+    {
+      "code": "REG-BRAZIL",
+      "country": "BR",
+      "folder": "brazil",
+      "translations": {
+        "en": "Brazil",
+        "ru": "Бразилия",
+        "zh": "巴西"
+      }
+    },
+    {
+      "code": "REG-COLOMBIA",
+      "country": "CO",
+      "folder": "colombia",
+      "translations": {
+        "en": "Colombia",
+        "ru": "Колумбия",
+        "zh": "哥伦比亚"
+      }
+    },
+    {
+      "code": "REG-UK-WALES",
+      "country": "GB",
+      "folder": "wales",
+      "translations": {
+        "en": "Wales",
+        "ru": "Уэльс",
+        "zh": "威尔士"
+      }
+    },
+    {
+      "code": "REG-UK-JERSEY",
+      "country": "JE",
+      "folder": "jersey",
+      "translations": {
+        "en": "Jersey",
+        "ru": "Джерси",
+        "zh": "泽西岛"
+      }
+    },
+    {
+      "code": "REG-AZORES",
+      "country": "PT",
+      "folder": "azores",
+      "translations": {
+        "en": "Azores",
+        "ru": "Азорские острова",
+        "zh": "亚速尔群岛"
+      }
+    }
+  ]
+}

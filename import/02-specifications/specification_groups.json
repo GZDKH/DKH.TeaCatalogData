@@ -1,0 +1,119 @@
+[
+  {
+    "code": "SPEC-GROUP-CLASSIFICATION",
+    "icon": "tag",
+    "order": 1,
+    "published": true,
+    "collapsible": false,
+    "expanded": true,
+    "translations": [
+      { "lang": "en", "name": "Classification", "description": "Tea type and category classification" },
+      { "lang": "ru", "name": "Классификация", "description": "Тип и категория чая" },
+      { "lang": "zh", "name": "分类", "description": "茶叶类型与分类" }
+    ]
+  },
+  {
+    "code": "SPEC-GROUP-ORIGIN",
+    "icon": "map-marker",
+    "order": 2,
+    "published": true,
+    "collapsible": true,
+    "expanded": true,
+    "translations": [
+      { "lang": "en", "name": "Origin & Terroir", "description": "Geographic origin and growing conditions" },
+      { "lang": "ru", "name": "Происхождение и терруар", "description": "Географическое происхождение и условия произрастания" },
+      { "lang": "zh", "name": "产地与风土", "description": "产地和生长环境" }
+    ]
+  },
+  {
+    "code": "SPEC-GROUP-BOTANICAL",
+    "icon": "leaf",
+    "order": 3,
+    "published": true,
+    "collapsible": true,
+    "expanded": false,
+    "translations": [
+      { "lang": "en", "name": "Botanical", "description": "Plant variety and cultivar information" },
+      { "lang": "ru", "name": "Ботаника", "description": "Информация о сорте и культиваре" },
+      { "lang": "zh", "name": "植物学", "description": "品种和栽培品种信息" }
+    ]
+  },
+  {
+    "code": "SPEC-GROUP-PROCESSING",
+    "icon": "fire",
+    "order": 4,
+    "published": true,
+    "collapsible": true,
+    "expanded": true,
+    "translations": [
+      { "lang": "en", "name": "Processing", "description": "Tea processing characteristics" },
+      { "lang": "ru", "name": "Обработка", "description": "Характеристики обработки чая" },
+      { "lang": "zh", "name": "加工工艺", "description": "茶叶加工特性" }
+    ]
+  },
+  {
+    "code": "SPEC-GROUP-ORGANOLEPTIC",
+    "icon": "glass",
+    "order": 5,
+    "published": true,
+    "collapsible": true,
+    "expanded": true,
+    "translations": [
+      { "lang": "en", "name": "Tasting Notes", "description": "Flavor profile and tasting characteristics" },
+      { "lang": "ru", "name": "Органолептика", "description": "Вкусовой профиль и характеристики" },
+      { "lang": "zh", "name": "品鉴特征", "description": "风味特征与品鉴" }
+    ]
+  },
+  {
+    "code": "SPEC-GROUP-CHEMICAL",
+    "icon": "flask",
+    "order": 6,
+    "published": true,
+    "collapsible": true,
+    "expanded": false,
+    "translations": [
+      { "lang": "en", "name": "Chemical Composition", "description": "Key chemical compounds and content" },
+      { "lang": "ru", "name": "Химический состав", "description": "Основные химические соединения" },
+      { "lang": "zh", "name": "化学成分", "description": "主要化学成分" }
+    ]
+  },
+  {
+    "code": "SPEC-GROUP-BREWING",
+    "icon": "tint",
+    "order": 7,
+    "published": true,
+    "collapsible": true,
+    "expanded": true,
+    "translations": [
+      { "lang": "en", "name": "Brewing", "description": "Brewing recommendations and parameters" },
+      { "lang": "ru", "name": "Заваривание", "description": "Рекомендации по завариванию" },
+      { "lang": "zh", "name": "冲泡", "description": "冲泡建议和参数" }
+    ]
+  },
+  {
+    "code": "SPEC-GROUP-STORAGE",
+    "icon": "archive",
+    "order": 8,
+    "published": true,
+    "collapsible": true,
+    "expanded": false,
+    "translations": [
+      { "lang": "en", "name": "Storage", "description": "Storage requirements and shelf life" },
+      { "lang": "ru", "name": "Хранение", "description": "Требования к хранению и срок годности" },
+      { "lang": "zh", "name": "储存", "description": "储存要求和保质期" }
+    ]
+  },
+  {
+    "code": "SPEC-GROUP-HEALTH",
+    "icon": "heartbeat",
+    "order": 9,
+    "published": true,
+    "collapsible": true,
+    "expanded": false,
+    "translations": [
+      { "lang": "en", "name": "Health Benefits", "description": "Health benefits and properties" },
+      { "lang": "ru", "name": "Польза для здоровья", "description": "Полезные свойства" },
+      { "lang": "zh", "name": "健康功效", "description": "健康功效与特性" }
+    ]
+  }
+]
