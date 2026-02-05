@@ -1,0 +1,234 @@
+{
+  "products": [
+    {
+      "code": "TEA-IN-NIL-BLK-001",
+      "sku": "IN-NILGIRI-BLACK-001",
+      "order": 1,
+      "published": true,
+      "translations": [
+        {
+          "lang": "ru-RU",
+          "name": "Нилгири Чёрный TGFOP",
+          "description": "Высокогорный чай из «Голубых гор» Южной Индии. Мягкий бархатистый вкус с цитрусовыми нотами и лёгкой кислинкой. Освежающий, менее терпкий, чем Ассам. Яркий янтарный настой.",
+          "seoName": "nilgiri-black-tgfop"
+        },
+        {
+          "lang": "en-US",
+          "name": "Nilgiri Black TGFOP",
+          "description": "High-altitude tea from 'Blue Mountains' of South India. Mild velvety taste with citrus notes and light acidity. Refreshing, less astringent than Assam. Bright amber infusion.",
+          "seoName": "nilgiri-black-tgfop"
+        },
+        {
+          "lang": "zh-CN",
+          "name": "尼尔吉里红茶TGFOP",
+          "description": "产自南印度"蓝山"的高山茶。口感柔滑，带有柑橘香和轻微酸味。清新爽口，涩味比阿萨姆少。茶汤呈明亮的琥珀色。",
+          "seoName": "nierjili-hongcha-tgfop"
+        }
+      ],
+      "specs": [
+        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
+        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
+        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
+        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95°C" },
+        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
+        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "4-5 г / 200 мл" }
+      ],
+      "tags": ["indian-tea", "black-tea", "nilgiri", "citrus", "highland"],
+      "categories": ["BLACK_TEA", "INDIAN_TEA"],
+      "origins": [
+        {
+          "country": "IN",
+          "region": "Nilgiri",
+          "area": "Tamil Nadu",
+          "latitude": 11.4064,
+          "longitude": 76.6932,
+          "altitude": 1800
+        }
+      ]
+    },
+    {
+      "code": "TEA-IN-NIL-WFR-001",
+      "sku": "IN-NILGIRI-FROST-001",
+      "order": 2,
+      "published": true,
+      "translations": [
+        {
+          "lang": "ru-RU",
+          "name": "Нилгири Winter Frost",
+          "description": "Редкий «Зимний Морозный Чай», собранный в декабре после лёгких заморозков. Особая природная сладость, медовые и фруктовые ноты. Насыщенный медно-янтарный настой.",
+          "seoName": "nilgiri-winter-frost"
+        },
+        {
+          "lang": "en-US",
+          "name": "Nilgiri Winter Frost",
+          "description": "Rare 'Winter Frost Tea' harvested in December after light frosts. Special natural sweetness, honey and fruity notes. Rich copper-amber infusion.",
+          "seoName": "nilgiri-winter-frost"
+        },
+        {
+          "lang": "zh-CN",
+          "name": "尼尔吉里冬霜茶",
+          "description": "稀有的"冬霜茶"，在12月轻霜后采摘。天然甘甜，带有蜂蜜和果香。茶汤呈浓郁的铜琥珀色。",
+          "seoName": "nierjili-dongshuang"
+        }
+      ],
+      "specs": [
+        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
+        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
+        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
+        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95°C" },
+        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
+        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "4-5 г / 200 мл" }
+      ],
+      "tags": ["indian-tea", "black-tea", "nilgiri", "winter-frost", "seasonal", "premium"],
+      "categories": ["BLACK_TEA", "INDIAN_TEA", "SEASONAL_TEA"],
+      "origins": [
+        {
+          "country": "IN",
+          "region": "Nilgiri",
+          "area": "Tamil Nadu",
+          "latitude": 11.4064,
+          "longitude": 76.6932,
+          "altitude": 1800
+        }
+      ]
+    },
+    {
+      "code": "TEA-IN-NIL-GRN-001",
+      "sku": "IN-NILGIRI-GREEN-001",
+      "order": 3,
+      "published": true,
+      "translations": [
+        {
+          "lang": "ru-RU",
+          "name": "Нилгири Зелёный",
+          "description": "Зелёный чай из высокогорья Южной Индии. Травянистый вкус с лёгкой горчинкой, цветочные ноты. Светло-зелёный прозрачный настой. Высокое содержание антиоксидантов.",
+          "seoName": "nilgiri-green"
+        },
+        {
+          "lang": "en-US",
+          "name": "Nilgiri Green Tea",
+          "description": "Green tea from South India highlands. Grassy taste with light bitterness, floral notes. Light green transparent infusion. High antioxidant content.",
+          "seoName": "nilgiri-green"
+        },
+        {
+          "lang": "zh-CN",
+          "name": "尼尔吉里绿茶",
+          "description": "产自南印度高山的绿茶。草香中带有轻微苦味和花香。茶汤呈透明的浅绿色。抗氧化剂含量高。",
+          "seoName": "nierjili-lvcha"
+        }
+      ],
+      "specs": [
+        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
+        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
+        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
+        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-85°C" },
+        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
+        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      ],
+      "tags": ["indian-tea", "green-tea", "nilgiri", "highland"],
+      "categories": ["GREEN_TEA", "INDIAN_TEA"],
+      "origins": [
+        {
+          "country": "IN",
+          "region": "Nilgiri",
+          "area": "Tamil Nadu",
+          "latitude": 11.4064,
+          "longitude": 76.6932,
+          "altitude": 1800
+        }
+      ]
+    },
+    {
+      "code": "TEA-IN-NIL-WHT-001",
+      "sku": "IN-NILGIRI-WHITE-001",
+      "order": 4,
+      "published": true,
+      "translations": [
+        {
+          "lang": "ru-RU",
+          "name": "Нилгири Белый Silver Needle",
+          "description": "Редкий белый чай из серебристых почек Нилгири. Тонкий цветочный аромат, нежный сладковатый вкус. Высокое содержание антиоксидантов. Бледно-жёлтый деликатный настой.",
+          "seoName": "nilgiri-white-silver-needle"
+        },
+        {
+          "lang": "en-US",
+          "name": "Nilgiri White Silver Needle",
+          "description": "Rare white tea from Nilgiri silver buds. Subtle floral aroma, delicate sweet taste. High antioxidant content. Pale yellow delicate infusion.",
+          "seoName": "nilgiri-white-silver-needle"
+        },
+        {
+          "lang": "zh-CN",
+          "name": "尼尔吉里白毫银针",
+          "description": "采用尼尔吉里银芽制成的稀有白茶。淡雅的花香，细腻甘甜的口感。抗氧化剂含量高。茶汤呈浅黄色，清雅细腻。",
+          "seoName": "nierjili-baihao-yinzhen"
+        }
+      ],
+      "specs": [
+        { "code": "TEA_TYPE", "type": "Option", "option": "WHITE" },
+        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
+        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
+        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-80°C" },
+        { "code": "BREWING_TIME", "type": "CustomText", "value": "4-5 мин" },
+        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 200 мл" }
+      ],
+      "tags": ["indian-tea", "white-tea", "nilgiri", "silver-needle", "rare"],
+      "categories": ["WHITE_TEA", "INDIAN_TEA", "PREMIUM_TEA"],
+      "origins": [
+        {
+          "country": "IN",
+          "region": "Nilgiri",
+          "area": "Tamil Nadu",
+          "latitude": 11.4064,
+          "longitude": 76.6932,
+          "altitude": 1800
+        }
+      ]
+    },
+    {
+      "code": "TEA-IN-NIL-OOL-001",
+      "sku": "IN-NILGIRI-OOLONG-001",
+      "order": 5,
+      "published": true,
+      "translations": [
+        {
+          "lang": "ru-RU",
+          "name": "Нилгири Улун",
+          "description": "Полуферментированный чай из Нилгири (30-50% окисления). Цветочные и медовые ноты, сочетание свежести зелёного чая и глубины чёрного. Янтарный настой с золотистым отливом.",
+          "seoName": "nilgiri-oolong"
+        },
+        {
+          "lang": "en-US",
+          "name": "Nilgiri Oolong",
+          "description": "Semi-fermented Nilgiri tea (30-50% oxidation). Floral and honey notes, combining freshness of green tea with depth of black. Amber infusion with golden hue.",
+          "seoName": "nilgiri-oolong"
+        },
+        {
+          "lang": "zh-CN",
+          "name": "尼尔吉里乌龙",
+          "description": "尼尔吉里半发酵茶（30-50%氧化）。花香和蜂蜜香，融合了绿茶的清新与红茶的醇厚。茶汤呈琥珀色，带有金色光泽。",
+          "seoName": "nierjili-wulong"
+        }
+      ],
+      "specs": [
+        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
+        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
+        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
+        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-90°C" },
+        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
+        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 150 мл" }
+      ],
+      "tags": ["indian-tea", "oolong-tea", "nilgiri"],
+      "categories": ["OOLONG_TEA", "INDIAN_TEA"],
+      "origins": [
+        {
+          "country": "IN",
+          "region": "Nilgiri",
+          "area": "Tamil Nadu",
+          "latitude": 11.4064,
+          "longitude": 76.6932,
+          "altitude": 1800
+        }
+      ]
+    }
+  ]
+}
