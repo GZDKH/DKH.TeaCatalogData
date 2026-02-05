@@ -1,0 +1,327 @@
+{
+  "teaTypes": {
+    "green": {
+      "en": "Green Tea",
+      "ru": "Зеленый чай",
+      "zh": "绿茶"
+    },
+    "white": {
+      "en": "White Tea",
+      "ru": "Белый чай",
+      "zh": "白茶"
+    },
+    "oolong": {
+      "en": "Oolong Tea",
+      "ru": "Улун",
+      "zh": "乌龙茶"
+    },
+    "red": {
+      "en": "Red Tea (Black)",
+      "ru": "Красный чай (Черный)",
+      "zh": "红茶"
+    },
+    "dark": {
+      "en": "Dark Tea",
+      "ru": "Темный чай",
+      "zh": "黑茶"
+    },
+    "puerh": {
+      "en": "Pu-erh Tea",
+      "ru": "Пуэр",
+      "zh": "普洱茶"
+    },
+    "yellow": {
+      "en": "Yellow Tea",
+      "ru": "Желтый чай",
+      "zh": "黄茶"
+    },
+    "jasmine": {
+      "en": "Jasmine Tea",
+      "ru": "Жасминовый чай",
+      "zh": "茉莉花茶"
+    },
+    "herbal": {
+      "en": "Herbal Tea",
+      "ru": "Травяной чай",
+      "zh": "草本茶"
+    }
+  },
+  "specificationGroups": {
+    "classification": {
+      "en": "Classification",
+      "ru": "Классификация",
+      "zh": "分类"
+    },
+    "origin": {
+      "en": "Origin & Terroir",
+      "ru": "Происхождение и терруар",
+      "zh": "产地与风土"
+    },
+    "botanical": {
+      "en": "Botanical",
+      "ru": "Ботаника",
+      "zh": "植物学"
+    },
+    "processing": {
+      "en": "Processing",
+      "ru": "Обработка",
+      "zh": "加工工艺"
+    },
+    "organoleptic": {
+      "en": "Organoleptic",
+      "ru": "Органолептика",
+      "zh": "感官特征"
+    },
+    "chemical": {
+      "en": "Chemical Composition",
+      "ru": "Химический состав",
+      "zh": "化学成分"
+    },
+    "brewing": {
+      "en": "Brewing",
+      "ru": "Заваривание",
+      "zh": "冲泡"
+    },
+    "storage": {
+      "en": "Storage",
+      "ru": "Хранение",
+      "zh": "储存"
+    },
+    "health": {
+      "en": "Health Benefits",
+      "ru": "Польза для здоровья",
+      "zh": "健康功效"
+    }
+  },
+  "fermentationLevels": {
+    "unfermented": {
+      "en": "Unfermented (0%)",
+      "ru": "Неферментированный (0%)",
+      "zh": "不发酵"
+    },
+    "minimal": {
+      "en": "Minimal (5-10%)",
+      "ru": "Минимальная (5-10%)",
+      "zh": "轻微发酵"
+    },
+    "light": {
+      "en": "Light (15-30%)",
+      "ru": "Слабая (15-30%)",
+      "zh": "轻发酵"
+    },
+    "medium": {
+      "en": "Medium (30-60%)",
+      "ru": "Средняя (30-60%)",
+      "zh": "中发酵"
+    },
+    "heavy": {
+      "en": "Heavy (60-85%)",
+      "ru": "Сильная (60-85%)",
+      "zh": "重发酵"
+    },
+    "full": {
+      "en": "Full (85-100%)",
+      "ru": "Полная (85-100%)",
+      "zh": "全发酵"
+    },
+    "post": {
+      "en": "Post-fermented",
+      "ru": "Постферментированный",
+      "zh": "后发酵"
+    }
+  },
+  "roastLevels": {
+    "none": {
+      "en": "Unroasted",
+      "ru": "Без обжарки",
+      "zh": "无焙火"
+    },
+    "light": {
+      "en": "Light Roast (清香)",
+      "ru": "Лёгкая обжарка (清香)",
+      "zh": "轻焙火"
+    },
+    "medium": {
+      "en": "Medium Roast (浓香)",
+      "ru": "Средняя обжарка (浓香)",
+      "zh": "中焙火"
+    },
+    "heavy": {
+      "en": "Heavy Roast (炭焙)",
+      "ru": "Сильная обжарка (炭焙)",
+      "zh": "重焙火"
+    }
+  },
+  "harvestSeasons": {
+    "mingqian": {
+      "en": "Pre-Qingming (明前)",
+      "ru": "До Цинмин (明前)",
+      "zh": "明前"
+    },
+    "yuqian": {
+      "en": "Pre-Rain (雨前)",
+      "ru": "До дождей (雨前)",
+      "zh": "雨前"
+    },
+    "spring": {
+      "en": "Spring (春茶)",
+      "ru": "Весна (春茶)",
+      "zh": "春茶"
+    },
+    "summer": {
+      "en": "Summer (夏茶)",
+      "ru": "Лето (夏茶)",
+      "zh": "夏茶"
+    },
+    "autumn": {
+      "en": "Autumn (秋茶)",
+      "ru": "Осень (秋茶)",
+      "zh": "秋茶"
+    },
+    "winter": {
+      "en": "Winter (冬茶)",
+      "ru": "Зима (冬茶)",
+      "zh": "冬茶"
+    }
+  },
+  "altitudeLevels": {
+    "low": {
+      "en": "Lowland (< 500m)",
+      "ru": "Низинный (< 500м)",
+      "zh": "低海拔"
+    },
+    "mid": {
+      "en": "Mid-elevation (500-1000m)",
+      "ru": "Средний (500-1000м)",
+      "zh": "中海拔"
+    },
+    "high": {
+      "en": "High Mountain (1000-2000m)",
+      "ru": "Высокогорный (1000-2000м)",
+      "zh": "高山"
+    },
+    "ultra": {
+      "en": "Ultra-high (> 2000m)",
+      "ru": "Сверхвысокогорный (> 2000м)",
+      "zh": "超高海拔"
+    }
+  },
+  "aromaProfiles": {
+    "floral": {
+      "en": "Floral (花香)",
+      "ru": "Цветочный (花香)",
+      "zh": "花香"
+    },
+    "fruity": {
+      "en": "Fruity (果香)",
+      "ru": "Фруктовый (果香)",
+      "zh": "果香"
+    },
+    "honey": {
+      "en": "Honey (蜜香)",
+      "ru": "Медовый (蜜香)",
+      "zh": "蜜香"
+    },
+    "nutty": {
+      "en": "Nutty/Toasty (坚果香)",
+      "ru": "Ореховый (坚果香)",
+      "zh": "坚果香"
+    },
+    "woody": {
+      "en": "Woody (木质香)",
+      "ru": "Древесный (木质香)",
+      "zh": "木质香"
+    },
+    "earthy": {
+      "en": "Earthy (陈香)",
+      "ru": "Землистый (陈香)",
+      "zh": "陈香"
+    },
+    "vegetal": {
+      "en": "Vegetal/Grassy",
+      "ru": "Травянистый",
+      "zh": "草香"
+    },
+    "marine": {
+      "en": "Marine/Seaweed",
+      "ru": "Морской",
+      "zh": "海苔香"
+    }
+  },
+  "bodyLevels": {
+    "light": {
+      "en": "Light",
+      "ru": "Лёгкое",
+      "zh": "轻盈"
+    },
+    "medium": {
+      "en": "Medium",
+      "ru": "Среднее",
+      "zh": "中等"
+    },
+    "full": {
+      "en": "Full",
+      "ru": "Полное",
+      "zh": "醇厚"
+    }
+  },
+  "caffeineLevels": {
+    "low": {
+      "en": "Low",
+      "ru": "Низкий",
+      "zh": "低"
+    },
+    "medium": {
+      "en": "Medium",
+      "ru": "Средний",
+      "zh": "中等"
+    },
+    "high": {
+      "en": "High",
+      "ru": "Высокий",
+      "zh": "高"
+    }
+  },
+  "tags": {
+    "top10china": {
+      "en": "Top 10 Famous Teas of China",
+      "ru": "Топ-10 знаменитых чаёв Китая",
+      "zh": "中国十大名茶"
+    },
+    "unesco": {
+      "en": "UNESCO Heritage",
+      "ru": "Наследие ЮНЕСКО",
+      "zh": "联合国非遗"
+    },
+    "giProtected": {
+      "en": "GI Protected",
+      "ru": "Защищённое географическое указание",
+      "zh": "地理标志保护"
+    },
+    "organic": {
+      "en": "Organic",
+      "ru": "Органический",
+      "zh": "有机"
+    },
+    "highMountain": {
+      "en": "High Mountain",
+      "ru": "Высокогорный",
+      "zh": "高山"
+    },
+    "ancientTree": {
+      "en": "Ancient Tree",
+      "ru": "Древние деревья",
+      "zh": "古树"
+    },
+    "singleOrigin": {
+      "en": "Single Origin",
+      "ru": "Одно происхождение",
+      "zh": "单一产地"
+    },
+    "limitedEdition": {
+      "en": "Limited Edition",
+      "ru": "Лимитированное издание",
+      "zh": "限量版"
+    }
+  }
+}

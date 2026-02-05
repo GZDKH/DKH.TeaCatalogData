@@ -1,0 +1,268 @@
+[
+  {
+    "code": "SPEC-TEA-TYPE",
+    "group": "SPEC-GROUP-CLASSIFICATION",
+    "order": 1,
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Tea Type" },
+      { "lang": "ru", "name": "Тип чая" },
+      { "lang": "zh", "name": "茶类" }
+    ]
+  },
+  {
+    "code": "SPEC-FERMENTATION",
+    "group": "SPEC-GROUP-PROCESSING",
+    "order": 1,
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Fermentation Level" },
+      { "lang": "ru", "name": "Уровень ферментации" },
+      { "lang": "zh", "name": "发酵程度" }
+    ]
+  },
+  {
+    "code": "SPEC-KILL-GREEN",
+    "group": "SPEC-GROUP-PROCESSING",
+    "order": 2,
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Kill-green Method" },
+      { "lang": "ru", "name": "Метод фиксации (杀青)" },
+      { "lang": "zh", "name": "杀青方式" }
+    ]
+  },
+  {
+    "code": "SPEC-ROAST",
+    "group": "SPEC-GROUP-PROCESSING",
+    "order": 3,
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Roast Level" },
+      { "lang": "ru", "name": "Степень обжарки" },
+      { "lang": "zh", "name": "烘焙程度" }
+    ]
+  },
+  {
+    "code": "SPEC-HARVEST",
+    "group": "SPEC-GROUP-ORIGIN",
+    "order": 2,
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Harvest Season" },
+      { "lang": "ru", "name": "Сезон сбора" },
+      { "lang": "zh", "name": "采摘季节" }
+    ]
+  },
+  {
+    "code": "SPEC-ALTITUDE",
+    "group": "SPEC-GROUP-ORIGIN",
+    "order": 1,
+    "unit": "m",
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Growing Altitude" },
+      { "lang": "ru", "name": "Высота произрастания" },
+      { "lang": "zh", "name": "种植海拔" }
+    ]
+  },
+  {
+    "code": "SPEC-CULTIVAR",
+    "group": "SPEC-GROUP-BOTANICAL",
+    "order": 1,
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Cultivar" },
+      { "lang": "ru", "name": "Культивар" },
+      { "lang": "zh", "name": "品种" }
+    ]
+  },
+  {
+    "code": "SPEC-AROMA",
+    "group": "SPEC-GROUP-ORGANOLEPTIC",
+    "order": 1,
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Aroma Profile" },
+      { "lang": "ru", "name": "Ароматический профиль" },
+      { "lang": "zh", "name": "香气类型" }
+    ]
+  },
+  {
+    "code": "SPEC-BODY",
+    "group": "SPEC-GROUP-ORGANOLEPTIC",
+    "order": 2,
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Body" },
+      { "lang": "ru", "name": "Тело" },
+      { "lang": "zh", "name": "茶体" }
+    ]
+  },
+  {
+    "code": "SPEC-CAFFEINE",
+    "group": "SPEC-GROUP-CHEMICAL",
+    "order": 1,
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Caffeine Level" },
+      { "lang": "ru", "name": "Уровень кофеина" },
+      { "lang": "zh", "name": "咖啡因含量" }
+    ]
+  },
+  {
+    "code": "SPEC-GABA-CONTENT",
+    "group": "SPEC-GROUP-CHEMICAL",
+    "order": 2,
+    "unit": "mg/100g",
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "GABA Content" },
+      { "lang": "ru", "name": "Содержание ГАМК" },
+      { "lang": "zh", "name": "GABA含量" }
+    ]
+  },
+  {
+    "code": "SPEC-ANTHOCYANIN",
+    "group": "SPEC-GROUP-CHEMICAL",
+    "order": 3,
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Anthocyanin Content" },
+      { "lang": "ru", "name": "Содержание антоцианов" },
+      { "lang": "zh", "name": "花青素含量" }
+    ]
+  },
+  {
+    "code": "SPEC-BREW-TEMP",
+    "group": "SPEC-GROUP-BREWING",
+    "order": 1,
+    "unit": "°C",
+    "published": true,
+    "filterable": false,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Brewing Temperature" },
+      { "lang": "ru", "name": "Температура заваривания" },
+      { "lang": "zh", "name": "冲泡温度" }
+    ]
+  },
+  {
+    "code": "SPEC-BREW-TIME",
+    "group": "SPEC-GROUP-BREWING",
+    "order": 2,
+    "unit": "min",
+    "published": true,
+    "filterable": false,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Brewing Time" },
+      { "lang": "ru", "name": "Время заваривания" },
+      { "lang": "zh", "name": "冲泡时间" }
+    ]
+  },
+  {
+    "code": "SPEC-BREW-AMOUNT",
+    "group": "SPEC-GROUP-BREWING",
+    "order": 3,
+    "unit": "g/150ml",
+    "published": true,
+    "filterable": false,
+    "comparable": false,
+    "translations": [
+      { "lang": "en", "name": "Tea Amount" },
+      { "lang": "ru", "name": "Количество чая" },
+      { "lang": "zh", "name": "茶量" }
+    ]
+  },
+  {
+    "code": "SPEC-INFUSIONS",
+    "group": "SPEC-GROUP-BREWING",
+    "order": 4,
+    "published": true,
+    "filterable": false,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Number of Infusions" },
+      { "lang": "ru", "name": "Количество проливов" },
+      { "lang": "zh", "name": "冲泡次数" }
+    ]
+  },
+  {
+    "code": "SPEC-LIQUOR-COLOR",
+    "group": "SPEC-GROUP-ORGANOLEPTIC",
+    "order": 3,
+    "published": true,
+    "filterable": false,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Liquor Color" },
+      { "lang": "ru", "name": "Цвет настоя" },
+      { "lang": "zh", "name": "汤色" }
+    ]
+  },
+  {
+    "code": "SPEC-TASTE",
+    "group": "SPEC-GROUP-ORGANOLEPTIC",
+    "order": 4,
+    "published": true,
+    "filterable": false,
+    "comparable": true,
+    "translations": [
+      { "lang": "en", "name": "Taste Profile" },
+      { "lang": "ru", "name": "Вкусовой профиль" },
+      { "lang": "zh", "name": "滋味特点" }
+    ]
+  },
+  {
+    "code": "SPEC-STORAGE-TEMP",
+    "group": "SPEC-GROUP-STORAGE",
+    "order": 1,
+    "published": true,
+    "filterable": false,
+    "comparable": false,
+    "translations": [
+      { "lang": "en", "name": "Storage Temperature" },
+      { "lang": "ru", "name": "Температура хранения" },
+      { "lang": "zh", "name": "储存温度" }
+    ]
+  },
+  {
+    "code": "SPEC-SHELF-LIFE",
+    "group": "SPEC-GROUP-STORAGE",
+    "order": 2,
+    "unit": "months",
+    "published": true,
+    "filterable": false,
+    "comparable": false,
+    "translations": [
+      { "lang": "en", "name": "Shelf Life" },
+      { "lang": "ru", "name": "Срок хранения" },
+      { "lang": "zh", "name": "保质期" }
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "regionToCatalog": {
+    "china": "CATALOG-CHINA",
+    "japan": "CATALOG-JAPAN",
+    "taiwan": "CATALOG-TAIWAN",
+    "india": "CATALOG-INDIA",
+    "srilanka": "CATALOG-SRILANKA",
+    "korea": "CATALOG-KOREA",
+    "vietnam": "CATALOG-VIETNAM",
+    "nepal": "CATALOG-NEPAL",
+    "kenya": "CATALOG-AFRICA",
+    "malawi": "CATALOG-AFRICA",
+    "rwanda": "CATALOG-AFRICA",
+    "tanzania": "CATALOG-AFRICA",
+    "indonesia": "CATALOG-ASIA-OTHER",
+    "thailand": "CATALOG-ASIA-OTHER",
+    "laos": "CATALOG-ASIA-OTHER",
+    "myanmar": "CATALOG-ASIA-OTHER",
+    "bangladesh": "CATALOG-ASIA-OTHER",
+    "georgia": "CATALOG-CAUCASUS",
+    "azerbaijan": "CATALOG-CAUCASUS",
+    "azores": "CATALOG-EUROPE",
+    "wales": "CATALOG-EUROPE",
+    "jersey": "CATALOG-EUROPE",
+    "usa": "CATALOG-AMERICAS",
+    "brazil": "CATALOG-AMERICAS",
+    "colombia": "CATALOG-AMERICAS",
+    "australia": "CATALOG-OCEANIA",
+    "flowers": "CATALOG-HERBAL",
+    "others": "CATALOG-HERBAL"
+  }
+}

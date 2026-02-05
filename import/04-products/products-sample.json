@@ -1,0 +1,267 @@
+[
+  {
+    "code": "TEA-JP-SUN-ROUGE",
+    "sku": "SR-JP-2024-50G",
+    "order": 1,
+    "published": true,
+    "brand": "BRAND-YAME",
+    "price": 31.00,
+    "markAsNew": true,
+    "translations": [
+      {
+        "lang": "en",
+        "name": "Sun Rouge Purple Sencha",
+        "description": "A unique Japanese green tea processed as sencha. Sun Rouge is a hybrid of Camellia sinensis var. sinensis and wild Camellia taliensis, developed in Japan by NARO. Features purple-red young leaves rich in anthocyanins. The infusion changes color from gray-violet to bright pink when acid is added.",
+        "seoName": "sun-rouge-purple-sencha"
+      },
+      {
+        "lang": "ru",
+        "name": "Сан Руж Пурпурная Сенча",
+        "description": "Уникальный японский зеленый чай, обработанный по технологии сенча. Sun Rouge — гибрид Camellia sinensis var. sinensis и дикорастущей Camellia taliensis, разработанный в Японии NARO. Молодые листья пурпурно-красного цвета богаты антоцианами. Настой меняет цвет с серо-фиолетового на ярко-розовый при добавлении кислоты.",
+        "seoName": "san-ruzh-purpurnaya-sencha"
+      },
+      {
+        "lang": "zh",
+        "name": "阳光红紫色煎茶",
+        "description": "独特的日本绿茶，采用煎茶工艺加工。Sun Rouge是茶树小叶种与野生大理茶的杂交品种，由日本NARO研发。紫红色嫩叶富含花青素。茶汤遇酸会从灰紫色变为亮粉色。",
+        "seoName": "sun-rouge-purple-sencha"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-HIGH", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-VEGETAL", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-CULTIVAR", "type": "CustomText", "value": "Sun Rouge (Hybrid)", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "1-2 min", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g/150ml", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-HAND-PICKED", "TAG-SINGLE-ORIGIN", "TAG-LIMITED-EDITION"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-JAPAN"],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Kagoshima",
+        "place": "Tokunoshima Island",
+        "notes": "Exclusive cultivation area for Sun Rouge cultivar"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-GYOKURO-UJI",
+    "sku": "GY-UJI-2024-50G",
+    "order": 2,
+    "published": true,
+    "brand": "BRAND-UJI",
+    "price": 45.00,
+    "translations": [
+      {
+        "lang": "en",
+        "name": "Uji Gyokuro",
+        "description": "The highest grade Japanese green tea from Uji, Kyoto. Shade-grown for 20+ days before harvest, resulting in high L-theanine content. Rich umami flavor with sweet, marine notes. The 'jade dew' of Japanese teas.",
+        "seoName": "uji-gyokuro"
+      },
+      {
+        "lang": "ru",
+        "name": "Удзи Гёкуро",
+        "description": "Высший сорт японского зеленого чая из Удзи, Киото. Выращивается в тени 20+ дней перед сбором, что обеспечивает высокое содержание L-теанина. Богатый вкус умами со сладкими морскими нотами. 'Нефритовая роса' среди японских чаёв.",
+        "seoName": "udzi-gyokuro"
+      },
+      {
+        "lang": "zh",
+        "name": "宇治玉露",
+        "description": "来自京都宇治的最高等级日本绿茶。采摘前覆荫20天以上，L-茶氨酸含量极高。浓郁鲜味，带有甜美海苔气息。日本茶中的'玉露'。",
+        "seoName": "uji-gyokuro"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-HIGH", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-MARINE", "type": "Option", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-CULTIVAR", "type": "CustomText", "value": "Yabukita / Samidori", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "50-60°C", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-SHADE-GROWN", "TAG-HAND-PICKED", "TAG-COMPETITION-GRADE", "TAG-SINGLE-ORIGIN"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-JAPAN"],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Kyoto",
+        "place": "Uji",
+        "notes": "Traditional shade-growing techniques since 16th century"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-LONGJING-SHIFENG",
+    "sku": "LJ-SF-2024-50G",
+    "order": 3,
+    "published": true,
+    "brand": "BRAND-XIHU",
+    "price": 168.00,
+    "oldPrice": 198.00,
+    "markAsNew": true,
+    "newFrom": "2024-03-15",
+    "newTo": "2024-06-01",
+    "translations": [
+      {
+        "lang": "en",
+        "name": "Xihu Longjing — Shifeng Terroir (Pre-Qingming)",
+        "description": "西湖龙井 狮峰 明前 — The №1 of Ten Famous Teas of China. Hand-picked before Qingming Festival from the prestigious Shifeng (Lion Peak) terroir. Flat, emerald leaves with chestnut aroma and sweet, lingering aftertaste.",
+        "seoName": "xihu-longjing-shifeng-mingqian"
+      },
+      {
+        "lang": "ru",
+        "name": "Сиху Лунцзин — Терруар Шифэн (Минцянь)",
+        "description": "西湖龙井 狮峰 明前 — №1 из Десяти великих чаёв Китая. Ручной сбор до праздника Цинмин с престижного терруара Шифэн (Пик Льва). Плоские изумрудные листья с каштановым ароматом и сладким послевкусием.",
+        "seoName": "sihu-luncjin-shifeng-mingqian"
+      },
+      {
+        "lang": "zh",
+        "name": "西湖龙井 狮峰 明前",
+        "description": "中国十大名茶之首。明前采摘，产自狮峰核心产区。扁平翠绿，板栗香，回甘持久。",
+        "seoName": "xihu-longjing-shifeng-mingqian"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-MINGQIAN", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-400m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-CULTIVAR", "type": "CustomText", "value": "Longjing #43 / Quntizhong", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-NUTTY", "type": "Option", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-TOP10-CHINA", "TAG-UNESCO", "TAG-GI-PROTECTED", "TAG-SPRING-2024", "TAG-SINGLE-ORIGIN", "TAG-HAND-PICKED"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ZHEJIANG"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Zhejiang",
+        "place": "Shifeng, Xihu District, Hangzhou",
+        "altitude": { "min": 300, "max": 400, "unit": "m" },
+        "coordinates": { "lat": 30.2290, "lng": 120.1080 },
+        "notes": "Lion Peak — Imperial grade terroir since Ming Dynasty"
+      }
+    ],
+    "related": [
+      { "product": "TEA-CN-BILUOCHUN", "order": 1 }
+    ]
+  },
+  {
+    "code": "TEA-TW-ALISHAN-OOLONG",
+    "sku": "ALS-OL-2024-150G",
+    "order": 4,
+    "published": true,
+    "brand": "BRAND-ALISHAN",
+    "price": 118.00,
+    "translations": [
+      {
+        "lang": "en",
+        "name": "Alishan High Mountain Oolong (Spring 2024)",
+        "description": "阿里山高山茶 — Taiwan's signature high-mountain oolong from 1000-2300m elevation. Buttery texture with floral orchid notes and sweet potato finish. Clean, fresh mountain character.",
+        "seoName": "alishan-high-mountain-oolong-2024"
+      },
+      {
+        "lang": "ru",
+        "name": "Алишань Высокогорный Улун (Весна 2024)",
+        "description": "阿里山高山茶 — Визитная карточка Тайваня, высокогорный улун с высоты 1000-2300м. Маслянистая текстура с цветочными нотами орхидеи и послевкусием сладкого картофеля. Чистый горный характер.",
+        "seoName": "alishan-vysokogornyj-ulun-2024"
+      },
+      {
+        "lang": "zh",
+        "name": "阿里山高山茶 2024春",
+        "description": "台湾高山茶代表。海拔1000-2300米。奶香花香，回甘绵长。",
+        "seoName": "alishan-gaoshan-cha-2024"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-15-30", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-LIGHT", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "option": "SPEC-ALT-HIGH", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-CULTIVAR", "type": "CustomText", "value": "Qingxin Oolong / Jin Xuan TTES #12", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-FLORAL", "type": "Option", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 10 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7", "showOnPage": true, "order": 11 }
+    ],
+    "tags": ["TAG-HIGH-MOUNTAIN", "TAG-SPRING-2024", "TAG-ORGANIC", "TAG-SINGLE-ORIGIN"],
+    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-TAIWAN"],
+    "origins": [
+      {
+        "country": "TW",
+        "state": "Taiwan",
+        "place": "Alishan, Chiayi County",
+        "altitude": { "min": 1000, "max": 2300, "unit": "m" },
+        "coordinates": { "lat": 23.5108, "lng": 120.8066 },
+        "notes": "Taiwan's most famous tea region — high elevation, misty climate"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-YINZHEN-FUDING",
+    "sku": "YZ-FD-2024-50G",
+    "order": 5,
+    "published": true,
+    "brand": "BRAND-FUDING",
+    "price": 128.00,
+    "translations": [
+      {
+        "lang": "en",
+        "name": "Bai Hao Yinzhen — Silver Needle",
+        "description": "白毫银针 — The pinnacle of white tea. Made exclusively from unopened buds covered in silvery-white down. Delicate, sweet with notes of melon and hay. UNESCO Intangible Cultural Heritage 2022.",
+        "seoName": "bai-hao-yinzhen-silver-needle"
+      },
+      {
+        "lang": "ru",
+        "name": "Бай Хао Иньчжэнь — Серебряные иглы",
+        "description": "白毫银针 — Вершина белого чая. Изготовлен исключительно из нераскрывшихся почек, покрытых серебристо-белым пухом. Деликатный, сладкий с нотами дыни и сена. Нематериальное культурное наследие UNESCO 2022.",
+        "seoName": "baj-hao-inchzhen-serebryanye-igly"
+      },
+      {
+        "lang": "zh",
+        "name": "白毫银针",
+        "description": "白茶之王。纯芽制作，银毫满披。清甜鲜爽，毫香蜜韵。联合国非遗2022。",
+        "seoName": "bai-hao-yinzhen"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5-10", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-800m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-CULTIVAR", "type": "CustomText", "value": "Fuding Dabai / Fuding Dahao", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-HONEY", "type": "Option", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-UNESCO", "TAG-GI-PROTECTED", "TAG-SPRING-2024", "TAG-SINGLE-ORIGIN", "TAG-HAND-PICKED"],
+    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Fuding, Taimu Mountain",
+        "altitude": { "min": 600, "max": 800, "unit": "m" },
+        "coordinates": { "lat": 27.3300, "lng": 120.2167 },
+        "notes": "Birthplace of white tea — maritime climate, ideal terroir"
+      }
+    ]
+  }
+]

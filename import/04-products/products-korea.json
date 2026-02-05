@@ -1,0 +1,632 @@
+﻿[
+    {
+        "sku":  "SKU-085586",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Boseong Jungjak \u0027Balhyocha\u0027 Dark Tea  # Boseong Jungjak \u0027Balhyocha\u0027 Dark Tea  **1. Классификация и Происхождение:**  *   **Тип:** Корейский темный чай (Balhyocha - 발효차), постферментированный. Подвергается как окислению, так и микробной ферментации. *   **Категория:** Постферментированные чаи, аналогичные китайскому пуэру или японскому гоиситя, но с уникальной корейской технологией. *   **Происхождение:** Производится семьей Чой на органической чайной плантации Bohyang Tea в регионе Босонг (B",
+                                 "name":  "boseong-jungjak-balhyocha-dark-tea",
+                                 "seoName":  "boseong-jungjak-balhyocha-dark-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-DARK",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-BOSEONGJUNGJ",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-994001",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Boseong Jungjak Black Tea  # Boseong Jungjak Black Tea  **1. Классификация и Происхождение:**  *   **Тип:** Черный чай (полностью окисленный/ферментированный). *   **Категория:** Органический байховый (рассыпной) чай. *   **Происхождение:** Регион Босонг (Boseong), провинция Южная Чолла (Jeollanam-do), Южная Корея. Имеет статус защищенного географического указания. *   **Разновидность:** *Camellia sinensis var. sinensis*, местные корейские чайные культивары, адаптированные к горному климату.",
+                                 "name":  "boseong-jungjak-black-tea",
+                                 "seoName":  "boseong-jungjak-black-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-BOSEONGJUNGJ",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-068632",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Boseong Jungjak Hwangcha Yellow Tea  # Boseong Jungjak Hwangcha Yellow Tea  **1. Классификация и Происхождение:**  *   **Тип:** Корейский жёлтый чай (Hwangcha). Важно отметить, что корейская классификация и технология производства жёлтого чая отличаются от китайской. Степень окисления может варьироваться от 15% до 70%, занимая промежуточное положение между зелёным и чёрным (в корейской классификации — красным) чаем. *   **Категория:** Ферментированный чай. *   **Происхождение:** Южная Корея,",
+                                 "name":  "boseong-jungjak-hwangcha-yellow-tea",
+                                 "seoName":  "boseong-jungjak-hwangcha-yellow-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-YELLOW",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-BOSEONGJUNGJ",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-802347",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Boseong Matcha (보성 말차)  # Boseong Matcha (보성 말차)  **1. Классификация и Происхождение:**  *   **Тип:** Порошковый зеленый чай (Матча/Мальча). *   **Категория:** Корейский зеленый чай. *   **Происхождение:** Уезд Босонг (Boseong-gun, 보성군), провинция Южная Чолла (Jeollanam-do, 전라남도), Южная Корея. Босонг является крупнейшим регионом производства чая в Южной Корее, обеспечивая значительную часть национального урожая. *   **Географическое указание:** Продукт имеет защищенное географическое указани",
+                                 "name":  "boseong-matcha",
+                                 "seoName":  "boseong-matcha"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-BOSEONGMATCH",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-260365",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # BOSEONG SEJAK GREEN TEA (Босонг Седжак Зеленый Чай)  # BOSEONG SEJAK GREEN TEA (Босонг Седжак Зеленый Чай)  **1. Классификация и Происхождение:**  *   **Тип:** Зеленый чай (*nokcha* - нокча). *   **Категория:** *Sejak* (Седжак, «тонкий побег») – второй весенний сбор, следующий за первым сбором *Ujeon* (Уджон) и предшествующий сборам *Jungjak* (Чунджак) и *Daejak* (Тэджак). Сбор Седжак обычно проводится через 8-10 дней после *Gukwoo* (Гуку) – первого весеннего дождя (около 20 апреля). *   **П",
+                                 "name":  "boseong-sejak-green-tea",
+                                 "seoName":  "boseong-sejak-green-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-BOSEONGSEJAK",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-674073",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Чай Тэчжак (Daejak, 대작 / Daecha, 大雀 / Kkeunmul-cha, 끝물차)  # Чай Тэчжак (Daejak, 대작 / Daecha, 大雀 / Kkeunmul-cha, 끝물차)  **Чай Тэчжак (Daejak, 대작 / Daecha, 大雀 / Kkeunmul-cha, 끝물차)**  **![Чай Тэчжак (Daejak, 대작 - Daecha, 大雀 - Kkeunmul-cha, 끝물차)](images/Чай%20Тэчжак%20(Daejak,%20대작%20-%20Daecha,%20大雀%20-%20Kkeunmul-cha,%20끝물차).png) **** ** **1. Определение и номенклатура:**  * **Определение:** Чай Тэчжак (대작, Daejak) – это сорт корейского зеленого чая **позднего сбора**, который следует за более ",
+                                 "name":  "daejak--daecha--kkeunmul-cha",
+                                 "seoName":  "daejak-daecha-kkeunmul-cha"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-DAEJAKDAECHA",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-595462",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Daejak Eco (Дэдзак Эко)  # Daejak Eco (Дэдзак Эко)  **1. Классификация и Происхождение:**  *   **Тип:** Корейский зеленый чай. *   **Категория:** Сезонный чай позднего сбора (четвертый сбор после Ujeon, Sejak, Jungjak). Название \"Daejak\" (대작) означает \"Большая птица\", указывая на более крупные, зрелые листья. *   **Происхождение:** Южная Корея. Основные регионы производства: вулканический остров Чеджудо и долина Хвага (гора Чирисан) в провинции Южная Кёнсан. *   **Особенность:** Часто сертиф",
+                                 "name":  "daejak-eco",
+                                 "seoName":  "daejak-eco"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-DAEJAKECO",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-854943",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Dong Cheon Daejak Semi-Wild Green Tea  # Dong Cheon Daejak Semi-Wild Green Tea  **1. Классификация и Происхождение:**  Dong Cheon Daejak относится к категории корейских зеленых чаев (известных как Нокча, Nokcha). Классификация \"Daejak\" (Тэджак) указывает на время сбора урожая — это поздний весенний сбор, обычно приходящийся на конец мая. Чай происходит из знаменитой долины Хвагэ (Hwagae), расположенной у подножия горного массива Чирисан (Jirisan) в провинции Хадонг (Hadong), Южная Корея. Это",
+                                 "name":  "dong-cheon-daejak-semi-wild-green-tea",
+                                 "seoName":  "dong-cheon-daejak-semi-wild-green-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-DONGCHEONDAE",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-458734",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # DONG CHEON SEJAK DANCHA SEMI-WILD BLACK TEA  # DONG CHEON SEJAK DANCHA SEMI-WILD BLACK TEA  **1. Классификация и Происхождение:**  *   **Тип:** Корейский черный чай, известный как хванча (Hwangcha) или балхёча (Balhyocha). Относится к категории Sejak, что указывает на второй весенний сбор урожая. Данный чай представляет собой полудикий (semi-wild) сорт. *   **Категория:** Фермерский, органический чай. Занимает промежуточное положение между улунами средней степени окисления (около 60%) и клас",
+                                 "name":  "dong-cheon-sejak-dancha-semi-wild-black-tea",
+                                 "seoName":  "dong-cheon-sejak-dancha-semi-wild-black-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-DONGCHEONSEJ",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-130804",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Dong Cheon Sejak Hwangcha (Сечжак Хванчха от Донг Чон)  # Dong Cheon Sejak Hwangcha (Сечжак Хванчха от Донг Чон)  **1. Классификация и Происхождение:**  *   **Тип:** Корейский ферментированный чай (*balhyocha*), относящийся к категории *hwangcha* (желтый чай). Степень окисления составляет 40-60%, что помещает его между светлыми улунами и слабоокисленными черными чаями. Это не классический черный чай (Hongcha) и не желтый чай по китайской классификации. *   **Происхождение:** Южная Корея, про",
+                                 "name":  "dong-cheon-sejak-hwangcha",
+                                 "seoName":  "dong-cheon-sejak-hwangcha"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-DONGCHEONSEJ",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-236337",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # DONG CHEON SEJAK JAKSULCHA SEMI-WILD GREEN TEA  # DONG CHEON SEJAK JAKSULCHA SEMI-WILD GREEN TEA  **1. Классификация и Происхождение:**  *   **Тип:** Зеленый чай (녹차 - Nokcha). *   **Категория:** Корейский седжак (세작 - Sejak), чай второго весеннего сбора. Jaksulcha (작설차 - \"чай как воробьиный язычок\") указывает на форму молодых листьев. *   **Происхождение:** Долина Хвагаэ (Hwagae Valley), у подножия горы Джирисан (Jirisan), провинция Южная Кёнсан (South Gyeongsang), Южная Корея. Производится",
+                                 "name":  "dong-cheon-sejak-jaksulcha-semi-wild-green-tea",
+                                 "seoName":  "dong-cheon-sejak-jaksulcha-semi-wild-green-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-DONGCHEONSEJ",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-026108",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Hwangcha Balhyocha (Чон Джэ Ён)  # Hwangcha Balhyocha (Чон Джэ Ён)  **1. Классификация и Происхождение:**  *   **Тип:** **Частично окисленный чай**. В корейской классификации относится к **Balhyocha** (발효차, буквально «ферментированный чай», термин для всех окисленных чаев). Конкретно этот чай часто называют **Hwangcha** (황차, «желтый чай»), что в Корее обозначает чай с уровнем окисления ниже, чем у черного чая (Хонча), но выше, чем у зеленого (Нокча). Важно не путать с китайским желтым чаем (",
+                                 "name":  "hwangcha-balhyocha",
+                                 "seoName":  "hwangcha-balhyocha"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-HWANGCHABALH",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-986396",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # JEJU SEJAK GREEN TEA  # JEJU SEJAK GREEN TEA  **1. Классификация и Происхождение:**  *   **Тип:** Корейский зеленый чай (*Nokcha*). *   **Категория:** Классифицируется по времени сбора как **Седжак (Sejak, 세작)**, что означает второй весенний сбор, следующий за Уджон (Ujeon) и предшествующий Джунджак (Jungjak) и Дэджак (Daejak) согласно традиционной корейской системе. *   **Происхождение:** Производится исключительно на острове **Чеджу (Jeju)**, Южная Корея. Остров является крупнейшим регионо",
+                                 "name":  "jeju-sejak-green-tea",
+                                 "seoName":  "jeju-sejak-green-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-JEJUSEJAKGRE",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-603568",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # JEJU SEJAK OOLONG TEA  # JEJU SEJAK OOLONG TEA  **1. Классификация и Происхождение:**  *   **Тип:** Улун (полуферментированный чай). JEJU SEJAK OOLONG относится к виду *Camellia sinensis var. sinensis*, китайской разновидности чайного куста, известной своим тонким ароматическим профилем с цветочными акцентами. Степень окисления составляет около 55%, что помещает его между зелеными и черными чаями. *   **Категория:** Корейский чай, Органический чай. *   **Происхождение:** Чай выращивается на ",
+                                 "name":  "jeju-sejak-oolong-tea",
+                                 "seoName":  "jeju-sejak-oolong-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-OOLONG",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-JEJUSEJAKOOL",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-759752",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Jukro Jungjak Semi-Wild Balhyocha  # Jukro Jungjak Semi-Wild Balhyocha  **1. Классификация и Происхождение:**  *   **Тип:** Балхёча (Balhyocha) – частично окисленный чай, согласно корейской классификации относится к Хванча (Hwangcha, «желтый чай»), но по степени окисления (около 80%) часто соответствует черному чаю по международным стандартам. *   **Категория:** Полуферментированный (частично окисленный) чай, органический чай. *   **Происхождение:** Долина Хваге (Hwagae Valley), уезд Хадон (",
+                                 "name":  "jukro-jungjak-semi-wild-balhyocha",
+                                 "seoName":  "jukro-jungjak-semi-wild-balhyocha"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-JUKROJUNGJAK",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-779553",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Джукро Чунджак Полудикий Зеленый Чай (Jukro Jungjak Semi-Wild Green…  # Джукро Чунджак Полудикий Зеленый Чай (Jukro Jungjak Semi-Wild Green Tea)  **1. Классификация и Происхождение:**  *   **Тип:** Зеленый чай (Нокча). *   **Категория:** Чунджак (Jungjak) - третий весенний сбор. Полудикий (Semi-Wild). Органический. *   **Происхождение:** Долина Хваге (Hwagae Valley), уезд Хадон (Hadong County), провинция Южная Кёнсан (South Gyeongsang Province), Южная Корея. Выращивается на склонах горы Чири",
+                                 "name":  "jukro-jungjak-semi-wild-green",
+                                 "seoName":  "jukro-jungjak-semi-wild-green"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-JUKROJUNGJAK",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-933064",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Чай Чунчжак (Jungjak, 중작 / Chungja, 中雀 / Semul-cha, 세물차) GREEN  # Чай Чунчжак (Jungjak, 중작 / Chungja, 中雀 / Semul-cha, 세물차) GREEN  **Чай Чунчжак (Jungjak, 중작 / Chungja, 中雀 / Semul-cha, 세물차) GREEN** ![Чай Чунчжак (Jungjak, 중작 - Chungja, 中雀 - Semul-cha, 세물차) GREEN](images/Чай%20Чунчжак%20(Jungjak,%20중작%20-%20Chungja,%20中雀%20-%20Semul-cha,%20세물차)%20GREEN.png)  **1. Определение и номенклатура:**  * **Определение:** Чай Чунчжак (중작, Jungjak) – это сорт корейского зеленого чая среднего сбора, котор",
+                                 "name":  "jungjak--chungja--semul-cha--green",
+                                 "seoName":  "jungjak-chungja-semul-cha-green"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-JUNGJAKCHUNG",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-084437",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Чай Чунчжак (Jungjak) BLACK  # Чай Чунчжак (Jungjak) BLACK  **1. Классификация и Происхождение:**  *   **Тип:** Черный чай (Hongcha – «красный чай» по корейской классификации), полностью окисленный. *   **Категория:** Органический чай. Градация Jungjak (Чунчжак – «средний сбор»), что соответствует третьему весеннему сбору урожая, следующему за Ujeon («преддождевой») и Sejak («тонкий воробей»). *   **Происхождение:** Южная Корея, провинция Южная Чолла, уезд Босонг – регион, известный как «чай",
+                                 "name":  "jungjak",
+                                 "seoName":  "jungjak"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-JUNGJAK",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-631325",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Донча, Чонча, Money Tea, Чхонтэ-чон  # Донча, Чонча, Money Tea, Чхонтэ-чон  **Донча, Чонча, Money Tea, Чхонтэ-чон **  **1. Определение и основные характеристики Донча, Чонча, Money Tea, Чхонтэ-чон:**  * **Сущность:** **Донча (Doncha), Чонча (Jeoncha), Money Tea, Чхонтэ-чон (Cheongtae-jeon)** – это **традиционный корейский прессованный зеленый чай**, **изготавливаемый из листьев чайного растения *****Camellia sinensis***** в Корее, особенно в регионе Чолла-Намдо.** **Ключевая особенность – пр",
+                                 "name":  "money-tea",
+                                 "seoName":  "money-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-MONEYTEA",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-273375",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Чай Сечжак (Sejak, 세작 / Secha, 細雀 / Dumul-cha, 두물차) GREEN  # Чай Сечжак (Sejak, 세작 / Secha, 細雀 / Dumul-cha, 두물차) GREEN  **Чай Сечжак (Sejak, 세작 / Secha, 細雀 / Dumul-cha, 두물차) GREEN** ![Чай Сечжак (Sejak, 세작 - Secha, 細雀 - Dumul-cha, 두물차) GREEN](images/Чай%20Сечжак%20(Sejak,%20세작%20-%20Secha,%20細雀%20-%20Dumul-cha,%20두물차)%20GREEN.png)  **1. Определение и номенклатура:**  * **Определение:** Чай Сечжак (세작, Sejak) – это премиальный сорт корейского зеленого чая второго раннего сбора, который следуе",
+                                 "name":  "sejak--secha--dumul-cha--green",
+                                 "seoName":  "sejak-secha-dumul-cha-green"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-SEJAKSECHADU",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-038003",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Чай Учжон (Ujeon, 우전 / Yuqian, 雨前 / Cheonmul-cha, 천물차)  # Чай Учжон (Ujeon, 우전 / Yuqian, 雨前 / Cheonmul-cha, 천물차)  **Чай Учжон (Ujeon, 우전 / Yuqian, 雨前 / Cheonmul-cha, 천물차)**  **![Чай Учжон (Ujeon, 우전 - Yuqian, 雨前 - Cheonmul-cha, 천물차)](images/Чай%20Учжон%20(Ujeon,%20우전%20-%20Yuqian,%20雨前%20-%20Cheonmul-cha,%20천물차).png) **** ** **1. Определение и номенклатура:**  * **Определение:** Чай Учжон (우전, Ujeon) – это высококачественный сорт зеленого чая, производимый в Корее. Он относится к категории *",
+                                 "name":  "ujeon--yuqian--cheonmul-cha",
+                                 "seoName":  "ujeon-yuqian-cheonmul-cha"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-KOR-UJEONYUQIANC",
+        "catalog":  "CATALOG-KOREA",
+        "origins":  [
+
+                    ]
+    }
+]

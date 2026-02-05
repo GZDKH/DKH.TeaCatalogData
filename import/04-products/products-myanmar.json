@@ -1,0 +1,62 @@
+﻿[
+    {
+        "sku":  "SKU-061790",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Чай MOGOK \u0027RUBY GOLD\u0027 BLACK TEA  # Чай MOGOK \u0027RUBY GOLD\u0027 BLACK TEA  **1. Классификация и Происхождение:**  *   **Тип:** Черный байховый листовой чай, ортодоксальный метод производства. *   **Категория:** Высокогорный, полностью ферментированный (оксидированный на 80-90%). *   **Происхождение:** Бирма (Мьянма), район Могок, штат Шан. Выращен и произведен в поместье Five Trees Estate. *   **Географические координаты поместья:** Примерно N23°09\u0027, E96°20\u0027.  **2. История и Культурное Значение:** ",
+                                 "name":  "mogok-ruby-gold-black-tea",
+                                 "seoName":  "mogok-ruby-gold-black-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-MYA-MOGOKRUBYGOL",
+        "catalog":  "CATALOG-ASIA-OTHER",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-326140",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # MOGOK \u0027TINY TEMPLE\u0027 GREEN TEA  # MOGOK \u0027TINY TEMPLE\u0027 GREEN TEA  **1. Классификация и Происхождение:** *   **Тип:** Зелёный чай, слабоферментированный (степень ферментации менее 10%). Технология производства включает пропаривание листа для сохранения хлорофилла. *   **Категория:** Высокогорный органический чай. *   **Происхождение:** Регион Могок, округ Тхабейкчин, область Мандалай, Мьянма. Производится на плантации Five Trees Estate. *   **Географические координаты:** Плантация расположена в",
+                                 "name":  "mogok-tiny-temple-green-tea",
+                                 "seoName":  "mogok-tiny-temple-green-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-MYA-MOGOKTINYTEM",
+        "catalog":  "CATALOG-ASIA-OTHER",
+        "origins":  [
+
+                    ]
+    }
+]

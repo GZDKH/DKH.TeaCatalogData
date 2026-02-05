@@ -1,0 +1,62 @@
+﻿[
+    {
+        "sku":  "SKU-521756",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Encosta de Bruma Green Tea  # Encosta de Bruma Green Tea  **1. Классификация и Происхождение:**  *   **Тип:** Зеленый чай (неферментированный). *   **Категория:** Премиальный органический чай. *   **Происхождение:** Плантация Gorreana, остров Сан-Мигел, Азорские острова, Португалия. Это старейшая и единственная коммерческая чайная плантация в Европе, действующая с 1883 года. *   **Географические координаты:** Северное побережье острова Сан-Мигел, Азорский архипелаг в Атлантическом океане.  *",
+                                 "name":  "encosta-de-bruma-green-tea",
+                                 "seoName":  "encosta-de-bruma-green-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-AZO-ENCOSTADEBRU",
+        "catalog":  "CATALOG-EUROPE",
+        "origins":  [
+
+                    ]
+    },
+    {
+        "sku":  "SKU-403002",
+        "published":  true,
+        "order":  1,
+        "tags":  [
+
+                 ],
+        "translations":  [
+                             {
+                                 "lang":  "ru",
+                                 "description":  "# # Чёрный чай Пеко (Pekoe Black Tea)  # Чёрный чай Пеко (Pekoe Black Tea)  **1. Классификация и Происхождение:**  *   **Тип:** Чёрный чай (полностью ферментированный). *   **Категория:** Относится к элитным сортам, часто ассоциируется с грейдом OP (Orange Pekoe), указывающим на использование цельных молодых листьев. Само название \"Пеко\" исторически связано с самыми молодыми листьями и почкой. *   **Происхождение:** Термин \"Пеко\" происходит от китайского слова \"бай хао\" (白毫, *bái háo*), означающ",
+                                 "name":  "pekoe-black-tea",
+                                 "seoName":  "pekoe-black-tea"
+                             }
+                         ],
+        "specs":  [
+                      {
+                          "option":  "SPEC-TYPE-GREEN",
+                          "type":  "Option",
+                          "showOnPage":  true,
+                          "attribute":  "SPEC-TEA-TYPE",
+                          "order":  1
+                      }
+                  ],
+        "code":  "TEA-AZO-PEKOEBLACKTE",
+        "catalog":  "CATALOG-EUROPE",
+        "origins":  [
+
+                    ]
+    }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "code": "TAG-TOP10-CHINA",
+    "order": 1,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "Top 10 Famous Teas of China" },
+      { "lang": "ru", "name": "Топ-10 знаменитых чаёв Китая" },
+      { "lang": "zh", "name": "中国十大名茶" }
+    ]
+  },
+  {
+    "code": "TAG-UNESCO",
+    "order": 2,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "UNESCO Heritage" },
+      { "lang": "ru", "name": "Наследие ЮНЕСКО" },
+      { "lang": "zh", "name": "联合国非遗" }
+    ]
+  },
+  {
+    "code": "TAG-GI-PROTECTED",
+    "order": 3,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "GI Protected" },
+      { "lang": "ru", "name": "Защищённое географическое указание" },
+      { "lang": "zh", "name": "地理标志保护" }
+    ]
+  },
+  {
+    "code": "TAG-ORGANIC",
+    "order": 4,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "Organic" },
+      { "lang": "ru", "name": "Органический" },
+      { "lang": "zh", "name": "有机" }
+    ]
+  },
+  {
+    "code": "TAG-HIGH-MOUNTAIN",
+    "order": 5,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "High Mountain" },
+      { "lang": "ru", "name": "Высокогорный" },
+      { "lang": "zh", "name": "高山" }
+    ]
+  },
+  {
+    "code": "TAG-ANCIENT-TREE",
+    "order": 6,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "Ancient Tree" },
+      { "lang": "ru", "name": "Древние деревья" },
+      { "lang": "zh", "name": "古树" }
+    ]
+  },
+  {
+    "code": "TAG-SINGLE-ORIGIN",
+    "order": 7,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "Single Origin" },
+      { "lang": "ru", "name": "Одно происхождение" },
+      { "lang": "zh", "name": "单一产地" }
+    ]
+  },
+  {
+    "code": "TAG-LIMITED-EDITION",
+    "order": 8,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "Limited Edition" },
+      { "lang": "ru", "name": "Лимитированное издание" },
+      { "lang": "zh", "name": "限量版" }
+    ]
+  },
+  {
+    "code": "TAG-SPRING-2024",
+    "order": 9,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "Spring 2024" },
+      { "lang": "ru", "name": "Весна 2024" },
+      { "lang": "zh", "name": "2024春" }
+    ]
+  },
+  {
+    "code": "TAG-COMPETITION-GRADE",
+    "order": 10,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "Competition Grade" },
+      { "lang": "ru", "name": "Конкурсное качество" },
+      { "lang": "zh", "name": "竞赛级" }
+    ]
+  },
+  {
+    "code": "TAG-AWARD-WINNER",
+    "order": 11,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "Award Winner" },
+      { "lang": "ru", "name": "Лауреат премий" },
+      { "lang": "zh", "name": "获奖" }
+    ]
+  },
+  {
+    "code": "TAG-WILD-GROWN",
+    "order": 12,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "Wild Grown" },
+      { "lang": "ru", "name": "Дикорастущий" },
+      { "lang": "zh", "name": "野生" }
+    ]
+  },
+  {
+    "code": "TAG-SHADE-GROWN",
+    "order": 13,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "Shade Grown" },
+      { "lang": "ru", "name": "Выращен в тени" },
+      { "lang": "zh", "name": "遮阴种植" }
+    ]
+  },
+  {
+    "code": "TAG-HAND-PICKED",
+    "order": 14,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "Hand Picked" },
+      { "lang": "ru", "name": "Ручной сбор" },
+      { "lang": "zh", "name": "手工采摘" }
+    ]
+  },
+  {
+    "code": "TAG-HAND-CRAFTED",
+    "order": 15,
+    "published": true,
+    "translations": [
+      { "lang": "en", "name": "Hand Crafted" },
+      { "lang": "ru", "name": "Ручная обработка" },
+      { "lang": "zh", "name": "手工制作" }
+    ]
+  }
+]

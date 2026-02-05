@@ -1,0 +1,122 @@
+[
+  {
+    "code": "PKG-50G-POUCH",
+    "order": 1,
+    "published": true,
+    "weight": 50,
+    "weightUnit": "g",
+    "translations": [
+      { "lang": "en", "name": "50g Pouch", "description": "Resealable kraft paper pouch" },
+      { "lang": "ru", "name": "Пакет 50г", "description": "Крафт-пакет с застёжкой" },
+      { "lang": "zh", "name": "50克袋装", "description": "可重封牛皮纸袋" }
+    ]
+  },
+  {
+    "code": "PKG-100G-POUCH",
+    "order": 2,
+    "published": true,
+    "weight": 100,
+    "weightUnit": "g",
+    "translations": [
+      { "lang": "en", "name": "100g Pouch", "description": "Resealable kraft paper pouch" },
+      { "lang": "ru", "name": "Пакет 100г", "description": "Крафт-пакет с застёжкой" },
+      { "lang": "zh", "name": "100克袋装", "description": "可重封牛皮纸袋" }
+    ]
+  },
+  {
+    "code": "PKG-150G-POUCH",
+    "order": 3,
+    "published": true,
+    "weight": 150,
+    "weightUnit": "g",
+    "translations": [
+      { "lang": "en", "name": "150g Pouch", "description": "Resealable kraft paper pouch" },
+      { "lang": "ru", "name": "Пакет 150г", "description": "Крафт-пакет с застёжкой" },
+      { "lang": "zh", "name": "150克袋装", "description": "可重封牛皮纸袋" }
+    ]
+  },
+  {
+    "code": "PKG-250G-TIN",
+    "order": 4,
+    "published": true,
+    "weight": 250,
+    "weightUnit": "g",
+    "translations": [
+      { "lang": "en", "name": "250g Tin", "description": "Premium airtight tea tin" },
+      { "lang": "ru", "name": "Банка 250г", "description": "Премиальная герметичная банка" },
+      { "lang": "zh", "name": "250克茶罐", "description": "优质密封茶罐" }
+    ]
+  },
+  {
+    "code": "PKG-357G-CAKE",
+    "order": 5,
+    "published": true,
+    "weight": 357,
+    "weightUnit": "g",
+    "translations": [
+      { "lang": "en", "name": "357g Cake (Bing)", "description": "Traditional Pu-erh cake" },
+      { "lang": "ru", "name": "Блин 357г", "description": "Традиционный блин пуэра" },
+      { "lang": "zh", "name": "357克饼茶", "description": "传统普洱茶饼" }
+    ]
+  },
+  {
+    "code": "PKG-200G-BRICK",
+    "order": 6,
+    "published": true,
+    "weight": 200,
+    "weightUnit": "g",
+    "translations": [
+      { "lang": "en", "name": "200g Brick", "description": "Traditional tea brick" },
+      { "lang": "ru", "name": "Кирпич 200г", "description": "Традиционный чайный кирпич" },
+      { "lang": "zh", "name": "200克砖茶", "description": "传统茶砖" }
+    ]
+  },
+  {
+    "code": "PKG-100G-TONG",
+    "order": 7,
+    "published": true,
+    "weight": 100,
+    "weightUnit": "g",
+    "translations": [
+      { "lang": "en", "name": "100g Tuo Cha", "description": "Nest-shaped pressed tea" },
+      { "lang": "ru", "name": "Точа 100г", "description": "Прессованный чай в форме гнезда" },
+      { "lang": "zh", "name": "100克沱茶", "description": "碗形紧压茶" }
+    ]
+  },
+  {
+    "code": "PKG-30G-MATCHA",
+    "order": 8,
+    "published": true,
+    "weight": 30,
+    "weightUnit": "g",
+    "translations": [
+      { "lang": "en", "name": "30g Matcha Tin", "description": "Premium matcha tin" },
+      { "lang": "ru", "name": "Банка матчи 30г", "description": "Премиальная банка для матчи" },
+      { "lang": "zh", "name": "30克抹茶罐", "description": "优质抹茶罐" }
+    ]
+  },
+  {
+    "code": "PKG-SAMPLE-SET",
+    "order": 9,
+    "published": true,
+    "weight": 50,
+    "weightUnit": "g",
+    "translations": [
+      { "lang": "en", "name": "Sample Set", "description": "5 x 10g sample pouches" },
+      { "lang": "ru", "name": "Набор пробников", "description": "5 пакетиков по 10г" },
+      { "lang": "zh", "name": "试饮套装", "description": "5袋10克装" }
+    ]
+  },
+  {
+    "code": "PKG-GIFT-BOX",
+    "order": 10,
+    "published": true,
+    "weight": 200,
+    "weightUnit": "g",
+    "translations": [
+      { "lang": "en", "name": "Gift Box", "description": "Premium gift presentation box" },
+      { "lang": "ru", "name": "Подарочная коробка", "description": "Премиальная подарочная упаковка" },
+      { "lang": "zh", "name": "礼盒", "description": "高档礼品盒" }
+    ]
+  }
+]
