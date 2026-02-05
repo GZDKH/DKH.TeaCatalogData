@@ -11,9 +11,12 @@ DKH.TeaCatalogData is a data repository for tea product documentation and import
 - `import/` - JSON files for import via ProductCatalogService DataExchange API
 - `scripts/` - PowerShell scripts for conversion and import
 
-## Languages
+## Locales
 
-All translations use three languages: **RU**, **EN**, **ZH**
+All translations use BCP 47 locale codes (aligned with ReferenceService):
+- **ru-RU** — Russian (primary content language)
+- **en-US** — English
+- **zh-CN** — Simplified Chinese
 
 ## MD File Format
 
@@ -41,9 +44,9 @@ Products JSON uses ProductCatalogService schema:
   "code": "TEA-PRODUCT-CODE",
   "sku": "SKU-CODE",
   "translations": [
-    { "lang": "en", "name": "...", "description": "...", "seoName": "..." },
-    { "lang": "ru", "name": "...", "description": "...", "seoName": "..." },
-    { "lang": "zh", "name": "...", "description": "...", "seoName": "..." }
+    { "lang": "ru-RU", "name": "...", "description": "...", "seoName": "..." },
+    { "lang": "en-US", "name": "...", "description": "...", "seoName": "..." },
+    { "lang": "zh-CN", "name": "...", "description": "...", "seoName": "..." }
   ],
   "specs": [...],
   "tags": [...],
