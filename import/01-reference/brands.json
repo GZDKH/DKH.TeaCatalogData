@@ -4,9 +4,9 @@
     "order": 1,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Xihu", "description": "Authentic West Lake Longjing producer" },
-      { "lang": "ru", "name": "Сиху", "description": "Производитель подлинного Сиху Лунцзин" },
-      { "lang": "zh", "name": "西湖", "description": "正宗西湖龙井生产商" }
+      { "lang": "en-US", "name": "Xihu", "description": "Authentic West Lake Longjing producer" },
+      { "lang": "ru-RU", "name": "Сиху", "description": "Производитель подлинного Сиху Лунцзин" },
+      { "lang": "zh-CN", "name": "西湖", "description": "正宗西湖龙井生产商" }
     ]
   },
   {
@@ -14,9 +14,9 @@
     "order": 2,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Fuding", "description": "Premium white tea from Fuding" },
-      { "lang": "ru", "name": "Фудин", "description": "Премиальный белый чай из Фудина" },
-      { "lang": "zh", "name": "福鼎", "description": "福鼎优质白茶" }
+      { "lang": "en-US", "name": "Fuding", "description": "Premium white tea from Fuding" },
+      { "lang": "ru-RU", "name": "Фудин", "description": "Премиальный белый чай из Фудина" },
+      { "lang": "zh-CN", "name": "福鼎", "description": "福鼎优质白茶" }
     ]
   },
   {
@@ -24,9 +24,9 @@
     "order": 3,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Wuyi Mountain", "description": "Rock oolong specialists" },
-      { "lang": "ru", "name": "Уишань", "description": "Специалисты по утёсным улунам" },
-      { "lang": "zh", "name": "武夷山", "description": "岩茶专家" }
+      { "lang": "en-US", "name": "Wuyi Mountain", "description": "Rock oolong specialists" },
+      { "lang": "ru-RU", "name": "Уишань", "description": "Специалисты по утёсным улунам" },
+      { "lang": "zh-CN", "name": "武夷山", "description": "岩茶专家" }
     ]
   },
   {
@@ -34,9 +34,9 @@
     "order": 4,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Anxi", "description": "Home of Tieguanyin" },
-      { "lang": "ru", "name": "Аньси", "description": "Родина Тегуаньинь" },
-      { "lang": "zh", "name": "安溪", "description": "铁观音之乡" }
+      { "lang": "en-US", "name": "Anxi", "description": "Home of Tieguanyin" },
+      { "lang": "ru-RU", "name": "Аньси", "description": "Родина Тегуаньинь" },
+      { "lang": "zh-CN", "name": "安溪", "description": "铁观音之乡" }
     ]
   },
   {
@@ -44,9 +44,9 @@
     "order": 5,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Menghai", "description": "Legendary Pu-erh producer" },
-      { "lang": "ru", "name": "Мэнхай", "description": "Легендарный производитель пуэра" },
-      { "lang": "zh", "name": "勐海", "description": "普洱传奇" }
+      { "lang": "en-US", "name": "Menghai", "description": "Legendary Pu-erh producer" },
+      { "lang": "ru-RU", "name": "Мэнхай", "description": "Легендарный производитель пуэра" },
+      { "lang": "zh-CN", "name": "勐海", "description": "普洱传奇" }
     ]
   },
   {
@@ -54,9 +54,9 @@
     "order": 6,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Alishan", "description": "Taiwan high mountain oolong" },
-      { "lang": "ru", "name": "Алишань", "description": "Тайваньский высокогорный улун" },
-      { "lang": "zh", "name": "阿里山", "description": "台湾高山乌龙" }
+      { "lang": "en-US", "name": "Alishan", "description": "Taiwan high mountain oolong" },
+      { "lang": "ru-RU", "name": "Алишань", "description": "Тайваньский высокогорный улун" },
+      { "lang": "zh-CN", "name": "阿里山", "description": "台湾高山乌龙" }
     ]
   },
   {
@@ -64,9 +64,9 @@
     "order": 7,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Yame", "description": "Premium Japanese green tea" },
-      { "lang": "ru", "name": "Ямэ", "description": "Премиальный японский зелёный чай" },
-      { "lang": "zh", "name": "八女", "description": "日本优质绿茶" }
+      { "lang": "en-US", "name": "Yame", "description": "Premium Japanese green tea" },
+      { "lang": "ru-RU", "name": "Ямэ", "description": "Премиальный японский зелёный чай" },
+      { "lang": "zh-CN", "name": "八女", "description": "日本优质绿茶" }
     ]
   },
   {
@@ -74,9 +74,9 @@
     "order": 8,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Uji", "description": "Kyoto matcha tradition" },
-      { "lang": "ru", "name": "Удзи", "description": "Традиционная матча из Киото" },
-      { "lang": "zh", "name": "宇治", "description": "京都抹茶传统" }
+      { "lang": "en-US", "name": "Uji", "description": "Kyoto matcha tradition" },
+      { "lang": "ru-RU", "name": "Удзи", "description": "Традиционная матча из Киото" },
+      { "lang": "zh-CN", "name": "宇治", "description": "京都抹茶传统" }
     ]
   },
   {
@@ -84,9 +84,9 @@
     "order": 9,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Darjeeling", "description": "The Champagne of teas" },
-      { "lang": "ru", "name": "Дарджилинг", "description": "Шампанское среди чаёв" },
-      { "lang": "zh", "name": "大吉岭", "description": "茶中香槟" }
+      { "lang": "en-US", "name": "Darjeeling", "description": "The Champagne of teas" },
+      { "lang": "ru-RU", "name": "Дарджилинг", "description": "Шампанское среди чаёв" },
+      { "lang": "zh-CN", "name": "大吉岭", "description": "茶中香槟" }
     ]
   },
   {
@@ -94,9 +94,9 @@
     "order": 10,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Assam", "description": "Strong Indian black tea" },
-      { "lang": "ru", "name": "Ассам", "description": "Крепкий индийский чёрный чай" },
-      { "lang": "zh", "name": "阿萨姆", "description": "浓郁印度红茶" }
+      { "lang": "en-US", "name": "Assam", "description": "Strong Indian black tea" },
+      { "lang": "ru-RU", "name": "Ассам", "description": "Крепкий индийский чёрный чай" },
+      { "lang": "zh-CN", "name": "阿萨姆", "description": "浓郁印度红茶" }
     ]
   },
   {
@@ -104,9 +104,9 @@
     "order": 11,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Ceylon", "description": "Classic Sri Lankan tea" },
-      { "lang": "ru", "name": "Цейлон", "description": "Классический шри-ланкийский чай" },
-      { "lang": "zh", "name": "锡兰", "description": "经典斯里兰卡茶" }
+      { "lang": "en-US", "name": "Ceylon", "description": "Classic Sri Lankan tea" },
+      { "lang": "ru-RU", "name": "Цейлон", "description": "Классический шри-ланкийский чай" },
+      { "lang": "zh-CN", "name": "锡兰", "description": "经典斯里兰卡茶" }
     ]
   },
   {
@@ -114,9 +114,9 @@
     "order": 12,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Boseong", "description": "Korean green tea region" },
-      { "lang": "ru", "name": "Посон", "description": "Корейский зелёный чай" },
-      { "lang": "zh", "name": "宝城", "description": "韩国绿茶产区" }
+      { "lang": "en-US", "name": "Boseong", "description": "Korean green tea region" },
+      { "lang": "ru-RU", "name": "Посон", "description": "Корейский зелёный чай" },
+      { "lang": "zh-CN", "name": "宝城", "description": "韩国绿茶产区" }
     ]
   }
 ]

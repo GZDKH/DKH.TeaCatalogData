@@ -7,9 +7,9 @@
     "collapsible": false,
     "expanded": true,
     "translations": [
-      { "lang": "en", "name": "Classification", "description": "Tea type and category classification" },
-      { "lang": "ru", "name": "Классификация", "description": "Тип и категория чая" },
-      { "lang": "zh", "name": "分类", "description": "茶叶类型与分类" }
+      { "lang": "en-US", "name": "Classification", "description": "Tea type and category classification" },
+      { "lang": "ru-RU", "name": "Классификация", "description": "Тип и категория чая" },
+      { "lang": "zh-CN", "name": "分类", "description": "茶叶类型与分类" }
     ]
   },
   {
@@ -20,9 +20,9 @@
     "collapsible": true,
     "expanded": true,
     "translations": [
-      { "lang": "en", "name": "Origin & Terroir", "description": "Geographic origin and growing conditions" },
-      { "lang": "ru", "name": "Происхождение и терруар", "description": "Географическое происхождение и условия произрастания" },
-      { "lang": "zh", "name": "产地与风土", "description": "产地和生长环境" }
+      { "lang": "en-US", "name": "Origin & Terroir", "description": "Geographic origin and growing conditions" },
+      { "lang": "ru-RU", "name": "Происхождение и терруар", "description": "Географическое происхождение и условия произрастания" },
+      { "lang": "zh-CN", "name": "产地与风土", "description": "产地和生长环境" }
     ]
   },
   {
@@ -33,9 +33,9 @@
     "collapsible": true,
     "expanded": false,
     "translations": [
-      { "lang": "en", "name": "Botanical", "description": "Plant variety and cultivar information" },
-      { "lang": "ru", "name": "Ботаника", "description": "Информация о сорте и культиваре" },
-      { "lang": "zh", "name": "植物学", "description": "品种和栽培品种信息" }
+      { "lang": "en-US", "name": "Botanical", "description": "Plant variety and cultivar information" },
+      { "lang": "ru-RU", "name": "Ботаника", "description": "Информация о сорте и культиваре" },
+      { "lang": "zh-CN", "name": "植物学", "description": "品种和栽培品种信息" }
     ]
   },
   {
@@ -46,9 +46,9 @@
     "collapsible": true,
     "expanded": true,
     "translations": [
-      { "lang": "en", "name": "Processing", "description": "Tea processing characteristics" },
-      { "lang": "ru", "name": "Обработка", "description": "Характеристики обработки чая" },
-      { "lang": "zh", "name": "加工工艺", "description": "茶叶加工特性" }
+      { "lang": "en-US", "name": "Processing", "description": "Tea processing characteristics" },
+      { "lang": "ru-RU", "name": "Обработка", "description": "Характеристики обработки чая" },
+      { "lang": "zh-CN", "name": "加工工艺", "description": "茶叶加工特性" }
     ]
   },
   {
@@ -59,9 +59,9 @@
     "collapsible": true,
     "expanded": true,
     "translations": [
-      { "lang": "en", "name": "Tasting Notes", "description": "Flavor profile and tasting characteristics" },
-      { "lang": "ru", "name": "Органолептика", "description": "Вкусовой профиль и характеристики" },
-      { "lang": "zh", "name": "品鉴特征", "description": "风味特征与品鉴" }
+      { "lang": "en-US", "name": "Tasting Notes", "description": "Flavor profile and tasting characteristics" },
+      { "lang": "ru-RU", "name": "Органолептика", "description": "Вкусовой профиль и характеристики" },
+      { "lang": "zh-CN", "name": "品鉴特征", "description": "风味特征与品鉴" }
     ]
   },
   {
@@ -72,9 +72,9 @@
     "collapsible": true,
     "expanded": false,
     "translations": [
-      { "lang": "en", "name": "Chemical Composition", "description": "Key chemical compounds and content" },
-      { "lang": "ru", "name": "Химический состав", "description": "Основные химические соединения" },
-      { "lang": "zh", "name": "化学成分", "description": "主要化学成分" }
+      { "lang": "en-US", "name": "Chemical Composition", "description": "Key chemical compounds and content" },
+      { "lang": "ru-RU", "name": "Химический состав", "description": "Основные химические соединения" },
+      { "lang": "zh-CN", "name": "化学成分", "description": "主要化学成分" }
     ]
   },
   {
@@ -85,9 +85,9 @@
     "collapsible": true,
     "expanded": true,
     "translations": [
-      { "lang": "en", "name": "Brewing", "description": "Brewing recommendations and parameters" },
-      { "lang": "ru", "name": "Заваривание", "description": "Рекомендации по завариванию" },
-      { "lang": "zh", "name": "冲泡", "description": "冲泡建议和参数" }
+      { "lang": "en-US", "name": "Brewing", "description": "Brewing recommendations and parameters" },
+      { "lang": "ru-RU", "name": "Заваривание", "description": "Рекомендации по завариванию" },
+      { "lang": "zh-CN", "name": "冲泡", "description": "冲泡建议和参数" }
     ]
   },
   {
@@ -98,9 +98,9 @@
     "collapsible": true,
     "expanded": false,
     "translations": [
-      { "lang": "en", "name": "Storage", "description": "Storage requirements and shelf life" },
-      { "lang": "ru", "name": "Хранение", "description": "Требования к хранению и срок годности" },
-      { "lang": "zh", "name": "储存", "description": "储存要求和保质期" }
+      { "lang": "en-US", "name": "Storage", "description": "Storage requirements and shelf life" },
+      { "lang": "ru-RU", "name": "Хранение", "description": "Требования к хранению и срок годности" },
+      { "lang": "zh-CN", "name": "储存", "description": "储存要求和保质期" }
     ]
   },
   {
@@ -111,9 +111,9 @@
     "collapsible": true,
     "expanded": false,
     "translations": [
-      { "lang": "en", "name": "Health Benefits", "description": "Health benefits and properties" },
-      { "lang": "ru", "name": "Польза для здоровья", "description": "Полезные свойства" },
-      { "lang": "zh", "name": "健康功效", "description": "健康功效与特性" }
+      { "lang": "en-US", "name": "Health Benefits", "description": "Health benefits and properties" },
+      { "lang": "ru-RU", "name": "Польза для здоровья", "description": "Полезные свойства" },
+      { "lang": "zh-CN", "name": "健康功效", "description": "健康功效与特性" }
     ]
   }
 ]

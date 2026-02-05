@@ -4,9 +4,9 @@
     "order": 1,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "China Tea", "description": "Premium teas from China — the birthplace of tea", "seoName": "china-tea" },
-      { "lang": "ru", "name": "Китайский чай", "description": "Премиальные чаи из Китая — родины чая", "seoName": "kitajskij-chaj" },
-      { "lang": "zh", "name": "中国茶", "description": "来自茶叶故乡的优质茶叶", "seoName": "china-tea" }
+      { "lang": "en-US", "name": "China Tea", "description": "Premium teas from China — the birthplace of tea", "seoName": "china-tea" },
+      { "lang": "ru-RU", "name": "Китайский чай", "description": "Премиальные чаи из Китая — родины чая", "seoName": "kitajskij-chaj" },
+      { "lang": "zh-CN", "name": "中国茶", "description": "来自茶叶故乡的优质茶叶", "seoName": "china-tea" }
     ]
   },
   {
@@ -14,9 +14,9 @@
     "order": 2,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Japan Tea", "description": "Japanese green teas — matcha, sencha, gyokuro", "seoName": "japan-tea" },
-      { "lang": "ru", "name": "Японский чай", "description": "Японские зелёные чаи — матча, сенча, гёкуро", "seoName": "yaponskij-chaj" },
-      { "lang": "zh", "name": "日本茶", "description": "日本绿茶 — 抹茶、煎茶、玉露", "seoName": "japan-tea" }
+      { "lang": "en-US", "name": "Japan Tea", "description": "Japanese green teas — matcha, sencha, gyokuro", "seoName": "japan-tea" },
+      { "lang": "ru-RU", "name": "Японский чай", "description": "Японские зелёные чаи — матча, сенча, гёкуро", "seoName": "yaponskij-chaj" },
+      { "lang": "zh-CN", "name": "日本茶", "description": "日本绿茶 — 抹茶、煎茶、玉露", "seoName": "japan-tea" }
     ]
   },
   {
@@ -24,9 +24,9 @@
     "order": 3,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Taiwan Tea", "description": "Taiwan high mountain oolongs", "seoName": "taiwan-tea" },
-      { "lang": "ru", "name": "Тайваньский чай", "description": "Тайваньские высокогорные улуны", "seoName": "tajvanskij-chaj" },
-      { "lang": "zh", "name": "台湾茶", "description": "台湾高山乌龙茶", "seoName": "taiwan-tea" }
+      { "lang": "en-US", "name": "Taiwan Tea", "description": "Taiwan high mountain oolongs", "seoName": "taiwan-tea" },
+      { "lang": "ru-RU", "name": "Тайваньский чай", "description": "Тайваньские высокогорные улуны", "seoName": "tajvanskij-chaj" },
+      { "lang": "zh-CN", "name": "台湾茶", "description": "台湾高山乌龙茶", "seoName": "taiwan-tea" }
     ]
   },
   {
@@ -34,9 +34,9 @@
     "order": 4,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "India Tea", "description": "Darjeeling, Assam, Nilgiri — the finest Indian teas", "seoName": "india-tea" },
-      { "lang": "ru", "name": "Индийский чай", "description": "Дарджилинг, Ассам, Нилгири — лучшие индийские чаи", "seoName": "indijskij-chaj" },
-      { "lang": "zh", "name": "印度茶", "description": "大吉岭、阿萨姆、尼尔吉里 — 印度名茶", "seoName": "india-tea" }
+      { "lang": "en-US", "name": "India Tea", "description": "Darjeeling, Assam, Nilgiri — the finest Indian teas", "seoName": "india-tea" },
+      { "lang": "ru-RU", "name": "Индийский чай", "description": "Дарджилинг, Ассам, Нилгири — лучшие индийские чаи", "seoName": "indijskij-chaj" },
+      { "lang": "zh-CN", "name": "印度茶", "description": "大吉岭、阿萨姆、尼尔吉里 — 印度名茶", "seoName": "india-tea" }
     ]
   },
   {
@@ -44,9 +44,9 @@
     "order": 5,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Ceylon Tea", "description": "Classic Ceylon teas from Sri Lanka", "seoName": "ceylon-tea" },
-      { "lang": "ru", "name": "Цейлонский чай", "description": "Классические цейлонские чаи из Шри-Ланки", "seoName": "cejlonskij-chaj" },
-      { "lang": "zh", "name": "锡兰茶", "description": "斯里兰卡经典锡兰茶", "seoName": "ceylon-tea" }
+      { "lang": "en-US", "name": "Ceylon Tea", "description": "Classic Ceylon teas from Sri Lanka", "seoName": "ceylon-tea" },
+      { "lang": "ru-RU", "name": "Цейлонский чай", "description": "Классические цейлонские чаи из Шри-Ланки", "seoName": "cejlonskij-chaj" },
+      { "lang": "zh-CN", "name": "锡兰茶", "description": "斯里兰卡经典锡兰茶", "seoName": "ceylon-tea" }
     ]
   },
   {
@@ -54,9 +54,9 @@
     "order": 6,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Korea Tea", "description": "Korean green teas and traditional Balhyocha", "seoName": "korea-tea" },
-      { "lang": "ru", "name": "Корейский чай", "description": "Корейские зелёные чаи и традиционный Бальхёча", "seoName": "korejskij-chaj" },
-      { "lang": "zh", "name": "韩国茶", "description": "韩国绿茶与传统发酵茶", "seoName": "korea-tea" }
+      { "lang": "en-US", "name": "Korea Tea", "description": "Korean green teas and traditional Balhyocha", "seoName": "korea-tea" },
+      { "lang": "ru-RU", "name": "Корейский чай", "description": "Корейские зелёные чаи и традиционный Бальхёча", "seoName": "korejskij-chaj" },
+      { "lang": "zh-CN", "name": "韩国茶", "description": "韩国绿茶与传统发酵茶", "seoName": "korea-tea" }
     ]
   },
   {
@@ -64,9 +64,9 @@
     "order": 7,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Vietnam Tea", "description": "Vietnamese teas from ancient tea trees", "seoName": "vietnam-tea" },
-      { "lang": "ru", "name": "Вьетнамский чай", "description": "Вьетнамские чаи с древних чайных деревьев", "seoName": "vietnamskij-chaj" },
-      { "lang": "zh", "name": "越南茶", "description": "越南古树茶", "seoName": "vietnam-tea" }
+      { "lang": "en-US", "name": "Vietnam Tea", "description": "Vietnamese teas from ancient tea trees", "seoName": "vietnam-tea" },
+      { "lang": "ru-RU", "name": "Вьетнамский чай", "description": "Вьетнамские чаи с древних чайных деревьев", "seoName": "vietnamskij-chaj" },
+      { "lang": "zh-CN", "name": "越南茶", "description": "越南古树茶", "seoName": "vietnam-tea" }
     ]
   },
   {
@@ -74,9 +74,9 @@
     "order": 8,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Nepal Tea", "description": "Himalayan teas from Nepal", "seoName": "nepal-tea" },
-      { "lang": "ru", "name": "Непальский чай", "description": "Гималайские чаи из Непала", "seoName": "nepalskij-chaj" },
-      { "lang": "zh", "name": "尼泊尔茶", "description": "尼泊尔喜马拉雅茶", "seoName": "nepal-tea" }
+      { "lang": "en-US", "name": "Nepal Tea", "description": "Himalayan teas from Nepal", "seoName": "nepal-tea" },
+      { "lang": "ru-RU", "name": "Непальский чай", "description": "Гималайские чаи из Непала", "seoName": "nepalskij-chaj" },
+      { "lang": "zh-CN", "name": "尼泊尔茶", "description": "尼泊尔喜马拉雅茶", "seoName": "nepal-tea" }
     ]
   },
   {
@@ -84,9 +84,9 @@
     "order": 9,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "African Tea", "description": "Teas from Kenya, Malawi, Rwanda, Tanzania", "seoName": "african-tea" },
-      { "lang": "ru", "name": "Африканский чай", "description": "Чаи из Кении, Малави, Руанды, Танзании", "seoName": "afrikanskij-chaj" },
-      { "lang": "zh", "name": "非洲茶", "description": "肯尼亚、马拉维、卢旺达、坦桑尼亚茶", "seoName": "african-tea" }
+      { "lang": "en-US", "name": "African Tea", "description": "Teas from Kenya, Malawi, Rwanda, Tanzania", "seoName": "african-tea" },
+      { "lang": "ru-RU", "name": "Африканский чай", "description": "Чаи из Кении, Малави, Руанды, Танзании", "seoName": "afrikanskij-chaj" },
+      { "lang": "zh-CN", "name": "非洲茶", "description": "肯尼亚、马拉维、卢旺达、坦桑尼亚茶", "seoName": "african-tea" }
     ]
   },
   {
@@ -94,9 +94,9 @@
     "order": 10,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Southeast Asia Tea", "description": "Teas from Indonesia, Thailand, Laos, Myanmar", "seoName": "southeast-asia-tea" },
-      { "lang": "ru", "name": "Чай Юго-Восточной Азии", "description": "Чаи из Индонезии, Таиланда, Лаоса, Мьянмы", "seoName": "chaj-yugo-vostochnoj-azii" },
-      { "lang": "zh", "name": "东南亚茶", "description": "印尼、泰国、老挝、缅甸茶", "seoName": "southeast-asia-tea" }
+      { "lang": "en-US", "name": "Southeast Asia Tea", "description": "Teas from Indonesia, Thailand, Laos, Myanmar", "seoName": "southeast-asia-tea" },
+      { "lang": "ru-RU", "name": "Чай Юго-Восточной Азии", "description": "Чаи из Индонезии, Таиланда, Лаоса, Мьянмы", "seoName": "chaj-yugo-vostochnoj-azii" },
+      { "lang": "zh-CN", "name": "东南亚茶", "description": "印尼、泰国、老挝、缅甸茶", "seoName": "southeast-asia-tea" }
     ]
   },
   {
@@ -104,9 +104,9 @@
     "order": 11,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Caucasus Tea", "description": "Teas from Georgia and Azerbaijan", "seoName": "caucasus-tea" },
-      { "lang": "ru", "name": "Кавказский чай", "description": "Чаи из Грузии и Азербайджана", "seoName": "kavkazskij-chaj" },
-      { "lang": "zh", "name": "高加索茶", "description": "格鲁吉亚和阿塞拜疆茶", "seoName": "caucasus-tea" }
+      { "lang": "en-US", "name": "Caucasus Tea", "description": "Teas from Georgia and Azerbaijan", "seoName": "caucasus-tea" },
+      { "lang": "ru-RU", "name": "Кавказский чай", "description": "Чаи из Грузии и Азербайджана", "seoName": "kavkazskij-chaj" },
+      { "lang": "zh-CN", "name": "高加索茶", "description": "格鲁吉亚和阿塞拜疆茶", "seoName": "caucasus-tea" }
     ]
   },
   {
@@ -114,9 +114,9 @@
     "order": 12,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "European Tea", "description": "Teas from Azores, UK (Wales, Jersey)", "seoName": "european-tea" },
-      { "lang": "ru", "name": "Европейский чай", "description": "Чаи с Азорских островов, из Великобритании", "seoName": "evropejskij-chaj" },
-      { "lang": "zh", "name": "欧洲茶", "description": "亚速尔群岛、英国茶", "seoName": "european-tea" }
+      { "lang": "en-US", "name": "European Tea", "description": "Teas from Azores, UK (Wales, Jersey)", "seoName": "european-tea" },
+      { "lang": "ru-RU", "name": "Европейский чай", "description": "Чаи с Азорских островов, из Великобритании", "seoName": "evropejskij-chaj" },
+      { "lang": "zh-CN", "name": "欧洲茶", "description": "亚速尔群岛、英国茶", "seoName": "european-tea" }
     ]
   },
   {
@@ -124,9 +124,9 @@
     "order": 13,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Americas Tea", "description": "Teas from USA, Brazil, Colombia", "seoName": "americas-tea" },
-      { "lang": "ru", "name": "Американский чай", "description": "Чаи из США, Бразилии, Колумбии", "seoName": "amerikanskij-chaj" },
-      { "lang": "zh", "name": "美洲茶", "description": "美国、巴西、哥伦比亚茶", "seoName": "americas-tea" }
+      { "lang": "en-US", "name": "Americas Tea", "description": "Teas from USA, Brazil, Colombia", "seoName": "americas-tea" },
+      { "lang": "ru-RU", "name": "Американский чай", "description": "Чаи из США, Бразилии, Колумбии", "seoName": "amerikanskij-chaj" },
+      { "lang": "zh-CN", "name": "美洲茶", "description": "美国、巴西、哥伦比亚茶", "seoName": "americas-tea" }
     ]
   },
   {
@@ -134,9 +134,9 @@
     "order": 14,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Oceania Tea", "description": "Teas from Australia", "seoName": "oceania-tea" },
-      { "lang": "ru", "name": "Чай Океании", "description": "Чаи из Австралии", "seoName": "chaj-okeanii" },
-      { "lang": "zh", "name": "大洋洲茶", "description": "澳大利亚茶", "seoName": "oceania-tea" }
+      { "lang": "en-US", "name": "Oceania Tea", "description": "Teas from Australia", "seoName": "oceania-tea" },
+      { "lang": "ru-RU", "name": "Чай Океании", "description": "Чаи из Австралии", "seoName": "chaj-okeanii" },
+      { "lang": "zh-CN", "name": "大洋洲茶", "description": "澳大利亚茶", "seoName": "oceania-tea" }
     ]
   },
   {
@@ -144,9 +144,9 @@
     "order": 15,
     "published": true,
     "translations": [
-      { "lang": "en", "name": "Herbal & Flowers", "description": "Herbal teas, flower teas, tisanes", "seoName": "herbal-tea" },
-      { "lang": "ru", "name": "Травяные и цветочные", "description": "Травяные чаи, цветочные чаи, тизаны", "seoName": "travyanye-chai" },
-      { "lang": "zh", "name": "草本花茶", "description": "草本茶、花茶、代茶饮", "seoName": "herbal-tea" }
+      { "lang": "en-US", "name": "Herbal & Flowers", "description": "Herbal teas, flower teas, tisanes", "seoName": "herbal-tea" },
+      { "lang": "ru-RU", "name": "Травяные и цветочные", "description": "Травяные чаи, цветочные чаи, тизаны", "seoName": "travyanye-chai" },
+      { "lang": "zh-CN", "name": "草本花茶", "description": "草本茶、花茶、代茶饮", "seoName": "herbal-tea" }
     ]
   }
 ]
