@@ -1,0 +1,234 @@
+{
+  "products": [
+    {
+      "code": "TEA-ID-BLK-PRM-001",
+      "sku": "ID-TOBA-PRIME-BLACK-001",
+      "order": 1,
+      "published": true,
+      "translations": [
+        {
+          "lang": "ru-RU",
+          "name": "Тоба Вангги Prime",
+          "description": "Премиальный чёрный чай из Западной Явы, сорт Gambung 7. Насыщенный солодово-шоколадный вкус с фруктовыми нотами. Органическое выращивание. Вулканические почвы.",
+          "seoName": "toba-wangi-prime"
+        },
+        {
+          "lang": "en-US",
+          "name": "Toba Wangi Prime",
+          "description": "Premium black tea from West Java, Gambung 7 cultivar. Rich malty-chocolate taste with fruity notes. Organic cultivation. Volcanic soils.",
+          "seoName": "toba-wangi-prime"
+        },
+        {
+          "lang": "zh-CN",
+          "name": "多巴旺吉精品红茶",
+          "description": "产自西爪哇的精品红茶，Gambung 7品种。浓郁的麦芽巧克力味带有果香。有机种植。火山土壤。",
+          "seoName": "duobawangji-jingpin-hongcha"
+        }
+      ],
+      "specs": [
+        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
+        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDONESIA" },
+        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
+        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95°C" },
+        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
+        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 150-200 мл" }
+      ],
+      "tags": ["indonesian-tea", "black-tea", "java", "premium", "organic"],
+      "categories": ["BLACK_TEA", "INDONESIAN_TEA", "PREMIUM_TEA", "ORGANIC_TEA"],
+      "origins": [
+        {
+          "country": "ID",
+          "region": "West Java",
+          "area": "Pangalengan",
+          "latitude": -7.2167,
+          "longitude": 107.5833,
+          "altitude": 1300
+        }
+      ]
+    },
+    {
+      "code": "TEA-ID-BLK-GBP-001",
+      "sku": "ID-JAVA-GBOP-001",
+      "order": 2,
+      "published": true,
+      "translations": [
+        {
+          "lang": "ru-RU",
+          "name": "Ява GBOP",
+          "description": "Классический яванский чёрный чай грейда Golden Broken Orange Pekoe. Крепкий вкус с солодовыми нотами. Яркий красный настой. Отлично подходит с молоком.",
+          "seoName": "java-gbop"
+        },
+        {
+          "lang": "en-US",
+          "name": "Java GBOP",
+          "description": "Classic Javanese black tea of Golden Broken Orange Pekoe grade. Strong taste with malty notes. Bright red infusion. Excellent with milk.",
+          "seoName": "java-gbop"
+        },
+        {
+          "lang": "zh-CN",
+          "name": "爪哇GBOP",
+          "description": "经典的爪哇红茶，Golden Broken Orange Pekoe等级。口感浓郁，带有麦芽香。茶汤呈明亮的红色。加奶更佳。",
+          "seoName": "zhaowa-gbop"
+        }
+      ],
+      "specs": [
+        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
+        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDONESIA" },
+        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
+        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95-100°C" },
+        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
+        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      ],
+      "tags": ["indonesian-tea", "black-tea", "java", "breakfast"],
+      "categories": ["BLACK_TEA", "INDONESIAN_TEA"],
+      "origins": [
+        {
+          "country": "ID",
+          "region": "West Java",
+          "area": "Java",
+          "latitude": -7.0000,
+          "longitude": 107.5000,
+          "altitude": 1000
+        }
+      ]
+    },
+    {
+      "code": "TEA-ID-OOL-BAO-001",
+      "sku": "ID-BAOZHONG-001",
+      "order": 3,
+      "published": true,
+      "translations": [
+        {
+          "lang": "ru-RU",
+          "name": "Тоба Вангги Баочжун",
+          "description": "Индонезийский улун в стиле тайваньского Баочжун. Слабая ферментация, свежий цветочный аромат. Лёгкий зелёный настой. Нежный сладковатый вкус.",
+          "seoName": "toba-baozhong"
+        },
+        {
+          "lang": "en-US",
+          "name": "Toba Wangi Baozhong",
+          "description": "Indonesian oolong in Taiwanese Baozhong style. Light oxidation, fresh floral aroma. Light green infusion. Delicate sweet taste.",
+          "seoName": "toba-baozhong"
+        },
+        {
+          "lang": "zh-CN",
+          "name": "多巴旺吉包种",
+          "description": "台式包种风格的印尼乌龙。轻发酵，清新的花香。茶汤呈浅绿色。细腻甘甜的口感。",
+          "seoName": "duobawangji-baozhong"
+        }
+      ],
+      "specs": [
+        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
+        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDONESIA" },
+        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
+        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-90°C" },
+        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
+        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "4-5 г / 150 мл" }
+      ],
+      "tags": ["indonesian-tea", "oolong-tea", "baozhong", "floral"],
+      "categories": ["OOLONG_TEA", "INDONESIAN_TEA"],
+      "origins": [
+        {
+          "country": "ID",
+          "region": "West Java",
+          "area": "Pangalengan",
+          "latitude": -7.2167,
+          "longitude": 107.5833,
+          "altitude": 1300
+        }
+      ]
+    },
+    {
+      "code": "TEA-ID-GRN-NDL-001",
+      "sku": "ID-NEEDLE-GREEN-001",
+      "order": 4,
+      "published": true,
+      "translations": [
+        {
+          "lang": "ru-RU",
+          "name": "Тоба Вангги Игольчатый Зелёный",
+          "description": "Яванский зелёный чай из сырья Assamica. Травянистый вкус с лёгкой сладостью. Игольчатая скрутка листа. Прозрачный зелёный настой.",
+          "seoName": "toba-needle-green"
+        },
+        {
+          "lang": "en-US",
+          "name": "Toba Wangi Needle Green",
+          "description": "Javanese green tea from Assamica material. Grassy taste with light sweetness. Needle-shaped leaf roll. Clear green infusion.",
+          "seoName": "toba-needle-green"
+        },
+        {
+          "lang": "zh-CN",
+          "name": "多巴旺吉针形绿茶",
+          "description": "采用阿萨姆种原料制成的爪哇绿茶。草香中带有轻微甘甜。针形卷曲。茶汤呈透明的绿色。",
+          "seoName": "duobawangji-zhenxing-lvcha"
+        }
+      ],
+      "specs": [
+        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
+        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDONESIA" },
+        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
+        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-80°C" },
+        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
+        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-4 г / 200 мл" }
+      ],
+      "tags": ["indonesian-tea", "green-tea", "java", "needle"],
+      "categories": ["GREEN_TEA", "INDONESIAN_TEA"],
+      "origins": [
+        {
+          "country": "ID",
+          "region": "West Java",
+          "area": "Pangalengan",
+          "latitude": -7.2167,
+          "longitude": 107.5833,
+          "altitude": 1300
+        }
+      ]
+    },
+    {
+      "code": "TEA-ID-BLK-GLD-001",
+      "sku": "ID-GOLDEN-NEEDLE-001",
+      "order": 5,
+      "published": true,
+      "translations": [
+        {
+          "lang": "ru-RU",
+          "name": "Тоба Вангги Золотая Игла",
+          "description": "Чёрный чай из золотистых почек и молодых листьев. Мягкий сладковатый вкус с медовыми нотами. Минимальная терпкость. Янтарный настой.",
+          "seoName": "toba-golden-needle"
+        },
+        {
+          "lang": "en-US",
+          "name": "Toba Wangi Golden Needle",
+          "description": "Black tea from golden buds and young leaves. Mild sweet taste with honey notes. Minimal astringency. Amber infusion.",
+          "seoName": "toba-golden-needle"
+        },
+        {
+          "lang": "zh-CN",
+          "name": "多巴旺吉金针",
+          "description": "采用金色芽头和嫩叶制成的红茶。口感柔和甘甜，带有蜂蜜香。涩味极少。茶汤呈琥珀色。",
+          "seoName": "duobawangji-jinzhen"
+        }
+      ],
+      "specs": [
+        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
+        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDONESIA" },
+        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
+        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-95°C" },
+        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
+        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-4 г / 200 мл" }
+      ],
+      "tags": ["indonesian-tea", "black-tea", "golden-needle", "premium", "tippy"],
+      "categories": ["BLACK_TEA", "INDONESIAN_TEA", "PREMIUM_TEA"],
+      "origins": [
+        {
+          "country": "ID",
+          "region": "West Java",
+          "area": "Pangalengan",
+          "latitude": -7.2167,
+          "longitude": 107.5833,
+          "altitude": 1300
+        }
+      ]
+    }
+  ]
+}
