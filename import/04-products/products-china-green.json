@@ -1,0 +1,844 @@
+[
+  {
+    "code": "TEA-CN-XIHU-LONGJING",
+    "sku": "XLJ-ZJ-2024-50G",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Си Ху Лун Цзин (Колодец Дракона)",
+        "description": "Си Ху Лун Цзин — легендарный зелёный чай, возглавляющий список «Десяти знаменитых чаёв Китая». Производится в окрестностях озера Сиху близ Ханчжоу, провинция Чжэцзян. Плоские, гладкие листья цвета нефрита обладают характерным ароматом жареных каштанов и орхидеи. Вкус насыщенный, маслянистый, сладковатый с долгим освежающим послевкусием. Императорский чай с 1200-летней историей.",
+        "seoName": "si-hu-lun-czin"
+      },
+      {
+        "lang": "en-US",
+        "name": "Xi Hu Long Jing (Dragon Well)",
+        "description": "Xi Hu Long Jing is a legendary green tea heading the list of 'Ten Famous Teas of China'. Produced near West Lake (Xi Hu) in Hangzhou, Zhejiang Province. Flat, smooth jade-colored leaves have characteristic aroma of roasted chestnuts and orchid. Taste is rich, oily, sweet with long refreshing aftertaste. Imperial tea with 1200 years of history.",
+        "seoName": "xihu-longjing-dragon-well"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "西湖龙井",
+        "description": "西湖龙井是中国十大名茶之首，产于浙江杭州西湖周边。扁平光滑的翠绿茶叶散发着标志性的炒栗香和兰花香。滋味醇厚甘甜，回甘持久清爽。拥有1200多年历史的贡茶。",
+        "seoName": "xihu-longjing"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "100-800m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, oily, sweet, chestnut", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Roasted chestnut, orchid, fresh greens", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-TOP10-CHINA", "TAG-IMPERIAL", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-SPRING"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ZHEJIANG"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Zhejiang",
+        "place": "Hangzhou, West Lake (Shi Feng, Longjing Village, Meijiawu)",
+        "altitude": { "min": 100, "max": 800, "unit": "m" },
+        "coordinates": { "lat": 30.0, "lng": 120.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-DONGTING-BILUOCHUN",
+    "sku": "BLC-JS-2024-50G",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дун Тин Би Ло Чунь (Изумрудные Спирали Весны)",
+        "description": "Дун Тин Би Ло Чунь — знаменитый зелёный чай из гор Дунтин на берегу озера Тайху, провинция Цзянсу. Маленькие туго скрученные чаинки, напоминающие раковины улиток, покрыты серебристым пушком. Изначальное название «Убийственно ароматный» отражает интенсивность его цветочно-фруктового аромата. Вкус нежный, сладковатый с нотами персика и абрикоса, долгим обволакивающим послевкусием.",
+        "seoName": "dun-tin-bi-lo-chun"
+      },
+      {
+        "lang": "en-US",
+        "name": "Dong Ting Bi Luo Chun (Green Snail Spring)",
+        "description": "Dong Ting Bi Luo Chun is a famous green tea from Dongting Mountains by Lake Taihu, Jiangsu Province. Small tightly rolled tea leaves resembling snail shells are covered with silvery down. Original name 'Frighteningly Fragrant' reflects intensity of its floral-fruity aroma. Taste is delicate, sweet with notes of peach and apricot, long enveloping aftertaste.",
+        "seoName": "dongting-biluochun-green-snail"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "洞庭碧螺春",
+        "description": "洞庭碧螺春是产于江苏太湖洞庭山的名茶。细小紧卷如螺的茶叶覆盖银白毫毛。原名「吓煞人香」道出其花果香之浓郁。口感细腻甘甜，带有桃杏果香，回甘悠长绵软。",
+        "seoName": "dongting-biluochun"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "500-800m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Delicate, sweet, fruity, floral", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Peach, apricot, flowers, honey", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-TOP10-CHINA", "TAG-IMPERIAL", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-SPRING"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-JIANGSU"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Jiangsu",
+        "place": "Dongting Mountains, Lake Taihu, Suzhou",
+        "altitude": { "min": 500, "max": 800, "unit": "m" },
+        "coordinates": { "lat": 31.0, "lng": 120.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-HUANGSHAN-MAOFENG",
+    "sku": "HMF-AH-2024-50G",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Хуаншань Мао Фэн (Ворсистые Пики Жёлтых Гор)",
+        "description": "Хуаншань Мао Фэн — знаменитый зелёный чай из живописных гор Хуаншань (Жёлтые горы) провинции Аньхой, объекта Всемирного наследия ЮНЕСКО. Нежные листья, покрытые белым ворсом, напоминают «воробьиные язычки». Свежий цветочный аромат орхидеи с нотами жареного каштана. Вкус мягкий, освежающий, сладковатый с долгим чистым послевкусием. История чая насчитывает более 150 лет.",
+        "seoName": "huanshan-mao-fen"
+      },
+      {
+        "lang": "en-US",
+        "name": "Huangshan Mao Feng (Yellow Mountain Fur Peak)",
+        "description": "Huangshan Mao Feng is a famous green tea from scenic Huangshan (Yellow Mountains) in Anhui Province, UNESCO World Heritage Site. Delicate leaves covered with white down resemble 'sparrow tongues'. Fresh floral orchid aroma with roasted chestnut notes. Taste is soft, refreshing, sweet with long clean aftertaste. Tea history spans over 150 years.",
+        "seoName": "huangshan-maofeng"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "黄山毛峰",
+        "description": "黄山毛峰是产自世界遗产地安徽黄山的名茶。覆有白毫的嫩叶形似「雀舌」。清新的兰花香伴有炒栗香。口感柔和清爽甘甜，回甘持久纯净。茶史逾150年。",
+        "seoName": "huangshan-maofeng"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "700-800m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, refreshing, sweet, orchid", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Orchid, roasted chestnut, fresh greens", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-UNESCO", "TAG-SPRING"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Anhui",
+        "place": "Huangshan Mountains (Yellow Mountains)",
+        "altitude": { "min": 700, "max": 800, "unit": "m" },
+        "coordinates": { "lat": 30.0, "lng": 118.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-TAIPING-HOUKUI",
+    "sku": "TPH-AH-2024-50G",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Тай Пин Хоу Куй (Главарь Обезьян из Тайпин)",
+        "description": "Тай Пин Хоу Куй — уникальный зелёный чай из уезда Тайпин провинции Аньхой. Отличается самыми крупными листьями среди зелёных чаёв — до 15 см в длину. Плоские, прямые листья с характерным сетчатым рисунком напоминают «мечи» или «бамбуковые листья». Тонкий орхидейный аромат, мягкий сладковатый вкус с освежающим послевкусием. Входит в десятку знаменитых чаёв Китая.",
+        "seoName": "taj-pin-hou-kuj"
+      },
+      {
+        "lang": "en-US",
+        "name": "Tai Ping Hou Kui (Monkey King)",
+        "description": "Tai Ping Hou Kui is a unique green tea from Taiping County, Anhui Province. Distinguished by the largest leaves among green teas — up to 15 cm long. Flat, straight leaves with characteristic mesh pattern resemble 'swords' or 'bamboo leaves'. Delicate orchid aroma, soft sweet taste with refreshing aftertaste. One of Ten Famous Teas of China.",
+        "seoName": "taiping-houkui-monkey-king"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "太平猴魁",
+        "description": "太平猴魁是产自安徽太平县的独特绿茶。叶片是绿茶中最大的，长达15厘米。扁平挺直的叶片带有网状纹路，形似「剑」或「竹叶」。幽雅的兰花香，口感柔和甘甜，回甘清爽。中国十大名茶之一。",
+        "seoName": "taiping-houkui"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-800m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, refreshing, orchid", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Orchid, fresh greens, mineral", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-HANDCRAFTED"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Anhui",
+        "place": "Taiping County, Huangshan City",
+        "altitude": { "min": 300, "max": 800, "unit": "m" },
+        "coordinates": { "lat": 30.3, "lng": 118.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-LIUAN-GUAPIAN",
+    "sku": "LGP-AH-2024-50G",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Лю Ань Гуа Пянь (Тыквенные Семечки из Люань)",
+        "description": "Лю Ань Гуа Пянь — уникальный зелёный чай из уезда Люань провинции Аньхой. Единственный зелёный чай, производимый исключительно из листьев без почек. Листья по форме напоминают семечки тыквы, отсюда и название. Насыщенный каштановый аромат, полнотелый вкус с нотами жареных семечек и лёгкой сладостью. Входит в десятку знаменитых чаёв Китая.",
+        "seoName": "lyu-an-gua-pyan"
+      },
+      {
+        "lang": "en-US",
+        "name": "Liu An Gua Pian (Melon Seed)",
+        "description": "Liu An Gua Pian is a unique green tea from Liu'an County, Anhui Province. The only green tea made exclusively from leaves without buds. Leaves shaped like melon seeds, hence the name. Rich chestnut aroma, full-bodied taste with notes of roasted seeds and light sweetness. One of Ten Famous Teas of China.",
+        "seoName": "liuan-guapian-melon-seed"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "六安瓜片",
+        "description": "六安瓜片是产自安徽六安的独特绿茶。唯一一款仅用叶片、不含芽头的绿茶。叶形似瓜子，故名「瓜片」。栗香浓郁，滋味醇厚，带有炒瓜子香和淡淡甘甜。中国十大名茶之一。",
+        "seoName": "liuan-guapian"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "100-600m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Full-bodied, chestnut, sweet, nutty", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Roasted chestnut, seeds, fresh greens", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-UNIQUE"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Anhui",
+        "place": "Liu'an County, Dabie Mountains",
+        "altitude": { "min": 100, "max": 600, "unit": "m" },
+        "coordinates": { "lat": 31.7, "lng": 116.5 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-XINYANG-MAOJIAN",
+    "sku": "XMJ-HEN-2024-50G",
+    "order": 6,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Синьян Мао Цзянь (Ворсистые Острия из Синьян)",
+        "description": "Синьян Мао Цзянь — знаменитый зелёный чай из города Синьян провинции Хэнань. Тонкие, прямые, заострённые листья покрыты густым белым ворсом. Свежий травянисто-цветочный аромат с нотами каштана. Вкус освежающий, сладковатый с лёгкой терпкостью и долгим послевкусием. Входит в десятку знаменитых чаёв Китая, история насчитывает более 2000 лет.",
+        "seoName": "sinyan-mao-czyan"
+      },
+      {
+        "lang": "en-US",
+        "name": "Xinyang Mao Jian (Xinyang Downy Tip)",
+        "description": "Xinyang Mao Jian is a famous green tea from Xinyang City, Henan Province. Thin, straight, pointed leaves are covered with dense white down. Fresh grassy-floral aroma with chestnut notes. Taste is refreshing, sweet with light astringency and long aftertaste. One of Ten Famous Teas of China, history spans over 2000 years.",
+        "seoName": "xinyang-maojian"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "信阳毛尖",
+        "description": "信阳毛尖是产自河南信阳的名茶。细直尖削的叶片覆有浓密白毫。清新的草香花香伴有栗香。口感清爽甘甜，微涩回甘持久。中国十大名茶之一，历史逾两千年。",
+        "seoName": "xinyang-maojian"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-800m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Refreshing, sweet, grassy, light astringent", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fresh grass, flowers, chestnut", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-HERITAGE"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-HENAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Henan",
+        "place": "Xinyang City, Dabie Mountains",
+        "altitude": { "min": 300, "max": 800, "unit": "m" },
+        "coordinates": { "lat": 32.0, "lng": 114.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-ANJI-BAICHA",
+    "sku": "AJB-ZJ-2024-50G",
+    "order": 7,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Ань Цзи Бай Ча (Белый Чай из Аньцзи)",
+        "description": "Ань Цзи Бай Ча — уникальный зелёный чай из уезда Аньцзи провинции Чжэцзян. Несмотря на название «белый чай», относится к зелёным чаям. Молодые листья имеют бледно-зелёный, почти белый цвет из-за высокого содержания аминокислот. Нежный, освежающий вкус с выраженной сладостью и минимальной терпкостью. Один из самых богатых L-теанином чаёв.",
+        "seoName": "an-czi-baj-cha"
+      },
+      {
+        "lang": "en-US",
+        "name": "An Ji Bai Cha (Anji White Tea)",
+        "description": "An Ji Bai Cha is a unique green tea from Anji County, Zhejiang Province. Despite its name 'white tea', it's classified as green tea. Young leaves have pale green, almost white color due to high amino acid content. Delicate, refreshing taste with pronounced sweetness and minimal astringency. One of the richest teas in L-theanine.",
+        "seoName": "anji-baicha-white"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "安吉白茶",
+        "description": "安吉白茶是产自浙江安吉的独特绿茶。虽名为「白茶」，实为绿茶。嫩叶呈淡绿近白色，因氨基酸含量高。口感鲜嫩清爽，甘甜明显，几无涩感。茶氨酸含量最高的茶之一。",
+        "seoName": "anji-baicha"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-800m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Delicate, sweet, refreshing, umami", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fresh bamboo, chestnut, floral", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-HIGH-THEANINE"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ZHEJIANG"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Zhejiang",
+        "place": "Anji County, Huzhou",
+        "altitude": { "min": 300, "max": 800, "unit": "m" },
+        "coordinates": { "lat": 30.6, "lng": 119.7 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-ENSHI-YULU",
+    "sku": "ESY-HUB-2024-50G",
+    "order": 8,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Энь Ши Юй Лу (Нефритовая Роса из Эньши)",
+        "description": "Энь Ши Юй Лу — редкий зелёный чай из города Эньши провинции Хубэй, один из немногих китайских чаёв, производимых методом пропаривания (как японские чаи). Тёмно-зелёные игольчатые листья дают настой изумрудного цвета с ярким травянисто-морским ароматом. Вкус насыщенный, с выраженным умами и освежающим послевкусием. Регион богат селеном.",
+        "seoName": "en-shi-yuj-lu"
+      },
+      {
+        "lang": "en-US",
+        "name": "En Shi Yu Lu (Jade Dew of Enshi)",
+        "description": "En Shi Yu Lu is a rare green tea from Enshi City, Hubei Province, one of the few Chinese teas produced by steaming method (like Japanese teas). Dark green needle-shaped leaves produce emerald infusion with bright grassy-marine aroma. Taste is rich with pronounced umami and refreshing aftertaste. Region is selenium-rich.",
+        "seoName": "enshi-yulu-jade-dew"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "恩施玉露",
+        "description": "恩施玉露是产自湖北恩施的稀有绿茶，中国少数采用蒸青工艺（类似日本茶）的茶叶之一。深绿色针形叶片冲泡出翠绿茶汤，草香海苔香浓郁。滋味醇厚，鲜味明显，回甘清爽。产区富硒。",
+        "seoName": "enshi-yulu"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-1500m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, umami, refreshing, marine", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fresh grass, seaweed, green vegetables", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-RARE", "TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-STEAMED", "TAG-SELENIUM"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-HUBEI"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Hubei",
+        "place": "Enshi City, Wuling Mountains",
+        "altitude": { "min": 800, "max": 1500, "unit": "m" },
+        "coordinates": { "lat": 30.3, "lng": 109.5 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-MENGDING-GANLU",
+    "sku": "MDG-SC-2024-50G",
+    "order": 9,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Мэн Дин Гань Лу (Сладкая Роса с горы Мэндин)",
+        "description": "Мэн Дин Гань Лу — легендарный зелёный чай с горы Мэндиншань в провинции Сычуань, колыбели китайского чаеводства. История насчитывает более 2000 лет. Туго скрученные листья покрыты серебристым ворсом. Тонкий сладковатый вкус с цветочными нотами и медовым послевкусием. Название означает «Сладкая роса» и описывает нежность чая.",
+        "seoName": "men-din-gan-lu"
+      },
+      {
+        "lang": "en-US",
+        "name": "Meng Ding Gan Lu (Sweet Dew of Mengding)",
+        "description": "Meng Ding Gan Lu is a legendary green tea from Mengding Mountain in Sichuan Province, birthplace of Chinese tea cultivation. History spans over 2000 years. Tightly rolled leaves are covered with silvery down. Delicate sweet taste with floral notes and honey aftertaste. Name means 'Sweet Dew' describing tea's gentleness.",
+        "seoName": "mengding-ganlu"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "蒙顶甘露",
+        "description": "蒙顶甘露是产自四川蒙顶山的传奇绿茶，中国茶叶发源地。历史逾两千年。紧卷的叶片覆有银白毫毛。滋味细腻甘甜，带有花香和蜜甜回甘。名曰「甘露」，形容其鲜爽甘美。",
+        "seoName": "mengding-ganlu"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-1500m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Sweet, delicate, floral, honey", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Flowers, honey, fresh greens", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-HERITAGE", "TAG-IMPERIAL", "TAG-SINGLE-ORIGIN", "TAG-SPRING"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-SICHUAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Sichuan",
+        "place": "Mengding Mountain, Ya'an",
+        "altitude": { "min": 1000, "max": 1500, "unit": "m" },
+        "coordinates": { "lat": 30.0, "lng": 103.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-ZHU-YE-QING",
+    "sku": "ZYQ-SC-2024-50G",
+    "order": 10,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Чжу Е Цин (Свежесть Бамбуковых Листьев)",
+        "description": "Чжу Е Цин — премиальный зелёный чай с горы Эмэйшань в провинции Сычуань, священного буддийского места и объекта ЮНЕСКО. Плоские, ровные листья напоминают молодые побеги бамбука. Свежий, чистый аромат с травянистыми и цветочными нотами. Вкус освежающий, сладковатый с долгим послевкусием. Современный чай, созданный в 1964 году.",
+        "seoName": "chzhu-e-cin"
+      },
+      {
+        "lang": "en-US",
+        "name": "Zhu Ye Qing (Bamboo Leaf Green)",
+        "description": "Zhu Ye Qing is a premium green tea from Mount Emei in Sichuan Province, sacred Buddhist site and UNESCO heritage. Flat, even leaves resemble young bamboo shoots. Fresh, clean aroma with grassy and floral notes. Taste is refreshing, sweet with long aftertaste. Modern tea created in 1964.",
+        "seoName": "zhu-ye-qing-bamboo-leaf"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "竹叶青",
+        "description": "竹叶青是产自四川峨眉山的高端绿茶，佛教圣地、世界遗产。扁平匀整的叶片似嫩竹叶。香气清新纯净，带有草香和花香。口感清爽甘甜，回甘悠长。1964年创制的现代名茶。",
+        "seoName": "zhu-ye-qing"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-1200m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Refreshing, sweet, clean, bamboo", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fresh grass, flowers, bamboo", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-UNESCO", "TAG-BUDDHIST", "TAG-SPRING"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-SICHUAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Sichuan",
+        "place": "Mount Emei, Leshan",
+        "altitude": { "min": 800, "max": 1200, "unit": "m" },
+        "coordinates": { "lat": 29.5, "lng": 103.3 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-MENGDING-MAOFENG",
+    "sku": "MMF-SC-2024-50G",
+    "order": 11,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Мэн Дин Мао Фэн (Ворсистые Пики с горы Мэндин)",
+        "description": "Мэн Дин Мао Фэн — классический зелёный чай с горы Мэндиншань в Сычуани. Нежные листья с почками покрыты белым ворсом. Свежий цветочный аромат с нотами каштана. Вкус мягкий, сладковатый с лёгкой терпкостью и освежающим послевкусием. Продолжает традиции древнего чаеводства региона.",
+        "seoName": "men-din-mao-fen"
+      },
+      {
+        "lang": "en-US",
+        "name": "Meng Ding Mao Feng (Mengding Fur Peak)",
+        "description": "Meng Ding Mao Feng is a classic green tea from Mengding Mountain in Sichuan. Delicate leaves with buds are covered with white down. Fresh floral aroma with chestnut notes. Taste is soft, sweet with light astringency and refreshing aftertaste. Continues ancient tea traditions of the region.",
+        "seoName": "mengding-maofeng"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "蒙顶毛峰",
+        "description": "蒙顶毛峰是产自四川蒙顶山的经典绿茶。嫩叶带芽覆有白毫。清新花香伴有栗香。口感柔和甘甜，微涩回甘清爽。延续产区古老茶文化传统。",
+        "seoName": "mengding-maofeng"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-1500m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, refreshing, floral", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Flowers, chestnut, fresh greens", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-HERITAGE", "TAG-SINGLE-ORIGIN", "TAG-SPRING"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-SICHUAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Sichuan",
+        "place": "Mengding Mountain, Ya'an",
+        "altitude": { "min": 1000, "max": 1500, "unit": "m" },
+        "coordinates": { "lat": 30.0, "lng": 103.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-NANJING-YUHUA",
+    "sku": "NJY-JS-2024-50G",
+    "order": 12,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Нань Цзин Юй Хуа (Дождевые Цветы из Нанкина)",
+        "description": "Нань Цзин Юй Хуа — изящный зелёный чай из Нанкина, провинция Цзянсу. Название происходит от знаменитой террасы Юйхуа (Дождь цветов). Тонкие, ровные листья похожи на сосновые иголки. Свежий аромат с нотами цветов и каштана. Вкус мягкий, освежающий, слегка сладковатый. Относительно современный чай, создан в 1958 году.",
+        "seoName": "nan-czin-yuj-hua"
+      },
+      {
+        "lang": "en-US",
+        "name": "Nan Jing Yu Hua (Rain Flower of Nanjing)",
+        "description": "Nan Jing Yu Hua is an elegant green tea from Nanjing, Jiangsu Province. Name comes from famous Yuhua (Rain Flower) Terrace. Thin, even leaves resemble pine needles. Fresh aroma with floral and chestnut notes. Taste is soft, refreshing, slightly sweet. Relatively modern tea, created in 1958.",
+        "seoName": "nanjing-yuhua"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "南京雨花茶",
+        "description": "南京雨花茶是产自江苏南京的雅致绿茶。得名于著名的雨花台。细匀的叶片似松针。清新花香伴有栗香。口感柔和清爽，微甜。1958年创制的现代名茶。",
+        "seoName": "nanjing-yuhua"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "100-400m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, refreshing, sweet, clean", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Flowers, chestnut, pine", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-SINGLE-ORIGIN", "TAG-SPRING"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-JIANGSU"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Jiangsu",
+        "place": "Nanjing, Zhongshan",
+        "altitude": { "min": 100, "max": 400, "unit": "m" },
+        "coordinates": { "lat": 32.0, "lng": 118.8 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-YUNNAN-LUCHA",
+    "sku": "YNL-YN-2024-50G",
+    "order": 13,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Юньнань Люй Ча (Юньнаньский Зелёный)",
+        "description": "Юньнань Люй Ча — зелёный чай из провинции Юньнань, изготовленный из крупнолистного юньнаньского сырья. Отличается более насыщенным, полнотелым вкусом по сравнению с другими зелёными чаями. Золотисто-зелёные листья с серебристыми ворсинками. Аромат свежий с ореховыми и травянистыми нотами. Вкус маслянистый, сладковатый с лёгкой терпкостью.",
+        "seoName": "yunnan-lyuj-cha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Yunnan Lu Cha (Yunnan Green)",
+        "description": "Yunnan Lu Cha is a green tea from Yunnan Province made from large-leaf Yunnan material. Distinguished by richer, fuller taste compared to other green teas. Golden-green leaves with silvery down. Fresh aroma with nutty and grassy notes. Taste is oily, sweet with light astringency.",
+        "seoName": "yunnan-lucha-green"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "云南绿茶",
+        "description": "云南绿茶是采用云南大叶种原料制成的绿茶。较其他绿茶滋味更为浓郁饱满。金绿色叶片带有银白毫毛。香气清新，坚果香草香明显。口感油润甘甜，微涩。",
+        "seoName": "yunnan-lucha"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-2000m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Full-bodied, oily, sweet, nutty", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Nuts, fresh grass, honey", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "4-6", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-LARGE-LEAF"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Various regions (Lincang, Pu'er, Xishuangbanna)",
+        "altitude": { "min": 1000, "max": 2000, "unit": "m" },
+        "coordinates": { "lat": 24.0, "lng": 101.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-HUANGSHAN-YUNWU",
+    "sku": "HYW-AH-2024-50G",
+    "order": 14,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Хуаншань Юнь У (Облачный Туман Жёлтых Гор)",
+        "description": "Хуаншань Юнь У — зелёный чай из высокогорных районов гор Хуаншань провинции Аньхой. Название «Облачный туман» отражает условия выращивания — чайные сады часто окутаны облаками. Нежные скрученные листья покрыты белым ворсом. Свежий цветочный аромат, мягкий сладковатый вкус с долгим послевкусием.",
+        "seoName": "huanshan-yun-u"
+      },
+      {
+        "lang": "en-US",
+        "name": "Huangshan Yun Wu (Yellow Mountain Cloud Mist)",
+        "description": "Huangshan Yun Wu is a green tea from high-altitude areas of Huangshan Mountains, Anhui Province. Name 'Cloud Mist' reflects growing conditions — tea gardens are often shrouded in clouds. Delicate rolled leaves covered with white down. Fresh floral aroma, soft sweet taste with long aftertaste.",
+        "seoName": "huangshan-yunwu"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "黄山云雾",
+        "description": "黄山云雾是产自安徽黄山高海拔地区的绿茶。「云雾」之名道出其生长环境——茶园常被云雾笼罩。细嫩卷曲的叶片覆有白毫。清新花香，口感柔和甘甜，回甘悠长。",
+        "seoName": "huangshan-yunwu"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-1200m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, floral, refreshing", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Flowers, fresh greens, sweet", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-HIGH-MOUNTAIN"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Anhui",
+        "place": "Huangshan Mountains",
+        "altitude": { "min": 800, "max": 1200, "unit": "m" },
+        "coordinates": { "lat": 30.0, "lng": 118.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-DING-GU-DAFANG",
+    "sku": "DGD-AH-2024-50G",
+    "order": 15,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дин Гу Да Фан (Большой Квадрат с пика Дингу)",
+        "description": "Дин Гу Да Фан — исторический зелёный чай из уезда Шэсянь провинции Аньхой, предок знаменитого Лун Цзина. Плоские, широкие листья тёмно-зелёного цвета с желтоватым оттенком. Насыщенный каштановый аромат, полнотелый вкус с выраженными нотами жареных семечек и сладким послевкусием. История насчитывает более 600 лет.",
+        "seoName": "din-gu-da-fan"
+      },
+      {
+        "lang": "en-US",
+        "name": "Ding Gu Da Fang (Big Square of Dinggu Peak)",
+        "description": "Ding Gu Da Fang is a historic green tea from Shexian County, Anhui Province, ancestor of famous Longjing. Flat, wide leaves are dark green with yellowish tint. Rich chestnut aroma, full-bodied taste with pronounced roasted seed notes and sweet aftertaste. History spans over 600 years.",
+        "seoName": "dinggu-dafang"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "顶谷大方",
+        "description": "顶谷大方是产自安徽歙县的历史名茶，龙井之祖。扁平宽阔的叶片呈深绿带黄。栗香浓郁，滋味醇厚，炒瓜子香明显，回甘甜美。历史逾600年。",
+        "seoName": "dinggu-dafang"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "500-900m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Full-bodied, chestnut, nutty, sweet", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Roasted chestnut, seeds, fresh greens", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-HERITAGE", "TAG-SINGLE-ORIGIN", "TAG-SPRING"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Anhui",
+        "place": "Shexian County, Huangshan",
+        "altitude": { "min": 500, "max": 900, "unit": "m" },
+        "coordinates": { "lat": 29.9, "lng": 118.4 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-BAI-MAO-HOU",
+    "sku": "BMH-GZ-2024-50G",
+    "order": 16,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Бай Мао Хоу (Беловорсистая Обезьяна)",
+        "description": "Бай Мао Хоу — редкий зелёный чай из провинции Гуйчжоу. Название «Беловорсистая обезьяна» связано с густым белым ворсом на почках и легендами о том, что чай собирали дрессированные обезьяны. Скрученные листья с серебристым пушком. Свежий цветочный аромат, мягкий сладковатый вкус с освежающим послевкусием.",
+        "seoName": "baj-mao-hou"
+      },
+      {
+        "lang": "en-US",
+        "name": "Bai Mao Hou (White Monkey)",
+        "description": "Bai Mao Hou is a rare green tea from Guizhou Province. Name 'White Monkey' refers to dense white down on buds and legends about trained monkeys picking tea. Rolled leaves with silvery fuzz. Fresh floral aroma, soft sweet taste with refreshing aftertaste.",
+        "seoName": "bai-mao-hou-white-monkey"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "白毛猴",
+        "description": "白毛猴是产自贵州的稀有绿茶。名称来源于芽头上浓密的白毫，以及猴子采茶的传说。卷曲的叶片披覆银白毫毛。清新花香，口感柔和甘甜，回甘清爽。",
+        "seoName": "bai-mao-hou"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-1200m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, refreshing, floral", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Flowers, fresh greens, honey", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-RARE", "TAG-SINGLE-ORIGIN", "TAG-SPRING"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-GUIZHOU"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Guizhou",
+        "place": "Various mountain regions",
+        "altitude": { "min": 800, "max": 1200, "unit": "m" },
+        "coordinates": { "lat": 26.5, "lng": 106.7 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-LUCHA-GENERAL",
+    "sku": "LCH-CN-2024-50G",
+    "order": 32,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Люй Ча (Китайский Зелёный Чай)",
+        "description": "Люй Ча — общая категория неферментированных чаёв Китая, самая древняя и распространённая. Технология «убийства зелени» (шацин) путём обжарки или пропаривания останавливает окисление и сохраняет зелёный цвет листьев. Свежий травянисто-цветочный аромат, освежающий вкус с различной степенью сладости и терпкости. Богат катехинами и L-теанином.",
+        "seoName": "lyuj-cha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Lu Cha (Chinese Green Tea)",
+        "description": "Lu Cha is the general category of non-fermented Chinese teas, the oldest and most widespread. 'Kill-green' (sha qing) technique through pan-firing or steaming stops oxidation and preserves green leaf color. Fresh grassy-floral aroma, refreshing taste with varying sweetness and astringency. Rich in catechins and L-theanine.",
+        "seoName": "lucha-chinese-green-tea"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "绿茶",
+        "description": "绿茶是中国不发酵茶的总称，历史最悠久、产量最大。「杀青」工艺通过炒制或蒸青终止氧化，保持叶片翠绿。清新的草香花香，滋味鲜爽，甘甜涩度因茶而异。富含儿茶素和茶氨酸。",
+        "seoName": "lucha"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-85°C", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 6 }
+    ],
+    "tags": ["TAG-ANTIOXIDANT", "TAG-REFRESHING"],
+    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA"],
+    "origins": [
+      {
+        "country": "CN",
+        "notes": "Major provinces: Zhejiang, Jiangsu, Anhui, Henan, Sichuan, Hubei, Yunnan, Guizhou"
+      }
+    ]
+  }
+]

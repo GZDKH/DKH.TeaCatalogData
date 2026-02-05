@@ -1,0 +1,494 @@
+[
+  {
+    "code": "TEA-CN-DA-HONG-PAO",
+    "sku": "DHP-FJ-2024-50G",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Да Хун Пао (Большой Красный Халат)",
+        "description": "Да Хун Пао — легендарный утёсный улун из гор Уишань, провинция Фуцзянь, возглавляющий «Четыре Великих Куста». Один из самых дорогих чаёв в мире. Тёмные продольно-скрученные листья дают насыщенный настой с нотами огня, шоколада, сухофруктов, пряностей и характерной «утёсной мелодией» (янь юнь). Вкус бархатистый, маслянистый с долгим сладким послевкусием. История насчитывает более 360 лет.",
+        "seoName": "da-hun-pao"
+      },
+      {
+        "lang": "en-US",
+        "name": "Da Hong Pao (Big Red Robe)",
+        "description": "Da Hong Pao is a legendary rock oolong from Wuyi Mountains, Fujian Province, heading the 'Four Great Bushes'. One of the most expensive teas in the world. Dark longitudinally-rolled leaves produce rich infusion with notes of fire, chocolate, dried fruits, spices and characteristic 'rock melody' (yan yun). Taste is velvety, oily with long sweet aftertaste. History spans over 360 years.",
+        "seoName": "da-hong-pao-big-red-robe"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "大红袍",
+        "description": "大红袍是产自福建武夷山的传奇岩茶，「四大名枞」之首。世界最贵茶叶之一。深色条索形茶叶冲泡出浓郁茶汤，带有火香、巧克力、干果、香料和标志性的「岩韵」。口感丝滑油润，回甘悠长甜美。历史逾360年。",
+        "seoName": "da-hong-pao"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-60", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-HEAVY", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "500-1000m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Roasted, chocolate, dried fruits, mineral", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fire, wood, chocolate, spices, dried fruits", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "7-10+", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-ELITE", "TAG-ROCK-TEA", "TAG-UNESCO", "TAG-CHARCOAL-ROAST"],
+    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN", "CAT-WUYI-ROCK"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Wuyi Mountains, Zhengyan area",
+        "altitude": { "min": 500, "max": 1000, "unit": "m" },
+        "coordinates": { "lat": 27.7, "lng": 117.7 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-TIE-LUOHAN",
+    "sku": "TLH-FJ-2024-50G",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Те Лохань (Железный Архат)",
+        "description": "Те Лохань — один из «Четырёх Великих Кустов» гор Уишань, старейший утёсный улун с историей более 800 лет. Название означает «Железный Архат» — сильный, как просветлённый монах. Мощный, насыщенный вкус с выраженными нотами огня, шоколада, орехов и характерной утёсной минеральностью. Считается самым «мужественным» уишаньским улуном.",
+        "seoName": "te-lohan"
+      },
+      {
+        "lang": "en-US",
+        "name": "Tie Luo Han (Iron Arhat)",
+        "description": "Tie Luo Han is one of 'Four Great Bushes' of Wuyi Mountains, oldest rock oolong with over 800 years history. Name means 'Iron Arhat' — strong as enlightened monk. Powerful, rich taste with pronounced notes of fire, chocolate, nuts and characteristic rock minerality. Considered the most 'masculine' Wuyi oolong.",
+        "seoName": "tie-luo-han-iron-arhat"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "铁罗汉",
+        "description": "铁罗汉是武夷山「四大名枞」之一，历史最悠久的岩茶，逾800年。「铁罗汉」之名象征着强壮有力如阿罗汉。滋味浓烈饱满，火香、巧克力、坚果香明显，岩韵突出。被认为是最「阳刚」的武夷岩茶。",
+        "seoName": "tie-luohan"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-60", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-HEAVY", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-HIGH", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-1000m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Powerful, roasted, chocolate, nuts, mineral", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fire, chocolate, dried fruits, nuts", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "7-10+", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-PREMIUM", "TAG-ROCK-TEA", "TAG-HERITAGE", "TAG-CHARCOAL-ROAST"],
+    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN", "CAT-WUYI-ROCK"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Wuyi Mountains, Huiyuan Yan, Niulan Keng",
+        "altitude": { "min": 600, "max": 1000, "unit": "m" },
+        "coordinates": { "lat": 27.7, "lng": 117.7 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-TIE-GUANYIN",
+    "sku": "TGY-FJ-2024-50G",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Те Гуань Инь (Железная Богиня Милосердия)",
+        "description": "Те Гуань Инь — знаменитый южнофуцзяньский улун из уезда Аньси, входящий в десятку лучших чаёв Китая. Название связано с буддийским божеством Гуаньинь. Туго скрученные шарообразные листья при заваривании раскрываются, наполняя чашку цветочным ароматом орхидеи. Свежий, сладковатый вкус с характерной «кислинкой» и долгим послевкусием. История насчитывает более 300 лет.",
+        "seoName": "te-guan-in"
+      },
+      {
+        "lang": "en-US",
+        "name": "Tie Guan Yin (Iron Goddess of Mercy)",
+        "description": "Tie Guan Yin is a famous southern Fujian oolong from Anxi County, among Ten Famous Teas of China. Name relates to Buddhist deity Guanyin. Tightly rolled ball-shaped leaves unfurl when brewed, filling cup with floral orchid aroma. Fresh, sweet taste with characteristic 'sourness' and long aftertaste. History spans over 300 years.",
+        "seoName": "tie-guan-yin-iron-goddess"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "铁观音",
+        "description": "铁观音是产自福建安溪的著名乌龙茶，中国十大名茶之一。名称与佛教观音菩萨有关。紧卷的球状茶叶冲泡时舒展，兰花香扑鼻。口感清新甘甜，带有标志性的「观音韵」，回甘悠长。历史逾300年。",
+        "seoName": "tie-guanyin"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-30", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-LIGHT", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-1000m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Fresh, sweet, floral, orchid, creamy", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Orchid, flowers, cream, sweet", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7+", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN"],
+    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN", "CAT-ANXI-OOLONG"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Anxi County, Quanzhou",
+        "altitude": { "min": 600, "max": 1000, "unit": "m" },
+        "coordinates": { "lat": 25.0, "lng": 118.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-ROU-GUI",
+    "sku": "RGI-FJ-2024-50G",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Жоу Гуй (Корица)",
+        "description": "Жоу Гуй — популярный утёсный улун из гор Уишань с характерным ароматом корицы. Наряду с Шуй Сянем составляет основу современного уишаньского чаеводства. Насыщенный, пряный вкус с выраженными нотами корицы, шоколада, сухофруктов и характерной утёсной минеральностью. Интенсивный, «огненный» характер. Отлично подходит для знакомства с уишаньскими улунами.",
+        "seoName": "zhu-guj"
+      },
+      {
+        "lang": "en-US",
+        "name": "Rou Gui (Cinnamon)",
+        "description": "Rou Gui is a popular rock oolong from Wuyi Mountains with characteristic cinnamon aroma. Together with Shui Xian forms foundation of modern Wuyi tea production. Rich, spicy taste with pronounced notes of cinnamon, chocolate, dried fruits and characteristic rock minerality. Intense, 'fiery' character. Excellent introduction to Wuyi oolongs.",
+        "seoName": "rou-gui-cinnamon"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "肉桂",
+        "description": "肉桂是产自武夷山的热门岩茶，以标志性的桂皮香著称。与水仙共同构成现代武夷茶业的基础。滋味浓郁辛香，桂皮、巧克力、干果香明显，岩韵突出。个性张扬，「火气」十足。是了解武夷岩茶的绝佳入门。",
+        "seoName": "rou-gui"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-50", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "500-1000m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Spicy, cinnamon, chocolate, mineral", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Cinnamon, spices, roasted, dried fruits", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "6-8+", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-ROCK-TEA", "TAG-SINGLE-ORIGIN", "TAG-CHARCOAL-ROAST"],
+    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN", "CAT-WUYI-ROCK"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Wuyi Mountains",
+        "altitude": { "min": 500, "max": 1000, "unit": "m" },
+        "coordinates": { "lat": 27.7, "lng": 117.7 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-SHUI-XIAN",
+    "sku": "SXN-FJ-2024-50G",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Шуй Сянь (Водяной Бессмертный)",
+        "description": "Шуй Сянь — классический утёсный улун из гор Уишань, один из двух основных сортов региона наряду с Жоу Гуй. Крупные листья дают насыщенный, плотный настой с нотами орхидеи, шоколада, древесины и минеральности. Вкус мягче, чем у Жоу Гуй, с более выраженными цветочными нотами. Название переводится как «Водяной бессмертный» или «Нарцисс».",
+        "seoName": "shuj-syan"
+      },
+      {
+        "lang": "en-US",
+        "name": "Shui Xian (Water Immortal)",
+        "description": "Shui Xian is a classic rock oolong from Wuyi Mountains, one of two main cultivars alongside Rou Gui. Large leaves produce rich, dense infusion with notes of orchid, chocolate, wood and minerality. Taste is softer than Rou Gui, with more pronounced floral notes. Name translates as 'Water Immortal' or 'Narcissus'.",
+        "seoName": "shui-xian-water-immortal"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "水仙",
+        "description": "水仙是武夷山经典岩茶，与肉桂并称为当地两大主栽品种。大叶冲泡出浓郁厚实茶汤，兰花香、巧克力香、木香和矿物质感明显。较肉桂口感更柔和，花香更突出。名曰「水仙」。",
+        "seoName": "shui-xian"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-50", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "500-1000m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, smooth, orchid, chocolate, mineral", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Orchid, flowers, wood, chocolate", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "6-8+", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-ROCK-TEA", "TAG-SINGLE-ORIGIN", "TAG-CHARCOAL-ROAST"],
+    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN", "CAT-WUYI-ROCK"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Wuyi Mountains",
+        "altitude": { "min": 500, "max": 1000, "unit": "m" },
+        "coordinates": { "lat": 27.7, "lng": 117.7 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-DAN-CONG-MI-LAN-XIANG",
+    "sku": "MLX-GD-2024-50G",
+    "order": 6,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Ми Лань Сян Дань Цун (Аромат Медовой Орхидеи)",
+        "description": "Ми Лань Сян — самый популярный тип Фэнхуан Дань Цун из гор Феникса, провинция Гуандун. Название «Аромат медовой орхидеи» точно описывает его профиль — яркий цветочный аромат орхидеи с медовыми нотами. Вкус сладкий, освежающий с долгим цветочным послевкусием. Изготавливается с одиночных кустов, что придаёт уникальный характер.",
+        "seoName": "mi-lan-syan-dan-cun"
+      },
+      {
+        "lang": "en-US",
+        "name": "Mi Lan Xiang Dan Cong (Honey Orchid Aroma)",
+        "description": "Mi Lan Xiang is the most popular type of Fenghuang Dan Cong from Phoenix Mountains, Guangdong Province. Name 'Honey Orchid Aroma' precisely describes its profile — bright floral orchid aroma with honey notes. Taste is sweet, refreshing with long floral aftertaste. Made from single bushes, giving unique character.",
+        "seoName": "mi-lan-xiang-dan-cong-honey-orchid"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "蜜兰香单丛",
+        "description": "蜜兰香是广东凤凰山最受欢迎的凤凰单丛类型。「蜜兰香」之名精准描述其风味——浓郁的兰花香伴有蜜香。口感甘甜清爽，花香回甘悠长。采自单株茶树，独具个性。",
+        "seoName": "mi-lan-xiang-dancong"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-40", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-LIGHT", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-1200m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Sweet, floral, honey, orchid, refreshing", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, orchid, flowers, sweet", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "6-10+", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-PREMIUM", "TAG-SINGLE-BUSH", "TAG-SINGLE-ORIGIN"],
+    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-GUANGDONG", "CAT-DANCONG"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Guangdong",
+        "place": "Phoenix Mountains (Fenghuang Shan), Chaozhou",
+        "altitude": { "min": 800, "max": 1200, "unit": "m" },
+        "coordinates": { "lat": 23.9, "lng": 116.6 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-DONG-DING-WULONG",
+    "sku": "DDW-TW-2024-50G",
+    "order": 7,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дун Дин У Лун (Улун с Морозных Вершин)",
+        "description": "Дун Дин У Лун — знаменитый тайваньский улун с горы Дундин в уезде Наньтоу. Название означает «Морозная вершина». Туго скрученные шарообразные листья дают золотистый настой с богатым сливочно-цветочным ароматом. Вкус сладкий, маслянистый с нотами орхидеи, молока и лёгкой карамели. Средняя степень обжарки придаёт глубину.",
+        "seoName": "dun-din-u-lun"
+      },
+      {
+        "lang": "en-US",
+        "name": "Dong Ding Wu Long (Frozen Peak Oolong)",
+        "description": "Dong Ding Wu Long is a famous Taiwanese oolong from Dongding Mountain in Nantou County. Name means 'Frozen Peak'. Tightly rolled ball-shaped leaves produce golden infusion with rich creamy-floral aroma. Taste is sweet, buttery with notes of orchid, milk and light caramel. Medium roast adds depth.",
+        "seoName": "dong-ding-wulong-frozen-peak"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "冻顶乌龙",
+        "description": "冻顶乌龙是产自台湾南投县冻顶山的著名乌龙茶。「冻顶」意为冰冷山峰。紧卷的球状茶叶冲泡出金黄茶汤，奶香花香浓郁。口感甘甜油润，兰花香、奶香、轻微焦糖香明显。中度烘焙增添深度。",
+        "seoName": "dong-ding-wulong"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-30", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-800m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Sweet, buttery, orchid, milk, caramel", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Cream, orchid, flowers, roasted", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7+", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-TAIWAN"],
+    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-TAIWAN"],
+    "origins": [
+      {
+        "country": "TW",
+        "state": "Taiwan",
+        "place": "Dongding Mountain, Nantou County",
+        "altitude": { "min": 600, "max": 800, "unit": "m" },
+        "coordinates": { "lat": 23.7, "lng": 120.8 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-ALISHAN-WULONG",
+    "sku": "ALS-TW-2024-50G",
+    "order": 8,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Алишань У Лун (Улун с горы Али)",
+        "description": "Алишань У Лун — премиальный высокогорный тайваньский улун с горы Алишань на высоте 1000-1500 метров. Высокогорные условия замедляют рост листьев и увеличивают содержание ароматических веществ. Светло-зелёные туго скрученные листья дают яркий цветочный аромат с нотами орхидеи и ландыша. Вкус сладкий, сливочный с долгим освежающим послевкусием.",
+        "seoName": "alishan-u-lun"
+      },
+      {
+        "lang": "en-US",
+        "name": "Alishan Wu Long (Ali Mountain Oolong)",
+        "description": "Alishan Wu Long is a premium high mountain Taiwanese oolong from Mount Ali at 1000-1500 meters elevation. High altitude conditions slow leaf growth and increase aromatic compound content. Light green tightly rolled leaves produce bright floral aroma with notes of orchid and lily of the valley. Taste is sweet, creamy with long refreshing aftertaste.",
+        "seoName": "alishan-wulong-high-mountain"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "阿里山乌龙",
+        "description": "阿里山乌龙是产自台湾阿里山海拔1000-1500米的高端高山茶。高海拔环境减缓叶片生长，增加芳香物质含量。浅绿色紧卷茶叶散发浓郁花香，兰花和铃兰香明显。口感甘甜奶香，回甘清爽悠长。",
+        "seoName": "alishan-wulong"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-20", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-LIGHT", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-1500m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Sweet, creamy, orchid, lily, refreshing", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Orchid, lily of the valley, cream, flowers", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-90°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-8+", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-PREMIUM", "TAG-HIGH-MOUNTAIN", "TAG-SINGLE-ORIGIN", "TAG-TAIWAN"],
+    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-TAIWAN"],
+    "origins": [
+      {
+        "country": "TW",
+        "state": "Taiwan",
+        "place": "Alishan Mountain, Chiayi County",
+        "altitude": { "min": 1000, "max": 1500, "unit": "m" },
+        "coordinates": { "lat": 23.5, "lng": 120.8 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-DONGFANG-MEIREN",
+    "sku": "DFM-TW-2024-50G",
+    "order": 9,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дун Фан Мэй Жэнь (Восточная Красавица)",
+        "description": "Дун Фан Мэй Жэнь — уникальный тайваньский улун с высокой степенью ферментации (60-80%). Особенность — листья покусаны чайной цикадкой, что запускает особую химическую реакцию и придаёт чаю медово-фруктовый аромат. Пёстрые листья разных оттенков создают красивый внешний вид. Вкус сладкий, медовый с нотами мускатного винограда и персика.",
+        "seoName": "dun-fan-mej-zhen"
+      },
+      {
+        "lang": "en-US",
+        "name": "Dong Fang Mei Ren (Oriental Beauty)",
+        "description": "Dong Fang Mei Ren is a unique Taiwanese oolong with high fermentation level (60-80%). Special feature — leaves are bitten by tea jassids, triggering special chemical reaction and giving tea honey-fruity aroma. Multi-colored leaves of various shades create beautiful appearance. Taste is sweet, honeyed with notes of muscat grape and peach.",
+        "seoName": "dongfang-meiren-oriental-beauty"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "东方美人",
+        "description": "东方美人是独特的台湾乌龙茶，发酵程度高（60-80%）。特别之处在于茶叶被小绿叶蝉叮咬，引发特殊化学反应，赋予蜜果香。五彩斑斓的叶片外形美丽。口感甘甜蜜香，带麝香葡萄和桃子香。",
+        "seoName": "dongfang-meiren"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-70", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-800m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Sweet, honey, muscat, peach, fruity", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, muscat grape, dried fruits, flowers", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-90°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "4-6", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-PREMIUM", "TAG-UNIQUE", "TAG-SINGLE-ORIGIN", "TAG-TAIWAN", "TAG-BUG-BITTEN"],
+    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-TAIWAN"],
+    "origins": [
+      {
+        "country": "TW",
+        "state": "Taiwan",
+        "place": "Hsinchu, Miaoli Counties",
+        "altitude": { "min": 300, "max": 800, "unit": "m" },
+        "coordinates": { "lat": 24.8, "lng": 121.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-WULONG-GENERAL",
+    "sku": "WUL-CN-2024-50G",
+    "order": 30,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "У Лун (Китайский Улун)",
+        "description": "У Лун — общая категория частично ферментированных чаёв Китая (15-80%), занимающая место между зелёным и красным чаем. Название означает «Чёрный Дракон». Уникальная технология включает встряхивание листьев для частичного окисления краёв при сохранении зелёной середины. Разнообразие вкусов — от свежих цветочных до насыщенных прожаренных. Производится в Фуцзяне, Гуандуне и на Тайване.",
+        "seoName": "u-lun"
+      },
+      {
+        "lang": "en-US",
+        "name": "Wu Long (Chinese Oolong)",
+        "description": "Wu Long is the general category of partially fermented Chinese teas (15-80%), positioned between green and red tea. Name means 'Black Dragon'. Unique technique includes shaking leaves for partial oxidation of edges while preserving green center. Flavor diversity — from fresh floral to rich roasted. Produced in Fujian, Guangdong and Taiwan.",
+        "seoName": "wulong-chinese-oolong"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "乌龙",
+        "description": "乌龙是中国半发酵茶（15-80%）的总称，介于绿茶和红茶之间。名曰「黑龙」。独特工艺包括摇青使叶缘部分氧化而保持中心翠绿。风味多样——从清新花香到浓郁焙火香。产于福建、广东和台湾。",
+        "seoName": "wulong"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-30", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-100°C", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-10+", "showOnPage": true, "order": 6 }
+    ],
+    "tags": ["TAG-GONGFU"],
+    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA"],
+    "origins": [
+      {
+        "country": "CN",
+        "notes": "Main regions: Fujian (Wuyi, Anxi), Guangdong (Phoenix Mountains), Taiwan"
+      }
+    ]
+  }
+]

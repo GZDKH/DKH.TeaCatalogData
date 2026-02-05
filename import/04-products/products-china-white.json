@@ -1,0 +1,434 @@
+[
+  {
+    "code": "TEA-CN-BAIHAO-YINZHEN",
+    "sku": "BYZ-FJ-2024-50G",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Бай Хао Инь Чжэнь (Серебряные Иглы)",
+        "description": "Бай Хао Инь Чжэнь — эталон белого чая и один из самых ценных чаёв в мире. Состоит исключительно из нераспустившихся почек, покрытых густым серебристым ворсом. Обладает очень нежным, сладковатым вкусом с цветочными и медовыми нотами, деликатным ароматом белых цветов. Настой почти прозрачный, бледно-жёлтый с серебристым отливом. Минимальная обработка сохраняет максимум антиоксидантов и аминокислот.",
+        "seoName": "bai-hao-yin-zhen"
+      },
+      {
+        "lang": "en-US",
+        "name": "Bai Hao Yin Zhen (Silver Needles)",
+        "description": "Bai Hao Yin Zhen is the benchmark white tea and one of the most precious teas in the world. Made exclusively from unopened buds covered with dense silvery down. Features an extremely delicate, sweet taste with floral and honey notes, and a refined aroma of white flowers. The liquor is almost transparent, pale yellow with a silvery tint. Minimal processing preserves maximum antioxidants and amino acids.",
+        "seoName": "bai-hao-yin-zhen-silver-needles"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "白毫银针",
+        "description": "白毫银针是白茶的标杆，也是世界上最珍贵的茶叶之一。仅由未开放的芽头制成，芽头覆盖着浓密的银白色毫毛。口感极其细腻甘甜，带有花香和蜂蜜香，散发出优雅的白花香气。茶汤几乎透明，淡黄色带银色光泽。最少的加工保留了最多的抗氧化剂和氨基酸。",
+        "seoName": "baihao-yinzhen"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-1000 m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Delicate, sweet, floral, honey", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "White flowers, honey, fresh greens", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "65-75°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-HANDPICKED"],
+    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Fuding, Zhenghe",
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-BAI-MUDAN",
+    "sku": "BMD-FJ-2024-50G",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Бай Му Дань (Белый Пион)",
+        "description": "Бай Му Дань — популярный белый чай, состоящий из почки и одного-двух верхних листочков. Обладает более насыщенным вкусом по сравнению с Серебряными иглами: сладковатый с цветочными нотами пиона, персика и дыни, лёгкой медовой сладостью. Настой светло-жёлтый, прозрачный. Идеальный баланс между тонкостью и насыщенностью делает его отличным выбором для знакомства с белыми чаями.",
+        "seoName": "bai-mu-dan"
+      },
+      {
+        "lang": "en-US",
+        "name": "Bai Mu Dan (White Peony)",
+        "description": "Bai Mu Dan is a popular white tea consisting of a bud and one or two top leaves. Has a richer taste compared to Silver Needles: sweet with floral notes of peony, peach and melon, light honey sweetness. The liquor is light yellow, transparent. The ideal balance between delicacy and richness makes it an excellent choice for introducing white teas.",
+        "seoName": "bai-mu-dan-white-peony"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "白牡丹",
+        "description": "白牡丹是一种广受欢迎的白茶，由一芽一叶或二叶制成。与银针相比口感更加饱满：甘甜带有牡丹花、桃子和蜜瓜的花香，轻微的蜂蜜甜味。茶汤淡黄色，清澈透明。细腻与饱满的完美平衡使其成为了解白茶的绝佳选择。",
+        "seoName": "bai-mudan"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-900 m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Sweet, floral, fruity, honey", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Peony, peach, melon, honey", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-SINGLE-ORIGIN", "TAG-HANDPICKED"],
+    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Fuding, Zhenghe",
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-MUDAN-WANG",
+    "sku": "MDW-FJ-2024-50G",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Му Дань Ван (Король Пионов)",
+        "description": "Му Дань Ван — высший грейд белого чая Бай Му Дань, отличающийся особо крупными, мясистыми почками и листьями. Название означает «Король пионов», подчёркивая его элитный статус. Вкус полный, насыщенный, но нежный: сладковатый с яркими цветочными нотами пиона, оттенками мёда, персика и дыни. Аромат интенсивный, цветочно-медовый.",
+        "seoName": "mudan-wang"
+      },
+      {
+        "lang": "en-US",
+        "name": "Mu Dan Wang (King of Peonies)",
+        "description": "Mu Dan Wang is the highest grade of Bai Mu Dan white tea, distinguished by particularly large, fleshy buds and leaves. The name means 'King of Peonies', emphasizing its elite status. The taste is full, rich yet delicate: sweet with bright floral notes of peony, hints of honey, peach and melon. Intense floral-honey aroma.",
+        "seoName": "mu-dan-wang-king-of-peonies"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "牡丹王",
+        "description": "牡丹王是白牡丹白茶的最高等级，以其特别大而肥厚的芽叶著称。其名意为「牡丹之王」，彰显其尊贵地位。口感饱满浓郁却又细腻：甘甜带有明显的牡丹花香、蜂蜜、桃子和蜜瓜的韵味。香气浓郁，花蜜香扑鼻。",
+        "seoName": "mudan-wang"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-900 m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Full, sweet, floral, honey, fruity", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Peony, lily of the valley, honey, cream", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-HANDPICKED"],
+    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Fuding, Zhenghe",
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-GONG-MEI",
+    "sku": "GME-FJ-2024-50G",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Гун Мэй (Подарочные Брови)",
+        "description": "Гун Мэй — белый чай, состоящий преимущественно из листьев с небольшим количеством почек. Название «Подарочные брови» связано с формой листьев, напоминающей изогнутые брови. Обладает более насыщенным, полным вкусом с выраженными медовыми и фруктовыми нотами, лёгкой сладостью и освежающим послевкусием. Отличный выбор для тех, кто предпочитает более яркий вкус в белых чаях.",
+        "seoName": "gong-mei"
+      },
+      {
+        "lang": "en-US",
+        "name": "Gong Mei (Tribute Eyebrow)",
+        "description": "Gong Mei is a white tea consisting mainly of leaves with a small amount of buds. The name 'Tribute Eyebrow' relates to the leaf shape resembling curved eyebrows. Features a richer, fuller taste with pronounced honey and fruit notes, light sweetness and refreshing aftertaste. Excellent choice for those who prefer bolder flavors in white teas.",
+        "seoName": "gong-mei-tribute-eyebrow"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "贡眉",
+        "description": "贡眉是一种白茶，主要由叶片组成，含有少量芽头。「贡眉」之名源于其叶形似弯曲的眉毛。口感更加浓郁饱满，带有明显的蜂蜜和水果香，轻微甜味和清爽回甘。对于喜欢白茶中更浓郁口感的人来说是绝佳选择。",
+        "seoName": "gong-mei"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-800 m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, honey, fruity, sweet", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, flowers, fresh hay", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-SINGLE-ORIGIN"],
+    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Fuding, Zhenghe",
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-SHOU-MEI",
+    "sku": "SME-FJ-2024-50G",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Шоу Мэй (Брови Долголетия)",
+        "description": "Шоу Мэй — белый чай из более зрелых листьев, оставшихся после сбора почек для Серебряных игл и Белого пиона. Название «Брови долголетия» символизирует пожелание долгой жизни. Отличается самым насыщенным вкусом среди белых чаёв: полнотелый, с выраженными медово-древесными нотами, лёгкой терпкостью и долгим сладким послевкусием. Часто прессуется в блины и подходит для выдержки.",
+        "seoName": "shou-mei"
+      },
+      {
+        "lang": "en-US",
+        "name": "Shou Mei (Longevity Eyebrow)",
+        "description": "Shou Mei is a white tea from more mature leaves remaining after picking buds for Silver Needles and White Peony. The name 'Longevity Eyebrow' symbolizes wishes for long life. Features the richest taste among white teas: full-bodied, with pronounced honey-woody notes, light astringency and long sweet aftertaste. Often pressed into cakes and suitable for aging.",
+        "seoName": "shou-mei-longevity-eyebrow"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "寿眉",
+        "description": "寿眉是用采摘银针和白牡丹芽头后剩余的较成熟叶片制成的白茶。「寿眉」之名寓意长寿。在白茶中口感最为浓郁：醇厚，带有明显的蜂蜜木质香，轻微涩感和悠长的甜蜜回甘。常压制成饼，适合陈放。",
+        "seoName": "shou-mei"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-800 m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Full-bodied, honey, woody, sweet", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, dried fruits, wood, hay", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-90°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-4 min", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-AGED-TEA", "TAG-SINGLE-ORIGIN"],
+    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Fuding, Zhenghe",
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-BAI-JIAN",
+    "sku": "BJN-FJ-2024-50G",
+    "order": 6,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Бай Цзянь (Белый Меч)",
+        "description": "Бай Цзянь — редкий белый чай с необычной формой листьев, напоминающей лезвия меча. Длинные, прямые, заострённые чаинки покрыты белым ворсом и имеют серебристо-зелёный цвет. Вкус мягкий, освежающий, сладковатый с цветочными и травянистыми нотами. Ценится за свою оригинальность и эстетичный внешний вид.",
+        "seoName": "bai-jian"
+      },
+      {
+        "lang": "en-US",
+        "name": "Bai Jian (White Sword)",
+        "description": "Bai Jian is a rare white tea with an unusual leaf shape resembling sword blades. Long, straight, pointed tea leaves are covered with white down and have a silvery-green color. The taste is soft, refreshing, sweet with floral and herbal notes. Valued for its originality and aesthetic appearance.",
+        "seoName": "bai-jian-white-sword"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "白剑",
+        "description": "白剑是一种罕见的白茶，叶形独特，宛如剑刃。细长笔直、尖端锐利的茶叶覆盖着白色毫毛，呈银绿色。口感柔和清爽，甘甜带有花香和草香。因其独特性和美观的外形而备受珍视。",
+        "seoName": "bai-jian"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-900 m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, floral, herbal", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fresh greens, flowers, honey", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "1-3 min", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-RARE-TEA", "TAG-SINGLE-ORIGIN"],
+    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Fuding",
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-YUE-GUANG-BAI",
+    "sku": "YGB-YN-2024-50G",
+    "order": 7,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Юэ Гуан Бай (Лунный Свет)",
+        "description": "Юэ Гуан Бай — уникальный юньнаньский чай на стыке белого чая и шэн пуэра. Листья имеют контрастную окраску: одна сторона тёмная, другая — серебристая, покрытая ворсом, напоминая лунный свет и тень. Производится из крупнолистного юньнаньского сырья. Вкус мягкий, сладковатый с нотами сухофруктов, мёда, цветов. Может храниться и со временем меняет вкус, подобно пуэрам.",
+        "seoName": "yue-guang-bai"
+      },
+      {
+        "lang": "en-US",
+        "name": "Yue Guang Bai (Moonlight White)",
+        "description": "Yue Guang Bai is a unique Yunnan tea between white tea and sheng pu-erh. Leaves have contrasting colors: one side dark, the other silvery, covered with down, resembling moonlight and shadow. Made from large-leaf Yunnan material. Taste is soft, sweet with notes of dried fruits, honey, flowers. Can be stored and changes flavor over time, like pu-erh.",
+        "seoName": "yue-guang-bai-moonlight-white"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "月光白",
+        "description": "月光白是一款独特的云南茶，介于白茶和生普洱之间。茶叶呈现对比色：一面深色，另一面银白覆毫，宛如月光与阴影。采用云南大叶种原料制成。口感柔和甘甜，带有干果、蜂蜜、花香。可存放陈化，随时间变化口感，如同普洱。",
+        "seoName": "yue-guang-bai"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-2000 m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, dried fruits, honey, floral", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Dried apricot, prune, honey, flowers, spices", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-90°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "10 sec - 2 min", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-AGED-TEA", "TAG-SINGLE-ORIGIN", "TAG-ANCIENT-TREES"],
+    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Lincang, Simao",
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-PURPLE-WHITE",
+    "sku": "PWH-YN-2024-50G",
+    "order": 8,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Юньнаньский Дикий Пурпурный Белый Чай",
+        "description": "Редкий белый чай из дикорастущих высокогорных деревьев Юньнани с естественной пурпурной пигментацией листьев. Пурпурный цвет обусловлен высоким содержанием антоцианов — мощных антиоксидантов. Вкус исключительно мягкий, шелковистый, сладкий с нотами дыни, косточковых фруктов и лёгкой минеральностью. Почки густо покрыты серебристым ворсом с пурпурным оттенком.",
+        "seoName": "yunnan-purple-white"
+      },
+      {
+        "lang": "en-US",
+        "name": "Yunnan Wild Purple White Tea",
+        "description": "Rare white tea from wild high-mountain trees of Yunnan with natural purple leaf pigmentation. Purple color is due to high anthocyanin content — powerful antioxidants. Taste is exceptionally soft, silky, sweet with notes of melon, stone fruits and light minerality. Buds are densely covered with silvery down with purple tint.",
+        "seoName": "yunnan-wild-purple-white-tea"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "云南野生紫芽白茶",
+        "description": "罕见的白茶，采自云南高山野生茶树，叶片带有天然紫色色素。紫色源于高含量的花青素——强效抗氧化剂。口感极其柔和丝滑，甘甜带有蜜瓜、核果香和轻微矿物质感。芽头覆盖着浓密的银白毫毛，透出紫色。",
+        "seoName": "yunnan-ziya-baicha"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1500-3600 m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Silky, sweet, melon, stone fruits, mineral", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Melon, cucumber, fresh, floral, vanilla", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-90°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "15-30 sec (gongfu)", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-RARE-TEA", "TAG-WILD-TEA", "TAG-ANCIENT-TREES", "TAG-SINGLE-ORIGIN"],
+    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Nannoshan, Jinggu",
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-TALIENSIS-YINZHEN",
+    "sku": "TYZ-YN-2024-50G",
+    "order": 9,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Серебряные Иглы из Camellia Taliensis",
+        "description": "Уникальный белый чай из дикорастущего реликтового вида Camellia taliensis — древнего предка культурного чая. Почки крупные, плотные, покрыты густым серебристым ворсом. Вкус исключительно мягкий, шелковистый, без горечи: природная сладость, цветочные и фруктовые ноты с лёгким мёдом. Содержит меньше кофеина и танинов, чем обычный чай. Настоящее «живое ископаемое» чайного мира.",
+        "seoName": "taliensis-silver-needles"
+      },
+      {
+        "lang": "en-US",
+        "name": "Camellia Taliensis Silver Needles",
+        "description": "Unique white tea from wild relict species Camellia taliensis — an ancient ancestor of cultivated tea. Buds are large, dense, covered with thick silvery down. Taste is exceptionally soft, silky, without bitterness: natural sweetness, floral and fruity notes with light honey. Contains less caffeine and tannins than regular tea. A true 'living fossil' of the tea world.",
+        "seoName": "camellia-taliensis-silver-needles"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "大理茶银针",
+        "description": "独特的白茶，采自野生古老物种大理茶（Camellia taliensis）——栽培茶树的远古祖先。芽头硕大紧实，覆盖着浓密的银白毫毛。口感极其柔和丝滑，毫无苦涩：天然甘甜，花果香带轻微蜂蜜味。咖啡因和单宁含量低于普通茶叶。堪称茶界的「活化石」。",
+        "seoName": "dalicha-yinzhen"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1500+ m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Silky, sweet, floral, fruity, honey", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Orchid, magnolia, meadow herbs, honey", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-90°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-4 min", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-RARE-TEA", "TAG-WILD-TEA", "TAG-ANCIENT-TREES", "TAG-SINGLE-ORIGIN"],
+    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Jinggu",
+        "isPrimary": true
+      }
+    ]
+  }
+]

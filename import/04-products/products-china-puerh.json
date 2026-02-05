@@ -1,0 +1,351 @@
+[
+  {
+    "code": "TEA-CN-SHENG-PUER",
+    "sku": "SPU-YN-2024-357G",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Шэн Пуэр (Сырой Пуэр)",
+        "description": "Постферментированный чай из провинции Юньнань, один из самых известных китайских чаёв. Отличается естественным процессом ферментации при хранении — со временем вкус трансформируется от свежего травянистого к глубокому сухофруктовому. Молодой шэн имеет яркий терпкий вкус с цветочными нотами, выдержанный — мягкий, комплексный с оттенками орехов и древесины. Прессуется в блины (бин ча), кирпичи или гнёзда (то ча).",
+        "seoName": "shen-puer"
+      },
+      {
+        "lang": "en-US",
+        "name": "Sheng Pu-erh (Raw Pu-erh)",
+        "description": "Post-fermented tea from Yunnan Province, one of China's most renowned teas. Distinguished by natural aging process during storage — flavor transforms over time from fresh grassy to deep dried fruit notes. Young sheng has bright, astringent taste with floral notes; aged sheng becomes mellow with nutty and woody overtones. Pressed into cakes (bing cha), bricks or nests (tuo cha).",
+        "seoName": "sheng-puer-raw"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "生普洱",
+        "description": "云南后发酵茶，中国最著名的茶之一。以自然陈化过程著称——随时间推移，口感从新鲜青草香转变为深沉果干香。新生普味道鲜爽，涩感明显，带花香；陈年生普醇和，带坚果和木香。多压制成饼茶、砖茶或沱茶。",
+        "seoName": "sheng-puer"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-PUER-SHENG", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-HIGH", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-FLORAL", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2300m", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-95°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "7-15+", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-AGED-TEA", "TAG-SINGLE-ORIGIN", "TAG-ANCIENT-TREES", "TAG-COLLECTIBLE", "TAG-TONIC"],
+    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Xishuangbanna, Lincang, Pu'er",
+        "altitude": { "min": 800, "max": 2300, "unit": "m" },
+        "coordinates": { "lat": 22.0, "lng": 100.8 },
+        "notes": "Six Famous Tea Mountains, ancient tea trees, natural aging process"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-SHU-PUER",
+    "sku": "SHU-YN-2024-357G",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Шу Пуэр (Готовый Пуэр)",
+        "description": "Постферментированный чай из Юньнани, созданный по технологии «Во Дуй» (влажное скирдование), разработанной в 1970-х годах. Ускоренная ферментация за 45-60 дней придаёт чаю характеристики выдержанного шэна. Насыщенный землистый вкус с нотами древесины, орехов, шоколада и сухофруктов. Мягкое согревающее воздействие, отлично подходит для улучшения пищеварения.",
+        "seoName": "shu-puer"
+      },
+      {
+        "lang": "en-US",
+        "name": "Shu Pu-erh (Ripe Pu-erh)",
+        "description": "Post-fermented tea from Yunnan created using 'Wo Dui' (wet piling) technique developed in the 1970s. Accelerated 45-60 day fermentation gives tea characteristics of aged sheng. Rich earthy flavor with notes of wood, nuts, chocolate and dried fruits. Gentle warming effect, excellent for digestion.",
+        "seoName": "shu-puer-ripe"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "熟普洱",
+        "description": "采用1970年代研发的"渥堆"工艺制成的云南后发酵茶。45-60天的加速发酵使茶叶具有陈年生普的特征。醇厚土香，带有木香、坚果、巧克力和干果香。温和暖身，有助消化。",
+        "seoName": "shu-puer"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-PUER-SHU", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-EARTHY", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2000m", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-10+", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-SINGLE-ORIGIN", "TAG-DIGESTION", "TAG-WARMING", "TAG-WEIGHT-LOSS"],
+    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Menghai, Lincang, Simao",
+        "altitude": { "min": 800, "max": 2000, "unit": "m" },
+        "coordinates": { "lat": 21.9, "lng": 100.4 },
+        "notes": "Wo Dui fermentation technique, Menghai Tea Factory origin"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-GONGTING-PUER",
+    "sku": "GTP-YN-2024-100G",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Гун Тин Пуэр (Дворцовый Пуэр)",
+        "description": "Элитный сорт Шу Пуэра, изготовленный из отборного мелкого сырья — преимущественно почек и молодых листочков. Название «Гун Тин» (Дворцовый) указывает на высочайшее качество, достойное императорского двора. Бархатистый вкус без терпкости, с нотами древесины, орехов, шоколада и карамели. Быстро заваривается благодаря мелкому сырью.",
+        "seoName": "gun-tin-puer"
+      },
+      {
+        "lang": "en-US",
+        "name": "Gongting Pu-erh (Palace Pu-erh)",
+        "description": "Premium Shu Pu-erh grade made from select fine material — predominantly buds and young leaves. 'Gongting' (Palace) name indicates highest quality worthy of imperial court. Velvety smooth taste without astringency, notes of wood, nuts, chocolate and caramel. Brews quickly due to fine material.",
+        "seoName": "gongting-puer-palace"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "宫廷普洱",
+        "description": "精选细嫩原料制成的高端熟普——以芽头和嫩叶为主。"宫廷"之名彰显其皇家品质。口感丝滑无涩，木香坚果香巧克力香焦糖香。原料细嫩，出汤快。",
+        "seoName": "gongting-puer"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-PUER-SHU", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-NUTTY", "type": "Option", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2000m", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 10 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-10+", "showOnPage": true, "order": 11 }
+    ],
+    "tags": ["TAG-TOP-GRADE", "TAG-SINGLE-ORIGIN", "TAG-ELITE", "TAG-GIFT"],
+    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Menghai, Lincang",
+        "altitude": { "min": 800, "max": 2000, "unit": "m" },
+        "coordinates": { "lat": 21.9, "lng": 100.4 },
+        "notes": "Finest grade Shu Pu-erh, select buds and tips only"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-LAO-CHA-TOU",
+    "sku": "LCT-YN-2024-250G",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Лао Ча Тоу (Старые чайные головы)",
+        "description": "Уникальная разновидность Шу Пуэра — плотные комки слипшихся листьев, образующиеся естественным образом в процессе влажного скирдования (Во Дуй). Изначально считались браком, но ценители открыли их особые качества. Очень насыщенный, плотный вкус с выраженными древесно-землистыми нотами, шоколадом и орехами. Долгое сладкое послевкусие. Выдерживает множество заварок.",
+        "seoName": "lao-cha-tou"
+      },
+      {
+        "lang": "en-US",
+        "name": "Lao Cha Tou (Old Tea Heads)",
+        "description": "Unique Shu Pu-erh variety — dense nuggets of naturally clumped leaves formed during wet piling (Wo Dui) process. Originally considered defect, but connoisseurs discovered their special qualities. Very rich, dense flavor with pronounced earthy-woody notes, chocolate and nuts. Long sweet aftertaste. Withstands many infusions.",
+        "seoName": "lao-cha-tou-old-tea-heads"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "老茶头",
+        "description": "独特的熟普品种——渥堆过程中自然形成的紧实茶块。曾被视为副产品，但茶友发现其独特品质。滋味浓醇厚重，土香木香明显，带巧克力和坚果香。回甘持久绵长。耐泡度高。",
+        "seoName": "lao-cha-tou"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-PUER-SHU", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-EARTHY", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2000m", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "10-15+", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-SINGLE-ORIGIN", "TAG-WARMING", "TAG-DIGESTION", "TAG-UNIQUE"],
+    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Various Pu-erh producing regions",
+        "altitude": { "min": 800, "max": 2000, "unit": "m" },
+        "coordinates": { "lat": 22.0, "lng": 100.5 },
+        "notes": "Natural byproduct of Wo Dui fermentation, highly concentrated flavor"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-YA-BAO",
+    "sku": "YAB-YN-2024-100G",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Я Бао (Дикие чайные почки)",
+        "description": "Редкий и необычный чай из спящих почек дикорастущих чайных деревьев Юньнани (преимущественно Camellia taliensis). Не является чаем в строгом смысле. Плотные почки напоминают маленькие шишечки. Сложный многогранный аромат с нотами древесины, мёда, цветов и сухофруктов. Мягкий сладковатый вкус. Считается чаем для гурманов, ищущих новые впечатления.",
+        "seoName": "ya-bao"
+      },
+      {
+        "lang": "en-US",
+        "name": "Ya Bao (Wild Tea Buds)",
+        "description": "Rare and unusual tea from dormant buds of wild tea trees in Yunnan (primarily Camellia taliensis). Not technically tea in strict sense. Dense buds resemble small pine cones. Complex multifaceted aroma with notes of wood, honey, flowers and dried fruits. Soft sweet taste. Considered tea for gourmets seeking new experiences.",
+        "seoName": "ya-bao-wild-buds"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "芽苞",
+        "description": "云南野生茶树（主要为大理茶）休眠芽制成的稀有茶品。严格意义上不算茶叶。紧实芽苞形似小松果。香气复杂多层，有木香、蜜香、花香和干果香。口感柔和甘甜。被视为寻求新体验的茶客之选。",
+        "seoName": "ya-bao"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-NONE", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-SWEET", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1500-2000m+", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-95°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7+", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-WILD-TEA", "TAG-SINGLE-ORIGIN", "TAG-RARE", "TAG-EXOTIC"],
+    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Lincang, Pu'er, Xishuangbanna",
+        "altitude": { "min": 1500, "max": 2000, "unit": "m" },
+        "coordinates": { "lat": 23.5, "lng": 100.0 },
+        "notes": "Wild tea tree dormant buds, often from Camellia taliensis"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-DA-JIN-YA",
+    "sku": "DJY-YN-2024-100G",
+    "order": 6,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Да Цзинь Я (Большие золотые почки)",
+        "description": "Элитный Шу Пуэр, отличающийся высоким содержанием крупных золотистых почек (типсов). Название буквально означает «большие золотые почки». Бархатистый, сладковатый вкус с нотами шоколада, карамели, орехов и сухофруктов. Красивый внешний вид сухого листа благодаря золотистому ворсу. Часто выбирается в качестве подарка.",
+        "seoName": "da-czin-ya"
+      },
+      {
+        "lang": "en-US",
+        "name": "Da Jin Ya (Golden Bud Pu-erh)",
+        "description": "Premium Shu Pu-erh distinguished by high content of large golden buds (tips). Name literally means 'big golden buds'. Velvety sweet taste with notes of chocolate, caramel, nuts and dried fruits. Beautiful dry leaf appearance due to golden downy coverage. Often chosen as gift.",
+        "seoName": "da-jin-ya-golden-bud"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "大金芽",
+        "description": "以大量金色芽头著称的高端熟普。名字直译为"大金芽"。口感丝滑甘甜，带有巧克力、焦糖、坚果和干果香。金色茸毛覆盖，干茶外形优美。常作为礼品首选。",
+        "seoName": "da-jin-ya"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-PUER-SHU", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-SWEET", "type": "Option", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2000m", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 10 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-10+", "showOnPage": true, "order": 11 }
+    ],
+    "tags": ["TAG-TOP-GRADE", "TAG-SINGLE-ORIGIN", "TAG-ELITE", "TAG-GIFT", "TAG-GOLDEN-TIPS"],
+    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Menghai, Bulan Mountain, Lincang",
+        "altitude": { "min": 800, "max": 2000, "unit": "m" },
+        "coordinates": { "lat": 21.9, "lng": 100.4 },
+        "notes": "Premium Shu Pu-erh with golden bud tips, elegant appearance"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-CHA-GAO",
+    "sku": "CHG-YN-2024-50G",
+    "order": 7,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Ча Гао (Чайная смола)",
+        "description": "Концентрат чайного настоя с многовековой историей. Изготавливается путём длительного вываривания чайного листа и сгущения до состояния пасты или смолы. Первые упоминания относятся к династии Тан (618-907 гг.). Использовался при императорском дворе и как валюта в торговле с Тибетом. Растворяется в горячей воде, создавая насыщенный настой. Концентрированные полезные свойства пуэра.",
+        "seoName": "cha-gao"
+      },
+      {
+        "lang": "en-US",
+        "name": "Cha Gao (Tea Paste/Resin)",
+        "description": "Tea concentrate with centuries of history. Made by prolonged extraction and evaporation of tea leaves into paste or resin form. First mentions date to Tang Dynasty (618-907 AD). Used at imperial court and as currency in Tibet trade. Dissolves in hot water creating rich infusion. Concentrated beneficial properties of pu-erh.",
+        "seoName": "cha-gao-tea-paste"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "茶膏",
+        "description": "历史悠久的茶叶浓缩物。将茶叶长时间熬煮、浓缩成膏状或树脂状。最早记载可追溯至唐代（618-907年）。曾为宫廷贡品，也用作与藏区贸易的货币。溶于热水即成浓茶。普洱功效浓缩于其中。",
+        "seoName": "cha-gao"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-PUER-SHU", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-HIGH", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-EARTHY", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-100°C", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "1-2g / 150-200ml", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "Instant", "showOnPage": true, "order": 8 }
+    ],
+    "tags": ["TAG-RARE", "TAG-HERITAGE", "TAG-CONCENTRATE", "TAG-IMPERIAL", "TAG-DETOX"],
+    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Various Pu-erh producing regions",
+        "coordinates": { "lat": 22.0, "lng": 100.5 },
+        "notes": "Concentrated tea extract, Tang Dynasty origins, imperial tribute tea"
+      }
+    ]
+  }
+]
