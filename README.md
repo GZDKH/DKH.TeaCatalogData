@@ -36,17 +36,17 @@ DKH.TeaCatalogData/
     ├── Validate-Import.ps1            # API validation
     ├── Import-Data.ps1                # Import to ProductCatalogService
     └── mappings/                       # Translation/mapping files
-        ├── translations.json          # RU/EN/ZH translations
+        ├── translations.json          # ru-RU/en-US/zh-CN translations
         ├── regions.json               # Region mappings
         └── specifications.json        # Specification mappings
 ```
 
-## Languages
+## Locales
 
-All data supports three languages:
-- **RU** - Russian (primary language in MD files)
-- **EN** - English
-- **ZH** - Chinese (中文)
+All data supports three locales (BCP 47 format, aligned with ReferenceService):
+- **ru-RU** - Russian (primary language in MD files)
+- **en-US** - English
+- **zh-CN** - Simplified Chinese (中文)
 
 ## Import Order
 
@@ -129,8 +129,8 @@ All data supports three languages:
 
 ## Specification Groups
 
-| Code | EN | RU | ZH |
-|------|----|----|-----|
+| Code | en-US | ru-RU | zh-CN |
+|------|-------|-------|-------|
 | SPEC-GROUP-CLASSIFICATION | Classification | Классификация | 分类 |
 | SPEC-GROUP-ORIGIN | Origin & Terroir | Происхождение и терруар | 产地与风土 |
 | SPEC-GROUP-BOTANICAL | Botanical | Ботаника | 植物学 |
@@ -171,9 +171,9 @@ Each MD file contains 14 numbered sections (in Russian):
   "brand": "BRAND-XIHU",
   "price": 168.00,
   "translations": [
-    { "lang": "en", "name": "Xihu Longjing", "description": "...", "seoName": "xihu-longjing" },
-    { "lang": "ru", "name": "Сиху Лунцзин", "description": "...", "seoName": "sihu-luncjin" },
-    { "lang": "zh", "name": "西湖龙井", "description": "...", "seoName": "xihu-longjing" }
+    { "lang": "ru-RU", "name": "Сиху Лунцзин", "description": "...", "seoName": "sihu-luncjin" },
+    { "lang": "en-US", "name": "Xihu Longjing", "description": "...", "seoName": "xihu-longjing" },
+    { "lang": "zh-CN", "name": "西湖龙井", "description": "...", "seoName": "xihu-longjing" }
   ],
   "specs": [
     { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option" },
@@ -200,7 +200,7 @@ Each MD file contains 14 numbered sections (in Russian):
 - [ ] ValidateImport API returns `isValid: true`
 - [ ] Test import of 10 products successful
 - [ ] Products display in catalog with specifications
-- [ ] Translations correct in RU/EN/ZH
+- [ ] Translations correct in ru-RU/en-US/zh-CN
 
 ## Troubleshooting
 
