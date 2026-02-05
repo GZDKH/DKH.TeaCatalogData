@@ -1,0 +1,493 @@
+[
+  {
+    "code": "TEA-CN-JIN-JUN-MEI",
+    "sku": "JJM-FJ-2024-50G",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Цзинь Цзюнь Мэй (Золотые Брови)",
+        "description": "Цзинь Цзюнь Мэй — элитный красный чай из деревни Тунму в горах Уишань, провинция Фуцзянь. Создан в 2005 году как премиальная версия Лапсанг Сушонга. Изготавливается исключительно из почек, покрытых золотистым ворсом. Нежнейший медово-фруктовый вкус с нотами лонгана, личи и шоколада, без горечи и терпкости. Один из самых дорогих красных чаёв в мире.",
+        "seoName": "czin-czyun-mej"
+      },
+      {
+        "lang": "en-US",
+        "name": "Jin Jun Mei (Golden Eyebrow)",
+        "description": "Jin Jun Mei is an elite red tea from Tongmu Village in Wuyi Mountains, Fujian Province. Created in 2005 as premium version of Lapsang Souchong. Made exclusively from buds covered with golden down. Extremely delicate honey-fruity taste with notes of longan, lychee and chocolate, without bitterness or astringency. One of the most expensive red teas in the world.",
+        "seoName": "jin-jun-mei-golden-eyebrow"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "金骏眉",
+        "description": "金骏眉是产自福建武夷山桐木村的顶级红茶。2005年创制，为正山小种的高端版。仅用金毫披覆的芽头制成。口感极其细腻，蜜香果香浓郁，带龙眼、荔枝、巧克力香，无苦涩。世界最贵红茶之一。",
+        "seoName": "jin-jun-mei"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1200-1500m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Honey, longan, lychee, chocolate, sweet", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, dried fruits, flowers, malt", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-90°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7+", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-PREMIUM", "TAG-ELITE", "TAG-SINGLE-ORIGIN", "TAG-HANDPICKED", "TAG-GIFT"],
+    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Tongmu Village, Wuyi Mountains, Nanping",
+        "altitude": { "min": 1200, "max": 1500, "unit": "m" },
+        "coordinates": { "lat": 27.7, "lng": 117.6 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-QIMEN-HONGCHA",
+    "sku": "QMH-AH-2024-50G",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Ци Мэнь Хун Ча (Кимун)",
+        "description": "Ци Мэнь Хун Ча — легендарный красный чай из уезда Цимэнь провинции Аньхой, входящий в тройку лучших красных чаёв мира. Создан в 1875 году. Тонкие, плотно скрученные чаинки обладают уникальным «цимэньским ароматом» — сочетанием цветочных, фруктовых, медовых и солодовых нот. Вкус насыщенный, бархатистый с долгим послевкусием. Любимый чай английской королевы.",
+        "seoName": "ci-men-hun-cha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Qi Men Hong Cha (Keemun)",
+        "description": "Qi Men Hong Cha is a legendary red tea from Qimen County, Anhui Province, among top three red teas in the world. Created in 1875. Thin, tightly rolled leaves have unique 'Qimen aroma' — blend of floral, fruity, honey and malty notes. Taste is rich, velvety with long aftertaste. Reportedly favorite tea of English royalty.",
+        "seoName": "qimen-hongcha-keemun"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "祁门红茶",
+        "description": "祁门红茶是产自安徽祁门县的传奇红茶，世界三大红茶之一。创制于1875年。细紧卷曲的茶叶拥有独特的「祁门香」——花香、果香、蜜香、麦芽香的完美融合。滋味醇厚丝滑，回甘悠长。据传为英国皇室钟爱之茶。",
+        "seoName": "qimen-hongcha"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "100-800m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, velvety, sweet, fruity, malty", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Rose, orchid, apple, honey, malt", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "2-4", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-TOP-WORLD", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-HERITAGE"],
+    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Anhui",
+        "place": "Qimen County, Huangshan foothills",
+        "altitude": { "min": 100, "max": 800, "unit": "m" },
+        "coordinates": { "lat": 30.0, "lng": 117.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-DIANHONG",
+    "sku": "DHN-YN-2024-50G",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дянь Хун (Юньнаньский Красный)",
+        "description": "Дянь Хун — знаменитый красный чай из провинции Юньнань, изготовленный из крупнолистного юньнаньского сырья. Отличается насыщенным, полнотелым вкусом с яркими нотами сухофруктов, мёда, солода и шоколада. Золотистые типсы придают чаю сладость и аромат. Прекрасно согревает, тонизирует и поднимает настроение.",
+        "seoName": "dyan-hun"
+      },
+      {
+        "lang": "en-US",
+        "name": "Dian Hong (Yunnan Red)",
+        "description": "Dian Hong is a famous red tea from Yunnan Province, made from large-leaf Yunnan material. Distinguished by rich, full-bodied taste with bright notes of dried fruits, honey, malt and chocolate. Golden tips give tea sweetness and aroma. Excellently warms, energizes and uplifts mood.",
+        "seoName": "dianhong-yunnan-red"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "滇红",
+        "description": "滇红是产自云南的著名红茶，采用云南大叶种原料制成。滋味浓郁饱满，干果、蜂蜜、麦芽、巧克力香明显。金毫赋予茶叶甘甜和香气。温暖身心，提神醒脑，愉悦心情。",
+        "seoName": "dianhong"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2000m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Full-bodied, sweet, malty, chocolate", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Dried fruits, honey, malt, chocolate", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "2-4", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-SINGLE-ORIGIN", "TAG-WARMING", "TAG-LARGE-LEAF"],
+    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Fengqing, Lincang, Baoshan, Pu'er",
+        "altitude": { "min": 800, "max": 2000, "unit": "m" },
+        "coordinates": { "lat": 24.6, "lng": 100.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-DIANHONG-JIN-ZHEN",
+    "sku": "DJZ-YN-2024-50G",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дянь Хун Цзинь Чжэнь (Золотые Иглы)",
+        "description": "Дянь Хун Цзинь Чжэнь — премиальный юньнаньский красный чай, изготовленный из отборных почек, покрытых золотистым ворсом. Тонкие, прямые чаинки напоминают золотые иглы. Более нежный и сладкий вкус по сравнению с обычным Дянь Хуном, с выраженными медовыми и цветочными нотами. Настой яркий, янтарно-красный.",
+        "seoName": "dyan-hun-czin-chzhen"
+      },
+      {
+        "lang": "en-US",
+        "name": "Dian Hong Jin Zhen (Golden Needles)",
+        "description": "Dian Hong Jin Zhen is a premium Yunnan red tea made from select buds covered with golden down. Thin, straight tea leaves resemble golden needles. More delicate and sweet taste compared to regular Dian Hong, with pronounced honey and floral notes. Infusion is bright, amber-red.",
+        "seoName": "dianhong-jin-zhen-golden-needles"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "滇红金针",
+        "description": "滇红金针是精选金毫披覆芽头制成的高端云南红茶。细直的茶叶形似金针。较普通滇红口感更加细腻甘甜，蜜香花香明显。茶汤明亮，琥珀红色。",
+        "seoName": "dianhong-jinzhen"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-2000m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Delicate, sweet, honey, floral", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, flowers, malt, dried fruits", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-90°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-GOLDEN-TIPS"],
+    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Fengqing, Lincang",
+        "altitude": { "min": 1000, "max": 2000, "unit": "m" },
+        "coordinates": { "lat": 24.6, "lng": 100.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-DIANHONG-JIN-LUO",
+    "sku": "DJL-YN-2024-50G",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дянь Хун Цзинь Ло (Золотые Спирали)",
+        "description": "Дянь Хун Цзинь Ло — премиальный юньнаньский красный чай, скрученный в форме изящных спиралей. Золотистые почки и тёмные листья создают красивый контраст. Насыщенный сладкий вкус с нотами сухофруктов, мёда и шоколада. Ценится за красивый внешний вид и богатый аромат.",
+        "seoName": "dyan-hun-czin-lo"
+      },
+      {
+        "lang": "en-US",
+        "name": "Dian Hong Jin Luo (Golden Snails)",
+        "description": "Dian Hong Jin Luo is a premium Yunnan red tea rolled into elegant spirals. Golden buds and dark leaves create beautiful contrast. Rich sweet taste with notes of dried fruits, honey and chocolate. Valued for beautiful appearance and rich aroma.",
+        "seoName": "dianhong-jin-luo-golden-snails"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "滇红金螺",
+        "description": "滇红金螺是卷成优雅螺形的高端云南红茶。金色芽头与深色叶片形成美丽对比。滋味浓郁甘甜，干果、蜂蜜、巧克力香明显。以美观外形和丰富香气著称。",
+        "seoName": "dianhong-jinluo"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-2000m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, sweet, dried fruits, chocolate", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, dried fruits, malt, flowers", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-HANDCRAFTED"],
+    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Fengqing, Lincang",
+        "altitude": { "min": 1000, "max": 2000, "unit": "m" },
+        "coordinates": { "lat": 24.6, "lng": 100.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-ZHENGSHAN-XIAOZHONG",
+    "sku": "ZSX-FJ-2024-50G",
+    "order": 6,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Чжэн Шань Сяо Чжун (Лапсанг Сушонг)",
+        "description": "Чжэн Шань Сяо Чжун — старейший красный чай в мире, родом из деревни Тунму в горах Уишань, Фуцзянь. Создан в XVII веке. Традиционно коптится на сосновых дровах, приобретая характерный дымный аромат. Существуют некопчёные версии с фруктово-медовым профилем. Вкус насыщенный, сладковатый с нотами сухофруктов и лонгана. Прародитель всех красных чаёв.",
+        "seoName": "chzhen-shan-syao-chzhun"
+      },
+      {
+        "lang": "en-US",
+        "name": "Zheng Shan Xiao Zhong (Lapsang Souchong)",
+        "description": "Zheng Shan Xiao Zhong is the oldest red tea in the world, from Tongmu Village in Wuyi Mountains, Fujian. Created in 17th century. Traditionally smoked over pine wood, acquiring characteristic smoky aroma. Unsmoked versions exist with fruity-honey profile. Taste is rich, sweet with notes of dried fruits and longan. Ancestor of all red teas.",
+        "seoName": "zhengshan-xiaozhong-lapsang-souchong"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "正山小种",
+        "description": "正山小种是世界上最古老的红茶，产自福建武夷山桐木村。创制于17世纪。传统上用松木烟熏，形成标志性烟香。也有不烟熏的果蜜香型。滋味浓郁甘甜，带干果和龙眼香。所有红茶之祖。",
+        "seoName": "zhengshan-xiaozhong"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-1500m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, sweet, smoky, longan, dried fruits", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Pine smoke, dried fruits, honey, spices", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-HERITAGE", "TAG-SINGLE-ORIGIN", "TAG-SMOKED", "TAG-ORIGINAL"],
+    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Tongmu Village, Wuyi Mountains",
+        "altitude": { "min": 1000, "max": 1500, "unit": "m" },
+        "coordinates": { "lat": 27.7, "lng": 117.6 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-YIN-JUN-MEI",
+    "sku": "YJM-FJ-2024-50G",
+    "order": 7,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Инь Цзюнь Мэй (Серебряные Брови)",
+        "description": "Инь Цзюнь Мэй — младший брат знаменитого Цзинь Цзюнь Мэй, изготовленный из почки и одного листочка. Покрытые серебристым ворсом чаинки. Вкус нежный, сладковатый с медовыми и фруктовыми нотами, слегка более насыщенный, чем у Цзинь Цзюнь Мэй. Отличный выбор для знакомства с элитными красными чаями Уишаня.",
+        "seoName": "in-czyun-mej"
+      },
+      {
+        "lang": "en-US",
+        "name": "Yin Jun Mei (Silver Eyebrow)",
+        "description": "Yin Jun Mei is the younger sibling of famous Jin Jun Mei, made from bud and one leaf. Tea leaves covered with silvery down. Taste is delicate, sweet with honey and fruity notes, slightly richer than Jin Jun Mei. Excellent choice for introduction to elite Wuyi red teas.",
+        "seoName": "yin-jun-mei-silver-eyebrow"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "银骏眉",
+        "description": "银骏眉是著名金骏眉的「弟弟」，由一芽一叶制成。茶叶覆有银白毫毛。口感细腻甘甜，蜜香果香明显，较金骏眉稍浓郁。是了解武夷顶级红茶的绝佳选择。",
+        "seoName": "yin-jun-mei"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1200-1500m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Delicate, sweet, honey, fruity", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, flowers, dried fruits", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-90°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "4-6", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN"],
+    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "place": "Tongmu Village, Wuyi Mountains",
+        "altitude": { "min": 1200, "max": 1500, "unit": "m" },
+        "coordinates": { "lat": 27.7, "lng": 117.6 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-DIANHONG-GONGFU",
+    "sku": "DHG-YN-2024-50G",
+    "order": 8,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дянь Хун Гун Фу (Юньнаньский Классический)",
+        "description": "Дянь Хун Гун Фу — классический юньнаньский красный чай, производимый по традиционной технологии Гунфу (тщательная ручная обработка). Тонкие, плотно скрученные чаинки с золотистыми типсами. Насыщенный вкус с нотами сухофруктов, мёда, солода и лёгкой терпкостью. Основа юньнаньских красных чаёв.",
+        "seoName": "dyan-hun-gun-fu"
+      },
+      {
+        "lang": "en-US",
+        "name": "Dian Hong Gong Fu (Yunnan Classic)",
+        "description": "Dian Hong Gong Fu is a classic Yunnan red tea produced using traditional Gongfu technique (meticulous hand processing). Thin, tightly rolled leaves with golden tips. Rich taste with notes of dried fruits, honey, malt and light astringency. Foundation of Yunnan red teas.",
+        "seoName": "dianhong-gongfu-classic"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "滇红工夫",
+        "description": "滇红工夫是采用传统工夫工艺（精细手工加工）制成的经典云南红茶。细紧卷曲的茶叶带有金毫。滋味浓郁，干果、蜂蜜、麦芽香明显，微涩。云南红茶之基。",
+        "seoName": "dianhong-gongfu"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2000m", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, malty, sweet, dried fruits", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Dried fruits, honey, malt, chocolate", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "2-4", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-SINGLE-ORIGIN", "TAG-CLASSIC"],
+    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Fengqing, Lincang",
+        "altitude": { "min": 800, "max": 2000, "unit": "m" },
+        "coordinates": { "lat": 24.6, "lng": 100.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-DIANHONG-YESHENG",
+    "sku": "DYS-YN-2024-50G",
+    "order": 9,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дянь Хун Е Шэн (Дикий Красный)",
+        "description": "Дянь Хун Е Шэн — премиальный красный чай из сырья дикорастущих чайных деревьев Юньнани. Крупные листья с густым золотистым ворсом. Более глубокий, комплексный вкус с выраженными нотами мёда, сухофруктов, орехов и лёгкой минеральностью. Особенно ценится знатоками за уникальный характер дикого чая.",
+        "seoName": "dyan-hun-e-shen"
+      },
+      {
+        "lang": "en-US",
+        "name": "Dian Hong Ye Sheng (Wild Red)",
+        "description": "Dian Hong Ye Sheng is a premium red tea from wild tea tree material in Yunnan. Large leaves with dense golden down. Deeper, more complex taste with pronounced notes of honey, dried fruits, nuts and light minerality. Especially valued by connoisseurs for unique wild tea character.",
+        "seoName": "dianhong-yesheng-wild"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "野生滇红",
+        "description": "野生滇红是采用云南野生茶树原料制成的高端红茶。大叶覆有浓密金毫。滋味更加深邃复杂，蜜香、干果、坚果香明显，带有轻微矿物质感。因野茶独特韵味而备受茶客珍视。",
+        "seoName": "yesheng-dianhong"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1500-2500m", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Deep, complex, honey, nuts, mineral", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, dried fruits, forest, mineral", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "4-6+", "showOnPage": true, "order": 9 }
+    ],
+    "tags": ["TAG-PREMIUM", "TAG-WILD-TEA", "TAG-SINGLE-ORIGIN", "TAG-ANCIENT-TREES"],
+    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Yunnan",
+        "place": "Various wild tea forests",
+        "altitude": { "min": 1500, "max": 2500, "unit": "m" },
+        "coordinates": { "lat": 23.5, "lng": 100.0 },
+        "isPrimary": true
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-HONGCHA-GENERAL",
+    "sku": "HCH-CN-2024-50G",
+    "order": 20,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Хун Ча (Китайский Красный Чай)",
+        "description": "Хун Ча — общая категория полностью ферментированных чаёв Китая (на Западе называемых «чёрным чаем»). Название «красный» происходит от цвета настоя. Технология включает подвяливание, скручивание, полную ферментацию и сушку. Насыщенный вкус с нотами сухофруктов, мёда, солода и шоколада. Согревающий, тонизирующий напиток.",
+        "seoName": "hun-cha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Hong Cha (Chinese Red Tea)",
+        "description": "Hong Cha is the general category of fully fermented Chinese teas (called 'black tea' in the West). Name 'red' comes from infusion color. Process includes withering, rolling, full fermentation and drying. Rich taste with notes of dried fruits, honey, malt and chocolate. Warming, energizing drink.",
+        "seoName": "hongcha-chinese-red-tea"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "红茶",
+        "description": "红茶是中国全发酵茶的总称（西方称「黑茶」）。「红」字来源于茶汤颜色。工艺包括萎凋、揉捻、全发酵和干燥。滋味浓郁，干果、蜂蜜、麦芽、巧克力香明显。温暖提神之饮。",
+        "seoName": "hongcha"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "2-5", "showOnPage": true, "order": 6 }
+    ],
+    "tags": ["TAG-WARMING", "TAG-TONIC"],
+    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA"],
+    "origins": [
+      {
+        "country": "CN",
+        "notes": "Major provinces: Fujian, Yunnan, Anhui, Sichuan, Hubei, Guangdong"
+      }
+    ]
+  }
+]

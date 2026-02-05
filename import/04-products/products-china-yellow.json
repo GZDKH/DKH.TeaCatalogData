@@ -1,0 +1,350 @@
+[
+  {
+    "code": "TEA-CN-JUNSHAN-YINZHEN",
+    "sku": "JSY-HN-2024-50G",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Цзюньшань Инь Чжэнь (Серебряные иглы с горы Цзюньшань)",
+        "description": "Легендарный жёлтый чай, один из 10 знаменитых чаёв Китая. Производится исключительно на крошечном острове Цзюньшань на озере Дунтин в Хунани. Собирают только нераспустившиеся почки, покрытые серебристым ворсом. При заваривании почки демонстрируют уникальный «танец трёх подъёмов и падений». Нежный сладковатый вкус с цветочными и медовыми нотами. Императорский чай с тысячелетней историей.",
+        "seoName": "czyunsyan-in-chzhjen"
+      },
+      {
+        "lang": "en-US",
+        "name": "Junshan Yinzhen (Silver Needles of Junshan)",
+        "description": "Legendary yellow tea, one of China's 10 Famous Teas. Produced exclusively on tiny Junshan Island in Dongting Lake, Hunan. Only unopened buds covered with silver down are harvested. During brewing, buds perform unique 'dance of three rises and falls'. Delicate sweet taste with floral and honey notes. Imperial tea with thousand-year history.",
+        "seoName": "junshan-yinzhen-silver-needles"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "君山银针",
+        "description": "传奇黄茶，中国十大名茶之一。仅产于湖南洞庭湖君山岛。只采摘银毫披覆的未展芽头。冲泡时芽头上下浮动，呈现独特的"三起三落"奇观。口感鲜嫩甘甜，带有花香和蜜香。千年历史的贡茶。",
+        "seoName": "junshan-yinzhen"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-FLORAL", "type": "Option", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-TOP10-CHINA", "TAG-IMPERIAL", "TAG-SINGLE-ORIGIN", "TAG-RARE", "TAG-SPRING"],
+    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA", "CAT-REGION-HUNAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Hunan",
+        "place": "Junshan Island, Dongting Lake, Yueyang",
+        "coordinates": { "lat": 29.0, "lng": 113.0 },
+        "notes": "Tiny volcanic island, unique microclimate, extremely limited production"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-MENGDING-HUANGYA",
+    "sku": "MDH-SC-2024-50G",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Мэн Дин Хуан Я (Жёлтые почки с горы Мэндин)",
+        "description": "Изысканный жёлтый чай с горы Мэндиншань в Сычуани — колыбели китайского чаеводства. История насчитывает более 2000 лет. По легенде, первые чайные кусты посадил даосский монах У Личжэнь. Поставлялся к императорскому двору со времён династии Тан. Золотистые почки, сладковатый вкус с цветочными и медовыми нотами, тонкий аромат.",
+        "seoName": "men-din-huan-ya"
+      },
+      {
+        "lang": "en-US",
+        "name": "Meng Ding Huang Ya (Yellow Buds of Mengding Mountain)",
+        "description": "Exquisite yellow tea from Mengding Mountain in Sichuan — birthplace of Chinese tea cultivation. History spans over 2000 years. Legend says Taoist monk Wu Lizhen planted the first tea bushes here. Supplied to imperial court since Tang Dynasty. Golden buds, sweet taste with floral and honey notes, delicate aroma.",
+        "seoName": "mengding-huangya"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "蒙顶黄芽",
+        "description": "产自四川蒙顶山的名贵黄茶——中国茶叶栽培的发源地。历史逾两千年。相传道士吴理真在此种植了第一株茶树。自唐代起即为贡茶。金黄芽头，甘甜花蜜香，香气幽雅。",
+        "seoName": "mengding-huangya"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-FLORAL", "type": "Option", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1400-1500m", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 10 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 11 }
+    ],
+    "tags": ["TAG-IMPERIAL", "TAG-SINGLE-ORIGIN", "TAG-HERITAGE", "TAG-SPRING"],
+    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA", "CAT-REGION-SICHUAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Sichuan",
+        "place": "Mengding Mountain, Ya'an",
+        "altitude": { "min": 1400, "max": 1500, "unit": "m" },
+        "coordinates": { "lat": 30.0, "lng": 103.0 },
+        "notes": "Birthplace of tea cultivation, over 2000 years history, imperial tribute tea"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-HUOSHAN-HUANGYA",
+    "sku": "HSH-AH-2024-50G",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Хо Шань Хуан Я (Жёлтые почки из Хошань)",
+        "description": "Изысканный жёлтый чай из уезда Хошань провинции Аньхой с тысячелетней историей. Отличительная особенность — характерный ореховый аромат «жареного каштана» (板栗香). Маслянистый мягкий вкус без терпкости, с нотами цветов, мёда и орехов. Называют «чаем трёх свежестей» за свежесть аромата, вкуса и цвета настоя.",
+        "seoName": "ho-shan-huan-ya"
+      },
+      {
+        "lang": "en-US",
+        "name": "Huo Shan Huang Ya (Yellow Buds of Huoshan)",
+        "description": "Exquisite yellow tea from Huoshan County, Anhui Province with thousand-year history. Distinguished by characteristic 'roasted chestnut' nutty aroma (板栗香). Smooth oily mouthfeel without astringency, notes of flowers, honey and nuts. Called 'tea of three freshnesses' for fresh aroma, taste and liquor color.",
+        "seoName": "huoshan-huangya"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "霍山黄芽",
+        "description": "安徽霍山千年名茶。以独特的"板栗香"著称。口感油润细腻，无涩感，带有花香、蜜香和坚果香。因香气、滋味、汤色三者皆鲜，故称"三鲜茶"。",
+        "seoName": "huoshan-huangya"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-NUTTY", "type": "Option", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-800m", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 10 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 11 }
+    ],
+    "tags": ["TAG-SINGLE-ORIGIN", "TAG-HERITAGE", "TAG-SPRING", "TAG-NUTTY-AROMA"],
+    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Anhui",
+        "place": "Huoshan County, Lu'an, Dabie Mountains",
+        "altitude": { "min": 600, "max": 800, "unit": "m" },
+        "coordinates": { "lat": 31.0, "lng": 116.0 },
+        "notes": "Famous for 'roasted chestnut' aroma, imperial tribute tea"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-MOGAN-HUANGYA",
+    "sku": "MGH-ZJ-2024-50G",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Мо Гань Хуан Я (Жёлтые почки с горы Моганшань)",
+        "description": "Редкий жёлтый чай с горы Моганшань в провинции Чжэцзян. История прослеживается с династии Тан. Гора славится бамбуковыми рощами, чистым воздухом и живописными пейзажами. Нежный сладковатый вкус с цветочными и медовыми нотами, иногда с лёгкой дымностью. Называют «жидким золотом» за цвет настоя и ценность.",
+        "seoName": "mo-gan-huan-ya"
+      },
+      {
+        "lang": "en-US",
+        "name": "Mo Gan Huang Ya (Yellow Buds of Moganshan)",
+        "description": "Rare yellow tea from Moganshan Mountain in Zhejiang Province. History traces back to Tang Dynasty. Mountain famous for bamboo groves, clean air and scenic landscapes. Delicate sweet taste with floral and honey notes, sometimes with light smokiness. Called 'liquid gold' for its liquor color and value.",
+        "seoName": "mogan-huangya"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "莫干黄芽",
+        "description": "浙江莫干山稀有黄茶。历史可追溯至唐代。莫干山以竹林、清新空气和秀丽风景著称。口感鲜嫩甘甜，带花香蜜香，有时微带烟香。因汤色金黄、价值珍贵，被称为"液体黄金"。",
+        "seoName": "mogan-huangya"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-FLORAL", "type": "Option", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "400-700m", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 10 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 11 }
+    ],
+    "tags": ["TAG-SINGLE-ORIGIN", "TAG-RARE", "TAG-SPRING"],
+    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA", "CAT-REGION-ZHEJIANG"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Zhejiang",
+        "place": "Moganshan Mountain, Deqing County, Huzhou",
+        "altitude": { "min": 400, "max": 700, "unit": "m" },
+        "coordinates": { "lat": 30.0, "lng": 119.0 },
+        "notes": "Scenic mountain resort, bamboo groves, clean air"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-GUIZHOU-YELLOW",
+    "sku": "GZY-GZ-2024-50G",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Гуйчжоу Хуан Ча (Жёлтый чай из Гуйчжоу)",
+        "description": "Редкий жёлтый чай из горных районов провинции Гуйчжоу на юго-западе Китая. Сохранены старинные традиции производства, включая длительное томление до 50 дней (Лао Гун Сян). Мягкий маслянистый вкус без горечи, с нотами поджаренной кукурузы, цветов и минералов. Выдержка над углями придаёт лёгкий дымный оттенок.",
+        "seoName": "gujchzhou-huan-cha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Guizhou Huang Cha (Guizhou Yellow Tea)",
+        "description": "Rare yellow tea from mountainous regions of Guizhou Province in southwest China. Ancient production traditions preserved, including extended 'Men Huang' up to 50 days (Lao Gong Xiang). Smooth oily taste without bitterness, notes of toasted corn, flowers and minerals. Charcoal warming adds subtle smoky undertone.",
+        "seoName": "guizhou-yellow-tea"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "贵州黄茶",
+        "description": "中国西南贵州山区稀有黄茶。保留古老工艺，包括长达50天的闷黄（老共香）。口感油润无苦涩，带有烤玉米、花香和矿物质气息。炭火烘焙赋予淡淡烟香。",
+        "seoName": "guizhou-huangcha"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-LIGHT", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-SWEET", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-1300m", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "4-5g / 150ml", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7", "showOnPage": true, "order": 10 }
+    ],
+    "tags": ["TAG-SINGLE-ORIGIN", "TAG-RARE", "TAG-HERITAGE", "TAG-CHARCOAL"],
+    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA", "CAT-REGION-GUIZHOU"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Guizhou",
+        "place": "Pan Ying Mountains",
+        "altitude": { "min": 1000, "max": 1300, "unit": "m" },
+        "coordinates": { "lat": 26.5, "lng": 106.0 },
+        "notes": "Ancient Men Huang technique preserved, Lao Gong Xiang style, charcoal warmed"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-EMEI-HUANGYA",
+    "sku": "EMH-SC-2024-50G",
+    "order": 6,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Эмэй Хуан Я (Жёлтые почки с горы Эмэйшань)",
+        "description": "Редкий и загадочный чай со священной буддийской горы Эмэйшань в провинции Сычуань — объекта Всемирного наследия ЮНЕСКО. Производится в небольших количествах при буддийских монастырях. Мягкий сладковатый вкус с цветочными нотами. Информация о чае передаётся в устной традиции.",
+        "seoName": "emej-huan-ya"
+      },
+      {
+        "lang": "en-US",
+        "name": "Emei Huang Ya (Yellow Buds of Mount Emei)",
+        "description": "Rare and mysterious tea from sacred Buddhist Mount Emei in Sichuan — UNESCO World Heritage Site. Produced in small quantities at Buddhist monasteries. Soft sweet taste with floral notes. Knowledge about this tea passed through oral tradition.",
+        "seoName": "emei-huangya"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "峨眉黄芽",
+        "description": "四川佛教圣地峨眉山的稀有茶品——世界文化与自然遗产。在佛寺中少量生产。口感柔和甘甜，带有花香。关于此茶的知识主要通过口口相传。",
+        "seoName": "emei-huangya"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-FLORAL", "type": "Option", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-1500m", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 9 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 10 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 11 }
+    ],
+    "tags": ["TAG-SINGLE-ORIGIN", "TAG-RARE", "TAG-BUDDHIST", "TAG-UNESCO"],
+    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA", "CAT-REGION-SICHUAN"],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Sichuan",
+        "place": "Mount Emei, Leshan",
+        "altitude": { "min": 800, "max": 1500, "unit": "m" },
+        "coordinates": { "lat": 29.5, "lng": 103.3 },
+        "notes": "Sacred Buddhist mountain, UNESCO World Heritage, monastery production"
+      }
+    ]
+  },
+  {
+    "code": "TEA-CN-HUANGCHA-GENERAL",
+    "sku": "HCH-CN-2024-50G",
+    "order": 7,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Хуан Ча (Китайский жёлтый чай)",
+        "description": "Общая категория редких слабоферментированных чаёв Китая, занимающая место между зелёным и улуном. Отличительная особенность — уникальный этап томления (闷黄, Мэн Хуан), придающий чаю желтоватый оттенок и мягкий сладковатый вкус без горечи. Исторически — «императорский» чай, доступный лишь знати. Считается одним из древнейших видов чая.",
+        "seoName": "huan-cha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Huang Cha (Chinese Yellow Tea)",
+        "description": "General category of rare lightly-fermented Chinese teas, positioned between green and oolong. Distinguished by unique 'Men Huang' (闷黄) smothering step that gives tea yellowish tint and soft sweet taste without bitterness. Historically 'imperial' tea available only to nobility. Considered one of the oldest tea types.",
+        "seoName": "huangcha-chinese-yellow-tea"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "黄茶",
+        "description": "中国稀有轻发酵茶大类，介于绿茶和乌龙茶之间。以独特的"闷黄"工艺著称，使茶叶呈黄绿色，口感甘甜无涩。历史上为贡茶，仅供皇室贵族。被认为是最古老的茶类之一。",
+        "seoName": "huangcha"
+      }
+    ],
+    "specs": [
+      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
+      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
+      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
+      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 4 },
+      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 5 },
+      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-SWEET", "type": "Option", "showOnPage": true, "order": 6 },
+      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 7 },
+      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 8 },
+      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 9 }
+    ],
+    "tags": ["TAG-RARE", "TAG-IMPERIAL", "TAG-HERITAGE"],
+    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA"],
+    "origins": [
+      {
+        "country": "CN",
+        "notes": "Main provinces: Hunan, Sichuan, Anhui, Zhejiang"
+      }
+    ]
+  }
+]
