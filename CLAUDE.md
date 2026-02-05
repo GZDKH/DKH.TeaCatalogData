@@ -38,15 +38,16 @@ Each MD file contains 14 numbered sections in Russian:
 
 ## JSON Import Format
 
-Products JSON uses ProductCatalogService schema:
+Products JSON uses ProductCatalogService schema. Note: JSON uses short field name `"lang"`, but values are BCP 47 locale codes.
+
 ```json
 {
   "code": "TEA-PRODUCT-CODE",
   "sku": "SKU-CODE",
   "translations": [
-    { "lang": "ru-RU", "name": "...", "description": "...", "seoName": "..." },
-    { "lang": "en-US", "name": "...", "description": "...", "seoName": "..." },
-    { "lang": "zh-CN", "name": "...", "description": "...", "seoName": "..." }
+    { "lang": "ru-RU", "name": "Название", "description": "Описание", "seoName": "nazvanie" },
+    { "lang": "en-US", "name": "Name", "description": "Description", "seoName": "name" },
+    { "lang": "zh-CN", "name": "名称", "description": "描述", "seoName": "mingcheng" }
   ],
   "specs": [...],
   "tags": [...],
