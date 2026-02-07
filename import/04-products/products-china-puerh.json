@@ -24,28 +24,110 @@
         "seoName": "sheng-puer"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-PUER-SHENG", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-HIGH", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-FLORAL", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2300m", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-95°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "7-15+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-AGED-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-ANCIENT-TREES"
+      },
+      {
+        "code": "TAG-COLLECTIBLE"
+      },
+      {
+        "code": "TAG-TONIC"
+      }
     ],
-    "tags": ["TAG-AGED-TEA", "TAG-SINGLE-ORIGIN", "TAG-ANCIENT-TREES", "TAG-COLLECTIBLE", "TAG-TONIC"],
-    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Xishuangbanna, Lincang, Pu'er",
-        "altitude": { "min": 800, "max": 2300, "unit": "m" },
-        "coordinates": { "lat": 22.0, "lng": 100.8 },
+        "altitude": {
+          "min": 800,
+          "max": 2300,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 22,
+          "lng": 100.8
+        },
         "notes": "Six Famous Tea Mountains, ancient tea trees, natural aging process"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-PUER-SHENG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-FULL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-HIGH",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-FLORAL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "800-2300m",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "80-95°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "7-15+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -70,32 +152,111 @@
       {
         "lang": "zh-CN",
         "name": "熟普洱",
-        "description": "采用1970年代研发的"渥堆"工艺制成的云南后发酵茶。45-60天的加速发酵使茶叶具有陈年生普的特征。醇厚土香，带有木香、坚果、巧克力和干果香。温和暖身，有助消化。",
+        "description": "采用1970年代研发的“渥堆”工艺制成的云南后发酵茶。45-60天的加速发酵使茶叶具有陈年生普的特征。醇厚土香，带有木香、坚果、巧克力和干果香。温和暖身，有助消化。",
         "seoName": "shu-puer"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-PUER-SHU", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-EARTHY", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2000m", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-10+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-DIGESTION"
+      },
+      {
+        "code": "TAG-WARMING"
+      },
+      {
+        "code": "TAG-WEIGHT-LOSS"
+      }
     ],
-    "tags": ["TAG-SINGLE-ORIGIN", "TAG-DIGESTION", "TAG-WARMING", "TAG-WEIGHT-LOSS"],
-    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Menghai, Lincang, Simao",
-        "altitude": { "min": 800, "max": 2000, "unit": "m" },
-        "coordinates": { "lat": 21.9, "lng": 100.4 },
+        "altitude": {
+          "min": 800,
+          "max": 2000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 21.9,
+          "lng": 100.4
+        },
         "notes": "Wo Dui fermentation technique, Menghai Tea Factory origin"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-PUER-SHU",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-FULL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-EARTHY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "800-2000m",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-10+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -120,33 +281,118 @@
       {
         "lang": "zh-CN",
         "name": "宫廷普洱",
-        "description": "精选细嫩原料制成的高端熟普——以芽头和嫩叶为主。"宫廷"之名彰显其皇家品质。口感丝滑无涩，木香坚果香巧克力香焦糖香。原料细嫩，出汤快。",
+        "description": "精选细嫩原料制成的高端熟普——以芽头和嫩叶为主。“宫廷”之名彰显其皇家品质。口感丝滑无涩，木香坚果香巧克力香焦糖香。原料细嫩，出汤快。",
         "seoName": "gongting-puer"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-PUER-SHU", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-NUTTY", "type": "Option", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2000m", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 10 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-10+", "showOnPage": true, "order": 11 }
+    "tags": [
+      {
+        "code": "TAG-TOP-GRADE"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-ELITE"
+      },
+      {
+        "code": "TAG-GIFT"
+      }
     ],
-    "tags": ["TAG-TOP-GRADE", "TAG-SINGLE-ORIGIN", "TAG-ELITE", "TAG-GIFT"],
-    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Menghai, Lincang",
-        "altitude": { "min": 800, "max": 2000, "unit": "m" },
-        "coordinates": { "lat": 21.9, "lng": 100.4 },
+        "altitude": {
+          "min": 800,
+          "max": 2000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 21.9,
+          "lng": 100.4
+        },
         "notes": "Finest grade Shu Pu-erh, select buds and tips only"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-PUER-SHU",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-NUTTY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "800-2000m",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 150-200ml",
+        "showOnPage": true,
+        "order": 10
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-10+",
+        "showOnPage": true,
+        "order": 11
       }
     ]
   },
@@ -175,28 +421,107 @@
         "seoName": "lao-cha-tou"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-PUER-SHU", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-EARTHY", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2000m", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "10-15+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-WARMING"
+      },
+      {
+        "code": "TAG-DIGESTION"
+      },
+      {
+        "code": "TAG-UNIQUE"
+      }
     ],
-    "tags": ["TAG-SINGLE-ORIGIN", "TAG-WARMING", "TAG-DIGESTION", "TAG-UNIQUE"],
-    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Various Pu-erh producing regions",
-        "altitude": { "min": 800, "max": 2000, "unit": "m" },
-        "coordinates": { "lat": 22.0, "lng": 100.5 },
+        "altitude": {
+          "min": 800,
+          "max": 2000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 22,
+          "lng": 100.5
+        },
         "notes": "Natural byproduct of Wo Dui fermentation, highly concentrated flavor"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-PUER-SHU",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-FULL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-EARTHY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "800-2000m",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "10-15+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -225,28 +550,107 @@
         "seoName": "ya-bao"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-NONE", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-SWEET", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1500-2000m+", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-95°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-WILD-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-RARE"
+      },
+      {
+        "code": "TAG-EXOTIC"
+      }
     ],
-    "tags": ["TAG-WILD-TEA", "TAG-SINGLE-ORIGIN", "TAG-RARE", "TAG-EXOTIC"],
-    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Lincang, Pu'er, Xishuangbanna",
-        "altitude": { "min": 1500, "max": 2000, "unit": "m" },
-        "coordinates": { "lat": 23.5, "lng": 100.0 },
+        "altitude": {
+          "min": 1500,
+          "max": 2000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 23.5,
+          "lng": 100
+        },
         "notes": "Wild tea tree dormant buds, often from Camellia taliensis"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-WHITE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-SWEET",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1500-2000m+",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "85-95°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-7+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -271,33 +675,121 @@
       {
         "lang": "zh-CN",
         "name": "大金芽",
-        "description": "以大量金色芽头著称的高端熟普。名字直译为"大金芽"。口感丝滑甘甜，带有巧克力、焦糖、坚果和干果香。金色茸毛覆盖，干茶外形优美。常作为礼品首选。",
+        "description": "以大量金色芽头著称的高端熟普。名字直译为“大金芽”。口感丝滑甘甜，带有巧克力、焦糖、坚果和干果香。金色茸毛覆盖，干茶外形优美。常作为礼品首选。",
         "seoName": "da-jin-ya"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-PUER-SHU", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-SWEET", "type": "Option", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2000m", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 10 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-10+", "showOnPage": true, "order": 11 }
+    "tags": [
+      {
+        "code": "TAG-TOP-GRADE"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-ELITE"
+      },
+      {
+        "code": "TAG-GIFT"
+      },
+      {
+        "code": "TAG-GOLDEN-TIPS"
+      }
     ],
-    "tags": ["TAG-TOP-GRADE", "TAG-SINGLE-ORIGIN", "TAG-ELITE", "TAG-GIFT", "TAG-GOLDEN-TIPS"],
-    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Menghai, Bulan Mountain, Lincang",
-        "altitude": { "min": 800, "max": 2000, "unit": "m" },
-        "coordinates": { "lat": 21.9, "lng": 100.4 },
+        "altitude": {
+          "min": 800,
+          "max": 2000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 21.9,
+          "lng": 100.4
+        },
         "notes": "Premium Shu Pu-erh with golden bud tips, elegant appearance"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-PUER-SHU",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-SWEET",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "800-2000m",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 150-200ml",
+        "showOnPage": true,
+        "order": 10
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-10+",
+        "showOnPage": true,
+        "order": 11
       }
     ]
   },
@@ -326,25 +818,91 @@
         "seoName": "cha-gao"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-PUER-SHU", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-HIGH", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-EARTHY", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-100°C", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "1-2g / 150-200ml", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "Instant", "showOnPage": true, "order": 8 }
+    "tags": [
+      {
+        "code": "TAG-RARE"
+      },
+      {
+        "code": "TAG-HERITAGE"
+      },
+      {
+        "code": "TAG-CONCENTRATE"
+      },
+      {
+        "code": "TAG-IMPERIAL"
+      },
+      {
+        "code": "TAG-DETOX"
+      }
     ],
-    "tags": ["TAG-RARE", "TAG-HERITAGE", "TAG-CONCENTRATE", "TAG-IMPERIAL", "TAG-DETOX"],
-    "categories": ["CAT-PUER-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Various Pu-erh producing regions",
-        "coordinates": { "lat": 22.0, "lng": 100.5 },
+        "coordinates": {
+          "lat": 22,
+          "lng": 100.5
+        },
         "notes": "Concentrated tea extract, Tang Dynasty origins, imperial tribute tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-PUER-SHU",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-FULL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-HIGH",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-EARTHY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "90-100°C",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "1-2g / 150-200ml",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "Instant",
+        "showOnPage": true,
+        "order": 8
       }
     ]
   }

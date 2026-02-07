@@ -20,32 +20,114 @@
       {
         "lang": "zh-CN",
         "name": "茯砖茶",
-        "description": "湖南安化黑茶代表，以独特的"金花"（冠突散囊菌）著称。金花赋予茶叶特殊的保健功效。醇厚木香坚果味，带蜜甜回甘，伴有干果和梅子香。砖形紧压，越陈越香。",
+        "description": "湖南安化黑茶代表，以独特的“金花”（冠突散囊菌）著称。金花赋予茶叶特殊的保健功效。醇厚木香坚果味，带蜜甜回甘，伴有干果和梅子香。砖形紧压，越陈越香。",
         "seoName": "fu-zhuan-cha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-DARK", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-EARTHY", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-1000m", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-GOLDEN-FLOWERS"
+      },
+      {
+        "code": "TAG-BRICK-TEA"
+      },
+      {
+        "code": "TAG-AGED-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-DIGESTION"
+      }
     ],
-    "tags": ["TAG-GOLDEN-FLOWERS", "TAG-BRICK-TEA", "TAG-AGED-TEA", "TAG-SINGLE-ORIGIN", "TAG-DIGESTION"],
-    "categories": ["CAT-DARK-TEA", "CAT-REGION-CHINA", "CAT-REGION-HUNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Hunan",
         "place": "Anhua County, Yiyang",
-        "altitude": { "min": 300, "max": 1000, "unit": "m" },
-        "coordinates": { "lat": 28.0, "lng": 112.0 },
+        "altitude": {
+          "min": 300,
+          "max": 1000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 28,
+          "lng": 112
+        },
         "notes": "Birthplace of Fu Zhuan Cha, selenium-rich red soils, subtropical monsoon climate"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-DARK",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-FULL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-EARTHY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "300-1000m",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-7+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -70,32 +152,111 @@
       {
         "lang": "zh-CN",
         "name": "六堡茶",
-        "description": "广西梧州传统黑茶，历史逾1500年。以独特的"槟榔香"著称。醇厚油润，木香坚果香，伴有干果和泥土气息。东南亚华人社区尤为喜爱。越陈越香。",
+        "description": "广西梧州传统黑茶，历史逾1500年。以独特的“槟榔香”著称。醇厚油润，木香坚果香，伴有干果和泥土气息。东南亚华人社区尤为喜爱。越陈越香。",
         "seoName": "liu-bao-cha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-DARK", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-EARTHY", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-1000m", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-AGED-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-DIGESTION"
+      },
+      {
+        "code": "TAG-HERITAGE"
+      }
     ],
-    "tags": ["TAG-AGED-TEA", "TAG-SINGLE-ORIGIN", "TAG-DIGESTION", "TAG-HERITAGE"],
-    "categories": ["CAT-DARK-TEA", "CAT-REGION-CHINA", "CAT-REGION-GUANGXI"],
     "origins": [
       {
         "country": "CN",
         "state": "Guangxi",
         "place": "Liubao Township, Cangwu County, Wuzhou",
-        "altitude": { "min": 300, "max": 1000, "unit": "m" },
-        "coordinates": { "lat": 23.5, "lng": 110.5 },
+        "altitude": {
+          "min": 300,
+          "max": 1000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 23.5,
+          "lng": 110.5
+        },
         "notes": "Birthplace of Liu Bao Cha, humid subtropical climate, over 1500 years of tea history"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-DARK",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-FULL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-EARTHY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "300-1000m",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-7+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -120,32 +281,114 @@
       {
         "lang": "zh-CN",
         "name": "千两茶",
-        "description": "湖南安化独特的柱状紧压茶，重达36公斤。传统工艺需数十名工匠手工制作。醇厚浓烈，木香坚果香。因在丝绸之路贸易中的重要地位，被称为"世界茶王"。",
+        "description": "湖南安化独特的柱状紧压茶，重达36公斤。传统工艺需数十名工匠手工制作。醇厚浓烈，木香坚果香。因在丝绸之路贸易中的重要地位，被称为“世界茶王”。",
         "seoName": "qian-liang-cha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-DARK", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-WOODY", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-1000m", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "7-10+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-AGED-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-HERITAGE"
+      },
+      {
+        "code": "TAG-SILK-ROAD"
+      },
+      {
+        "code": "TAG-HANDMADE"
+      }
     ],
-    "tags": ["TAG-AGED-TEA", "TAG-SINGLE-ORIGIN", "TAG-HERITAGE", "TAG-SILK-ROAD", "TAG-HANDMADE"],
-    "categories": ["CAT-DARK-TEA", "CAT-REGION-CHINA", "CAT-REGION-HUNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Hunan",
         "place": "Anhua County, Yiyang",
-        "altitude": { "min": 300, "max": 1000, "unit": "m" },
-        "coordinates": { "lat": 28.0, "lng": 112.0 },
+        "altitude": {
+          "min": 300,
+          "max": 1000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 28,
+          "lng": 112
+        },
         "notes": "Traditional Silk Road tea, giant log shape requires dozens of craftsmen"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-DARK",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-FULL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-WOODY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "300-1000m",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "7-10+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -174,28 +417,107 @@
         "seoName": "anhua-tian-jian"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-DARK", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-FRUITY", "type": "Option", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-1000m", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-6g / 150ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-TOP-GRADE"
+      },
+      {
+        "code": "TAG-AGED-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      }
     ],
-    "tags": ["TAG-TOP-GRADE", "TAG-AGED-TEA", "TAG-SINGLE-ORIGIN", "TAG-SPRING"],
-    "categories": ["CAT-DARK-TEA", "CAT-REGION-CHINA", "CAT-REGION-HUNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Hunan",
         "place": "Anhua County, Yiyang",
-        "altitude": { "min": 300, "max": 1000, "unit": "m" },
-        "coordinates": { "lat": 28.0, "lng": 112.0 },
+        "altitude": {
+          "min": 300,
+          "max": 1000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 28,
+          "lng": 112
+        },
         "notes": "Highest grade of Anhua Hei Cha, spring harvest, bamboo basket packaging"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-DARK",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-FRUITY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "300-1000m",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "90-95°C",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-6g / 150ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -224,28 +546,110 @@
         "seoName": "sichuan-bian-cha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-DARK", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-HIGH", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-SMOKY", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "500-1500m", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "100°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "7-10g / 200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-BRICK-TEA"
+      },
+      {
+        "code": "TAG-AGED-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-HERITAGE"
+      },
+      {
+        "code": "TAG-TIBET"
+      }
     ],
-    "tags": ["TAG-BRICK-TEA", "TAG-AGED-TEA", "TAG-SINGLE-ORIGIN", "TAG-HERITAGE", "TAG-TIBET"],
-    "categories": ["CAT-DARK-TEA", "CAT-REGION-CHINA", "CAT-REGION-SICHUAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Sichuan",
         "place": "Ya'an, Mingshan District",
-        "altitude": { "min": 500, "max": 1500, "unit": "m" },
-        "coordinates": { "lat": 30.0, "lng": 103.0 },
+        "altitude": {
+          "min": 500,
+          "max": 1500,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 30,
+          "lng": 103
+        },
         "notes": "Traditional Tea-Horse Road tea, traded with Tibet for centuries"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-DARK",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-FULL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-HIGH",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-SMOKY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "500-1500m",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "100°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "7-10g / 200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-7+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -274,26 +678,92 @@
         "seoName": "liuan-hei-cha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-DARK", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-WOODY", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-6g / 150ml", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "4-6", "showOnPage": true, "order": 9 }
+    "tags": [
+      {
+        "code": "TAG-AGED-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-REGIONAL"
+      }
     ],
-    "tags": ["TAG-AGED-TEA", "TAG-SINGLE-ORIGIN", "TAG-REGIONAL"],
-    "categories": ["CAT-DARK-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
     "origins": [
       {
         "country": "CN",
         "state": "Anhui",
         "place": "Liu'an City",
-        "coordinates": { "lat": 31.7, "lng": 116.5 },
+        "coordinates": {
+          "lat": 31.7,
+          "lng": 116.5
+        },
         "notes": "Regional Hei Cha from Anhui, milder profile"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-DARK",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-WOODY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-6g / 150ml",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "4-6",
+        "showOnPage": true,
+        "order": 9
       }
     ]
   },
@@ -318,27 +788,90 @@
       {
         "lang": "zh-CN",
         "name": "黑茶",
-        "description": "中国后发酵茶大类，与红茶（西方称"黑茶"）不同。经过独特的微生物发酵过程。土香木香，越陈越香。传统上因其助消化和暖身功效而受重视。",
+        "description": "中国后发酵茶大类，与红茶（西方称“黑茶”）不同。经过独特的微生物发酵过程。土香木香，越陈越香。传统上因其助消化和暖身功效而受重视。",
         "seoName": "hei-cha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-DARK", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-POST", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-EARTHY", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 150-200ml", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-10+", "showOnPage": true, "order": 9 }
+    "tags": [
+      {
+        "code": "TAG-AGED-TEA"
+      },
+      {
+        "code": "TAG-DIGESTION"
+      },
+      {
+        "code": "TAG-WARMING"
+      }
     ],
-    "tags": ["TAG-AGED-TEA", "TAG-DIGESTION", "TAG-WARMING"],
-    "categories": ["CAT-DARK-TEA", "CAT-REGION-CHINA"],
     "origins": [
       {
         "country": "CN",
         "notes": "Multiple provinces: Hunan, Hubei, Sichuan, Yunnan, Guangxi, Anhui"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-DARK",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-FULL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-EARTHY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 150-200ml",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-10+",
+        "showOnPage": true,
+        "order": 9
       }
     ]
   }

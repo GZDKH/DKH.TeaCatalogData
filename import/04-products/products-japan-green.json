@@ -25,16 +25,23 @@
           "seoName": "jiancha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "70-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "1-2 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "steamed"
+        },
+        {
+          "code": "umami"
+        },
+        {
+          "code": "everyday"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "steamed", "umami", "everyday"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -43,6 +50,38 @@
           "latitude": 34.9769,
           "longitude": 138.3831,
           "altitude": 300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "70-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "1-2 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5-7 г / 200 мл"
         }
       ]
     },
@@ -67,20 +106,30 @@
         {
           "lang": "zh-CN",
           "name": "玉露",
-          "description": "最高档的日本绿茶，被称为"液体翡翠"。采摘前遮荫20-30天，增加茶氨酸和叶绿素含量。浓郁的鲜味、甘甜，茶汤呈翠绿色。建议50-60°C冲泡。",
+          "description": "最高档的日本绿茶，被称为“液体翡翠”。采摘前遮荫20-30天，增加茶氨酸和叶绿素含量。浓郁的鲜味、甘甜，茶汤呈翠绿色。建议50-60°C冲泡。",
           "seoName": "yulu"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "50-60°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 150 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "shade-grown"
+        },
+        {
+          "code": "umami"
+        },
+        {
+          "code": "premium"
+        },
+        {
+          "code": "ceremonial"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "shade-grown", "umami", "premium", "ceremonial"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -89,6 +138,38 @@
           "latitude": 34.8882,
           "longitude": 135.8014,
           "altitude": 200
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "50-60°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5-7 г / 150 мл"
         }
       ]
     },
@@ -117,16 +198,26 @@
           "seoName": "mocha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "70-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "взбивать" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "1-2 г / 60-80 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "powdered"
+        },
+        {
+          "code": "ceremonial"
+        },
+        {
+          "code": "umami"
+        },
+        {
+          "code": "antioxidant"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "powdered", "ceremonial", "umami", "antioxidant"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA", "MATCHA"],
       "origins": [
         {
           "country": "JP",
@@ -135,6 +226,38 @@
           "latitude": 34.8882,
           "longitude": 135.8014,
           "altitude": 200
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "70-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "взбивать"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "1-2 г / 60-80 мл"
         }
       ]
     },
@@ -163,16 +286,20 @@
           "seoName": "fancha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "80-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30-60 сек" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "everyday"
+        },
+        {
+          "code": "low-caffeine"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "everyday", "low-caffeine"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -181,6 +308,38 @@
           "latitude": 34.9769,
           "longitude": 138.3831,
           "altitude": 200
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "80-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30-60 сек"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 200 мл"
         }
       ]
     },
@@ -205,20 +364,27 @@
         {
           "lang": "zh-CN",
           "name": "玄米茶",
-          "description": "日本绿茶与炒糙米的混合茶。独特的坚果香气，口感温和甘甜。咖啡因含量低。常与寿司搭配。因爆米花状的米粒有时被称为"爆米花茶"。",
+          "description": "日本绿茶与炒糙米的混合茶。独特的坚果香气，口感温和甘甜。咖啡因含量低。常与寿司搭配。因爆米花状的米粒有时被称为“爆米花茶”。",
           "seoName": "xuanmicha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "80-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30-60 сек" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "roasted-rice"
+        },
+        {
+          "code": "nutty"
+        },
+        {
+          "code": "low-caffeine"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "roasted-rice", "nutty", "low-caffeine"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA", "BLENDED_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -227,6 +393,38 @@
           "latitude": 34.9769,
           "longitude": 138.3831,
           "altitude": 200
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "80-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30-60 сек"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 200 мл"
         }
       ]
     },
@@ -255,16 +453,26 @@
           "seoName": "beicha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95-100°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30-60 сек" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "roasted"
+        },
+        {
+          "code": "nutty"
+        },
+        {
+          "code": "low-caffeine"
+        },
+        {
+          "code": "evening"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "roasted", "nutty", "low-caffeine", "evening"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -273,6 +481,38 @@
           "latitude": 35.0116,
           "longitude": 135.7681,
           "altitude": 100
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95-100°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30-60 сек"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -301,16 +541,23 @@
           "seoName": "jingcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "80-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "1-2 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "stem-tea"
+        },
+        {
+          "code": "low-caffeine"
+        },
+        {
+          "code": "alkaline"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "stem-tea", "low-caffeine", "alkaline"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -319,6 +566,38 @@
           "latitude": 34.9769,
           "longitude": 138.3831,
           "altitude": 200
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "80-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "1-2 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 200 мл"
         }
       ]
     },
@@ -347,16 +626,20 @@
           "seoName": "fencha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "70-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30 сек" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "powder"
+        },
+        {
+          "code": "sushi"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "powder", "sushi"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -365,6 +648,38 @@
           "latitude": 34.9769,
           "longitude": 138.3831,
           "altitude": 200
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "70-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30 сек"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -389,20 +704,24 @@
         {
           "lang": "zh-CN",
           "name": "冠茶",
-          "description": ""半遮荫"日本茶，采摘前遮荫约一周。在口味和栽培方式上介于煎茶和玉露之间。比煎茶更甜、涩味更少，鲜味突出。",
+          "description": "“半遮荫”日本茶，采摘前遮荫约一周。在口味和栽培方式上介于煎茶和玉露之间。比煎茶更甜、涩味更少，鲜味突出。",
           "seoName": "guancha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "60-70°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "1-2 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "shade-grown"
+        },
+        {
+          "code": "umami"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "shade-grown", "umami"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -411,6 +730,38 @@
           "latitude": 34.7303,
           "longitude": 136.5086,
           "altitude": 250
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "60-70°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "1-2 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5-7 г / 200 мл"
         }
       ]
     },
@@ -439,16 +790,23 @@
           "seoName": "niancha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "60-70°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "shade-grown"
+        },
+        {
+          "code": "matcha-base"
+        },
+        {
+          "code": "umami"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "shade-grown", "matcha-base", "umami"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -457,6 +815,38 @@
           "latitude": 34.8882,
           "longitude": 135.8014,
           "altitude": 200
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "60-70°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 200 мл"
         }
       ]
     },
@@ -481,20 +871,24 @@
         {
           "lang": "zh-CN",
           "name": "玉绿茶",
-          "description": ""卷曲茶"——茶叶呈圆形螺旋状，形似蜗牛的日本绿茶。口感温和甘甜，带有柑橘香，无草涩味。主要产于九州。",
+          "description": "“卷曲茶”——茶叶呈圆形螺旋状，形似蜗牛的日本绿茶。口感温和甘甜，带有柑橘香，无草涩味。主要产于九州。",
           "seoName": "yulvcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "70-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "1-2 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "4-6 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "curly-leaf"
+        },
+        {
+          "code": "citrus"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "curly-leaf", "citrus"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -503,6 +897,38 @@
           "latitude": 33.1074,
           "longitude": 130.0061,
           "altitude": 300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "70-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "1-2 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "4-6 г / 200 мл"
         }
       ]
     },
@@ -531,16 +957,26 @@
           "seoName": "fucaocha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "80-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "1-2 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "4-6 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "pan-fired"
+        },
+        {
+          "code": "nutty"
+        },
+        {
+          "code": "smoky"
+        },
+        {
+          "code": "rare"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "pan-fired", "nutty", "smoky", "rare"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -549,6 +985,38 @@
           "latitude": 31.9111,
           "longitude": 131.4239,
           "altitude": 400
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "80-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "1-2 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "4-6 г / 200 мл"
         }
       ]
     },
@@ -577,16 +1045,20 @@
           "seoName": "shenzheng-jiancha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "70-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30-60 сек" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "deep-steamed"
+        },
+        {
+          "code": "umami"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "deep-steamed", "umami"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -595,6 +1067,38 @@
           "latitude": 34.9769,
           "longitude": 138.3831,
           "altitude": 300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "70-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30-60 сек"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5-7 г / 200 мл"
         }
       ]
     },
@@ -619,20 +1123,27 @@
         {
           "lang": "zh-CN",
           "name": "新茶",
-          "description": ""新茶"——首采春茶煎茶。最新鲜、最芳香，氨基酸含量高。季节性珍品，仅春季供应。象征新的开始和好运。",
+          "description": "“新茶”——首采春茶煎茶。最新鲜、最芳香，氨基酸含量高。季节性珍品，仅春季供应。象征新的开始和好运。",
           "seoName": "xincha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "70-75°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "1-2 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "first-flush"
+        },
+        {
+          "code": "seasonal"
+        },
+        {
+          "code": "premium"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "first-flush", "seasonal", "premium"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA", "SEASONAL_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -641,6 +1152,38 @@
           "latitude": 34.9769,
           "longitude": 138.3831,
           "altitude": 300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "70-75°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "1-2 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5-7 г / 200 мл"
         }
       ]
     },
@@ -669,16 +1212,23 @@
           "seoName": "mocha-xuanmicha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30-60 сек" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "matcha"
+        },
+        {
+          "code": "roasted-rice"
+        },
+        {
+          "code": "blend"
+        }
       ],
-      "tags": ["japanese-tea", "green-tea", "matcha", "roasted-rice", "blend"],
-      "categories": ["GREEN_TEA", "JAPANESE_TEA", "BLENDED_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -687,6 +1237,38 @@
           "latitude": 33.2124,
           "longitude": 130.5581,
           "altitude": 300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30-60 сек"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 200 мл"
         }
       ]
     }

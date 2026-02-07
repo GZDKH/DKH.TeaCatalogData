@@ -24,26 +24,98 @@
         "seoName": "baihao-yinzhen"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-1000 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Delicate, sweet, floral, honey", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "White flowers, honey, fresh greens", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "65-75°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-TOP10-CHINA"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-HANDPICKED"
+      }
     ],
-    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-HANDPICKED"],
-    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Fuding, Zhenghe",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-WHITE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-5",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "300-1000 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Delicate, sweet, floral, honey",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "White flowers, honey, fresh greens",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "65-75°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "2-3 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7 g / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -72,26 +144,92 @@
         "seoName": "bai-mudan"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-900 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Sweet, floral, fruity, honey", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Peony, peach, melon, honey", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-HANDPICKED"
+      }
     ],
-    "tags": ["TAG-SINGLE-ORIGIN", "TAG-HANDPICKED"],
-    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Fuding, Zhenghe",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-WHITE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-5",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "600-900 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Sweet, floral, fruity, honey",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Peony, peach, melon, honey",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "2-3 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7 g / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -120,26 +258,95 @@
         "seoName": "mudan-wang"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-900 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Full, sweet, floral, honey, fruity", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Peony, lily of the valley, honey, cream", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-HANDPICKED"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-HANDPICKED"],
-    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Fuding, Zhenghe",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-WHITE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-5",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "600-900 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Full, sweet, floral, honey, fruity",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Peony, lily of the valley, honey, cream",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "2-3 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7 g / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -168,26 +375,89 @@
         "seoName": "gong-mei"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-800 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, honey, fruity, sweet", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, flowers, fresh hay", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Fuding, Zhenghe",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-WHITE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-5",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "300-800 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Rich, honey, fruity, sweet",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Honey, flowers, fresh hay",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "2-3 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7 g / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -216,26 +486,92 @@
         "seoName": "shou-mei"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-800 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Full-bodied, honey, woody, sweet", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, dried fruits, wood, hay", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-90°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-4 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-AGED-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-AGED-TEA", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Fuding, Zhenghe",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-WHITE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-5",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "300-800 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Full-bodied, honey, woody, sweet",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Honey, dried fruits, wood, hay",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-90°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "2-4 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7 g / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -264,26 +600,92 @@
         "seoName": "bai-jian"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-900 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, floral, herbal", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fresh greens, flowers, honey", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "1-3 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-RARE-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-RARE-TEA", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Fuding",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-WHITE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-5",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "600-900 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, sweet, floral, herbal",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Fresh greens, flowers, honey",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "1-3 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5 g / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -312,26 +714,95 @@
         "seoName": "yue-guang-bai"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-2000 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, dried fruits, honey, floral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Dried apricot, prune, honey, flowers, spices", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-90°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "10 sec - 2 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-AGED-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-ANCIENT-TREES"
+      }
     ],
-    "tags": ["TAG-AGED-TEA", "TAG-SINGLE-ORIGIN", "TAG-ANCIENT-TREES"],
-    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Lincang, Simao",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-WHITE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-5",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1000-2000 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, sweet, dried fruits, honey, floral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Dried apricot, prune, honey, flowers, spices",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "80-90°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "10 sec - 2 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7 g / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -360,26 +831,98 @@
         "seoName": "yunnan-ziya-baicha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1500-3600 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Silky, sweet, melon, stone fruits, mineral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Melon, cucumber, fresh, floral, vanilla", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-90°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "15-30 sec (gongfu)", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-RARE-TEA"
+      },
+      {
+        "code": "TAG-WILD-TEA"
+      },
+      {
+        "code": "TAG-ANCIENT-TREES"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-RARE-TEA", "TAG-WILD-TEA", "TAG-ANCIENT-TREES", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Nannoshan, Jinggu",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-WHITE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-5",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1500-3600 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Silky, sweet, melon, stone fruits, mineral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Melon, cucumber, fresh, floral, vanilla",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "80-90°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "15-30 sec (gongfu)",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5 g / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -408,26 +951,98 @@
         "seoName": "dalicha-yinzhen"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1500+ m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Silky, sweet, floral, fruity, honey", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Orchid, magnolia, meadow herbs, honey", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-90°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-4 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-RARE-TEA"
+      },
+      {
+        "code": "TAG-WILD-TEA"
+      },
+      {
+        "code": "TAG-ANCIENT-TREES"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-RARE-TEA", "TAG-WILD-TEA", "TAG-ANCIENT-TREES", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Jinggu",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-WHITE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-5",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1500+ m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Silky, sweet, floral, fruity, honey",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Orchid, magnolia, meadow herbs, honey",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "80-90°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "2-4 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5 g / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   }

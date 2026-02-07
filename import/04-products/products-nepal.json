@@ -25,16 +25,23 @@
           "seoName": "niboer-jinya"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "NEPAL" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 150-200 мл" }
+      "tags": [
+        {
+          "code": "nepal-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "golden-tips"
+        },
+        {
+          "code": "premium"
+        },
+        {
+          "code": "tippy"
+        }
       ],
-      "tags": ["nepal-tea", "black-tea", "golden-tips", "premium", "tippy"],
-      "categories": ["BLACK_TEA", "NEPAL_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "NP",
@@ -43,6 +50,38 @@
           "latitude": 26.9112,
           "longitude": 87.9264,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "NEPAL"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 150-200 мл"
         }
       ]
     },
@@ -71,24 +110,66 @@
           "seoName": "jun-chiyabari-ximalaya-diwang"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "NEPAL" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "15-20 сек (проливы)" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5 г / 150 мл" }
+      "tags": [
+        {
+          "code": "nepal-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "organic"
+        },
+        {
+          "code": "biodynamic"
+        },
+        {
+          "code": "jun-chiyabari"
+        },
+        {
+          "code": "premium"
+        }
       ],
-      "tags": ["nepal-tea", "black-tea", "organic", "biodynamic", "jun-chiyabari", "premium"],
-      "categories": ["BLACK_TEA", "NEPAL_TEA", "PREMIUM_TEA", "ORGANIC_TEA"],
       "origins": [
         {
           "country": "NP",
           "region": "Dhankuta",
           "area": "Hile",
-          "latitude": 27.0000,
-          "longitude": 87.3000,
+          "latitude": 27,
+          "longitude": 87.3,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "NEPAL"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "15-20 сек (проливы)"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5 г / 150 мл"
         }
       ]
     },
@@ -117,16 +198,23 @@
           "seoName": "niboer-chunzhai"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "NEPAL" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "nepal-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "first-flush"
+        },
+        {
+          "code": "spring"
+        },
+        {
+          "code": "highland"
+        }
       ],
-      "tags": ["nepal-tea", "black-tea", "first-flush", "spring", "highland"],
-      "categories": ["BLACK_TEA", "NEPAL_TEA", "SEASONAL_TEA"],
       "origins": [
         {
           "country": "NP",
@@ -135,6 +223,38 @@
           "latitude": 26.9112,
           "longitude": 87.9264,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "NEPAL"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -163,16 +283,20 @@
           "seoName": "ximalaya-wulong"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "NEPAL" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 150 мл" }
+      "tags": [
+        {
+          "code": "nepal-tea"
+        },
+        {
+          "code": "oolong-tea"
+        },
+        {
+          "code": "himalayan"
+        },
+        {
+          "code": "highland"
+        }
       ],
-      "tags": ["nepal-tea", "oolong-tea", "himalayan", "highland"],
-      "categories": ["OOLONG_TEA", "NEPAL_TEA"],
       "origins": [
         {
           "country": "NP",
@@ -181,6 +305,38 @@
           "latitude": 26.9112,
           "longitude": 87.9264,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "OOLONG"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "NEPAL"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 150 мл"
         }
       ]
     },
@@ -209,16 +365,23 @@
           "seoName": "niboer-baihao-yinzhen"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "WHITE" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "NEPAL" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 200 мл" }
+      "tags": [
+        {
+          "code": "nepal-tea"
+        },
+        {
+          "code": "white-tea"
+        },
+        {
+          "code": "silver-needle"
+        },
+        {
+          "code": "highland"
+        },
+        {
+          "code": "delicate"
+        }
       ],
-      "tags": ["nepal-tea", "white-tea", "silver-needle", "highland", "delicate"],
-      "categories": ["WHITE_TEA", "NEPAL_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "NP",
@@ -227,6 +390,38 @@
           "latitude": 26.9112,
           "longitude": 87.9264,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "WHITE"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "NEPAL"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 200 мл"
         }
       ]
     },
@@ -255,16 +450,20 @@
           "seoName": "ximalaya-lvcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "NEPAL" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "nepal-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "himalayan"
+        },
+        {
+          "code": "highland"
+        }
       ],
-      "tags": ["nepal-tea", "green-tea", "himalayan", "highland"],
-      "categories": ["GREEN_TEA", "NEPAL_TEA"],
       "origins": [
         {
           "country": "NP",
@@ -273,6 +472,38 @@
           "latitude": 26.9112,
           "longitude": 87.9264,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "NEPAL"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     }

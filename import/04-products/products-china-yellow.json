@@ -20,31 +20,109 @@
       {
         "lang": "zh-CN",
         "name": "君山银针",
-        "description": "传奇黄茶，中国十大名茶之一。仅产于湖南洞庭湖君山岛。只采摘银毫披覆的未展芽头。冲泡时芽头上下浮动，呈现独特的"三起三落"奇观。口感鲜嫩甘甜，带有花香和蜜香。千年历史的贡茶。",
+        "description": "传奇黄茶，中国十大名茶之一。仅产于湖南洞庭湖君山岛。只采摘银毫披覆的未展芽头。冲泡时芽头上下浮动，呈现独特的“三起三落”奇观。口感鲜嫩甘甜，带有花香和蜜香。千年历史的贡茶。",
         "seoName": "junshan-yinzhen"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-FLORAL", "type": "Option", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-TOP10-CHINA"
+      },
+      {
+        "code": "TAG-IMPERIAL"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-RARE"
+      },
+      {
+        "code": "TAG-SPRING"
+      }
     ],
-    "tags": ["TAG-TOP10-CHINA", "TAG-IMPERIAL", "TAG-SINGLE-ORIGIN", "TAG-RARE", "TAG-SPRING"],
-    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA", "CAT-REGION-HUNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Hunan",
         "place": "Junshan Island, Dongting Lake, Yueyang",
-        "coordinates": { "lat": 29.0, "lng": 113.0 },
+        "coordinates": {
+          "lat": 29,
+          "lng": 113
+        },
         "notes": "Tiny volcanic island, unique microclimate, extremely limited production"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-YELLOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-FLORAL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "70-80°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -73,29 +151,114 @@
         "seoName": "mengding-huangya"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-FLORAL", "type": "Option", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1400-1500m", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 10 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 11 }
+    "tags": [
+      {
+        "code": "TAG-IMPERIAL"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-HERITAGE"
+      },
+      {
+        "code": "TAG-SPRING"
+      }
     ],
-    "tags": ["TAG-IMPERIAL", "TAG-SINGLE-ORIGIN", "TAG-HERITAGE", "TAG-SPRING"],
-    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA", "CAT-REGION-SICHUAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Sichuan",
         "place": "Mengding Mountain, Ya'an",
-        "altitude": { "min": 1400, "max": 1500, "unit": "m" },
-        "coordinates": { "lat": 30.0, "lng": 103.0 },
+        "altitude": {
+          "min": 1400,
+          "max": 1500,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 30,
+          "lng": 103
+        },
         "notes": "Birthplace of tea cultivation, over 2000 years history, imperial tribute tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-YELLOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-FLORAL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1400-1500m",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "70-80°C",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 10
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 11
       }
     ]
   },
@@ -120,33 +283,118 @@
       {
         "lang": "zh-CN",
         "name": "霍山黄芽",
-        "description": "安徽霍山千年名茶。以独特的"板栗香"著称。口感油润细腻，无涩感，带有花香、蜜香和坚果香。因香气、滋味、汤色三者皆鲜，故称"三鲜茶"。",
+        "description": "安徽霍山千年名茶。以独特的“板栗香”著称。口感油润细腻，无涩感，带有花香、蜜香和坚果香。因香气、滋味、汤色三者皆鲜，故称“三鲜茶”。",
         "seoName": "huoshan-huangya"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-NUTTY", "type": "Option", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-800m", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 10 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 11 }
+    "tags": [
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-HERITAGE"
+      },
+      {
+        "code": "TAG-SPRING"
+      },
+      {
+        "code": "TAG-NUTTY-AROMA"
+      }
     ],
-    "tags": ["TAG-SINGLE-ORIGIN", "TAG-HERITAGE", "TAG-SPRING", "TAG-NUTTY-AROMA"],
-    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
     "origins": [
       {
         "country": "CN",
         "state": "Anhui",
         "place": "Huoshan County, Lu'an, Dabie Mountains",
-        "altitude": { "min": 600, "max": 800, "unit": "m" },
-        "coordinates": { "lat": 31.0, "lng": 116.0 },
+        "altitude": {
+          "min": 600,
+          "max": 800,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 31,
+          "lng": 116
+        },
         "notes": "Famous for 'roasted chestnut' aroma, imperial tribute tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-YELLOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-NUTTY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "600-800m",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-80°C",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 10
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 11
       }
     ]
   },
@@ -171,33 +419,115 @@
       {
         "lang": "zh-CN",
         "name": "莫干黄芽",
-        "description": "浙江莫干山稀有黄茶。历史可追溯至唐代。莫干山以竹林、清新空气和秀丽风景著称。口感鲜嫩甘甜，带花香蜜香，有时微带烟香。因汤色金黄、价值珍贵，被称为"液体黄金"。",
+        "description": "浙江莫干山稀有黄茶。历史可追溯至唐代。莫干山以竹林、清新空气和秀丽风景著称。口感鲜嫩甘甜，带花香蜜香，有时微带烟香。因汤色金黄、价值珍贵，被称为“液体黄金”。",
         "seoName": "mogan-huangya"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-FLORAL", "type": "Option", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "400-700m", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 10 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 11 }
+    "tags": [
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-RARE"
+      },
+      {
+        "code": "TAG-SPRING"
+      }
     ],
-    "tags": ["TAG-SINGLE-ORIGIN", "TAG-RARE", "TAG-SPRING"],
-    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA", "CAT-REGION-ZHEJIANG"],
     "origins": [
       {
         "country": "CN",
         "state": "Zhejiang",
         "place": "Moganshan Mountain, Deqing County, Huzhou",
-        "altitude": { "min": 400, "max": 700, "unit": "m" },
-        "coordinates": { "lat": 30.0, "lng": 119.0 },
+        "altitude": {
+          "min": 400,
+          "max": 700,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 30,
+          "lng": 119
+        },
         "notes": "Scenic mountain resort, bamboo groves, clean air"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-YELLOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-FLORAL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "400-700m",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "70-80°C",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 10
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 11
       }
     ]
   },
@@ -226,28 +556,107 @@
         "seoName": "guizhou-huangcha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-LIGHT", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-SWEET", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-1300m", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "4-5g / 150ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-RARE"
+      },
+      {
+        "code": "TAG-HERITAGE"
+      },
+      {
+        "code": "TAG-CHARCOAL"
+      }
     ],
-    "tags": ["TAG-SINGLE-ORIGIN", "TAG-RARE", "TAG-HERITAGE", "TAG-CHARCOAL"],
-    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA", "CAT-REGION-GUIZHOU"],
     "origins": [
       {
         "country": "CN",
         "state": "Guizhou",
         "place": "Pan Ying Mountains",
-        "altitude": { "min": 1000, "max": 1300, "unit": "m" },
-        "coordinates": { "lat": 26.5, "lng": 106.0 },
+        "altitude": {
+          "min": 1000,
+          "max": 1300,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 26.5,
+          "lng": 106
+        },
         "notes": "Ancient Men Huang technique preserved, Lao Gong Xiang style, charcoal warmed"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-YELLOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-SWEET",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1000-1300m",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "4-5g / 150ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-7",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -276,29 +685,114 @@
         "seoName": "emei-huangya"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-FLORAL", "type": "Option", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-1500m", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 10 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 11 }
+    "tags": [
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-RARE"
+      },
+      {
+        "code": "TAG-BUDDHIST"
+      },
+      {
+        "code": "TAG-UNESCO"
+      }
     ],
-    "tags": ["TAG-SINGLE-ORIGIN", "TAG-RARE", "TAG-BUDDHIST", "TAG-UNESCO"],
-    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA", "CAT-REGION-SICHUAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Sichuan",
         "place": "Mount Emei, Leshan",
-        "altitude": { "min": 800, "max": 1500, "unit": "m" },
-        "coordinates": { "lat": 29.5, "lng": 103.3 },
+        "altitude": {
+          "min": 800,
+          "max": 1500,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 29.5,
+          "lng": 103.3
+        },
         "notes": "Sacred Buddhist mountain, UNESCO World Heritage, monastery production"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-YELLOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-FLORAL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "800-1500m",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "70-80°C",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 10
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 11
       }
     ]
   },
@@ -323,27 +817,90 @@
       {
         "lang": "zh-CN",
         "name": "黄茶",
-        "description": "中国稀有轻发酵茶大类，介于绿茶和乌龙茶之间。以独特的"闷黄"工艺著称，使茶叶呈黄绿色，口感甘甜无涩。历史上为贡茶，仅供皇室贵族。被认为是最古老的茶类之一。",
+        "description": "中国稀有轻发酵茶大类，介于绿茶和乌龙茶之间。以独特的“闷黄”工艺著称，使茶叶呈黄绿色，口感甘甜无涩。历史上为贡茶，仅供皇室贵族。被认为是最古老的茶类之一。",
         "seoName": "huangcha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-YELLOW", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-LIGHT", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-SWEET", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 9 }
+    "tags": [
+      {
+        "code": "TAG-RARE"
+      },
+      {
+        "code": "TAG-IMPERIAL"
+      },
+      {
+        "code": "TAG-HERITAGE"
+      }
     ],
-    "tags": ["TAG-RARE", "TAG-IMPERIAL", "TAG-HERITAGE"],
-    "categories": ["CAT-YELLOW-TEA", "CAT-REGION-CHINA"],
     "origins": [
       {
         "country": "CN",
         "notes": "Main provinces: Hunan, Sichuan, Anhui, Zhejiang"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-YELLOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-SWEET",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "70-80°C",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 9
       }
     ]
   }

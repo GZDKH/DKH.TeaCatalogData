@@ -25,24 +25,63 @@
           "seoName": "kenniya-zicha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "KENYA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-85°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "1-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200-250 мл" }
+      "tags": [
+        {
+          "code": "kenya-tea"
+        },
+        {
+          "code": "purple-tea"
+        },
+        {
+          "code": "anthocyanin"
+        },
+        {
+          "code": "functional"
+        },
+        {
+          "code": "antioxidant"
+        }
       ],
-      "tags": ["kenya-tea", "purple-tea", "anthocyanin", "functional", "antioxidant"],
-      "categories": ["GREEN_TEA", "KENYAN_TEA", "FUNCTIONAL_TEA"],
       "origins": [
         {
           "country": "KE",
           "region": "Nandi Hills",
           "area": "Western Kenya",
-          "latitude": 0.1000,
+          "latitude": 0.1,
           "longitude": 35.1667,
           "altitude": 1900
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "KENYA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-85°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "1-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200-250 мл"
         }
       ]
     },
@@ -71,16 +110,23 @@
           "seoName": "kenniya-jinya"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "KENYA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "kenya-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "golden-tips"
+        },
+        {
+          "code": "premium"
+        },
+        {
+          "code": "highland"
+        }
       ],
-      "tags": ["kenya-tea", "black-tea", "golden-tips", "premium", "highland"],
-      "categories": ["BLACK_TEA", "KENYAN_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "KE",
@@ -89,6 +135,38 @@
           "latitude": -0.4197,
           "longitude": 36.9553,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "KENYA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -117,16 +195,20 @@
           "seoName": "kenniya-op"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "KENYA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95-100°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "kenya-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "breakfast"
+        },
+        {
+          "code": "strong"
+        }
       ],
-      "tags": ["kenya-tea", "black-tea", "breakfast", "strong"],
-      "categories": ["BLACK_TEA", "KENYAN_TEA"],
       "origins": [
         {
           "country": "KE",
@@ -135,6 +217,38 @@
           "latitude": -0.0236,
           "longitude": 37.9062,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "KENYA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95-100°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -163,24 +277,63 @@
           "seoName": "ziya-baicha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "WHITE" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "KENYA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "70-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 200 мл" }
+      "tags": [
+        {
+          "code": "kenya-tea"
+        },
+        {
+          "code": "white-tea"
+        },
+        {
+          "code": "purple-tea"
+        },
+        {
+          "code": "anthocyanin"
+        },
+        {
+          "code": "rare"
+        }
       ],
-      "tags": ["kenya-tea", "white-tea", "purple-tea", "anthocyanin", "rare"],
-      "categories": ["WHITE_TEA", "KENYAN_TEA", "PREMIUM_TEA", "FUNCTIONAL_TEA"],
       "origins": [
         {
           "country": "KE",
           "region": "Nandi Hills",
           "area": "Western Kenya",
-          "latitude": 0.1000,
+          "latitude": 0.1,
           "longitude": 35.1667,
           "altitude": 1900
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "WHITE"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "KENYA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "70-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 200 мл"
         }
       ]
     },
@@ -209,24 +362,60 @@
           "seoName": "zi-wulong"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "KENYA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "80-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "4-5 г / 150 мл" }
+      "tags": [
+        {
+          "code": "kenya-tea"
+        },
+        {
+          "code": "oolong-tea"
+        },
+        {
+          "code": "purple-tea"
+        },
+        {
+          "code": "anthocyanin"
+        }
       ],
-      "tags": ["kenya-tea", "oolong-tea", "purple-tea", "anthocyanin"],
-      "categories": ["OOLONG_TEA", "KENYAN_TEA", "FUNCTIONAL_TEA"],
       "origins": [
         {
           "country": "KE",
           "region": "Nandi Hills",
           "area": "Western Kenya",
-          "latitude": 0.1000,
+          "latitude": 0.1,
           "longitude": 35.1667,
           "altitude": 1900
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "OOLONG"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "KENYA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "80-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "4-5 г / 150 мл"
         }
       ]
     }
