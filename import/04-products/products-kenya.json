@@ -10,19 +10,19 @@
           "lang": "ru-RU",
           "name": "Кенийский Фиолетовый Чай",
           "description": "Уникальный чай с высоким содержанием антоцианов из высокогорий Кении. Лёгкий сладковатый вкус с ягодными нотами. Фиолетовый настой становится розовым при добавлении лимона. Мощный антиоксидант.",
-          "seoName": "kenya-purple-tea"
+          "seo": "kenya-purple-tea"
         },
         {
           "lang": "en-US",
           "name": "Kenya Purple Tea",
           "description": "Unique tea with high anthocyanin content from Kenya highlands. Light sweet taste with berry notes. Purple infusion turns pink when lemon is added. Powerful antioxidant.",
-          "seoName": "kenya-purple-tea"
+          "seo": "kenya-purple-tea"
         },
         {
           "lang": "zh-CN",
           "name": "肯尼亚紫茶",
           "description": "产自肯尼亚高地的高花青素茶。口感轻盈甘甜，带有浆果香。紫色的茶汤加柠檬后变成粉红色。强效抗氧化剂。",
-          "seoName": "kenniya-zicha"
+          "seo": "kenniya-zicha"
         }
       ],
       "tags": [
@@ -95,19 +95,19 @@
           "lang": "ru-RU",
           "name": "Кения Золотые Типсы",
           "description": "Элитный чёрный чай с золотистыми почками из высокогорий Ньери. Яркий живой вкус с цитрусовыми и шоколадными нотами. Красноватый настой высокой прозрачности.",
-          "seoName": "kenya-golden-tips"
+          "seo": "kenya-golden-tips"
         },
         {
           "lang": "en-US",
           "name": "Kenya Golden Tips",
           "description": "Elite black tea with golden buds from Nyeri highlands. Bright lively taste with citrus and chocolate notes. Reddish infusion of high clarity.",
-          "seoName": "kenya-golden-tips"
+          "seo": "kenya-golden-tips"
         },
         {
           "lang": "zh-CN",
           "name": "肯尼亚金芽",
           "description": "产自涅里高地的带金色芽尖的精品红茶。口感明亮活泼，带有柑橘和巧克力香。茶汤呈红色，清澈透明。",
-          "seoName": "kenniya-jinya"
+          "seo": "kenniya-jinya"
         }
       ],
       "tags": [
@@ -180,19 +180,19 @@
           "lang": "ru-RU",
           "name": "Кения OP",
           "description": "Классический кенийский чёрный чай грейда Orange Pekoe. Яркий крепкий вкус, насыщенный цвет настоя. Отлично подходит для утреннего чаепития. Хорошо сочетается с молоком.",
-          "seoName": "kenya-op"
+          "seo": "kenya-op"
         },
         {
           "lang": "en-US",
           "name": "Kenya OP",
           "description": "Classic Kenyan black tea of Orange Pekoe grade. Bright strong taste, rich infusion color. Perfect for morning tea. Goes well with milk.",
-          "seoName": "kenya-op"
+          "seo": "kenya-op"
         },
         {
           "lang": "zh-CN",
           "name": "肯尼亚OP",
           "description": "经典的肯尼亚红茶，Orange Pekoe等级。口感明亮浓郁，茶汤颜色深厚。是早茶的理想选择。加奶更佳。",
-          "seoName": "kenniya-op"
+          "seo": "kenniya-op"
         }
       ],
       "tags": [
@@ -262,19 +262,19 @@
           "lang": "ru-RU",
           "name": "Фиолетовый Белый Чай",
           "description": "Редкий белый чай из почек фиолетового чайного куста. Минимальная обработка сохраняет антоцианы. Нежный сладкий вкус с фруктовыми нотами. Бледно-розовый настой.",
-          "seoName": "purple-white-tea"
+          "seo": "purple-white-tea"
         },
         {
           "lang": "en-US",
           "name": "Purple White Tea",
           "description": "Rare white tea from purple tea bush buds. Minimal processing preserves anthocyanins. Delicate sweet taste with fruity notes. Pale pink infusion.",
-          "seoName": "purple-white-tea"
+          "seo": "purple-white-tea"
         },
         {
           "lang": "zh-CN",
           "name": "紫芽白茶",
           "description": "采自紫茶树芽头的稀有白茶。最少的加工保留了花青素。细腻甘甜的口感带有果香。茶汤呈浅粉色。",
-          "seoName": "ziya-baicha"
+          "seo": "ziya-baicha"
         }
       ],
       "tags": [
@@ -347,19 +347,19 @@
           "lang": "ru-RU",
           "name": "Фиолетовый Улун",
           "description": "Полуферментированный чай из листьев фиолетового чайного куста. Сложные цветочные и фруктовые ноты. Сочетает антоцианы и традиционный вкус улуна. Розовато-янтарный настой.",
-          "seoName": "purple-oolong"
+          "seo": "purple-oolong"
         },
         {
           "lang": "en-US",
           "name": "Purple Oolong",
           "description": "Semi-fermented tea from purple tea bush leaves. Complex floral and fruity notes. Combines anthocyanins with traditional oolong taste. Pinkish-amber infusion.",
-          "seoName": "purple-oolong"
+          "seo": "purple-oolong"
         },
         {
           "lang": "zh-CN",
           "name": "紫乌龙",
           "description": "采自紫茶树叶片的半发酵茶。复杂的花香和果香。融合了花青素与传统乌龙的口感。茶汤呈粉琥珀色。",
-          "seoName": "zi-wulong"
+          "seo": "zi-wulong"
         }
       ],
       "tags": [

@@ -10,19 +10,19 @@
           "lang": "ru-RU",
           "name": "Ассам Orthodox TGFOP",
           "description": "Классический ортодоксальный чай Ассам с золотистыми типсами. Крепкий солодовый вкус, насыщенный тёмно-красный настой, бодрящий эффект. Идеален для завтрака, отлично сочетается с молоком.",
-          "seoName": "assam-orthodox-tgfop"
+          "seo": "assam-orthodox-tgfop"
         },
         {
           "lang": "en-US",
           "name": "Assam Orthodox TGFOP",
           "description": "Classic orthodox Assam tea with golden tips. Strong malty taste, rich dark red infusion, invigorating effect. Perfect for breakfast, excellent with milk.",
-          "seoName": "assam-orthodox-tgfop"
+          "seo": "assam-orthodox-tgfop"
         },
         {
           "lang": "zh-CN",
           "name": "阿萨姆正山TGFOP",
           "description": "带有金色芽尖的经典正山阿萨姆茶。浓郁的麦芽味，茶汤呈深红色，提神醒脑。是早餐的理想选择，加奶更佳。",
-          "seoName": "asamu-zhengshan-tgfop"
+          "seo": "asamu-zhengshan-tgfop"
         }
       ],
       "tags": [
@@ -98,19 +98,19 @@
           "lang": "ru-RU",
           "name": "Ассам CTC",
           "description": "Гранулированный чай по технологии CTC (Crush, Tear, Curl). Очень крепкий настой, насыщенный цвет, быстрое заваривание. Основа для масала-чая и чайных смесей English Breakfast.",
-          "seoName": "assam-ctc"
+          "seo": "assam-ctc"
         },
         {
           "lang": "en-US",
           "name": "Assam CTC",
           "description": "Granulated tea using CTC (Crush, Tear, Curl) method. Very strong infusion, rich color, quick brewing. Base for masala chai and English Breakfast blends.",
-          "seoName": "assam-ctc"
+          "seo": "assam-ctc"
         },
         {
           "lang": "zh-CN",
           "name": "阿萨姆CTC",
           "description": "采用CTC（揉切撕卷）工艺的颗粒茶。茶汤浓烈，色泽深厚，冲泡迅速。是马萨拉茶和英式早餐茶的基础茶。",
-          "seoName": "asamu-ctc"
+          "seo": "asamu-ctc"
         }
       ],
       "tags": [
@@ -186,19 +186,19 @@
           "lang": "ru-RU",
           "name": "Ассам Second Flush",
           "description": "Лучший сбор Ассама (апрель-май). Насыщенный солодовый вкус, медовые и карамельные ноты, характерные золотистые типсы. Крепкое полное тело, рубиновый настой.",
-          "seoName": "assam-second-flush"
+          "seo": "assam-second-flush"
         },
         {
           "lang": "en-US",
           "name": "Assam Second Flush",
           "description": "Best Assam harvest (April-May). Rich malty taste, honey and caramel notes, characteristic golden tips. Full strong body, ruby infusion.",
-          "seoName": "assam-second-flush"
+          "seo": "assam-second-flush"
         },
         {
           "lang": "zh-CN",
           "name": "阿萨姆二采",
           "description": "阿萨姆最佳采摘期（4-5月）。浓郁的麦芽味，蜂蜜和焦糖香，标志性的金色芽尖。口感醇厚，茶汤呈宝石红色。",
-          "seoName": "asamu-ercai"
+          "seo": "asamu-ercai"
         }
       ],
       "tags": [
@@ -274,19 +274,19 @@
           "lang": "ru-RU",
           "name": "Ассам Golden Tips",
           "description": "Элитный чай из чистых золотистых почек. Мягкий сладкий вкус с медовыми и фруктовыми нотами, минимальная терпкость. Янтарный настой с лёгким золотистым отливом.",
-          "seoName": "assam-golden-tips"
+          "seo": "assam-golden-tips"
         },
         {
           "lang": "en-US",
           "name": "Assam Golden Tips",
           "description": "Elite tea from pure golden buds. Mild sweet taste with honey and fruity notes, minimal astringency. Amber infusion with light golden hue.",
-          "seoName": "assam-golden-tips"
+          "seo": "assam-golden-tips"
         },
         {
           "lang": "zh-CN",
           "name": "阿萨姆金芽",
           "description": "由纯金色芽尖制成的顶级茶。口感甘甜柔和，带有蜂蜜和果香，涩味极少。茶汤呈琥珀色，略带金色光泽。",
-          "seoName": "asamu-jinya"
+          "seo": "asamu-jinya"
         }
       ],
       "tags": [
@@ -359,19 +359,19 @@
           "lang": "ru-RU",
           "name": "Ассам Зелёный",
           "description": "Редкий зелёный чай из листьев Camellia sinensis var. assamica. Более полное тело, чем у китайских зелёных чаёв. Травянистый вкус с лёгкой терпкостью, высокое содержание катехинов.",
-          "seoName": "assam-green"
+          "seo": "assam-green"
         },
         {
           "lang": "en-US",
           "name": "Assam Green Tea",
           "description": "Rare green tea from Camellia sinensis var. assamica leaves. Fuller body than Chinese green teas. Grassy taste with light astringency, high catechin content.",
-          "seoName": "assam-green"
+          "seo": "assam-green"
         },
         {
           "lang": "zh-CN",
           "name": "阿萨姆绿茶",
           "description": "由阿萨姆大叶种茶树制成的稀有绿茶。比中国绿茶更醇厚。草香带有轻微涩味，儿茶素含量高。",
-          "seoName": "asamu-lvcha"
+          "seo": "asamu-lvcha"
         }
       ],
       "tags": [
@@ -441,19 +441,19 @@
           "lang": "ru-RU",
           "name": "Масала Чай",
           "description": "Традиционный индийский чай со специями на основе крепкого ассамского CTC. Кардамон, корица, имбирь, гвоздика, чёрный перец. Заваривается с молоком и сахаром. Согревающий пряный напиток.",
-          "seoName": "masala-chai"
+          "seo": "masala-chai"
         },
         {
           "lang": "en-US",
           "name": "Masala Chai",
           "description": "Traditional Indian spiced tea based on strong Assam CTC. Cardamom, cinnamon, ginger, cloves, black pepper. Brewed with milk and sugar. Warming spicy drink.",
-          "seoName": "masala-chai"
+          "seo": "masala-chai"
         },
         {
           "lang": "zh-CN",
           "name": "马萨拉茶",
           "description": "以浓郁阿萨姆CTC为基础的传统印度香料茶。含有小豆蔻、肉桂、姜、丁香、黑胡椒。需加奶和糖冲泡。温暖辛香的饮品。",
-          "seoName": "masala-cha"
+          "seo": "masala-cha"
         }
       ],
       "tags": [

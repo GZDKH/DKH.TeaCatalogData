@@ -9,19 +9,19 @@
         "lang": "ru-RU",
         "name": "Шэн Пуэр (Сырой Пуэр)",
         "description": "Постферментированный чай из провинции Юньнань, один из самых известных китайских чаёв. Отличается естественным процессом ферментации при хранении — со временем вкус трансформируется от свежего травянистого к глубокому сухофруктовому. Молодой шэн имеет яркий терпкий вкус с цветочными нотами, выдержанный — мягкий, комплексный с оттенками орехов и древесины. Прессуется в блины (бин ча), кирпичи или гнёзда (то ча).",
-        "seoName": "shen-puer"
+        "seo": "shen-puer"
       },
       {
         "lang": "en-US",
         "name": "Sheng Pu-erh (Raw Pu-erh)",
         "description": "Post-fermented tea from Yunnan Province, one of China's most renowned teas. Distinguished by natural aging process during storage — flavor transforms over time from fresh grassy to deep dried fruit notes. Young sheng has bright, astringent taste with floral notes; aged sheng becomes mellow with nutty and woody overtones. Pressed into cakes (bing cha), bricks or nests (tuo cha).",
-        "seoName": "sheng-puer-raw"
+        "seo": "sheng-puer-raw"
       },
       {
         "lang": "zh-CN",
         "name": "生普洱",
         "description": "云南后发酵茶，中国最著名的茶之一。以自然陈化过程著称——随时间推移，口感从新鲜青草香转变为深沉果干香。新生普味道鲜爽，涩感明显，带花香；陈年生普醇和，带坚果和木香。多压制成饼茶、砖茶或沱茶。",
-        "seoName": "sheng-puer"
+        "seo": "sheng-puer"
       }
     ],
     "tags": [
@@ -141,19 +141,19 @@
         "lang": "ru-RU",
         "name": "Шу Пуэр (Готовый Пуэр)",
         "description": "Постферментированный чай из Юньнани, созданный по технологии «Во Дуй» (влажное скирдование), разработанной в 1970-х годах. Ускоренная ферментация за 45-60 дней придаёт чаю характеристики выдержанного шэна. Насыщенный землистый вкус с нотами древесины, орехов, шоколада и сухофруктов. Мягкое согревающее воздействие, отлично подходит для улучшения пищеварения.",
-        "seoName": "shu-puer"
+        "seo": "shu-puer"
       },
       {
         "lang": "en-US",
         "name": "Shu Pu-erh (Ripe Pu-erh)",
         "description": "Post-fermented tea from Yunnan created using 'Wo Dui' (wet piling) technique developed in the 1970s. Accelerated 45-60 day fermentation gives tea characteristics of aged sheng. Rich earthy flavor with notes of wood, nuts, chocolate and dried fruits. Gentle warming effect, excellent for digestion.",
-        "seoName": "shu-puer-ripe"
+        "seo": "shu-puer-ripe"
       },
       {
         "lang": "zh-CN",
         "name": "熟普洱",
         "description": "采用1970年代研发的“渥堆”工艺制成的云南后发酵茶。45-60天的加速发酵使茶叶具有陈年生普的特征。醇厚土香，带有木香、坚果、巧克力和干果香。温和暖身，有助消化。",
-        "seoName": "shu-puer"
+        "seo": "shu-puer"
       }
     ],
     "tags": [
@@ -270,19 +270,19 @@
         "lang": "ru-RU",
         "name": "Гун Тин Пуэр (Дворцовый Пуэр)",
         "description": "Элитный сорт Шу Пуэра, изготовленный из отборного мелкого сырья — преимущественно почек и молодых листочков. Название «Гун Тин» (Дворцовый) указывает на высочайшее качество, достойное императорского двора. Бархатистый вкус без терпкости, с нотами древесины, орехов, шоколада и карамели. Быстро заваривается благодаря мелкому сырью.",
-        "seoName": "gun-tin-puer"
+        "seo": "gun-tin-puer"
       },
       {
         "lang": "en-US",
         "name": "Gongting Pu-erh (Palace Pu-erh)",
         "description": "Premium Shu Pu-erh grade made from select fine material — predominantly buds and young leaves. 'Gongting' (Palace) name indicates highest quality worthy of imperial court. Velvety smooth taste without astringency, notes of wood, nuts, chocolate and caramel. Brews quickly due to fine material.",
-        "seoName": "gongting-puer-palace"
+        "seo": "gongting-puer-palace"
       },
       {
         "lang": "zh-CN",
         "name": "宫廷普洱",
         "description": "精选细嫩原料制成的高端熟普——以芽头和嫩叶为主。“宫廷”之名彰显其皇家品质。口感丝滑无涩，木香坚果香巧克力香焦糖香。原料细嫩，出汤快。",
-        "seoName": "gongting-puer"
+        "seo": "gongting-puer"
       }
     ],
     "tags": [
@@ -406,19 +406,19 @@
         "lang": "ru-RU",
         "name": "Лао Ча Тоу (Старые чайные головы)",
         "description": "Уникальная разновидность Шу Пуэра — плотные комки слипшихся листьев, образующиеся естественным образом в процессе влажного скирдования (Во Дуй). Изначально считались браком, но ценители открыли их особые качества. Очень насыщенный, плотный вкус с выраженными древесно-землистыми нотами, шоколадом и орехами. Долгое сладкое послевкусие. Выдерживает множество заварок.",
-        "seoName": "lao-cha-tou"
+        "seo": "lao-cha-tou"
       },
       {
         "lang": "en-US",
         "name": "Lao Cha Tou (Old Tea Heads)",
         "description": "Unique Shu Pu-erh variety — dense nuggets of naturally clumped leaves formed during wet piling (Wo Dui) process. Originally considered defect, but connoisseurs discovered their special qualities. Very rich, dense flavor with pronounced earthy-woody notes, chocolate and nuts. Long sweet aftertaste. Withstands many infusions.",
-        "seoName": "lao-cha-tou-old-tea-heads"
+        "seo": "lao-cha-tou-old-tea-heads"
       },
       {
         "lang": "zh-CN",
         "name": "老茶头",
         "description": "独特的熟普品种——渥堆过程中自然形成的紧实茶块。曾被视为副产品，但茶友发现其独特品质。滋味浓醇厚重，土香木香明显，带巧克力和坚果香。回甘持久绵长。耐泡度高。",
-        "seoName": "lao-cha-tou"
+        "seo": "lao-cha-tou"
       }
     ],
     "tags": [
@@ -535,19 +535,19 @@
         "lang": "ru-RU",
         "name": "Я Бао (Дикие чайные почки)",
         "description": "Редкий и необычный чай из спящих почек дикорастущих чайных деревьев Юньнани (преимущественно Camellia taliensis). Не является чаем в строгом смысле. Плотные почки напоминают маленькие шишечки. Сложный многогранный аромат с нотами древесины, мёда, цветов и сухофруктов. Мягкий сладковатый вкус. Считается чаем для гурманов, ищущих новые впечатления.",
-        "seoName": "ya-bao"
+        "seo": "ya-bao"
       },
       {
         "lang": "en-US",
         "name": "Ya Bao (Wild Tea Buds)",
         "description": "Rare and unusual tea from dormant buds of wild tea trees in Yunnan (primarily Camellia taliensis). Not technically tea in strict sense. Dense buds resemble small pine cones. Complex multifaceted aroma with notes of wood, honey, flowers and dried fruits. Soft sweet taste. Considered tea for gourmets seeking new experiences.",
-        "seoName": "ya-bao-wild-buds"
+        "seo": "ya-bao-wild-buds"
       },
       {
         "lang": "zh-CN",
         "name": "芽苞",
         "description": "云南野生茶树（主要为大理茶）休眠芽制成的稀有茶品。严格意义上不算茶叶。紧实芽苞形似小松果。香气复杂多层，有木香、蜜香、花香和干果香。口感柔和甘甜。被视为寻求新体验的茶客之选。",
-        "seoName": "ya-bao"
+        "seo": "ya-bao"
       }
     ],
     "tags": [
@@ -664,19 +664,19 @@
         "lang": "ru-RU",
         "name": "Да Цзинь Я (Большие золотые почки)",
         "description": "Элитный Шу Пуэр, отличающийся высоким содержанием крупных золотистых почек (типсов). Название буквально означает «большие золотые почки». Бархатистый, сладковатый вкус с нотами шоколада, карамели, орехов и сухофруктов. Красивый внешний вид сухого листа благодаря золотистому ворсу. Часто выбирается в качестве подарка.",
-        "seoName": "da-czin-ya"
+        "seo": "da-czin-ya"
       },
       {
         "lang": "en-US",
         "name": "Da Jin Ya (Golden Bud Pu-erh)",
         "description": "Premium Shu Pu-erh distinguished by high content of large golden buds (tips). Name literally means 'big golden buds'. Velvety sweet taste with notes of chocolate, caramel, nuts and dried fruits. Beautiful dry leaf appearance due to golden downy coverage. Often chosen as gift.",
-        "seoName": "da-jin-ya-golden-bud"
+        "seo": "da-jin-ya-golden-bud"
       },
       {
         "lang": "zh-CN",
         "name": "大金芽",
         "description": "以大量金色芽头著称的高端熟普。名字直译为“大金芽”。口感丝滑甘甜，带有巧克力、焦糖、坚果和干果香。金色茸毛覆盖，干茶外形优美。常作为礼品首选。",
-        "seoName": "da-jin-ya"
+        "seo": "da-jin-ya"
       }
     ],
     "tags": [
@@ -803,19 +803,19 @@
         "lang": "ru-RU",
         "name": "Ча Гао (Чайная смола)",
         "description": "Концентрат чайного настоя с многовековой историей. Изготавливается путём длительного вываривания чайного листа и сгущения до состояния пасты или смолы. Первые упоминания относятся к династии Тан (618-907 гг.). Использовался при императорском дворе и как валюта в торговле с Тибетом. Растворяется в горячей воде, создавая насыщенный настой. Концентрированные полезные свойства пуэра.",
-        "seoName": "cha-gao"
+        "seo": "cha-gao"
       },
       {
         "lang": "en-US",
         "name": "Cha Gao (Tea Paste/Resin)",
         "description": "Tea concentrate with centuries of history. Made by prolonged extraction and evaporation of tea leaves into paste or resin form. First mentions date to Tang Dynasty (618-907 AD). Used at imperial court and as currency in Tibet trade. Dissolves in hot water creating rich infusion. Concentrated beneficial properties of pu-erh.",
-        "seoName": "cha-gao-tea-paste"
+        "seo": "cha-gao-tea-paste"
       },
       {
         "lang": "zh-CN",
         "name": "茶膏",
         "description": "历史悠久的茶叶浓缩物。将茶叶长时间熬煮、浓缩成膏状或树脂状。最早记载可追溯至唐代（618-907年）。曾为宫廷贡品，也用作与藏区贸易的货币。溶于热水即成浓茶。普洱功效浓缩于其中。",
-        "seoName": "cha-gao"
+        "seo": "cha-gao"
       }
     ],
     "tags": [

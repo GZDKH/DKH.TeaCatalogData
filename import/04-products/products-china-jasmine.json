@@ -9,19 +9,19 @@
         "lang": "ru-RU",
         "name": "Моли Лунчжу (Жасминовые Жемчужины Дракона)",
         "description": "Моли Лунчжу — изысканный жасминовый чай, скрученный вручную в форме жемчужин. Зелёный чай проходит многократную (5-7 циклов) ароматизацию свежими цветами жасмина самбак. При заваривании жемчужины раскрываются, наполняя чашку интенсивным цветочным ароматом. Вкус мягкий, сладковатый, освежающий с долгим цветочным послевкусием. Один из самых красивых и ценных жасминовых чаёв.",
-        "seoName": "moli-longzhu"
+        "seo": "moli-longzhu"
       },
       {
         "lang": "en-US",
         "name": "Moli Longzhu (Jasmine Dragon Pearls)",
         "description": "Moli Longzhu is an exquisite jasmine tea hand-rolled into pearl shapes. Green tea undergoes multiple (5-7 cycles) scenting with fresh jasmine sambac flowers. When brewed, pearls unfurl, filling the cup with intense floral aroma. Taste is soft, sweet, refreshing with long floral aftertaste. One of the most beautiful and prized jasmine teas.",
-        "seoName": "moli-longzhu-jasmine-dragon-pearls"
+        "seo": "moli-longzhu-jasmine-dragon-pearls"
       },
       {
         "lang": "zh-CN",
         "name": "茉莉龙珠",
         "description": "茉莉龙珠是一款精致的茉莉花茶，手工揉成珠形。绿茶经过多次（5-7轮）新鲜茉莉花窨制。冲泡时珠球舒展，茶香与花香交融，香气浓郁。口感柔和甘甜，清新爽口，花香余韵悠长。是最美丽、最珍贵的茉莉花茶之一。",
-        "seoName": "moli-longzhu"
+        "seo": "moli-longzhu"
       }
     ],
     "tags": [
@@ -39,8 +39,7 @@
       {
         "country": "CN",
         "state": "Fujian",
-        "place": "Fuzhou",
-        "isPrimary": true
+        "place": "Fuzhou"
       }
     ],
     "specifications": [
@@ -126,19 +125,19 @@
         "lang": "ru-RU",
         "name": "Моли Инь Чжэнь (Жасминовые Серебряные Иглы)",
         "description": "Моли Инь Чжэнь — элитный жасминовый чай на основе белого чая Бай Хао Инь Чжэнь. Нежнейшие серебристые почки ароматизируются свежими цветами жасмина в течение нескольких циклов. Вкус очень мягкий, сладковатый с медовыми и цветочными нотами. Настой почти прозрачный, бледно-жёлтый. Сочетание двух элитных компонентов создаёт изысканный и утончённый напиток.",
-        "seoName": "moli-yin-zhen"
+        "seo": "moli-yin-zhen"
       },
       {
         "lang": "en-US",
         "name": "Moli Yin Zhen (Jasmine Silver Needles)",
         "description": "Moli Yin Zhen is an elite jasmine tea based on Bai Hao Yin Zhen white tea. Delicate silvery buds are scented with fresh jasmine flowers through multiple cycles. Taste is very soft, sweet with honey and floral notes. Infusion is almost transparent, pale yellow. Combination of two elite components creates an exquisite and refined drink.",
-        "seoName": "moli-yin-zhen-jasmine-silver-needles"
+        "seo": "moli-yin-zhen-jasmine-silver-needles"
       },
       {
         "lang": "zh-CN",
         "name": "茉莉银针",
         "description": "茉莉银针是以白茶白毫银针为基底的顶级茉莉花茶。细嫩的银白芽头经过多次新鲜茉莉花窨制。口感极其柔和甘甜，带有蜂蜜和花香。茶汤近乎透明，淡黄色。两种顶级原料的结合，成就一杯精致优雅的佳茗。",
-        "seoName": "moli-yinzhen"
+        "seo": "moli-yinzhen"
       }
     ],
     "tags": [
@@ -156,8 +155,7 @@
       {
         "country": "CN",
         "state": "Fujian",
-        "place": "Fuding",
-        "isPrimary": true
+        "place": "Fuding"
       }
     ],
     "specifications": [
@@ -243,19 +241,19 @@
         "lang": "ru-RU",
         "name": "Моли Инь Хао (Жасминовые Серебряные Ворсинки)",
         "description": "Моли Инь Хао — высококачественный жасминовый чай на основе зелёного чая из молодых почек, покрытых серебристым ворсом. Проходит многократную ароматизацию свежими цветами жасмина. Вкус мягкий, нежный, чистый с гармоничным сочетанием зелёного чая и жасмина. Настой светло-жёлтый с жемчужным блеском. Отличный баланс между свежестью чая и цветочным ароматом.",
-        "seoName": "moli-yin-hao"
+        "seo": "moli-yin-hao"
       },
       {
         "lang": "en-US",
         "name": "Moli Yin Hao (Jasmine Silver Tips)",
         "description": "Moli Yin Hao is a high-quality jasmine tea based on green tea from young buds covered with silvery down. Undergoes multiple scenting with fresh jasmine flowers. Taste is soft, delicate, pure with harmonious blend of green tea and jasmine. Infusion is light yellow with pearly sheen. Excellent balance between tea freshness and floral aroma.",
-        "seoName": "moli-yin-hao-jasmine-silver-tips"
+        "seo": "moli-yin-hao-jasmine-silver-tips"
       },
       {
         "lang": "zh-CN",
         "name": "茉莉银毫",
         "description": "茉莉银毫是以覆有银白毫毛的嫩芽绿茶为基底的高品质茉莉花茶。经过多次新鲜茉莉花窨制。口感柔和细腻纯净，绿茶与茉莉花香和谐交融。茶汤淡黄色带珍珠般光泽。茶叶的清新与花香达到绝佳平衡。",
-        "seoName": "moli-yinhao"
+        "seo": "moli-yinhao"
       }
     ],
     "tags": [
@@ -273,8 +271,7 @@
       {
         "country": "CN",
         "state": "Fujian",
-        "place": "Fuding, Zhenghe",
-        "isPrimary": true
+        "place": "Fuding, Zhenghe"
       }
     ],
     "specifications": [
@@ -360,19 +357,19 @@
         "lang": "ru-RU",
         "name": "Моли Пяо Сюэ (Парящий Снег)",
         "description": "Моли Пяо Сюэ — поэтичный жасминовый чай из провинции Сычуань. Название «Парящий снег» описывает белые лепестки жасмина, уложенные слоями между зелёными чаинками. Уникальная технология послойной укладки обеспечивает глубокую ароматизацию и эстетичный внешний вид. Вкус мягкий, сладковатый, освежающий. Аромат насыщенный, обволакивающий.",
-        "seoName": "moli-piao-xue"
+        "seo": "moli-piao-xue"
       },
       {
         "lang": "en-US",
         "name": "Moli Piao Xue (Floating Snow)",
         "description": "Moli Piao Xue is a poetic jasmine tea from Sichuan province. Name 'Floating Snow' describes white jasmine petals layered between green tea leaves. Unique layering technique ensures deep scenting and aesthetic appearance. Taste is soft, sweet, refreshing. Aroma is rich and enveloping.",
-        "seoName": "moli-piao-xue-floating-snow"
+        "seo": "moli-piao-xue-floating-snow"
       },
       {
         "lang": "zh-CN",
         "name": "茉莉飘雪",
         "description": "茉莉飘雪是一款来自四川的诗意茉莉花茶。「飘雪」之名描绘了白色茉莉花瓣与绿茶交叠的美景。独特的分层工艺确保深度窨香和优美外观。口感柔和甘甜，清新爽口。香气浓郁，沁人心脾。",
-        "seoName": "moli-piaoxue"
+        "seo": "moli-piaoxue"
       }
     ],
     "tags": [
@@ -387,8 +384,7 @@
       {
         "country": "CN",
         "state": "Sichuan",
-        "place": "Emeishan, Jiajiang",
-        "isPrimary": true
+        "place": "Emeishan, Jiajiang"
       }
     ],
     "specifications": [
@@ -474,19 +470,19 @@
         "lang": "ru-RU",
         "name": "Моли Фэн Янь (Глаз Феникса)",
         "description": "Моли Фэн Янь — художественный жасминовый чай с листьями, скрученными вручную в форме «глаза феникса». Вытянутые, слегка изогнутые чаинки напоминают глаз мифической птицы. Ароматизируется свежими цветами жасмина в несколько циклов. Вкус мягкий, нежный, освежающий. Феникс в китайской культуре символизирует возрождение, удачу и процветание.",
-        "seoName": "moli-feng-yan"
+        "seo": "moli-feng-yan"
       },
       {
         "lang": "en-US",
         "name": "Moli Feng Yan (Phoenix Eye)",
         "description": "Moli Feng Yan is an artistic jasmine tea with leaves hand-rolled into 'phoenix eye' shape. Elongated, slightly curved leaves resemble the eye of the mythical bird. Scented with fresh jasmine flowers through multiple cycles. Taste is soft, delicate, refreshing. Phoenix in Chinese culture symbolizes rebirth, luck and prosperity.",
-        "seoName": "moli-feng-yan-phoenix-eye"
+        "seo": "moli-feng-yan-phoenix-eye"
       },
       {
         "lang": "zh-CN",
         "name": "茉莉凤眼",
         "description": "茉莉凤眼是一款艺术茉莉花茶，茶叶手工揉成「凤眼」形状。细长微弯的茶叶宛如神话凤凰之眼。经过多轮新鲜茉莉花窨制。口感柔和细腻，清新爽口。凤凰在中国文化中象征重生、好运与繁荣。",
-        "seoName": "moli-fengyan"
+        "seo": "moli-fengyan"
       }
     ],
     "tags": [
@@ -501,8 +497,7 @@
       {
         "country": "CN",
         "state": "Fujian",
-        "place": "Fuzhou",
-        "isPrimary": true
+        "place": "Fuzhou"
       }
     ],
     "specifications": [
@@ -588,19 +583,19 @@
         "lang": "ru-RU",
         "name": "Моли Юй Де (Нефритовая Бабочка)",
         "description": "Моли Юй Де — изысканный художественный жасминовый чай с листьями, сложенными вручную в форме бабочки. Название «Нефритовая бабочка» подчёркивает красоту и благородство этого чая. При заваривании «бабочки» раскрываются, создавая эстетическое зрелище. Вкус мягкий, нежный, сладковатый с цветочным послевкусием.",
-        "seoName": "moli-yu-die"
+        "seo": "moli-yu-die"
       },
       {
         "lang": "en-US",
         "name": "Moli Yu Die (Jade Butterfly)",
         "description": "Moli Yu Die is an exquisite artistic jasmine tea with leaves hand-folded into butterfly shape. Name 'Jade Butterfly' emphasizes the beauty and nobility of this tea. When brewed, 'butterflies' unfurl, creating an aesthetic spectacle. Taste is soft, delicate, sweet with floral aftertaste.",
-        "seoName": "moli-yu-die-jade-butterfly"
+        "seo": "moli-yu-die-jade-butterfly"
       },
       {
         "lang": "zh-CN",
         "name": "茉莉玉蝶",
         "description": "茉莉玉蝶是一款精致的艺术茉莉花茶，茶叶手工折叠成蝴蝶形状。「玉蝶」之名彰显此茶的美丽与高贵。冲泡时「蝴蝶」舒展，美不胜收。口感柔和细腻，甘甜回甘，花香余韵悠长。",
-        "seoName": "moli-yudie"
+        "seo": "moli-yudie"
       }
     ],
     "tags": [
@@ -618,8 +613,7 @@
       {
         "country": "CN",
         "state": "Fujian",
-        "place": "Fuzhou",
-        "isPrimary": true
+        "place": "Fuzhou"
       }
     ],
     "specifications": [
@@ -705,19 +699,19 @@
         "lang": "ru-RU",
         "name": "Моли Нюй'эр Хуань (Девичьи Кольца)",
         "description": "Моли Нюй'эр Хуань — художественный жасминовый чай с листьями, скрученными вручную в форме изящных колец. Название «Девичьи кольца» навеяно ассоциациями с украшениями. При заваривании кольца медленно раскрываются, создавая завораживающее зрелище. Вкус мягкий, нежный, освежающий с гармоничным цветочным ароматом.",
-        "seoName": "moli-nuer-huan"
+        "seo": "moli-nuer-huan"
       },
       {
         "lang": "en-US",
         "name": "Moli Nu'er Huan (Maiden Rings)",
         "description": "Moli Nu'er Huan is an artistic jasmine tea with leaves hand-rolled into elegant ring shapes. Name 'Maiden Rings' is inspired by jewelry associations. When brewed, rings slowly unfurl, creating a mesmerizing spectacle. Taste is soft, delicate, refreshing with harmonious floral aroma.",
-        "seoName": "moli-nuer-huan-maiden-rings"
+        "seo": "moli-nuer-huan-maiden-rings"
       },
       {
         "lang": "zh-CN",
         "name": "茉莉女儿环",
         "description": "茉莉女儿环是一款艺术茉莉花茶，茶叶手工揉成优雅的环形。「女儿环」之名联想到精美饰品。冲泡时茶环缓缓舒展，令人陶醉。口感柔和细腻，清新爽口，花香和谐怡人。",
-        "seoName": "moli-nuerhuan"
+        "seo": "moli-nuerhuan"
       }
     ],
     "tags": [
@@ -732,8 +726,7 @@
       {
         "country": "CN",
         "state": "Fujian",
-        "place": "Fuzhou",
-        "isPrimary": true
+        "place": "Fuzhou"
       }
     ],
     "specifications": [

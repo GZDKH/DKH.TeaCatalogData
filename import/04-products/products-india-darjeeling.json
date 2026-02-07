@@ -10,19 +10,19 @@
           "lang": "ru-RU",
           "name": "Дарджилинг First Flush",
           "description": "«Шампанское среди чаев» — первый весенний сбор с гималайских плантаций. Лёгкий, нежный вкус с цветочными и фруктовыми нотами, минимальная терпкость. Светлый золотистый настой, изысканный мускатный аромат.",
-          "seoName": "darjeeling-first-flush"
+          "seo": "darjeeling-first-flush"
         },
         {
           "lang": "en-US",
           "name": "Darjeeling First Flush",
           "description": "'Champagne of teas' — first spring harvest from Himalayan estates. Light, delicate taste with floral and fruity notes, minimal astringency. Light golden infusion, exquisite muscatel aroma.",
-          "seoName": "darjeeling-first-flush"
+          "seo": "darjeeling-first-flush"
         },
         {
           "lang": "zh-CN",
           "name": "大吉岭春摘",
           "description": "“茶中香槟”——来自喜马拉雅山庄园的首摘春茶。口感轻盈细腻，带有花香和果香，涩味极少。茶汤呈浅金色，散发着优雅的麝香葡萄香气。",
-          "seoName": "dajiling-chunzhai"
+          "seo": "dajiling-chunzhai"
         }
       ],
       "tags": [
@@ -98,19 +98,19 @@
           "lang": "ru-RU",
           "name": "Дарджилинг Second Flush",
           "description": "Летний сбор — пик качества для многих ценителей. Насыщенный янтарный настой, полное тело, знаменитый мускатный вкус и аромат. Более терпкий и выразительный, чем First Flush.",
-          "seoName": "darjeeling-second-flush"
+          "seo": "darjeeling-second-flush"
         },
         {
           "lang": "en-US",
           "name": "Darjeeling Second Flush",
           "description": "Summer harvest — peak quality for many connoisseurs. Rich amber infusion, full body, famous muscatel taste and aroma. More astringent and expressive than First Flush.",
-          "seoName": "darjeeling-second-flush"
+          "seo": "darjeeling-second-flush"
         },
         {
           "lang": "zh-CN",
           "name": "大吉岭夏摘",
           "description": "夏采茶——许多鉴赏家眼中的品质巅峰。茶汤呈浓郁的琥珀色，口感醇厚，散发着著名的麝香葡萄香气。比春摘更涩，更有表现力。",
-          "seoName": "dajiling-xiazhai"
+          "seo": "dajiling-xiazhai"
         }
       ],
       "tags": [
@@ -183,19 +183,19 @@
           "lang": "ru-RU",
           "name": "Дарджилинг Autumnal Flush",
           "description": "Осенний сбор после сезона дождей. Медно-красный настой, мягкий округлый вкус с фруктовыми и древесными нотами. Меньше терпкости, чем в летних сборах.",
-          "seoName": "darjeeling-autumnal"
+          "seo": "darjeeling-autumnal"
         },
         {
           "lang": "en-US",
           "name": "Darjeeling Autumnal Flush",
           "description": "Autumn harvest after monsoon season. Copper-red infusion, mild rounded taste with fruity and woody notes. Less astringency than summer harvests.",
-          "seoName": "darjeeling-autumnal"
+          "seo": "darjeeling-autumnal"
         },
         {
           "lang": "zh-CN",
           "name": "大吉岭秋摘",
           "description": "雨季后的秋采茶。茶汤呈铜红色，口感圆润温和，带有果香和木香。涩味比夏摘少。",
-          "seoName": "dajiling-qiuzhai"
+          "seo": "dajiling-qiuzhai"
         }
       ],
       "tags": [
@@ -265,19 +265,19 @@
           "lang": "ru-RU",
           "name": "Дарджилинг Улун",
           "description": "Редкий полуферментированный чай из Дарджилинга. Сочетает свежесть зелёного чая с глубиной чёрного. Цветочный аромат, медовый вкус, лёгкая сладость в послевкусии.",
-          "seoName": "darjeeling-oolong"
+          "seo": "darjeeling-oolong"
         },
         {
           "lang": "en-US",
           "name": "Darjeeling Oolong",
           "description": "Rare semi-fermented tea from Darjeeling. Combines freshness of green tea with depth of black. Floral aroma, honey taste, light sweetness in aftertaste.",
-          "seoName": "darjeeling-oolong"
+          "seo": "darjeeling-oolong"
         },
         {
           "lang": "zh-CN",
           "name": "大吉岭乌龙",
           "description": "大吉岭稀有的半发酵茶。融合了绿茶的清新与红茶的醇厚。花香馥郁，蜂蜜般的口感，回甘清甜。",
-          "seoName": "dajiling-wulong"
+          "seo": "dajiling-wulong"
         }
       ],
       "tags": [
@@ -347,19 +347,19 @@
           "lang": "ru-RU",
           "name": "Дарджилинг Белый",
           "description": "Нежнейший белый чай из молодых почек. Минимальная обработка сохраняет все полезные вещества. Тонкий цветочный аромат, сладковатый мягкий вкус, бледно-жёлтый настой.",
-          "seoName": "darjeeling-white"
+          "seo": "darjeeling-white"
         },
         {
           "lang": "en-US",
           "name": "Darjeeling White Tea",
           "description": "Delicate white tea from young buds. Minimal processing preserves all beneficial substances. Subtle floral aroma, sweet mild taste, pale yellow infusion.",
-          "seoName": "darjeeling-white"
+          "seo": "darjeeling-white"
         },
         {
           "lang": "zh-CN",
           "name": "大吉岭白茶",
           "description": "采用嫩芽制成的细腻白茶。最少的加工保留了所有有益成分。淡雅的花香，甘甜柔和的口感，茶汤呈浅黄色。",
-          "seoName": "dajiling-baicha"
+          "seo": "dajiling-baicha"
         }
       ],
       "tags": [
@@ -429,19 +429,19 @@
           "lang": "ru-RU",
           "name": "Дарджилинг Зелёный",
           "description": "Зелёный чай из высокогорных плантаций Дарджилинга. Свежий травянистый вкус с нотами весенней зелени, лёгкая сладость. Светло-зелёный прозрачный настой.",
-          "seoName": "darjeeling-green"
+          "seo": "darjeeling-green"
         },
         {
           "lang": "en-US",
           "name": "Darjeeling Green Tea",
           "description": "Green tea from high-altitude Darjeeling estates. Fresh grassy taste with spring greens notes, light sweetness. Light green transparent infusion.",
-          "seoName": "darjeeling-green"
+          "seo": "darjeeling-green"
         },
         {
           "lang": "zh-CN",
           "name": "大吉岭绿茶",
           "description": "产自大吉岭高海拔庄园的绿茶。清新的草香带有春日青草的气息，略带甘甜。茶汤呈透明的浅绿色。",
-          "seoName": "dajiling-lvcha"
+          "seo": "dajiling-lvcha"
         }
       ],
       "tags": [
