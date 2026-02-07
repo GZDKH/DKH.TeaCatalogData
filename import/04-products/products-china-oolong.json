@@ -24,28 +24,113 @@
         "seoName": "da-hong-pao"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-60", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-HEAVY", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "500-1000m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Roasted, chocolate, dried fruits, mineral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fire, wood, chocolate, spices, dried fruits", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "7-10+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-TOP10-CHINA"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-ELITE"
+      },
+      {
+        "code": "TAG-ROCK-TEA"
+      },
+      {
+        "code": "TAG-UNESCO"
+      },
+      {
+        "code": "TAG-CHARCOAL-ROAST"
+      }
     ],
-    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-ELITE", "TAG-ROCK-TEA", "TAG-UNESCO", "TAG-CHARCOAL-ROAST"],
-    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN", "CAT-WUYI-ROCK"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Wuyi Mountains, Zhengyan area",
-        "altitude": { "min": 500, "max": 1000, "unit": "m" },
-        "coordinates": { "lat": 27.7, "lng": 117.7 },
+        "altitude": {
+          "min": 500,
+          "max": 1000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 27.7,
+          "lng": 117.7
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-OOLONG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-60",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-HEAVY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "500-1000m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Roasted, chocolate, dried fruits, mineral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Fire, wood, chocolate, spices, dried fruits",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 100-150ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "7-10+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -74,28 +159,107 @@
         "seoName": "tie-luohan"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-60", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-HEAVY", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-HIGH", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-1000m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Powerful, roasted, chocolate, nuts, mineral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fire, chocolate, dried fruits, nuts", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "7-10+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-ROCK-TEA"
+      },
+      {
+        "code": "TAG-HERITAGE"
+      },
+      {
+        "code": "TAG-CHARCOAL-ROAST"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-ROCK-TEA", "TAG-HERITAGE", "TAG-CHARCOAL-ROAST"],
-    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN", "CAT-WUYI-ROCK"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Wuyi Mountains, Huiyuan Yan, Niulan Keng",
-        "altitude": { "min": 600, "max": 1000, "unit": "m" },
-        "coordinates": { "lat": 27.7, "lng": 117.7 },
+        "altitude": {
+          "min": 600,
+          "max": 1000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 27.7,
+          "lng": 117.7
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-OOLONG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-60",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-HEAVY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-HIGH",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "600-1000m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Powerful, roasted, chocolate, nuts, mineral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Fire, chocolate, dried fruits, nuts",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 100-150ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "7-10+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -124,28 +288,104 @@
         "seoName": "tie-guanyin"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-30", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-LIGHT", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-1000m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Fresh, sweet, floral, orchid, creamy", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Orchid, flowers, cream, sweet", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-TOP10-CHINA"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN", "CAT-ANXI-OOLONG"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Anxi County, Quanzhou",
-        "altitude": { "min": 600, "max": 1000, "unit": "m" },
-        "coordinates": { "lat": 25.0, "lng": 118.0 },
+        "altitude": {
+          "min": 600,
+          "max": 1000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 25,
+          "lng": 118
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-OOLONG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-30",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "600-1000m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Fresh, sweet, floral, orchid, creamy",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Orchid, flowers, cream, sweet",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "90-95°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 100-150ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-7+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -174,28 +414,104 @@
         "seoName": "rou-gui"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-50", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "500-1000m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Spicy, cinnamon, chocolate, mineral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Cinnamon, spices, roasted, dried fruits", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "6-8+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-ROCK-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-CHARCOAL-ROAST"
+      }
     ],
-    "tags": ["TAG-ROCK-TEA", "TAG-SINGLE-ORIGIN", "TAG-CHARCOAL-ROAST"],
-    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN", "CAT-WUYI-ROCK"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Wuyi Mountains",
-        "altitude": { "min": 500, "max": 1000, "unit": "m" },
-        "coordinates": { "lat": 27.7, "lng": 117.7 },
+        "altitude": {
+          "min": 500,
+          "max": 1000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 27.7,
+          "lng": 117.7
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-OOLONG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-50",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "500-1000m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Spicy, cinnamon, chocolate, mineral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Cinnamon, spices, roasted, dried fruits",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 100-150ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "6-8+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -224,28 +540,104 @@
         "seoName": "shui-xian"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-50", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "500-1000m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, smooth, orchid, chocolate, mineral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Orchid, flowers, wood, chocolate", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "95-100°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "6-8+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-ROCK-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-CHARCOAL-ROAST"
+      }
     ],
-    "tags": ["TAG-ROCK-TEA", "TAG-SINGLE-ORIGIN", "TAG-CHARCOAL-ROAST"],
-    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN", "CAT-WUYI-ROCK"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Wuyi Mountains",
-        "altitude": { "min": 500, "max": 1000, "unit": "m" },
-        "coordinates": { "lat": 27.7, "lng": 117.7 },
+        "altitude": {
+          "min": 500,
+          "max": 1000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 27.7,
+          "lng": 117.7
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-OOLONG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-50",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "500-1000m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Rich, smooth, orchid, chocolate, mineral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Orchid, flowers, wood, chocolate",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 100-150ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "6-8+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -274,28 +666,104 @@
         "seoName": "mi-lan-xiang-dancong"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-40", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-LIGHT", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-1200m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Sweet, floral, honey, orchid, refreshing", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, orchid, flowers, sweet", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "6-10+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-BUSH"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-SINGLE-BUSH", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-GUANGDONG", "CAT-DANCONG"],
     "origins": [
       {
         "country": "CN",
         "state": "Guangdong",
         "place": "Phoenix Mountains (Fenghuang Shan), Chaozhou",
-        "altitude": { "min": 800, "max": 1200, "unit": "m" },
-        "coordinates": { "lat": 23.9, "lng": 116.6 },
+        "altitude": {
+          "min": 800,
+          "max": 1200,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 23.9,
+          "lng": 116.6
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-OOLONG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-40",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "800-1200m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Sweet, floral, honey, orchid, refreshing",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Honey, orchid, flowers, sweet",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "90-95°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 100-150ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "6-10+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -324,28 +792,104 @@
         "seoName": "dong-ding-wulong"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-30", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-800m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Sweet, buttery, orchid, milk, caramel", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Cream, orchid, flowers, roasted", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-TAIWAN"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-TAIWAN"],
-    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-TAIWAN"],
     "origins": [
       {
         "country": "TW",
         "state": "Taiwan",
         "place": "Dongding Mountain, Nantou County",
-        "altitude": { "min": 600, "max": 800, "unit": "m" },
-        "coordinates": { "lat": 23.7, "lng": 120.8 },
+        "altitude": {
+          "min": 600,
+          "max": 800,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 23.7,
+          "lng": 120.8
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-OOLONG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-30",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "600-800m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Sweet, buttery, orchid, milk, caramel",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Cream, orchid, flowers, roasted",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "90-95°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 100-150ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-7+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -374,28 +918,107 @@
         "seoName": "alishan-wulong"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-20", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-LIGHT", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-1500m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Sweet, creamy, orchid, lily, refreshing", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Orchid, lily of the valley, cream, flowers", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-90°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-8+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-HIGH-MOUNTAIN"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-TAIWAN"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-HIGH-MOUNTAIN", "TAG-SINGLE-ORIGIN", "TAG-TAIWAN"],
-    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-TAIWAN"],
     "origins": [
       {
         "country": "TW",
         "state": "Taiwan",
         "place": "Alishan Mountain, Chiayi County",
-        "altitude": { "min": 1000, "max": 1500, "unit": "m" },
-        "coordinates": { "lat": 23.5, "lng": 120.8 },
+        "altitude": {
+          "min": 1000,
+          "max": 1500,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 23.5,
+          "lng": 120.8
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-OOLONG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-20",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1000-1500m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Sweet, creamy, orchid, lily, refreshing",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Orchid, lily of the valley, cream, flowers",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "85-90°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 100-150ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-8+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -424,28 +1047,110 @@
         "seoName": "dongfang-meiren"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-70", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-800m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Sweet, honey, muscat, peach, fruity", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, muscat grape, dried fruits, flowers", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-90°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "4-6", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-UNIQUE"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-TAIWAN"
+      },
+      {
+        "code": "TAG-BUG-BITTEN"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-UNIQUE", "TAG-SINGLE-ORIGIN", "TAG-TAIWAN", "TAG-BUG-BITTEN"],
-    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA", "CAT-REGION-TAIWAN"],
     "origins": [
       {
         "country": "TW",
         "state": "Taiwan",
         "place": "Hsinchu, Miaoli Counties",
-        "altitude": { "min": 300, "max": 800, "unit": "m" },
-        "coordinates": { "lat": 24.8, "lng": 121.0 },
+        "altitude": {
+          "min": 300,
+          "max": 800,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 24.8,
+          "lng": 121
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-OOLONG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-70",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "300-800m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Sweet, honey, muscat, peach, fruity",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Honey, muscat grape, dried fruits, flowers",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "85-90°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "4-6",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -474,20 +1179,59 @@
         "seoName": "wulong"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-30", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-100°C", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7g / 100-150ml", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-10+", "showOnPage": true, "order": 6 }
+    "tags": [
+      {
+        "code": "TAG-GONGFU"
+      }
     ],
-    "tags": ["TAG-GONGFU"],
-    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-CHINA"],
     "origins": [
       {
         "country": "CN",
         "notes": "Main regions: Fujian (Wuyi, Anxi), Guangdong (Phoenix Mountains), Taiwan"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-OOLONG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-30",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "85-100°C",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7g / 100-150ml",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-10+",
+        "showOnPage": true,
+        "order": 6
       }
     ]
   }

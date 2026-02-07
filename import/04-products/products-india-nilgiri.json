@@ -21,20 +21,27 @@
         {
           "lang": "zh-CN",
           "name": "尼尔吉里红茶TGFOP",
-          "description": "产自南印度"蓝山"的高山茶。口感柔滑，带有柑橘香和轻微酸味。清新爽口，涩味比阿萨姆少。茶汤呈明亮的琥珀色。",
+          "description": "产自南印度“蓝山”的高山茶。口感柔滑，带有柑橘香和轻微酸味。清新爽口，涩味比阿萨姆少。茶汤呈明亮的琥珀色。",
           "seoName": "nierjili-hongcha-tgfop"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "4-5 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "nilgiri"
+        },
+        {
+          "code": "citrus"
+        },
+        {
+          "code": "highland"
+        }
       ],
-      "tags": ["indian-tea", "black-tea", "nilgiri", "citrus", "highland"],
-      "categories": ["BLACK_TEA", "INDIAN_TEA"],
       "origins": [
         {
           "country": "IN",
@@ -43,6 +50,38 @@
           "latitude": 11.4064,
           "longitude": 76.6932,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "4-5 г / 200 мл"
         }
       ]
     },
@@ -67,20 +106,30 @@
         {
           "lang": "zh-CN",
           "name": "尼尔吉里冬霜茶",
-          "description": "稀有的"冬霜茶"，在12月轻霜后采摘。天然甘甜，带有蜂蜜和果香。茶汤呈浓郁的铜琥珀色。",
+          "description": "稀有的“冬霜茶”，在12月轻霜后采摘。天然甘甜，带有蜂蜜和果香。茶汤呈浓郁的铜琥珀色。",
           "seoName": "nierjili-dongshuang"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "4-5 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "nilgiri"
+        },
+        {
+          "code": "winter-frost"
+        },
+        {
+          "code": "seasonal"
+        },
+        {
+          "code": "premium"
+        }
       ],
-      "tags": ["indian-tea", "black-tea", "nilgiri", "winter-frost", "seasonal", "premium"],
-      "categories": ["BLACK_TEA", "INDIAN_TEA", "SEASONAL_TEA"],
       "origins": [
         {
           "country": "IN",
@@ -89,6 +138,38 @@
           "latitude": 11.4064,
           "longitude": 76.6932,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "4-5 г / 200 мл"
         }
       ]
     },
@@ -117,16 +198,20 @@
           "seoName": "nierjili-lvcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-85°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "nilgiri"
+        },
+        {
+          "code": "highland"
+        }
       ],
-      "tags": ["indian-tea", "green-tea", "nilgiri", "highland"],
-      "categories": ["GREEN_TEA", "INDIAN_TEA"],
       "origins": [
         {
           "country": "IN",
@@ -135,6 +220,38 @@
           "latitude": 11.4064,
           "longitude": 76.6932,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-85°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -163,16 +280,23 @@
           "seoName": "nierjili-baihao-yinzhen"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "WHITE" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "4-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "white-tea"
+        },
+        {
+          "code": "nilgiri"
+        },
+        {
+          "code": "silver-needle"
+        },
+        {
+          "code": "rare"
+        }
       ],
-      "tags": ["indian-tea", "white-tea", "nilgiri", "silver-needle", "rare"],
-      "categories": ["WHITE_TEA", "INDIAN_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "IN",
@@ -181,6 +305,38 @@
           "latitude": 11.4064,
           "longitude": 76.6932,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "WHITE"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "4-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 200 мл"
         }
       ]
     },
@@ -209,16 +365,17 @@
           "seoName": "nierjili-wulong"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 150 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "oolong-tea"
+        },
+        {
+          "code": "nilgiri"
+        }
       ],
-      "tags": ["indian-tea", "oolong-tea", "nilgiri"],
-      "categories": ["OOLONG_TEA", "INDIAN_TEA"],
       "origins": [
         {
           "country": "IN",
@@ -227,6 +384,38 @@
           "latitude": 11.4064,
           "longitude": 76.6932,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "OOLONG"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 150 мл"
         }
       ]
     }

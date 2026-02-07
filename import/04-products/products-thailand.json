@@ -25,16 +25,26 @@
           "seoName": "taiguo-jinxuan"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "THAILAND" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30-60 сек (проливы)" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 150-200 мл" }
+      "tags": [
+        {
+          "code": "thai-tea"
+        },
+        {
+          "code": "oolong-tea"
+        },
+        {
+          "code": "jin-xuan"
+        },
+        {
+          "code": "milk-oolong"
+        },
+        {
+          "code": "organic"
+        },
+        {
+          "code": "highland"
+        }
       ],
-      "tags": ["thai-tea", "oolong-tea", "jin-xuan", "milk-oolong", "organic", "highland"],
-      "categories": ["OOLONG_TEA", "THAI_TEA", "ORGANIC_TEA"],
       "origins": [
         {
           "country": "TH",
@@ -43,6 +53,38 @@
           "latitude": 20.1667,
           "longitude": 99.6167,
           "altitude": 1400
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "OOLONG"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "THAILAND"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30-60 сек (проливы)"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5-7 г / 150-200 мл"
         }
       ]
     },
@@ -71,16 +113,23 @@
           "seoName": "taiguo-dongfang-meiren"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "THAILAND" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "80-85°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30-60 сек (проливы)" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 150-200 мл" }
+      "tags": [
+        {
+          "code": "thai-tea"
+        },
+        {
+          "code": "oolong-tea"
+        },
+        {
+          "code": "oriental-beauty"
+        },
+        {
+          "code": "premium"
+        },
+        {
+          "code": "organic"
+        }
       ],
-      "tags": ["thai-tea", "oolong-tea", "oriental-beauty", "premium", "organic"],
-      "categories": ["OOLONG_TEA", "THAI_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "TH",
@@ -89,6 +138,38 @@
           "latitude": 20.1667,
           "longitude": 99.6167,
           "altitude": 1400
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "OOLONG"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "THAILAND"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "80-85°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30-60 сек (проливы)"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5-7 г / 150-200 мл"
         }
       ]
     },
@@ -117,24 +198,60 @@
           "seoName": "ankang-hongcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "THAILAND" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-4 г / 200 мл" }
+      "tags": [
+        {
+          "code": "thai-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "royal-project"
+        },
+        {
+          "code": "highland"
+        }
       ],
-      "tags": ["thai-tea", "black-tea", "royal-project", "highland"],
-      "categories": ["BLACK_TEA", "THAI_TEA"],
       "origins": [
         {
           "country": "TH",
           "region": "Chiang Mai",
           "area": "Doi Angkhang",
           "latitude": 19.9333,
-          "longitude": 99.0500,
+          "longitude": 99.05,
           "altitude": 1400
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "THAILAND"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-4 г / 200 мл"
         }
       ]
     },
@@ -163,16 +280,20 @@
           "seoName": "honghu"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "THAILAND" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30-60 сек (проливы)" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 150 мл" }
+      "tags": [
+        {
+          "code": "thai-tea"
+        },
+        {
+          "code": "oolong-tea"
+        },
+        {
+          "code": "roasted"
+        },
+        {
+          "code": "dark-oolong"
+        }
       ],
-      "tags": ["thai-tea", "oolong-tea", "roasted", "dark-oolong"],
-      "categories": ["OOLONG_TEA", "THAI_TEA"],
       "origins": [
         {
           "country": "TH",
@@ -181,6 +302,38 @@
           "latitude": 20.1667,
           "longitude": 99.6167,
           "altitude": 1400
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "OOLONG"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "THAILAND"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30-60 сек (проливы)"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5-7 г / 150 мл"
         }
       ]
     },
@@ -209,16 +362,23 @@
           "seoName": "nuomixiang-wulong"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "THAILAND" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30-60 сек (проливы)" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5 г / 150 мл" }
+      "tags": [
+        {
+          "code": "thai-tea"
+        },
+        {
+          "code": "oolong-tea"
+        },
+        {
+          "code": "sticky-rice"
+        },
+        {
+          "code": "scented"
+        },
+        {
+          "code": "blend"
+        }
       ],
-      "tags": ["thai-tea", "oolong-tea", "sticky-rice", "scented", "blend"],
-      "categories": ["OOLONG_TEA", "THAI_TEA", "SCENTED_TEA"],
       "origins": [
         {
           "country": "TH",
@@ -227,6 +387,38 @@
           "latitude": 20.1667,
           "longitude": 99.6167,
           "altitude": 1200
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "OOLONG"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "THAILAND"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30-60 сек (проливы)"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5 г / 150 мл"
         }
       ]
     }

@@ -24,26 +24,95 @@
         "seoName": "moli-longzhu"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-JASMINE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "200-1000 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, refreshing, floral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Jasmine, floral, green tea", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "1-2 pearls / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-HANDCRAFTED"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-HANDCRAFTED", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-JASMINE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Fuzhou",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-JASMINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "200-1000 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, sweet, refreshing, floral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Jasmine, floral, green tea",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "2-3 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "1-2 pearls / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -72,26 +141,95 @@
         "seoName": "moli-yinzhen"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-JASMINE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "500-1000 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Very soft, sweet, honey, floral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Jasmine, white tea, honey", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "65-75°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "1-3 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-HANDPICKED"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-HANDPICKED", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-JASMINE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Fuding",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-JASMINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-5",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "500-1000 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Very soft, sweet, honey, floral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Jasmine, white tea, honey",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "65-75°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "1-3 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5 g / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -120,26 +258,95 @@
         "seoName": "moli-yinhao"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-JASMINE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "200-1000 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, delicate, pure, sweet", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Jasmine, green tea, honey", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "1-3 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-HANDPICKED"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-HANDPICKED", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-JASMINE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Fuding, Zhenghe",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-JASMINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "200-1000 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, delicate, pure, sweet",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Jasmine, green tea, honey",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "70-80°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "1-3 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5 g / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -168,26 +375,92 @@
         "seoName": "moli-piaoxue"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-JASMINE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "500-1500 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, refreshing, floral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Jasmine, green tea, fresh greens", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-HANDCRAFTED"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-HANDCRAFTED", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-JASMINE-TEA", "CAT-REGION-CHINA", "CAT-REGION-SICHUAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Sichuan",
         "place": "Emeishan, Jiajiang",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-JASMINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "500-1500 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, sweet, refreshing, floral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Jasmine, green tea, fresh greens",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "2-3 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7 g / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -216,26 +489,92 @@
         "seoName": "moli-fengyan"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-JASMINE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "200-1000 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, delicate, refreshing, sweet", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Jasmine, floral, green tea", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "5-7 g / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-HANDCRAFTED"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-HANDCRAFTED", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-JASMINE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Fuzhou",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-JASMINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "200-1000 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, delicate, refreshing, sweet",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Jasmine, floral, green tea",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "2-3 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "5-7 g / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -264,26 +603,95 @@
         "seoName": "moli-yudie"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-JASMINE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "200-1000 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, delicate, sweet, floral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Jasmine, floral, green tea", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "1 butterfly / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-HANDCRAFTED"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-HANDCRAFTED", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-JASMINE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Fuzhou",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-JASMINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "200-1000 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, delicate, sweet, floral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Jasmine, floral, green tea",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "2-3 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "1 butterfly / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -312,26 +720,92 @@
         "seoName": "moli-nuerhuan"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-JASMINE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-SEASON", "option": "SPEC-SEASON-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "200-1000 m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, delicate, refreshing, sweet", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Jasmine, floral, green tea", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "1-2 rings / 150-200 ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-HANDCRAFTED"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-HANDCRAFTED", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-JASMINE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Fuzhou",
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-JASMINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-SEASON",
+        "option": "SPEC-SEASON-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "200-1000 m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, delicate, refreshing, sweet",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Jasmine, floral, green tea",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "2-3 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "1-2 rings / 150-200 ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   }

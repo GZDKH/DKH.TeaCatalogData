@@ -5,7 +5,7 @@
     "order": 1,
     "published": true,
     "brand": "BRAND-YAME",
-    "price": 31.00,
+    "price": 31,
     "markAsNew": true,
     "translations": [
       {
@@ -27,26 +27,95 @@
         "seoName": "sun-rouge-purple-sencha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-HIGH", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-VEGETAL", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-CULTIVAR", "type": "CustomText", "value": "Sun Rouge (Hybrid)", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "1-2 min", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g/150ml", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-HAND-PICKED"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-LIMITED-EDITION"
+      }
     ],
-    "tags": ["TAG-HAND-PICKED", "TAG-SINGLE-ORIGIN", "TAG-LIMITED-EDITION"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-JAPAN"],
     "origins": [
       {
         "country": "JP",
         "state": "Kagoshima",
         "place": "Tokunoshima Island",
         "notes": "Exclusive cultivation area for Sun Rouge cultivar"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-HIGH",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-VEGETAL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-CULTIVAR",
+        "type": "CustomText",
+        "value": "Sun Rouge (Hybrid)",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "70-80°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "1-2 min",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g/150ml",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -56,7 +125,7 @@
     "order": 2,
     "published": true,
     "brand": "BRAND-UJI",
-    "price": 45.00,
+    "price": 45,
     "translations": [
       {
         "lang": "en-US",
@@ -77,26 +146,98 @@
         "seoName": "uji-gyokuro"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-HIGH", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-FULL", "type": "Option", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-MARINE", "type": "Option", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-CULTIVAR", "type": "CustomText", "value": "Yabukita / Samidori", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "50-60°C", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-TIME", "type": "CustomText", "value": "2-3 min", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-SHADE-GROWN"
+      },
+      {
+        "code": "TAG-HAND-PICKED"
+      },
+      {
+        "code": "TAG-COMPETITION-GRADE"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-SHADE-GROWN", "TAG-HAND-PICKED", "TAG-COMPETITION-GRADE", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-JAPAN"],
     "origins": [
       {
         "country": "JP",
         "state": "Kyoto",
         "place": "Uji",
         "notes": "Traditional shade-growing techniques since 16th century"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-HIGH",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-FULL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-MARINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-CULTIVAR",
+        "type": "CustomText",
+        "value": "Yabukita / Samidori",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "50-60°C",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "value": "2-3 min",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -106,11 +247,9 @@
     "order": 3,
     "published": true,
     "brand": "BRAND-XIHU",
-    "price": 168.00,
-    "oldPrice": 198.00,
+    "price": 168,
+    "oldPrice": 198,
     "markAsNew": true,
-    "newFrom": "2024-03-15",
-    "newTo": "2024-06-01",
     "translations": [
       {
         "lang": "en-US",
@@ -131,33 +270,123 @@
         "seoName": "xihu-longjing-shifeng-mingqian"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-MINGQIAN", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-400m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-CULTIVAR", "type": "CustomText", "value": "Longjing #43 / Quntizhong", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-NUTTY", "type": "Option", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-TOP10-CHINA"
+      },
+      {
+        "code": "TAG-UNESCO"
+      },
+      {
+        "code": "TAG-GI-PROTECTED"
+      },
+      {
+        "code": "TAG-SPRING-2024"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-HAND-PICKED"
+      }
     ],
-    "tags": ["TAG-TOP10-CHINA", "TAG-UNESCO", "TAG-GI-PROTECTED", "TAG-SPRING-2024", "TAG-SINGLE-ORIGIN", "TAG-HAND-PICKED"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ZHEJIANG"],
     "origins": [
       {
         "country": "CN",
         "state": "Zhejiang",
         "place": "Shifeng, Xihu District, Hangzhou",
-        "altitude": { "min": 300, "max": 400, "unit": "m" },
-        "coordinates": { "lat": 30.2290, "lng": 120.1080 },
+        "altitude": {
+          "min": 300,
+          "max": 400,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 30.229,
+          "lng": 120.108
+        },
         "notes": "Lion Peak — Imperial grade terroir since Ming Dynasty"
       }
     ],
     "related": [
-      { "product": "TEA-CN-BILUOCHUN", "order": 1 }
-    ]
+      {
+        "product": "TEA-CN-BILUOCHUN",
+        "order": 1
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-MINGQIAN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "300-400m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-CULTIVAR",
+        "type": "CustomText",
+        "value": "Longjing #43 / Quntizhong",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-NUTTY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-85°C",
+        "showOnPage": true,
+        "order": 10
+      }
+    ],
+    "markAsNewStartDate": "2024-03-15",
+    "markAsNewEndDate": "2024-06-01"
   },
   {
     "code": "TEA-TW-ALISHAN-OOLONG",
@@ -165,7 +394,7 @@
     "order": 4,
     "published": true,
     "brand": "BRAND-ALISHAN",
-    "price": 118.00,
+    "price": 118,
     "translations": [
       {
         "lang": "en-US",
@@ -186,29 +415,114 @@
         "seoName": "alishan-gaoshan-cha-2024"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-OOLONG", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-15-30", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-LIGHT", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "option": "SPEC-ALT-HIGH", "type": "Option", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-CULTIVAR", "type": "CustomText", "value": "Qingxin Oolong / Jin Xuan TTES #12", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-FLORAL", "type": "Option", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-MEDIUM", "type": "Option", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MED", "type": "Option", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 10 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7", "showOnPage": true, "order": 11 }
+    "tags": [
+      {
+        "code": "TAG-HIGH-MOUNTAIN"
+      },
+      {
+        "code": "TAG-SPRING-2024"
+      },
+      {
+        "code": "TAG-ORGANIC"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-HIGH-MOUNTAIN", "TAG-SPRING-2024", "TAG-ORGANIC", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-OOLONG-TEA", "CAT-REGION-TAIWAN"],
     "origins": [
       {
         "country": "TW",
         "state": "Taiwan",
         "place": "Alishan, Chiayi County",
-        "altitude": { "min": 1000, "max": 2300, "unit": "m" },
-        "coordinates": { "lat": 23.5108, "lng": 120.8066 },
+        "altitude": {
+          "min": 1000,
+          "max": 2300,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 23.5108,
+          "lng": 120.8066
+        },
         "notes": "Taiwan's most famous tea region — high elevation, misty climate"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-OOLONG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-15-30",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "option": "SPEC-ALT-HIGH",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-CULTIVAR",
+        "type": "CustomText",
+        "value": "Qingxin Oolong / Jin Xuan TTES #12",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-FLORAL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "90-95°C",
+        "showOnPage": true,
+        "order": 10
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-7",
+        "showOnPage": true,
+        "order": 11
       }
     ]
   },
@@ -218,7 +532,7 @@
     "order": 5,
     "published": true,
     "brand": "BRAND-FUDING",
-    "price": 128.00,
+    "price": 128,
     "translations": [
       {
         "lang": "en-US",
@@ -239,28 +553,110 @@
         "seoName": "bai-hao-yinzhen"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-WHITE", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-5-10", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-ROAST", "option": "SPEC-ROAST-NONE", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "600-800m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-CULTIVAR", "type": "CustomText", "value": "Fuding Dabai / Fuding Dahao", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "option": "SPEC-AROMA-HONEY", "type": "Option", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BODY", "option": "SPEC-BODY-LIGHT", "type": "Option", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-UNESCO"
+      },
+      {
+        "code": "TAG-GI-PROTECTED"
+      },
+      {
+        "code": "TAG-SPRING-2024"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-HAND-PICKED"
+      }
     ],
-    "tags": ["TAG-UNESCO", "TAG-GI-PROTECTED", "TAG-SPRING-2024", "TAG-SINGLE-ORIGIN", "TAG-HAND-PICKED"],
-    "categories": ["CAT-WHITE-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Fuding, Taimu Mountain",
-        "altitude": { "min": 600, "max": 800, "unit": "m" },
-        "coordinates": { "lat": 27.3300, "lng": 120.2167 },
+        "altitude": {
+          "min": 600,
+          "max": 800,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 27.33,
+          "lng": 120.2167
+        },
         "notes": "Birthplace of white tea — maritime climate, ideal terroir"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-WHITE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-5-10",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "600-800m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-CULTIVAR",
+        "type": "CustomText",
+        "value": "Fuding Dabai / Fuding Dahao",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-HONEY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-LIGHT",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "80-85°C",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   }

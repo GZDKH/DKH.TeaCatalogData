@@ -21,28 +21,70 @@
         {
           "lang": "zh-CN",
           "name": "大吉岭春摘",
-          "description": ""茶中香槟"——来自喜马拉雅山庄园的首摘春茶。口感轻盈细腻，带有花香和果香，涩味极少。茶汤呈浅金色，散发着优雅的麝香葡萄香气。",
+          "description": "“茶中香槟”——来自喜马拉雅山庄园的首摘春茶。口感轻盈细腻，带有花香和果香，涩味极少。茶汤呈浅金色，散发着优雅的麝香葡萄香气。",
           "seoName": "dajiling-chunzhai"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "darjeeling"
+        },
+        {
+          "code": "first-flush"
+        },
+        {
+          "code": "premium"
+        },
+        {
+          "code": "muscatel"
+        }
       ],
-      "tags": ["indian-tea", "black-tea", "darjeeling", "first-flush", "premium", "muscatel"],
-      "categories": ["BLACK_TEA", "INDIAN_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "IN",
           "region": "Darjeeling",
           "area": "West Bengal",
-          "latitude": 27.0410,
+          "latitude": 27.041,
           "longitude": 88.2627,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -71,24 +113,63 @@
           "seoName": "dajiling-xiazhai"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "darjeeling"
+        },
+        {
+          "code": "second-flush"
+        },
+        {
+          "code": "muscatel"
+        }
       ],
-      "tags": ["indian-tea", "black-tea", "darjeeling", "second-flush", "muscatel"],
-      "categories": ["BLACK_TEA", "INDIAN_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "IN",
           "region": "Darjeeling",
           "area": "West Bengal",
-          "latitude": 27.0410,
+          "latitude": 27.041,
           "longitude": 88.2627,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -117,24 +198,60 @@
           "seoName": "dajiling-qiuzhai"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "darjeeling"
+        },
+        {
+          "code": "autumnal"
+        }
       ],
-      "tags": ["indian-tea", "black-tea", "darjeeling", "autumnal"],
-      "categories": ["BLACK_TEA", "INDIAN_TEA"],
       "origins": [
         {
           "country": "IN",
           "region": "Darjeeling",
           "area": "West Bengal",
-          "latitude": 27.0410,
+          "latitude": 27.041,
           "longitude": 88.2627,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -163,24 +280,60 @@
           "seoName": "dajiling-wulong"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 150 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "oolong-tea"
+        },
+        {
+          "code": "darjeeling"
+        },
+        {
+          "code": "rare"
+        }
       ],
-      "tags": ["indian-tea", "oolong-tea", "darjeeling", "rare"],
-      "categories": ["OOLONG_TEA", "INDIAN_TEA"],
       "origins": [
         {
           "country": "IN",
           "region": "Darjeeling",
           "area": "West Bengal",
-          "latitude": 27.0410,
+          "latitude": 27.041,
           "longitude": 88.2627,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "OOLONG"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 150 мл"
         }
       ]
     },
@@ -209,24 +362,60 @@
           "seoName": "dajiling-baicha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "WHITE" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-85°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "white-tea"
+        },
+        {
+          "code": "darjeeling"
+        },
+        {
+          "code": "delicate"
+        }
       ],
-      "tags": ["indian-tea", "white-tea", "darjeeling", "delicate"],
-      "categories": ["WHITE_TEA", "INDIAN_TEA"],
       "origins": [
         {
           "country": "IN",
           "region": "Darjeeling",
           "area": "West Bengal",
-          "latitude": 27.0410,
+          "latitude": 27.041,
           "longitude": 88.2627,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "WHITE"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-85°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 200 мл"
         }
       ]
     },
@@ -255,24 +444,57 @@
           "seoName": "dajiling-lvcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-85°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "darjeeling"
+        }
       ],
-      "tags": ["indian-tea", "green-tea", "darjeeling"],
-      "categories": ["GREEN_TEA", "INDIAN_TEA"],
       "origins": [
         {
           "country": "IN",
           "region": "Darjeeling",
           "area": "West Bengal",
-          "latitude": 27.0410,
+          "latitude": 27.041,
           "longitude": 88.2627,
           "altitude": 1800
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-85°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     }

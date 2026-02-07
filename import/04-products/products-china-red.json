@@ -24,28 +24,110 @@
         "seoName": "jin-jun-mei"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1200-1500m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Honey, longan, lychee, chocolate, sweet", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, dried fruits, flowers, malt", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-90°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7+", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-ELITE"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-HANDPICKED"
+      },
+      {
+        "code": "TAG-GIFT"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-ELITE", "TAG-SINGLE-ORIGIN", "TAG-HANDPICKED", "TAG-GIFT"],
-    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Tongmu Village, Wuyi Mountains, Nanping",
-        "altitude": { "min": 1200, "max": 1500, "unit": "m" },
-        "coordinates": { "lat": 27.7, "lng": 117.6 },
+        "altitude": {
+          "min": 1200,
+          "max": 1500,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 27.7,
+          "lng": 117.6
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-RED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-100",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1200-1500m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Honey, longan, lychee, chocolate, sweet",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Honey, dried fruits, flowers, malt",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "85-90°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-7+",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -74,28 +156,107 @@
         "seoName": "qimen-hongcha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "100-800m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, velvety, sweet, fruity, malty", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Rose, orchid, apple, honey, malt", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "2-4", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-TOP-WORLD"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-HERITAGE"
+      }
     ],
-    "tags": ["TAG-TOP-WORLD", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-HERITAGE"],
-    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
     "origins": [
       {
         "country": "CN",
         "state": "Anhui",
         "place": "Qimen County, Huangshan foothills",
-        "altitude": { "min": 100, "max": 800, "unit": "m" },
-        "coordinates": { "lat": 30.0, "lng": 117.0 },
+        "altitude": {
+          "min": 100,
+          "max": 800,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 30,
+          "lng": 117
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-RED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-100",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "100-800m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Rich, velvety, sweet, fruity, malty",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Rose, orchid, apple, honey, malt",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "90-95°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "2-4",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -124,28 +285,104 @@
         "seoName": "dianhong"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2000m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Full-bodied, sweet, malty, chocolate", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Dried fruits, honey, malt, chocolate", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "2-4", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-WARMING"
+      },
+      {
+        "code": "TAG-LARGE-LEAF"
+      }
     ],
-    "tags": ["TAG-SINGLE-ORIGIN", "TAG-WARMING", "TAG-LARGE-LEAF"],
-    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Fengqing, Lincang, Baoshan, Pu'er",
-        "altitude": { "min": 800, "max": 2000, "unit": "m" },
-        "coordinates": { "lat": 24.6, "lng": 100.0 },
+        "altitude": {
+          "min": 800,
+          "max": 2000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 24.6,
+          "lng": 100
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-RED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-100",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "800-2000m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Full-bodied, sweet, malty, chocolate",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Dried fruits, honey, malt, chocolate",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "90-95°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "2-4",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -174,28 +411,104 @@
         "seoName": "dianhong-jinzhen"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-2000m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Delicate, sweet, honey, floral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, flowers, malt, dried fruits", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-90°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-GOLDEN-TIPS"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-GOLDEN-TIPS"],
-    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Fengqing, Lincang",
-        "altitude": { "min": 1000, "max": 2000, "unit": "m" },
-        "coordinates": { "lat": 24.6, "lng": 100.0 },
+        "altitude": {
+          "min": 1000,
+          "max": 2000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 24.6,
+          "lng": 100
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-RED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-100",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1000-2000m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Delicate, sweet, honey, floral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Honey, flowers, malt, dried fruits",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "85-90°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -224,28 +537,104 @@
         "seoName": "dianhong-jinluo"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-2000m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, sweet, dried fruits, chocolate", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, dried fruits, malt, flowers", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-HANDCRAFTED"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-HANDCRAFTED"],
-    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Fengqing, Lincang",
-        "altitude": { "min": 1000, "max": 2000, "unit": "m" },
-        "coordinates": { "lat": 24.6, "lng": 100.0 },
+        "altitude": {
+          "min": 1000,
+          "max": 2000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 24.6,
+          "lng": 100
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-RED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-100",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1000-2000m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Rich, sweet, dried fruits, chocolate",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Honey, dried fruits, malt, flowers",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "90-95°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -274,28 +663,107 @@
         "seoName": "zhengshan-xiaozhong"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-1500m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, sweet, smoky, longan, dried fruits", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Pine smoke, dried fruits, honey, spices", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-HERITAGE"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SMOKED"
+      },
+      {
+        "code": "TAG-ORIGINAL"
+      }
     ],
-    "tags": ["TAG-HERITAGE", "TAG-SINGLE-ORIGIN", "TAG-SMOKED", "TAG-ORIGINAL"],
-    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Tongmu Village, Wuyi Mountains",
-        "altitude": { "min": 1000, "max": 1500, "unit": "m" },
-        "coordinates": { "lat": 27.7, "lng": 117.6 },
+        "altitude": {
+          "min": 1000,
+          "max": 1500,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 27.7,
+          "lng": 117.6
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-RED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-100",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1000-1500m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Rich, sweet, smoky, longan, dried fruits",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Pine smoke, dried fruits, honey, spices",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "90-95°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -324,28 +792,101 @@
         "seoName": "yin-jun-mei"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1200-1500m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Delicate, sweet, honey, fruity", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, flowers, dried fruits", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "85-90°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "4-6", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN"],
-    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-FUJIAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Fujian",
         "place": "Tongmu Village, Wuyi Mountains",
-        "altitude": { "min": 1200, "max": 1500, "unit": "m" },
-        "coordinates": { "lat": 27.7, "lng": 117.6 },
+        "altitude": {
+          "min": 1200,
+          "max": 1500,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 27.7,
+          "lng": 117.6
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-RED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-100",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1200-1500m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Delicate, sweet, honey, fruity",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Honey, flowers, dried fruits",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "85-90°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "4-6",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -374,28 +915,101 @@
         "seoName": "dianhong-gongfu"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-2000m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, malty, sweet, dried fruits", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Dried fruits, honey, malt, chocolate", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "2-4", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-CLASSIC"
+      }
     ],
-    "tags": ["TAG-SINGLE-ORIGIN", "TAG-CLASSIC"],
-    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Fengqing, Lincang",
-        "altitude": { "min": 800, "max": 2000, "unit": "m" },
-        "coordinates": { "lat": 24.6, "lng": 100.0 },
+        "altitude": {
+          "min": 800,
+          "max": 2000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 24.6,
+          "lng": 100
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-RED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-100",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "800-2000m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Rich, malty, sweet, dried fruits",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Dried fruits, honey, malt, chocolate",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "90-95°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "2-4",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -424,27 +1038,100 @@
         "seoName": "yesheng-dianhong"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1500-2500m", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Deep, complex, honey, nuts, mineral", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Honey, dried fruits, forest, mineral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "4-6+", "showOnPage": true, "order": 9 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-WILD-TEA"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-ANCIENT-TREES"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-WILD-TEA", "TAG-SINGLE-ORIGIN", "TAG-ANCIENT-TREES"],
-    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Various wild tea forests",
-        "altitude": { "min": 1500, "max": 2500, "unit": "m" },
-        "coordinates": { "lat": 23.5, "lng": 100.0 },
+        "altitude": {
+          "min": 1500,
+          "max": 2500,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 23.5,
+          "lng": 100
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-RED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-100",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1500-2500m",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Deep, complex, honey, nuts, mineral",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Honey, dried fruits, forest, mineral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "90-95°C",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "4-6+",
+        "showOnPage": true,
+        "order": 9
       }
     ]
   },
@@ -473,20 +1160,62 @@
         "seoName": "hongcha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-RED", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-100", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "90-95°C", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "2-5", "showOnPage": true, "order": 6 }
+    "tags": [
+      {
+        "code": "TAG-WARMING"
+      },
+      {
+        "code": "TAG-TONIC"
+      }
     ],
-    "tags": ["TAG-WARMING", "TAG-TONIC"],
-    "categories": ["CAT-RED-TEA", "CAT-REGION-CHINA"],
     "origins": [
       {
         "country": "CN",
         "notes": "Major provinces: Fujian, Yunnan, Anhui, Sichuan, Hubei, Guangdong"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-RED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-100",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "90-95°C",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "2-5",
+        "showOnPage": true,
+        "order": 6
       }
     ]
   }

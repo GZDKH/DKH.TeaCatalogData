@@ -21,20 +21,27 @@
         {
           "lang": "zh-CN",
           "name": "努瓦拉埃利亚OP",
-          "description": "高海拔锡兰茶（1800-2200米）。口感清爽，带有茉莉花香和蜂蜜甜味。被称为"锡兰香槟"。茶汤呈浅琥珀色。",
+          "description": "高海拔锡兰茶（1800-2200米）。口感清爽，带有茉莉花香和蜂蜜甜味。被称为“锡兰香槟”。茶汤呈浅琥珀色。",
           "seoName": "nuwala-ailiya-op"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "SRI_LANKA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2 г / 200 мл" }
+      "tags": [
+        {
+          "code": "ceylon-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "highland"
+        },
+        {
+          "code": "nuwara-eliya"
+        },
+        {
+          "code": "floral"
+        }
       ],
-      "tags": ["ceylon-tea", "black-tea", "highland", "nuwara-eliya", "floral"],
-      "categories": ["BLACK_TEA", "CEYLON_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "LK",
@@ -43,6 +50,38 @@
           "latitude": 6.9497,
           "longitude": 80.7891,
           "altitude": 2000
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "SRI_LANKA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2 г / 200 мл"
         }
       ]
     },
@@ -71,16 +110,26 @@
           "seoName": "wuwa-gaodi-bop"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "SRI_LANKA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95-100°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "ceylon-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "highland"
+        },
+        {
+          "code": "uva"
+        },
+        {
+          "code": "menthol"
+        },
+        {
+          "code": "strong"
+        }
       ],
-      "tags": ["ceylon-tea", "black-tea", "highland", "uva", "menthol", "strong"],
-      "categories": ["BLACK_TEA", "CEYLON_TEA"],
       "origins": [
         {
           "country": "LK",
@@ -89,6 +138,38 @@
           "latitude": 6.9804,
           "longitude": 81.0557,
           "altitude": 1400
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "SRI_LANKA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95-100°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -117,24 +198,63 @@
           "seoName": "dingbula-op"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "SRI_LANKA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2 г / 200 мл" }
+      "tags": [
+        {
+          "code": "ceylon-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "highland"
+        },
+        {
+          "code": "dimbula"
+        },
+        {
+          "code": "classic"
+        }
       ],
-      "tags": ["ceylon-tea", "black-tea", "highland", "dimbula", "classic"],
-      "categories": ["BLACK_TEA", "CEYLON_TEA"],
       "origins": [
         {
           "country": "LK",
           "region": "Dimbula",
           "area": "Central Province",
           "latitude": 6.9667,
-          "longitude": 80.6000,
+          "longitude": 80.6,
           "altitude": 1500
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "SRI_LANKA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2 г / 200 мл"
         }
       ]
     },
@@ -163,16 +283,26 @@
           "seoName": "luhuna-jinse-huayuan"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "SRI_LANKA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95-100°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "4-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "ceylon-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "lowland"
+        },
+        {
+          "code": "ruhuna"
+        },
+        {
+          "code": "strong"
+        },
+        {
+          "code": "sweet"
+        }
       ],
-      "tags": ["ceylon-tea", "black-tea", "lowland", "ruhuna", "strong", "sweet"],
-      "categories": ["BLACK_TEA", "CEYLON_TEA"],
       "origins": [
         {
           "country": "LK",
@@ -181,6 +311,38 @@
           "latitude": 6.1244,
           "longitude": 80.4231,
           "altitude": 400
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "SRI_LANKA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95-100°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "4-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -209,16 +371,23 @@
           "seoName": "kangti-op"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "SRI_LANKA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2 г / 200 мл" }
+      "tags": [
+        {
+          "code": "ceylon-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "mid-grown"
+        },
+        {
+          "code": "kandy"
+        },
+        {
+          "code": "everyday"
+        }
       ],
-      "tags": ["ceylon-tea", "black-tea", "mid-grown", "kandy", "everyday"],
-      "categories": ["BLACK_TEA", "CEYLON_TEA"],
       "origins": [
         {
           "country": "LK",
@@ -227,6 +396,38 @@
           "latitude": 7.2906,
           "longitude": 80.6337,
           "altitude": 900
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "SRI_LANKA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2 г / 200 мл"
         }
       ]
     },
@@ -255,16 +456,23 @@
           "seoName": "xilan-yinzhen"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "WHITE" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "SRI_LANKA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "4-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 200 мл" }
+      "tags": [
+        {
+          "code": "ceylon-tea"
+        },
+        {
+          "code": "white-tea"
+        },
+        {
+          "code": "silver-needle"
+        },
+        {
+          "code": "rare"
+        },
+        {
+          "code": "premium"
+        }
       ],
-      "tags": ["ceylon-tea", "white-tea", "silver-needle", "rare", "premium"],
-      "categories": ["WHITE_TEA", "CEYLON_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "LK",
@@ -273,6 +481,38 @@
           "latitude": 6.9497,
           "longitude": 80.7891,
           "altitude": 2000
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "WHITE"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "SRI_LANKA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "4-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 200 мл"
         }
       ]
     },
@@ -301,24 +541,60 @@
           "seoName": "xilan-youji-lvcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "SRI_LANKA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-85°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "ceylon-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "organic"
+        },
+        {
+          "code": "bio"
+        }
       ],
-      "tags": ["ceylon-tea", "green-tea", "organic", "bio"],
-      "categories": ["GREEN_TEA", "CEYLON_TEA", "ORGANIC_TEA"],
       "origins": [
         {
           "country": "LK",
           "region": "Central Highlands",
           "area": "Central Province",
-          "latitude": 7.0000,
-          "longitude": 80.7500,
+          "latitude": 7,
+          "longitude": 80.75,
           "altitude": 1200
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "SRI_LANKA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-85°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -347,24 +623,63 @@
           "seoName": "xilan-bojue-cha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "SRI_LANKA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2 г / 200 мл" }
+      "tags": [
+        {
+          "code": "ceylon-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "earl-grey"
+        },
+        {
+          "code": "bergamot"
+        },
+        {
+          "code": "flavored"
+        }
       ],
-      "tags": ["ceylon-tea", "black-tea", "earl-grey", "bergamot", "flavored"],
-      "categories": ["BLACK_TEA", "CEYLON_TEA", "FLAVORED_TEA"],
       "origins": [
         {
           "country": "LK",
           "region": "Central Highlands",
           "area": "Central Province",
-          "latitude": 7.0000,
-          "longitude": 80.7500,
+          "latitude": 7,
+          "longitude": 80.75,
           "altitude": 1200
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "SRI_LANKA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2 г / 200 мл"
         }
       ]
     }

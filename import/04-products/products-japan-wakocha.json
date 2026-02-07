@@ -25,16 +25,23 @@
           "seoName": "hehongcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-100°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "wakocha"
+        },
+        {
+          "code": "fruity"
+        },
+        {
+          "code": "floral"
+        }
       ],
-      "tags": ["japanese-tea", "black-tea", "wakocha", "fruity", "floral"],
-      "categories": ["BLACK_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -43,6 +50,38 @@
           "latitude": 34.9769,
           "longitude": 138.3831,
           "altitude": 300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-100°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -71,16 +110,23 @@
           "seoName": "hongfugui"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-100°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "cultivar"
+        },
+        {
+          "code": "anti-allergic"
+        },
+        {
+          "code": "floral"
+        }
       ],
-      "tags": ["japanese-tea", "black-tea", "cultivar", "anti-allergic", "floral"],
-      "categories": ["BLACK_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -89,6 +135,38 @@
           "latitude": 34.9769,
           "longitude": 138.3831,
           "altitude": 300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-100°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -117,16 +195,23 @@
           "seoName": "hongyu"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-100°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "cultivar"
+        },
+        {
+          "code": "malty"
+        },
+        {
+          "code": "fruity"
+        }
       ],
-      "tags": ["japanese-tea", "black-tea", "cultivar", "malty", "fruity"],
-      "categories": ["BLACK_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -135,6 +220,38 @@
           "latitude": 34.9769,
           "longitude": 138.3831,
           "altitude": 300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-100°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -163,16 +280,23 @@
           "seoName": "wujiudao-hongcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "island"
+        },
+        {
+          "code": "organic"
+        },
+        {
+          "code": "honey"
+        }
       ],
-      "tags": ["japanese-tea", "black-tea", "island", "organic", "honey"],
-      "categories": ["BLACK_TEA", "JAPANESE_TEA", "ORGANIC_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -181,6 +305,38 @@
           "latitude": 30.3544,
           "longitude": 130.5066,
           "altitude": 200
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -209,16 +365,20 @@
           "seoName": "lubei-hehongcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "regional"
+        },
+        {
+          "code": "artisan"
+        }
       ],
-      "tags": ["japanese-tea", "black-tea", "regional", "artisan"],
-      "categories": ["BLACK_TEA", "JAPANESE_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -227,6 +387,38 @@
           "latitude": 32.2969,
           "longitude": 130.4514,
           "altitude": 250
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -255,16 +447,23 @@
           "seoName": "jiayelong-hongcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "JAPAN" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "japanese-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "gaba"
+        },
+        {
+          "code": "relaxing"
+        },
+        {
+          "code": "functional"
+        }
       ],
-      "tags": ["japanese-tea", "black-tea", "gaba", "relaxing", "functional"],
-      "categories": ["BLACK_TEA", "JAPANESE_TEA", "FUNCTIONAL_TEA"],
       "origins": [
         {
           "country": "JP",
@@ -273,6 +472,38 @@
           "latitude": 34.9769,
           "longitude": 138.3831,
           "altitude": 300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "JAPAN"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     }

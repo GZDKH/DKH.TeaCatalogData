@@ -25,16 +25,26 @@
           "seoName": "baocheng-xique"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "KOREA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "70-75°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "40-60 сек (проливы)" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5 г / 150 мл" }
+      "tags": [
+        {
+          "code": "korean-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "boseong"
+        },
+        {
+          "code": "sejak"
+        },
+        {
+          "code": "organic"
+        },
+        {
+          "code": "steamed"
+        }
       ],
-      "tags": ["korean-tea", "green-tea", "boseong", "sejak", "organic", "steamed"],
-      "categories": ["GREEN_TEA", "KOREAN_TEA", "ORGANIC_TEA"],
       "origins": [
         {
           "country": "KR",
@@ -43,6 +53,38 @@
           "latitude": 34.7714,
           "longitude": 127.0796,
           "altitude": 160
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "KOREA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "70-75°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "40-60 сек (проливы)"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5 г / 150 мл"
         }
       ]
     },
@@ -71,16 +113,26 @@
           "seoName": "yuqian"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "KOREA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "60-70°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30-45 сек" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "4-5 г / 150 мл" }
+      "tags": [
+        {
+          "code": "korean-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "ujeon"
+        },
+        {
+          "code": "premium"
+        },
+        {
+          "code": "first-flush"
+        },
+        {
+          "code": "rare"
+        }
       ],
-      "tags": ["korean-tea", "green-tea", "ujeon", "premium", "first-flush", "rare"],
-      "categories": ["GREEN_TEA", "KOREAN_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "KR",
@@ -89,6 +141,38 @@
           "latitude": 34.7714,
           "longitude": 127.0796,
           "altitude": 160
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "KOREA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "60-70°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30-45 сек"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "4-5 г / 150 мл"
         }
       ]
     },
@@ -117,16 +201,23 @@
           "seoName": "huangcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "YELLOW" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "KOREA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-4 г / 150 мл" }
+      "tags": [
+        {
+          "code": "korean-tea"
+        },
+        {
+          "code": "yellow-tea"
+        },
+        {
+          "code": "hwangcha"
+        },
+        {
+          "code": "traditional"
+        },
+        {
+          "code": "rare"
+        }
       ],
-      "tags": ["korean-tea", "yellow-tea", "hwangcha", "traditional", "rare"],
-      "categories": ["YELLOW_TEA", "KOREAN_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "KR",
@@ -135,6 +226,38 @@
           "latitude": 34.7714,
           "longitude": 127.0796,
           "altitude": 160
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "YELLOW"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "KOREA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-4 г / 150 мл"
         }
       ]
     },
@@ -163,16 +286,23 @@
           "seoName": "fajiao-cha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "KOREA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-4 г / 200 мл" }
+      "tags": [
+        {
+          "code": "korean-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "balhyocha"
+        },
+        {
+          "code": "fermented"
+        },
+        {
+          "code": "traditional"
+        }
       ],
-      "tags": ["korean-tea", "black-tea", "balhyocha", "fermented", "traditional"],
-      "categories": ["BLACK_TEA", "KOREAN_TEA"],
       "origins": [
         {
           "country": "KR",
@@ -181,6 +311,38 @@
           "latitude": 34.7714,
           "longitude": 127.0796,
           "altitude": 160
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "KOREA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-4 г / 200 мл"
         }
       ]
     },
@@ -209,16 +371,23 @@
           "seoName": "baocheng-mocha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "KOREA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "70-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "взбивать до пены" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "1-2 г / 70 мл" }
+      "tags": [
+        {
+          "code": "korean-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "matcha"
+        },
+        {
+          "code": "powdered"
+        },
+        {
+          "code": "ceremonial"
+        }
       ],
-      "tags": ["korean-tea", "green-tea", "matcha", "powdered", "ceremonial"],
-      "categories": ["GREEN_TEA", "KOREAN_TEA"],
       "origins": [
         {
           "country": "KR",
@@ -227,6 +396,38 @@
           "latitude": 34.7714,
           "longitude": 127.0796,
           "altitude": 160
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "KOREA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "70-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "взбивать до пены"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "1-2 г / 70 мл"
         }
       ]
     },
@@ -255,24 +456,60 @@
           "seoName": "jizhou-wulong"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "KOREA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "4-5 г / 150 мл" }
+      "tags": [
+        {
+          "code": "korean-tea"
+        },
+        {
+          "code": "oolong-tea"
+        },
+        {
+          "code": "jeju"
+        },
+        {
+          "code": "island"
+        }
       ],
-      "tags": ["korean-tea", "oolong-tea", "jeju", "island"],
-      "categories": ["OOLONG_TEA", "KOREAN_TEA"],
       "origins": [
         {
           "country": "KR",
           "region": "Jeju",
           "area": "Jeju Island",
-          "latitude": 33.4890,
+          "latitude": 33.489,
           "longitude": 126.4983,
           "altitude": 300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "OOLONG"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "KOREA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "4-5 г / 150 мл"
         }
       ]
     }

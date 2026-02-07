@@ -25,16 +25,23 @@
           "seoName": "shanxue-lvcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "VIETNAM" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "45 сек - 1 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 150-200 мл" }
+      "tags": [
+        {
+          "code": "vietnamese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "ancient-tree"
+        },
+        {
+          "code": "shan-tuyet"
+        },
+        {
+          "code": "highland"
+        }
       ],
-      "tags": ["vietnamese-tea", "green-tea", "ancient-tree", "shan-tuyet", "highland"],
-      "categories": ["GREEN_TEA", "VIETNAMESE_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "VN",
@@ -43,6 +50,38 @@
           "latitude": 23.2739,
           "longitude": 104.9844,
           "altitude": 1500
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "VIETNAM"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "45 сек - 1 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 150-200 мл"
         }
       ]
     },
@@ -71,16 +110,23 @@
           "seoName": "shanxue-baicha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "WHITE" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "VIETNAM" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-85°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "1-2 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 150-200 мл" }
+      "tags": [
+        {
+          "code": "vietnamese-tea"
+        },
+        {
+          "code": "white-tea"
+        },
+        {
+          "code": "ancient-tree"
+        },
+        {
+          "code": "shan-tuyet"
+        },
+        {
+          "code": "silver-needle"
+        }
       ],
-      "tags": ["vietnamese-tea", "white-tea", "ancient-tree", "shan-tuyet", "silver-needle"],
-      "categories": ["WHITE_TEA", "VIETNAMESE_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "VN",
@@ -89,6 +135,38 @@
           "latitude": 21.7023,
           "longitude": 104.5512,
           "altitude": 1300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "WHITE"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "VIETNAM"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-85°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "1-2 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 150-200 мл"
         }
       ]
     },
@@ -117,24 +195,63 @@
           "seoName": "gushu-hongcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "VIETNAM" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "15-30 сек (проливы)" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 150-200 мл" }
+      "tags": [
+        {
+          "code": "vietnamese-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "ancient-tree"
+        },
+        {
+          "code": "wild-tree"
+        },
+        {
+          "code": "premium"
+        }
       ],
-      "tags": ["vietnamese-tea", "black-tea", "ancient-tree", "wild-tree", "premium"],
-      "categories": ["BLACK_TEA", "VIETNAMESE_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "VN",
           "region": "Lao Cai",
           "area": "Bat Xat",
           "latitude": 22.4833,
-          "longitude": 103.7000,
+          "longitude": 103.7,
           "altitude": 1600
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "VIETNAM"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "15-30 сек (проливы)"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5-7 г / 150-200 мл"
         }
       ]
     },
@@ -163,24 +280,63 @@
           "seoName": "yunlong-cha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "VIETNAM" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30-60 сек" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2.5 г / 100 мл" }
+      "tags": [
+        {
+          "code": "vietnamese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "highland"
+        },
+        {
+          "code": "hybrid"
+        },
+        {
+          "code": "award-winning"
+        }
       ],
-      "tags": ["vietnamese-tea", "green-tea", "highland", "hybrid", "award-winning"],
-      "categories": ["GREEN_TEA", "VIETNAMESE_TEA"],
       "origins": [
         {
           "country": "VN",
           "region": "Thai Nguyen",
           "area": "La Bang",
-          "latitude": 21.5500,
-          "longitude": 105.8500,
+          "latitude": 21.55,
+          "longitude": 105.85,
           "altitude": 1000
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "VIETNAM"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30-60 сек"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2.5 г / 100 мл"
         }
       ]
     },
@@ -209,16 +365,23 @@
           "seoName": "jinxuan-naixiang-wulong"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "VIETNAM" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "15-30 сек (проливы)" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 150-200 мл" }
+      "tags": [
+        {
+          "code": "vietnamese-tea"
+        },
+        {
+          "code": "oolong-tea"
+        },
+        {
+          "code": "milk-oolong"
+        },
+        {
+          "code": "jin-xuan"
+        },
+        {
+          "code": "highland"
+        }
       ],
-      "tags": ["vietnamese-tea", "oolong-tea", "milk-oolong", "jin-xuan", "highland"],
-      "categories": ["OOLONG_TEA", "VIETNAMESE_TEA"],
       "origins": [
         {
           "country": "VN",
@@ -227,6 +390,38 @@
           "latitude": 11.9404,
           "longitude": 108.4583,
           "altitude": 1050
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "OOLONG"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "VIETNAM"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "15-30 сек (проливы)"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5-7 г / 150-200 мл"
         }
       ]
     },
@@ -255,16 +450,23 @@
           "seoName": "dongfang-meiren"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "VIETNAM" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "80-85°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30-60 сек (проливы)" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 150-200 мл" }
+      "tags": [
+        {
+          "code": "vietnamese-tea"
+        },
+        {
+          "code": "oolong-tea"
+        },
+        {
+          "code": "oriental-beauty"
+        },
+        {
+          "code": "organic"
+        },
+        {
+          "code": "premium"
+        }
       ],
-      "tags": ["vietnamese-tea", "oolong-tea", "oriental-beauty", "organic", "premium"],
-      "categories": ["OOLONG_TEA", "VIETNAMESE_TEA", "PREMIUM_TEA", "ORGANIC_TEA"],
       "origins": [
         {
           "country": "VN",
@@ -273,6 +475,38 @@
           "latitude": 11.9404,
           "longitude": 108.4583,
           "altitude": 1000
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "OOLONG"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "VIETNAM"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "80-85°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30-60 сек (проливы)"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5-7 г / 150-200 мл"
         }
       ]
     },
@@ -301,16 +535,26 @@
           "seoName": "shanwu-yinzhen"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "WHITE" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "VIETNAM" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-85°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "1-2 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-5 г / 150-200 мл" }
+      "tags": [
+        {
+          "code": "vietnamese-tea"
+        },
+        {
+          "code": "white-tea"
+        },
+        {
+          "code": "silver-needle"
+        },
+        {
+          "code": "ancient-tree"
+        },
+        {
+          "code": "wild-tree"
+        },
+        {
+          "code": "rare"
+        }
       ],
-      "tags": ["vietnamese-tea", "white-tea", "silver-needle", "ancient-tree", "wild-tree", "rare"],
-      "categories": ["WHITE_TEA", "VIETNAMESE_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "VN",
@@ -319,6 +563,38 @@
           "latitude": 21.7023,
           "longitude": 104.5512,
           "altitude": 1300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "WHITE"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "VIETNAM"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-85°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "1-2 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-5 г / 150-200 мл"
         }
       ]
     },
@@ -347,16 +623,23 @@
           "seoName": "jiayelong-wulong"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "VIETNAM" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "LOW" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "30-60 сек (проливы)" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 150 мл" }
+      "tags": [
+        {
+          "code": "vietnamese-tea"
+        },
+        {
+          "code": "oolong-tea"
+        },
+        {
+          "code": "gaba"
+        },
+        {
+          "code": "functional"
+        },
+        {
+          "code": "relaxing"
+        }
       ],
-      "tags": ["vietnamese-tea", "oolong-tea", "gaba", "functional", "relaxing"],
-      "categories": ["OOLONG_TEA", "VIETNAMESE_TEA", "FUNCTIONAL_TEA"],
       "origins": [
         {
           "country": "VN",
@@ -365,6 +648,38 @@
           "latitude": 11.9404,
           "longitude": 108.4583,
           "altitude": 1000
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "OOLONG"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "VIETNAM"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "LOW"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "30-60 сек (проливы)"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5-7 г / 150 мл"
         }
       ]
     },
@@ -393,16 +708,20 @@
           "seoName": "shanxue-hongcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "VIETNAM" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-4 г / 200 мл" }
+      "tags": [
+        {
+          "code": "vietnamese-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "ancient-tree"
+        },
+        {
+          "code": "shan-tuyet"
+        }
       ],
-      "tags": ["vietnamese-tea", "black-tea", "ancient-tree", "shan-tuyet"],
-      "categories": ["BLACK_TEA", "VIETNAMESE_TEA"],
       "origins": [
         {
           "country": "VN",
@@ -411,6 +730,38 @@
           "latitude": 23.2739,
           "longitude": 104.9844,
           "altitude": 1500
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "VIETNAM"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-4 г / 200 мл"
         }
       ]
     },
@@ -439,16 +790,23 @@
           "seoName": "lianhua-cha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "VIETNAM" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "80-85°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-4 г / 200 мл" }
+      "tags": [
+        {
+          "code": "vietnamese-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "lotus"
+        },
+        {
+          "code": "scented"
+        },
+        {
+          "code": "traditional"
+        }
       ],
-      "tags": ["vietnamese-tea", "green-tea", "lotus", "scented", "traditional"],
-      "categories": ["GREEN_TEA", "VIETNAMESE_TEA", "SCENTED_TEA"],
       "origins": [
         {
           "country": "VN",
@@ -457,6 +815,38 @@
           "latitude": 21.0285,
           "longitude": 105.8542,
           "altitude": 10
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "VIETNAM"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "80-85°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-4 г / 200 мл"
         }
       ]
     }

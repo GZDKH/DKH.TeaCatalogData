@@ -25,16 +25,23 @@
           "seoName": "duobawangji-jingpin-hongcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDONESIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "5-7 г / 150-200 мл" }
+      "tags": [
+        {
+          "code": "indonesian-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "java"
+        },
+        {
+          "code": "premium"
+        },
+        {
+          "code": "organic"
+        }
       ],
-      "tags": ["indonesian-tea", "black-tea", "java", "premium", "organic"],
-      "categories": ["BLACK_TEA", "INDONESIAN_TEA", "PREMIUM_TEA", "ORGANIC_TEA"],
       "origins": [
         {
           "country": "ID",
@@ -43,6 +50,38 @@
           "latitude": -7.2167,
           "longitude": 107.5833,
           "altitude": 1300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDONESIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "5-7 г / 150-200 мл"
         }
       ]
     },
@@ -71,24 +110,60 @@
           "seoName": "zhaowa-gbop"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDONESIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95-100°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indonesian-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "java"
+        },
+        {
+          "code": "breakfast"
+        }
       ],
-      "tags": ["indonesian-tea", "black-tea", "java", "breakfast"],
-      "categories": ["BLACK_TEA", "INDONESIAN_TEA"],
       "origins": [
         {
           "country": "ID",
           "region": "West Java",
           "area": "Java",
-          "latitude": -7.0000,
-          "longitude": 107.5000,
+          "latitude": -7,
+          "longitude": 107.5,
           "altitude": 1000
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDONESIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95-100°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -117,16 +192,20 @@
           "seoName": "duobawangji-baozhong"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "OOLONG" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDONESIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "85-90°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "4-5 г / 150 мл" }
+      "tags": [
+        {
+          "code": "indonesian-tea"
+        },
+        {
+          "code": "oolong-tea"
+        },
+        {
+          "code": "baozhong"
+        },
+        {
+          "code": "floral"
+        }
       ],
-      "tags": ["indonesian-tea", "oolong-tea", "baozhong", "floral"],
-      "categories": ["OOLONG_TEA", "INDONESIAN_TEA"],
       "origins": [
         {
           "country": "ID",
@@ -135,6 +214,38 @@
           "latitude": -7.2167,
           "longitude": 107.5833,
           "altitude": 1300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "OOLONG"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDONESIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "85-90°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "4-5 г / 150 мл"
         }
       ]
     },
@@ -163,16 +274,20 @@
           "seoName": "duobawangji-zhenxing-lvcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDONESIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "75-80°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-4 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indonesian-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "java"
+        },
+        {
+          "code": "needle"
+        }
       ],
-      "tags": ["indonesian-tea", "green-tea", "java", "needle"],
-      "categories": ["GREEN_TEA", "INDONESIAN_TEA"],
       "origins": [
         {
           "country": "ID",
@@ -181,6 +296,38 @@
           "latitude": -7.2167,
           "longitude": 107.5833,
           "altitude": 1300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDONESIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "75-80°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-4 г / 200 мл"
         }
       ]
     },
@@ -209,16 +356,23 @@
           "seoName": "duobawangji-jinzhen"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDONESIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-4 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indonesian-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "golden-needle"
+        },
+        {
+          "code": "premium"
+        },
+        {
+          "code": "tippy"
+        }
       ],
-      "tags": ["indonesian-tea", "black-tea", "golden-needle", "premium", "tippy"],
-      "categories": ["BLACK_TEA", "INDONESIAN_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "ID",
@@ -227,6 +381,38 @@
           "latitude": -7.2167,
           "longitude": 107.5833,
           "altitude": 1300
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDONESIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-4 г / 200 мл"
         }
       ]
     }

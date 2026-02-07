@@ -24,28 +24,110 @@
         "seoName": "xihu-longjing"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "100-800m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, oily, sweet, chestnut", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Roasted chestnut, orchid, fresh greens", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-TOP10-CHINA"
+      },
+      {
+        "code": "TAG-IMPERIAL"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      }
     ],
-    "tags": ["TAG-TOP10-CHINA", "TAG-IMPERIAL", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-SPRING"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ZHEJIANG"],
     "origins": [
       {
         "country": "CN",
         "state": "Zhejiang",
         "place": "Hangzhou, West Lake (Shi Feng, Longjing Village, Meijiawu)",
-        "altitude": { "min": 100, "max": 800, "unit": "m" },
-        "coordinates": { "lat": 30.0, "lng": 120.0 },
+        "altitude": {
+          "min": 100,
+          "max": 800,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 30,
+          "lng": 120
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "100-800m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Rich, oily, sweet, chestnut",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Roasted chestnut, orchid, fresh greens",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "80-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -74,28 +156,110 @@
         "seoName": "dongting-biluochun"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "500-800m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Delicate, sweet, fruity, floral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Peach, apricot, flowers, honey", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "5-7", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-TOP10-CHINA"
+      },
+      {
+        "code": "TAG-IMPERIAL"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      }
     ],
-    "tags": ["TAG-TOP10-CHINA", "TAG-IMPERIAL", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-SPRING"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-JIANGSU"],
     "origins": [
       {
         "country": "CN",
         "state": "Jiangsu",
         "place": "Dongting Mountains, Lake Taihu, Suzhou",
-        "altitude": { "min": 500, "max": 800, "unit": "m" },
-        "coordinates": { "lat": 31.0, "lng": 120.0 },
+        "altitude": {
+          "min": 500,
+          "max": 800,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 31,
+          "lng": 120
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "500-800m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Delicate, sweet, fruity, floral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Peach, apricot, flowers, honey",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-80°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "5-7",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -124,28 +288,110 @@
         "seoName": "huangshan-maofeng"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "700-800m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, refreshing, sweet, orchid", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Orchid, roasted chestnut, fresh greens", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-TOP10-CHINA"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-UNESCO"
+      },
+      {
+        "code": "TAG-SPRING"
+      }
     ],
-    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-UNESCO", "TAG-SPRING"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
     "origins": [
       {
         "country": "CN",
         "state": "Anhui",
         "place": "Huangshan Mountains (Yellow Mountains)",
-        "altitude": { "min": 700, "max": 800, "unit": "m" },
-        "coordinates": { "lat": 30.0, "lng": 118.0 },
+        "altitude": {
+          "min": 700,
+          "max": 800,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 30,
+          "lng": 118
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "700-800m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, refreshing, sweet, orchid",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Orchid, roasted chestnut, fresh greens",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-80°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -174,28 +420,110 @@
         "seoName": "taiping-houkui"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-800m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, refreshing, orchid", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Orchid, fresh greens, mineral", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-TOP10-CHINA"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      },
+      {
+        "code": "TAG-HANDCRAFTED"
+      }
     ],
-    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-HANDCRAFTED"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
     "origins": [
       {
         "country": "CN",
         "state": "Anhui",
         "place": "Taiping County, Huangshan City",
-        "altitude": { "min": 300, "max": 800, "unit": "m" },
-        "coordinates": { "lat": 30.3, "lng": 118.0 },
+        "altitude": {
+          "min": 300,
+          "max": 800,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 30.3,
+          "lng": 118
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "300-800m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, sweet, refreshing, orchid",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Orchid, fresh greens, mineral",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "80-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -224,28 +552,110 @@
         "seoName": "liuan-guapian"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "100-600m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Full-bodied, chestnut, sweet, nutty", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Roasted chestnut, seeds, fresh greens", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-TOP10-CHINA"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      },
+      {
+        "code": "TAG-UNIQUE"
+      }
     ],
-    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-UNIQUE"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
     "origins": [
       {
         "country": "CN",
         "state": "Anhui",
         "place": "Liu'an County, Dabie Mountains",
-        "altitude": { "min": 100, "max": 600, "unit": "m" },
-        "coordinates": { "lat": 31.7, "lng": 116.5 },
+        "altitude": {
+          "min": 100,
+          "max": 600,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 31.7,
+          "lng": 116.5
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "100-600m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Full-bodied, chestnut, sweet, nutty",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Roasted chestnut, seeds, fresh greens",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "80-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -274,28 +684,110 @@
         "seoName": "xinyang-maojian"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-800m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Refreshing, sweet, grassy, light astringent", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fresh grass, flowers, chestnut", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-TOP10-CHINA"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      },
+      {
+        "code": "TAG-HERITAGE"
+      }
     ],
-    "tags": ["TAG-TOP10-CHINA", "TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-HERITAGE"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-HENAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Henan",
         "place": "Xinyang City, Dabie Mountains",
-        "altitude": { "min": 300, "max": 800, "unit": "m" },
-        "coordinates": { "lat": 32.0, "lng": 114.0 },
+        "altitude": {
+          "min": 300,
+          "max": 800,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 32,
+          "lng": 114
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "300-800m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Refreshing, sweet, grassy, light astringent",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Fresh grass, flowers, chestnut",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-80°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -324,28 +816,107 @@
         "seoName": "anji-baicha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-LOW", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "300-800m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Delicate, sweet, refreshing, umami", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fresh bamboo, chestnut, floral", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      },
+      {
+        "code": "TAG-HIGH-THEANINE"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-HIGH-THEANINE"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ZHEJIANG"],
     "origins": [
       {
         "country": "CN",
         "state": "Zhejiang",
         "place": "Anji County, Huzhou",
-        "altitude": { "min": 300, "max": 800, "unit": "m" },
-        "coordinates": { "lat": 30.6, "lng": 119.7 },
+        "altitude": {
+          "min": 300,
+          "max": 800,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 30.6,
+          "lng": 119.7
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "300-800m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Delicate, sweet, refreshing, umami",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Fresh bamboo, chestnut, floral",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-80°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -374,28 +945,110 @@
         "seoName": "enshi-yulu"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-1500m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Rich, umami, refreshing, marine", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fresh grass, seaweed, green vegetables", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-RARE"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      },
+      {
+        "code": "TAG-STEAMED"
+      },
+      {
+        "code": "TAG-SELENIUM"
+      }
     ],
-    "tags": ["TAG-RARE", "TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-STEAMED", "TAG-SELENIUM"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-HUBEI"],
     "origins": [
       {
         "country": "CN",
         "state": "Hubei",
         "place": "Enshi City, Wuling Mountains",
-        "altitude": { "min": 800, "max": 1500, "unit": "m" },
-        "coordinates": { "lat": 30.3, "lng": 109.5 },
+        "altitude": {
+          "min": 800,
+          "max": 1500,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 30.3,
+          "lng": 109.5
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "800-1500m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Rich, umami, refreshing, marine",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Fresh grass, seaweed, green vegetables",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "70-80°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -424,28 +1077,107 @@
         "seoName": "mengding-ganlu"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-1500m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Sweet, delicate, floral, honey", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Flowers, honey, fresh greens", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-HERITAGE"
+      },
+      {
+        "code": "TAG-IMPERIAL"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      }
     ],
-    "tags": ["TAG-HERITAGE", "TAG-IMPERIAL", "TAG-SINGLE-ORIGIN", "TAG-SPRING"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-SICHUAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Sichuan",
         "place": "Mengding Mountain, Ya'an",
-        "altitude": { "min": 1000, "max": 1500, "unit": "m" },
-        "coordinates": { "lat": 30.0, "lng": 103.0 },
+        "altitude": {
+          "min": 1000,
+          "max": 1500,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 30,
+          "lng": 103
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1000-1500m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Sweet, delicate, floral, honey",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Flowers, honey, fresh greens",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -474,28 +1206,110 @@
         "seoName": "zhu-ye-qing"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-1200m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Refreshing, sweet, clean, bamboo", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Fresh grass, flowers, bamboo", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-UNESCO"
+      },
+      {
+        "code": "TAG-BUDDHIST"
+      },
+      {
+        "code": "TAG-SPRING"
+      }
     ],
-    "tags": ["TAG-PREMIUM", "TAG-SINGLE-ORIGIN", "TAG-UNESCO", "TAG-BUDDHIST", "TAG-SPRING"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-SICHUAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Sichuan",
         "place": "Mount Emei, Leshan",
-        "altitude": { "min": 800, "max": 1200, "unit": "m" },
-        "coordinates": { "lat": 29.5, "lng": 103.3 },
+        "altitude": {
+          "min": 800,
+          "max": 1200,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 29.5,
+          "lng": 103.3
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "800-1200m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Refreshing, sweet, clean, bamboo",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Fresh grass, flowers, bamboo",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "80-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -524,28 +1338,104 @@
         "seoName": "mengding-maofeng"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-1500m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, refreshing, floral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Flowers, chestnut, fresh greens", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-HERITAGE"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      }
     ],
-    "tags": ["TAG-HERITAGE", "TAG-SINGLE-ORIGIN", "TAG-SPRING"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-SICHUAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Sichuan",
         "place": "Mengding Mountain, Ya'an",
-        "altitude": { "min": 1000, "max": 1500, "unit": "m" },
-        "coordinates": { "lat": 30.0, "lng": 103.0 },
+        "altitude": {
+          "min": 1000,
+          "max": 1500,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 30,
+          "lng": 103
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1000-1500m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, sweet, refreshing, floral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Flowers, chestnut, fresh greens",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -574,28 +1464,101 @@
         "seoName": "nanjing-yuhua"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "100-400m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, refreshing, sweet, clean", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Flowers, chestnut, pine", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      }
     ],
-    "tags": ["TAG-SINGLE-ORIGIN", "TAG-SPRING"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-JIANGSU"],
     "origins": [
       {
         "country": "CN",
         "state": "Jiangsu",
         "place": "Nanjing, Zhongshan",
-        "altitude": { "min": 100, "max": 400, "unit": "m" },
-        "coordinates": { "lat": 32.0, "lng": 118.8 },
+        "altitude": {
+          "min": 100,
+          "max": 400,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 32,
+          "lng": 118.8
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "100-400m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, refreshing, sweet, clean",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Flowers, chestnut, pine",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "80-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -624,28 +1587,104 @@
         "seoName": "yunnan-lucha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "1000-2000m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Full-bodied, oily, sweet, nutty", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Nuts, fresh grass, honey", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "4-6", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      },
+      {
+        "code": "TAG-LARGE-LEAF"
+      }
     ],
-    "tags": ["TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-LARGE-LEAF"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-YUNNAN"],
     "origins": [
       {
         "country": "CN",
         "state": "Yunnan",
         "place": "Various regions (Lincang, Pu'er, Xishuangbanna)",
-        "altitude": { "min": 1000, "max": 2000, "unit": "m" },
-        "coordinates": { "lat": 24.0, "lng": 101.0 },
+        "altitude": {
+          "min": 1000,
+          "max": 2000,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 24,
+          "lng": 101
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "1000-2000m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Full-bodied, oily, sweet, nutty",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Nuts, fresh grass, honey",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "80-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "4-6",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -674,28 +1713,104 @@
         "seoName": "huangshan-yunwu"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-1200m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, floral, refreshing", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Flowers, fresh greens, sweet", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      },
+      {
+        "code": "TAG-HIGH-MOUNTAIN"
+      }
     ],
-    "tags": ["TAG-SINGLE-ORIGIN", "TAG-SPRING", "TAG-HIGH-MOUNTAIN"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
     "origins": [
       {
         "country": "CN",
         "state": "Anhui",
         "place": "Huangshan Mountains",
-        "altitude": { "min": 800, "max": 1200, "unit": "m" },
-        "coordinates": { "lat": 30.0, "lng": 118.0 },
+        "altitude": {
+          "min": 800,
+          "max": 1200,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 30,
+          "lng": 118
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "800-1200m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, sweet, floral, refreshing",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Flowers, fresh greens, sweet",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-80°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -724,28 +1839,104 @@
         "seoName": "dinggu-dafang"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "500-900m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Full-bodied, chestnut, nutty, sweet", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Roasted chestnut, seeds, fresh greens", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "80-85°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-HERITAGE"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      }
     ],
-    "tags": ["TAG-HERITAGE", "TAG-SINGLE-ORIGIN", "TAG-SPRING"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-ANHUI"],
     "origins": [
       {
         "country": "CN",
         "state": "Anhui",
         "place": "Shexian County, Huangshan",
-        "altitude": { "min": 500, "max": 900, "unit": "m" },
-        "coordinates": { "lat": 29.9, "lng": 118.4 },
+        "altitude": {
+          "min": 500,
+          "max": 900,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 29.9,
+          "lng": 118.4
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "500-900m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Full-bodied, chestnut, nutty, sweet",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Roasted chestnut, seeds, fresh greens",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "80-85°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -774,28 +1965,104 @@
         "seoName": "bai-mao-hou"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-HARVEST", "option": "SPEC-HARV-SPRING", "type": "Option", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-ALTITUDE", "type": "CustomText", "value": "800-1200m", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-TASTE", "type": "CustomText", "value": "Soft, sweet, refreshing, floral", "showOnPage": true, "order": 6 },
-      { "attribute": "SPEC-AROMA", "type": "CustomText", "value": "Flowers, fresh greens, honey", "showOnPage": true, "order": 7 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "75-80°C", "showOnPage": true, "order": 8 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 9 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 10 }
+    "tags": [
+      {
+        "code": "TAG-RARE"
+      },
+      {
+        "code": "TAG-SINGLE-ORIGIN"
+      },
+      {
+        "code": "TAG-SPRING"
+      }
     ],
-    "tags": ["TAG-RARE", "TAG-SINGLE-ORIGIN", "TAG-SPRING"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA", "CAT-REGION-GUIZHOU"],
     "origins": [
       {
         "country": "CN",
         "state": "Guizhou",
         "place": "Various mountain regions",
-        "altitude": { "min": 800, "max": 1200, "unit": "m" },
-        "coordinates": { "lat": 26.5, "lng": 106.7 },
+        "altitude": {
+          "min": 800,
+          "max": 1200,
+          "unit": "m"
+        },
+        "coordinates": {
+          "lat": 26.5,
+          "lng": 106.7
+        },
         "isPrimary": true
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-ALTITUDE",
+        "type": "CustomText",
+        "value": "800-1200m",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-TASTE",
+        "type": "CustomText",
+        "value": "Soft, sweet, refreshing, floral",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "attribute": "SPEC-AROMA",
+        "type": "CustomText",
+        "value": "Flowers, fresh greens, honey",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "75-80°C",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 10
       }
     ]
   },
@@ -824,20 +2091,62 @@
         "seoName": "lucha"
       }
     ],
-    "specs": [
-      { "attribute": "SPEC-TEA-TYPE", "option": "SPEC-TYPE-GREEN", "type": "Option", "showOnPage": true, "order": 1 },
-      { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 2 },
-      { "attribute": "SPEC-CAFFEINE", "option": "SPEC-CAFF-MEDIUM", "type": "Option", "showOnPage": true, "order": 3 },
-      { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-85°C", "showOnPage": true, "order": 4 },
-      { "attribute": "SPEC-BREW-AMOUNT", "type": "CustomText", "value": "3-5g / 150-200ml", "showOnPage": true, "order": 5 },
-      { "attribute": "SPEC-INFUSIONS", "type": "CustomText", "value": "3-5", "showOnPage": true, "order": 6 }
+    "tags": [
+      {
+        "code": "TAG-ANTIOXIDANT"
+      },
+      {
+        "code": "TAG-REFRESHING"
+      }
     ],
-    "tags": ["TAG-ANTIOXIDANT", "TAG-REFRESHING"],
-    "categories": ["CAT-GREEN-TEA", "CAT-REGION-CHINA"],
     "origins": [
       {
         "country": "CN",
         "notes": "Major provinces: Zhejiang, Jiangsu, Anhui, Henan, Sichuan, Hubei, Yunnan, Guizhou"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MEDIUM",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "value": "70-85°C",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "value": "3-5g / 150-200ml",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-INFUSIONS",
+        "type": "CustomText",
+        "value": "3-5",
+        "showOnPage": true,
+        "order": 6
       }
     ]
   }

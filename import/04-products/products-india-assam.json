@@ -25,16 +25,26 @@
           "seoName": "asamu-zhengshan-tgfop"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95-100°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "4-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "assam"
+        },
+        {
+          "code": "orthodox"
+        },
+        {
+          "code": "malty"
+        },
+        {
+          "code": "breakfast"
+        }
       ],
-      "tags": ["indian-tea", "black-tea", "assam", "orthodox", "malty", "breakfast"],
-      "categories": ["BLACK_TEA", "INDIAN_TEA"],
       "origins": [
         {
           "country": "IN",
@@ -43,6 +53,38 @@
           "latitude": 26.7509,
           "longitude": 94.2037,
           "altitude": 100
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95-100°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "4-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -71,16 +113,26 @@
           "seoName": "asamu-ctc"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "100°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "assam"
+        },
+        {
+          "code": "ctc"
+        },
+        {
+          "code": "strong"
+        },
+        {
+          "code": "breakfast"
+        }
       ],
-      "tags": ["indian-tea", "black-tea", "assam", "ctc", "strong", "breakfast"],
-      "categories": ["BLACK_TEA", "INDIAN_TEA"],
       "origins": [
         {
           "country": "IN",
@@ -89,6 +141,38 @@
           "latitude": 26.7509,
           "longitude": 94.2037,
           "altitude": 100
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "100°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2 г / 200 мл"
         }
       ]
     },
@@ -117,16 +201,26 @@
           "seoName": "asamu-ercai"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "95-100°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "4-5 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "assam"
+        },
+        {
+          "code": "second-flush"
+        },
+        {
+          "code": "premium"
+        },
+        {
+          "code": "tippy"
+        }
       ],
-      "tags": ["indian-tea", "black-tea", "assam", "second-flush", "premium", "tippy"],
-      "categories": ["BLACK_TEA", "INDIAN_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "IN",
@@ -135,6 +229,38 @@
           "latitude": 26.7509,
           "longitude": 94.2037,
           "altitude": 100
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "95-100°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "4-5 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -163,16 +289,23 @@
           "seoName": "asamu-jinya"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "90-95°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "3-4 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "assam"
+        },
+        {
+          "code": "golden-tips"
+        },
+        {
+          "code": "premium"
+        }
       ],
-      "tags": ["indian-tea", "black-tea", "assam", "golden-tips", "premium"],
-      "categories": ["BLACK_TEA", "INDIAN_TEA", "PREMIUM_TEA"],
       "origins": [
         {
           "country": "IN",
@@ -181,6 +314,38 @@
           "latitude": 26.7509,
           "longitude": 94.2037,
           "altitude": 100
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "90-95°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "3-4 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -209,16 +374,20 @@
           "seoName": "asamu-lvcha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "GREEN" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "MEDIUM" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "80-85°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "2-3 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "2-3 г / 200 мл" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "green-tea"
+        },
+        {
+          "code": "assam"
+        },
+        {
+          "code": "rare"
+        }
       ],
-      "tags": ["indian-tea", "green-tea", "assam", "rare"],
-      "categories": ["GREEN_TEA", "INDIAN_TEA"],
       "origins": [
         {
           "country": "IN",
@@ -227,6 +396,38 @@
           "latitude": 26.7509,
           "longitude": 94.2037,
           "altitude": 100
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "GREEN"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "MEDIUM"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "80-85°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "2-3 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "2-3 г / 200 мл"
         }
       ]
     },
@@ -255,16 +456,26 @@
           "seoName": "masala-cha"
         }
       ],
-      "specs": [
-        { "code": "TEA_TYPE", "type": "Option", "option": "BLACK" },
-        { "code": "ORIGIN_COUNTRY", "type": "Option", "option": "INDIA" },
-        { "code": "CAFFEINE_LEVEL", "type": "Option", "option": "HIGH" },
-        { "code": "BREWING_TEMP", "type": "CustomText", "value": "100°C" },
-        { "code": "BREWING_TIME", "type": "CustomText", "value": "5-7 мин" },
-        { "code": "BREWING_AMOUNT", "type": "CustomText", "value": "3-4 г / 200 мл + молоко" }
+      "tags": [
+        {
+          "code": "indian-tea"
+        },
+        {
+          "code": "black-tea"
+        },
+        {
+          "code": "spiced"
+        },
+        {
+          "code": "masala"
+        },
+        {
+          "code": "chai"
+        },
+        {
+          "code": "traditional"
+        }
       ],
-      "tags": ["indian-tea", "black-tea", "spiced", "masala", "chai", "traditional"],
-      "categories": ["BLACK_TEA", "INDIAN_TEA", "SPICED_TEA"],
       "origins": [
         {
           "country": "IN",
@@ -273,6 +484,38 @@
           "latitude": 26.7509,
           "longitude": 94.2037,
           "altitude": 100
+        }
+      ],
+      "specifications": [
+        {
+          "code": "TEA_TYPE",
+          "type": "Option",
+          "option": "BLACK"
+        },
+        {
+          "code": "ORIGIN_COUNTRY",
+          "type": "Option",
+          "option": "INDIA"
+        },
+        {
+          "code": "CAFFEINE_LEVEL",
+          "type": "Option",
+          "option": "HIGH"
+        },
+        {
+          "code": "BREWING_TEMP",
+          "type": "CustomText",
+          "value": "100°C"
+        },
+        {
+          "code": "BREWING_TIME",
+          "type": "CustomText",
+          "value": "5-7 мин"
+        },
+        {
+          "code": "BREWING_AMOUNT",
+          "type": "CustomText",
+          "value": "3-4 г / 200 мл + молоко"
         }
       ]
     }
