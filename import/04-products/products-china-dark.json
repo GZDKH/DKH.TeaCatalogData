@@ -9,19 +9,19 @@
         "lang": "ru-RU",
         "name": "Фу Чжуань Ча (Кирпичный чай с Золотыми цветами)",
         "description": "Постферментированный чай из провинции Хунань категории Хэй Ча. Уникальная особенность — «Золотые цветы» (金花, Цзинь Хуа), полезный грибок Eurotium cristatum, придающий чаю особые целебные свойства. Насыщенный древесно-ореховый вкус с медовой сладостью, ноты сухофруктов и чернослива. Прессуется в форме кирпича, выдерживается годами.",
-        "seoName": "fu-chzhuan-cha"
+        "seo": "fu-chzhuan-cha"
       },
       {
         "lang": "en-US",
         "name": "Fu Zhuan Cha (Golden Flower Brick Tea)",
         "description": "Post-fermented dark tea (Hei Cha) from Hunan Province. Distinguished by unique 'Golden Flowers' (金花, Jin Hua) - beneficial Eurotium cristatum fungus that develops during fermentation. Rich woody-nutty flavor with honey sweetness, notes of dried fruits and prunes. Pressed into brick form, improves with age.",
-        "seoName": "fu-zhuan-cha-golden-flower-brick"
+        "seo": "fu-zhuan-cha-golden-flower-brick"
       },
       {
         "lang": "zh-CN",
         "name": "茯砖茶",
         "description": "湖南安化黑茶代表，以独特的“金花”（冠突散囊菌）著称。金花赋予茶叶特殊的保健功效。醇厚木香坚果味，带蜜甜回甘，伴有干果和梅子香。砖形紧压，越陈越香。",
-        "seoName": "fu-zhuan-cha"
+        "seo": "fu-zhuan-cha"
       }
     ],
     "tags": [
@@ -141,19 +141,19 @@
         "lang": "ru-RU",
         "name": "Лю Бао Ча (Чай из Шести крепостей)",
         "description": "Знаменитый постферментированный чай из Гуанси с более чем 1500-летней историей. Отличается характерным ароматом «Бин Лан Сян» (槟榔香) — оттенком бетелевого ореха. Полный, маслянистый вкус с нотами древесины, орехов, сухофруктов и земли. Особенно популярен в Юго-Восточной Азии. Улучшается с возрастом.",
-        "seoName": "lyu-bao-cha"
+        "seo": "lyu-bao-cha"
       },
       {
         "lang": "en-US",
         "name": "Liu Bao Cha (Six Fortress Tea)",
         "description": "Famous post-fermented dark tea from Guangxi with over 1500 years of history. Distinguished by characteristic 'Bin Lang Xiang' (槟榔香) - betel nut aroma. Full, oily mouthfeel with notes of wood, nuts, dried fruits and earth. Especially popular in Southeast Asia among Chinese diaspora. Improves with age.",
-        "seoName": "liu-bao-cha-six-fortress"
+        "seo": "liu-bao-cha-six-fortress"
       },
       {
         "lang": "zh-CN",
         "name": "六堡茶",
         "description": "广西梧州传统黑茶，历史逾1500年。以独特的“槟榔香”著称。醇厚油润，木香坚果香，伴有干果和泥土气息。东南亚华人社区尤为喜爱。越陈越香。",
-        "seoName": "liu-bao-cha"
+        "seo": "liu-bao-cha"
       }
     ],
     "tags": [
@@ -270,19 +270,19 @@
         "lang": "ru-RU",
         "name": "Цянь Лян Ча (Чай Тысячи Лянов)",
         "description": "Уникальный прессованный чай из Хунани в форме гигантского «бревна» весом до 36 кг. Традиционная технология производства требует ручного труда десятков мастеров. Насыщенный терпкий вкус с древесными и ореховыми нотами. Называется «чаем Великого шёлкового пути» за историческое значение в караванной торговле.",
-        "seoName": "cyan-lyan-cha"
+        "seo": "cyan-lyan-cha"
       },
       {
         "lang": "en-US",
         "name": "Qian Liang Cha (Thousand Tael Tea)",
         "description": "Unique compressed tea from Hunan in the form of a giant 'log' weighing up to 36kg. Traditional production requires dozens of craftsmen working by hand. Rich, astringent flavor with woody and nutty notes. Called 'Silk Road Tea' for its historical importance in caravan trade.",
-        "seoName": "qian-liang-cha-thousand-tael"
+        "seo": "qian-liang-cha-thousand-tael"
       },
       {
         "lang": "zh-CN",
         "name": "千两茶",
         "description": "湖南安化独特的柱状紧压茶，重达36公斤。传统工艺需数十名工匠手工制作。醇厚浓烈，木香坚果香。因在丝绸之路贸易中的重要地位，被称为“世界茶王”。",
-        "seoName": "qian-liang-cha"
+        "seo": "qian-liang-cha"
       }
     ],
     "tags": [
@@ -402,19 +402,19 @@
         "lang": "ru-RU",
         "name": "Аньхуа Тянь Цзянь (Небесный пик)",
         "description": "Высший сорт Хэй Ча из уезда Аньхуа, провинция Хунань. Изготавливается из молодых почек и первых листьев весеннего сбора. Более нежный и деликатный вкус по сравнению с другими Хэй Ча. Сладковатое послевкусие с фруктовыми и цветочными нотами. Традиционно упаковывается в бамбуковые корзины.",
-        "seoName": "anyhua-tyan-czyan"
+        "seo": "anyhua-tyan-czyan"
       },
       {
         "lang": "en-US",
         "name": "Anhua Tian Jian (Heavenly Tip)",
         "description": "Top grade Hei Cha from Anhua County, Hunan Province. Made from young buds and first leaves of spring harvest. More delicate and refined taste compared to other Hei Cha. Sweet aftertaste with fruity and floral notes. Traditionally packed in bamboo baskets.",
-        "seoName": "anhua-tian-jian-heavenly-tip"
+        "seo": "anhua-tian-jian-heavenly-tip"
       },
       {
         "lang": "zh-CN",
         "name": "安化天尖",
         "description": "湖南安化黑茶最高等级，选用春季嫩芽和一叶制作。口感比其他黑茶更细腻。回甘甜美，带有果香和花香。传统竹篓包装。",
-        "seoName": "anhua-tian-jian"
+        "seo": "anhua-tian-jian"
       }
     ],
     "tags": [
@@ -531,19 +531,19 @@
         "lang": "ru-RU",
         "name": "Сычуаньский Бянь Ча (Пограничный чай)",
         "description": "Традиционный тёмный чай из провинции Сычуань, исторически производившийся для торговли с Тибетом. Крепкий, насыщенный вкус с выраженными древесными и дымными нотами. Высокое содержание витаминов и минералов делает его незаменимым для народов, живущих на высокогорных плато. Часто употребляется с молоком яка.",
-        "seoName": "sychuanskij-byan-cha"
+        "seo": "sychuanskij-byan-cha"
       },
       {
         "lang": "en-US",
         "name": "Sichuan Bian Cha (Border Tea)",
         "description": "Traditional dark tea from Sichuan Province, historically produced for trade with Tibet. Strong, robust flavor with pronounced woody and smoky notes. High vitamin and mineral content makes it essential for people living on high plateaus. Often consumed with yak butter.",
-        "seoName": "sichuan-bian-cha-border-tea"
+        "seo": "sichuan-bian-cha-border-tea"
       },
       {
         "lang": "zh-CN",
         "name": "四川边茶",
         "description": "四川传统黑茶，历史上为藏区边销而制。浓厚醇烈，木香烟香明显。富含维生素和矿物质，为高原民族必需饮品。常与酥油同饮。",
-        "seoName": "sichuan-bian-cha"
+        "seo": "sichuan-bian-cha"
       }
     ],
     "tags": [
@@ -663,19 +663,19 @@
         "lang": "ru-RU",
         "name": "Люань Хэй Ча",
         "description": "Региональный тёмный чай из провинции Аньхой, менее известный, но с богатой историей. Отличается более мягким вкусом по сравнению с другими Хэй Ча. Древесно-травянистый аромат с лёгкими цветочными нотами. Хорошо подходит для знакомства с миром тёмных чаёв.",
-        "seoName": "lyuan-hej-cha"
+        "seo": "lyuan-hej-cha"
       },
       {
         "lang": "en-US",
         "name": "Liu'an Hei Cha",
         "description": "Regional dark tea from Anhui Province, less known but with rich history. Milder flavor compared to other Hei Cha varieties. Woody-herbal aroma with light floral notes. Good introduction to the world of dark teas.",
-        "seoName": "liuan-hei-cha"
+        "seo": "liuan-hei-cha"
       },
       {
         "lang": "zh-CN",
         "name": "六安黑茶",
         "description": "安徽地区黑茶，知名度较低但历史悠久。口感比其他黑茶更温和。木香草香，带有淡淡花香。适合黑茶入门。",
-        "seoName": "liuan-hei-cha"
+        "seo": "liuan-hei-cha"
       }
     ],
     "tags": [
@@ -777,19 +777,19 @@
         "lang": "ru-RU",
         "name": "Хэй Ча (Китайский тёмный чай)",
         "description": "Общая категория постферментированных чаёв Китая, отличная от красного (чёрного в западной традиции) чая. Проходит уникальный процесс микробной ферментации после первичной обработки. Землистый, древесный вкус, улучшающийся с возрастом. Традиционно ценится за способность улучшать пищеварение и согревать организм.",
-        "seoName": "hej-cha"
+        "seo": "hej-cha"
       },
       {
         "lang": "en-US",
         "name": "Hei Cha (Chinese Dark Tea)",
         "description": "General category of Chinese post-fermented teas, distinct from red (black in Western tradition) tea. Undergoes unique microbial fermentation process after initial processing. Earthy, woody flavor that improves with age. Traditionally valued for digestive benefits and warming properties.",
-        "seoName": "hei-cha-chinese-dark-tea"
+        "seo": "hei-cha-chinese-dark-tea"
       },
       {
         "lang": "zh-CN",
         "name": "黑茶",
         "description": "中国后发酵茶大类，与红茶（西方称“黑茶”）不同。经过独特的微生物发酵过程。土香木香，越陈越香。传统上因其助消化和暖身功效而受重视。",
-        "seoName": "hei-cha"
+        "seo": "hei-cha"
       }
     ],
     "tags": [

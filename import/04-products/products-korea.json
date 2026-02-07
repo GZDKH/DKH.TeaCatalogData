@@ -10,19 +10,19 @@
           "lang": "ru-RU",
           "name": "Босонг Седжак",
           "description": "Корейский зелёный чай второго весеннего сбора из региона Босонг. Мягкий вкус умами с травянистыми нотами и лёгкой сладостью. Обработка паром. Органический продукт.",
-          "seoName": "boseong-sejak"
+          "seo": "boseong-sejak"
         },
         {
           "lang": "en-US",
           "name": "Boseong Sejak",
           "description": "Korean green tea of second spring harvest from Boseong region. Mild umami taste with grassy notes and light sweetness. Steamed processing. Organic product.",
-          "seoName": "boseong-sejak"
+          "seo": "boseong-sejak"
         },
         {
           "lang": "zh-CN",
           "name": "宝城细雀",
           "description": "产自宝城地区的韩国绿茶，第二次春采。口感温和鲜爽，带有草香和轻微甘甜。蒸青工艺。有机产品。",
-          "seoName": "baocheng-xique"
+          "seo": "baocheng-xique"
         }
       ],
       "tags": [
@@ -98,19 +98,19 @@
           "lang": "ru-RU",
           "name": "Уджон",
           "description": "Высший грейд корейского зелёного чая, первый сбор до весенних дождей. Самый нежный и редкий. Сладкий вкус с минимальной терпкостью, цветочный аромат.",
-          "seoName": "ujeon"
+          "seo": "ujeon"
         },
         {
           "lang": "en-US",
           "name": "Ujeon",
           "description": "Highest grade of Korean green tea, first harvest before spring rains. Most delicate and rare. Sweet taste with minimal astringency, floral aroma.",
-          "seoName": "ujeon"
+          "seo": "ujeon"
         },
         {
           "lang": "zh-CN",
           "name": "雨前",
           "description": "韩国绿茶最高等级，春雨前首摘。最细腻珍稀。甘甜的口感，涩味极少，花香馥郁。",
-          "seoName": "yuqian"
+          "seo": "yuqian"
         }
       ],
       "tags": [
@@ -186,19 +186,19 @@
           "lang": "ru-RU",
           "name": "Хванча (Жёлтый Чай)",
           "description": "Корейский жёлтый чай, прошедший процесс томления после фиксации. Мягкий сладковатый вкус с медовыми и фруктовыми нотами. Редкий традиционный чай.",
-          "seoName": "hwangcha"
+          "seo": "hwangcha"
         },
         {
           "lang": "en-US",
           "name": "Hwangcha (Yellow Tea)",
           "description": "Korean yellow tea that undergoes smothering process after fixation. Mild sweet taste with honey and fruity notes. Rare traditional tea.",
-          "seoName": "hwangcha"
+          "seo": "hwangcha"
         },
         {
           "lang": "zh-CN",
           "name": "黄茶",
           "description": "经过闷黄工艺的韩国黄茶。口感温和甘甜，带有蜂蜜和果香。稀有的传统茶。",
-          "seoName": "huangcha"
+          "seo": "huangcha"
         }
       ],
       "tags": [
@@ -271,19 +271,19 @@
           "lang": "ru-RU",
           "name": "Бальхёча (Ферментированный Чай)",
           "description": "Корейский ферментированный чай, аналог чёрного чая. Мягкий солодовый вкус с фруктовыми нотами. Янтарно-красный настой. Традиционный корейский метод обработки.",
-          "seoName": "balhyocha"
+          "seo": "balhyocha"
         },
         {
           "lang": "en-US",
           "name": "Balhyocha (Fermented Tea)",
           "description": "Korean fermented tea, similar to black tea. Mild malty taste with fruity notes. Amber-red infusion. Traditional Korean processing method.",
-          "seoName": "balhyocha"
+          "seo": "balhyocha"
         },
         {
           "lang": "zh-CN",
           "name": "发酵茶",
           "description": "韩国发酵茶，类似红茶。口感温和，带有麦芽香和果香。茶汤呈琥珀红色。传统韩国工艺。",
-          "seoName": "fajiao-cha"
+          "seo": "fajiao-cha"
         }
       ],
       "tags": [
@@ -356,19 +356,19 @@
           "lang": "ru-RU",
           "name": "Босонг Матча",
           "description": "Корейский порошковый чай из затенённых листьев. Насыщенный вкус умами, интенсивный зелёный цвет. Используется в традиционных церемониях и кулинарии.",
-          "seoName": "boseong-matcha"
+          "seo": "boseong-matcha"
         },
         {
           "lang": "en-US",
           "name": "Boseong Matcha",
           "description": "Korean powdered tea from shaded leaves. Rich umami taste, intense green color. Used in traditional ceremonies and cooking.",
-          "seoName": "boseong-matcha"
+          "seo": "boseong-matcha"
         },
         {
           "lang": "zh-CN",
           "name": "宝城抹茶",
           "description": "采用遮阴叶片制成的韩国抹茶粉。浓郁的鲜味，色泽翠绿。用于传统茶道和烹饪。",
-          "seoName": "baocheng-mocha"
+          "seo": "baocheng-mocha"
         }
       ],
       "tags": [
@@ -441,19 +441,19 @@
           "lang": "ru-RU",
           "name": "Чеджу Улун",
           "description": "Улун с острова Чеджу. Цветочный аромат с медовыми нотами, мягкий сладковатый вкус. Вулканические почвы придают минеральные оттенки.",
-          "seoName": "jeju-oolong"
+          "seo": "jeju-oolong"
         },
         {
           "lang": "en-US",
           "name": "Jeju Oolong",
           "description": "Oolong from Jeju Island. Floral aroma with honey notes, mild sweet taste. Volcanic soils add mineral tones.",
-          "seoName": "jeju-oolong"
+          "seo": "jeju-oolong"
         },
         {
           "lang": "zh-CN",
           "name": "济州乌龙",
           "description": "产自济州岛的乌龙茶。花香中带有蜂蜜香，口感柔和甘甜。火山土壤赋予矿物质风味。",
-          "seoName": "jizhou-wulong"
+          "seo": "jizhou-wulong"
         }
       ],
       "tags": [

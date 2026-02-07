@@ -10,19 +10,19 @@
           "lang": "ru-RU",
           "name": "Вакоча (Японский красный чай)",
           "description": "Японский чёрный чай с мягким сладковатым вкусом, фруктовыми и цветочными нотами. Менее терпкий, чем индийские или цейлонские чаи. Производство возродилось в последние годы благодаря интересу к локальным продуктам.",
-          "seoName": "wakocha"
+          "seo": "wakocha"
         },
         {
           "lang": "en-US",
           "name": "Wakocha (Japanese Black Tea)",
           "description": "Japanese black tea with mild sweet taste, fruity and floral notes. Less astringent than Indian or Ceylon teas. Production revived in recent years due to interest in local products.",
-          "seoName": "wakocha"
+          "seo": "wakocha"
         },
         {
           "lang": "zh-CN",
           "name": "和红茶（日本红茶）",
           "description": "日本红茶，口感温和甘甜，带有果香和花香。涩味比印度茶或锡兰茶少。近年来由于对本土产品的兴趣，生产得以复兴。",
-          "seoName": "hehongcha"
+          "seo": "hehongcha"
         }
       ],
       "tags": [
@@ -95,19 +95,19 @@
           "lang": "ru-RU",
           "name": "Бэнифуки",
           "description": "Японский сорт чая, специально выведенный для производства красного чая. Цветочный и фруктовый аромат с цитрусовыми и медовыми оттенками. Высокое содержание метилкатехина с противоаллергическими свойствами.",
-          "seoName": "benifuuki"
+          "seo": "benifuuki"
         },
         {
           "lang": "en-US",
           "name": "Benifuuki",
           "description": "Japanese tea cultivar specially bred for black tea production. Floral and fruity aroma with citrus and honey notes. High methylated catechin content with anti-allergic properties.",
-          "seoName": "benifuuki"
+          "seo": "benifuuki"
         },
         {
           "lang": "zh-CN",
           "name": "红富贵",
           "description": "专门为生产红茶而培育的日本茶品种。花香和果香中带有柑橘和蜂蜜气息。甲基化儿茶素含量高，具有抗过敏特性。",
-          "seoName": "hongfugui"
+          "seo": "hongfugui"
         }
       ],
       "tags": [
@@ -180,19 +180,19 @@
           "lang": "ru-RU",
           "name": "Бэнихомарэ",
           "description": "Один из первых японских сортов для красного чая. Солодовый, фруктовый вкус с лёгкими пряными нотами. Хорошо ферментируется, даёт насыщенный вкус и аромат.",
-          "seoName": "benihomare"
+          "seo": "benihomare"
         },
         {
           "lang": "en-US",
           "name": "Benihomare",
           "description": "One of the first Japanese cultivars for black tea. Malty, fruity taste with light spicy notes. Ferments well, produces rich taste and aroma.",
-          "seoName": "benihomare"
+          "seo": "benihomare"
         },
         {
           "lang": "zh-CN",
           "name": "红誉",
           "description": "最早用于红茶生产的日本品种之一。麦芽和果味中带有轻微的辛香。发酵良好，口感和香气浓郁。",
-          "seoName": "hongyu"
+          "seo": "hongyu"
         }
       ],
       "tags": [
@@ -265,19 +265,19 @@
           "lang": "ru-RU",
           "name": "Якусима Кочя",
           "description": "Красный чай с острова Якусима — одного из лучших регионов для японского чёрного чая. Мягкий сладковатый вкус с фруктовыми и медовыми нотами, минимальная терпкость. Часто органического производства.",
-          "seoName": "yakushima-kocha"
+          "seo": "yakushima-kocha"
         },
         {
           "lang": "en-US",
           "name": "Yakushima Kocha",
           "description": "Black tea from Yakushima island — one of the best regions for Japanese black tea. Mild sweet taste with fruity and honey notes, minimal astringency. Often organically produced.",
-          "seoName": "yakushima-kocha"
+          "seo": "yakushima-kocha"
         },
         {
           "lang": "zh-CN",
           "name": "屋久岛红茶",
           "description": "产自屋久岛的红茶——日本红茶最佳产区之一。口感温和甘甜，带有果香和蜂蜜香，涩味极少。常为有机生产。",
-          "seoName": "wujiudao-hongcha"
+          "seo": "wujiudao-hongcha"
         }
       ],
       "tags": [
@@ -350,19 +350,19 @@
           "lang": "ru-RU",
           "name": "Асикита Вакоча",
           "description": "Красный чай из региона Асикита (Кумамото). Производится из различных культиваров: Ябукита, Бэнифуки, Идзуми, Косюн. Мягкий вкус с цветочными и фруктовыми нотами.",
-          "seoName": "ashikita-wakocha"
+          "seo": "ashikita-wakocha"
         },
         {
           "lang": "en-US",
           "name": "Ashikita Wakocha",
           "description": "Black tea from Ashikita region (Kumamoto). Produced from various cultivars: Yabukita, Benifuuki, Izumi, Koshun. Mild taste with floral and fruity notes.",
-          "seoName": "ashikita-wakocha"
+          "seo": "ashikita-wakocha"
         },
         {
           "lang": "zh-CN",
           "name": "�的北和红茶",
           "description": "产自芦北地区（熊本县）的红茶。采用多种品种制作：薮北、红富贵、�的水、香春。口感温和，带有花香和果香。",
-          "seoName": "lubei-hehongcha"
+          "seo": "lubei-hehongcha"
         }
       ],
       "tags": [
@@ -432,19 +432,19 @@
           "lang": "ru-RU",
           "name": "ГАБА Кочя",
           "description": "Японский красный чай с повышенным содержанием ГАМК (гамма-аминомасляной кислоты) благодаря анаэробной обработке. Расслабляющий эффект, помощь при стрессе и тревожности. Мягкий сладкий вкус.",
-          "seoName": "gaba-kocha"
+          "seo": "gaba-kocha"
         },
         {
           "lang": "en-US",
           "name": "GABA Kocha",
           "description": "Japanese black tea with elevated GABA (gamma-aminobutyric acid) content due to anaerobic processing. Relaxing effect, helps with stress and anxiety. Mild sweet taste.",
-          "seoName": "gaba-kocha"
+          "seo": "gaba-kocha"
         },
         {
           "lang": "zh-CN",
           "name": "佳叶龙红茶",
           "description": "因厌氧加工而GABA（γ-氨基丁酸）含量升高的日本红茶。具有放松效果，有助于缓解压力和焦虑。口感温和甘甜。",
-          "seoName": "jiayelong-hongcha"
+          "seo": "jiayelong-hongcha"
         }
       ],
       "tags": [

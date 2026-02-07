@@ -10,19 +10,19 @@
           "lang": "ru-RU",
           "name": "Нувара Элия OP",
           "description": "Высокогорный цейлонский чай (1800-2200 м). Лёгкий освежающий вкус с цветочными нотами жасмина и медовой сладостью. Называют «цейлонским шампанским». Светло-янтарный настой.",
-          "seoName": "nuwara-eliya-op"
+          "seo": "nuwara-eliya-op"
         },
         {
           "lang": "en-US",
           "name": "Nuwara Eliya OP",
           "description": "High-altitude Ceylon tea (1800-2200m). Light refreshing taste with jasmine floral notes and honey sweetness. Called 'Ceylon champagne'. Light amber infusion.",
-          "seoName": "nuwara-eliya-op"
+          "seo": "nuwara-eliya-op"
         },
         {
           "lang": "zh-CN",
           "name": "努瓦拉埃利亚OP",
           "description": "高海拔锡兰茶（1800-2200米）。口感清爽，带有茉莉花香和蜂蜜甜味。被称为“锡兰香槟”。茶汤呈浅琥珀色。",
-          "seoName": "nuwala-ailiya-op"
+          "seo": "nuwala-ailiya-op"
         }
       ],
       "tags": [
@@ -95,19 +95,19 @@
           "lang": "ru-RU",
           "name": "Ува Хайлендс BOP",
           "description": "Высокогорный чай из региона Ува с уникальным ментолово-эвкалиптовым ароматом. Крепкий насыщенный вкус с освежающим послевкусием. Ярко-медный настой. Лучший сбор — сухой сезон (июль-сентябрь).",
-          "seoName": "uva-highlands-bop"
+          "seo": "uva-highlands-bop"
         },
         {
           "lang": "en-US",
           "name": "Uva Highlands BOP",
           "description": "High-altitude tea from Uva region with unique menthol-eucalyptus aroma. Strong rich taste with refreshing aftertaste. Bright copper infusion. Best harvest — dry season (July-September).",
-          "seoName": "uva-highlands-bop"
+          "seo": "uva-highlands-bop"
         },
         {
           "lang": "zh-CN",
           "name": "乌瓦高地BOP",
           "description": "产自乌瓦地区的高山茶，带有独特的薄荷-桉树香气。口感浓郁，回味清爽。茶汤呈明亮的铜色。最佳采摘期为旱季（7-9月）。",
-          "seoName": "wuwa-gaodi-bop"
+          "seo": "wuwa-gaodi-bop"
         }
       ],
       "tags": [
@@ -183,19 +183,19 @@
           "lang": "ru-RU",
           "name": "Димбула OP",
           "description": "Классический высокогорный цейлонский чай. Полный насыщенный вкус с нотами кипариса и свежестью. Золотисто-янтарный настой. Хорошо сочетается с молоком. Лучший сезон — январь-март.",
-          "seoName": "dimbula-op"
+          "seo": "dimbula-op"
         },
         {
           "lang": "en-US",
           "name": "Dimbula OP",
           "description": "Classic high-grown Ceylon tea. Full rich taste with cypress notes and freshness. Golden amber infusion. Pairs well with milk. Best season — January-March.",
-          "seoName": "dimbula-op"
+          "seo": "dimbula-op"
         },
         {
           "lang": "zh-CN",
           "name": "丁布拉OP",
           "description": "经典高山锡兰茶。口感醇厚，带有柏树香和清新感。茶汤呈金琥珀色。加奶更佳。最佳季节为1-3月。",
-          "seoName": "dingbula-op"
+          "seo": "dingbula-op"
         }
       ],
       "tags": [
@@ -268,19 +268,19 @@
           "lang": "ru-RU",
           "name": "Рухуна Golden Garden OP",
           "description": "Низкогорный цейлонский чай (до 600 м). Крепкий, насыщенный, сладковатый вкус с нотами карамели и патоки. Тёмный красно-коричневый настой. Идеален для любителей крепкого чая.",
-          "seoName": "ruhuna-golden-garden"
+          "seo": "ruhuna-golden-garden"
         },
         {
           "lang": "en-US",
           "name": "Ruhuna Golden Garden OP",
           "description": "Low-grown Ceylon tea (up to 600m). Strong, rich, sweet taste with caramel and molasses notes. Dark red-brown infusion. Perfect for strong tea lovers.",
-          "seoName": "ruhuna-golden-garden"
+          "seo": "ruhuna-golden-garden"
         },
         {
           "lang": "zh-CN",
           "name": "鲁胡纳金色花园OP",
           "description": "低海拔锡兰茶（600米以下）。口感浓郁甘甜，带有焦糖和糖蜜香。茶汤呈深红棕色。适合喜欢浓茶的人。",
-          "seoName": "luhuna-jinse-huayuan"
+          "seo": "luhuna-jinse-huayuan"
         }
       ],
       "tags": [
@@ -356,19 +356,19 @@
           "lang": "ru-RU",
           "name": "Канди OP",
           "description": "Среднегорный цейлонский чай (600-1200 м) из исторического региона. Сбалансированный крепкий вкус, умеренная терпкость. Ярко-медный настой. Универсальный чай для повседневного употребления.",
-          "seoName": "kandy-op"
+          "seo": "kandy-op"
         },
         {
           "lang": "en-US",
           "name": "Kandy OP",
           "description": "Mid-grown Ceylon tea (600-1200m) from historic region. Balanced strong taste, moderate astringency. Bright copper infusion. Universal tea for everyday drinking.",
-          "seoName": "kandy-op"
+          "seo": "kandy-op"
         },
         {
           "lang": "zh-CN",
           "name": "康提OP",
           "description": "产自历史名区的中海拔锡兰茶（600-1200米）。口感均衡浓郁，涩味适中。茶汤呈明亮的铜色。日常饮用的通用茶。",
-          "seoName": "kangti-op"
+          "seo": "kangti-op"
         }
       ],
       "tags": [
@@ -441,19 +441,19 @@
           "lang": "ru-RU",
           "name": "Цейлон Silver Needle",
           "description": "Редкий цейлонский белый чай из серебристых почек. Нежный сладковатый вкус с медовыми и цветочными нотами. Минимальная обработка сохраняет все полезные вещества. Бледно-жёлтый деликатный настой.",
-          "seoName": "ceylon-silver-needle"
+          "seo": "ceylon-silver-needle"
         },
         {
           "lang": "en-US",
           "name": "Ceylon Silver Needle",
           "description": "Rare Ceylon white tea from silver buds. Delicate sweet taste with honey and floral notes. Minimal processing preserves all beneficial substances. Pale yellow delicate infusion.",
-          "seoName": "ceylon-silver-needle"
+          "seo": "ceylon-silver-needle"
         },
         {
           "lang": "zh-CN",
           "name": "锡兰银针",
           "description": "采用银芽制成的稀有锡兰白茶。口感细腻甘甜，带有蜂蜜和花香。最少的加工保留了所有有益成分。茶汤呈浅黄色，清雅细腻。",
-          "seoName": "xilan-yinzhen"
+          "seo": "xilan-yinzhen"
         }
       ],
       "tags": [
@@ -526,19 +526,19 @@
           "lang": "ru-RU",
           "name": "Цейлон Зелёный Bio",
           "description": "Органический цейлонский зелёный чай. Травянистый освежающий вкус с лёгкой терпкостью. Высокое содержание антиоксидантов. Светло-зелёный прозрачный настой.",
-          "seoName": "ceylon-green-bio"
+          "seo": "ceylon-green-bio"
         },
         {
           "lang": "en-US",
           "name": "Ceylon Green Bio",
           "description": "Organic Ceylon green tea. Grassy refreshing taste with light astringency. High antioxidant content. Light green transparent infusion.",
-          "seoName": "ceylon-green-bio"
+          "seo": "ceylon-green-bio"
         },
         {
           "lang": "zh-CN",
           "name": "锡兰有机绿茶",
           "description": "有机锡兰绿茶。草香清新，略带涩味。抗氧化剂含量高。茶汤呈透明的浅绿色。",
-          "seoName": "xilan-youji-lvcha"
+          "seo": "xilan-youji-lvcha"
         }
       ],
       "tags": [
@@ -608,19 +608,19 @@
           "lang": "ru-RU",
           "name": "Эрл Грей Цейлон",
           "description": "Классический цейлонский чай с маслом бергамота. Характерный цитрусовый аромат в сочетании с полным вкусом цейлонского чая. Янтарный настой с освежающим послевкусием.",
-          "seoName": "earl-grey-ceylon"
+          "seo": "earl-grey-ceylon"
         },
         {
           "lang": "en-US",
           "name": "Earl Grey Ceylon",
           "description": "Classic Ceylon tea with bergamot oil. Characteristic citrus aroma combined with full Ceylon tea taste. Amber infusion with refreshing aftertaste.",
-          "seoName": "earl-grey-ceylon"
+          "seo": "earl-grey-ceylon"
         },
         {
           "lang": "zh-CN",
           "name": "锡兰伯爵茶",
           "description": "加入佛手柑油的经典锡兰茶。独特的柑橘香与锡兰茶的醇厚口感相结合。茶汤呈琥珀色，回味清爽。",
-          "seoName": "xilan-bojue-cha"
+          "seo": "xilan-bojue-cha"
         }
       ],
       "tags": [

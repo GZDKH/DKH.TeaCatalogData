@@ -45,12 +45,12 @@ Products JSON uses ProductCatalogService schema. Note: JSON uses short field nam
   "code": "TEA-PRODUCT-CODE",
   "sku": "SKU-CODE",
   "translations": [
-    { "lang": "ru-RU", "name": "Название", "description": "Описание", "seoName": "nazvanie" },
-    { "lang": "en-US", "name": "Name", "description": "Description", "seoName": "name" },
-    { "lang": "zh-CN", "name": "名称", "description": "描述", "seoName": "mingcheng" }
+    { "lang": "ru-RU", "name": "Название", "description": "Описание", "seo": "nazvanie" },
+    { "lang": "en-US", "name": "Name", "description": "Description", "seo": "name" },
+    { "lang": "zh-CN", "name": "名称", "description": "描述", "seo": "mingcheng" }
   ],
-  "specs": [...],
-  "tags": [...],
+  "specifications": [...],
+  "tags": [{ "code": "TAG-CODE" }],
   "origins": [...]
 }
 ```

@@ -12,19 +12,19 @@
         "lang": "en-US",
         "name": "Sun Rouge Purple Sencha",
         "description": "A unique Japanese green tea processed as sencha. Sun Rouge is a hybrid of Camellia sinensis var. sinensis and wild Camellia taliensis, developed in Japan by NARO. Features purple-red young leaves rich in anthocyanins. The infusion changes color from gray-violet to bright pink when acid is added.",
-        "seoName": "sun-rouge-purple-sencha"
+        "seo": "sun-rouge-purple-sencha"
       },
       {
         "lang": "ru-RU",
         "name": "Сан Руж Пурпурная Сенча",
         "description": "Уникальный японский зеленый чай, обработанный по технологии сенча. Sun Rouge — гибрид Camellia sinensis var. sinensis и дикорастущей Camellia taliensis, разработанный в Японии NARO. Молодые листья пурпурно-красного цвета богаты антоцианами. Настой меняет цвет с серо-фиолетового на ярко-розовый при добавлении кислоты.",
-        "seoName": "san-ruzh-purpurnaya-sencha"
+        "seo": "san-ruzh-purpurnaya-sencha"
       },
       {
         "lang": "zh-CN",
         "name": "阳光红紫色煎茶",
         "description": "独特的日本绿茶，采用煎茶工艺加工。Sun Rouge是茶树小叶种与野生大理茶的杂交品种，由日本NARO研发。紫红色嫩叶富含花青素。茶汤遇酸会从灰紫色变为亮粉色。",
-        "seoName": "sun-rouge-purple-sencha"
+        "seo": "sun-rouge-purple-sencha"
       }
     ],
     "tags": [
@@ -131,19 +131,19 @@
         "lang": "en-US",
         "name": "Uji Gyokuro",
         "description": "The highest grade Japanese green tea from Uji, Kyoto. Shade-grown for 20+ days before harvest, resulting in high L-theanine content. Rich umami flavor with sweet, marine notes. The 'jade dew' of Japanese teas.",
-        "seoName": "uji-gyokuro"
+        "seo": "uji-gyokuro"
       },
       {
         "lang": "ru-RU",
         "name": "Удзи Гёкуро",
         "description": "Высший сорт японского зеленого чая из Удзи, Киото. Выращивается в тени 20+ дней перед сбором, что обеспечивает высокое содержание L-теанина. Богатый вкус умами со сладкими морскими нотами. 'Нефритовая роса' среди японских чаёв.",
-        "seoName": "udzi-gyokuro"
+        "seo": "udzi-gyokuro"
       },
       {
         "lang": "zh-CN",
         "name": "宇治玉露",
         "description": "来自京都宇治的最高等级日本绿茶。采摘前覆荫20天以上，L-茶氨酸含量极高。浓郁鲜味，带有甜美海苔气息。日本茶中的'玉露'。",
-        "seoName": "uji-gyokuro"
+        "seo": "uji-gyokuro"
       }
     ],
     "tags": [
@@ -255,19 +255,19 @@
         "lang": "en-US",
         "name": "Xihu Longjing — Shifeng Terroir (Pre-Qingming)",
         "description": "西湖龙井 狮峰 明前 — The №1 of Ten Famous Teas of China. Hand-picked before Qingming Festival from the prestigious Shifeng (Lion Peak) terroir. Flat, emerald leaves with chestnut aroma and sweet, lingering aftertaste.",
-        "seoName": "xihu-longjing-shifeng-mingqian"
+        "seo": "xihu-longjing-shifeng-mingqian"
       },
       {
         "lang": "ru-RU",
         "name": "Сиху Лунцзин — Терруар Шифэн (Минцянь)",
         "description": "西湖龙井 狮峰 明前 — №1 из Десяти великих чаёв Китая. Ручной сбор до праздника Цинмин с престижного терруара Шифэн (Пик Льва). Плоские изумрудные листья с каштановым ароматом и сладким послевкусием.",
-        "seoName": "sihu-luncjin-shifeng-mingqian"
+        "seo": "sihu-luncjin-shifeng-mingqian"
       },
       {
         "lang": "zh-CN",
         "name": "西湖龙井 狮峰 明前",
         "description": "中国十大名茶之首。明前采摘，产自狮峰核心产区。扁平翠绿，板栗香，回甘持久。",
-        "seoName": "xihu-longjing-shifeng-mingqian"
+        "seo": "xihu-longjing-shifeng-mingqian"
       }
     ],
     "tags": [
@@ -400,19 +400,19 @@
         "lang": "en-US",
         "name": "Alishan High Mountain Oolong (Spring 2024)",
         "description": "阿里山高山茶 — Taiwan's signature high-mountain oolong from 1000-2300m elevation. Buttery texture with floral orchid notes and sweet potato finish. Clean, fresh mountain character.",
-        "seoName": "alishan-high-mountain-oolong-2024"
+        "seo": "alishan-high-mountain-oolong-2024"
       },
       {
         "lang": "ru-RU",
         "name": "Алишань Высокогорный Улун (Весна 2024)",
         "description": "阿里山高山茶 — Визитная карточка Тайваня, высокогорный улун с высоты 1000-2300м. Маслянистая текстура с цветочными нотами орхидеи и послевкусием сладкого картофеля. Чистый горный характер.",
-        "seoName": "alishan-vysokogornyj-ulun-2024"
+        "seo": "alishan-vysokogornyj-ulun-2024"
       },
       {
         "lang": "zh-CN",
         "name": "阿里山高山茶 2024春",
         "description": "台湾高山茶代表。海拔1000-2300米。奶香花香，回甘绵长。",
-        "seoName": "alishan-gaoshan-cha-2024"
+        "seo": "alishan-gaoshan-cha-2024"
       }
     ],
     "tags": [
@@ -538,19 +538,19 @@
         "lang": "en-US",
         "name": "Bai Hao Yinzhen — Silver Needle",
         "description": "白毫银针 — The pinnacle of white tea. Made exclusively from unopened buds covered in silvery-white down. Delicate, sweet with notes of melon and hay. UNESCO Intangible Cultural Heritage 2022.",
-        "seoName": "bai-hao-yinzhen-silver-needle"
+        "seo": "bai-hao-yinzhen-silver-needle"
       },
       {
         "lang": "ru-RU",
         "name": "Бай Хао Иньчжэнь — Серебряные иглы",
         "description": "白毫银针 — Вершина белого чая. Изготовлен исключительно из нераскрывшихся почек, покрытых серебристо-белым пухом. Деликатный, сладкий с нотами дыни и сена. Нематериальное культурное наследие UNESCO 2022.",
-        "seoName": "baj-hao-inchzhen-serebryanye-igly"
+        "seo": "baj-hao-inchzhen-serebryanye-igly"
       },
       {
         "lang": "zh-CN",
         "name": "白毫银针",
         "description": "白茶之王。纯芽制作，银毫满披。清甜鲜爽，毫香蜜韵。联合国非遗2022。",
-        "seoName": "bai-hao-yinzhen"
+        "seo": "bai-hao-yinzhen"
       }
     ],
     "tags": [

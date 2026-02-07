@@ -169,17 +169,17 @@ Each MD file contains 14 numbered sections (in Russian):
   "order": 1,
   "published": true,
   "brand": "BRAND-XIHU",
-  "price": 168.00,
+  "price": 168,
   "translations": [
-    { "lang": "ru-RU", "name": "Сиху Лунцзин", "description": "...", "seoName": "sihu-luncjin" },
-    { "lang": "en-US", "name": "Xihu Longjing", "description": "...", "seoName": "xihu-longjing" },
-    { "lang": "zh-CN", "name": "西湖龙井", "description": "...", "seoName": "xihu-longjing" }
+    { "lang": "ru-RU", "name": "Сиху Лунцзин", "description": "...", "seo": "sihu-luncjin" },
+    { "lang": "en-US", "name": "Xihu Longjing", "description": "...", "seo": "xihu-longjing" },
+    { "lang": "zh-CN", "name": "西湖龙井", "description": "...", "seo": "xihu-longjing" }
   ],
-  "specs": [
-    { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option" },
-    { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C" }
+  "specifications": [
+    { "attribute": "SPEC-FERMENTATION", "option": "SPEC-FERM-0", "type": "Option", "showOnPage": true, "order": 1 },
+    { "attribute": "SPEC-BREW-TEMP", "type": "CustomText", "value": "70-80°C", "showOnPage": true, "order": 2 }
   ],
-  "tags": ["TAG-TOP10-CHINA", "TAG-GI-PROTECTED"],
+  "tags": [{ "code": "TAG-TOP10-CHINA" }, { "code": "TAG-GI-PROTECTED" }],
   "origins": [
     { "country": "CN", "state": "Zhejiang", "place": "Shifeng, Xihu District" }
   ]

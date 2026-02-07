@@ -10,19 +10,19 @@
           "lang": "ru-RU",
           "name": "Сенча",
           "description": "Самый популярный японский зелёный чай, составляющий около 80% всего производства. Освежающий травянистый вкус с нотами умами, яркий зелёный цвет настоя. Пропаривание останавливает ферментацию, сохраняя свежий аромат и полезные вещества.",
-          "seoName": "sencha"
+          "seo": "sencha"
         },
         {
           "lang": "en-US",
           "name": "Sencha",
           "description": "The most popular Japanese green tea, comprising about 80% of total production. Refreshing grassy flavor with umami notes and bright green infusion. Steaming stops fermentation, preserving fresh aroma and nutrients.",
-          "seoName": "sencha"
+          "seo": "sencha"
         },
         {
           "lang": "zh-CN",
           "name": "煎茶",
           "description": "最受欢迎的日本绿茶，约占总产量的80%。清新的草香带有鲜味，茶汤呈明亮的绿色。蒸汽杀青保留了新鲜的香气和营养成分。",
-          "seoName": "jiancha"
+          "seo": "jiancha"
         }
       ],
       "tags": [
@@ -95,19 +95,19 @@
           "lang": "ru-RU",
           "name": "Гёкуро",
           "description": "Самый престижный японский зелёный чай, «жидкий нефрит». Выращивается в тени 20-30 дней, что повышает содержание теанина и хлорофилла. Насыщенный вкус умами, сладость, изумрудный цвет настоя. Заваривать при 50-60°C.",
-          "seoName": "gyokuro"
+          "seo": "gyokuro"
         },
         {
           "lang": "en-US",
           "name": "Gyokuro",
           "description": "The most prestigious Japanese green tea, 'liquid jade'. Shade-grown for 20-30 days, increasing theanine and chlorophyll content. Rich umami taste, sweetness, emerald infusion color. Brew at 50-60°C.",
-          "seoName": "gyokuro"
+          "seo": "gyokuro"
         },
         {
           "lang": "zh-CN",
           "name": "玉露",
           "description": "最高档的日本绿茶，被称为“液体翡翠”。采摘前遮荫20-30天，增加茶氨酸和叶绿素含量。浓郁的鲜味、甘甜，茶汤呈翠绿色。建议50-60°C冲泡。",
-          "seoName": "yulu"
+          "seo": "yulu"
         }
       ],
       "tags": [
@@ -183,19 +183,19 @@
           "lang": "ru-RU",
           "name": "Маття (Матча)",
           "description": "Порошковый японский зелёный чай для чайной церемонии. Выращивается в тени, перемалывается на каменных жерновах. Богат антиоксидантами EGCG, L-теанином. Яркий зелёный цвет, насыщенный вкус умами, кремовая текстура.",
-          "seoName": "matcha"
+          "seo": "matcha"
         },
         {
           "lang": "en-US",
           "name": "Matcha",
           "description": "Powdered Japanese green tea for tea ceremony. Shade-grown, ground on stone mills. Rich in EGCG antioxidants and L-theanine. Vibrant green color, rich umami taste, creamy texture.",
-          "seoName": "matcha"
+          "seo": "matcha"
         },
         {
           "lang": "zh-CN",
           "name": "抹茶",
           "description": "用于茶道的日本粉末绿茶。遮荫栽培，石磨研磨。富含EGCG抗氧化剂和L-茶氨酸。色泽翠绿，鲜味浓郁，口感绵密。",
-          "seoName": "mocha"
+          "seo": "mocha"
         }
       ],
       "tags": [
@@ -271,19 +271,19 @@
           "lang": "ru-RU",
           "name": "Банча",
           "description": "Повседневный японский зелёный чай из листьев позднего сбора. Низкое содержание кофеина, мягкий освежающий вкус с лёгкой терпкостью. Богат минералами и фтором. Основа для Ходзича и Генмайча.",
-          "seoName": "bancha"
+          "seo": "bancha"
         },
         {
           "lang": "en-US",
           "name": "Bancha",
           "description": "Everyday Japanese green tea from late harvest leaves. Low caffeine content, mild refreshing taste with light astringency. Rich in minerals and fluoride. Base for Hojicha and Genmaicha.",
-          "seoName": "bancha"
+          "seo": "bancha"
         },
         {
           "lang": "zh-CN",
           "name": "番茶",
           "description": "日常饮用的日本绿茶，采用晚采茶叶。咖啡因含量低，口感温和清爽，略带涩味。富含矿物质和氟化物。是焙茶和玄米茶的基础茶。",
-          "seoName": "fancha"
+          "seo": "fancha"
         }
       ],
       "tags": [
@@ -353,19 +353,19 @@
           "lang": "ru-RU",
           "name": "Генмайча",
           "description": "Японский зелёный чай с обжаренным коричневым рисом. Уникальный ореховый аромат, мягкий сладковатый вкус. Низкое содержание кофеина. Часто подаётся с суши. Иногда называют «попкорн-чаем» из-за лопнувших зёрен риса.",
-          "seoName": "genmaicha"
+          "seo": "genmaicha"
         },
         {
           "lang": "en-US",
           "name": "Genmaicha",
           "description": "Japanese green tea with roasted brown rice. Unique nutty aroma, mild sweet taste. Low caffeine content. Often served with sushi. Sometimes called 'popcorn tea' due to popped rice grains.",
-          "seoName": "genmaicha"
+          "seo": "genmaicha"
         },
         {
           "lang": "zh-CN",
           "name": "玄米茶",
           "description": "日本绿茶与炒糙米的混合茶。独特的坚果香气，口感温和甘甜。咖啡因含量低。常与寿司搭配。因爆米花状的米粒有时被称为“爆米花茶”。",
-          "seoName": "xuanmicha"
+          "seo": "xuanmicha"
         }
       ],
       "tags": [
@@ -438,19 +438,19 @@
           "lang": "ru-RU",
           "name": "Ходзича",
           "description": "Обжаренный японский зелёный чай с характерным ореховым, карамельным ароматом. Минимальное содержание кофеина, подходит для вечернего чаепития. Красновато-коричневый настой, мягкий согревающий вкус без горечи.",
-          "seoName": "hojicha"
+          "seo": "hojicha"
         },
         {
           "lang": "en-US",
           "name": "Hojicha",
           "description": "Roasted Japanese green tea with characteristic nutty, caramel aroma. Minimal caffeine content, suitable for evening drinking. Reddish-brown infusion, mild warming taste without bitterness.",
-          "seoName": "hojicha"
+          "seo": "hojicha"
         },
         {
           "lang": "zh-CN",
           "name": "焙茶",
           "description": "烘焙的日本绿茶，具有独特的坚果和焦糖香气。咖啡因含量极低，适合晚间饮用。茶汤呈红褐色，口感温和醇厚，无苦涩。",
-          "seoName": "beicha"
+          "seo": "beicha"
         }
       ],
       "tags": [
@@ -526,19 +526,19 @@
           "lang": "ru-RU",
           "name": "Кукича",
           "description": "Японский чай из стеблей и веточек чайного куста. Мягкий сладковатый вкус с ореховыми нотами, минимальная терпкость. Очень низкое содержание кофеина. Популярен в макробиотике за щелочные свойства.",
-          "seoName": "kukicha"
+          "seo": "kukicha"
         },
         {
           "lang": "en-US",
           "name": "Kukicha",
           "description": "Japanese tea from stems and twigs of tea plant. Mild sweet taste with nutty notes, minimal astringency. Very low caffeine content. Popular in macrobiotics for alkaline properties.",
-          "seoName": "kukicha"
+          "seo": "kukicha"
         },
         {
           "lang": "zh-CN",
           "name": "茎茶",
           "description": "由茶树茎梗制成的日本茶。口感温和甘甜，带有坚果香，几乎无涩味。咖啡因含量极低。因其碱性特性在长寿饮食中颇受欢迎。",
-          "seoName": "jingcha"
+          "seo": "jingcha"
         }
       ],
       "tags": [
@@ -611,19 +611,19 @@
           "lang": "ru-RU",
           "name": "Конача",
           "description": "Мелкий порошковый остаток от производства сенча. Быстро заваривается, даёт насыщенный крепкий настой. Традиционно подаётся в суши-ресторанах. Доступная альтернатива листовому чаю.",
-          "seoName": "konacha"
+          "seo": "konacha"
         },
         {
           "lang": "en-US",
           "name": "Konacha",
           "description": "Fine powder residue from sencha production. Quick to brew, produces rich strong infusion. Traditionally served in sushi restaurants. Affordable alternative to leaf tea.",
-          "seoName": "konacha"
+          "seo": "konacha"
         },
         {
           "lang": "zh-CN",
           "name": "粉茶",
           "description": "煎茶生产过程中的细粉末。冲泡快速，茶汤浓郁。传统上在寿司店供应。是叶茶的实惠替代品。",
-          "seoName": "fencha"
+          "seo": "fencha"
         }
       ],
       "tags": [
@@ -693,19 +693,19 @@
           "lang": "ru-RU",
           "name": "Кабусэча",
           "description": "«Полутеневой» японский чай, затеняемый около недели перед сбором. Промежуточный между сенча и гёкуро по вкусу и способу выращивания. Более сладкий и менее терпкий, чем сенча, с выраженным умами.",
-          "seoName": "kabusecha"
+          "seo": "kabusecha"
         },
         {
           "lang": "en-US",
           "name": "Kabusecha",
           "description": "'Half-shade' Japanese tea, shaded for about a week before harvest. Intermediate between sencha and gyokuro in taste and cultivation. Sweeter and less astringent than sencha, with pronounced umami.",
-          "seoName": "kabusecha"
+          "seo": "kabusecha"
         },
         {
           "lang": "zh-CN",
           "name": "冠茶",
           "description": "“半遮荫”日本茶，采摘前遮荫约一周。在口味和栽培方式上介于煎茶和玉露之间。比煎茶更甜、涩味更少，鲜味突出。",
-          "seoName": "guancha"
+          "seo": "guancha"
         }
       ],
       "tags": [
@@ -775,19 +775,19 @@
           "lang": "ru-RU",
           "name": "Тенча",
           "description": "Сырьё для производства маття — листья, выращенные в тени, пропаренные и высушенные без скручивания. Тонкие плоские листья без стеблей и прожилок. Мягкий сладкий вкус с выраженным умами.",
-          "seoName": "tencha"
+          "seo": "tencha"
         },
         {
           "lang": "en-US",
           "name": "Tencha",
           "description": "Raw material for matcha production — shade-grown leaves, steamed and dried without rolling. Thin flat leaves without stems and veins. Mild sweet taste with pronounced umami.",
-          "seoName": "tencha"
+          "seo": "tencha"
         },
         {
           "lang": "zh-CN",
           "name": "碾茶",
           "description": "抹茶的原料——遮荫栽培的茶叶，蒸青后不揉捻直接干燥。薄而平的叶片，无茎梗和叶脉。口感温和甘甜，鲜味突出。",
-          "seoName": "niancha"
+          "seo": "niancha"
         }
       ],
       "tags": [
@@ -860,19 +860,19 @@
           "lang": "ru-RU",
           "name": "Гурича (Тамарёкуча)",
           "description": "«Скрученный чай» — японский зелёный чай с округлыми, спиралевидными листьями, напоминающими улитку. Мягкий сладкий вкус с цитрусовыми нотами, без травянистой терпкости. Производится в основном на Кюсю.",
-          "seoName": "guricha"
+          "seo": "guricha"
         },
         {
           "lang": "en-US",
           "name": "Guricha (Tamaryokucha)",
           "description": "'Curly tea' — Japanese green tea with rounded, spiral leaves resembling snails. Mild sweet taste with citrus notes, without grassy astringency. Produced mainly in Kyushu.",
-          "seoName": "guricha"
+          "seo": "guricha"
         },
         {
           "lang": "zh-CN",
           "name": "玉绿茶",
           "description": "“卷曲茶”——茶叶呈圆形螺旋状，形似蜗牛的日本绿茶。口感温和甘甜，带有柑橘香，无草涩味。主要产于九州。",
-          "seoName": "yulvcha"
+          "seo": "yulvcha"
         }
       ],
       "tags": [
@@ -942,19 +942,19 @@
           "lang": "ru-RU",
           "name": "Камайрича",
           "description": "Редкий японский чай, обработанный обжаркой в котле (как китайские чаи), а не пропариванием. Округлые скрученные листья, ореховый аромат с дымными нотами. Производится в основном на Кюсю.",
-          "seoName": "kamairicha"
+          "seo": "kamairicha"
         },
         {
           "lang": "en-US",
           "name": "Kamairicha",
           "description": "Rare Japanese tea processed by pan-firing (like Chinese teas) rather than steaming. Rounded rolled leaves, nutty aroma with smoky notes. Produced mainly in Kyushu.",
-          "seoName": "kamairicha"
+          "seo": "kamairicha"
         },
         {
           "lang": "zh-CN",
           "name": "釜炒茶",
           "description": "稀有的日本茶，采用锅炒（如中国茶）而非蒸青工艺。茶叶呈圆形卷曲状，坚果香中带有烟熏气息。主要产于九州。",
-          "seoName": "fucaocha"
+          "seo": "fucaocha"
         }
       ],
       "tags": [
@@ -1030,19 +1030,19 @@
           "lang": "ru-RU",
           "name": "Фукамуси Сенча",
           "description": "Сенча глубокого пропаривания (60-90 секунд). Насыщенный тёмно-зелёный цвет настоя, более мягкий и сладкий вкус, меньше терпкости. Листья более мелкие и рассыпчатые. Популярен в регионе Сидзуока.",
-          "seoName": "fukamushi-sencha"
+          "seo": "fukamushi-sencha"
         },
         {
           "lang": "en-US",
           "name": "Fukamushi Sencha",
           "description": "Deep-steamed sencha (60-90 seconds). Rich dark green infusion, milder and sweeter taste, less astringency. Leaves are smaller and more crumbly. Popular in Shizuoka region.",
-          "seoName": "fukamushi-sencha"
+          "seo": "fukamushi-sencha"
         },
         {
           "lang": "zh-CN",
           "name": "深蒸煎茶",
           "description": "深度蒸青的煎茶（60-90秒）。茶汤呈浓郁的深绿色，口感更温和甘甜，涩味更少。茶叶更细碎。在静冈地区颇受欢迎。",
-          "seoName": "shenzheng-jiancha"
+          "seo": "shenzheng-jiancha"
         }
       ],
       "tags": [
@@ -1112,19 +1112,19 @@
           "lang": "ru-RU",
           "name": "Синтя (Шинча)",
           "description": "«Новый чай» — сенча первого весеннего сбора. Самый свежий и ароматный, высокое содержание аминокислот. Сезонный деликатес, доступен только весной. Символизирует новые начинания и удачу.",
-          "seoName": "shincha"
+          "seo": "shincha"
         },
         {
           "lang": "en-US",
           "name": "Shincha",
           "description": "'New tea' — first spring harvest sencha. Freshest and most aromatic, high amino acid content. Seasonal delicacy, available only in spring. Symbolizes new beginnings and good fortune.",
-          "seoName": "shincha"
+          "seo": "shincha"
         },
         {
           "lang": "zh-CN",
           "name": "新茶",
           "description": "“新茶”——首采春茶煎茶。最新鲜、最芳香，氨基酸含量高。季节性珍品，仅春季供应。象征新的开始和好运。",
-          "seoName": "xincha"
+          "seo": "xincha"
         }
       ],
       "tags": [
@@ -1197,19 +1197,19 @@
           "lang": "ru-RU",
           "name": "Матча-ири Генмайча",
           "description": "Генмайча с добавлением порошкового маття. Насыщенный зелёный цвет, яркий вкус умами, сочетание орехового аромата риса и кремовой сладости маття. Богат антиоксидантами.",
-          "seoName": "matcha-iri-genmaicha"
+          "seo": "matcha-iri-genmaicha"
         },
         {
           "lang": "en-US",
           "name": "Matcha-iri Genmaicha",
           "description": "Genmaicha with added matcha powder. Rich green color, bright umami taste, combination of nutty rice aroma and creamy matcha sweetness. Rich in antioxidants.",
-          "seoName": "matcha-iri-genmaicha"
+          "seo": "matcha-iri-genmaicha"
         },
         {
           "lang": "zh-CN",
           "name": "抹茶玄米茶",
           "description": "添加抹茶粉的玄米茶。色泽翠绿，鲜味突出，融合了炒米的坚果香和抹茶的醇厚甘甜。富含抗氧化剂。",
-          "seoName": "mocha-xuanmicha"
+          "seo": "mocha-xuanmicha"
         }
       ],
       "tags": [

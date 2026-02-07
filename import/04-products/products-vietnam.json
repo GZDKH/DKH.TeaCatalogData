@@ -10,19 +10,19 @@
           "lang": "ru-RU",
           "name": "Шан Тует Зелёный",
           "description": "Высокогорный зелёный чай с древних деревьев Северного Вьетнама. Мягкий вкус без горечи, травянистые ноты с ореховым послевкусием. Серебристые листья покрыты характерным ворсом. Богат антиоксидантами.",
-          "seoName": "shan-tuyet-green"
+          "seo": "shan-tuyet-green"
         },
         {
           "lang": "en-US",
           "name": "Shan Tuyet Green",
           "description": "High-altitude green tea from ancient trees of Northern Vietnam. Mild taste without bitterness, grassy notes with nutty aftertaste. Silver leaves covered with characteristic down. Rich in antioxidants.",
-          "seoName": "shan-tuyet-green"
+          "seo": "shan-tuyet-green"
         },
         {
           "lang": "zh-CN",
           "name": "山雪绿茶",
           "description": "产自越南北部古树的高山绿茶。口感温和无苦涩，草香中带有坚果余韵。银白色的叶片覆盖着独特的绒毛。富含抗氧化剂。",
-          "seoName": "shanxue-lvcha"
+          "seo": "shanxue-lvcha"
         }
       ],
       "tags": [
@@ -95,19 +95,19 @@
           "lang": "ru-RU",
           "name": "Шан Тует Белый",
           "description": "Нежный белый чай из серебристых почек древних деревьев. Минимальная обработка сохраняет все полезные вещества. Тонкий цветочный аромат, сладковатый вкус. Бледно-жёлтый деликатный настой.",
-          "seoName": "shan-tuyet-white"
+          "seo": "shan-tuyet-white"
         },
         {
           "lang": "en-US",
           "name": "Shan Tuyet White",
           "description": "Delicate white tea from silver buds of ancient trees. Minimal processing preserves all beneficial substances. Subtle floral aroma, sweet taste. Pale yellow delicate infusion.",
-          "seoName": "shan-tuyet-white"
+          "seo": "shan-tuyet-white"
         },
         {
           "lang": "zh-CN",
           "name": "山雪白茶",
           "description": "采用古树银芽制成的细腻白茶。最少的加工保留了所有有益成分。淡雅的花香，甘甜的口感。茶汤呈浅黄色，清雅细腻。",
-          "seoName": "shanxue-baicha"
+          "seo": "shanxue-baicha"
         }
       ],
       "tags": [
@@ -180,19 +180,19 @@
           "lang": "ru-RU",
           "name": "Древний Чёрный Чай",
           "description": "Красный чай с древних дикорастущих деревьев возрастом до 800 лет. Насыщенный вкус с нотами какао, мёда и сухофруктов. Бархатистая текстура без горечи. Янтарно-красный настой.",
-          "seoName": "ancient-black-tea"
+          "seo": "ancient-black-tea"
         },
         {
           "lang": "en-US",
           "name": "Old Tree Black Tea",
           "description": "Black tea from ancient wild trees up to 800 years old. Rich taste with notes of cocoa, honey and dried fruits. Velvety texture without bitterness. Amber-red infusion.",
-          "seoName": "old-tree-black-tea"
+          "seo": "old-tree-black-tea"
         },
         {
           "lang": "zh-CN",
           "name": "古树红茶",
           "description": "采自800年古野生茶树的红茶。口感浓郁，带有可可、蜂蜜和干果香。丝绒般的质地，无苦涩。茶汤呈琥珀红色。",
-          "seoName": "gushu-hongcha"
+          "seo": "gushu-hongcha"
         }
       ],
       "tags": [
@@ -265,19 +265,19 @@
           "lang": "ru-RU",
           "name": "Облачный Дракон",
           "description": "Гибридный зелёный чай из провинции Тхайнгуен. Мятный холодок во вкусе, цветочные и травянистые ноты. Спиралевидно скрученные листья. Высокое содержание L-теанина.",
-          "seoName": "dragon-cloud"
+          "seo": "dragon-cloud"
         },
         {
           "lang": "en-US",
           "name": "Dragon Cloud",
           "description": "Hybrid green tea from Thai Nguyen province. Minty coolness in taste, floral and grassy notes. Spiral-twisted leaves. High L-theanine content.",
-          "seoName": "dragon-cloud"
+          "seo": "dragon-cloud"
         },
         {
           "lang": "zh-CN",
           "name": "云龙茶",
           "description": "产自太原省的杂交绿茶。口感带有薄荷般的清凉，花香和草香交织。叶片呈螺旋状卷曲。茶氨酸含量高。",
-          "seoName": "yunlong-cha"
+          "seo": "yunlong-cha"
         }
       ],
       "tags": [
@@ -350,19 +350,19 @@
           "lang": "ru-RU",
           "name": "Цзинь Сюань (Молочный Улун)",
           "description": "Высокогорный улун с натуральным сливочно-молочным ароматом. Мягкий, сладковатый вкус без терпкости. Полусферическая скрутка, золотисто-зелёный настой. Без искусственных ароматизаторов.",
-          "seoName": "jin-xuan-milk-oolong"
+          "seo": "jin-xuan-milk-oolong"
         },
         {
           "lang": "en-US",
           "name": "Jin Xuan (Milk Oolong)",
           "description": "High-mountain oolong with natural creamy milk aroma. Mild, sweet taste without astringency. Semi-spherical roll, golden-green infusion. No artificial flavoring.",
-          "seoName": "jin-xuan-milk-oolong"
+          "seo": "jin-xuan-milk-oolong"
         },
         {
           "lang": "zh-CN",
           "name": "金萱（奶香乌龙）",
           "description": "带有天然奶香的高山乌龙。口感柔和甘甜，无涩味。半球形卷曲，茶汤呈金绿色。无人工香精。",
-          "seoName": "jinxuan-naixiang-wulong"
+          "seo": "jinxuan-naixiang-wulong"
         }
       ],
       "tags": [
@@ -435,19 +435,19 @@
           "lang": "ru-RU",
           "name": "Восточная Красавица",
           "description": "Сильноокисленный улун с медово-фруктовым ароматом. Уникальный вкус формируется благодаря укусам цикадок. Пёстрые листья с белыми типсами, янтарный настой. Без пестицидов.",
-          "seoName": "oriental-beauty"
+          "seo": "oriental-beauty"
         },
         {
           "lang": "en-US",
           "name": "Oriental Beauty",
           "description": "Heavily oxidized oolong with honey-fruity aroma. Unique taste formed by leafhopper bites. Variegated leaves with white tips, amber infusion. Pesticide-free.",
-          "seoName": "oriental-beauty"
+          "seo": "oriental-beauty"
         },
         {
           "lang": "zh-CN",
           "name": "东方美人",
           "description": "带有蜜香果香的重发酵乌龙。独特的风味由小绿叶蝉叮咬形成。花杂色的叶片带有白毫，茶汤呈琥珀色。无农药。",
-          "seoName": "dongfang-meiren"
+          "seo": "dongfang-meiren"
         }
       ],
       "tags": [
@@ -520,19 +520,19 @@
           "lang": "ru-RU",
           "name": "Горный Туман Серебряная Игла",
           "description": "Элитный белый чай из почек древних диких деревьев. Нежный сладкий вкус с цветочными нотами и шелковистой текстурой. Серебристые почки покрыты густым ворсом. Очень редкий чай.",
-          "seoName": "mountain-mist-silver-needle"
+          "seo": "mountain-mist-silver-needle"
         },
         {
           "lang": "en-US",
           "name": "Mountain Mist Silver Needle",
           "description": "Elite white tea from buds of ancient wild trees. Delicate sweet taste with floral notes and silky texture. Silver buds covered with dense down. Very rare tea.",
-          "seoName": "mountain-mist-silver-needle"
+          "seo": "mountain-mist-silver-needle"
         },
         {
           "lang": "zh-CN",
           "name": "山雾银针",
           "description": "采自古野生茶树芽头的顶级白茶。细腻甘甜的口感带有花香，丝滑的质地。银白色的芽头覆盖着浓密的绒毛。非常稀有。",
-          "seoName": "shanwu-yinzhen"
+          "seo": "shanwu-yinzhen"
         }
       ],
       "tags": [
@@ -608,19 +608,19 @@
           "lang": "ru-RU",
           "name": "ГАБА Улун",
           "description": "Улун с повышенным содержанием ГАМК благодаря анаэробной обработке. Расслабляющий эффект, помощь при стрессе. Сладковатый вкус с фруктовыми нотами. Функциональный чай.",
-          "seoName": "gaba-oolong"
+          "seo": "gaba-oolong"
         },
         {
           "lang": "en-US",
           "name": "GABA Oolong",
           "description": "Oolong with elevated GABA content due to anaerobic processing. Relaxing effect, helps with stress. Sweet taste with fruity notes. Functional tea.",
-          "seoName": "gaba-oolong"
+          "seo": "gaba-oolong"
         },
         {
           "lang": "zh-CN",
           "name": "佳叶龙乌龙",
           "description": "因厌氧加工而GABA含量升高的乌龙茶。具有放松效果，有助于缓解压力。甘甜的口感带有果香。功能性茶饮。",
-          "seoName": "jiayelong-wulong"
+          "seo": "jiayelong-wulong"
         }
       ],
       "tags": [
@@ -693,19 +693,19 @@
           "lang": "ru-RU",
           "name": "Шан Тует Красный",
           "description": "Полностью ферментированный чай из листьев древних деревьев. Насыщенный вкус с медовыми, фруктовыми и древесными нотами. Рубиновый настой с золотистым оттенком.",
-          "seoName": "shan-tuyet-black"
+          "seo": "shan-tuyet-black"
         },
         {
           "lang": "en-US",
           "name": "Shan Tuyet Black",
           "description": "Fully fermented tea from ancient tree leaves. Rich taste with honey, fruity and woody notes. Ruby infusion with golden hue.",
-          "seoName": "shan-tuyet-black"
+          "seo": "shan-tuyet-black"
         },
         {
           "lang": "zh-CN",
           "name": "山雪红茶",
           "description": "采用古树叶片制成的全发酵茶。口感浓郁，带有蜂蜜、果香和木香。茶汤呈宝石红色，带有金色光泽。",
-          "seoName": "shanxue-hongcha"
+          "seo": "shanxue-hongcha"
         }
       ],
       "tags": [
@@ -775,19 +775,19 @@
           "lang": "ru-RU",
           "name": "Лотосовый Чай",
           "description": "Традиционный вьетнамский зелёный чай с ароматом лотоса. Листья зелёного чая настаиваются в цветах лотоса. Нежный цветочный аромат, освежающий вкус. Символ вьетнамской чайной культуры.",
-          "seoName": "lotus-tea"
+          "seo": "lotus-tea"
         },
         {
           "lang": "en-US",
           "name": "Lotus Tea",
           "description": "Traditional Vietnamese green tea with lotus aroma. Green tea leaves infused in lotus flowers. Delicate floral aroma, refreshing taste. Symbol of Vietnamese tea culture.",
-          "seoName": "lotus-tea"
+          "seo": "lotus-tea"
         },
         {
           "lang": "zh-CN",
           "name": "莲花茶",
           "description": "用莲花窨制的传统越南绿茶。绿茶叶在莲花中吸收香气。淡雅的花香，清爽的口感。越南茶文化的象征。",
-          "seoName": "lianhua-cha"
+          "seo": "lianhua-cha"
         }
       ],
       "tags": [

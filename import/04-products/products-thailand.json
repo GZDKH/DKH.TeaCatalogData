@@ -10,19 +10,19 @@
           "lang": "ru-RU",
           "name": "Тайский Цзинь Сюань",
           "description": "Высокогорный молочный улун из северного Таиланда. Натуральный сливочно-цветочный аромат без ароматизаторов. Мягкий шелковистый вкус. Органическое выращивание.",
-          "seoName": "thai-jin-xuan"
+          "seo": "thai-jin-xuan"
         },
         {
           "lang": "en-US",
           "name": "Thai Jin Xuan",
           "description": "High-mountain milk oolong from Northern Thailand. Natural creamy-floral aroma without flavoring. Soft silky taste. Organic cultivation.",
-          "seoName": "thai-jin-xuan"
+          "seo": "thai-jin-xuan"
         },
         {
           "lang": "zh-CN",
           "name": "泰国金萱",
           "description": "产自泰国北部高山的奶香乌龙。天然的奶香花香，无人工香精。口感柔滑。有机种植。",
-          "seoName": "taiguo-jinxuan"
+          "seo": "taiguo-jinxuan"
         }
       ],
       "tags": [
@@ -98,19 +98,19 @@
           "lang": "ru-RU",
           "name": "Тайская Восточная Красавица",
           "description": "Сильноокисленный улун с медово-фруктовым ароматом. Уникальный вкус формируется благодаря укусам цикадок. Янтарный настой, пёстрые листья.",
-          "seoName": "thai-oriental-beauty"
+          "seo": "thai-oriental-beauty"
         },
         {
           "lang": "en-US",
           "name": "Thai Oriental Beauty",
           "description": "Heavily oxidized oolong with honey-fruity aroma. Unique taste formed by leafhopper bites. Amber infusion, variegated leaves.",
-          "seoName": "thai-oriental-beauty"
+          "seo": "thai-oriental-beauty"
         },
         {
           "lang": "zh-CN",
           "name": "泰国东方美人",
           "description": "带有蜜香果香的重发酵乌龙。独特的风味由小绿叶蝉叮咬形成。茶汤呈琥珀色，叶片花杂。",
-          "seoName": "taiguo-dongfang-meiren"
+          "seo": "taiguo-dongfang-meiren"
         }
       ],
       "tags": [
@@ -183,19 +183,19 @@
           "lang": "ru-RU",
           "name": "Ангканг Чёрный",
           "description": "Чёрный чай из Королевского проекта Ангканг. Солодовый вкус с фруктовыми нотами. Высокогорное выращивание на склонах Дой Ангканг.",
-          "seoName": "angkhang-black"
+          "seo": "angkhang-black"
         },
         {
           "lang": "en-US",
           "name": "Angkhang Black",
           "description": "Black tea from Angkhang Royal Project. Malty taste with fruity notes. High-altitude cultivation on Doi Angkhang slopes.",
-          "seoName": "angkhang-black"
+          "seo": "angkhang-black"
         },
         {
           "lang": "zh-CN",
           "name": "安康红茶",
           "description": "产自安康皇家项目的红茶。麦芽香中带有果香。种植于安康山坡的高海拔地区。",
-          "seoName": "ankang-hongcha"
+          "seo": "ankang-hongcha"
         }
       ],
       "tags": [
@@ -265,19 +265,19 @@
           "lang": "ru-RU",
           "name": "Красный Тигр",
           "description": "Тёмный улун из Северного Таиланда. Насыщенный вкус с нотами жареных орехов и карамели. Медно-красный настой. Средняя степень обжарки.",
-          "seoName": "red-tiger"
+          "seo": "red-tiger"
         },
         {
           "lang": "en-US",
           "name": "Red Tiger",
           "description": "Dark oolong from Northern Thailand. Rich taste with roasted nut and caramel notes. Copper-red infusion. Medium roast level.",
-          "seoName": "red-tiger"
+          "seo": "red-tiger"
         },
         {
           "lang": "zh-CN",
           "name": "红虎",
           "description": "产自泰国北部的深色乌龙。口感浓郁，带有烤坚果和焦糖香。茶汤呈铜红色。中度焙火。",
-          "seoName": "honghu"
+          "seo": "honghu"
         }
       ],
       "tags": [
@@ -347,19 +347,19 @@
           "lang": "ru-RU",
           "name": "Клейкий Рис Улун",
           "description": "Улун с ароматом клейкого риса благодаря добавлению листьев нуо ми сян. Сладкий кремовый вкус с рисовыми нотами. Уникальный тайский купаж.",
-          "seoName": "sticky-rice-oolong"
+          "seo": "sticky-rice-oolong"
         },
         {
           "lang": "en-US",
           "name": "Sticky Rice Oolong",
           "description": "Oolong with sticky rice aroma from nuo mi xiang leaves. Sweet creamy taste with rice notes. Unique Thai blend.",
-          "seoName": "sticky-rice-oolong"
+          "seo": "sticky-rice-oolong"
         },
         {
           "lang": "zh-CN",
           "name": "糯米香乌龙",
           "description": "添加糯米香叶带来糯米香的乌龙茶。甘甜奶香中带有米香。独特的泰国拼配茶。",
-          "seoName": "nuomixiang-wulong"
+          "seo": "nuomixiang-wulong"
         }
       ],
       "tags": [

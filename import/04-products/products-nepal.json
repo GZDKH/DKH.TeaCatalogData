@@ -10,19 +10,19 @@
           "lang": "ru-RU",
           "name": "Непал Золотые Типсы",
           "description": "Элитный чёрный чай высшего грейда SFTGFOP из высокогорий Илама. Мягкий бархатистый вкус с мускатными и цветочными нотами. Золотистые почки среди тёмных листьев. Янтарный настой.",
-          "seoName": "nepal-golden-tips"
+          "seo": "nepal-golden-tips"
         },
         {
           "lang": "en-US",
           "name": "Nepal Golden Tips",
           "description": "Elite black tea of highest SFTGFOP grade from Ilam highlands. Mild velvety taste with muscatel and floral notes. Golden buds among dark leaves. Amber infusion.",
-          "seoName": "nepal-golden-tips"
+          "seo": "nepal-golden-tips"
         },
         {
           "lang": "zh-CN",
           "name": "尼泊尔金芽",
           "description": "来自伊拉姆高地的最高等级SFTGFOP精品红茶。口感柔滑，带有麝香葡萄和花香。深色叶片中夹杂着金色芽头。茶汤呈琥珀色。",
-          "seoName": "niboer-jinya"
+          "seo": "niboer-jinya"
         }
       ],
       "tags": [
@@ -95,19 +95,19 @@
           "lang": "ru-RU",
           "name": "Jun Chiyabari Himalayan Imperial",
           "description": "Органический чёрный чай премиум-класса с биодинамической плантации. Богатый вкус с нотами какао, шоколада и сухофруктов. Янтарно-рубиновый настой. Выдерживает до 7 проливов.",
-          "seoName": "jun-chiyabari-himalayan-imperial"
+          "seo": "jun-chiyabari-himalayan-imperial"
         },
         {
           "lang": "en-US",
           "name": "Jun Chiyabari Himalayan Imperial",
           "description": "Organic premium black tea from biodynamic estate. Rich taste with notes of cocoa, chocolate and dried fruits. Amber-ruby infusion. Withstands up to 7 steepings.",
-          "seoName": "jun-chiyabari-himalayan-imperial"
+          "seo": "jun-chiyabari-himalayan-imperial"
         },
         {
           "lang": "zh-CN",
           "name": "Jun Chiyabari喜马拉雅帝王",
           "description": "来自生物动力农庄的有机精品红茶。口感浓郁，带有可可、巧克力和干果香。茶汤呈琥珀红宝石色。可冲泡7次以上。",
-          "seoName": "jun-chiyabari-ximalaya-diwang"
+          "seo": "jun-chiyabari-ximalaya-diwang"
         }
       ],
       "tags": [
@@ -183,19 +183,19 @@
           "lang": "ru-RU",
           "name": "Непал First Flush",
           "description": "Первый весенний сбор из гималайских садов. Лёгкий, свежий вкус с цветочными и фруктовыми нотами. Минимальная терпкость. Золотистый настой с зеленоватым отливом.",
-          "seoName": "nepal-first-flush"
+          "seo": "nepal-first-flush"
         },
         {
           "lang": "en-US",
           "name": "Nepal First Flush",
           "description": "First spring harvest from Himalayan gardens. Light, fresh taste with floral and fruity notes. Minimal astringency. Golden infusion with greenish hue.",
-          "seoName": "nepal-first-flush"
+          "seo": "nepal-first-flush"
         },
         {
           "lang": "zh-CN",
           "name": "尼泊尔春摘",
           "description": "来自喜马拉雅茶园的首摘春茶。口感轻盈清新，带有花香和果香。涩味极少。茶汤呈金色，略带绿色光泽。",
-          "seoName": "niboer-chunzhai"
+          "seo": "niboer-chunzhai"
         }
       ],
       "tags": [
@@ -268,19 +268,19 @@
           "lang": "ru-RU",
           "name": "Гималайский Улун",
           "description": "Полуферментированный чай из высокогорий Непала. Цветочный аромат с медовыми нотами. Сочетает свежесть зелёного чая с глубиной чёрного. Золотисто-янтарный настой.",
-          "seoName": "himalayan-oolong"
+          "seo": "himalayan-oolong"
         },
         {
           "lang": "en-US",
           "name": "Himalayan Oolong",
           "description": "Semi-fermented tea from Nepal highlands. Floral aroma with honey notes. Combines freshness of green tea with depth of black. Golden-amber infusion.",
-          "seoName": "himalayan-oolong"
+          "seo": "himalayan-oolong"
         },
         {
           "lang": "zh-CN",
           "name": "喜马拉雅乌龙",
           "description": "产自尼泊尔高山的半发酵茶。花香中带有蜂蜜香。融合了绿茶的清新与红茶的醇厚。茶汤呈金琥珀色。",
-          "seoName": "ximalaya-wulong"
+          "seo": "ximalaya-wulong"
         }
       ],
       "tags": [
@@ -350,19 +350,19 @@
           "lang": "ru-RU",
           "name": "Непал Серебряная Игла",
           "description": "Белый чай из серебристых почек высокогорных плантаций. Нежный сладковатый вкус с цветочными нотами. Минимальная обработка сохраняет все полезные вещества. Бледно-золотистый настой.",
-          "seoName": "nepal-silver-needle"
+          "seo": "nepal-silver-needle"
         },
         {
           "lang": "en-US",
           "name": "Nepal Silver Needle",
           "description": "White tea from silver buds of highland estates. Delicate sweet taste with floral notes. Minimal processing preserves all beneficial substances. Pale golden infusion.",
-          "seoName": "nepal-silver-needle"
+          "seo": "nepal-silver-needle"
         },
         {
           "lang": "zh-CN",
           "name": "尼泊尔白毫银针",
           "description": "采自高山庄园银芽的白茶。细腻甘甜的口感带有花香。最少的加工保留了所有有益成分。茶汤呈浅金色。",
-          "seoName": "niboer-baihao-yinzhen"
+          "seo": "niboer-baihao-yinzhen"
         }
       ],
       "tags": [
@@ -435,19 +435,19 @@
           "lang": "ru-RU",
           "name": "Гималайский Зелёный",
           "description": "Зелёный чай из высокогорий Непала. Свежий травянистый вкус с лёгкой сладостью и цветочными нюансами. Светло-зелёный прозрачный настой. Высокое содержание антиоксидантов.",
-          "seoName": "himalayan-green"
+          "seo": "himalayan-green"
         },
         {
           "lang": "en-US",
           "name": "Himalayan Green",
           "description": "Green tea from Nepal highlands. Fresh grassy taste with light sweetness and floral nuances. Light green transparent infusion. High antioxidant content.",
-          "seoName": "himalayan-green"
+          "seo": "himalayan-green"
         },
         {
           "lang": "zh-CN",
           "name": "喜马拉雅绿茶",
           "description": "产自尼泊尔高山的绿茶。清新的草香带有轻微甘甜和花香。茶汤呈透明的浅绿色。抗氧化剂含量高。",
-          "seoName": "ximalaya-lvcha"
+          "seo": "ximalaya-lvcha"
         }
       ],
       "tags": [
