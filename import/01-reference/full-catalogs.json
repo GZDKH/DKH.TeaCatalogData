@@ -1,0 +1,109 @@
+[
+  {
+    "code": "CATALOG-JAPAN",
+    "currency": "USD",
+    "order": 2,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Japan Tea", "description": "Japanese green teas — matcha, sencha, gyokuro" },
+      { "lang": "ru-RU", "name": "Японский чай", "description": "Японские зелёные чаи — матча, сенча, гёкуро" },
+      { "lang": "zh-CN", "name": "日本茶", "description": "日本绿茶 — 抹茶、煎茶、玉露" }
+    ],
+    "categories": [
+      {
+        "category": "CAT-GREEN-TEA",
+        "order": 1,
+        "published": true,
+        "products": [
+          { "product": "TEA-JP-SUN-ROUGE", "order": 1, "published": true },
+          { "product": "TEA-JP-GYOKURO-UJI", "order": 2, "published": true }
+        ]
+      },
+      {
+        "category": "CAT-REGION-JAPAN",
+        "order": 2,
+        "published": true,
+        "products": [
+          { "product": "TEA-JP-SUN-ROUGE", "order": 1, "published": true },
+          { "product": "TEA-JP-GYOKURO-UJI", "order": 2, "published": true }
+        ]
+      }
+    ],
+    "media": []
+  },
+  {
+    "code": "CATALOG-CHINA",
+    "currency": "USD",
+    "order": 1,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "China Tea", "description": "Premium teas from China — the birthplace of tea" },
+      { "lang": "ru-RU", "name": "Китайский чай", "description": "Премиальные чаи из Китая — родины чая" },
+      { "lang": "zh-CN", "name": "中国茶", "description": "来自茶叶故乡的优质茶叶" }
+    ],
+    "categories": [
+      {
+        "category": "CAT-GREEN-TEA",
+        "order": 1,
+        "published": true,
+        "products": [
+          { "product": "TEA-CN-LONGJING-SHIFENG", "order": 1, "published": true }
+        ]
+      },
+      {
+        "category": "CAT-WHITE-TEA",
+        "order": 2,
+        "published": true,
+        "products": [
+          { "product": "TEA-CN-YINZHEN-FUDING", "order": 1, "published": true }
+        ]
+      },
+      {
+        "category": "CAT-OOLONG-TEA",
+        "order": 3,
+        "published": true,
+        "products": []
+      },
+      {
+        "category": "CAT-REGION-CHINA",
+        "order": 4,
+        "published": true,
+        "products": [
+          { "product": "TEA-CN-LONGJING-SHIFENG", "order": 1, "published": true },
+          { "product": "TEA-CN-YINZHEN-FUDING", "order": 2, "published": true }
+        ]
+      }
+    ],
+    "media": []
+  },
+  {
+    "code": "CATALOG-TAIWAN",
+    "currency": "USD",
+    "order": 3,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Taiwan Tea", "description": "Taiwan high mountain oolongs" },
+      { "lang": "ru-RU", "name": "Тайваньский чай", "description": "Тайваньские высокогорные улуны" },
+      { "lang": "zh-CN", "name": "台湾茶", "description": "台湾高山乌龙茶" }
+    ],
+    "categories": [
+      {
+        "category": "CAT-OOLONG-TEA",
+        "order": 1,
+        "published": true,
+        "products": [
+          { "product": "TEA-TW-ALISHAN-OOLONG", "order": 1, "published": true }
+        ]
+      },
+      {
+        "category": "CAT-REGION-TAIWAN",
+        "order": 2,
+        "published": true,
+        "products": [
+          { "product": "TEA-TW-ALISHAN-OOLONG", "order": 1, "published": true }
+        ]
+      }
+    ],
+    "media": []
+  }
+]
