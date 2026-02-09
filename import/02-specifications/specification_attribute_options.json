@@ -1,118 +1,73 @@
 [
-  {
-    "attribute": "SPEC-TEA-TYPE",
-    "options": [
-      { "code": "SPEC-TYPE-GREEN", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Green Tea" }, { "lang": "ru-RU", "name": "Зеленый чай" }, { "lang": "zh-CN", "name": "绿茶" }] },
-      { "code": "SPEC-TYPE-WHITE", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "White Tea" }, { "lang": "ru-RU", "name": "Белый чай" }, { "lang": "zh-CN", "name": "白茶" }] },
-      { "code": "SPEC-TYPE-YELLOW", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Yellow Tea" }, { "lang": "ru-RU", "name": "Желтый чай" }, { "lang": "zh-CN", "name": "黄茶" }] },
-      { "code": "SPEC-TYPE-OOLONG", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Oolong Tea" }, { "lang": "ru-RU", "name": "Улун" }, { "lang": "zh-CN", "name": "乌龙茶" }] },
-      { "code": "SPEC-TYPE-RED", "order": 5, "published": true, "translations": [{ "lang": "en-US", "name": "Red Tea (Black)" }, { "lang": "ru-RU", "name": "Красный чай (Черный)" }, { "lang": "zh-CN", "name": "红茶" }] },
-      { "code": "SPEC-TYPE-DARK", "order": 6, "published": true, "translations": [{ "lang": "en-US", "name": "Dark Tea" }, { "lang": "ru-RU", "name": "Темный чай" }, { "lang": "zh-CN", "name": "黑茶" }] },
-      { "code": "SPEC-TYPE-PUERH-SHENG", "order": 7, "published": true, "translations": [{ "lang": "en-US", "name": "Sheng Pu-erh (Raw)" }, { "lang": "ru-RU", "name": "Шэн Пуэр (Сырой)" }, { "lang": "zh-CN", "name": "生普洱" }] },
-      { "code": "SPEC-TYPE-PUERH-SHU", "order": 8, "published": true, "translations": [{ "lang": "en-US", "name": "Shu Pu-erh (Ripe)" }, { "lang": "ru-RU", "name": "Шу Пуэр (Готовый)" }, { "lang": "zh-CN", "name": "熟普洱" }] },
-      { "code": "SPEC-TYPE-JASMINE", "order": 9, "published": true, "translations": [{ "lang": "en-US", "name": "Jasmine Tea" }, { "lang": "ru-RU", "name": "Жасминовый чай" }, { "lang": "zh-CN", "name": "茉莉花茶" }] },
-      { "code": "SPEC-TYPE-HERBAL", "order": 10, "published": true, "translations": [{ "lang": "en-US", "name": "Herbal Tea" }, { "lang": "ru-RU", "name": "Травяной чай" }, { "lang": "zh-CN", "name": "草本茶" }] },
-      { "code": "SPEC-TYPE-PURPLE", "order": 11, "published": true, "translations": [{ "lang": "en-US", "name": "Purple Tea" }, { "lang": "ru-RU", "name": "Пурпурный чай" }, { "lang": "zh-CN", "name": "紫茶" }] },
-      { "code": "SPEC-TYPE-GABA", "order": 12, "published": true, "translations": [{ "lang": "en-US", "name": "GABA Tea" }, { "lang": "ru-RU", "name": "ГАМК-чай (GABA)" }, { "lang": "zh-CN", "name": "佳叶龙茶" }] }
-    ]
-  },
-  {
-    "attribute": "SPEC-FERMENTATION",
-    "options": [
-      { "code": "SPEC-FERM-0", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Unfermented (0%)" }, { "lang": "ru-RU", "name": "Неферментированный (0%)" }, { "lang": "zh-CN", "name": "不发酵" }] },
-      { "code": "SPEC-FERM-5-10", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Minimal (5-10%)" }, { "lang": "ru-RU", "name": "Минимальная (5-10%)" }, { "lang": "zh-CN", "name": "轻微发酵" }] },
-      { "code": "SPEC-FERM-15-30", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Light (15-30%)" }, { "lang": "ru-RU", "name": "Слабая (15-30%)" }, { "lang": "zh-CN", "name": "轻发酵" }] },
-      { "code": "SPEC-FERM-30-60", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Medium (30-60%)" }, { "lang": "ru-RU", "name": "Средняя (30-60%)" }, { "lang": "zh-CN", "name": "中发酵" }] },
-      { "code": "SPEC-FERM-60-85", "order": 5, "published": true, "translations": [{ "lang": "en-US", "name": "Heavy (60-85%)" }, { "lang": "ru-RU", "name": "Сильная (60-85%)" }, { "lang": "zh-CN", "name": "重发酵" }] },
-      { "code": "SPEC-FERM-85-100", "order": 6, "published": true, "translations": [{ "lang": "en-US", "name": "Full (85-100%)" }, { "lang": "ru-RU", "name": "Полная (85-100%)" }, { "lang": "zh-CN", "name": "全发酵" }] },
-      { "code": "SPEC-FERM-POST", "order": 7, "published": true, "translations": [{ "lang": "en-US", "name": "Post-fermented" }, { "lang": "ru-RU", "name": "Постферментированный" }, { "lang": "zh-CN", "name": "后发酵" }] },
-      { "code": "SPEC-FERM-ANAEROBIC", "order": 8, "published": true, "translations": [{ "lang": "en-US", "name": "Anaerobic (GABA)" }, { "lang": "ru-RU", "name": "Анаэробная (GABA)" }, { "lang": "zh-CN", "name": "厌氧发酵" }] }
-    ]
-  },
-  {
-    "attribute": "SPEC-KILL-GREEN",
-    "options": [
-      { "code": "SPEC-KG-PAN", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Pan-fired (炒青)" }, { "lang": "ru-RU", "name": "Прожарка (炒青)" }, { "lang": "zh-CN", "name": "炒青" }] },
-      { "code": "SPEC-KG-STEAM", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Steamed (蒸青)" }, { "lang": "ru-RU", "name": "Пар (蒸青)" }, { "lang": "zh-CN", "name": "蒸青" }] },
-      { "code": "SPEC-KG-SUN", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Sun-dried (晒青)" }, { "lang": "ru-RU", "name": "Солнечная сушка (晒青)" }, { "lang": "zh-CN", "name": "晒青" }] },
-      { "code": "SPEC-KG-BAKE", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Baked (烘青)" }, { "lang": "ru-RU", "name": "Запекание (烘青)" }, { "lang": "zh-CN", "name": "烘青" }] }
-    ]
-  },
-  {
-    "attribute": "SPEC-ROAST",
-    "options": [
-      { "code": "SPEC-ROAST-NONE", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Unroasted" }, { "lang": "ru-RU", "name": "Без обжарки" }, { "lang": "zh-CN", "name": "无焙火" }] },
-      { "code": "SPEC-ROAST-LIGHT", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Light Roast (清香)" }, { "lang": "ru-RU", "name": "Лёгкая (清香)" }, { "lang": "zh-CN", "name": "轻焙火" }] },
-      { "code": "SPEC-ROAST-MEDIUM", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Medium Roast (浓香)" }, { "lang": "ru-RU", "name": "Средняя (浓香)" }, { "lang": "zh-CN", "name": "中焙火" }] },
-      { "code": "SPEC-ROAST-HEAVY", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Heavy Roast (炭焙)" }, { "lang": "ru-RU", "name": "Сильная (炭焙)" }, { "lang": "zh-CN", "name": "重焙火" }] }
-    ]
-  },
-  {
-    "attribute": "SPEC-HARVEST",
-    "options": [
-      { "code": "SPEC-HARV-MINGQIAN", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Pre-Qingming (明前)" }, { "lang": "ru-RU", "name": "До Цинмин (明前)" }, { "lang": "zh-CN", "name": "明前" }] },
-      { "code": "SPEC-HARV-YUQIAN", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Pre-Rain (雨前)" }, { "lang": "ru-RU", "name": "До дождей (雨前)" }, { "lang": "zh-CN", "name": "雨前" }] },
-      { "code": "SPEC-HARV-SPRING", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Spring (春茶)" }, { "lang": "ru-RU", "name": "Весна (春茶)" }, { "lang": "zh-CN", "name": "春茶" }] },
-      { "code": "SPEC-HARV-SUMMER", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Summer (夏茶)" }, { "lang": "ru-RU", "name": "Лето (夏茶)" }, { "lang": "zh-CN", "name": "夏茶" }] },
-      { "code": "SPEC-HARV-AUTUMN", "order": 5, "published": true, "translations": [{ "lang": "en-US", "name": "Autumn (秋茶)" }, { "lang": "ru-RU", "name": "Осень (秋茶)" }, { "lang": "zh-CN", "name": "秋茶" }] },
-      { "code": "SPEC-HARV-WINTER", "order": 6, "published": true, "translations": [{ "lang": "en-US", "name": "Winter (冬茶)" }, { "lang": "ru-RU", "name": "Зима (冬茶)" }, { "lang": "zh-CN", "name": "冬茶" }] }
-    ]
-  },
-  {
-    "attribute": "SPEC-ALTITUDE",
-    "options": [
-      { "code": "SPEC-ALT-LOW", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Lowland (< 500m)" }, { "lang": "ru-RU", "name": "Низинный (< 500м)" }, { "lang": "zh-CN", "name": "低海拔" }] },
-      { "code": "SPEC-ALT-MID", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Mid-elevation (500-1000m)" }, { "lang": "ru-RU", "name": "Средний (500-1000м)" }, { "lang": "zh-CN", "name": "中海拔" }] },
-      { "code": "SPEC-ALT-HIGH", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "High Mountain (1000-2000m)" }, { "lang": "ru-RU", "name": "Высокогорный (1000-2000м)" }, { "lang": "zh-CN", "name": "高山" }] },
-      { "code": "SPEC-ALT-ULTRA", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Ultra-high (> 2000m)" }, { "lang": "ru-RU", "name": "Сверхвысокогорный (> 2000м)" }, { "lang": "zh-CN", "name": "超高海拔" }] }
-    ]
-  },
-  {
-    "attribute": "SPEC-AROMA",
-    "options": [
-      { "code": "SPEC-AROMA-FLORAL", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Floral (花香)" }, { "lang": "ru-RU", "name": "Цветочный (花香)" }, { "lang": "zh-CN", "name": "花香" }] },
-      { "code": "SPEC-AROMA-FRUITY", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Fruity (果香)" }, { "lang": "ru-RU", "name": "Фруктовый (果香)" }, { "lang": "zh-CN", "name": "果香" }] },
-      { "code": "SPEC-AROMA-HONEY", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Honey (蜜香)" }, { "lang": "ru-RU", "name": "Медовый (蜜香)" }, { "lang": "zh-CN", "name": "蜜香" }] },
-      { "code": "SPEC-AROMA-NUTTY", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Nutty/Toasty (坚果香)" }, { "lang": "ru-RU", "name": "Ореховый (坚果香)" }, { "lang": "zh-CN", "name": "坚果香" }] },
-      { "code": "SPEC-AROMA-WOODY", "order": 5, "published": true, "translations": [{ "lang": "en-US", "name": "Woody (木质香)" }, { "lang": "ru-RU", "name": "Древесный (木质香)" }, { "lang": "zh-CN", "name": "木质香" }] },
-      { "code": "SPEC-AROMA-EARTHY", "order": 6, "published": true, "translations": [{ "lang": "en-US", "name": "Earthy (陈香)" }, { "lang": "ru-RU", "name": "Землистый (陈香)" }, { "lang": "zh-CN", "name": "陈香" }] },
-      { "code": "SPEC-AROMA-VEGETAL", "order": 7, "published": true, "translations": [{ "lang": "en-US", "name": "Vegetal/Grassy" }, { "lang": "ru-RU", "name": "Травянистый" }, { "lang": "zh-CN", "name": "草香" }] },
-      { "code": "SPEC-AROMA-MARINE", "order": 8, "published": true, "translations": [{ "lang": "en-US", "name": "Marine/Seaweed" }, { "lang": "ru-RU", "name": "Морской" }, { "lang": "zh-CN", "name": "海苔香" }] },
-      { "code": "SPEC-AROMA-ROASTED", "order": 9, "published": true, "translations": [{ "lang": "en-US", "name": "Roasted (焙香)" }, { "lang": "ru-RU", "name": "Жареный (焙香)" }, { "lang": "zh-CN", "name": "焙香" }] },
-      { "code": "SPEC-AROMA-SMOKY", "order": 10, "published": true, "translations": [{ "lang": "en-US", "name": "Smoky (烟香)" }, { "lang": "ru-RU", "name": "Дымный (烟香)" }, { "lang": "zh-CN", "name": "烟香" }] }
-    ]
-  },
-  {
-    "attribute": "SPEC-BODY",
-    "options": [
-      { "code": "SPEC-BODY-LIGHT", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Light" }, { "lang": "ru-RU", "name": "Лёгкое" }, { "lang": "zh-CN", "name": "轻盈" }] },
-      { "code": "SPEC-BODY-MEDIUM", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Medium" }, { "lang": "ru-RU", "name": "Среднее" }, { "lang": "zh-CN", "name": "中等" }] },
-      { "code": "SPEC-BODY-FULL", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Full" }, { "lang": "ru-RU", "name": "Полное" }, { "lang": "zh-CN", "name": "醇厚" }] }
-    ]
-  },
-  {
-    "attribute": "SPEC-CAFFEINE",
-    "options": [
-      { "code": "SPEC-CAFF-NONE", "order": 0, "published": true, "translations": [{ "lang": "en-US", "name": "Caffeine-free" }, { "lang": "ru-RU", "name": "Без кофеина" }, { "lang": "zh-CN", "name": "无咖啡因" }] },
-      { "code": "SPEC-CAFF-LOW", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Low" }, { "lang": "ru-RU", "name": "Низкий" }, { "lang": "zh-CN", "name": "低" }] },
-      { "code": "SPEC-CAFF-MED", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Medium" }, { "lang": "ru-RU", "name": "Средний" }, { "lang": "zh-CN", "name": "中等" }] },
-      { "code": "SPEC-CAFF-HIGH", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "High" }, { "lang": "ru-RU", "name": "Высокий" }, { "lang": "zh-CN", "name": "高" }] }
-    ]
-  },
-  {
-    "attribute": "SPEC-GABA-CONTENT",
-    "options": [
-      { "code": "SPEC-GABA-STD", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Standard (150+ mg)" }, { "lang": "ru-RU", "name": "Стандарт (150+ мг)" }, { "lang": "zh-CN", "name": "标准 (150+ mg)" }] },
-      { "code": "SPEC-GABA-HIGH", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "High (200-300 mg)" }, { "lang": "ru-RU", "name": "Высокое (200-300 мг)" }, { "lang": "zh-CN", "name": "高 (200-300 mg)" }] },
-      { "code": "SPEC-GABA-PREMIUM", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Premium (300+ mg)" }, { "lang": "ru-RU", "name": "Премиум (300+ мг)" }, { "lang": "zh-CN", "name": "特级 (300+ mg)" }] }
-    ]
-  },
-  {
-    "attribute": "SPEC-ANTHOCYANIN",
-    "options": [
-      { "code": "SPEC-ANTH-LOW", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Low" }, { "lang": "ru-RU", "name": "Низкое" }, { "lang": "zh-CN", "name": "低" }] },
-      { "code": "SPEC-ANTH-MED", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Medium" }, { "lang": "ru-RU", "name": "Среднее" }, { "lang": "zh-CN", "name": "中等" }] },
-      { "code": "SPEC-ANTH-HIGH", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "High (Purple leaf)" }, { "lang": "ru-RU", "name": "Высокое (Пурпурный лист)" }, { "lang": "zh-CN", "name": "高 (紫叶)" }] }
-    ]
-  }
+  { "code": "SPEC-TYPE-GREEN", "attribute": "SPEC-TEA-TYPE", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Green Tea" }, { "lang": "ru-RU", "name": "Зеленый чай" }, { "lang": "zh-CN", "name": "绿茶" }] },
+  { "code": "SPEC-TYPE-WHITE", "attribute": "SPEC-TEA-TYPE", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "White Tea" }, { "lang": "ru-RU", "name": "Белый чай" }, { "lang": "zh-CN", "name": "白茶" }] },
+  { "code": "SPEC-TYPE-YELLOW", "attribute": "SPEC-TEA-TYPE", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Yellow Tea" }, { "lang": "ru-RU", "name": "Желтый чай" }, { "lang": "zh-CN", "name": "黄茶" }] },
+  { "code": "SPEC-TYPE-OOLONG", "attribute": "SPEC-TEA-TYPE", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Oolong Tea" }, { "lang": "ru-RU", "name": "Улун" }, { "lang": "zh-CN", "name": "乌龙茶" }] },
+  { "code": "SPEC-TYPE-RED", "attribute": "SPEC-TEA-TYPE", "order": 5, "published": true, "translations": [{ "lang": "en-US", "name": "Red Tea (Black)" }, { "lang": "ru-RU", "name": "Красный чай (Черный)" }, { "lang": "zh-CN", "name": "红茶" }] },
+  { "code": "SPEC-TYPE-DARK", "attribute": "SPEC-TEA-TYPE", "order": 6, "published": true, "translations": [{ "lang": "en-US", "name": "Dark Tea" }, { "lang": "ru-RU", "name": "Темный чай" }, { "lang": "zh-CN", "name": "黑茶" }] },
+  { "code": "SPEC-TYPE-PUERH-SHENG", "attribute": "SPEC-TEA-TYPE", "order": 7, "published": true, "translations": [{ "lang": "en-US", "name": "Sheng Pu-erh (Raw)" }, { "lang": "ru-RU", "name": "Шэн Пуэр (Сырой)" }, { "lang": "zh-CN", "name": "生普洱" }] },
+  { "code": "SPEC-TYPE-PUERH-SHU", "attribute": "SPEC-TEA-TYPE", "order": 8, "published": true, "translations": [{ "lang": "en-US", "name": "Shu Pu-erh (Ripe)" }, { "lang": "ru-RU", "name": "Шу Пуэр (Готовый)" }, { "lang": "zh-CN", "name": "熟普洱" }] },
+  { "code": "SPEC-TYPE-JASMINE", "attribute": "SPEC-TEA-TYPE", "order": 9, "published": true, "translations": [{ "lang": "en-US", "name": "Jasmine Tea" }, { "lang": "ru-RU", "name": "Жасминовый чай" }, { "lang": "zh-CN", "name": "茉莉花茶" }] },
+  { "code": "SPEC-TYPE-HERBAL", "attribute": "SPEC-TEA-TYPE", "order": 10, "published": true, "translations": [{ "lang": "en-US", "name": "Herbal Tea" }, { "lang": "ru-RU", "name": "Травяной чай" }, { "lang": "zh-CN", "name": "草本茶" }] },
+  { "code": "SPEC-TYPE-PURPLE", "attribute": "SPEC-TEA-TYPE", "order": 11, "published": true, "translations": [{ "lang": "en-US", "name": "Purple Tea" }, { "lang": "ru-RU", "name": "Пурпурный чай" }, { "lang": "zh-CN", "name": "紫茶" }] },
+  { "code": "SPEC-TYPE-GABA", "attribute": "SPEC-TEA-TYPE", "order": 12, "published": true, "translations": [{ "lang": "en-US", "name": "GABA Tea" }, { "lang": "ru-RU", "name": "ГАМК-чай (GABA)" }, { "lang": "zh-CN", "name": "佳叶龙茶" }] },
+
+  { "code": "SPEC-FERM-0", "attribute": "SPEC-FERMENTATION", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Unfermented (0%)" }, { "lang": "ru-RU", "name": "Неферментированный (0%)" }, { "lang": "zh-CN", "name": "不发酵" }] },
+  { "code": "SPEC-FERM-5-10", "attribute": "SPEC-FERMENTATION", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Minimal (5-10%)" }, { "lang": "ru-RU", "name": "Минимальная (5-10%)" }, { "lang": "zh-CN", "name": "轻微发酵" }] },
+  { "code": "SPEC-FERM-15-30", "attribute": "SPEC-FERMENTATION", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Light (15-30%)" }, { "lang": "ru-RU", "name": "Слабая (15-30%)" }, { "lang": "zh-CN", "name": "轻发酵" }] },
+  { "code": "SPEC-FERM-30-60", "attribute": "SPEC-FERMENTATION", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Medium (30-60%)" }, { "lang": "ru-RU", "name": "Средняя (30-60%)" }, { "lang": "zh-CN", "name": "中发酵" }] },
+  { "code": "SPEC-FERM-60-85", "attribute": "SPEC-FERMENTATION", "order": 5, "published": true, "translations": [{ "lang": "en-US", "name": "Heavy (60-85%)" }, { "lang": "ru-RU", "name": "Сильная (60-85%)" }, { "lang": "zh-CN", "name": "重发酵" }] },
+  { "code": "SPEC-FERM-85-100", "attribute": "SPEC-FERMENTATION", "order": 6, "published": true, "translations": [{ "lang": "en-US", "name": "Full (85-100%)" }, { "lang": "ru-RU", "name": "Полная (85-100%)" }, { "lang": "zh-CN", "name": "全发酵" }] },
+  { "code": "SPEC-FERM-POST", "attribute": "SPEC-FERMENTATION", "order": 7, "published": true, "translations": [{ "lang": "en-US", "name": "Post-fermented" }, { "lang": "ru-RU", "name": "Постферментированный" }, { "lang": "zh-CN", "name": "后发酵" }] },
+  { "code": "SPEC-FERM-ANAEROBIC", "attribute": "SPEC-FERMENTATION", "order": 8, "published": true, "translations": [{ "lang": "en-US", "name": "Anaerobic (GABA)" }, { "lang": "ru-RU", "name": "Анаэробная (GABA)" }, { "lang": "zh-CN", "name": "厌氧发酵" }] },
+
+  { "code": "SPEC-KG-PAN", "attribute": "SPEC-KILL-GREEN", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Pan-fired (炒青)" }, { "lang": "ru-RU", "name": "Прожарка (炒青)" }, { "lang": "zh-CN", "name": "炒青" }] },
+  { "code": "SPEC-KG-STEAM", "attribute": "SPEC-KILL-GREEN", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Steamed (蒸青)" }, { "lang": "ru-RU", "name": "Пар (蒸青)" }, { "lang": "zh-CN", "name": "蒸青" }] },
+  { "code": "SPEC-KG-SUN", "attribute": "SPEC-KILL-GREEN", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Sun-dried (晒青)" }, { "lang": "ru-RU", "name": "Солнечная сушка (晒青)" }, { "lang": "zh-CN", "name": "晒青" }] },
+  { "code": "SPEC-KG-BAKE", "attribute": "SPEC-KILL-GREEN", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Baked (烘青)" }, { "lang": "ru-RU", "name": "Запекание (烘青)" }, { "lang": "zh-CN", "name": "烘青" }] },
+
+  { "code": "SPEC-ROAST-NONE", "attribute": "SPEC-ROAST", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Unroasted" }, { "lang": "ru-RU", "name": "Без обжарки" }, { "lang": "zh-CN", "name": "无焙火" }] },
+  { "code": "SPEC-ROAST-LIGHT", "attribute": "SPEC-ROAST", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Light Roast (清香)" }, { "lang": "ru-RU", "name": "Лёгкая (清香)" }, { "lang": "zh-CN", "name": "轻焙火" }] },
+  { "code": "SPEC-ROAST-MEDIUM", "attribute": "SPEC-ROAST", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Medium Roast (浓香)" }, { "lang": "ru-RU", "name": "Средняя (浓香)" }, { "lang": "zh-CN", "name": "中焙火" }] },
+  { "code": "SPEC-ROAST-HEAVY", "attribute": "SPEC-ROAST", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Heavy Roast (炭焙)" }, { "lang": "ru-RU", "name": "Сильная (炭焙)" }, { "lang": "zh-CN", "name": "重焙火" }] },
+
+  { "code": "SPEC-HARV-MINGQIAN", "attribute": "SPEC-HARVEST", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Pre-Qingming (明前)" }, { "lang": "ru-RU", "name": "До Цинмин (明前)" }, { "lang": "zh-CN", "name": "明前" }] },
+  { "code": "SPEC-HARV-YUQIAN", "attribute": "SPEC-HARVEST", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Pre-Rain (雨前)" }, { "lang": "ru-RU", "name": "До дождей (雨前)" }, { "lang": "zh-CN", "name": "雨前" }] },
+  { "code": "SPEC-HARV-SPRING", "attribute": "SPEC-HARVEST", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Spring (春茶)" }, { "lang": "ru-RU", "name": "Весна (春茶)" }, { "lang": "zh-CN", "name": "春茶" }] },
+  { "code": "SPEC-HARV-SUMMER", "attribute": "SPEC-HARVEST", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Summer (夏茶)" }, { "lang": "ru-RU", "name": "Лето (夏茶)" }, { "lang": "zh-CN", "name": "夏茶" }] },
+  { "code": "SPEC-HARV-AUTUMN", "attribute": "SPEC-HARVEST", "order": 5, "published": true, "translations": [{ "lang": "en-US", "name": "Autumn (秋茶)" }, { "lang": "ru-RU", "name": "Осень (秋茶)" }, { "lang": "zh-CN", "name": "秋茶" }] },
+  { "code": "SPEC-HARV-WINTER", "attribute": "SPEC-HARVEST", "order": 6, "published": true, "translations": [{ "lang": "en-US", "name": "Winter (冬茶)" }, { "lang": "ru-RU", "name": "Зима (冬茶)" }, { "lang": "zh-CN", "name": "冬茶" }] },
+
+  { "code": "SPEC-ALT-LOW", "attribute": "SPEC-ALTITUDE", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Lowland (< 500m)" }, { "lang": "ru-RU", "name": "Низинный (< 500м)" }, { "lang": "zh-CN", "name": "低海拔" }] },
+  { "code": "SPEC-ALT-MID", "attribute": "SPEC-ALTITUDE", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Mid-elevation (500-1000m)" }, { "lang": "ru-RU", "name": "Средний (500-1000м)" }, { "lang": "zh-CN", "name": "中海拔" }] },
+  { "code": "SPEC-ALT-HIGH", "attribute": "SPEC-ALTITUDE", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "High Mountain (1000-2000m)" }, { "lang": "ru-RU", "name": "Высокогорный (1000-2000м)" }, { "lang": "zh-CN", "name": "高山" }] },
+  { "code": "SPEC-ALT-ULTRA", "attribute": "SPEC-ALTITUDE", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Ultra-high (> 2000m)" }, { "lang": "ru-RU", "name": "Сверхвысокогорный (> 2000м)" }, { "lang": "zh-CN", "name": "超高海拔" }] },
+
+  { "code": "SPEC-AROMA-FLORAL", "attribute": "SPEC-AROMA", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Floral (花香)" }, { "lang": "ru-RU", "name": "Цветочный (花香)" }, { "lang": "zh-CN", "name": "花香" }] },
+  { "code": "SPEC-AROMA-FRUITY", "attribute": "SPEC-AROMA", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Fruity (果香)" }, { "lang": "ru-RU", "name": "Фруктовый (果香)" }, { "lang": "zh-CN", "name": "果香" }] },
+  { "code": "SPEC-AROMA-HONEY", "attribute": "SPEC-AROMA", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Honey (蜜香)" }, { "lang": "ru-RU", "name": "Медовый (蜜香)" }, { "lang": "zh-CN", "name": "蜜香" }] },
+  { "code": "SPEC-AROMA-NUTTY", "attribute": "SPEC-AROMA", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Nutty/Toasty (坚果香)" }, { "lang": "ru-RU", "name": "Ореховый (坚果香)" }, { "lang": "zh-CN", "name": "坚果香" }] },
+  { "code": "SPEC-AROMA-WOODY", "attribute": "SPEC-AROMA", "order": 5, "published": true, "translations": [{ "lang": "en-US", "name": "Woody (木质香)" }, { "lang": "ru-RU", "name": "Древесный (木质香)" }, { "lang": "zh-CN", "name": "木质香" }] },
+  { "code": "SPEC-AROMA-EARTHY", "attribute": "SPEC-AROMA", "order": 6, "published": true, "translations": [{ "lang": "en-US", "name": "Earthy (陈香)" }, { "lang": "ru-RU", "name": "Землистый (陈香)" }, { "lang": "zh-CN", "name": "陈香" }] },
+  { "code": "SPEC-AROMA-VEGETAL", "attribute": "SPEC-AROMA", "order": 7, "published": true, "translations": [{ "lang": "en-US", "name": "Vegetal/Grassy" }, { "lang": "ru-RU", "name": "Травянистый" }, { "lang": "zh-CN", "name": "草香" }] },
+  { "code": "SPEC-AROMA-MARINE", "attribute": "SPEC-AROMA", "order": 8, "published": true, "translations": [{ "lang": "en-US", "name": "Marine/Seaweed" }, { "lang": "ru-RU", "name": "Морской" }, { "lang": "zh-CN", "name": "海苔香" }] },
+  { "code": "SPEC-AROMA-ROASTED", "attribute": "SPEC-AROMA", "order": 9, "published": true, "translations": [{ "lang": "en-US", "name": "Roasted (焙香)" }, { "lang": "ru-RU", "name": "Жареный (焙香)" }, { "lang": "zh-CN", "name": "焙香" }] },
+  { "code": "SPEC-AROMA-SMOKY", "attribute": "SPEC-AROMA", "order": 10, "published": true, "translations": [{ "lang": "en-US", "name": "Smoky (烟香)" }, { "lang": "ru-RU", "name": "Дымный (烟香)" }, { "lang": "zh-CN", "name": "烟香" }] },
+
+  { "code": "SPEC-BODY-LIGHT", "attribute": "SPEC-BODY", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Light" }, { "lang": "ru-RU", "name": "Лёгкое" }, { "lang": "zh-CN", "name": "轻盈" }] },
+  { "code": "SPEC-BODY-MEDIUM", "attribute": "SPEC-BODY", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Medium" }, { "lang": "ru-RU", "name": "Среднее" }, { "lang": "zh-CN", "name": "中等" }] },
+  { "code": "SPEC-BODY-FULL", "attribute": "SPEC-BODY", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Full" }, { "lang": "ru-RU", "name": "Полное" }, { "lang": "zh-CN", "name": "醇厚" }] },
+
+  { "code": "SPEC-CAFF-NONE", "attribute": "SPEC-CAFFEINE", "order": 0, "published": true, "translations": [{ "lang": "en-US", "name": "Caffeine-free" }, { "lang": "ru-RU", "name": "Без кофеина" }, { "lang": "zh-CN", "name": "无咖啡因" }] },
+  { "code": "SPEC-CAFF-LOW", "attribute": "SPEC-CAFFEINE", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Low" }, { "lang": "ru-RU", "name": "Низкий" }, { "lang": "zh-CN", "name": "低含量" }] },
+  { "code": "SPEC-CAFF-MED", "attribute": "SPEC-CAFFEINE", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Medium" }, { "lang": "ru-RU", "name": "Средний" }, { "lang": "zh-CN", "name": "中等" }] },
+  { "code": "SPEC-CAFF-HIGH", "attribute": "SPEC-CAFFEINE", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "High" }, { "lang": "ru-RU", "name": "Высокий" }, { "lang": "zh-CN", "name": "高含量" }] },
+
+  { "code": "SPEC-GABA-STD", "attribute": "SPEC-GABA-CONTENT", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Standard (150+ mg)" }, { "lang": "ru-RU", "name": "Стандарт (150+ мг)" }, { "lang": "zh-CN", "name": "标准 (150+ mg)" }] },
+  { "code": "SPEC-GABA-HIGH", "attribute": "SPEC-GABA-CONTENT", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "High (200-300 mg)" }, { "lang": "ru-RU", "name": "Высокое (200-300 мг)" }, { "lang": "zh-CN", "name": "高 (200-300 mg)" }] },
+  { "code": "SPEC-GABA-PREMIUM", "attribute": "SPEC-GABA-CONTENT", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Premium (300+ mg)" }, { "lang": "ru-RU", "name": "Премиум (300+ мг)" }, { "lang": "zh-CN", "name": "特级 (300+ mg)" }] },
+
+  { "code": "SPEC-ANTH-LOW", "attribute": "SPEC-ANTHOCYANIN", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Low" }, { "lang": "ru-RU", "name": "Низкое" }, { "lang": "zh-CN", "name": "低含量" }] },
+  { "code": "SPEC-ANTH-MED", "attribute": "SPEC-ANTHOCYANIN", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Medium" }, { "lang": "ru-RU", "name": "Среднее" }, { "lang": "zh-CN", "name": "中等" }] },
+  { "code": "SPEC-ANTH-HIGH", "attribute": "SPEC-ANTHOCYANIN", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "High (Purple leaf)" }, { "lang": "ru-RU", "name": "Высокое (Пурпурный лист)" }, { "lang": "zh-CN", "name": "高 (紫叶)" }] }
 ]
