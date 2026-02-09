@@ -4,9 +4,18 @@
     "order": 1,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Top 10 Famous Teas of China" },
-      { "lang": "ru-RU", "name": "Топ-10 знаменитых чаёв Китая" },
-      { "lang": "zh-CN", "name": "中国十大名茶" }
+      {
+        "lang": "en-US",
+        "name": "Top 10 Famous Teas of China"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Топ-10 знаменитых чаёв Китая"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "中国十大名茶"
+      }
     ]
   },
   {
@@ -14,9 +23,18 @@
     "order": 2,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "UNESCO Heritage" },
-      { "lang": "ru-RU", "name": "Наследие ЮНЕСКО" },
-      { "lang": "zh-CN", "name": "联合国非遗" }
+      {
+        "lang": "en-US",
+        "name": "UNESCO Heritage"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Наследие ЮНЕСКО"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "联合国非遗"
+      }
     ]
   },
   {
@@ -24,9 +42,18 @@
     "order": 3,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "GI Protected" },
-      { "lang": "ru-RU", "name": "Защищённое географическое указание" },
-      { "lang": "zh-CN", "name": "地理标志保护" }
+      {
+        "lang": "en-US",
+        "name": "GI Protected"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Защищённое географическое указание"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "地理标志保护"
+      }
     ]
   },
   {
@@ -34,9 +61,18 @@
     "order": 4,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Organic" },
-      { "lang": "ru-RU", "name": "Органический" },
-      { "lang": "zh-CN", "name": "有机" }
+      {
+        "lang": "en-US",
+        "name": "Organic"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Органический"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "有机"
+      }
     ]
   },
   {
@@ -44,9 +80,18 @@
     "order": 5,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "High Mountain" },
-      { "lang": "ru-RU", "name": "Высокогорный" },
-      { "lang": "zh-CN", "name": "高山" }
+      {
+        "lang": "en-US",
+        "name": "High Mountain"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Высокогорный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "高山"
+      }
     ]
   },
   {
@@ -54,9 +99,18 @@
     "order": 6,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Ancient Tree" },
-      { "lang": "ru-RU", "name": "Древние деревья" },
-      { "lang": "zh-CN", "name": "古树" }
+      {
+        "lang": "en-US",
+        "name": "Ancient Tree"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Древние деревья"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "古树"
+      }
     ]
   },
   {
@@ -64,9 +118,18 @@
     "order": 7,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Single Origin" },
-      { "lang": "ru-RU", "name": "Одно происхождение" },
-      { "lang": "zh-CN", "name": "单一产地" }
+      {
+        "lang": "en-US",
+        "name": "Single Origin"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Одно происхождение"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "单一产地"
+      }
     ]
   },
   {
@@ -74,9 +137,18 @@
     "order": 8,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Limited Edition" },
-      { "lang": "ru-RU", "name": "Лимитированное издание" },
-      { "lang": "zh-CN", "name": "限量版" }
+      {
+        "lang": "en-US",
+        "name": "Limited Edition"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Лимитированное издание"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "限量版"
+      }
     ]
   },
   {
@@ -84,9 +156,18 @@
     "order": 9,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Spring 2024" },
-      { "lang": "ru-RU", "name": "Весна 2024" },
-      { "lang": "zh-CN", "name": "2024春" }
+      {
+        "lang": "en-US",
+        "name": "Spring 2024"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Весна 2024"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "2024春"
+      }
     ]
   },
   {
@@ -94,9 +175,18 @@
     "order": 10,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Competition Grade" },
-      { "lang": "ru-RU", "name": "Конкурсное качество" },
-      { "lang": "zh-CN", "name": "竞赛级" }
+      {
+        "lang": "en-US",
+        "name": "Competition Grade"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Конкурсное качество"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "竞赛级"
+      }
     ]
   },
   {
@@ -104,9 +194,18 @@
     "order": 11,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Award Winner" },
-      { "lang": "ru-RU", "name": "Лауреат премий" },
-      { "lang": "zh-CN", "name": "获奖" }
+      {
+        "lang": "en-US",
+        "name": "Award Winner"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Лауреат премий"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "获奖"
+      }
     ]
   },
   {
@@ -114,9 +213,18 @@
     "order": 12,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Wild Grown" },
-      { "lang": "ru-RU", "name": "Дикорастущий" },
-      { "lang": "zh-CN", "name": "野生" }
+      {
+        "lang": "en-US",
+        "name": "Wild Grown"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Дикорастущий"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "野生"
+      }
     ]
   },
   {
@@ -124,9 +232,18 @@
     "order": 13,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Shade Grown" },
-      { "lang": "ru-RU", "name": "Выращен в тени" },
-      { "lang": "zh-CN", "name": "遮阴种植" }
+      {
+        "lang": "en-US",
+        "name": "Shade Grown"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Выращен в тени"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "遮阴种植"
+      }
     ]
   },
   {
@@ -134,9 +251,18 @@
     "order": 14,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Hand Picked" },
-      { "lang": "ru-RU", "name": "Ручной сбор" },
-      { "lang": "zh-CN", "name": "手工采摘" }
+      {
+        "lang": "en-US",
+        "name": "Hand Picked"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ручной сбор"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "手工采摘"
+      }
     ]
   },
   {
@@ -144,9 +270,3020 @@
     "order": 15,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Hand Crafted" },
-      { "lang": "ru-RU", "name": "Ручная обработка" },
-      { "lang": "zh-CN", "name": "手工制作" }
+      {
+        "lang": "en-US",
+        "name": "Hand Crafted"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ручная обработка"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "手工制作"
+      }
+    ]
+  },
+  {
+    "code": "TAG-AGED-TEA",
+    "order": 16,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Aged Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Выдержанный чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "陈茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ALKALINE",
+    "order": 17,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Alkaline"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Щелочной"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "碱性"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ANCIENT-TREES",
+    "order": 18,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Ancient Trees"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Древние деревья"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "古树"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ANTHOCYANIN",
+    "order": 19,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Anthocyanin"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Антоцианин"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "花青素"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ANTI-ALLERGIC",
+    "order": 20,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Anti Allergic"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Противоаллергический"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "抗过敏"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ANTIOXIDANT",
+    "order": 21,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Antioxidant"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Антиоксидант"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "抗氧化"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ARTISAN",
+    "order": 22,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Artisan"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ремесленный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "匠人手作"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ASSAM",
+    "order": 23,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Assam"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ассам"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "阿萨姆"
+      }
+    ]
+  },
+  {
+    "code": "TAG-AUTUMNAL",
+    "order": 24,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Autumnal"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Осенний сбор"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "秋摘"
+      }
+    ]
+  },
+  {
+    "code": "TAG-AWARD-WINNING",
+    "order": 25,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Award Winning"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Награждённый"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "获奖"
+      }
+    ]
+  },
+  {
+    "code": "TAG-BALHYOCHA",
+    "order": 26,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Balhyocha"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Бальхёча"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "发酵茶(韩)"
+      }
+    ]
+  },
+  {
+    "code": "TAG-BAOZHONG",
+    "order": 27,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Baozhong"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Баочжун"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "包种"
+      }
+    ]
+  },
+  {
+    "code": "TAG-BERGAMOT",
+    "order": 28,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Bergamot"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Бергамот"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "佛手柑"
+      }
+    ]
+  },
+  {
+    "code": "TAG-BIO",
+    "order": 29,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Bio"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Био"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "生态"
+      }
+    ]
+  },
+  {
+    "code": "TAG-BIODYNAMIC",
+    "order": 30,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Biodynamic"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Биодинамический"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "生物动力"
+      }
+    ]
+  },
+  {
+    "code": "TAG-BLACK-TEA",
+    "order": 31,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Black Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Чёрный чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "红茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-BLEND",
+    "order": 32,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Blend"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Купаж"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "拼配"
+      }
+    ]
+  },
+  {
+    "code": "TAG-BOSEONG",
+    "order": 33,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Boseong"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Босон"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "宝城"
+      }
+    ]
+  },
+  {
+    "code": "TAG-BREAKFAST",
+    "order": 34,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Breakfast"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Утренний"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "早餐茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-BRICK-TEA",
+    "order": 35,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Brick Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Кирпичный чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "砖茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-BUDDHIST",
+    "order": 36,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Buddhist"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Буддийский"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "佛茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-BUG-BITTEN",
+    "order": 37,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Bug Bitten"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Укушенный цикадой"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "虫咬茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-CEREMONIAL",
+    "order": 38,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Ceremonial"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Церемониальный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "仪式级"
+      }
+    ]
+  },
+  {
+    "code": "TAG-CEYLON-TEA",
+    "order": 39,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Ceylon Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Цейлонский чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "锡兰茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-CHAI",
+    "order": 40,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Chai"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Масала-чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "印度奶茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-CHARCOAL",
+    "order": 41,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Charcoal"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Углеобжаренный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "炭焙"
+      }
+    ]
+  },
+  {
+    "code": "TAG-CHARCOAL-ROAST",
+    "order": 42,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Charcoal Roast"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Угольная обжарка"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "炭火烘焙"
+      }
+    ]
+  },
+  {
+    "code": "TAG-CITRUS",
+    "order": 43,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Citrus"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Цитрусовый"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "柑橘"
+      }
+    ]
+  },
+  {
+    "code": "TAG-CLASSIC",
+    "order": 44,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Classic"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Классический"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "经典"
+      }
+    ]
+  },
+  {
+    "code": "TAG-COLLECTIBLE",
+    "order": 45,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Collectible"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Коллекционный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "收藏级"
+      }
+    ]
+  },
+  {
+    "code": "TAG-CONCENTRATE",
+    "order": 46,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Concentrate"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Концентрат"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "浓缩"
+      }
+    ]
+  },
+  {
+    "code": "TAG-CTC",
+    "order": 47,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "CTC"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "CTC (гранулированный)"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "CTC切碎"
+      }
+    ]
+  },
+  {
+    "code": "TAG-CULTIVAR",
+    "order": 48,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Cultivar"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Культивар"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "品种"
+      }
+    ]
+  },
+  {
+    "code": "TAG-CURLY-LEAF",
+    "order": 49,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Curly Leaf"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Скрученный лист"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "卷叶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-DARJEELING",
+    "order": 50,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Darjeeling"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Дарджилинг"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "大吉岭"
+      }
+    ]
+  },
+  {
+    "code": "TAG-DARK-OOLONG",
+    "order": 51,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Dark Oolong"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Тёмный улун"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "浓香型乌龙"
+      }
+    ]
+  },
+  {
+    "code": "TAG-DEEP-STEAMED",
+    "order": 52,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Deep Steamed"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Глубокого пропаривания"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "深蒸"
+      }
+    ]
+  },
+  {
+    "code": "TAG-DELICATE",
+    "order": 53,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Delicate"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Деликатный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "清雅"
+      }
+    ]
+  },
+  {
+    "code": "TAG-DETOX",
+    "order": 54,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Detox"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Детокс"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "排毒"
+      }
+    ]
+  },
+  {
+    "code": "TAG-DIGESTION",
+    "order": 55,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Digestion"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Для пищеварения"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "助消化"
+      }
+    ]
+  },
+  {
+    "code": "TAG-DIMBULA",
+    "order": 56,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Dimbula"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Димбула"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "丁布拉"
+      }
+    ]
+  },
+  {
+    "code": "TAG-EARL-GREY",
+    "order": 57,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Earl Grey"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Эрл Грей"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "伯爵茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ELITE",
+    "order": 58,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Elite"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Элитный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "精品"
+      }
+    ]
+  },
+  {
+    "code": "TAG-EVENING",
+    "order": 59,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Evening"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Вечерний"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "晚间茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-EVERYDAY",
+    "order": 60,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Everyday"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Повседневный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "日常饮用"
+      }
+    ]
+  },
+  {
+    "code": "TAG-EXOTIC",
+    "order": 61,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Exotic"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Экзотический"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "异域风情"
+      }
+    ]
+  },
+  {
+    "code": "TAG-FERMENTED",
+    "order": 62,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Fermented"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ферментированный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "发酵"
+      }
+    ]
+  },
+  {
+    "code": "TAG-FIRST-FLUSH",
+    "order": 63,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "First Flush"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Первый сбор"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "头采"
+      }
+    ]
+  },
+  {
+    "code": "TAG-FLAVORED",
+    "order": 64,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Flavored"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ароматизированный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "调味"
+      }
+    ]
+  },
+  {
+    "code": "TAG-FLORAL",
+    "order": 65,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Floral"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Цветочный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "花香"
+      }
+    ]
+  },
+  {
+    "code": "TAG-FRUITY",
+    "order": 66,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Fruity"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Фруктовый"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "果香"
+      }
+    ]
+  },
+  {
+    "code": "TAG-FUNCTIONAL",
+    "order": 67,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Functional"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Функциональный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "功能性"
+      }
+    ]
+  },
+  {
+    "code": "TAG-GABA",
+    "order": 68,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "GABA"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "ГАМК (GABA)"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "GABA茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-GIFT",
+    "order": 69,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Gift"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Подарочный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "礼品"
+      }
+    ]
+  },
+  {
+    "code": "TAG-GOLDEN-FLOWERS",
+    "order": 70,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Golden Flowers"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Золотые цветы"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "金花"
+      }
+    ]
+  },
+  {
+    "code": "TAG-GOLDEN-NEEDLE",
+    "order": 71,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Golden Needle"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Золотая игла"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "金针"
+      }
+    ]
+  },
+  {
+    "code": "TAG-GOLDEN-TIPS",
+    "order": 72,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Golden Tips"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Золотые типсы"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "金芽"
+      }
+    ]
+  },
+  {
+    "code": "TAG-GONGFU",
+    "order": 73,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Gongfu"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Гунфу"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "功夫茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-GREEN-TEA",
+    "order": 74,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Green Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Зелёный чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "绿茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-HANDCRAFTED",
+    "order": 75,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Handcrafted"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ручная работа"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "手工制作"
+      }
+    ]
+  },
+  {
+    "code": "TAG-HANDMADE",
+    "order": 76,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Handmade"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ручного изготовления"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "手工制造"
+      }
+    ]
+  },
+  {
+    "code": "TAG-HANDPICKED",
+    "order": 77,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Handpicked"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ручной сбор"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "手工采摘"
+      }
+    ]
+  },
+  {
+    "code": "TAG-HERITAGE",
+    "order": 78,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Heritage"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Наследие"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "传承"
+      }
+    ]
+  },
+  {
+    "code": "TAG-HIGH-THEANINE",
+    "order": 79,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "High Theanine"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Высокое содержание теанина"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "高茶氨酸"
+      }
+    ]
+  },
+  {
+    "code": "TAG-HIGHLAND",
+    "order": 80,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Highland"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Высокогорный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "高地"
+      }
+    ]
+  },
+  {
+    "code": "TAG-HIMALAYAN",
+    "order": 81,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Himalayan"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Гималайский"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "喜马拉雅"
+      }
+    ]
+  },
+  {
+    "code": "TAG-HONEY",
+    "order": 82,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Honey"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Медовый"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "蜜香"
+      }
+    ]
+  },
+  {
+    "code": "TAG-HWANGCHA",
+    "order": 83,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Hwangcha"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Хванча"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "黄茶(韩)"
+      }
+    ]
+  },
+  {
+    "code": "TAG-HYBRID",
+    "order": 84,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Hybrid"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Гибридный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "混合品种"
+      }
+    ]
+  },
+  {
+    "code": "TAG-IMPERIAL",
+    "order": 85,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Imperial"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Императорский"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "御品"
+      }
+    ]
+  },
+  {
+    "code": "TAG-INDIAN-TEA",
+    "order": 86,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Indian Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Индийский чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "印度茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-INDONESIAN-TEA",
+    "order": 87,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Indonesian Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Индонезийский чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "印尼茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ISLAND",
+    "order": 88,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Island"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Островной"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "岛屿"
+      }
+    ]
+  },
+  {
+    "code": "TAG-JAPANESE-TEA",
+    "order": 89,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Japanese Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Японский чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "日本茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-JAVA",
+    "order": 90,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Java"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ява"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "爪哇"
+      }
+    ]
+  },
+  {
+    "code": "TAG-JEJU",
+    "order": 91,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Jeju"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Чеджу"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "济州"
+      }
+    ]
+  },
+  {
+    "code": "TAG-JIN-XUAN",
+    "order": 92,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Jin Xuan"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Цзинь Сюань"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "金萱"
+      }
+    ]
+  },
+  {
+    "code": "TAG-JUN-CHIYABARI",
+    "order": 93,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Jun Chiyabari"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Джун Чиябари"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "君千叶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-KANDY",
+    "order": 94,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Kandy"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Канди"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "康提"
+      }
+    ]
+  },
+  {
+    "code": "TAG-KENYA-TEA",
+    "order": 95,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Kenya Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Кенийский чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "肯尼亚茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-KOREAN-TEA",
+    "order": 96,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Korean Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Корейский чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "韩国茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-LARGE-LEAF",
+    "order": 97,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Large Leaf"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Крупнолистовой"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "大叶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-LOTUS",
+    "order": 98,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Lotus"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Лотосовый"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "莲花"
+      }
+    ]
+  },
+  {
+    "code": "TAG-LOW-CAFFEINE",
+    "order": 99,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Low Caffeine"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Низкий кофеин"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "低咖啡因"
+      }
+    ]
+  },
+  {
+    "code": "TAG-LOWLAND",
+    "order": 100,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Lowland"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Низинный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "低地"
+      }
+    ]
+  },
+  {
+    "code": "TAG-MALTY",
+    "order": 101,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Malty"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Солодовый"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "麦芽香"
+      }
+    ]
+  },
+  {
+    "code": "TAG-MASALA",
+    "order": 102,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Masala"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Масала"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "玛萨拉"
+      }
+    ]
+  },
+  {
+    "code": "TAG-MATCHA",
+    "order": 103,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Matcha"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Матча"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "抹茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-MATCHA-BASE",
+    "order": 104,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Matcha Base"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Основа для матчи"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "抹茶基底"
+      }
+    ]
+  },
+  {
+    "code": "TAG-MENTHOL",
+    "order": 105,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Menthol"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ментоловый"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "薄荷脑"
+      }
+    ]
+  },
+  {
+    "code": "TAG-MID-GROWN",
+    "order": 106,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Mid Grown"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Средневысотный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "中海拔"
+      }
+    ]
+  },
+  {
+    "code": "TAG-MILK-OOLONG",
+    "order": 107,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Milk Oolong"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Молочный улун"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "奶香乌龙"
+      }
+    ]
+  },
+  {
+    "code": "TAG-MUSCATEL",
+    "order": 108,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Muscatel"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Мускатный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "麝香葡萄"
+      }
+    ]
+  },
+  {
+    "code": "TAG-NEEDLE",
+    "order": 109,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Needle"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Игольчатый"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "针形"
+      }
+    ]
+  },
+  {
+    "code": "TAG-NEPAL-TEA",
+    "order": 110,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Nepal Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Непальский чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "尼泊尔茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-NILGIRI",
+    "order": 111,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Nilgiri"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Нилгири"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "尼尔吉里"
+      }
+    ]
+  },
+  {
+    "code": "TAG-NUTTY",
+    "order": 112,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Nutty"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ореховый"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "坚果香"
+      }
+    ]
+  },
+  {
+    "code": "TAG-NUTTY-AROMA",
+    "order": 113,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Nutty Aroma"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ореховый аромат"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "坚果香气"
+      }
+    ]
+  },
+  {
+    "code": "TAG-NUWARA-ELIYA",
+    "order": 114,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Nuwara Eliya"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Нувара Элия"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "努瓦勒埃利耶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-OOLONG-TEA",
+    "order": 115,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Oolong Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Улун"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "乌龙茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ORIENTAL-BEAUTY",
+    "order": 116,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Oriental Beauty"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Восточная красавица"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "东方美人"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ORIGINAL",
+    "order": 117,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Original"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Оригинальный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "原味"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ORTHODOX",
+    "order": 118,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Orthodox"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ортодоксальный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "传统工艺"
+      }
+    ]
+  },
+  {
+    "code": "TAG-PAN-FIRED",
+    "order": 119,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Pan Fired"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Обжаренный в воке"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "炒青"
+      }
+    ]
+  },
+  {
+    "code": "TAG-POWDER",
+    "order": 120,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Powder"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Порошковый"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "粉末"
+      }
+    ]
+  },
+  {
+    "code": "TAG-POWDERED",
+    "order": 121,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Powdered"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Порошкообразный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "粉状"
+      }
+    ]
+  },
+  {
+    "code": "TAG-PREMIUM",
+    "order": 122,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Premium"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Премиальный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "高端"
+      }
+    ]
+  },
+  {
+    "code": "TAG-PURPLE-TEA",
+    "order": 123,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Purple Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Пурпурный чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "紫茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-RARE",
+    "order": 124,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Rare"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Редкий"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "稀有"
+      }
+    ]
+  },
+  {
+    "code": "TAG-RARE-TEA",
+    "order": 125,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Rare Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Редкий чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "稀有茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-REFRESHING",
+    "order": 126,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Refreshing"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Освежающий"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "清爽"
+      }
+    ]
+  },
+  {
+    "code": "TAG-REGIONAL",
+    "order": 127,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Regional"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Региональный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "地方特产"
+      }
+    ]
+  },
+  {
+    "code": "TAG-RELAXING",
+    "order": 128,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Relaxing"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Расслабляющий"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "放松"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ROASTED",
+    "order": 129,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Roasted"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Обжаренный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "烘焙"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ROASTED-RICE",
+    "order": 130,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Roasted Rice"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "С жареным рисом"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "烘米"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ROCK-TEA",
+    "order": 131,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Rock Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Скальный чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "岩茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-ROYAL-PROJECT",
+    "order": 132,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Royal Project"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Королевский проект"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "皇家项目"
+      }
+    ]
+  },
+  {
+    "code": "TAG-RUHUNA",
+    "order": 133,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Ruhuna"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Рухуна"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "卢哈纳"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SCENTED",
+    "order": 134,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Scented"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ароматизированный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "窨制"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SEASONAL",
+    "order": 135,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Seasonal"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Сезонный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "季节性"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SECOND-FLUSH",
+    "order": 136,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Second Flush"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Второй сбор"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "二采"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SEJAK",
+    "order": 137,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Sejak"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Седжак"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "细雀"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SELENIUM",
+    "order": 138,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Selenium"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Богатый селеном"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "富硒"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SHAN-TUYET",
+    "order": 139,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Shan Tuyet"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Шан Туйет"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "山雪"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SILK-ROAD",
+    "order": 140,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Silk Road"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Шёлковый путь"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "丝绸之路"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SILVER-NEEDLE",
+    "order": 141,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Silver Needle"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Серебряные иглы"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "银针"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SINGLE-BUSH",
+    "order": 142,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Single Bush"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Одиночный куст"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "单丛"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SMOKED",
+    "order": 143,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Smoked"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Копчёный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "烟熏"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SMOKY",
+    "order": 144,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Smoky"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Дымный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "烟香"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SPICED",
+    "order": 145,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Spiced"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Пряный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "香料"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SPRING",
+    "order": 146,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Spring"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Весенний"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "春茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-STEAMED",
+    "order": 147,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Steamed"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Пропаренный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "蒸青"
+      }
+    ]
+  },
+  {
+    "code": "TAG-STEM-TEA",
+    "order": 148,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Stem Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Стеблевой чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "茎茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-STICKY-RICE",
+    "order": 149,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Sticky Rice"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Клейкий рис"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "糯米香"
+      }
+    ]
+  },
+  {
+    "code": "TAG-STRONG",
+    "order": 150,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Strong"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Крепкий"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "浓烈"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SUSHI",
+    "order": 151,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Sushi"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Для суши"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "寿司用"
+      }
+    ]
+  },
+  {
+    "code": "TAG-SWEET",
+    "order": 152,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Sweet"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Сладкий"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "甘甜"
+      }
+    ]
+  },
+  {
+    "code": "TAG-TAIWAN",
+    "order": 153,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Taiwan"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Тайвань"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "台湾"
+      }
+    ]
+  },
+  {
+    "code": "TAG-THAI-TEA",
+    "order": 154,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Thai Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Тайский чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "泰国茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-TIBET",
+    "order": 155,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Tibet"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Тибет"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "西藏"
+      }
+    ]
+  },
+  {
+    "code": "TAG-TIPPY",
+    "order": 156,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Tippy"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Типсовый"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "多芽"
+      }
+    ]
+  },
+  {
+    "code": "TAG-TONIC",
+    "order": 157,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Tonic"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Тонизирующий"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "提神"
+      }
+    ]
+  },
+  {
+    "code": "TAG-TOP-GRADE",
+    "order": 158,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Top Grade"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Высший сорт"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "特级"
+      }
+    ]
+  },
+  {
+    "code": "TAG-TOP-WORLD",
+    "order": 159,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Top World"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Мировой уровень"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "世界顶级"
+      }
+    ]
+  },
+  {
+    "code": "TAG-TRADITIONAL",
+    "order": 160,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Traditional"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Традиционный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "传统"
+      }
+    ]
+  },
+  {
+    "code": "TAG-UJEON",
+    "order": 161,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Ujeon"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Уджон"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "雨前"
+      }
+    ]
+  },
+  {
+    "code": "TAG-UMAMI",
+    "order": 162,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Umami"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Умами"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "鲜味"
+      }
+    ]
+  },
+  {
+    "code": "TAG-UNIQUE",
+    "order": 163,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Unique"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Уникальный"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "独特"
+      }
+    ]
+  },
+  {
+    "code": "TAG-UVA",
+    "order": 164,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Uva"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ува"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "乌瓦"
+      }
+    ]
+  },
+  {
+    "code": "TAG-VIETNAMESE-TEA",
+    "order": 165,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Vietnamese Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Вьетнамский чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "越南茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-WAKOCHA",
+    "order": 166,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Wakocha"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Вакотя"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "和红茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-WARMING",
+    "order": 167,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Warming"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Согревающий"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "暖身"
+      }
+    ]
+  },
+  {
+    "code": "TAG-WEIGHT-LOSS",
+    "order": 168,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Weight Loss"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Для похудения"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "减肥"
+      }
+    ]
+  },
+  {
+    "code": "TAG-WHITE-TEA",
+    "order": 169,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "White Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Белый чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "白茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-WILD-TEA",
+    "order": 170,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Wild Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Дикий чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "野茶"
+      }
+    ]
+  },
+  {
+    "code": "TAG-WILD-TREE",
+    "order": 171,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Wild Tree"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Дикое дерево"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "野生古树"
+      }
+    ]
+  },
+  {
+    "code": "TAG-WINTER-FROST",
+    "order": 172,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Winter Frost"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Зимний мороз"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "冬霜"
+      }
+    ]
+  },
+  {
+    "code": "TAG-YELLOW-TEA",
+    "order": 173,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Yellow Tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Жёлтый чай"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "黄茶"
+      }
     ]
   }
 ]
