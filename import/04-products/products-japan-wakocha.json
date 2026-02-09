@@ -1,511 +1,575 @@
-{
-  "products": [
-    {
-      "code": "TEA-JP-WAK-001",
-      "sku": "JP-WAKOCHA-001",
-      "order": 1,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Вакоча (Японский красный чай)",
-          "description": "Японский чёрный чай с мягким сладковатым вкусом, фруктовыми и цветочными нотами. Менее терпкий, чем индийские или цейлонские чаи. Производство возродилось в последние годы благодаря интересу к локальным продуктам.",
-          "seo": "wakocha"
+[
+  {
+    "code": "TEA-JP-WAK-001",
+    "sku": "JP-WAKOCHA-001",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Вакоча (Японский красный чай)",
+        "description": "Японский чёрный чай с мягким сладковатым вкусом, фруктовыми и цветочными нотами. Менее терпкий, чем индийские или цейлонские чаи. Производство возродилось в последние годы благодаря интересу к локальным продуктам.",
+        "seo": "wakocha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Wakocha (Japanese Black Tea)",
+        "description": "Japanese black tea with mild sweet taste, fruity and floral notes. Less astringent than Indian or Ceylon teas. Production revived in recent years due to interest in local products.",
+        "seo": "wakocha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "和红茶（日本红茶）",
+        "description": "日本红茶，口感温和甘甜，带有果香和花香。涩味比印度茶或锡兰茶少。近年来由于对本土产品的兴趣，生产得以复兴。",
+        "seo": "hehongcha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-WAKOCHA"
+      },
+      {
+        "code": "TAG-FRUITY"
+      },
+      {
+        "code": "TAG-FLORAL"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Shizuoka",
+        "place": "Shizuoka Prefecture",
+        "coordinates": {
+          "lat": 34.9769,
+          "lng": 138.3831
         },
-        {
-          "lang": "en-US",
-          "name": "Wakocha (Japanese Black Tea)",
-          "description": "Japanese black tea with mild sweet taste, fruity and floral notes. Less astringent than Indian or Ceylon teas. Production revived in recent years due to interest in local products.",
-          "seo": "wakocha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "和红茶（日本红茶）",
-          "description": "日本红茶，口感温和甘甜，带有果香和花香。涩味比印度茶或锡兰茶少。近年来由于对本土产品的兴趣，生产得以复兴。",
-          "seo": "hehongcha"
+        "altitude": {
+          "min": 300,
+          "max": 300,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "90-100°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-5 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-BEN-001",
+    "sku": "JP-BENIFUUKI-001",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Бэнифуки",
+        "description": "Японский сорт чая, специально выведенный для производства красного чая. Цветочный и фруктовый аромат с цитрусовыми и медовыми оттенками. Высокое содержание метилкатехина с противоаллергическими свойствами.",
+        "seo": "benifuuki"
+      },
+      {
+        "lang": "en-US",
+        "name": "Benifuuki",
+        "description": "Japanese tea cultivar specially bred for black tea production. Floral and fruity aroma with citrus and honey notes. High methylated catechin content with anti-allergic properties.",
+        "seo": "benifuuki"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "红富贵",
+        "description": "专门为生产红茶而培育的日本茶品种。花香和果香中带有柑橘和蜂蜜气息。甲基化儿茶素含量高，具有抗过敏特性。",
+        "seo": "hongfugui"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-CULTIVAR"
+      },
+      {
+        "code": "TAG-ANTI-ALLERGIC"
+      },
+      {
+        "code": "TAG-FLORAL"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Shizuoka",
+        "place": "Shizuoka Prefecture",
+        "coordinates": {
+          "lat": 34.9769,
+          "lng": 138.3831
         },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "wakocha"
-        },
-        {
-          "code": "fruity"
-        },
-        {
-          "code": "floral"
+        "altitude": {
+          "min": 300,
+          "max": 300,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Shizuoka",
-          "area": "Shizuoka Prefecture",
-          "latitude": 34.9769,
-          "longitude": 138.3831,
-          "altitude": 300
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "90-100°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-4 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-BEH-001",
+    "sku": "JP-BENIHOMARE-001",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Бэнихомарэ",
+        "description": "Один из первых японских сортов для красного чая. Солодовый, фруктовый вкус с лёгкими пряными нотами. Хорошо ферментируется, даёт насыщенный вкус и аромат.",
+        "seo": "benihomare"
+      },
+      {
+        "lang": "en-US",
+        "name": "Benihomare",
+        "description": "One of the first Japanese cultivars for black tea. Malty, fruity taste with light spicy notes. Ferments well, produces rich taste and aroma.",
+        "seo": "benihomare"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "红誉",
+        "description": "最早用于红茶生产的日本品种之一。麦芽和果味中带有轻微的辛香。发酵良好，口感和香气浓郁。",
+        "seo": "hongyu"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-CULTIVAR"
+      },
+      {
+        "code": "TAG-MALTY"
+      },
+      {
+        "code": "TAG-FRUITY"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Shizuoka",
+        "place": "Shizuoka Prefecture",
+        "coordinates": {
+          "lat": 34.9769,
+          "lng": 138.3831
+        },
+        "altitude": {
+          "min": 300,
+          "max": 300,
+          "unit": "m"
         }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "90-100°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-5 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-YAK-001",
+    "sku": "JP-YAKUSHIMA-001",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Якусима Кочя",
+        "description": "Красный чай с острова Якусима — одного из лучших регионов для японского чёрного чая. Мягкий сладковатый вкус с фруктовыми и медовыми нотами, минимальная терпкость. Часто органического производства.",
+        "seo": "yakushima-kocha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Yakushima Kocha",
+        "description": "Black tea from Yakushima island — one of the best regions for Japanese black tea. Mild sweet taste with fruity and honey notes, minimal astringency. Often organically produced.",
+        "seo": "yakushima-kocha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "屋久岛红茶",
+        "description": "产自屋久岛的红茶——日本红茶最佳产区之一。口感温和甘甜，带有果香和蜂蜜香，涩味极少。常为有机生产。",
+        "seo": "wujiudao-hongcha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-ISLAND"
+      },
+      {
+        "code": "TAG-ORGANIC"
+      },
+      {
+        "code": "TAG-HONEY"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Yakushima",
+        "place": "Kagoshima Prefecture",
+        "coordinates": {
+          "lat": 30.3544,
+          "lng": 130.5066
         },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "90-100°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-5 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
+        "altitude": {
+          "min": 200,
+          "max": 200,
+          "unit": "m"
         }
-      ]
-    },
-    {
-      "code": "TEA-JP-BEN-001",
-      "sku": "JP-BENIFUUKI-001",
-      "order": 2,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Бэнифуки",
-          "description": "Японский сорт чая, специально выведенный для производства красного чая. Цветочный и фруктовый аромат с цитрусовыми и медовыми оттенками. Высокое содержание метилкатехина с противоаллергическими свойствами.",
-          "seo": "benifuuki"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "90-95°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-4 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-ASH-001",
+    "sku": "JP-ASHIKITA-001",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Асикита Вакоча",
+        "description": "Красный чай из региона Асикита (Кумамото). Производится из различных культиваров: Ябукита, Бэнифуки, Идзуми, Косюн. Мягкий вкус с цветочными и фруктовыми нотами.",
+        "seo": "ashikita-wakocha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Ashikita Wakocha",
+        "description": "Black tea from Ashikita region (Kumamoto). Produced from various cultivars: Yabukita, Benifuuki, Izumi, Koshun. Mild taste with floral and fruity notes.",
+        "seo": "ashikita-wakocha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "�的北和红茶",
+        "description": "产自芦北地区（熊本县）的红茶。采用多种品种制作：薮北、红富贵、�的水、香春。口感温和，带有花香和果香。",
+        "seo": "lubei-hehongcha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-REGIONAL"
+      },
+      {
+        "code": "TAG-ARTISAN"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Ashikita",
+        "place": "Kumamoto Prefecture",
+        "coordinates": {
+          "lat": 32.2969,
+          "lng": 130.4514
         },
-        {
-          "lang": "en-US",
-          "name": "Benifuuki",
-          "description": "Japanese tea cultivar specially bred for black tea production. Floral and fruity aroma with citrus and honey notes. High methylated catechin content with anti-allergic properties.",
-          "seo": "benifuuki"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "红富贵",
-          "description": "专门为生产红茶而培育的日本茶品种。花香和果香中带有柑橘和蜂蜜气息。甲基化儿茶素含量高，具有抗过敏特性。",
-          "seo": "hongfugui"
+        "altitude": {
+          "min": 250,
+          "max": 250,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "90-95°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-4 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-GAB-001",
+    "sku": "JP-GABA-KOCHA-001",
+    "order": 6,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "ГАБА Кочя",
+        "description": "Японский красный чай с повышенным содержанием ГАМК (гамма-аминомасляной кислоты) благодаря анаэробной обработке. Расслабляющий эффект, помощь при стрессе и тревожности. Мягкий сладкий вкус.",
+        "seo": "gaba-kocha"
+      },
+      {
+        "lang": "en-US",
+        "name": "GABA Kocha",
+        "description": "Japanese black tea with elevated GABA (gamma-aminobutyric acid) content due to anaerobic processing. Relaxing effect, helps with stress and anxiety. Mild sweet taste.",
+        "seo": "gaba-kocha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "佳叶龙红茶",
+        "description": "因厌氧加工而GABA（γ-氨基丁酸）含量升高的日本红茶。具有放松效果，有助于缓解压力和焦虑。口感温和甘甜。",
+        "seo": "jiayelong-hongcha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-GABA"
+      },
+      {
+        "code": "TAG-RELAXING"
+      },
+      {
+        "code": "TAG-FUNCTIONAL"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Shizuoka",
+        "place": "Shizuoka Prefecture",
+        "coordinates": {
+          "lat": 34.9769,
+          "lng": 138.3831
         },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "cultivar"
-        },
-        {
-          "code": "anti-allergic"
-        },
-        {
-          "code": "floral"
+        "altitude": {
+          "min": 300,
+          "max": 300,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Shizuoka",
-          "area": "Shizuoka Prefecture",
-          "latitude": 34.9769,
-          "longitude": 138.3831,
-          "altitude": 300
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "90-100°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-4 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-BEH-001",
-      "sku": "JP-BENIHOMARE-001",
-      "order": 3,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Бэнихомарэ",
-          "description": "Один из первых японских сортов для красного чая. Солодовый, фруктовый вкус с лёгкими пряными нотами. Хорошо ферментируется, даёт насыщенный вкус и аромат.",
-          "seo": "benihomare"
-        },
-        {
-          "lang": "en-US",
-          "name": "Benihomare",
-          "description": "One of the first Japanese cultivars for black tea. Malty, fruity taste with light spicy notes. Ferments well, produces rich taste and aroma.",
-          "seo": "benihomare"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "红誉",
-          "description": "最早用于红茶生产的日本品种之一。麦芽和果味中带有轻微的辛香。发酵良好，口感和香气浓郁。",
-          "seo": "hongyu"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "cultivar"
-        },
-        {
-          "code": "malty"
-        },
-        {
-          "code": "fruity"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Shizuoka",
-          "area": "Shizuoka Prefecture",
-          "latitude": 34.9769,
-          "longitude": 138.3831,
-          "altitude": 300
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "90-100°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-5 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-YAK-001",
-      "sku": "JP-YAKUSHIMA-001",
-      "order": 4,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Якусима Кочя",
-          "description": "Красный чай с острова Якусима — одного из лучших регионов для японского чёрного чая. Мягкий сладковатый вкус с фруктовыми и медовыми нотами, минимальная терпкость. Часто органического производства.",
-          "seo": "yakushima-kocha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Yakushima Kocha",
-          "description": "Black tea from Yakushima island — one of the best regions for Japanese black tea. Mild sweet taste with fruity and honey notes, minimal astringency. Often organically produced.",
-          "seo": "yakushima-kocha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "屋久岛红茶",
-          "description": "产自屋久岛的红茶——日本红茶最佳产区之一。口感温和甘甜，带有果香和蜂蜜香，涩味极少。常为有机生产。",
-          "seo": "wujiudao-hongcha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "island"
-        },
-        {
-          "code": "organic"
-        },
-        {
-          "code": "honey"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Yakushima",
-          "area": "Kagoshima Prefecture",
-          "latitude": 30.3544,
-          "longitude": 130.5066,
-          "altitude": 200
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "90-95°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-4 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-ASH-001",
-      "sku": "JP-ASHIKITA-001",
-      "order": 5,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Асикита Вакоча",
-          "description": "Красный чай из региона Асикита (Кумамото). Производится из различных культиваров: Ябукита, Бэнифуки, Идзуми, Косюн. Мягкий вкус с цветочными и фруктовыми нотами.",
-          "seo": "ashikita-wakocha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Ashikita Wakocha",
-          "description": "Black tea from Ashikita region (Kumamoto). Produced from various cultivars: Yabukita, Benifuuki, Izumi, Koshun. Mild taste with floral and fruity notes.",
-          "seo": "ashikita-wakocha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "�的北和红茶",
-          "description": "产自芦北地区（熊本县）的红茶。采用多种品种制作：薮北、红富贵、�的水、香春。口感温和，带有花香和果香。",
-          "seo": "lubei-hehongcha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "regional"
-        },
-        {
-          "code": "artisan"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Ashikita",
-          "area": "Kumamoto Prefecture",
-          "latitude": 32.2969,
-          "longitude": 130.4514,
-          "altitude": 250
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "90-95°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-4 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-GAB-001",
-      "sku": "JP-GABA-KOCHA-001",
-      "order": 6,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "ГАБА Кочя",
-          "description": "Японский красный чай с повышенным содержанием ГАМК (гамма-аминомасляной кислоты) благодаря анаэробной обработке. Расслабляющий эффект, помощь при стрессе и тревожности. Мягкий сладкий вкус.",
-          "seo": "gaba-kocha"
-        },
-        {
-          "lang": "en-US",
-          "name": "GABA Kocha",
-          "description": "Japanese black tea with elevated GABA (gamma-aminobutyric acid) content due to anaerobic processing. Relaxing effect, helps with stress and anxiety. Mild sweet taste.",
-          "seo": "gaba-kocha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "佳叶龙红茶",
-          "description": "因厌氧加工而GABA（γ-氨基丁酸）含量升高的日本红茶。具有放松效果，有助于缓解压力和焦虑。口感温和甘甜。",
-          "seo": "jiayelong-hongcha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "gaba"
-        },
-        {
-          "code": "relaxing"
-        },
-        {
-          "code": "functional"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Shizuoka",
-          "area": "Shizuoka Prefecture",
-          "latitude": 34.9769,
-          "longitude": 138.3831,
-          "altitude": 300
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "LOW"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "85-90°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-4 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    }
-  ]
-}
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-LOW"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "85-90°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-4 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  }
+]

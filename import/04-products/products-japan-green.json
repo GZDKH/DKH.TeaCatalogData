@@ -1,1276 +1,1439 @@
-{
-  "products": [
-    {
-      "code": "TEA-JP-SEN-001",
-      "sku": "JP-SENCHA-001",
-      "order": 1,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Сенча",
-          "description": "Самый популярный японский зелёный чай, составляющий около 80% всего производства. Освежающий травянистый вкус с нотами умами, яркий зелёный цвет настоя. Пропаривание останавливает ферментацию, сохраняя свежий аромат и полезные вещества.",
-          "seo": "sencha"
+[
+  {
+    "code": "TEA-JP-SEN-001",
+    "sku": "JP-SENCHA-001",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Сенча",
+        "description": "Самый популярный японский зелёный чай, составляющий около 80% всего производства. Освежающий травянистый вкус с нотами умами, яркий зелёный цвет настоя. Пропаривание останавливает ферментацию, сохраняя свежий аромат и полезные вещества.",
+        "seo": "sencha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Sencha",
+        "description": "The most popular Japanese green tea, comprising about 80% of total production. Refreshing grassy flavor with umami notes and bright green infusion. Steaming stops fermentation, preserving fresh aroma and nutrients.",
+        "seo": "sencha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "煎茶",
+        "description": "最受欢迎的日本绿茶，约占总产量的80%。清新的草香带有鲜味，茶汤呈明亮的绿色。蒸汽杀青保留了新鲜的香气和营养成分。",
+        "seo": "jiancha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-STEAMED"
+      },
+      {
+        "code": "TAG-UMAMI"
+      },
+      {
+        "code": "TAG-EVERYDAY"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Shizuoka",
+        "place": "Shizuoka Prefecture",
+        "coordinates": {
+          "lat": 34.9769,
+          "lng": 138.3831
         },
-        {
-          "lang": "en-US",
-          "name": "Sencha",
-          "description": "The most popular Japanese green tea, comprising about 80% of total production. Refreshing grassy flavor with umami notes and bright green infusion. Steaming stops fermentation, preserving fresh aroma and nutrients.",
-          "seo": "sencha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "煎茶",
-          "description": "最受欢迎的日本绿茶，约占总产量的80%。清新的草香带有鲜味，茶汤呈明亮的绿色。蒸汽杀青保留了新鲜的香气和营养成分。",
-          "seo": "jiancha"
+        "altitude": {
+          "min": 300,
+          "max": 300,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "70-80°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "1-2 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "5-7 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-GYO-001",
+    "sku": "JP-GYOKURO-001",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Гёкуро",
+        "description": "Самый престижный японский зелёный чай, «жидкий нефрит». Выращивается в тени 20-30 дней, что повышает содержание теанина и хлорофилла. Насыщенный вкус умами, сладость, изумрудный цвет настоя. Заваривать при 50-60°C.",
+        "seo": "gyokuro"
+      },
+      {
+        "lang": "en-US",
+        "name": "Gyokuro",
+        "description": "The most prestigious Japanese green tea, 'liquid jade'. Shade-grown for 20-30 days, increasing theanine and chlorophyll content. Rich umami taste, sweetness, emerald infusion color. Brew at 50-60°C.",
+        "seo": "gyokuro"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "玉露",
+        "description": "最高档的日本绿茶，被称为“液体翡翠”。采摘前遮荫20-30天，增加茶氨酸和叶绿素含量。浓郁的鲜味、甘甜，茶汤呈翠绿色。建议50-60°C冲泡。",
+        "seo": "yulu"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-SHADE-GROWN"
+      },
+      {
+        "code": "TAG-UMAMI"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-CEREMONIAL"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Uji",
+        "place": "Kyoto Prefecture",
+        "coordinates": {
+          "lat": 34.8882,
+          "lng": 135.8014
         },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "steamed"
-        },
-        {
-          "code": "umami"
-        },
-        {
-          "code": "everyday"
+        "altitude": {
+          "min": 200,
+          "max": 200,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Shizuoka",
-          "area": "Shizuoka Prefecture",
-          "latitude": 34.9769,
-          "longitude": 138.3831,
-          "altitude": 300
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-HIGH"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "50-60°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "2-3 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "5-7 г / 150 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-MAT-001",
+    "sku": "JP-MATCHA-001",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Маття (Матча)",
+        "description": "Порошковый японский зелёный чай для чайной церемонии. Выращивается в тени, перемалывается на каменных жерновах. Богат антиоксидантами EGCG, L-теанином. Яркий зелёный цвет, насыщенный вкус умами, кремовая текстура.",
+        "seo": "matcha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Matcha",
+        "description": "Powdered Japanese green tea for tea ceremony. Shade-grown, ground on stone mills. Rich in EGCG antioxidants and L-theanine. Vibrant green color, rich umami taste, creamy texture.",
+        "seo": "matcha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "抹茶",
+        "description": "用于茶道的日本粉末绿茶。遮荫栽培，石磨研磨。富含EGCG抗氧化剂和L-茶氨酸。色泽翠绿，鲜味浓郁，口感绵密。",
+        "seo": "mocha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-POWDERED"
+      },
+      {
+        "code": "TAG-CEREMONIAL"
+      },
+      {
+        "code": "TAG-UMAMI"
+      },
+      {
+        "code": "TAG-ANTIOXIDANT"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Uji",
+        "place": "Kyoto Prefecture",
+        "coordinates": {
+          "lat": 34.8882,
+          "lng": 135.8014
+        },
+        "altitude": {
+          "min": 200,
+          "max": 200,
+          "unit": "m"
         }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-HIGH"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "70-80°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "взбивать"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "1-2 г / 60-80 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-BAN-001",
+    "sku": "JP-BANCHA-001",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Банча",
+        "description": "Повседневный японский зелёный чай из листьев позднего сбора. Низкое содержание кофеина, мягкий освежающий вкус с лёгкой терпкостью. Богат минералами и фтором. Основа для Ходзича и Генмайча.",
+        "seo": "bancha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Bancha",
+        "description": "Everyday Japanese green tea from late harvest leaves. Low caffeine content, mild refreshing taste with light astringency. Rich in minerals and fluoride. Base for Hojicha and Genmaicha.",
+        "seo": "bancha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "番茶",
+        "description": "日常饮用的日本绿茶，采用晚采茶叶。咖啡因含量低，口感温和清爽，略带涩味。富含矿物质和氟化物。是焙茶和玄米茶的基础茶。",
+        "seo": "fancha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-EVERYDAY"
+      },
+      {
+        "code": "TAG-LOW-CAFFEINE"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Shizuoka",
+        "place": "Shizuoka Prefecture",
+        "coordinates": {
+          "lat": 34.9769,
+          "lng": 138.3831
         },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "70-80°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "1-2 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "5-7 г / 200 мл"
+        "altitude": {
+          "min": 200,
+          "max": 200,
+          "unit": "m"
         }
-      ]
-    },
-    {
-      "code": "TEA-JP-GYO-001",
-      "sku": "JP-GYOKURO-001",
-      "order": 2,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Гёкуро",
-          "description": "Самый престижный японский зелёный чай, «жидкий нефрит». Выращивается в тени 20-30 дней, что повышает содержание теанина и хлорофилла. Насыщенный вкус умами, сладость, изумрудный цвет настоя. Заваривать при 50-60°C.",
-          "seo": "gyokuro"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-LOW"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "80-90°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "30-60 сек"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "3-5 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-GEN-001",
+    "sku": "JP-GENMAICHA-001",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Генмайча",
+        "description": "Японский зелёный чай с обжаренным коричневым рисом. Уникальный ореховый аромат, мягкий сладковатый вкус. Низкое содержание кофеина. Часто подаётся с суши. Иногда называют «попкорн-чаем» из-за лопнувших зёрен риса.",
+        "seo": "genmaicha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Genmaicha",
+        "description": "Japanese green tea with roasted brown rice. Unique nutty aroma, mild sweet taste. Low caffeine content. Often served with sushi. Sometimes called 'popcorn tea' due to popped rice grains.",
+        "seo": "genmaicha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "玄米茶",
+        "description": "日本绿茶与炒糙米的混合茶。独特的坚果香气，口感温和甘甜。咖啡因含量低。常与寿司搭配。因爆米花状的米粒有时被称为“爆米花茶”。",
+        "seo": "xuanmicha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-ROASTED-RICE"
+      },
+      {
+        "code": "TAG-NUTTY"
+      },
+      {
+        "code": "TAG-LOW-CAFFEINE"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Shizuoka",
+        "place": "Shizuoka Prefecture",
+        "coordinates": {
+          "lat": 34.9769,
+          "lng": 138.3831
         },
-        {
-          "lang": "en-US",
-          "name": "Gyokuro",
-          "description": "The most prestigious Japanese green tea, 'liquid jade'. Shade-grown for 20-30 days, increasing theanine and chlorophyll content. Rich umami taste, sweetness, emerald infusion color. Brew at 50-60°C.",
-          "seo": "gyokuro"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "玉露",
-          "description": "最高档的日本绿茶，被称为“液体翡翠”。采摘前遮荫20-30天，增加茶氨酸和叶绿素含量。浓郁的鲜味、甘甜，茶汤呈翠绿色。建议50-60°C冲泡。",
-          "seo": "yulu"
+        "altitude": {
+          "min": 200,
+          "max": 200,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-LOW"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "80-90°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "30-60 сек"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "3-5 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-HOJ-001",
+    "sku": "JP-HOJICHA-001",
+    "order": 6,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Ходзича",
+        "description": "Обжаренный японский зелёный чай с характерным ореховым, карамельным ароматом. Минимальное содержание кофеина, подходит для вечернего чаепития. Красновато-коричневый настой, мягкий согревающий вкус без горечи.",
+        "seo": "hojicha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Hojicha",
+        "description": "Roasted Japanese green tea with characteristic nutty, caramel aroma. Minimal caffeine content, suitable for evening drinking. Reddish-brown infusion, mild warming taste without bitterness.",
+        "seo": "hojicha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "焙茶",
+        "description": "烘焙的日本绿茶，具有独特的坚果和焦糖香气。咖啡因含量极低，适合晚间饮用。茶汤呈红褐色，口感温和醇厚，无苦涩。",
+        "seo": "beicha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-ROASTED"
+      },
+      {
+        "code": "TAG-NUTTY"
+      },
+      {
+        "code": "TAG-LOW-CAFFEINE"
+      },
+      {
+        "code": "TAG-EVENING"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Kyoto",
+        "place": "Kyoto Prefecture",
+        "coordinates": {
+          "lat": 35.0116,
+          "lng": 135.7681
         },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "shade-grown"
-        },
-        {
-          "code": "umami"
-        },
-        {
-          "code": "premium"
-        },
-        {
-          "code": "ceremonial"
+        "altitude": {
+          "min": 100,
+          "max": 100,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Uji",
-          "area": "Kyoto Prefecture",
-          "latitude": 34.8882,
-          "longitude": 135.8014,
-          "altitude": 200
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-LOW"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "95-100°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "30-60 сек"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-KUK-001",
+    "sku": "JP-KUKICHA-001",
+    "order": 7,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Кукича",
+        "description": "Японский чай из стеблей и веточек чайного куста. Мягкий сладковатый вкус с ореховыми нотами, минимальная терпкость. Очень низкое содержание кофеина. Популярен в макробиотике за щелочные свойства.",
+        "seo": "kukicha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Kukicha",
+        "description": "Japanese tea from stems and twigs of tea plant. Mild sweet taste with nutty notes, minimal astringency. Very low caffeine content. Popular in macrobiotics for alkaline properties.",
+        "seo": "kukicha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "茎茶",
+        "description": "由茶树茎梗制成的日本茶。口感温和甘甜，带有坚果香，几乎无涩味。咖啡因含量极低。因其碱性特性在长寿饮食中颇受欢迎。",
+        "seo": "jingcha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-STEM-TEA"
+      },
+      {
+        "code": "TAG-LOW-CAFFEINE"
+      },
+      {
+        "code": "TAG-ALKALINE"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Shizuoka",
+        "place": "Shizuoka Prefecture",
+        "coordinates": {
+          "lat": 34.9769,
+          "lng": 138.3831
+        },
+        "altitude": {
+          "min": 200,
+          "max": 200,
+          "unit": "m"
         }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-LOW"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "80-90°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "1-2 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "3-5 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-KON-001",
+    "sku": "JP-KONACHA-001",
+    "order": 8,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Конача",
+        "description": "Мелкий порошковый остаток от производства сенча. Быстро заваривается, даёт насыщенный крепкий настой. Традиционно подаётся в суши-ресторанах. Доступная альтернатива листовому чаю.",
+        "seo": "konacha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Konacha",
+        "description": "Fine powder residue from sencha production. Quick to brew, produces rich strong infusion. Traditionally served in sushi restaurants. Affordable alternative to leaf tea.",
+        "seo": "konacha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "粉茶",
+        "description": "煎茶生产过程中的细粉末。冲泡快速，茶汤浓郁。传统上在寿司店供应。是叶茶的实惠替代品。",
+        "seo": "fencha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-POWDER"
+      },
+      {
+        "code": "TAG-SUSHI"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Shizuoka",
+        "place": "Shizuoka Prefecture",
+        "coordinates": {
+          "lat": 34.9769,
+          "lng": 138.3831
         },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "HIGH"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "50-60°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "2-3 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "5-7 г / 150 мл"
+        "altitude": {
+          "min": 200,
+          "max": 200,
+          "unit": "m"
         }
-      ]
-    },
-    {
-      "code": "TEA-JP-MAT-001",
-      "sku": "JP-MATCHA-001",
-      "order": 3,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Маття (Матча)",
-          "description": "Порошковый японский зелёный чай для чайной церемонии. Выращивается в тени, перемалывается на каменных жерновах. Богат антиоксидантами EGCG, L-теанином. Яркий зелёный цвет, насыщенный вкус умами, кремовая текстура.",
-          "seo": "matcha"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "70-80°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "30 сек"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-KAB-001",
+    "sku": "JP-KABUSECHA-001",
+    "order": 9,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Кабусэча",
+        "description": "«Полутеневой» японский чай, затеняемый около недели перед сбором. Промежуточный между сенча и гёкуро по вкусу и способу выращивания. Более сладкий и менее терпкий, чем сенча, с выраженным умами.",
+        "seo": "kabusecha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Kabusecha",
+        "description": "'Half-shade' Japanese tea, shaded for about a week before harvest. Intermediate between sencha and gyokuro in taste and cultivation. Sweeter and less astringent than sencha, with pronounced umami.",
+        "seo": "kabusecha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "冠茶",
+        "description": "“半遮荫”日本茶，采摘前遮荫约一周。在口味和栽培方式上介于煎茶和玉露之间。比煎茶更甜、涩味更少，鲜味突出。",
+        "seo": "guancha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-SHADE-GROWN"
+      },
+      {
+        "code": "TAG-UMAMI"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Mie",
+        "place": "Mie Prefecture",
+        "coordinates": {
+          "lat": 34.7303,
+          "lng": 136.5086
         },
-        {
-          "lang": "en-US",
-          "name": "Matcha",
-          "description": "Powdered Japanese green tea for tea ceremony. Shade-grown, ground on stone mills. Rich in EGCG antioxidants and L-theanine. Vibrant green color, rich umami taste, creamy texture.",
-          "seo": "matcha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "抹茶",
-          "description": "用于茶道的日本粉末绿茶。遮荫栽培，石磨研磨。富含EGCG抗氧化剂和L-茶氨酸。色泽翠绿，鲜味浓郁，口感绵密。",
-          "seo": "mocha"
+        "altitude": {
+          "min": 250,
+          "max": 250,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "60-70°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "1-2 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "5-7 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-TEN-001",
+    "sku": "JP-TENCHA-001",
+    "order": 10,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Тенча",
+        "description": "Сырьё для производства маття — листья, выращенные в тени, пропаренные и высушенные без скручивания. Тонкие плоские листья без стеблей и прожилок. Мягкий сладкий вкус с выраженным умами.",
+        "seo": "tencha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Tencha",
+        "description": "Raw material for matcha production — shade-grown leaves, steamed and dried without rolling. Thin flat leaves without stems and veins. Mild sweet taste with pronounced umami.",
+        "seo": "tencha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "碾茶",
+        "description": "抹茶的原料——遮荫栽培的茶叶，蒸青后不揉捻直接干燥。薄而平的叶片，无茎梗和叶脉。口感温和甘甜，鲜味突出。",
+        "seo": "niancha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-SHADE-GROWN"
+      },
+      {
+        "code": "TAG-MATCHA-BASE"
+      },
+      {
+        "code": "TAG-UMAMI"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Uji",
+        "place": "Kyoto Prefecture",
+        "coordinates": {
+          "lat": 34.8882,
+          "lng": 135.8014
         },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "powdered"
-        },
-        {
-          "code": "ceremonial"
-        },
-        {
-          "code": "umami"
-        },
-        {
-          "code": "antioxidant"
+        "altitude": {
+          "min": 200,
+          "max": 200,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Uji",
-          "area": "Kyoto Prefecture",
-          "latitude": 34.8882,
-          "longitude": 135.8014,
-          "altitude": 200
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-HIGH"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "60-70°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "2-3 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "3-5 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-GUR-001",
+    "sku": "JP-GURICHA-001",
+    "order": 11,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Гурича (Тамарёкуча)",
+        "description": "«Скрученный чай» — японский зелёный чай с округлыми, спиралевидными листьями, напоминающими улитку. Мягкий сладкий вкус с цитрусовыми нотами, без травянистой терпкости. Производится в основном на Кюсю.",
+        "seo": "guricha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Guricha (Tamaryokucha)",
+        "description": "'Curly tea' — Japanese green tea with rounded, spiral leaves resembling snails. Mild sweet taste with citrus notes, without grassy astringency. Produced mainly in Kyushu.",
+        "seo": "guricha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "玉绿茶",
+        "description": "“卷曲茶”——茶叶呈圆形螺旋状，形似蜗牛的日本绿茶。口感温和甘甜，带有柑橘香，无草涩味。主要产于九州。",
+        "seo": "yulvcha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-CURLY-LEAF"
+      },
+      {
+        "code": "TAG-CITRUS"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Ureshino",
+        "place": "Saga Prefecture",
+        "coordinates": {
+          "lat": 33.1074,
+          "lng": 130.0061
+        },
+        "altitude": {
+          "min": 300,
+          "max": 300,
+          "unit": "m"
         }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "70-80°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "1-2 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "4-6 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-KAM-001",
+    "sku": "JP-KAMAIRICHA-001",
+    "order": 12,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Камайрича",
+        "description": "Редкий японский чай, обработанный обжаркой в котле (как китайские чаи), а не пропариванием. Округлые скрученные листья, ореховый аромат с дымными нотами. Производится в основном на Кюсю.",
+        "seo": "kamairicha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Kamairicha",
+        "description": "Rare Japanese tea processed by pan-firing (like Chinese teas) rather than steaming. Rounded rolled leaves, nutty aroma with smoky notes. Produced mainly in Kyushu.",
+        "seo": "kamairicha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "釜炒茶",
+        "description": "稀有的日本茶，采用锅炒（如中国茶）而非蒸青工艺。茶叶呈圆形卷曲状，坚果香中带有烟熏气息。主要产于九州。",
+        "seo": "fucaocha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-PAN-FIRED"
+      },
+      {
+        "code": "TAG-NUTTY"
+      },
+      {
+        "code": "TAG-SMOKY"
+      },
+      {
+        "code": "TAG-RARE"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Miyazaki",
+        "place": "Miyazaki Prefecture",
+        "coordinates": {
+          "lat": 31.9111,
+          "lng": 131.4239
         },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "HIGH"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "70-80°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "взбивать"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "1-2 г / 60-80 мл"
+        "altitude": {
+          "min": 400,
+          "max": 400,
+          "unit": "m"
         }
-      ]
-    },
-    {
-      "code": "TEA-JP-BAN-001",
-      "sku": "JP-BANCHA-001",
-      "order": 4,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Банча",
-          "description": "Повседневный японский зелёный чай из листьев позднего сбора. Низкое содержание кофеина, мягкий освежающий вкус с лёгкой терпкостью. Богат минералами и фтором. Основа для Ходзича и Генмайча.",
-          "seo": "bancha"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "80-90°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "1-2 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "4-6 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-FUK-001",
+    "sku": "JP-FUKAMUSHI-001",
+    "order": 13,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Фукамуси Сенча",
+        "description": "Сенча глубокого пропаривания (60-90 секунд). Насыщенный тёмно-зелёный цвет настоя, более мягкий и сладкий вкус, меньше терпкости. Листья более мелкие и рассыпчатые. Популярен в регионе Сидзуока.",
+        "seo": "fukamushi-sencha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Fukamushi Sencha",
+        "description": "Deep-steamed sencha (60-90 seconds). Rich dark green infusion, milder and sweeter taste, less astringency. Leaves are smaller and more crumbly. Popular in Shizuoka region.",
+        "seo": "fukamushi-sencha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "深蒸煎茶",
+        "description": "深度蒸青的煎茶（60-90秒）。茶汤呈浓郁的深绿色，口感更温和甘甜，涩味更少。茶叶更细碎。在静冈地区颇受欢迎。",
+        "seo": "shenzheng-jiancha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-DEEP-STEAMED"
+      },
+      {
+        "code": "TAG-UMAMI"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Shizuoka",
+        "place": "Shizuoka Prefecture",
+        "coordinates": {
+          "lat": 34.9769,
+          "lng": 138.3831
         },
-        {
-          "lang": "en-US",
-          "name": "Bancha",
-          "description": "Everyday Japanese green tea from late harvest leaves. Low caffeine content, mild refreshing taste with light astringency. Rich in minerals and fluoride. Base for Hojicha and Genmaicha.",
-          "seo": "bancha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "番茶",
-          "description": "日常饮用的日本绿茶，采用晚采茶叶。咖啡因含量低，口感温和清爽，略带涩味。富含矿物质和氟化物。是焙茶和玄米茶的基础茶。",
-          "seo": "fancha"
+        "altitude": {
+          "min": 300,
+          "max": 300,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "70-80°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "30-60 сек"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "5-7 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-SHI-001",
+    "sku": "JP-SHINCHA-001",
+    "order": 14,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Синтя (Шинча)",
+        "description": "«Новый чай» — сенча первого весеннего сбора. Самый свежий и ароматный, высокое содержание аминокислот. Сезонный деликатес, доступен только весной. Символизирует новые начинания и удачу.",
+        "seo": "shincha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Shincha",
+        "description": "'New tea' — first spring harvest sencha. Freshest and most aromatic, high amino acid content. Seasonal delicacy, available only in spring. Symbolizes new beginnings and good fortune.",
+        "seo": "shincha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "新茶",
+        "description": "“新茶”——首采春茶煎茶。最新鲜、最芳香，氨基酸含量高。季节性珍品，仅春季供应。象征新的开始和好运。",
+        "seo": "xincha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-FIRST-FLUSH"
+      },
+      {
+        "code": "TAG-SEASONAL"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Shizuoka",
+        "place": "Shizuoka Prefecture",
+        "coordinates": {
+          "lat": 34.9769,
+          "lng": 138.3831
         },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "everyday"
-        },
-        {
-          "code": "low-caffeine"
+        "altitude": {
+          "min": 300,
+          "max": 300,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Shizuoka",
-          "area": "Shizuoka Prefecture",
-          "latitude": 34.9769,
-          "longitude": 138.3831,
-          "altitude": 200
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "70-75°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "1-2 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "5-7 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-JP-MAI-001",
+    "sku": "JP-MATCHAIRI-001",
+    "order": 15,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Матча-ири Генмайча",
+        "description": "Генмайча с добавлением порошкового маття. Насыщенный зелёный цвет, яркий вкус умами, сочетание орехового аромата риса и кремовой сладости маття. Богат антиоксидантами.",
+        "seo": "matcha-iri-genmaicha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Matcha-iri Genmaicha",
+        "description": "Genmaicha with added matcha powder. Rich green color, bright umami taste, combination of nutty rice aroma and creamy matcha sweetness. Rich in antioxidants.",
+        "seo": "matcha-iri-genmaicha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "抹茶玄米茶",
+        "description": "添加抹茶粉的玄米茶。色泽翠绿，鲜味突出，融合了炒米的坚果香和抹茶的醇厚甘甜。富含抗氧化剂。",
+        "seo": "mocha-xuanmicha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-JAPANESE-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-MATCHA"
+      },
+      {
+        "code": "TAG-ROASTED-RICE"
+      },
+      {
+        "code": "TAG-BLEND"
+      }
+    ],
+    "origins": [
+      {
+        "country": "JP",
+        "state": "Yame",
+        "place": "Fukuoka Prefecture",
+        "coordinates": {
+          "lat": 33.2124,
+          "lng": 130.5581
+        },
+        "altitude": {
+          "min": 300,
+          "max": 300,
+          "unit": "m"
         }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "LOW"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "80-90°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "30-60 сек"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "3-5 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-GEN-001",
-      "sku": "JP-GENMAICHA-001",
-      "order": 5,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Генмайча",
-          "description": "Японский зелёный чай с обжаренным коричневым рисом. Уникальный ореховый аромат, мягкий сладковатый вкус. Низкое содержание кофеина. Часто подаётся с суши. Иногда называют «попкорн-чаем» из-за лопнувших зёрен риса.",
-          "seo": "genmaicha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Genmaicha",
-          "description": "Japanese green tea with roasted brown rice. Unique nutty aroma, mild sweet taste. Low caffeine content. Often served with sushi. Sometimes called 'popcorn tea' due to popped rice grains.",
-          "seo": "genmaicha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "玄米茶",
-          "description": "日本绿茶与炒糙米的混合茶。独特的坚果香气，口感温和甘甜。咖啡因含量低。常与寿司搭配。因爆米花状的米粒有时被称为“爆米花茶”。",
-          "seo": "xuanmicha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "roasted-rice"
-        },
-        {
-          "code": "nutty"
-        },
-        {
-          "code": "low-caffeine"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Shizuoka",
-          "area": "Shizuoka Prefecture",
-          "latitude": 34.9769,
-          "longitude": 138.3831,
-          "altitude": 200
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "LOW"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "80-90°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "30-60 сек"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "3-5 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-HOJ-001",
-      "sku": "JP-HOJICHA-001",
-      "order": 6,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Ходзича",
-          "description": "Обжаренный японский зелёный чай с характерным ореховым, карамельным ароматом. Минимальное содержание кофеина, подходит для вечернего чаепития. Красновато-коричневый настой, мягкий согревающий вкус без горечи.",
-          "seo": "hojicha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Hojicha",
-          "description": "Roasted Japanese green tea with characteristic nutty, caramel aroma. Minimal caffeine content, suitable for evening drinking. Reddish-brown infusion, mild warming taste without bitterness.",
-          "seo": "hojicha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "焙茶",
-          "description": "烘焙的日本绿茶，具有独特的坚果和焦糖香气。咖啡因含量极低，适合晚间饮用。茶汤呈红褐色，口感温和醇厚，无苦涩。",
-          "seo": "beicha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "roasted"
-        },
-        {
-          "code": "nutty"
-        },
-        {
-          "code": "low-caffeine"
-        },
-        {
-          "code": "evening"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Kyoto",
-          "area": "Kyoto Prefecture",
-          "latitude": 35.0116,
-          "longitude": 135.7681,
-          "altitude": 100
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "LOW"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "95-100°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "30-60 сек"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-KUK-001",
-      "sku": "JP-KUKICHA-001",
-      "order": 7,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Кукича",
-          "description": "Японский чай из стеблей и веточек чайного куста. Мягкий сладковатый вкус с ореховыми нотами, минимальная терпкость. Очень низкое содержание кофеина. Популярен в макробиотике за щелочные свойства.",
-          "seo": "kukicha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Kukicha",
-          "description": "Japanese tea from stems and twigs of tea plant. Mild sweet taste with nutty notes, minimal astringency. Very low caffeine content. Popular in macrobiotics for alkaline properties.",
-          "seo": "kukicha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "茎茶",
-          "description": "由茶树茎梗制成的日本茶。口感温和甘甜，带有坚果香，几乎无涩味。咖啡因含量极低。因其碱性特性在长寿饮食中颇受欢迎。",
-          "seo": "jingcha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "stem-tea"
-        },
-        {
-          "code": "low-caffeine"
-        },
-        {
-          "code": "alkaline"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Shizuoka",
-          "area": "Shizuoka Prefecture",
-          "latitude": 34.9769,
-          "longitude": 138.3831,
-          "altitude": 200
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "LOW"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "80-90°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "1-2 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "3-5 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-KON-001",
-      "sku": "JP-KONACHA-001",
-      "order": 8,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Конача",
-          "description": "Мелкий порошковый остаток от производства сенча. Быстро заваривается, даёт насыщенный крепкий настой. Традиционно подаётся в суши-ресторанах. Доступная альтернатива листовому чаю.",
-          "seo": "konacha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Konacha",
-          "description": "Fine powder residue from sencha production. Quick to brew, produces rich strong infusion. Traditionally served in sushi restaurants. Affordable alternative to leaf tea.",
-          "seo": "konacha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "粉茶",
-          "description": "煎茶生产过程中的细粉末。冲泡快速，茶汤浓郁。传统上在寿司店供应。是叶茶的实惠替代品。",
-          "seo": "fencha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "powder"
-        },
-        {
-          "code": "sushi"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Shizuoka",
-          "area": "Shizuoka Prefecture",
-          "latitude": 34.9769,
-          "longitude": 138.3831,
-          "altitude": 200
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "70-80°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "30 сек"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-KAB-001",
-      "sku": "JP-KABUSECHA-001",
-      "order": 9,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Кабусэча",
-          "description": "«Полутеневой» японский чай, затеняемый около недели перед сбором. Промежуточный между сенча и гёкуро по вкусу и способу выращивания. Более сладкий и менее терпкий, чем сенча, с выраженным умами.",
-          "seo": "kabusecha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Kabusecha",
-          "description": "'Half-shade' Japanese tea, shaded for about a week before harvest. Intermediate between sencha and gyokuro in taste and cultivation. Sweeter and less astringent than sencha, with pronounced umami.",
-          "seo": "kabusecha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "冠茶",
-          "description": "“半遮荫”日本茶，采摘前遮荫约一周。在口味和栽培方式上介于煎茶和玉露之间。比煎茶更甜、涩味更少，鲜味突出。",
-          "seo": "guancha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "shade-grown"
-        },
-        {
-          "code": "umami"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Mie",
-          "area": "Mie Prefecture",
-          "latitude": 34.7303,
-          "longitude": 136.5086,
-          "altitude": 250
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "60-70°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "1-2 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "5-7 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-TEN-001",
-      "sku": "JP-TENCHA-001",
-      "order": 10,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Тенча",
-          "description": "Сырьё для производства маття — листья, выращенные в тени, пропаренные и высушенные без скручивания. Тонкие плоские листья без стеблей и прожилок. Мягкий сладкий вкус с выраженным умами.",
-          "seo": "tencha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Tencha",
-          "description": "Raw material for matcha production — shade-grown leaves, steamed and dried without rolling. Thin flat leaves without stems and veins. Mild sweet taste with pronounced umami.",
-          "seo": "tencha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "碾茶",
-          "description": "抹茶的原料——遮荫栽培的茶叶，蒸青后不揉捻直接干燥。薄而平的叶片，无茎梗和叶脉。口感温和甘甜，鲜味突出。",
-          "seo": "niancha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "shade-grown"
-        },
-        {
-          "code": "matcha-base"
-        },
-        {
-          "code": "umami"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Uji",
-          "area": "Kyoto Prefecture",
-          "latitude": 34.8882,
-          "longitude": 135.8014,
-          "altitude": 200
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "HIGH"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "60-70°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "2-3 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "3-5 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-GUR-001",
-      "sku": "JP-GURICHA-001",
-      "order": 11,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Гурича (Тамарёкуча)",
-          "description": "«Скрученный чай» — японский зелёный чай с округлыми, спиралевидными листьями, напоминающими улитку. Мягкий сладкий вкус с цитрусовыми нотами, без травянистой терпкости. Производится в основном на Кюсю.",
-          "seo": "guricha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Guricha (Tamaryokucha)",
-          "description": "'Curly tea' — Japanese green tea with rounded, spiral leaves resembling snails. Mild sweet taste with citrus notes, without grassy astringency. Produced mainly in Kyushu.",
-          "seo": "guricha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "玉绿茶",
-          "description": "“卷曲茶”——茶叶呈圆形螺旋状，形似蜗牛的日本绿茶。口感温和甘甜，带有柑橘香，无草涩味。主要产于九州。",
-          "seo": "yulvcha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "curly-leaf"
-        },
-        {
-          "code": "citrus"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Ureshino",
-          "area": "Saga Prefecture",
-          "latitude": 33.1074,
-          "longitude": 130.0061,
-          "altitude": 300
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "70-80°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "1-2 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "4-6 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-KAM-001",
-      "sku": "JP-KAMAIRICHA-001",
-      "order": 12,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Камайрича",
-          "description": "Редкий японский чай, обработанный обжаркой в котле (как китайские чаи), а не пропариванием. Округлые скрученные листья, ореховый аромат с дымными нотами. Производится в основном на Кюсю.",
-          "seo": "kamairicha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Kamairicha",
-          "description": "Rare Japanese tea processed by pan-firing (like Chinese teas) rather than steaming. Rounded rolled leaves, nutty aroma with smoky notes. Produced mainly in Kyushu.",
-          "seo": "kamairicha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "釜炒茶",
-          "description": "稀有的日本茶，采用锅炒（如中国茶）而非蒸青工艺。茶叶呈圆形卷曲状，坚果香中带有烟熏气息。主要产于九州。",
-          "seo": "fucaocha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "pan-fired"
-        },
-        {
-          "code": "nutty"
-        },
-        {
-          "code": "smoky"
-        },
-        {
-          "code": "rare"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Miyazaki",
-          "area": "Miyazaki Prefecture",
-          "latitude": 31.9111,
-          "longitude": 131.4239,
-          "altitude": 400
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "80-90°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "1-2 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "4-6 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-FUK-001",
-      "sku": "JP-FUKAMUSHI-001",
-      "order": 13,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Фукамуси Сенча",
-          "description": "Сенча глубокого пропаривания (60-90 секунд). Насыщенный тёмно-зелёный цвет настоя, более мягкий и сладкий вкус, меньше терпкости. Листья более мелкие и рассыпчатые. Популярен в регионе Сидзуока.",
-          "seo": "fukamushi-sencha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Fukamushi Sencha",
-          "description": "Deep-steamed sencha (60-90 seconds). Rich dark green infusion, milder and sweeter taste, less astringency. Leaves are smaller and more crumbly. Popular in Shizuoka region.",
-          "seo": "fukamushi-sencha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "深蒸煎茶",
-          "description": "深度蒸青的煎茶（60-90秒）。茶汤呈浓郁的深绿色，口感更温和甘甜，涩味更少。茶叶更细碎。在静冈地区颇受欢迎。",
-          "seo": "shenzheng-jiancha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "deep-steamed"
-        },
-        {
-          "code": "umami"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Shizuoka",
-          "area": "Shizuoka Prefecture",
-          "latitude": 34.9769,
-          "longitude": 138.3831,
-          "altitude": 300
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "70-80°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "30-60 сек"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "5-7 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-SHI-001",
-      "sku": "JP-SHINCHA-001",
-      "order": 14,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Синтя (Шинча)",
-          "description": "«Новый чай» — сенча первого весеннего сбора. Самый свежий и ароматный, высокое содержание аминокислот. Сезонный деликатес, доступен только весной. Символизирует новые начинания и удачу.",
-          "seo": "shincha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Shincha",
-          "description": "'New tea' — first spring harvest sencha. Freshest and most aromatic, high amino acid content. Seasonal delicacy, available only in spring. Symbolizes new beginnings and good fortune.",
-          "seo": "shincha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "新茶",
-          "description": "“新茶”——首采春茶煎茶。最新鲜、最芳香，氨基酸含量高。季节性珍品，仅春季供应。象征新的开始和好运。",
-          "seo": "xincha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "first-flush"
-        },
-        {
-          "code": "seasonal"
-        },
-        {
-          "code": "premium"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Shizuoka",
-          "area": "Shizuoka Prefecture",
-          "latitude": 34.9769,
-          "longitude": 138.3831,
-          "altitude": 300
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "70-75°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "1-2 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "5-7 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-JP-MAI-001",
-      "sku": "JP-MATCHAIRI-001",
-      "order": 15,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Матча-ири Генмайча",
-          "description": "Генмайча с добавлением порошкового маття. Насыщенный зелёный цвет, яркий вкус умами, сочетание орехового аромата риса и кремовой сладости маття. Богат антиоксидантами.",
-          "seo": "matcha-iri-genmaicha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Matcha-iri Genmaicha",
-          "description": "Genmaicha with added matcha powder. Rich green color, bright umami taste, combination of nutty rice aroma and creamy matcha sweetness. Rich in antioxidants.",
-          "seo": "matcha-iri-genmaicha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "抹茶玄米茶",
-          "description": "添加抹茶粉的玄米茶。色泽翠绿，鲜味突出，融合了炒米的坚果香和抹茶的醇厚甘甜。富含抗氧化剂。",
-          "seo": "mocha-xuanmicha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "japanese-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "matcha"
-        },
-        {
-          "code": "roasted-rice"
-        },
-        {
-          "code": "blend"
-        }
-      ],
-      "origins": [
-        {
-          "country": "JP",
-          "region": "Yame",
-          "area": "Fukuoka Prefecture",
-          "latitude": 33.2124,
-          "longitude": 130.5581,
-          "altitude": 300
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "JAPAN"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "80°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "30-60 сек"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "3-5 г / 200 мл"
-        }
-      ]
-    }
-  ]
-}
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "80°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "30-60 сек"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "3-5 г / 200 мл"
+      }
+    ]
+  }
+]

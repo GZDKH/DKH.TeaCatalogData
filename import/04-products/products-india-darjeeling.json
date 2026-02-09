@@ -1,502 +1,566 @@
-{
-  "products": [
-    {
-      "code": "TEA-IN-DAR-FF-001",
-      "sku": "IN-DARJEELING-FF-001",
-      "order": 1,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Дарджилинг First Flush",
-          "description": "«Шампанское среди чаев» — первый весенний сбор с гималайских плантаций. Лёгкий, нежный вкус с цветочными и фруктовыми нотами, минимальная терпкость. Светлый золотистый настой, изысканный мускатный аромат.",
-          "seo": "darjeeling-first-flush"
+[
+  {
+    "code": "TEA-IN-DAR-FF-001",
+    "sku": "IN-DARJEELING-FF-001",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дарджилинг First Flush",
+        "description": "«Шампанское среди чаев» — первый весенний сбор с гималайских плантаций. Лёгкий, нежный вкус с цветочными и фруктовыми нотами, минимальная терпкость. Светлый золотистый настой, изысканный мускатный аромат.",
+        "seo": "darjeeling-first-flush"
+      },
+      {
+        "lang": "en-US",
+        "name": "Darjeeling First Flush",
+        "description": "'Champagne of teas' — first spring harvest from Himalayan estates. Light, delicate taste with floral and fruity notes, minimal astringency. Light golden infusion, exquisite muscatel aroma.",
+        "seo": "darjeeling-first-flush"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "大吉岭春摘",
+        "description": "“茶中香槟”——来自喜马拉雅山庄园的首摘春茶。口感轻盈细腻，带有花香和果香，涩味极少。茶汤呈浅金色，散发着优雅的麝香葡萄香气。",
+        "seo": "dajiling-chunzhai"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-INDIAN-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-DARJEELING"
+      },
+      {
+        "code": "TAG-FIRST-FLUSH"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-MUSCATEL"
+      }
+    ],
+    "origins": [
+      {
+        "country": "IN",
+        "state": "Darjeeling",
+        "place": "West Bengal",
+        "coordinates": {
+          "lat": 27.041,
+          "lng": 88.2627
         },
-        {
-          "lang": "en-US",
-          "name": "Darjeeling First Flush",
-          "description": "'Champagne of teas' — first spring harvest from Himalayan estates. Light, delicate taste with floral and fruity notes, minimal astringency. Light golden infusion, exquisite muscatel aroma.",
-          "seo": "darjeeling-first-flush"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "大吉岭春摘",
-          "description": "“茶中香槟”——来自喜马拉雅山庄园的首摘春茶。口感轻盈细腻，带有花香和果香，涩味极少。茶汤呈浅金色，散发着优雅的麝香葡萄香气。",
-          "seo": "dajiling-chunzhai"
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "indian-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "85-95°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "2-4 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-IN-DAR-SF-001",
+    "sku": "IN-DARJEELING-SF-001",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дарджилинг Second Flush",
+        "description": "Летний сбор — пик качества для многих ценителей. Насыщенный янтарный настой, полное тело, знаменитый мускатный вкус и аромат. Более терпкий и выразительный, чем First Flush.",
+        "seo": "darjeeling-second-flush"
+      },
+      {
+        "lang": "en-US",
+        "name": "Darjeeling Second Flush",
+        "description": "Summer harvest — peak quality for many connoisseurs. Rich amber infusion, full body, famous muscatel taste and aroma. More astringent and expressive than First Flush.",
+        "seo": "darjeeling-second-flush"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "大吉岭夏摘",
+        "description": "夏采茶——许多鉴赏家眼中的品质巅峰。茶汤呈浓郁的琥珀色，口感醇厚，散发着著名的麝香葡萄香气。比春摘更涩，更有表现力。",
+        "seo": "dajiling-xiazhai"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-INDIAN-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-DARJEELING"
+      },
+      {
+        "code": "TAG-SECOND-FLUSH"
+      },
+      {
+        "code": "TAG-MUSCATEL"
+      }
+    ],
+    "origins": [
+      {
+        "country": "IN",
+        "state": "Darjeeling",
+        "place": "West Bengal",
+        "coordinates": {
+          "lat": 27.041,
+          "lng": 88.2627
         },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "darjeeling"
-        },
-        {
-          "code": "first-flush"
-        },
-        {
-          "code": "premium"
-        },
-        {
-          "code": "muscatel"
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "IN",
-          "region": "Darjeeling",
-          "area": "West Bengal",
-          "latitude": 27.041,
-          "longitude": 88.2627,
-          "altitude": 1800
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "90-95°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-5 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-IN-DAR-AUT-001",
+    "sku": "IN-DARJEELING-AUT-001",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дарджилинг Autumnal Flush",
+        "description": "Осенний сбор после сезона дождей. Медно-красный настой, мягкий округлый вкус с фруктовыми и древесными нотами. Меньше терпкости, чем в летних сборах.",
+        "seo": "darjeeling-autumnal"
+      },
+      {
+        "lang": "en-US",
+        "name": "Darjeeling Autumnal Flush",
+        "description": "Autumn harvest after monsoon season. Copper-red infusion, mild rounded taste with fruity and woody notes. Less astringency than summer harvests.",
+        "seo": "darjeeling-autumnal"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "大吉岭秋摘",
+        "description": "雨季后的秋采茶。茶汤呈铜红色，口感圆润温和，带有果香和木香。涩味比夏摘少。",
+        "seo": "dajiling-qiuzhai"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-INDIAN-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-DARJEELING"
+      },
+      {
+        "code": "TAG-AUTUMNAL"
+      }
+    ],
+    "origins": [
+      {
+        "country": "IN",
+        "state": "Darjeeling",
+        "place": "West Bengal",
+        "coordinates": {
+          "lat": 27.041,
+          "lng": 88.2627
+        },
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "90-95°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-5 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-IN-DAR-OOL-001",
+    "sku": "IN-DARJEELING-OOL-001",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дарджилинг Улун",
+        "description": "Редкий полуферментированный чай из Дарджилинга. Сочетает свежесть зелёного чая с глубиной чёрного. Цветочный аромат, медовый вкус, лёгкая сладость в послевкусии.",
+        "seo": "darjeeling-oolong"
+      },
+      {
+        "lang": "en-US",
+        "name": "Darjeeling Oolong",
+        "description": "Rare semi-fermented tea from Darjeeling. Combines freshness of green tea with depth of black. Floral aroma, honey taste, light sweetness in aftertaste.",
+        "seo": "darjeeling-oolong"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "大吉岭乌龙",
+        "description": "大吉岭稀有的半发酵茶。融合了绿茶的清新与红茶的醇厚。花香馥郁，蜂蜜般的口感，回甘清甜。",
+        "seo": "dajiling-wulong"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-INDIAN-TEA"
+      },
+      {
+        "code": "TAG-OOLONG-TEA"
+      },
+      {
+        "code": "TAG-DARJEELING"
+      },
+      {
+        "code": "TAG-RARE"
+      }
+    ],
+    "origins": [
+      {
+        "country": "IN",
+        "state": "Darjeeling",
+        "place": "West Bengal",
+        "coordinates": {
+          "lat": 27.041,
+          "lng": 88.2627
         },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "INDIA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "85-95°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "2-4 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ]
-    },
-    {
-      "code": "TEA-IN-DAR-SF-001",
-      "sku": "IN-DARJEELING-SF-001",
-      "order": 2,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Дарджилинг Second Flush",
-          "description": "Летний сбор — пик качества для многих ценителей. Насыщенный янтарный настой, полное тело, знаменитый мускатный вкус и аромат. Более терпкий и выразительный, чем First Flush.",
-          "seo": "darjeeling-second-flush"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-OOLONG"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "85-90°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "2-3 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "3-5 г / 150 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-IN-DAR-WHT-001",
+    "sku": "IN-DARJEELING-WHT-001",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дарджилинг Белый",
+        "description": "Нежнейший белый чай из молодых почек. Минимальная обработка сохраняет все полезные вещества. Тонкий цветочный аромат, сладковатый мягкий вкус, бледно-жёлтый настой.",
+        "seo": "darjeeling-white"
+      },
+      {
+        "lang": "en-US",
+        "name": "Darjeeling White Tea",
+        "description": "Delicate white tea from young buds. Minimal processing preserves all beneficial substances. Subtle floral aroma, sweet mild taste, pale yellow infusion.",
+        "seo": "darjeeling-white"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "大吉岭白茶",
+        "description": "采用嫩芽制成的细腻白茶。最少的加工保留了所有有益成分。淡雅的花香，甘甜柔和的口感，茶汤呈浅黄色。",
+        "seo": "dajiling-baicha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-INDIAN-TEA"
+      },
+      {
+        "code": "TAG-WHITE-TEA"
+      },
+      {
+        "code": "TAG-DARJEELING"
+      },
+      {
+        "code": "TAG-DELICATE"
+      }
+    ],
+    "origins": [
+      {
+        "country": "IN",
+        "state": "Darjeeling",
+        "place": "West Bengal",
+        "coordinates": {
+          "lat": 27.041,
+          "lng": 88.2627
         },
-        {
-          "lang": "en-US",
-          "name": "Darjeeling Second Flush",
-          "description": "Summer harvest — peak quality for many connoisseurs. Rich amber infusion, full body, famous muscatel taste and aroma. More astringent and expressive than First Flush.",
-          "seo": "darjeeling-second-flush"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "大吉岭夏摘",
-          "description": "夏采茶——许多鉴赏家眼中的品质巅峰。茶汤呈浓郁的琥珀色，口感醇厚，散发着著名的麝香葡萄香气。比春摘更涩，更有表现力。",
-          "seo": "dajiling-xiazhai"
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "indian-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-WHITE"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-LOW"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "75-85°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-5 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "3-5 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-IN-DAR-GRN-001",
+    "sku": "IN-DARJEELING-GRN-001",
+    "order": 6,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дарджилинг Зелёный",
+        "description": "Зелёный чай из высокогорных плантаций Дарджилинга. Свежий травянистый вкус с нотами весенней зелени, лёгкая сладость. Светло-зелёный прозрачный настой.",
+        "seo": "darjeeling-green"
+      },
+      {
+        "lang": "en-US",
+        "name": "Darjeeling Green Tea",
+        "description": "Green tea from high-altitude Darjeeling estates. Fresh grassy taste with spring greens notes, light sweetness. Light green transparent infusion.",
+        "seo": "darjeeling-green"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "大吉岭绿茶",
+        "description": "产自大吉岭高海拔庄园的绿茶。清新的草香带有春日青草的气息，略带甘甜。茶汤呈透明的浅绿色。",
+        "seo": "dajiling-lvcha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-INDIAN-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-DARJEELING"
+      }
+    ],
+    "origins": [
+      {
+        "country": "IN",
+        "state": "Darjeeling",
+        "place": "West Bengal",
+        "coordinates": {
+          "lat": 27.041,
+          "lng": 88.2627
         },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "darjeeling"
-        },
-        {
-          "code": "second-flush"
-        },
-        {
-          "code": "muscatel"
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "IN",
-          "region": "Darjeeling",
-          "area": "West Bengal",
-          "latitude": 27.041,
-          "longitude": 88.2627,
-          "altitude": 1800
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "INDIA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "90-95°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-5 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-IN-DAR-AUT-001",
-      "sku": "IN-DARJEELING-AUT-001",
-      "order": 3,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Дарджилинг Autumnal Flush",
-          "description": "Осенний сбор после сезона дождей. Медно-красный настой, мягкий округлый вкус с фруктовыми и древесными нотами. Меньше терпкости, чем в летних сборах.",
-          "seo": "darjeeling-autumnal"
-        },
-        {
-          "lang": "en-US",
-          "name": "Darjeeling Autumnal Flush",
-          "description": "Autumn harvest after monsoon season. Copper-red infusion, mild rounded taste with fruity and woody notes. Less astringency than summer harvests.",
-          "seo": "darjeeling-autumnal"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "大吉岭秋摘",
-          "description": "雨季后的秋采茶。茶汤呈铜红色，口感圆润温和，带有果香和木香。涩味比夏摘少。",
-          "seo": "dajiling-qiuzhai"
-        }
-      ],
-      "tags": [
-        {
-          "code": "indian-tea"
-        },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "darjeeling"
-        },
-        {
-          "code": "autumnal"
-        }
-      ],
-      "origins": [
-        {
-          "country": "IN",
-          "region": "Darjeeling",
-          "area": "West Bengal",
-          "latitude": 27.041,
-          "longitude": 88.2627,
-          "altitude": 1800
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "INDIA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "90-95°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-5 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-IN-DAR-OOL-001",
-      "sku": "IN-DARJEELING-OOL-001",
-      "order": 4,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Дарджилинг Улун",
-          "description": "Редкий полуферментированный чай из Дарджилинга. Сочетает свежесть зелёного чая с глубиной чёрного. Цветочный аромат, медовый вкус, лёгкая сладость в послевкусии.",
-          "seo": "darjeeling-oolong"
-        },
-        {
-          "lang": "en-US",
-          "name": "Darjeeling Oolong",
-          "description": "Rare semi-fermented tea from Darjeeling. Combines freshness of green tea with depth of black. Floral aroma, honey taste, light sweetness in aftertaste.",
-          "seo": "darjeeling-oolong"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "大吉岭乌龙",
-          "description": "大吉岭稀有的半发酵茶。融合了绿茶的清新与红茶的醇厚。花香馥郁，蜂蜜般的口感，回甘清甜。",
-          "seo": "dajiling-wulong"
-        }
-      ],
-      "tags": [
-        {
-          "code": "indian-tea"
-        },
-        {
-          "code": "oolong-tea"
-        },
-        {
-          "code": "darjeeling"
-        },
-        {
-          "code": "rare"
-        }
-      ],
-      "origins": [
-        {
-          "country": "IN",
-          "region": "Darjeeling",
-          "area": "West Bengal",
-          "latitude": 27.041,
-          "longitude": 88.2627,
-          "altitude": 1800
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "OOLONG"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "INDIA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "85-90°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "2-3 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "3-5 г / 150 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-IN-DAR-WHT-001",
-      "sku": "IN-DARJEELING-WHT-001",
-      "order": 5,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Дарджилинг Белый",
-          "description": "Нежнейший белый чай из молодых почек. Минимальная обработка сохраняет все полезные вещества. Тонкий цветочный аромат, сладковатый мягкий вкус, бледно-жёлтый настой.",
-          "seo": "darjeeling-white"
-        },
-        {
-          "lang": "en-US",
-          "name": "Darjeeling White Tea",
-          "description": "Delicate white tea from young buds. Minimal processing preserves all beneficial substances. Subtle floral aroma, sweet mild taste, pale yellow infusion.",
-          "seo": "darjeeling-white"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "大吉岭白茶",
-          "description": "采用嫩芽制成的细腻白茶。最少的加工保留了所有有益成分。淡雅的花香，甘甜柔和的口感，茶汤呈浅黄色。",
-          "seo": "dajiling-baicha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "indian-tea"
-        },
-        {
-          "code": "white-tea"
-        },
-        {
-          "code": "darjeeling"
-        },
-        {
-          "code": "delicate"
-        }
-      ],
-      "origins": [
-        {
-          "country": "IN",
-          "region": "Darjeeling",
-          "area": "West Bengal",
-          "latitude": 27.041,
-          "longitude": 88.2627,
-          "altitude": 1800
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "WHITE"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "INDIA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "LOW"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "75-85°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-5 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "3-5 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-IN-DAR-GRN-001",
-      "sku": "IN-DARJEELING-GRN-001",
-      "order": 6,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Дарджилинг Зелёный",
-          "description": "Зелёный чай из высокогорных плантаций Дарджилинга. Свежий травянистый вкус с нотами весенней зелени, лёгкая сладость. Светло-зелёный прозрачный настой.",
-          "seo": "darjeeling-green"
-        },
-        {
-          "lang": "en-US",
-          "name": "Darjeeling Green Tea",
-          "description": "Green tea from high-altitude Darjeeling estates. Fresh grassy taste with spring greens notes, light sweetness. Light green transparent infusion.",
-          "seo": "darjeeling-green"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "大吉岭绿茶",
-          "description": "产自大吉岭高海拔庄园的绿茶。清新的草香带有春日青草的气息，略带甘甜。茶汤呈透明的浅绿色。",
-          "seo": "dajiling-lvcha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "indian-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "darjeeling"
-        }
-      ],
-      "origins": [
-        {
-          "country": "IN",
-          "region": "Darjeeling",
-          "area": "West Bengal",
-          "latitude": 27.041,
-          "longitude": 88.2627,
-          "altitude": 1800
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "INDIA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "75-85°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "2-3 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    }
-  ]
-}
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "75-85°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "2-3 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  }
+]

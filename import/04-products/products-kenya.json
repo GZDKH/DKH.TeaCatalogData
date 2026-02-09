@@ -1,423 +1,476 @@
-{
-  "products": [
-    {
-      "code": "TEA-KE-PUR-001",
-      "sku": "KE-PURPLE-TEA-001",
-      "order": 1,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Кенийский Фиолетовый Чай",
-          "description": "Уникальный чай с высоким содержанием антоцианов из высокогорий Кении. Лёгкий сладковатый вкус с ягодными нотами. Фиолетовый настой становится розовым при добавлении лимона. Мощный антиоксидант.",
-          "seo": "kenya-purple-tea"
+[
+  {
+    "code": "TEA-KE-PUR-001",
+    "sku": "KE-PURPLE-TEA-001",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Кенийский Фиолетовый Чай",
+        "description": "Уникальный чай с высоким содержанием антоцианов из высокогорий Кении. Лёгкий сладковатый вкус с ягодными нотами. Фиолетовый настой становится розовым при добавлении лимона. Мощный антиоксидант.",
+        "seo": "kenya-purple-tea"
+      },
+      {
+        "lang": "en-US",
+        "name": "Kenya Purple Tea",
+        "description": "Unique tea with high anthocyanin content from Kenya highlands. Light sweet taste with berry notes. Purple infusion turns pink when lemon is added. Powerful antioxidant.",
+        "seo": "kenya-purple-tea"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "肯尼亚紫茶",
+        "description": "产自肯尼亚高地的高花青素茶。口感轻盈甘甜，带有浆果香。紫色的茶汤加柠檬后变成粉红色。强效抗氧化剂。",
+        "seo": "kenniya-zicha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-KENYA-TEA"
+      },
+      {
+        "code": "TAG-PURPLE-TEA"
+      },
+      {
+        "code": "TAG-ANTHOCYANIN"
+      },
+      {
+        "code": "TAG-FUNCTIONAL"
+      },
+      {
+        "code": "TAG-ANTIOXIDANT"
+      }
+    ],
+    "origins": [
+      {
+        "country": "KE",
+        "state": "Nandi Hills",
+        "place": "Western Kenya",
+        "coordinates": {
+          "lat": 0.1,
+          "lng": 35.1667
         },
-        {
-          "lang": "en-US",
-          "name": "Kenya Purple Tea",
-          "description": "Unique tea with high anthocyanin content from Kenya highlands. Light sweet taste with berry notes. Purple infusion turns pink when lemon is added. Powerful antioxidant.",
-          "seo": "kenya-purple-tea"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "肯尼亚紫茶",
-          "description": "产自肯尼亚高地的高花青素茶。口感轻盈甘甜，带有浆果香。紫色的茶汤加柠檬后变成粉红色。强效抗氧化剂。",
-          "seo": "kenniya-zicha"
+        "altitude": {
+          "min": 1900,
+          "max": 1900,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "kenya-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-LOW"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "75-85°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "1-3 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200-250 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-KE-BLK-GLD-001",
+    "sku": "KE-GOLDEN-TIPS-001",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Кения Золотые Типсы",
+        "description": "Элитный чёрный чай с золотистыми почками из высокогорий Ньери. Яркий живой вкус с цитрусовыми и шоколадными нотами. Красноватый настой высокой прозрачности.",
+        "seo": "kenya-golden-tips"
+      },
+      {
+        "lang": "en-US",
+        "name": "Kenya Golden Tips",
+        "description": "Elite black tea with golden buds from Nyeri highlands. Bright lively taste with citrus and chocolate notes. Reddish infusion of high clarity.",
+        "seo": "kenya-golden-tips"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "肯尼亚金芽",
+        "description": "产自涅里高地的带金色芽尖的精品红茶。口感明亮活泼，带有柑橘和巧克力香。茶汤呈红色，清澈透明。",
+        "seo": "kenniya-jinya"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-KENYA-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-GOLDEN-TIPS"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-HIGHLAND"
+      }
+    ],
+    "origins": [
+      {
+        "country": "KE",
+        "state": "Nyeri",
+        "place": "Central Kenya",
+        "coordinates": {
+          "lat": -0.4197,
+          "lng": 36.9553
         },
-        {
-          "code": "purple-tea"
-        },
-        {
-          "code": "anthocyanin"
-        },
-        {
-          "code": "functional"
-        },
-        {
-          "code": "antioxidant"
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "KE",
-          "region": "Nandi Hills",
-          "area": "Western Kenya",
-          "latitude": 0.1,
-          "longitude": 35.1667,
-          "altitude": 1900
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-HIGH"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "90-95°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-5 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-KE-BLK-OP-001",
+    "sku": "KE-OP-001",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Кения OP",
+        "description": "Классический кенийский чёрный чай грейда Orange Pekoe. Яркий крепкий вкус, насыщенный цвет настоя. Отлично подходит для утреннего чаепития. Хорошо сочетается с молоком.",
+        "seo": "kenya-op"
+      },
+      {
+        "lang": "en-US",
+        "name": "Kenya OP",
+        "description": "Classic Kenyan black tea of Orange Pekoe grade. Bright strong taste, rich infusion color. Perfect for morning tea. Goes well with milk.",
+        "seo": "kenya-op"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "肯尼亚OP",
+        "description": "经典的肯尼亚红茶，Orange Pekoe等级。口感明亮浓郁，茶汤颜色深厚。是早茶的理想选择。加奶更佳。",
+        "seo": "kenniya-op"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-KENYA-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-BREAKFAST"
+      },
+      {
+        "code": "TAG-STRONG"
+      }
+    ],
+    "origins": [
+      {
+        "country": "KE",
+        "state": "Central Highlands",
+        "place": "Kenya",
+        "coordinates": {
+          "lat": -0.0236,
+          "lng": 37.9062
+        },
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-HIGH"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "95-100°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-5 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-KE-WHT-PUR-001",
+    "sku": "KE-PURPLE-WHITE-001",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Фиолетовый Белый Чай",
+        "description": "Редкий белый чай из почек фиолетового чайного куста. Минимальная обработка сохраняет антоцианы. Нежный сладкий вкус с фруктовыми нотами. Бледно-розовый настой.",
+        "seo": "purple-white-tea"
+      },
+      {
+        "lang": "en-US",
+        "name": "Purple White Tea",
+        "description": "Rare white tea from purple tea bush buds. Minimal processing preserves anthocyanins. Delicate sweet taste with fruity notes. Pale pink infusion.",
+        "seo": "purple-white-tea"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "紫芽白茶",
+        "description": "采自紫茶树芽头的稀有白茶。最少的加工保留了花青素。细腻甘甜的口感带有果香。茶汤呈浅粉色。",
+        "seo": "ziya-baicha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-KENYA-TEA"
+      },
+      {
+        "code": "TAG-WHITE-TEA"
+      },
+      {
+        "code": "TAG-PURPLE-TEA"
+      },
+      {
+        "code": "TAG-ANTHOCYANIN"
+      },
+      {
+        "code": "TAG-RARE"
+      }
+    ],
+    "origins": [
+      {
+        "country": "KE",
+        "state": "Nandi Hills",
+        "place": "Western Kenya",
+        "coordinates": {
+          "lat": 0.1,
+          "lng": 35.1667
         },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "KENYA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "LOW"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "75-85°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "1-3 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200-250 мл"
+        "altitude": {
+          "min": 1900,
+          "max": 1900,
+          "unit": "m"
         }
-      ]
-    },
-    {
-      "code": "TEA-KE-BLK-GLD-001",
-      "sku": "KE-GOLDEN-TIPS-001",
-      "order": 2,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Кения Золотые Типсы",
-          "description": "Элитный чёрный чай с золотистыми почками из высокогорий Ньери. Яркий живой вкус с цитрусовыми и шоколадными нотами. Красноватый настой высокой прозрачности.",
-          "seo": "kenya-golden-tips"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-WHITE"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-LOW"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "70-80°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "2-4 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "3-5 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-KE-OOL-PUR-001",
+    "sku": "KE-PURPLE-OOLONG-001",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Фиолетовый Улун",
+        "description": "Полуферментированный чай из листьев фиолетового чайного куста. Сложные цветочные и фруктовые ноты. Сочетает антоцианы и традиционный вкус улуна. Розовато-янтарный настой.",
+        "seo": "purple-oolong"
+      },
+      {
+        "lang": "en-US",
+        "name": "Purple Oolong",
+        "description": "Semi-fermented tea from purple tea bush leaves. Complex floral and fruity notes. Combines anthocyanins with traditional oolong taste. Pinkish-amber infusion.",
+        "seo": "purple-oolong"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "紫乌龙",
+        "description": "采自紫茶树叶片的半发酵茶。复杂的花香和果香。融合了花青素与传统乌龙的口感。茶汤呈粉琥珀色。",
+        "seo": "zi-wulong"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-KENYA-TEA"
+      },
+      {
+        "code": "TAG-OOLONG-TEA"
+      },
+      {
+        "code": "TAG-PURPLE-TEA"
+      },
+      {
+        "code": "TAG-ANTHOCYANIN"
+      }
+    ],
+    "origins": [
+      {
+        "country": "KE",
+        "state": "Nandi Hills",
+        "place": "Western Kenya",
+        "coordinates": {
+          "lat": 0.1,
+          "lng": 35.1667
         },
-        {
-          "lang": "en-US",
-          "name": "Kenya Golden Tips",
-          "description": "Elite black tea with golden buds from Nyeri highlands. Bright lively taste with citrus and chocolate notes. Reddish infusion of high clarity.",
-          "seo": "kenya-golden-tips"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "肯尼亚金芽",
-          "description": "产自涅里高地的带金色芽尖的精品红茶。口感明亮活泼，带有柑橘和巧克力香。茶汤呈红色，清澈透明。",
-          "seo": "kenniya-jinya"
+        "altitude": {
+          "min": 1900,
+          "max": 1900,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "kenya-tea"
-        },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "golden-tips"
-        },
-        {
-          "code": "premium"
-        },
-        {
-          "code": "highland"
-        }
-      ],
-      "origins": [
-        {
-          "country": "KE",
-          "region": "Nyeri",
-          "area": "Central Kenya",
-          "latitude": -0.4197,
-          "longitude": 36.9553,
-          "altitude": 1800
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "KENYA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "HIGH"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "90-95°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-5 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-KE-BLK-OP-001",
-      "sku": "KE-OP-001",
-      "order": 3,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Кения OP",
-          "description": "Классический кенийский чёрный чай грейда Orange Pekoe. Яркий крепкий вкус, насыщенный цвет настоя. Отлично подходит для утреннего чаепития. Хорошо сочетается с молоком.",
-          "seo": "kenya-op"
-        },
-        {
-          "lang": "en-US",
-          "name": "Kenya OP",
-          "description": "Classic Kenyan black tea of Orange Pekoe grade. Bright strong taste, rich infusion color. Perfect for morning tea. Goes well with milk.",
-          "seo": "kenya-op"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "肯尼亚OP",
-          "description": "经典的肯尼亚红茶，Orange Pekoe等级。口感明亮浓郁，茶汤颜色深厚。是早茶的理想选择。加奶更佳。",
-          "seo": "kenniya-op"
-        }
-      ],
-      "tags": [
-        {
-          "code": "kenya-tea"
-        },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "breakfast"
-        },
-        {
-          "code": "strong"
-        }
-      ],
-      "origins": [
-        {
-          "country": "KE",
-          "region": "Central Highlands",
-          "area": "Kenya",
-          "latitude": -0.0236,
-          "longitude": 37.9062,
-          "altitude": 1800
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "KENYA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "HIGH"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "95-100°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-5 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-KE-WHT-PUR-001",
-      "sku": "KE-PURPLE-WHITE-001",
-      "order": 4,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Фиолетовый Белый Чай",
-          "description": "Редкий белый чай из почек фиолетового чайного куста. Минимальная обработка сохраняет антоцианы. Нежный сладкий вкус с фруктовыми нотами. Бледно-розовый настой.",
-          "seo": "purple-white-tea"
-        },
-        {
-          "lang": "en-US",
-          "name": "Purple White Tea",
-          "description": "Rare white tea from purple tea bush buds. Minimal processing preserves anthocyanins. Delicate sweet taste with fruity notes. Pale pink infusion.",
-          "seo": "purple-white-tea"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "紫芽白茶",
-          "description": "采自紫茶树芽头的稀有白茶。最少的加工保留了花青素。细腻甘甜的口感带有果香。茶汤呈浅粉色。",
-          "seo": "ziya-baicha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "kenya-tea"
-        },
-        {
-          "code": "white-tea"
-        },
-        {
-          "code": "purple-tea"
-        },
-        {
-          "code": "anthocyanin"
-        },
-        {
-          "code": "rare"
-        }
-      ],
-      "origins": [
-        {
-          "country": "KE",
-          "region": "Nandi Hills",
-          "area": "Western Kenya",
-          "latitude": 0.1,
-          "longitude": 35.1667,
-          "altitude": 1900
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "WHITE"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "KENYA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "LOW"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "70-80°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "2-4 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "3-5 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-KE-OOL-PUR-001",
-      "sku": "KE-PURPLE-OOLONG-001",
-      "order": 5,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Фиолетовый Улун",
-          "description": "Полуферментированный чай из листьев фиолетового чайного куста. Сложные цветочные и фруктовые ноты. Сочетает антоцианы и традиционный вкус улуна. Розовато-янтарный настой.",
-          "seo": "purple-oolong"
-        },
-        {
-          "lang": "en-US",
-          "name": "Purple Oolong",
-          "description": "Semi-fermented tea from purple tea bush leaves. Complex floral and fruity notes. Combines anthocyanins with traditional oolong taste. Pinkish-amber infusion.",
-          "seo": "purple-oolong"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "紫乌龙",
-          "description": "采自紫茶树叶片的半发酵茶。复杂的花香和果香。融合了花青素与传统乌龙的口感。茶汤呈粉琥珀色。",
-          "seo": "zi-wulong"
-        }
-      ],
-      "tags": [
-        {
-          "code": "kenya-tea"
-        },
-        {
-          "code": "oolong-tea"
-        },
-        {
-          "code": "purple-tea"
-        },
-        {
-          "code": "anthocyanin"
-        }
-      ],
-      "origins": [
-        {
-          "country": "KE",
-          "region": "Nandi Hills",
-          "area": "Western Kenya",
-          "latitude": 0.1,
-          "longitude": 35.1667,
-          "altitude": 1900
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "OOLONG"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "KENYA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "80-90°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "2-3 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "4-5 г / 150 мл"
-        }
-      ]
-    }
-  ]
-}
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-OOLONG"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "80-90°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "2-3 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "4-5 г / 150 мл"
+      }
+    ]
+  }
+]

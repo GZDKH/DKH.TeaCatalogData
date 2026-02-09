@@ -1,517 +1,581 @@
-{
-  "products": [
-    {
-      "code": "TEA-KR-GRN-SEJ-001",
-      "sku": "KR-BOSEONG-SEJAK-001",
-      "order": 1,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Босонг Седжак",
-          "description": "Корейский зелёный чай второго весеннего сбора из региона Босонг. Мягкий вкус умами с травянистыми нотами и лёгкой сладостью. Обработка паром. Органический продукт.",
-          "seo": "boseong-sejak"
+[
+  {
+    "code": "TEA-KR-GRN-SEJ-001",
+    "sku": "KR-BOSEONG-SEJAK-001",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Босонг Седжак",
+        "description": "Корейский зелёный чай второго весеннего сбора из региона Босонг. Мягкий вкус умами с травянистыми нотами и лёгкой сладостью. Обработка паром. Органический продукт.",
+        "seo": "boseong-sejak"
+      },
+      {
+        "lang": "en-US",
+        "name": "Boseong Sejak",
+        "description": "Korean green tea of second spring harvest from Boseong region. Mild umami taste with grassy notes and light sweetness. Steamed processing. Organic product.",
+        "seo": "boseong-sejak"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "宝城细雀",
+        "description": "产自宝城地区的韩国绿茶，第二次春采。口感温和鲜爽，带有草香和轻微甘甜。蒸青工艺。有机产品。",
+        "seo": "baocheng-xique"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-KOREAN-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-BOSEONG"
+      },
+      {
+        "code": "TAG-SEJAK"
+      },
+      {
+        "code": "TAG-ORGANIC"
+      },
+      {
+        "code": "TAG-STEAMED"
+      }
+    ],
+    "origins": [
+      {
+        "country": "KR",
+        "state": "Boseong",
+        "place": "South Jeolla Province",
+        "coordinates": {
+          "lat": 34.7714,
+          "lng": 127.0796
         },
-        {
-          "lang": "en-US",
-          "name": "Boseong Sejak",
-          "description": "Korean green tea of second spring harvest from Boseong region. Mild umami taste with grassy notes and light sweetness. Steamed processing. Organic product.",
-          "seo": "boseong-sejak"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "宝城细雀",
-          "description": "产自宝城地区的韩国绿茶，第二次春采。口感温和鲜爽，带有草香和轻微甘甜。蒸青工艺。有机产品。",
-          "seo": "baocheng-xique"
+        "altitude": {
+          "min": 160,
+          "max": 160,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "korean-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "70-75°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "40-60 сек (проливы)"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "5 г / 150 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-KR-GRN-UJE-001",
+    "sku": "KR-UJEON-001",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Уджон",
+        "description": "Высший грейд корейского зелёного чая, первый сбор до весенних дождей. Самый нежный и редкий. Сладкий вкус с минимальной терпкостью, цветочный аромат.",
+        "seo": "ujeon"
+      },
+      {
+        "lang": "en-US",
+        "name": "Ujeon",
+        "description": "Highest grade of Korean green tea, first harvest before spring rains. Most delicate and rare. Sweet taste with minimal astringency, floral aroma.",
+        "seo": "ujeon"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "雨前",
+        "description": "韩国绿茶最高等级，春雨前首摘。最细腻珍稀。甘甜的口感，涩味极少，花香馥郁。",
+        "seo": "yuqian"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-KOREAN-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-UJEON"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-FIRST-FLUSH"
+      },
+      {
+        "code": "TAG-RARE"
+      }
+    ],
+    "origins": [
+      {
+        "country": "KR",
+        "state": "Boseong",
+        "place": "South Jeolla Province",
+        "coordinates": {
+          "lat": 34.7714,
+          "lng": 127.0796
         },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "boseong"
-        },
-        {
-          "code": "sejak"
-        },
-        {
-          "code": "organic"
-        },
-        {
-          "code": "steamed"
+        "altitude": {
+          "min": 160,
+          "max": 160,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "KR",
-          "region": "Boseong",
-          "area": "South Jeolla Province",
-          "latitude": 34.7714,
-          "longitude": 127.0796,
-          "altitude": 160
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "60-70°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "30-45 сек"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "4-5 г / 150 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-KR-YLW-HWA-001",
+    "sku": "KR-HWANGCHA-001",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Хванча (Жёлтый Чай)",
+        "description": "Корейский жёлтый чай, прошедший процесс томления после фиксации. Мягкий сладковатый вкус с медовыми и фруктовыми нотами. Редкий традиционный чай.",
+        "seo": "hwangcha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Hwangcha (Yellow Tea)",
+        "description": "Korean yellow tea that undergoes smothering process after fixation. Mild sweet taste with honey and fruity notes. Rare traditional tea.",
+        "seo": "hwangcha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "黄茶",
+        "description": "经过闷黄工艺的韩国黄茶。口感温和甘甜，带有蜂蜜和果香。稀有的传统茶。",
+        "seo": "huangcha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-KOREAN-TEA"
+      },
+      {
+        "code": "TAG-YELLOW-TEA"
+      },
+      {
+        "code": "TAG-HWANGCHA"
+      },
+      {
+        "code": "TAG-TRADITIONAL"
+      },
+      {
+        "code": "TAG-RARE"
+      }
+    ],
+    "origins": [
+      {
+        "country": "KR",
+        "state": "Boseong",
+        "place": "South Jeolla Province",
+        "coordinates": {
+          "lat": 34.7714,
+          "lng": 127.0796
+        },
+        "altitude": {
+          "min": 160,
+          "max": 160,
+          "unit": "m"
         }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-YELLOW"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-LOW"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "75-80°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "2-3 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "3-4 г / 150 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-KR-BLK-BAL-001",
+    "sku": "KR-BALHYOCHA-001",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Бальхёча (Ферментированный Чай)",
+        "description": "Корейский ферментированный чай, аналог чёрного чая. Мягкий солодовый вкус с фруктовыми нотами. Янтарно-красный настой. Традиционный корейский метод обработки.",
+        "seo": "balhyocha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Balhyocha (Fermented Tea)",
+        "description": "Korean fermented tea, similar to black tea. Mild malty taste with fruity notes. Amber-red infusion. Traditional Korean processing method.",
+        "seo": "balhyocha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "发酵茶",
+        "description": "韩国发酵茶，类似红茶。口感温和，带有麦芽香和果香。茶汤呈琥珀红色。传统韩国工艺。",
+        "seo": "fajiao-cha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-KOREAN-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-BALHYOCHA"
+      },
+      {
+        "code": "TAG-FERMENTED"
+      },
+      {
+        "code": "TAG-TRADITIONAL"
+      }
+    ],
+    "origins": [
+      {
+        "country": "KR",
+        "state": "Boseong",
+        "place": "South Jeolla Province",
+        "coordinates": {
+          "lat": 34.7714,
+          "lng": 127.0796
         },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "KOREA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "70-75°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "40-60 сек (проливы)"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "5 г / 150 мл"
+        "altitude": {
+          "min": 160,
+          "max": 160,
+          "unit": "m"
         }
-      ]
-    },
-    {
-      "code": "TEA-KR-GRN-UJE-001",
-      "sku": "KR-UJEON-001",
-      "order": 2,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Уджон",
-          "description": "Высший грейд корейского зелёного чая, первый сбор до весенних дождей. Самый нежный и редкий. Сладкий вкус с минимальной терпкостью, цветочный аромат.",
-          "seo": "ujeon"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "85-95°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-5 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "3-4 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-KR-GRN-MAT-001",
+    "sku": "KR-BOSEONG-MATCHA-001",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Босонг Матча",
+        "description": "Корейский порошковый чай из затенённых листьев. Насыщенный вкус умами, интенсивный зелёный цвет. Используется в традиционных церемониях и кулинарии.",
+        "seo": "boseong-matcha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Boseong Matcha",
+        "description": "Korean powdered tea from shaded leaves. Rich umami taste, intense green color. Used in traditional ceremonies and cooking.",
+        "seo": "boseong-matcha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "宝城抹茶",
+        "description": "采用遮阴叶片制成的韩国抹茶粉。浓郁的鲜味，色泽翠绿。用于传统茶道和烹饪。",
+        "seo": "baocheng-mocha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-KOREAN-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-MATCHA"
+      },
+      {
+        "code": "TAG-POWDERED"
+      },
+      {
+        "code": "TAG-CEREMONIAL"
+      }
+    ],
+    "origins": [
+      {
+        "country": "KR",
+        "state": "Boseong",
+        "place": "South Jeolla Province",
+        "coordinates": {
+          "lat": 34.7714,
+          "lng": 127.0796
         },
-        {
-          "lang": "en-US",
-          "name": "Ujeon",
-          "description": "Highest grade of Korean green tea, first harvest before spring rains. Most delicate and rare. Sweet taste with minimal astringency, floral aroma.",
-          "seo": "ujeon"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "雨前",
-          "description": "韩国绿茶最高等级，春雨前首摘。最细腻珍稀。甘甜的口感，涩味极少，花香馥郁。",
-          "seo": "yuqian"
+        "altitude": {
+          "min": 160,
+          "max": 160,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "korean-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-HIGH"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "70-80°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "взбивать до пены"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "1-2 г / 70 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-KR-OOL-JEJ-001",
+    "sku": "KR-JEJU-OOLONG-001",
+    "order": 6,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Чеджу Улун",
+        "description": "Улун с острова Чеджу. Цветочный аромат с медовыми нотами, мягкий сладковатый вкус. Вулканические почвы придают минеральные оттенки.",
+        "seo": "jeju-oolong"
+      },
+      {
+        "lang": "en-US",
+        "name": "Jeju Oolong",
+        "description": "Oolong from Jeju Island. Floral aroma with honey notes, mild sweet taste. Volcanic soils add mineral tones.",
+        "seo": "jeju-oolong"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "济州乌龙",
+        "description": "产自济州岛的乌龙茶。花香中带有蜂蜜香，口感柔和甘甜。火山土壤赋予矿物质风味。",
+        "seo": "jizhou-wulong"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-KOREAN-TEA"
+      },
+      {
+        "code": "TAG-OOLONG-TEA"
+      },
+      {
+        "code": "TAG-JEJU"
+      },
+      {
+        "code": "TAG-ISLAND"
+      }
+    ],
+    "origins": [
+      {
+        "country": "KR",
+        "state": "Jeju",
+        "place": "Jeju Island",
+        "coordinates": {
+          "lat": 33.489,
+          "lng": 126.4983
         },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "ujeon"
-        },
-        {
-          "code": "premium"
-        },
-        {
-          "code": "first-flush"
-        },
-        {
-          "code": "rare"
+        "altitude": {
+          "min": 300,
+          "max": 300,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "KR",
-          "region": "Boseong",
-          "area": "South Jeolla Province",
-          "latitude": 34.7714,
-          "longitude": 127.0796,
-          "altitude": 160
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "KOREA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "60-70°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "30-45 сек"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "4-5 г / 150 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-KR-YLW-HWA-001",
-      "sku": "KR-HWANGCHA-001",
-      "order": 3,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Хванча (Жёлтый Чай)",
-          "description": "Корейский жёлтый чай, прошедший процесс томления после фиксации. Мягкий сладковатый вкус с медовыми и фруктовыми нотами. Редкий традиционный чай.",
-          "seo": "hwangcha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Hwangcha (Yellow Tea)",
-          "description": "Korean yellow tea that undergoes smothering process after fixation. Mild sweet taste with honey and fruity notes. Rare traditional tea.",
-          "seo": "hwangcha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "黄茶",
-          "description": "经过闷黄工艺的韩国黄茶。口感温和甘甜，带有蜂蜜和果香。稀有的传统茶。",
-          "seo": "huangcha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "korean-tea"
-        },
-        {
-          "code": "yellow-tea"
-        },
-        {
-          "code": "hwangcha"
-        },
-        {
-          "code": "traditional"
-        },
-        {
-          "code": "rare"
-        }
-      ],
-      "origins": [
-        {
-          "country": "KR",
-          "region": "Boseong",
-          "area": "South Jeolla Province",
-          "latitude": 34.7714,
-          "longitude": 127.0796,
-          "altitude": 160
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "YELLOW"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "KOREA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "LOW"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "75-80°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "2-3 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "3-4 г / 150 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-KR-BLK-BAL-001",
-      "sku": "KR-BALHYOCHA-001",
-      "order": 4,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Бальхёча (Ферментированный Чай)",
-          "description": "Корейский ферментированный чай, аналог чёрного чая. Мягкий солодовый вкус с фруктовыми нотами. Янтарно-красный настой. Традиционный корейский метод обработки.",
-          "seo": "balhyocha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Balhyocha (Fermented Tea)",
-          "description": "Korean fermented tea, similar to black tea. Mild malty taste with fruity notes. Amber-red infusion. Traditional Korean processing method.",
-          "seo": "balhyocha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "发酵茶",
-          "description": "韩国发酵茶，类似红茶。口感温和，带有麦芽香和果香。茶汤呈琥珀红色。传统韩国工艺。",
-          "seo": "fajiao-cha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "korean-tea"
-        },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "balhyocha"
-        },
-        {
-          "code": "fermented"
-        },
-        {
-          "code": "traditional"
-        }
-      ],
-      "origins": [
-        {
-          "country": "KR",
-          "region": "Boseong",
-          "area": "South Jeolla Province",
-          "latitude": 34.7714,
-          "longitude": 127.0796,
-          "altitude": 160
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "KOREA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "85-95°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-5 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "3-4 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-KR-GRN-MAT-001",
-      "sku": "KR-BOSEONG-MATCHA-001",
-      "order": 5,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Босонг Матча",
-          "description": "Корейский порошковый чай из затенённых листьев. Насыщенный вкус умами, интенсивный зелёный цвет. Используется в традиционных церемониях и кулинарии.",
-          "seo": "boseong-matcha"
-        },
-        {
-          "lang": "en-US",
-          "name": "Boseong Matcha",
-          "description": "Korean powdered tea from shaded leaves. Rich umami taste, intense green color. Used in traditional ceremonies and cooking.",
-          "seo": "boseong-matcha"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "宝城抹茶",
-          "description": "采用遮阴叶片制成的韩国抹茶粉。浓郁的鲜味，色泽翠绿。用于传统茶道和烹饪。",
-          "seo": "baocheng-mocha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "korean-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "matcha"
-        },
-        {
-          "code": "powdered"
-        },
-        {
-          "code": "ceremonial"
-        }
-      ],
-      "origins": [
-        {
-          "country": "KR",
-          "region": "Boseong",
-          "area": "South Jeolla Province",
-          "latitude": 34.7714,
-          "longitude": 127.0796,
-          "altitude": 160
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "KOREA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "HIGH"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "70-80°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "взбивать до пены"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "1-2 г / 70 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-KR-OOL-JEJ-001",
-      "sku": "KR-JEJU-OOLONG-001",
-      "order": 6,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Чеджу Улун",
-          "description": "Улун с острова Чеджу. Цветочный аромат с медовыми нотами, мягкий сладковатый вкус. Вулканические почвы придают минеральные оттенки.",
-          "seo": "jeju-oolong"
-        },
-        {
-          "lang": "en-US",
-          "name": "Jeju Oolong",
-          "description": "Oolong from Jeju Island. Floral aroma with honey notes, mild sweet taste. Volcanic soils add mineral tones.",
-          "seo": "jeju-oolong"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "济州乌龙",
-          "description": "产自济州岛的乌龙茶。花香中带有蜂蜜香，口感柔和甘甜。火山土壤赋予矿物质风味。",
-          "seo": "jizhou-wulong"
-        }
-      ],
-      "tags": [
-        {
-          "code": "korean-tea"
-        },
-        {
-          "code": "oolong-tea"
-        },
-        {
-          "code": "jeju"
-        },
-        {
-          "code": "island"
-        }
-      ],
-      "origins": [
-        {
-          "country": "KR",
-          "region": "Jeju",
-          "area": "Jeju Island",
-          "latitude": 33.489,
-          "longitude": 126.4983,
-          "altitude": 300
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "OOLONG"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "KOREA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "85-90°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "2-3 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "4-5 г / 150 мл"
-        }
-      ]
-    }
-  ]
-}
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-OOLONG"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "85-90°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "2-3 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "4-5 г / 150 мл"
+      }
+    ]
+  }
+]

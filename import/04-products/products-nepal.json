@@ -1,511 +1,575 @@
-{
-  "products": [
-    {
-      "code": "TEA-NP-BLK-GLD-001",
-      "sku": "NP-GOLDEN-TIPS-001",
-      "order": 1,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Непал Золотые Типсы",
-          "description": "Элитный чёрный чай высшего грейда SFTGFOP из высокогорий Илама. Мягкий бархатистый вкус с мускатными и цветочными нотами. Золотистые почки среди тёмных листьев. Янтарный настой.",
-          "seo": "nepal-golden-tips"
+[
+  {
+    "code": "TEA-NP-BLK-GLD-001",
+    "sku": "NP-GOLDEN-TIPS-001",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Непал Золотые Типсы",
+        "description": "Элитный чёрный чай высшего грейда SFTGFOP из высокогорий Илама. Мягкий бархатистый вкус с мускатными и цветочными нотами. Золотистые почки среди тёмных листьев. Янтарный настой.",
+        "seo": "nepal-golden-tips"
+      },
+      {
+        "lang": "en-US",
+        "name": "Nepal Golden Tips",
+        "description": "Elite black tea of highest SFTGFOP grade from Ilam highlands. Mild velvety taste with muscatel and floral notes. Golden buds among dark leaves. Amber infusion.",
+        "seo": "nepal-golden-tips"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "尼泊尔金芽",
+        "description": "来自伊拉姆高地的最高等级SFTGFOP精品红茶。口感柔滑，带有麝香葡萄和花香。深色叶片中夹杂着金色芽头。茶汤呈琥珀色。",
+        "seo": "niboer-jinya"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-NEPAL-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-GOLDEN-TIPS"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-TIPPY"
+      }
+    ],
+    "origins": [
+      {
+        "country": "NP",
+        "state": "Ilam",
+        "place": "Eastern Nepal",
+        "coordinates": {
+          "lat": 26.9112,
+          "lng": 87.9264
         },
-        {
-          "lang": "en-US",
-          "name": "Nepal Golden Tips",
-          "description": "Elite black tea of highest SFTGFOP grade from Ilam highlands. Mild velvety taste with muscatel and floral notes. Golden buds among dark leaves. Amber infusion.",
-          "seo": "nepal-golden-tips"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "尼泊尔金芽",
-          "description": "来自伊拉姆高地的最高等级SFTGFOP精品红茶。口感柔滑，带有麝香葡萄和花香。深色叶片中夹杂着金色芽头。茶汤呈琥珀色。",
-          "seo": "niboer-jinya"
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "nepal-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-HIGH"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "85-90°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-5 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 150-200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-NP-BLK-JCH-001",
+    "sku": "NP-JUN-CHIYABARI-IMP-001",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Jun Chiyabari Himalayan Imperial",
+        "description": "Органический чёрный чай премиум-класса с биодинамической плантации. Богатый вкус с нотами какао, шоколада и сухофруктов. Янтарно-рубиновый настой. Выдерживает до 7 проливов.",
+        "seo": "jun-chiyabari-himalayan-imperial"
+      },
+      {
+        "lang": "en-US",
+        "name": "Jun Chiyabari Himalayan Imperial",
+        "description": "Organic premium black tea from biodynamic estate. Rich taste with notes of cocoa, chocolate and dried fruits. Amber-ruby infusion. Withstands up to 7 steepings.",
+        "seo": "jun-chiyabari-himalayan-imperial"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "Jun Chiyabari喜马拉雅帝王",
+        "description": "来自生物动力农庄的有机精品红茶。口感浓郁，带有可可、巧克力和干果香。茶汤呈琥珀红宝石色。可冲泡7次以上。",
+        "seo": "jun-chiyabari-ximalaya-diwang"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-NEPAL-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-ORGANIC"
+      },
+      {
+        "code": "TAG-BIODYNAMIC"
+      },
+      {
+        "code": "TAG-JUN-CHIYABARI"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      }
+    ],
+    "origins": [
+      {
+        "country": "NP",
+        "state": "Dhankuta",
+        "place": "Hile",
+        "coordinates": {
+          "lat": 27,
+          "lng": 87.3
         },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "golden-tips"
-        },
-        {
-          "code": "premium"
-        },
-        {
-          "code": "tippy"
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "NP",
-          "region": "Ilam",
-          "area": "Eastern Nepal",
-          "latitude": 26.9112,
-          "longitude": 87.9264,
-          "altitude": 1800
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "95°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "15-20 сек (проливы)"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "5 г / 150 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-NP-BLK-FF-001",
+    "sku": "NP-FIRST-FLUSH-001",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Непал First Flush",
+        "description": "Первый весенний сбор из гималайских садов. Лёгкий, свежий вкус с цветочными и фруктовыми нотами. Минимальная терпкость. Золотистый настой с зеленоватым отливом.",
+        "seo": "nepal-first-flush"
+      },
+      {
+        "lang": "en-US",
+        "name": "Nepal First Flush",
+        "description": "First spring harvest from Himalayan gardens. Light, fresh taste with floral and fruity notes. Minimal astringency. Golden infusion with greenish hue.",
+        "seo": "nepal-first-flush"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "尼泊尔春摘",
+        "description": "来自喜马拉雅茶园的首摘春茶。口感轻盈清新，带有花香和果香。涩味极少。茶汤呈金色，略带绿色光泽。",
+        "seo": "niboer-chunzhai"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-NEPAL-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-FIRST-FLUSH"
+      },
+      {
+        "code": "TAG-SPRING"
+      },
+      {
+        "code": "TAG-HIGHLAND"
+      }
+    ],
+    "origins": [
+      {
+        "country": "NP",
+        "state": "Ilam",
+        "place": "Eastern Nepal",
+        "coordinates": {
+          "lat": 26.9112,
+          "lng": 87.9264
+        },
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "85-90°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "2-4 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-NP-OOL-HIM-001",
+    "sku": "NP-HIMALAYAN-OOLONG-001",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Гималайский Улун",
+        "description": "Полуферментированный чай из высокогорий Непала. Цветочный аромат с медовыми нотами. Сочетает свежесть зелёного чая с глубиной чёрного. Золотисто-янтарный настой.",
+        "seo": "himalayan-oolong"
+      },
+      {
+        "lang": "en-US",
+        "name": "Himalayan Oolong",
+        "description": "Semi-fermented tea from Nepal highlands. Floral aroma with honey notes. Combines freshness of green tea with depth of black. Golden-amber infusion.",
+        "seo": "himalayan-oolong"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "喜马拉雅乌龙",
+        "description": "产自尼泊尔高山的半发酵茶。花香中带有蜂蜜香。融合了绿茶的清新与红茶的醇厚。茶汤呈金琥珀色。",
+        "seo": "ximalaya-wulong"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-NEPAL-TEA"
+      },
+      {
+        "code": "TAG-OOLONG-TEA"
+      },
+      {
+        "code": "TAG-HIMALAYAN"
+      },
+      {
+        "code": "TAG-HIGHLAND"
+      }
+    ],
+    "origins": [
+      {
+        "country": "NP",
+        "state": "Ilam",
+        "place": "Eastern Nepal",
+        "coordinates": {
+          "lat": 26.9112,
+          "lng": 87.9264
         },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "NEPAL"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "HIGH"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "85-90°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-5 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 150-200 мл"
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ]
-    },
-    {
-      "code": "TEA-NP-BLK-JCH-001",
-      "sku": "NP-JUN-CHIYABARI-IMP-001",
-      "order": 2,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Jun Chiyabari Himalayan Imperial",
-          "description": "Органический чёрный чай премиум-класса с биодинамической плантации. Богатый вкус с нотами какао, шоколада и сухофруктов. Янтарно-рубиновый настой. Выдерживает до 7 проливов.",
-          "seo": "jun-chiyabari-himalayan-imperial"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-OOLONG"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "85-90°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "2-3 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "3-5 г / 150 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-NP-WHT-SIL-001",
+    "sku": "NP-SILVER-NEEDLE-001",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Непал Серебряная Игла",
+        "description": "Белый чай из серебристых почек высокогорных плантаций. Нежный сладковатый вкус с цветочными нотами. Минимальная обработка сохраняет все полезные вещества. Бледно-золотистый настой.",
+        "seo": "nepal-silver-needle"
+      },
+      {
+        "lang": "en-US",
+        "name": "Nepal Silver Needle",
+        "description": "White tea from silver buds of highland estates. Delicate sweet taste with floral notes. Minimal processing preserves all beneficial substances. Pale golden infusion.",
+        "seo": "nepal-silver-needle"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "尼泊尔白毫银针",
+        "description": "采自高山庄园银芽的白茶。细腻甘甜的口感带有花香。最少的加工保留了所有有益成分。茶汤呈浅金色。",
+        "seo": "niboer-baihao-yinzhen"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-NEPAL-TEA"
+      },
+      {
+        "code": "TAG-WHITE-TEA"
+      },
+      {
+        "code": "TAG-SILVER-NEEDLE"
+      },
+      {
+        "code": "TAG-HIGHLAND"
+      },
+      {
+        "code": "TAG-DELICATE"
+      }
+    ],
+    "origins": [
+      {
+        "country": "NP",
+        "state": "Ilam",
+        "place": "Eastern Nepal",
+        "coordinates": {
+          "lat": 26.9112,
+          "lng": 87.9264
         },
-        {
-          "lang": "en-US",
-          "name": "Jun Chiyabari Himalayan Imperial",
-          "description": "Organic premium black tea from biodynamic estate. Rich taste with notes of cocoa, chocolate and dried fruits. Amber-ruby infusion. Withstands up to 7 steepings.",
-          "seo": "jun-chiyabari-himalayan-imperial"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "Jun Chiyabari喜马拉雅帝王",
-          "description": "来自生物动力农庄的有机精品红茶。口感浓郁，带有可可、巧克力和干果香。茶汤呈琥珀红宝石色。可冲泡7次以上。",
-          "seo": "jun-chiyabari-ximalaya-diwang"
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "nepal-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-WHITE"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-LOW"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "75-80°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-5 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "3-5 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-NP-GRN-HIM-001",
+    "sku": "NP-HIMALAYAN-GREEN-001",
+    "order": 6,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Гималайский Зелёный",
+        "description": "Зелёный чай из высокогорий Непала. Свежий травянистый вкус с лёгкой сладостью и цветочными нюансами. Светло-зелёный прозрачный настой. Высокое содержание антиоксидантов.",
+        "seo": "himalayan-green"
+      },
+      {
+        "lang": "en-US",
+        "name": "Himalayan Green",
+        "description": "Green tea from Nepal highlands. Fresh grassy taste with light sweetness and floral nuances. Light green transparent infusion. High antioxidant content.",
+        "seo": "himalayan-green"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "喜马拉雅绿茶",
+        "description": "产自尼泊尔高山的绿茶。清新的草香带有轻微甘甜和花香。茶汤呈透明的浅绿色。抗氧化剂含量高。",
+        "seo": "ximalaya-lvcha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-NEPAL-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-HIMALAYAN"
+      },
+      {
+        "code": "TAG-HIGHLAND"
+      }
+    ],
+    "origins": [
+      {
+        "country": "NP",
+        "state": "Ilam",
+        "place": "Eastern Nepal",
+        "coordinates": {
+          "lat": 26.9112,
+          "lng": 87.9264
         },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "organic"
-        },
-        {
-          "code": "biodynamic"
-        },
-        {
-          "code": "jun-chiyabari"
-        },
-        {
-          "code": "premium"
+        "altitude": {
+          "min": 1800,
+          "max": 1800,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "NP",
-          "region": "Dhankuta",
-          "area": "Hile",
-          "latitude": 27,
-          "longitude": 87.3,
-          "altitude": 1800
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "NEPAL"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "95°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "15-20 сек (проливы)"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "5 г / 150 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-NP-BLK-FF-001",
-      "sku": "NP-FIRST-FLUSH-001",
-      "order": 3,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Непал First Flush",
-          "description": "Первый весенний сбор из гималайских садов. Лёгкий, свежий вкус с цветочными и фруктовыми нотами. Минимальная терпкость. Золотистый настой с зеленоватым отливом.",
-          "seo": "nepal-first-flush"
-        },
-        {
-          "lang": "en-US",
-          "name": "Nepal First Flush",
-          "description": "First spring harvest from Himalayan gardens. Light, fresh taste with floral and fruity notes. Minimal astringency. Golden infusion with greenish hue.",
-          "seo": "nepal-first-flush"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "尼泊尔春摘",
-          "description": "来自喜马拉雅茶园的首摘春茶。口感轻盈清新，带有花香和果香。涩味极少。茶汤呈金色，略带绿色光泽。",
-          "seo": "niboer-chunzhai"
-        }
-      ],
-      "tags": [
-        {
-          "code": "nepal-tea"
-        },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "first-flush"
-        },
-        {
-          "code": "spring"
-        },
-        {
-          "code": "highland"
-        }
-      ],
-      "origins": [
-        {
-          "country": "NP",
-          "region": "Ilam",
-          "area": "Eastern Nepal",
-          "latitude": 26.9112,
-          "longitude": 87.9264,
-          "altitude": 1800
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "NEPAL"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "85-90°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "2-4 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-NP-OOL-HIM-001",
-      "sku": "NP-HIMALAYAN-OOLONG-001",
-      "order": 4,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Гималайский Улун",
-          "description": "Полуферментированный чай из высокогорий Непала. Цветочный аромат с медовыми нотами. Сочетает свежесть зелёного чая с глубиной чёрного. Золотисто-янтарный настой.",
-          "seo": "himalayan-oolong"
-        },
-        {
-          "lang": "en-US",
-          "name": "Himalayan Oolong",
-          "description": "Semi-fermented tea from Nepal highlands. Floral aroma with honey notes. Combines freshness of green tea with depth of black. Golden-amber infusion.",
-          "seo": "himalayan-oolong"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "喜马拉雅乌龙",
-          "description": "产自尼泊尔高山的半发酵茶。花香中带有蜂蜜香。融合了绿茶的清新与红茶的醇厚。茶汤呈金琥珀色。",
-          "seo": "ximalaya-wulong"
-        }
-      ],
-      "tags": [
-        {
-          "code": "nepal-tea"
-        },
-        {
-          "code": "oolong-tea"
-        },
-        {
-          "code": "himalayan"
-        },
-        {
-          "code": "highland"
-        }
-      ],
-      "origins": [
-        {
-          "country": "NP",
-          "region": "Ilam",
-          "area": "Eastern Nepal",
-          "latitude": 26.9112,
-          "longitude": 87.9264,
-          "altitude": 1800
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "OOLONG"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "NEPAL"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "85-90°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "2-3 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "3-5 г / 150 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-NP-WHT-SIL-001",
-      "sku": "NP-SILVER-NEEDLE-001",
-      "order": 5,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Непал Серебряная Игла",
-          "description": "Белый чай из серебристых почек высокогорных плантаций. Нежный сладковатый вкус с цветочными нотами. Минимальная обработка сохраняет все полезные вещества. Бледно-золотистый настой.",
-          "seo": "nepal-silver-needle"
-        },
-        {
-          "lang": "en-US",
-          "name": "Nepal Silver Needle",
-          "description": "White tea from silver buds of highland estates. Delicate sweet taste with floral notes. Minimal processing preserves all beneficial substances. Pale golden infusion.",
-          "seo": "nepal-silver-needle"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "尼泊尔白毫银针",
-          "description": "采自高山庄园银芽的白茶。细腻甘甜的口感带有花香。最少的加工保留了所有有益成分。茶汤呈浅金色。",
-          "seo": "niboer-baihao-yinzhen"
-        }
-      ],
-      "tags": [
-        {
-          "code": "nepal-tea"
-        },
-        {
-          "code": "white-tea"
-        },
-        {
-          "code": "silver-needle"
-        },
-        {
-          "code": "highland"
-        },
-        {
-          "code": "delicate"
-        }
-      ],
-      "origins": [
-        {
-          "country": "NP",
-          "region": "Ilam",
-          "area": "Eastern Nepal",
-          "latitude": 26.9112,
-          "longitude": 87.9264,
-          "altitude": 1800
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "WHITE"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "NEPAL"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "LOW"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "75-80°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-5 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "3-5 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-NP-GRN-HIM-001",
-      "sku": "NP-HIMALAYAN-GREEN-001",
-      "order": 6,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Гималайский Зелёный",
-          "description": "Зелёный чай из высокогорий Непала. Свежий травянистый вкус с лёгкой сладостью и цветочными нюансами. Светло-зелёный прозрачный настой. Высокое содержание антиоксидантов.",
-          "seo": "himalayan-green"
-        },
-        {
-          "lang": "en-US",
-          "name": "Himalayan Green",
-          "description": "Green tea from Nepal highlands. Fresh grassy taste with light sweetness and floral nuances. Light green transparent infusion. High antioxidant content.",
-          "seo": "himalayan-green"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "喜马拉雅绿茶",
-          "description": "产自尼泊尔高山的绿茶。清新的草香带有轻微甘甜和花香。茶汤呈透明的浅绿色。抗氧化剂含量高。",
-          "seo": "ximalaya-lvcha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "nepal-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "himalayan"
-        },
-        {
-          "code": "highland"
-        }
-      ],
-      "origins": [
-        {
-          "country": "NP",
-          "region": "Ilam",
-          "area": "Eastern Nepal",
-          "latitude": 26.9112,
-          "longitude": 87.9264,
-          "altitude": 1800
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "NEPAL"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "75-80°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "2-3 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    }
-  ]
-}
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "75-80°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "2-3 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  }
+]

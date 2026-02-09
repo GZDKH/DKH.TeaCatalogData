@@ -1,523 +1,587 @@
-{
-  "products": [
-    {
-      "code": "TEA-IN-ASM-ORT-001",
-      "sku": "IN-ASSAM-ORTHODOX-001",
-      "order": 1,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Ассам Orthodox TGFOP",
-          "description": "Классический ортодоксальный чай Ассам с золотистыми типсами. Крепкий солодовый вкус, насыщенный тёмно-красный настой, бодрящий эффект. Идеален для завтрака, отлично сочетается с молоком.",
-          "seo": "assam-orthodox-tgfop"
+[
+  {
+    "code": "TEA-IN-ASM-ORT-001",
+    "sku": "IN-ASSAM-ORTHODOX-001",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Ассам Orthodox TGFOP",
+        "description": "Классический ортодоксальный чай Ассам с золотистыми типсами. Крепкий солодовый вкус, насыщенный тёмно-красный настой, бодрящий эффект. Идеален для завтрака, отлично сочетается с молоком.",
+        "seo": "assam-orthodox-tgfop"
+      },
+      {
+        "lang": "en-US",
+        "name": "Assam Orthodox TGFOP",
+        "description": "Classic orthodox Assam tea with golden tips. Strong malty taste, rich dark red infusion, invigorating effect. Perfect for breakfast, excellent with milk.",
+        "seo": "assam-orthodox-tgfop"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "阿萨姆正山TGFOP",
+        "description": "带有金色芽尖的经典正山阿萨姆茶。浓郁的麦芽味，茶汤呈深红色，提神醒脑。是早餐的理想选择，加奶更佳。",
+        "seo": "asamu-zhengshan-tgfop"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-INDIAN-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-ASSAM"
+      },
+      {
+        "code": "TAG-ORTHODOX"
+      },
+      {
+        "code": "TAG-MALTY"
+      },
+      {
+        "code": "TAG-BREAKFAST"
+      }
+    ],
+    "origins": [
+      {
+        "country": "IN",
+        "state": "Assam",
+        "place": "Upper Assam",
+        "coordinates": {
+          "lat": 26.7509,
+          "lng": 94.2037
         },
-        {
-          "lang": "en-US",
-          "name": "Assam Orthodox TGFOP",
-          "description": "Classic orthodox Assam tea with golden tips. Strong malty taste, rich dark red infusion, invigorating effect. Perfect for breakfast, excellent with milk.",
-          "seo": "assam-orthodox-tgfop"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "阿萨姆正山TGFOP",
-          "description": "带有金色芽尖的经典正山阿萨姆茶。浓郁的麦芽味，茶汤呈深红色，提神醒脑。是早餐的理想选择，加奶更佳。",
-          "seo": "asamu-zhengshan-tgfop"
+        "altitude": {
+          "min": 100,
+          "max": 100,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "indian-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-HIGH"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "95-100°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "4-5 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-IN-ASM-CTC-001",
+    "sku": "IN-ASSAM-CTC-001",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Ассам CTC",
+        "description": "Гранулированный чай по технологии CTC (Crush, Tear, Curl). Очень крепкий настой, насыщенный цвет, быстрое заваривание. Основа для масала-чая и чайных смесей English Breakfast.",
+        "seo": "assam-ctc"
+      },
+      {
+        "lang": "en-US",
+        "name": "Assam CTC",
+        "description": "Granulated tea using CTC (Crush, Tear, Curl) method. Very strong infusion, rich color, quick brewing. Base for masala chai and English Breakfast blends.",
+        "seo": "assam-ctc"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "阿萨姆CTC",
+        "description": "采用CTC（揉切撕卷）工艺的颗粒茶。茶汤浓烈，色泽深厚，冲泡迅速。是马萨拉茶和英式早餐茶的基础茶。",
+        "seo": "asamu-ctc"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-INDIAN-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-ASSAM"
+      },
+      {
+        "code": "TAG-CTC"
+      },
+      {
+        "code": "TAG-STRONG"
+      },
+      {
+        "code": "TAG-BREAKFAST"
+      }
+    ],
+    "origins": [
+      {
+        "country": "IN",
+        "state": "Assam",
+        "place": "Upper Assam",
+        "coordinates": {
+          "lat": 26.7509,
+          "lng": 94.2037
         },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "assam"
-        },
-        {
-          "code": "orthodox"
-        },
-        {
-          "code": "malty"
-        },
-        {
-          "code": "breakfast"
+        "altitude": {
+          "min": 100,
+          "max": 100,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "IN",
-          "region": "Assam",
-          "area": "Upper Assam",
-          "latitude": 26.7509,
-          "longitude": 94.2037,
-          "altitude": 100
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-HIGH"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "100°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-4 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-IN-ASM-SF-001",
+    "sku": "IN-ASSAM-SF-001",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Ассам Second Flush",
+        "description": "Лучший сбор Ассама (апрель-май). Насыщенный солодовый вкус, медовые и карамельные ноты, характерные золотистые типсы. Крепкое полное тело, рубиновый настой.",
+        "seo": "assam-second-flush"
+      },
+      {
+        "lang": "en-US",
+        "name": "Assam Second Flush",
+        "description": "Best Assam harvest (April-May). Rich malty taste, honey and caramel notes, characteristic golden tips. Full strong body, ruby infusion.",
+        "seo": "assam-second-flush"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "阿萨姆二采",
+        "description": "阿萨姆最佳采摘期（4-5月）。浓郁的麦芽味，蜂蜜和焦糖香，标志性的金色芽尖。口感醇厚，茶汤呈宝石红色。",
+        "seo": "asamu-ercai"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-INDIAN-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-ASSAM"
+      },
+      {
+        "code": "TAG-SECOND-FLUSH"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      },
+      {
+        "code": "TAG-TIPPY"
+      }
+    ],
+    "origins": [
+      {
+        "country": "IN",
+        "state": "Assam",
+        "place": "Upper Assam",
+        "coordinates": {
+          "lat": 26.7509,
+          "lng": 94.2037
+        },
+        "altitude": {
+          "min": 100,
+          "max": 100,
+          "unit": "m"
         }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-HIGH"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "95-100°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "4-5 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-IN-ASM-GLD-001",
+    "sku": "IN-ASSAM-GOLDEN-001",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Ассам Golden Tips",
+        "description": "Элитный чай из чистых золотистых почек. Мягкий сладкий вкус с медовыми и фруктовыми нотами, минимальная терпкость. Янтарный настой с лёгким золотистым отливом.",
+        "seo": "assam-golden-tips"
+      },
+      {
+        "lang": "en-US",
+        "name": "Assam Golden Tips",
+        "description": "Elite tea from pure golden buds. Mild sweet taste with honey and fruity notes, minimal astringency. Amber infusion with light golden hue.",
+        "seo": "assam-golden-tips"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "阿萨姆金芽",
+        "description": "由纯金色芽尖制成的顶级茶。口感甘甜柔和，带有蜂蜜和果香，涩味极少。茶汤呈琥珀色，略带金色光泽。",
+        "seo": "asamu-jinya"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-INDIAN-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-ASSAM"
+      },
+      {
+        "code": "TAG-GOLDEN-TIPS"
+      },
+      {
+        "code": "TAG-PREMIUM"
+      }
+    ],
+    "origins": [
+      {
+        "country": "IN",
+        "state": "Assam",
+        "place": "Upper Assam",
+        "coordinates": {
+          "lat": 26.7509,
+          "lng": 94.2037
         },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "INDIA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "HIGH"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "95-100°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "4-5 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
+        "altitude": {
+          "min": 100,
+          "max": 100,
+          "unit": "m"
         }
-      ]
-    },
-    {
-      "code": "TEA-IN-ASM-CTC-001",
-      "sku": "IN-ASSAM-CTC-001",
-      "order": 2,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Ассам CTC",
-          "description": "Гранулированный чай по технологии CTC (Crush, Tear, Curl). Очень крепкий настой, насыщенный цвет, быстрое заваривание. Основа для масала-чая и чайных смесей English Breakfast.",
-          "seo": "assam-ctc"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "90-95°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "3-4 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-IN-ASM-GRN-001",
+    "sku": "IN-ASSAM-GREEN-001",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Ассам Зелёный",
+        "description": "Редкий зелёный чай из листьев Camellia sinensis var. assamica. Более полное тело, чем у китайских зелёных чаёв. Травянистый вкус с лёгкой терпкостью, высокое содержание катехинов.",
+        "seo": "assam-green"
+      },
+      {
+        "lang": "en-US",
+        "name": "Assam Green Tea",
+        "description": "Rare green tea from Camellia sinensis var. assamica leaves. Fuller body than Chinese green teas. Grassy taste with light astringency, high catechin content.",
+        "seo": "assam-green"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "阿萨姆绿茶",
+        "description": "由阿萨姆大叶种茶树制成的稀有绿茶。比中国绿茶更醇厚。草香带有轻微涩味，儿茶素含量高。",
+        "seo": "asamu-lvcha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-INDIAN-TEA"
+      },
+      {
+        "code": "TAG-GREEN-TEA"
+      },
+      {
+        "code": "TAG-ASSAM"
+      },
+      {
+        "code": "TAG-RARE"
+      }
+    ],
+    "origins": [
+      {
+        "country": "IN",
+        "state": "Assam",
+        "place": "Upper Assam",
+        "coordinates": {
+          "lat": 26.7509,
+          "lng": 94.2037
         },
-        {
-          "lang": "en-US",
-          "name": "Assam CTC",
-          "description": "Granulated tea using CTC (Crush, Tear, Curl) method. Very strong infusion, rich color, quick brewing. Base for masala chai and English Breakfast blends.",
-          "seo": "assam-ctc"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "阿萨姆CTC",
-          "description": "采用CTC（揉切撕卷）工艺的颗粒茶。茶汤浓烈，色泽深厚，冲泡迅速。是马萨拉茶和英式早餐茶的基础茶。",
-          "seo": "asamu-ctc"
+        "altitude": {
+          "min": 100,
+          "max": 100,
+          "unit": "m"
         }
-      ],
-      "tags": [
-        {
-          "code": "indian-tea"
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-GREEN"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-MED"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "80-85°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "2-3 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "2-3 г / 200 мл"
+      }
+    ]
+  },
+  {
+    "code": "TEA-IN-MAS-001",
+    "sku": "IN-MASALA-CHAI-001",
+    "order": 6,
+    "published": true,
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Масала Чай",
+        "description": "Традиционный индийский чай со специями на основе крепкого ассамского CTC. Кардамон, корица, имбирь, гвоздика, чёрный перец. Заваривается с молоком и сахаром. Согревающий пряный напиток.",
+        "seo": "masala-chai"
+      },
+      {
+        "lang": "en-US",
+        "name": "Masala Chai",
+        "description": "Traditional Indian spiced tea based on strong Assam CTC. Cardamom, cinnamon, ginger, cloves, black pepper. Brewed with milk and sugar. Warming spicy drink.",
+        "seo": "masala-chai"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "马萨拉茶",
+        "description": "以浓郁阿萨姆CTC为基础的传统印度香料茶。含有小豆蔻、肉桂、姜、丁香、黑胡椒。需加奶和糖冲泡。温暖辛香的饮品。",
+        "seo": "masala-cha"
+      }
+    ],
+    "tags": [
+      {
+        "code": "TAG-INDIAN-TEA"
+      },
+      {
+        "code": "TAG-BLACK-TEA"
+      },
+      {
+        "code": "TAG-SPICED"
+      },
+      {
+        "code": "TAG-MASALA"
+      },
+      {
+        "code": "TAG-CHAI"
+      },
+      {
+        "code": "TAG-TRADITIONAL"
+      }
+    ],
+    "origins": [
+      {
+        "country": "IN",
+        "state": "Assam",
+        "place": "Upper Assam",
+        "coordinates": {
+          "lat": 26.7509,
+          "lng": 94.2037
         },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "assam"
-        },
-        {
-          "code": "ctc"
-        },
-        {
-          "code": "strong"
-        },
-        {
-          "code": "breakfast"
+        "altitude": {
+          "min": 100,
+          "max": 100,
+          "unit": "m"
         }
-      ],
-      "origins": [
-        {
-          "country": "IN",
-          "region": "Assam",
-          "area": "Upper Assam",
-          "latitude": 26.7509,
-          "longitude": 94.2037,
-          "altitude": 100
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "INDIA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "HIGH"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "100°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-4 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-IN-ASM-SF-001",
-      "sku": "IN-ASSAM-SF-001",
-      "order": 3,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Ассам Second Flush",
-          "description": "Лучший сбор Ассама (апрель-май). Насыщенный солодовый вкус, медовые и карамельные ноты, характерные золотистые типсы. Крепкое полное тело, рубиновый настой.",
-          "seo": "assam-second-flush"
-        },
-        {
-          "lang": "en-US",
-          "name": "Assam Second Flush",
-          "description": "Best Assam harvest (April-May). Rich malty taste, honey and caramel notes, characteristic golden tips. Full strong body, ruby infusion.",
-          "seo": "assam-second-flush"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "阿萨姆二采",
-          "description": "阿萨姆最佳采摘期（4-5月）。浓郁的麦芽味，蜂蜜和焦糖香，标志性的金色芽尖。口感醇厚，茶汤呈宝石红色。",
-          "seo": "asamu-ercai"
-        }
-      ],
-      "tags": [
-        {
-          "code": "indian-tea"
-        },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "assam"
-        },
-        {
-          "code": "second-flush"
-        },
-        {
-          "code": "premium"
-        },
-        {
-          "code": "tippy"
-        }
-      ],
-      "origins": [
-        {
-          "country": "IN",
-          "region": "Assam",
-          "area": "Upper Assam",
-          "latitude": 26.7509,
-          "longitude": 94.2037,
-          "altitude": 100
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "INDIA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "HIGH"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "95-100°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "4-5 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-IN-ASM-GLD-001",
-      "sku": "IN-ASSAM-GOLDEN-001",
-      "order": 4,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Ассам Golden Tips",
-          "description": "Элитный чай из чистых золотистых почек. Мягкий сладкий вкус с медовыми и фруктовыми нотами, минимальная терпкость. Янтарный настой с лёгким золотистым отливом.",
-          "seo": "assam-golden-tips"
-        },
-        {
-          "lang": "en-US",
-          "name": "Assam Golden Tips",
-          "description": "Elite tea from pure golden buds. Mild sweet taste with honey and fruity notes, minimal astringency. Amber infusion with light golden hue.",
-          "seo": "assam-golden-tips"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "阿萨姆金芽",
-          "description": "由纯金色芽尖制成的顶级茶。口感甘甜柔和，带有蜂蜜和果香，涩味极少。茶汤呈琥珀色，略带金色光泽。",
-          "seo": "asamu-jinya"
-        }
-      ],
-      "tags": [
-        {
-          "code": "indian-tea"
-        },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "assam"
-        },
-        {
-          "code": "golden-tips"
-        },
-        {
-          "code": "premium"
-        }
-      ],
-      "origins": [
-        {
-          "country": "IN",
-          "region": "Assam",
-          "area": "Upper Assam",
-          "latitude": 26.7509,
-          "longitude": 94.2037,
-          "altitude": 100
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "INDIA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "90-95°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "3-4 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-IN-ASM-GRN-001",
-      "sku": "IN-ASSAM-GREEN-001",
-      "order": 5,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Ассам Зелёный",
-          "description": "Редкий зелёный чай из листьев Camellia sinensis var. assamica. Более полное тело, чем у китайских зелёных чаёв. Травянистый вкус с лёгкой терпкостью, высокое содержание катехинов.",
-          "seo": "assam-green"
-        },
-        {
-          "lang": "en-US",
-          "name": "Assam Green Tea",
-          "description": "Rare green tea from Camellia sinensis var. assamica leaves. Fuller body than Chinese green teas. Grassy taste with light astringency, high catechin content.",
-          "seo": "assam-green"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "阿萨姆绿茶",
-          "description": "由阿萨姆大叶种茶树制成的稀有绿茶。比中国绿茶更醇厚。草香带有轻微涩味，儿茶素含量高。",
-          "seo": "asamu-lvcha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "indian-tea"
-        },
-        {
-          "code": "green-tea"
-        },
-        {
-          "code": "assam"
-        },
-        {
-          "code": "rare"
-        }
-      ],
-      "origins": [
-        {
-          "country": "IN",
-          "region": "Assam",
-          "area": "Upper Assam",
-          "latitude": 26.7509,
-          "longitude": 94.2037,
-          "altitude": 100
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "GREEN"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "INDIA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "MEDIUM"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "80-85°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "2-3 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "2-3 г / 200 мл"
-        }
-      ]
-    },
-    {
-      "code": "TEA-IN-MAS-001",
-      "sku": "IN-MASALA-CHAI-001",
-      "order": 6,
-      "published": true,
-      "translations": [
-        {
-          "lang": "ru-RU",
-          "name": "Масала Чай",
-          "description": "Традиционный индийский чай со специями на основе крепкого ассамского CTC. Кардамон, корица, имбирь, гвоздика, чёрный перец. Заваривается с молоком и сахаром. Согревающий пряный напиток.",
-          "seo": "masala-chai"
-        },
-        {
-          "lang": "en-US",
-          "name": "Masala Chai",
-          "description": "Traditional Indian spiced tea based on strong Assam CTC. Cardamom, cinnamon, ginger, cloves, black pepper. Brewed with milk and sugar. Warming spicy drink.",
-          "seo": "masala-chai"
-        },
-        {
-          "lang": "zh-CN",
-          "name": "马萨拉茶",
-          "description": "以浓郁阿萨姆CTC为基础的传统印度香料茶。含有小豆蔻、肉桂、姜、丁香、黑胡椒。需加奶和糖冲泡。温暖辛香的饮品。",
-          "seo": "masala-cha"
-        }
-      ],
-      "tags": [
-        {
-          "code": "indian-tea"
-        },
-        {
-          "code": "black-tea"
-        },
-        {
-          "code": "spiced"
-        },
-        {
-          "code": "masala"
-        },
-        {
-          "code": "chai"
-        },
-        {
-          "code": "traditional"
-        }
-      ],
-      "origins": [
-        {
-          "country": "IN",
-          "region": "Assam",
-          "area": "Upper Assam",
-          "latitude": 26.7509,
-          "longitude": 94.2037,
-          "altitude": 100
-        }
-      ],
-      "specifications": [
-        {
-          "code": "TEA_TYPE",
-          "type": "Option",
-          "option": "BLACK"
-        },
-        {
-          "code": "ORIGIN_COUNTRY",
-          "type": "Option",
-          "option": "INDIA"
-        },
-        {
-          "code": "CAFFEINE_LEVEL",
-          "type": "Option",
-          "option": "HIGH"
-        },
-        {
-          "code": "BREWING_TEMP",
-          "type": "CustomText",
-          "value": "100°C"
-        },
-        {
-          "code": "BREWING_TIME",
-          "type": "CustomText",
-          "value": "5-7 мин"
-        },
-        {
-          "code": "BREWING_AMOUNT",
-          "type": "CustomText",
-          "value": "3-4 г / 200 мл + молоко"
-        }
-      ]
-    }
-  ]
-}
+      }
+    ],
+    "specifications": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1,
+        "option": "SPEC-TYPE-RED"
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2,
+        "option": "SPEC-CAFF-HIGH"
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3,
+        "value": "100°C"
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4,
+        "value": "5-7 мин"
+      },
+      {
+        "attribute": "SPEC-BREW-AMOUNT",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5,
+        "value": "3-4 г / 200 мл + молоко"
+      }
+    ]
+  }
+]
