@@ -30,3 +30,6 @@ _output/
 # Backup files
 *.bak
 backup/
+
+# Claude Code local settings
+.claude/settings.local.json

@@ -1,0 +1,72 @@
+{
+  "plansDirectory": "./docs/plans",
+  "language": "russian",
+  "showTurnDuration": true,
+  "spinnerTipsEnabled": true,
+  "env": {
+    "ENABLE_TOOL_SEARCH": "auto:5",
+    "BASH_DEFAULT_TIMEOUT_MS": "120000"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(dotnet *)",
+      "Bash(pwsh *)",
+      "Bash(git status)",
+      "Bash(git status *)",
+      "Bash(git diff)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git branch *)",
+      "Bash(git fetch *)",
+      "Bash(git remote *)",
+      "Bash(npm *)",
+      "Bash(pnpm *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(gh *)",
+      "Bash(docker ps *)",
+      "Bash(docker logs *)",
+      "Bash(docker compose *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(which *)",
+      "Bash(echo *)"
+    ],
+    "ask": [
+      "Bash(git push *)",
+      "Bash(git reset *)",
+      "Bash(git checkout *)",
+      "Bash(git rebase *)",
+      "Bash(git merge *)",
+      "Bash(rm -rf *)",
+      "Bash(docker rm *)",
+      "Bash(docker rmi *)"
+    ],
+    "deny": [
+      "Read(**/.env.local)",
+      "Read(**/secrets/**)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)"
+    ],
+    "additionalDirectories": [
+      "../libraries/DKH.Architecture",
+      "../DKH.Infrastructure"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ $exit_code -ne 0 ]; then echo '⚠️ Command failed with exit code: '$exit_code; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
