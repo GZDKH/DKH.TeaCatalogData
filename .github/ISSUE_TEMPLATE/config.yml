@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Architecture Documentation
+    url: https://github.com/GZDKH/DKH.Architecture
+    about: View architecture docs, service profiles, and design guidelines
+  - name: Project Board
+    url: https://github.com/orgs/GZDKH/projects/19
+    about: View the project board for task tracking and status

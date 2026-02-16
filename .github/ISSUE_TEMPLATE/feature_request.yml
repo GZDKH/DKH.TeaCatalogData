@@ -1,0 +1,83 @@
+name: Feature Request
+description: Suggest a new feature or enhancement
+title: "feat(<scope>): "
+labels: ["type:feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature! Please fill out the form below.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of the feature.
+      placeholder: Describe the feature...
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Why is this feature needed? What problem does it solve?
+      placeholder: |
+        As a [user/developer/admin], I want to [action] so that [benefit].
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: How would you like this to work?
+      placeholder: Describe your proposed solution...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Any alternative solutions or features you've considered.
+      placeholder: Describe alternatives...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: service
+    attributes:
+      label: Target Service
+      description: Which service would this feature belong to?
+      options:
+        - DKH.Platform
+        - DKH.ProductCatalogService
+        - DKH.ReferenceService
+        - DKH.OrderService
+        - DKH.CartService
+        - DKH.CustomerService
+        - DKH.ReviewService
+        - DKH.StorefrontService
+        - DKH.ApiManagementService
+        - DKH.NotificationService
+        - DKH.TelegramBotService
+        - DKH.AdminGateway
+        - DKH.StorefrontGateway
+        - DKH.McpGateway
+        - DKH.Admin.Web.UI
+        - DKH.Storefront.Web.UI
+        - DKH.KuaipiWorker
+        - DKH.Infrastructure
+        - Multiple services
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context, mockups, diagrams, or related issues.
+    validations:
+      required: false
