@@ -63,7 +63,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-LIGHT",
+        "option": "SPEC-FERM-15-30",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -192,7 +192,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-LIGHT",
+        "option": "SPEC-FERM-15-30",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -328,7 +328,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-LIGHT",
+        "option": "SPEC-FERM-15-30",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -461,7 +461,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-LIGHT",
+        "option": "SPEC-FERM-15-30",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -597,7 +597,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-LIGHT",
+        "option": "SPEC-FERM-15-30",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -622,13 +622,6 @@
         "type": "Option",
         "showOnPage": true,
         "order": 5
-      },
-      {
-        "attribute": "SPEC-AROMA",
-        "option": "SPEC-AROMA-SWEET",
-        "type": "Option",
-        "showOnPage": true,
-        "order": 6
       },
       {
         "attribute": "SPEC-ALTITUDE",
@@ -726,7 +719,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-LIGHT",
+        "option": "SPEC-FERM-15-30",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -848,7 +841,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-LIGHT",
+        "option": "SPEC-FERM-15-30",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -873,13 +866,6 @@
         "type": "Option",
         "showOnPage": true,
         "order": 5
-      },
-      {
-        "attribute": "SPEC-AROMA",
-        "option": "SPEC-AROMA-SWEET",
-        "type": "Option",
-        "showOnPage": true,
-        "order": 6
       },
       {
         "attribute": "SPEC-BREW-TEMP",
