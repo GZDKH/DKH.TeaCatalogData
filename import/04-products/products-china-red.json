@@ -67,14 +67,14 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-100",
+        "option": "SPEC-FERM-85-100",
         "type": "Option",
         "showOnPage": true,
         "order": 2
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
@@ -195,14 +195,14 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-100",
+        "option": "SPEC-FERM-85-100",
         "type": "Option",
         "showOnPage": true,
         "order": 2
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
@@ -320,14 +320,14 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-100",
+        "option": "SPEC-FERM-85-100",
         "type": "Option",
         "showOnPage": true,
         "order": 2
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
@@ -445,14 +445,14 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-100",
+        "option": "SPEC-FERM-85-100",
         "type": "Option",
         "showOnPage": true,
         "order": 2
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
@@ -570,14 +570,14 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-100",
+        "option": "SPEC-FERM-85-100",
         "type": "Option",
         "showOnPage": true,
         "order": 2
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
@@ -698,14 +698,14 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-100",
+        "option": "SPEC-FERM-85-100",
         "type": "Option",
         "showOnPage": true,
         "order": 2
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
@@ -820,14 +820,14 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-100",
+        "option": "SPEC-FERM-85-100",
         "type": "Option",
         "showOnPage": true,
         "order": 2
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
@@ -942,14 +942,14 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-100",
+        "option": "SPEC-FERM-85-100",
         "type": "Option",
         "showOnPage": true,
         "order": 2
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
@@ -1070,14 +1070,14 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-100",
+        "option": "SPEC-FERM-85-100",
         "type": "Option",
         "showOnPage": true,
         "order": 2
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
@@ -1175,14 +1175,14 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-100",
+        "option": "SPEC-FERM-85-100",
         "type": "Option",
         "showOnPage": true,
         "order": 2
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3

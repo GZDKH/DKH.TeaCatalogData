@@ -59,14 +59,14 @@
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
       },
       {
-        "attribute": "SPEC-SEASON",
-        "option": "SPEC-SEASON-SPRING",
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
         "type": "Option",
         "showOnPage": true,
         "order": 4
@@ -168,7 +168,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-5",
+        "option": "SPEC-FERM-5-10",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -181,8 +181,8 @@
         "order": 3
       },
       {
-        "attribute": "SPEC-SEASON",
-        "option": "SPEC-SEASON-SPRING",
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
         "type": "Option",
         "showOnPage": true,
         "order": 4
@@ -291,14 +291,14 @@
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
       },
       {
-        "attribute": "SPEC-SEASON",
-        "option": "SPEC-SEASON-SPRING",
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
         "type": "Option",
         "showOnPage": true,
         "order": 4
@@ -404,14 +404,14 @@
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
       },
       {
-        "attribute": "SPEC-SEASON",
-        "option": "SPEC-SEASON-SPRING",
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
         "type": "Option",
         "showOnPage": true,
         "order": 4
@@ -517,14 +517,14 @@
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
       },
       {
-        "attribute": "SPEC-SEASON",
-        "option": "SPEC-SEASON-SPRING",
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
         "type": "Option",
         "showOnPage": true,
         "order": 4
@@ -633,14 +633,14 @@
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
       },
       {
-        "attribute": "SPEC-SEASON",
-        "option": "SPEC-SEASON-SPRING",
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
         "type": "Option",
         "showOnPage": true,
         "order": 4
@@ -746,14 +746,14 @@
       },
       {
         "attribute": "SPEC-CAFFEINE",
-        "option": "SPEC-CAFF-MEDIUM",
+        "option": "SPEC-CAFF-MED",
         "type": "Option",
         "showOnPage": true,
         "order": 3
       },
       {
-        "attribute": "SPEC-SEASON",
-        "option": "SPEC-SEASON-SPRING",
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
         "type": "Option",
         "showOnPage": true,
         "order": 4
