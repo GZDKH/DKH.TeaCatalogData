@@ -173,12 +173,17 @@ async function ensureDomain(token, storefrontId) {
     const domains = existing.json.domains || existing.json.items || [];
     const found = domains.find((d) => d.domain === STOREFRONT_DOMAIN);
     if (found) {
-      console.log(`  Domain '${STOREFRONT_DOMAIN}' already linked`);
+      const domainId = extractGuid(found.id);
+      const verified = found.isVerified;
+      console.log(`  Domain '${STOREFRONT_DOMAIN}' already linked (verified: ${verified})`);
+      if (!verified) {
+        await verifyDomain(token, storefrontId, domainId);
+      }
       return { ok: true };
     }
   }
 
-  // Add domain
+  // Add domain (loopback domains are auto-verified by StorefrontService)
   console.log(`  Adding domain '${STOREFRONT_DOMAIN}'...`);
   const res = await adminPost(`/api/v1/storefronts/${storefrontId}/domains`, token, {
     domain: STOREFRONT_DOMAIN,
@@ -186,12 +191,28 @@ async function ensureDomain(token, storefrontId) {
   });
 
   if (res.status >= 200 && res.status < 300) {
-    console.log('  Domain added');
+    const isVerified = res.json?.domain?.isVerified;
+    console.log(`  Domain added (verified: ${isVerified})`);
     return { ok: true };
   }
 
   console.log(`  FAILED: HTTP ${res.status} — ${res.body.substring(0, 200)}`);
   return { ok: false, status: res.status };
+}
+
+async function verifyDomain(token, storefrontId, domainId) {
+  console.log(`  Verifying domain...`);
+  const res = await adminPost(`/api/v1/storefronts/${storefrontId}/domains/${domainId}/verify`, token);
+  if (res.status === 200 && res.json) {
+    const verified = res.json.isVerified;
+    console.log(`  Verification result: ${verified}`);
+    if (!verified) {
+      console.log('  Note: DNS verification failed (expected for localhost).');
+      console.log('  Loopback domains are auto-verified by StorefrontService on creation.');
+    }
+  } else {
+    console.log(`  Verify returned HTTP ${res.status}`);
+  }
 }
 
 async function updateBranding(token, storefrontId) {
