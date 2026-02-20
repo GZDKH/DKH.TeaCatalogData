@@ -6,7 +6,6 @@
     "published": true,
     "brand": "BRAND-YAME",
     "price": 31,
-    "markAsNew": true,
     "translations": [
       {
         "lang": "en-US",
@@ -305,12 +304,6 @@
           "lng": 120.108
         },
         "notes": "Lion Peak — Imperial grade terroir since Ming Dynasty"
-      }
-    ],
-    "related": [
-      {
-        "product": "TEA-CN-BILUOCHUN",
-        "order": 1
       }
     ],
     "specifications": [
