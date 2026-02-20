@@ -149,25 +149,21 @@ async function findOrCreateStorefront(token) {
     },
   });
 
-  if (res.status !== 200 && res.status !== 201) {
-    throw new Error(`Failed to create storefront: HTTP ${res.status} — ${res.body.substring(0, 300)}`);
-  }
-
-  // Re-fetch via list to get clean ID (create response may have wrapped GuidValue)
-  const refetch = await adminGet('/api/v1/storefronts?pageSize=100', token);
-  if (refetch.status === 200 && refetch.json) {
-    const created = (refetch.json.items || []).find((s) => s.code === STOREFRONT_CODE);
-    if (created) {
-      created.id = extractGuid(created.id);
-      console.log(`  Created: ${created.id}`);
-      return created;
+  // Re-fetch via list — AdminGateway may return 500 due to CreatedAtAction bug
+  // even when the storefront was actually created in the backend
+  if (res.status === 200 || res.status === 201 || res.status === 500) {
+    const refetch = await adminGet('/api/v1/storefronts?pageSize=100', token);
+    if (refetch.status === 200 && refetch.json) {
+      const created = (refetch.json.items || []).find((s) => s.code === STOREFRONT_CODE);
+      if (created) {
+        created.id = extractGuid(created.id);
+        console.log(`  Created: ${created.id}`);
+        return created;
+      }
     }
   }
 
-  const sf = res.json?.item || res.json?.data?.item || res.json;
-  sf.id = extractGuid(sf.id);
-  console.log(`  Created: ${sf.id}`);
-  return sf;
+  throw new Error(`Failed to create storefront: HTTP ${res.status} — ${res.body.substring(0, 300)}`);
 }
 
 async function ensureDomain(token, storefrontId) {
