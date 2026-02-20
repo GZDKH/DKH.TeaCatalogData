@@ -325,7 +325,9 @@ function Link-Catalogs([string]$Token, [string]$StorefrontId) {
         if ($existing.Json.items) { $items = @($existing.Json.items) }
         elseif ($existing.Json.data -and $existing.Json.data.items) { $items = @($existing.Json.data.items) }
         foreach ($c in $items) {
-            [void]$linkedIds.Add($c.catalogId)
+            # catalogId may be a wrapped GuidValue — normalize it
+            $normalizedId = Extract-Guid $c.catalogId
+            [void]$linkedIds.Add([string]$normalizedId)
         }
     }
 
@@ -346,10 +348,11 @@ function Link-Catalogs([string]$Token, [string]$StorefrontId) {
     $failed = 0
     for ($i = 0; $i -lt $catalogs.Count; $i++) {
         $catalog = $catalogs[$i]
-        if ($linkedIds.Contains($catalog.id)) { continue }
+        $catalogId = [string](Extract-Guid $catalog.id)
+        if ($linkedIds.Contains($catalogId)) { continue }
 
         $res = AdminPost "/api/v1/storefronts/$StorefrontId/catalogs" $Token @{
-            catalogId    = $catalog.id
+            catalogId    = $catalogId
             displayOrder = $i + 1
             isDefault    = ($i -eq 0)
             isVisible    = $true
