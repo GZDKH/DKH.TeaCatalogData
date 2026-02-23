@@ -107,14 +107,27 @@ Refs GZDKH/<repo>#<number>"
 git push origin <branch-name>
 ```
 
-### STEP 6: After merge — clean up locally
+### STEP 6: After merge — sync GitHub mirror and clean up
 
-Once the MR is merged (remote branch deleted automatically):
+Once the MR is merged on GitLab (`remove_source_branch` deletes the branch on GitLab only):
+
+**IMPORTANT**: GitLab auto-merge does NOT sync to GitHub. You MUST manually push `main` and delete stale branches.
 
 ```bash
+# 1. Pull merged main from GitLab
 git checkout main && git pull origin main
-git branch -d <branch-name>
+
+# 2. Push main to GitHub mirror (dual-push updates both remotes)
+git push origin main
+
+# 3. Delete stale feature branch from GitHub (GitLab already removed it via MR option)
+git push origin --delete <branch-name>
+
+# 4. Delete local branch (use -D if git complains about "not fully merged" — it was merged via MR)
+git branch -d <branch-name> || git branch -D <branch-name>
 ```
+
+**Why this is needed**: The `merge_request.remove_source_branch` option only deletes the branch on GitLab. The merge commit is also only on GitLab's `main`. Since GitHub is a mirror with dual-push, we must explicitly push `main` and delete the stale branch to keep GitHub in sync.
 
 Then follow `github-tasks.md` STEP 5: close the issue and move to "Done".
 
@@ -157,15 +170,18 @@ git push origin <branch-name> \
 Complete flow from start to finish:
 
 ```
-1. gh issue create ...                              → github-tasks.md STEP 1
-2. gh project item-edit ... → "In progress"         → github-tasks.md STEP 2
-3. git checkout -b feat/42-add-feature main         → THIS RULE STEP 2
-4. <develop, commit, push>                          → THIS RULE STEP 3
-5. git push ... -o merge_request.create ...         → THIS RULE STEP 4
-6. gh project item-edit ... → "In review"           → THIS RULE STEP 4
-7. <CI passes → auto-merge>                         → THIS RULE STEP 5-6
-8. gh issue close ...                               → github-tasks.md STEP 5
-9. gh project item-edit ... → "Done"                → github-tasks.md STEP 5
+1.  gh issue create ...                              → github-tasks.md STEP 1
+2.  gh project item-edit ... → "In progress"         → github-tasks.md STEP 2
+3.  git checkout -b feat/42-add-feature main         → THIS RULE STEP 2
+4.  <develop, commit, push>                          → THIS RULE STEP 3
+5.  git push ... -o merge_request.create ...         → THIS RULE STEP 4
+6.  gh project item-edit ... → "In review"           → THIS RULE STEP 4
+7.  <CI passes → auto-merge on GitLab>               → THIS RULE STEP 5
+8.  git pull origin main && git push origin main     → THIS RULE STEP 6 (sync GitHub mirror)
+9.  git push origin --delete <branch>                → THIS RULE STEP 6 (cleanup stale branch)
+10. git branch -D <branch>                           → THIS RULE STEP 6 (cleanup local)
+11. gh issue close ...                               → github-tasks.md STEP 5
+12. gh project item-edit ... → "Done"                → github-tasks.md STEP 5
 ```
 
 ## Rules (NON-NEGOTIABLE)
@@ -178,4 +194,5 @@ Complete flow from start to finish:
 - **ALWAYS** include the GitHub issue number in the branch name
 - **MR title** MUST follow Conventional Commits format
 - **If MR already exists** — just `git push origin <branch>` (no push options needed)
+- **ALWAYS** sync GitHub mirror after MR merge — `git push origin main` + delete stale branch
 - **GitLab API is behind Cloudflare** — use git push options (SSH), NOT glab CLI or curl API
