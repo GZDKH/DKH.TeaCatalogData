@@ -1,42 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-
-const KEYCLOAK_URL = 'http://localhost:8080';
-const GATEWAY_URL = 'http://localhost:5005';
-const REALM = 'dkh';
-const CLIENT_ID = 'dkh-admin-gateway';
-const CLIENT_SECRET = 'admin-gateway-secret-change-me';
-const USERNAME = 'superadmin';
-const PASSWORD = 'superadmin123';
-
-async function getToken() {
-    const body = new URLSearchParams({
-        grant_type: 'password',
-        client_id: CLIENT_ID,
-        client_secret: CLIENT_SECRET,
-        username: USERNAME,
-        password: PASSWORD,
-    }).toString();
-
-    return new Promise((resolve, reject) => {
-        const req = http.request(`${KEYCLOAK_URL}/realms/${REALM}/protocol/openid-connect/token`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        }, (res) => {
-            let data = '';
-            res.on('data', c => data += c);
-            res.on('end', () => {
-                const json = JSON.parse(data);
-                if (json.access_token) resolve(json.access_token);
-                else reject(new Error('Token error: ' + data));
-            });
-        });
-        req.on('error', reject);
-        req.write(body);
-        req.end();
-    });
-}
+const { GATEWAY_URL, getToken } = require('./lib/config');
 
 async function importFile(token, profile, filePath) {
     const fileName = path.basename(filePath);

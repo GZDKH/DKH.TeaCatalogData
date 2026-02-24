@@ -1,37 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-
-const KEYCLOAK_URL = 'http://localhost:8080';
-const GATEWAY_URL = 'http://localhost:5005';
-
-async function getToken() {
-    const body = new URLSearchParams({
-        grant_type: 'password',
-        client_id: 'dkh-admin-gateway',
-        client_secret: 'admin-gateway-secret-change-me',
-        username: 'superadmin',
-        password: 'superadmin123',
-    }).toString();
-
-    return new Promise((resolve, reject) => {
-        const req = http.request(`${KEYCLOAK_URL}/realms/dkh/protocol/openid-connect/token`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        }, (res) => {
-            let data = '';
-            res.on('data', c => data += c);
-            res.on('end', () => {
-                const json = JSON.parse(data);
-                if (json.access_token) resolve(json.access_token);
-                else reject(new Error('Token error: ' + data));
-            });
-        });
-        req.on('error', reject);
-        req.write(body);
-        req.end();
-    });
-}
+const { GATEWAY_URL, getToken } = require('./lib/config');
 
 async function importFile(token, profile, filePath) {
     const fileName = path.basename(filePath);
