@@ -30,17 +30,22 @@
 #>
 
 param(
-    [string]$KeycloakUrl = "http://localhost:8080",
-    [string]$GatewayUrl = "http://localhost:5005",
-    [string]$StorefrontGatewayUrl = "http://localhost:5006",
-    [string]$Realm = "dkh",
-    [string]$ClientId = "dkh-admin-gateway",
-    [string]$ClientSecret = "admin-gateway-secret-change-me",
-    [string]$Username = "superadmin",
-    [string]$Password = "superadmin123",
+    [string]$KeycloakUrl = ($env:KEYCLOAK_URL ?? "http://localhost:8080"),
+    [string]$GatewayUrl = ($env:GATEWAY_URL ?? "http://localhost:5005"),
+    [string]$StorefrontGatewayUrl = ($env:STOREFRONT_GATEWAY_URL ?? "http://localhost:5006"),
+    [string]$Realm = ($env:KEYCLOAK_REALM ?? "dkh"),
+    [string]$ClientId = ($env:KEYCLOAK_CLIENT_ID ?? "dkh-admin-gateway"),
+    [string]$ClientSecret = $env:KEYCLOAK_CLIENT_SECRET,
+    [string]$Username = $env:KEYCLOAK_USERNAME,
+    [string]$Password = $env:KEYCLOAK_PASSWORD,
     [string]$StorefrontCode = "tea-shop",
     [string]$Domain = "localhost"
 )
+
+# Validate required credentials
+if (-not $ClientSecret) { throw "KEYCLOAK_CLIENT_SECRET is required. Set it as an environment variable or pass -ClientSecret." }
+if (-not $Username) { throw "KEYCLOAK_USERNAME is required. Set it as an environment variable or pass -Username." }
+if (-not $Password) { throw "KEYCLOAK_PASSWORD is required. Set it as an environment variable or pass -Password." }
 
 $ErrorActionPreference = "Stop"
 
