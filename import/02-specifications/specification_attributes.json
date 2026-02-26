@@ -52,6 +52,19 @@
     ]
   },
   {
+    "code": "SPEC-LEAF-FORM",
+    "group": "SPEC-GROUP-PROCESSING",
+    "order": 4,
+    "published": true,
+    "filterable": true,
+    "comparable": false,
+    "translations": [
+      { "lang": "en-US", "name": "Leaf Shape" },
+      { "lang": "ru-RU", "name": "Форма листа" },
+      { "lang": "zh-CN", "name": "外形" }
+    ]
+  },
+  {
     "code": "SPEC-HARVEST",
     "group": "SPEC-GROUP-ORIGIN",
     "order": 2,
@@ -89,6 +102,19 @@
       { "lang": "en-US", "name": "Cultivar" },
       { "lang": "ru-RU", "name": "Культивар" },
       { "lang": "zh-CN", "name": "品种" }
+    ]
+  },
+  {
+    "code": "SPEC-CULTIVATION",
+    "group": "SPEC-GROUP-BOTANICAL",
+    "order": 2,
+    "published": true,
+    "filterable": true,
+    "comparable": false,
+    "translations": [
+      { "lang": "en-US", "name": "Cultivation Method" },
+      { "lang": "ru-RU", "name": "Способ выращивания" },
+      { "lang": "zh-CN", "name": "种植方式" }
     ]
   },
   {

@@ -30,7 +30,8 @@
   { "code": "SPEC-ROAST-NONE", "attribute": "SPEC-ROAST", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Unroasted" }, { "lang": "ru-RU", "name": "Без обжарки" }, { "lang": "zh-CN", "name": "无焙火" }] },
   { "code": "SPEC-ROAST-LIGHT", "attribute": "SPEC-ROAST", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Light Roast (清香)" }, { "lang": "ru-RU", "name": "Лёгкая (清香)" }, { "lang": "zh-CN", "name": "轻焙火" }] },
   { "code": "SPEC-ROAST-MEDIUM", "attribute": "SPEC-ROAST", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Medium Roast (浓香)" }, { "lang": "ru-RU", "name": "Средняя (浓香)" }, { "lang": "zh-CN", "name": "中焙火" }] },
-  { "code": "SPEC-ROAST-HEAVY", "attribute": "SPEC-ROAST", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Heavy Roast (炭焙)" }, { "lang": "ru-RU", "name": "Сильная (炭焙)" }, { "lang": "zh-CN", "name": "重焙火" }] },
+  { "code": "SPEC-ROAST-HEAVY", "attribute": "SPEC-ROAST", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Heavy Roast (重焙火)" }, { "lang": "ru-RU", "name": "Сильная (重焙火)" }, { "lang": "zh-CN", "name": "重焙火" }] },
+  { "code": "SPEC-ROAST-CHARCOAL", "attribute": "SPEC-ROAST", "order": 5, "published": true, "translations": [{ "lang": "en-US", "name": "Charcoal Roast (炭焙)" }, { "lang": "ru-RU", "name": "Углевая (炭焙)" }, { "lang": "zh-CN", "name": "炭焙" }] },
 
   { "code": "SPEC-HARV-MINGQIAN", "attribute": "SPEC-HARVEST", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Pre-Qingming (明前)" }, { "lang": "ru-RU", "name": "До Цинмин (明前)" }, { "lang": "zh-CN", "name": "明前" }] },
   { "code": "SPEC-HARV-YUQIAN", "attribute": "SPEC-HARVEST", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Pre-Rain (雨前)" }, { "lang": "ru-RU", "name": "До дождей (雨前)" }, { "lang": "zh-CN", "name": "雨前" }] },
@@ -54,6 +55,10 @@
   { "code": "SPEC-AROMA-MARINE", "attribute": "SPEC-AROMA", "order": 8, "published": true, "translations": [{ "lang": "en-US", "name": "Marine/Seaweed" }, { "lang": "ru-RU", "name": "Морской" }, { "lang": "zh-CN", "name": "海苔香" }] },
   { "code": "SPEC-AROMA-ROASTED", "attribute": "SPEC-AROMA", "order": 9, "published": true, "translations": [{ "lang": "en-US", "name": "Roasted (焙香)" }, { "lang": "ru-RU", "name": "Жареный (焙香)" }, { "lang": "zh-CN", "name": "焙香" }] },
   { "code": "SPEC-AROMA-SMOKY", "attribute": "SPEC-AROMA", "order": 10, "published": true, "translations": [{ "lang": "en-US", "name": "Smoky (烟香)" }, { "lang": "ru-RU", "name": "Дымный (烟香)" }, { "lang": "zh-CN", "name": "烟香" }] },
+  { "code": "SPEC-AROMA-CITRUS", "attribute": "SPEC-AROMA", "order": 11, "published": true, "translations": [{ "lang": "en-US", "name": "Citrus (柑橘香)" }, { "lang": "ru-RU", "name": "Цитрусовый (柑橘香)" }, { "lang": "zh-CN", "name": "柑橘香" }] },
+  { "code": "SPEC-AROMA-SPICY", "attribute": "SPEC-AROMA", "order": 12, "published": true, "translations": [{ "lang": "en-US", "name": "Spicy (辛香)" }, { "lang": "ru-RU", "name": "Пряный (辛香)" }, { "lang": "zh-CN", "name": "辛香" }] },
+  { "code": "SPEC-AROMA-MILKY", "attribute": "SPEC-AROMA", "order": 13, "published": true, "translations": [{ "lang": "en-US", "name": "Milky/Creamy (奶香)" }, { "lang": "ru-RU", "name": "Молочный/Сливочный (奶香)" }, { "lang": "zh-CN", "name": "奶香" }] },
+  { "code": "SPEC-AROMA-CAMPHOR", "attribute": "SPEC-AROMA", "order": 14, "published": true, "translations": [{ "lang": "en-US", "name": "Camphor (樟香)" }, { "lang": "ru-RU", "name": "Камфорный (樟香)" }, { "lang": "zh-CN", "name": "樟香" }] },
 
   { "code": "SPEC-BODY-LIGHT", "attribute": "SPEC-BODY", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Light" }, { "lang": "ru-RU", "name": "Лёгкое" }, { "lang": "zh-CN", "name": "轻盈" }] },
   { "code": "SPEC-BODY-MEDIUM", "attribute": "SPEC-BODY", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Medium" }, { "lang": "ru-RU", "name": "Среднее" }, { "lang": "zh-CN", "name": "中等" }] },
@@ -70,5 +75,36 @@
 
   { "code": "SPEC-ANTH-LOW", "attribute": "SPEC-ANTHOCYANIN", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Low" }, { "lang": "ru-RU", "name": "Низкое" }, { "lang": "zh-CN", "name": "低含量" }] },
   { "code": "SPEC-ANTH-MED", "attribute": "SPEC-ANTHOCYANIN", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Medium" }, { "lang": "ru-RU", "name": "Среднее" }, { "lang": "zh-CN", "name": "中等" }] },
-  { "code": "SPEC-ANTH-HIGH", "attribute": "SPEC-ANTHOCYANIN", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "High (Purple leaf)" }, { "lang": "ru-RU", "name": "Высокое (Пурпурный лист)" }, { "lang": "zh-CN", "name": "高 (紫叶)" }] }
+  { "code": "SPEC-ANTH-HIGH", "attribute": "SPEC-ANTHOCYANIN", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "High (Purple leaf)" }, { "lang": "ru-RU", "name": "Высокое (Пурпурный лист)" }, { "lang": "zh-CN", "name": "高 (紫叶)" }] },
+
+  { "code": "SPEC-COLOR-GREEN", "attribute": "SPEC-LIQUOR-COLOR", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Clear Green (清绿)" }, { "lang": "ru-RU", "name": "Прозрачно-зелёный (清绿)" }, { "lang": "zh-CN", "name": "清绿" }] },
+  { "code": "SPEC-COLOR-PALE-YELLOW", "attribute": "SPEC-LIQUOR-COLOR", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Pale Yellow (浅黄)" }, { "lang": "ru-RU", "name": "Бледно-жёлтый (浅黄)" }, { "lang": "zh-CN", "name": "浅黄" }] },
+  { "code": "SPEC-COLOR-GOLDEN", "attribute": "SPEC-LIQUOR-COLOR", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Golden (金黄)" }, { "lang": "ru-RU", "name": "Золотистый (金黄)" }, { "lang": "zh-CN", "name": "金黄" }] },
+  { "code": "SPEC-COLOR-AMBER", "attribute": "SPEC-LIQUOR-COLOR", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Amber (琥珀)" }, { "lang": "ru-RU", "name": "Янтарный (琥珀)" }, { "lang": "zh-CN", "name": "琥珀" }] },
+  { "code": "SPEC-COLOR-ORANGE", "attribute": "SPEC-LIQUOR-COLOR", "order": 5, "published": true, "translations": [{ "lang": "en-US", "name": "Orange (橙色)" }, { "lang": "ru-RU", "name": "Оранжевый (橙色)" }, { "lang": "zh-CN", "name": "橙色" }] },
+  { "code": "SPEC-COLOR-RED", "attribute": "SPEC-LIQUOR-COLOR", "order": 6, "published": true, "translations": [{ "lang": "en-US", "name": "Red (红色)" }, { "lang": "ru-RU", "name": "Красный (红色)" }, { "lang": "zh-CN", "name": "红色" }] },
+  { "code": "SPEC-COLOR-DARK-BROWN", "attribute": "SPEC-LIQUOR-COLOR", "order": 7, "published": true, "translations": [{ "lang": "en-US", "name": "Dark Brown (深褐)" }, { "lang": "ru-RU", "name": "Тёмно-коричневый (深褐)" }, { "lang": "zh-CN", "name": "深褐" }] },
+  { "code": "SPEC-COLOR-PURPLE", "attribute": "SPEC-LIQUOR-COLOR", "order": 8, "published": true, "translations": [{ "lang": "en-US", "name": "Purple-Red (紫红)" }, { "lang": "ru-RU", "name": "Пурпурно-красный (紫红)" }, { "lang": "zh-CN", "name": "紫红" }] },
+
+  { "code": "SPEC-TASTE-SWEET", "attribute": "SPEC-TASTE", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Sweet (甘甜)" }, { "lang": "ru-RU", "name": "Сладкий (甘甜)" }, { "lang": "zh-CN", "name": "甘甜" }] },
+  { "code": "SPEC-TASTE-UMAMI", "attribute": "SPEC-TASTE", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Umami (鲜爽)" }, { "lang": "ru-RU", "name": "Умами (鲜爽)" }, { "lang": "zh-CN", "name": "鲜爽" }] },
+  { "code": "SPEC-TASTE-MELLOW", "attribute": "SPEC-TASTE", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Mellow (醇厚)" }, { "lang": "ru-RU", "name": "Мягкий/Насыщенный (醇厚)" }, { "lang": "zh-CN", "name": "醇厚" }] },
+  { "code": "SPEC-TASTE-BRISK", "attribute": "SPEC-TASTE", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Brisk (鲜活)" }, { "lang": "ru-RU", "name": "Бодрящий (鲜活)" }, { "lang": "zh-CN", "name": "鲜活" }] },
+  { "code": "SPEC-TASTE-ASTRINGENT", "attribute": "SPEC-TASTE", "order": 5, "published": true, "translations": [{ "lang": "en-US", "name": "Astringent (收敛)" }, { "lang": "ru-RU", "name": "Терпкий (收敛)" }, { "lang": "zh-CN", "name": "收敛" }] },
+  { "code": "SPEC-TASTE-BITTER-SWEET", "attribute": "SPEC-TASTE", "order": 6, "published": true, "translations": [{ "lang": "en-US", "name": "Bitter-sweet (回甘)" }, { "lang": "ru-RU", "name": "Горько-сладкий (回甘)" }, { "lang": "zh-CN", "name": "回甘" }] },
+
+  { "code": "SPEC-FORM-FLAT", "attribute": "SPEC-LEAF-FORM", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Flat (扁形)" }, { "lang": "ru-RU", "name": "Плоский (扁形)" }, { "lang": "zh-CN", "name": "扁形" }] },
+  { "code": "SPEC-FORM-NEEDLE", "attribute": "SPEC-LEAF-FORM", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Needle (针形)" }, { "lang": "ru-RU", "name": "Игольчатый (针形)" }, { "lang": "zh-CN", "name": "针形" }] },
+  { "code": "SPEC-FORM-SPIRAL", "attribute": "SPEC-LEAF-FORM", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Spiral (卷曲)" }, { "lang": "ru-RU", "name": "Спиральный (卷曲)" }, { "lang": "zh-CN", "name": "卷曲" }] },
+  { "code": "SPEC-FORM-PEARL", "attribute": "SPEC-LEAF-FORM", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Pearl/Ball (珠形)" }, { "lang": "ru-RU", "name": "Жемчужный (珠形)" }, { "lang": "zh-CN", "name": "珠形" }] },
+  { "code": "SPEC-FORM-STRIP", "attribute": "SPEC-LEAF-FORM", "order": 5, "published": true, "translations": [{ "lang": "en-US", "name": "Strip (条形)" }, { "lang": "ru-RU", "name": "Полосовидный (条形)" }, { "lang": "zh-CN", "name": "条形" }] },
+  { "code": "SPEC-FORM-CAKE", "attribute": "SPEC-LEAF-FORM", "order": 6, "published": true, "translations": [{ "lang": "en-US", "name": "Cake/Compressed (饼形)" }, { "lang": "ru-RU", "name": "Прессованный блин (饼形)" }, { "lang": "zh-CN", "name": "饼形" }] },
+  { "code": "SPEC-FORM-BRICK", "attribute": "SPEC-LEAF-FORM", "order": 7, "published": true, "translations": [{ "lang": "en-US", "name": "Brick (砖形)" }, { "lang": "ru-RU", "name": "Кирпич (砖形)" }, { "lang": "zh-CN", "name": "砖形" }] },
+  { "code": "SPEC-FORM-LOOSE", "attribute": "SPEC-LEAF-FORM", "order": 8, "published": true, "translations": [{ "lang": "en-US", "name": "Loose Leaf (散茶)" }, { "lang": "ru-RU", "name": "Рассыпной (散茶)" }, { "lang": "zh-CN", "name": "散茶" }] },
+
+  { "code": "SPEC-CULT-CONVENTIONAL", "attribute": "SPEC-CULTIVATION", "order": 1, "published": true, "translations": [{ "lang": "en-US", "name": "Conventional" }, { "lang": "ru-RU", "name": "Обычное" }, { "lang": "zh-CN", "name": "常规种植" }] },
+  { "code": "SPEC-CULT-ECOLOGICAL", "attribute": "SPEC-CULTIVATION", "order": 2, "published": true, "translations": [{ "lang": "en-US", "name": "Ecological (生态茶)" }, { "lang": "ru-RU", "name": "Экологическое (生态茶)" }, { "lang": "zh-CN", "name": "生态茶" }] },
+  { "code": "SPEC-CULT-ORGANIC", "attribute": "SPEC-CULTIVATION", "order": 3, "published": true, "translations": [{ "lang": "en-US", "name": "Organic (有机茶)" }, { "lang": "ru-RU", "name": "Органическое (有机茶)" }, { "lang": "zh-CN", "name": "有机茶" }] },
+  { "code": "SPEC-CULT-WILD", "attribute": "SPEC-CULTIVATION", "order": 4, "published": true, "translations": [{ "lang": "en-US", "name": "Wild (野生茶)" }, { "lang": "ru-RU", "name": "Дикорастущий (野生茶)" }, { "lang": "zh-CN", "name": "野生茶" }] },
+  { "code": "SPEC-CULT-OLD-TREE", "attribute": "SPEC-CULTIVATION", "order": 5, "published": true, "translations": [{ "lang": "en-US", "name": "Old Tree (古树茶)" }, { "lang": "ru-RU", "name": "Старые деревья (古树茶)" }, { "lang": "zh-CN", "name": "古树茶" }] }
 ]
