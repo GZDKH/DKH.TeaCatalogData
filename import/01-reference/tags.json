@@ -3285,5 +3285,225 @@
         "name": "黄茶"
       }
     ]
+  },
+  {
+    "code": "TAG-CHA-GAO",
+    "order": 174,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Cha Gao (Tea Paste)" },
+      { "lang": "ru-RU", "name": "Ча Гао (чайная паста)" },
+      { "lang": "zh-CN", "name": "茶膏" }
+    ]
+  },
+  {
+    "code": "TAG-SHAI-HONG",
+    "order": 175,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Shai Hong (Sun-dried Red)" },
+      { "lang": "ru-RU", "name": "Шай Хун (красный солнечной сушки)" },
+      { "lang": "zh-CN", "name": "晒红" }
+    ]
+  },
+  {
+    "code": "TAG-XIAO-QING-GAN",
+    "order": 176,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Xiao Qing Gan (Citrus Pu-erh)" },
+      { "lang": "ru-RU", "name": "Сяо Цин Гань (цитрусовый пуэр)" },
+      { "lang": "zh-CN", "name": "小青柑" }
+    ]
+  },
+  {
+    "code": "TAG-CHENPI",
+    "order": 177,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Chenpi (Aged Tangerine Peel)" },
+      { "lang": "ru-RU", "name": "Чэньпи (выдержанная мандариновая кожура)" },
+      { "lang": "zh-CN", "name": "陈皮" }
+    ]
+  },
+  {
+    "code": "TAG-DANCONG",
+    "order": 178,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Phoenix Dancong" },
+      { "lang": "ru-RU", "name": "Фениксовый даньцун" },
+      { "lang": "zh-CN", "name": "凤凰单丛" }
+    ]
+  },
+  {
+    "code": "TAG-MILAN-XIANG",
+    "order": 179,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Mi Lan Xiang (Honey Orchid)" },
+      { "lang": "ru-RU", "name": "Миланьсян (медовая орхидея)" },
+      { "lang": "zh-CN", "name": "蜜兰香" }
+    ]
+  },
+  {
+    "code": "TAG-YASHI-XIANG",
+    "order": 180,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Ya Shi Xiang (Duck Shit Aroma)" },
+      { "lang": "ru-RU", "name": "Яшисян (утиный помёт)" },
+      { "lang": "zh-CN", "name": "鸭屎香" }
+    ]
+  },
+  {
+    "code": "TAG-LIUBAO",
+    "order": 181,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Liu Bao Tea" },
+      { "lang": "ru-RU", "name": "Люйбао Ча" },
+      { "lang": "zh-CN", "name": "六堡茶" }
+    ]
+  },
+  {
+    "code": "TAG-ANHUA-HEICHA",
+    "order": 182,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Anhua Dark Tea" },
+      { "lang": "ru-RU", "name": "Аньхуа Хэйча" },
+      { "lang": "zh-CN", "name": "安化黑茶" }
+    ]
+  },
+  {
+    "code": "TAG-ECOLOGICAL",
+    "order": 183,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Ecological Tea" },
+      { "lang": "ru-RU", "name": "Экологический чай" },
+      { "lang": "zh-CN", "name": "生态茶" }
+    ]
+  },
+  {
+    "code": "TAG-UNESCO-2022",
+    "order": 184,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "UNESCO 2022" },
+      { "lang": "ru-RU", "name": "ЮНЕСКО 2022" },
+      { "lang": "zh-CN", "name": "UNESCO 2022非遗" }
+    ]
+  },
+  {
+    "code": "TAG-UNESCO-2023",
+    "order": 185,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "UNESCO 2023 (Jingmai)" },
+      { "lang": "ru-RU", "name": "ЮНЕСКО 2023 (Цзинмай)" },
+      { "lang": "zh-CN", "name": "UNESCO 2023景迈山" }
+    ]
+  },
+  {
+    "code": "TAG-SONG-ZHONG",
+    "order": 186,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Song Zhong (Song Dynasty)" },
+      { "lang": "ru-RU", "name": "Сун Чжун (эпоха Сун)" },
+      { "lang": "zh-CN", "name": "宋种" }
+    ]
+  },
+  {
+    "code": "TAG-BLOOMING-TEA",
+    "order": 187,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Blooming Tea" },
+      { "lang": "ru-RU", "name": "Связанный (распускающийся) чай" },
+      { "lang": "zh-CN", "name": "工艺花茶" }
+    ]
+  },
+  {
+    "code": "TAG-ROOIBOS",
+    "order": 188,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Rooibos" },
+      { "lang": "ru-RU", "name": "Ройбуш" },
+      { "lang": "zh-CN", "name": "南非红灌木茶" }
+    ]
+  },
+  {
+    "code": "TAG-YERBA-MATE",
+    "order": 189,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Yerba Mate" },
+      { "lang": "ru-RU", "name": "Йерба Мате" },
+      { "lang": "zh-CN", "name": "马黛茶" }
+    ]
+  },
+  {
+    "code": "TAG-KUDING",
+    "order": 190,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Ku Ding Cha (Bitter Tea)" },
+      { "lang": "ru-RU", "name": "Ку Дин Ча (горький чай)" },
+      { "lang": "zh-CN", "name": "苦丁茶" }
+    ]
+  },
+  {
+    "code": "TAG-JIAOGULAN",
+    "order": 191,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Jiaogulan (Gynostemma)" },
+      { "lang": "ru-RU", "name": "Цзяогулань (южный женьшень)" },
+      { "lang": "zh-CN", "name": "绞股蓝" }
+    ]
+  },
+  {
+    "code": "TAG-BUCKWHEAT-TEA",
+    "order": 192,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Buckwheat Tea" },
+      { "lang": "ru-RU", "name": "Гречишный чай" },
+      { "lang": "zh-CN", "name": "苦荞茶" }
+    ]
+  },
+  {
+    "code": "TAG-BARLEY-TEA",
+    "order": 193,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Barley Tea (Mugicha)" },
+      { "lang": "ru-RU", "name": "Ячменный чай (Мугитя)" },
+      { "lang": "zh-CN", "name": "大麦茶" }
+    ]
+  },
+  {
+    "code": "TAG-COMPRESSED",
+    "order": 194,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Compressed Tea" },
+      { "lang": "ru-RU", "name": "Прессованный чай" },
+      { "lang": "zh-CN", "name": "紧压茶" }
+    ]
+  },
+  {
+    "code": "TAG-DRAGON-BALL",
+    "order": 195,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Dragon Ball (Longzhu)" },
+      { "lang": "ru-RU", "name": "Драконья жемчужина (Лунчжу)" },
+      { "lang": "zh-CN", "name": "龙珠" }
+    ]
   }
 ]
