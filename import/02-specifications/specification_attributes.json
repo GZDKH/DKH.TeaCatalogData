@@ -13,6 +13,19 @@
     ]
   },
   {
+    "code": "SPEC-GRADE",
+    "group": "SPEC-GROUP-CLASSIFICATION",
+    "order": 2,
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en-US", "name": "Tea Grade" },
+      { "lang": "ru-RU", "name": "Грейд чая" },
+      { "lang": "zh-CN", "name": "茶叶等级" }
+    ]
+  },
+  {
     "code": "SPEC-FERMENTATION",
     "group": "SPEC-GROUP-PROCESSING",
     "order": 1,
@@ -62,6 +75,32 @@
       { "lang": "en-US", "name": "Leaf Shape" },
       { "lang": "ru-RU", "name": "Форма листа" },
       { "lang": "zh-CN", "name": "外形" }
+    ]
+  },
+  {
+    "code": "SPEC-STEAMING",
+    "group": "SPEC-GROUP-PROCESSING",
+    "order": 5,
+    "published": true,
+    "filterable": true,
+    "comparable": true,
+    "translations": [
+      { "lang": "en-US", "name": "Steaming Degree" },
+      { "lang": "ru-RU", "name": "Степень пропаривания" },
+      { "lang": "zh-CN", "name": "蒸制程度" }
+    ]
+  },
+  {
+    "code": "SPEC-SHADING",
+    "group": "SPEC-GROUP-BOTANICAL",
+    "order": 3,
+    "published": true,
+    "filterable": true,
+    "comparable": false,
+    "translations": [
+      { "lang": "en-US", "name": "Shading Level" },
+      { "lang": "ru-RU", "name": "Затенение" },
+      { "lang": "zh-CN", "name": "遮光程度" }
     ]
   },
   {
