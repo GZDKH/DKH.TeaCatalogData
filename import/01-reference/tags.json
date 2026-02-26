@@ -3505,5 +3505,195 @@
       { "lang": "ru-RU", "name": "Драконья жемчужина (Лунчжу)" },
       { "lang": "zh-CN", "name": "龙珠" }
     ]
+  },
+  {
+    "code": "TAG-JAS-ORGANIC",
+    "order": 196,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "JAS Organic (Japan)" },
+      { "lang": "ru-RU", "name": "JAS Organic (Япония)" },
+      { "lang": "zh-CN", "name": "JAS有机认证" }
+    ]
+  },
+  {
+    "code": "TAG-USDA-ORGANIC",
+    "order": 197,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "USDA Organic" },
+      { "lang": "ru-RU", "name": "USDA Organic (США)" },
+      { "lang": "zh-CN", "name": "USDA有机认证" }
+    ]
+  },
+  {
+    "code": "TAG-EU-ORGANIC",
+    "order": 198,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "EU Organic" },
+      { "lang": "ru-RU", "name": "EU Organic (ЕС)" },
+      { "lang": "zh-CN", "name": "欧盟有机认证" }
+    ]
+  },
+  {
+    "code": "TAG-FAIRTRADE",
+    "order": 199,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Fairtrade" },
+      { "lang": "ru-RU", "name": "Fairtrade (справедливая торговля)" },
+      { "lang": "zh-CN", "name": "公平贸易" }
+    ]
+  },
+  {
+    "code": "TAG-RAINFOREST-ALLIANCE",
+    "order": 200,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Rainforest Alliance" },
+      { "lang": "ru-RU", "name": "Rainforest Alliance" },
+      { "lang": "zh-CN", "name": "雨林联盟认证" }
+    ]
+  },
+  {
+    "code": "TAG-UTZ",
+    "order": 201,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "UTZ Certified" },
+      { "lang": "ru-RU", "name": "UTZ Certified" },
+      { "lang": "zh-CN", "name": "UTZ认证" }
+    ]
+  },
+  {
+    "code": "TAG-ECOCERT",
+    "order": 202,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "EcoCert" },
+      { "lang": "ru-RU", "name": "EcoCert" },
+      { "lang": "zh-CN", "name": "EcoCert认证" }
+    ]
+  },
+  {
+    "code": "TAG-CHRYSANTHEMUM",
+    "order": 203,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Chrysanthemum Tea" },
+      { "lang": "ru-RU", "name": "Хризантемовый чай" },
+      { "lang": "zh-CN", "name": "菊花茶" }
+    ]
+  },
+  {
+    "code": "TAG-OSMANTHUS",
+    "order": 204,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Osmanthus Tea" },
+      { "lang": "ru-RU", "name": "Османтусовый чай" },
+      { "lang": "zh-CN", "name": "桂花茶" }
+    ]
+  },
+  {
+    "code": "TAG-ROSE-TEA",
+    "order": 205,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Rose Tea" },
+      { "lang": "ru-RU", "name": "Розовый чай" },
+      { "lang": "zh-CN", "name": "玫瑰花茶" }
+    ]
+  },
+  {
+    "code": "TAG-HONEYSUCKLE",
+    "order": 206,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Honeysuckle Tea" },
+      { "lang": "ru-RU", "name": "Чай из жимолости" },
+      { "lang": "zh-CN", "name": "金银花茶" }
+    ]
+  },
+  {
+    "code": "TAG-CORN-SILK-TEA",
+    "order": 207,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Corn Silk Tea" },
+      { "lang": "ru-RU", "name": "Чай из кукурузных рылец" },
+      { "lang": "zh-CN", "name": "玉米须茶" }
+    ]
+  },
+  {
+    "code": "TAG-ZHILAN-XIANG",
+    "order": 208,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Zhi Lan Xiang (Orchid)" },
+      { "lang": "ru-RU", "name": "Чжиланьсян (орхидея)" },
+      { "lang": "zh-CN", "name": "芝兰香" }
+    ]
+  },
+  {
+    "code": "TAG-GUIHUA-XIANG",
+    "order": 209,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Gui Hua Xiang (Osmanthus)" },
+      { "lang": "ru-RU", "name": "Гуйхуасян (османтус)" },
+      { "lang": "zh-CN", "name": "桂花香" }
+    ]
+  },
+  {
+    "code": "TAG-XINGREN-XIANG",
+    "order": 210,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Xing Ren Xiang (Almond)" },
+      { "lang": "ru-RU", "name": "Синжэньсян (миндаль)" },
+      { "lang": "zh-CN", "name": "杏仁香" }
+    ]
+  },
+  {
+    "code": "TAG-ROUGUI-XIANG",
+    "order": 211,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Rou Gui Xiang (Cinnamon)" },
+      { "lang": "ru-RU", "name": "Жоугуйсян (корица)" },
+      { "lang": "zh-CN", "name": "肉桂香" }
+    ]
+  },
+  {
+    "code": "TAG-YULAN-XIANG",
+    "order": 212,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Yu Lan Xiang (Magnolia)" },
+      { "lang": "ru-RU", "name": "Юйланьсян (магнолия)" },
+      { "lang": "zh-CN", "name": "玉兰香" }
+    ]
+  },
+  {
+    "code": "TAG-YELAI-XIANG",
+    "order": 213,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Ye Lai Xiang (Night Blooming)" },
+      { "lang": "ru-RU", "name": "Елайсян (ночная красавица)" },
+      { "lang": "zh-CN", "name": "夜来香" }
+    ]
+  },
+  {
+    "code": "TAG-JIANGHUA-XIANG",
+    "order": 214,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Jiang Hua Xiang (Ginger Flower)" },
+      { "lang": "ru-RU", "name": "Цзянхуасян (имбирный цветок)" },
+      { "lang": "zh-CN", "name": "姜花香" }
+    ]
   }
 ]
