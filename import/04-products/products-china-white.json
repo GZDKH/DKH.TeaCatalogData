@@ -55,7 +55,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-5-10",
+        "option": "SPEC-FERM-5-15",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -168,7 +168,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-5-10",
+        "option": "SPEC-FERM-5-15",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -284,7 +284,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-5-10",
+        "option": "SPEC-FERM-5-15",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -394,7 +394,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-5-10",
+        "option": "SPEC-FERM-5-15",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -507,7 +507,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-5-10",
+        "option": "SPEC-FERM-5-15",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -620,7 +620,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-5-10",
+        "option": "SPEC-FERM-5-15",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -736,7 +736,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-5-10",
+        "option": "SPEC-FERM-5-15",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -855,7 +855,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-5-10",
+        "option": "SPEC-FERM-5-15",
         "type": "Option",
         "showOnPage": true,
         "order": 2
@@ -974,7 +974,7 @@
       },
       {
         "attribute": "SPEC-FERMENTATION",
-        "option": "SPEC-FERM-5-10",
+        "option": "SPEC-FERM-5-15",
         "type": "Option",
         "showOnPage": true,
         "order": 2

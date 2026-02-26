@@ -3285,5 +3285,415 @@
         "name": "黄茶"
       }
     ]
+  },
+  {
+    "code": "TAG-CHA-GAO",
+    "order": 174,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Cha Gao (Tea Paste)" },
+      { "lang": "ru-RU", "name": "Ча Гао (чайная паста)" },
+      { "lang": "zh-CN", "name": "茶膏" }
+    ]
+  },
+  {
+    "code": "TAG-SHAI-HONG",
+    "order": 175,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Shai Hong (Sun-dried Red)" },
+      { "lang": "ru-RU", "name": "Шай Хун (красный солнечной сушки)" },
+      { "lang": "zh-CN", "name": "晒红" }
+    ]
+  },
+  {
+    "code": "TAG-XIAO-QING-GAN",
+    "order": 176,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Xiao Qing Gan (Citrus Pu-erh)" },
+      { "lang": "ru-RU", "name": "Сяо Цин Гань (цитрусовый пуэр)" },
+      { "lang": "zh-CN", "name": "小青柑" }
+    ]
+  },
+  {
+    "code": "TAG-CHENPI",
+    "order": 177,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Chenpi (Aged Tangerine Peel)" },
+      { "lang": "ru-RU", "name": "Чэньпи (выдержанная мандариновая кожура)" },
+      { "lang": "zh-CN", "name": "陈皮" }
+    ]
+  },
+  {
+    "code": "TAG-DANCONG",
+    "order": 178,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Phoenix Dancong" },
+      { "lang": "ru-RU", "name": "Фениксовый даньцун" },
+      { "lang": "zh-CN", "name": "凤凰单丛" }
+    ]
+  },
+  {
+    "code": "TAG-MILAN-XIANG",
+    "order": 179,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Mi Lan Xiang (Honey Orchid)" },
+      { "lang": "ru-RU", "name": "Миланьсян (медовая орхидея)" },
+      { "lang": "zh-CN", "name": "蜜兰香" }
+    ]
+  },
+  {
+    "code": "TAG-YASHI-XIANG",
+    "order": 180,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Ya Shi Xiang (Duck Shit Aroma)" },
+      { "lang": "ru-RU", "name": "Яшисян (утиный помёт)" },
+      { "lang": "zh-CN", "name": "鸭屎香" }
+    ]
+  },
+  {
+    "code": "TAG-LIUBAO",
+    "order": 181,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Liu Bao Tea" },
+      { "lang": "ru-RU", "name": "Люйбао Ча" },
+      { "lang": "zh-CN", "name": "六堡茶" }
+    ]
+  },
+  {
+    "code": "TAG-ANHUA-HEICHA",
+    "order": 182,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Anhua Dark Tea" },
+      { "lang": "ru-RU", "name": "Аньхуа Хэйча" },
+      { "lang": "zh-CN", "name": "安化黑茶" }
+    ]
+  },
+  {
+    "code": "TAG-ECOLOGICAL",
+    "order": 183,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Ecological Tea" },
+      { "lang": "ru-RU", "name": "Экологический чай" },
+      { "lang": "zh-CN", "name": "生态茶" }
+    ]
+  },
+  {
+    "code": "TAG-UNESCO-2022",
+    "order": 184,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "UNESCO 2022" },
+      { "lang": "ru-RU", "name": "ЮНЕСКО 2022" },
+      { "lang": "zh-CN", "name": "UNESCO 2022非遗" }
+    ]
+  },
+  {
+    "code": "TAG-UNESCO-2023",
+    "order": 185,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "UNESCO 2023 (Jingmai)" },
+      { "lang": "ru-RU", "name": "ЮНЕСКО 2023 (Цзинмай)" },
+      { "lang": "zh-CN", "name": "UNESCO 2023景迈山" }
+    ]
+  },
+  {
+    "code": "TAG-SONG-ZHONG",
+    "order": 186,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Song Zhong (Song Dynasty)" },
+      { "lang": "ru-RU", "name": "Сун Чжун (эпоха Сун)" },
+      { "lang": "zh-CN", "name": "宋种" }
+    ]
+  },
+  {
+    "code": "TAG-BLOOMING-TEA",
+    "order": 187,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Blooming Tea" },
+      { "lang": "ru-RU", "name": "Связанный (распускающийся) чай" },
+      { "lang": "zh-CN", "name": "工艺花茶" }
+    ]
+  },
+  {
+    "code": "TAG-ROOIBOS",
+    "order": 188,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Rooibos" },
+      { "lang": "ru-RU", "name": "Ройбуш" },
+      { "lang": "zh-CN", "name": "南非红灌木茶" }
+    ]
+  },
+  {
+    "code": "TAG-YERBA-MATE",
+    "order": 189,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Yerba Mate" },
+      { "lang": "ru-RU", "name": "Йерба Мате" },
+      { "lang": "zh-CN", "name": "马黛茶" }
+    ]
+  },
+  {
+    "code": "TAG-KUDING",
+    "order": 190,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Ku Ding Cha (Bitter Tea)" },
+      { "lang": "ru-RU", "name": "Ку Дин Ча (горький чай)" },
+      { "lang": "zh-CN", "name": "苦丁茶" }
+    ]
+  },
+  {
+    "code": "TAG-JIAOGULAN",
+    "order": 191,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Jiaogulan (Gynostemma)" },
+      { "lang": "ru-RU", "name": "Цзяогулань (южный женьшень)" },
+      { "lang": "zh-CN", "name": "绞股蓝" }
+    ]
+  },
+  {
+    "code": "TAG-BUCKWHEAT-TEA",
+    "order": 192,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Buckwheat Tea" },
+      { "lang": "ru-RU", "name": "Гречишный чай" },
+      { "lang": "zh-CN", "name": "苦荞茶" }
+    ]
+  },
+  {
+    "code": "TAG-BARLEY-TEA",
+    "order": 193,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Barley Tea (Mugicha)" },
+      { "lang": "ru-RU", "name": "Ячменный чай (Мугитя)" },
+      { "lang": "zh-CN", "name": "大麦茶" }
+    ]
+  },
+  {
+    "code": "TAG-COMPRESSED",
+    "order": 194,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Compressed Tea" },
+      { "lang": "ru-RU", "name": "Прессованный чай" },
+      { "lang": "zh-CN", "name": "紧压茶" }
+    ]
+  },
+  {
+    "code": "TAG-DRAGON-BALL",
+    "order": 195,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Dragon Ball (Longzhu)" },
+      { "lang": "ru-RU", "name": "Драконья жемчужина (Лунчжу)" },
+      { "lang": "zh-CN", "name": "龙珠" }
+    ]
+  },
+  {
+    "code": "TAG-JAS-ORGANIC",
+    "order": 196,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "JAS Organic (Japan)" },
+      { "lang": "ru-RU", "name": "JAS Organic (Япония)" },
+      { "lang": "zh-CN", "name": "JAS有机认证" }
+    ]
+  },
+  {
+    "code": "TAG-USDA-ORGANIC",
+    "order": 197,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "USDA Organic" },
+      { "lang": "ru-RU", "name": "USDA Organic (США)" },
+      { "lang": "zh-CN", "name": "USDA有机认证" }
+    ]
+  },
+  {
+    "code": "TAG-EU-ORGANIC",
+    "order": 198,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "EU Organic" },
+      { "lang": "ru-RU", "name": "EU Organic (ЕС)" },
+      { "lang": "zh-CN", "name": "欧盟有机认证" }
+    ]
+  },
+  {
+    "code": "TAG-FAIRTRADE",
+    "order": 199,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Fairtrade" },
+      { "lang": "ru-RU", "name": "Fairtrade (справедливая торговля)" },
+      { "lang": "zh-CN", "name": "公平贸易" }
+    ]
+  },
+  {
+    "code": "TAG-RAINFOREST-ALLIANCE",
+    "order": 200,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Rainforest Alliance" },
+      { "lang": "ru-RU", "name": "Rainforest Alliance" },
+      { "lang": "zh-CN", "name": "雨林联盟认证" }
+    ]
+  },
+  {
+    "code": "TAG-UTZ",
+    "order": 201,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "UTZ Certified" },
+      { "lang": "ru-RU", "name": "UTZ Certified" },
+      { "lang": "zh-CN", "name": "UTZ认证" }
+    ]
+  },
+  {
+    "code": "TAG-ECOCERT",
+    "order": 202,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "EcoCert" },
+      { "lang": "ru-RU", "name": "EcoCert" },
+      { "lang": "zh-CN", "name": "EcoCert认证" }
+    ]
+  },
+  {
+    "code": "TAG-CHRYSANTHEMUM",
+    "order": 203,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Chrysanthemum Tea" },
+      { "lang": "ru-RU", "name": "Хризантемовый чай" },
+      { "lang": "zh-CN", "name": "菊花茶" }
+    ]
+  },
+  {
+    "code": "TAG-OSMANTHUS",
+    "order": 204,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Osmanthus Tea" },
+      { "lang": "ru-RU", "name": "Османтусовый чай" },
+      { "lang": "zh-CN", "name": "桂花茶" }
+    ]
+  },
+  {
+    "code": "TAG-ROSE-TEA",
+    "order": 205,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Rose Tea" },
+      { "lang": "ru-RU", "name": "Розовый чай" },
+      { "lang": "zh-CN", "name": "玫瑰花茶" }
+    ]
+  },
+  {
+    "code": "TAG-HONEYSUCKLE",
+    "order": 206,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Honeysuckle Tea" },
+      { "lang": "ru-RU", "name": "Чай из жимолости" },
+      { "lang": "zh-CN", "name": "金银花茶" }
+    ]
+  },
+  {
+    "code": "TAG-CORN-SILK-TEA",
+    "order": 207,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Corn Silk Tea" },
+      { "lang": "ru-RU", "name": "Чай из кукурузных рылец" },
+      { "lang": "zh-CN", "name": "玉米须茶" }
+    ]
+  },
+  {
+    "code": "TAG-ZHILAN-XIANG",
+    "order": 208,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Zhi Lan Xiang (Orchid)" },
+      { "lang": "ru-RU", "name": "Чжиланьсян (орхидея)" },
+      { "lang": "zh-CN", "name": "芝兰香" }
+    ]
+  },
+  {
+    "code": "TAG-GUIHUA-XIANG",
+    "order": 209,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Gui Hua Xiang (Osmanthus)" },
+      { "lang": "ru-RU", "name": "Гуйхуасян (османтус)" },
+      { "lang": "zh-CN", "name": "桂花香" }
+    ]
+  },
+  {
+    "code": "TAG-XINGREN-XIANG",
+    "order": 210,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Xing Ren Xiang (Almond)" },
+      { "lang": "ru-RU", "name": "Синжэньсян (миндаль)" },
+      { "lang": "zh-CN", "name": "杏仁香" }
+    ]
+  },
+  {
+    "code": "TAG-ROUGUI-XIANG",
+    "order": 211,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Rou Gui Xiang (Cinnamon)" },
+      { "lang": "ru-RU", "name": "Жоугуйсян (корица)" },
+      { "lang": "zh-CN", "name": "肉桂香" }
+    ]
+  },
+  {
+    "code": "TAG-YULAN-XIANG",
+    "order": 212,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Yu Lan Xiang (Magnolia)" },
+      { "lang": "ru-RU", "name": "Юйланьсян (магнолия)" },
+      { "lang": "zh-CN", "name": "玉兰香" }
+    ]
+  },
+  {
+    "code": "TAG-YELAI-XIANG",
+    "order": 213,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Ye Lai Xiang (Night Blooming)" },
+      { "lang": "ru-RU", "name": "Елайсян (ночная красавица)" },
+      { "lang": "zh-CN", "name": "夜来香" }
+    ]
+  },
+  {
+    "code": "TAG-JIANGHUA-XIANG",
+    "order": 214,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Jiang Hua Xiang (Ginger Flower)" },
+      { "lang": "ru-RU", "name": "Цзянхуасян (имбирный цветок)" },
+      { "lang": "zh-CN", "name": "姜花香" }
+    ]
   }
 ]

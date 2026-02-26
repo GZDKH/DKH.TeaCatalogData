@@ -27,9 +27,9 @@
     "order": 1,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Green Tea", "description": "Unoxidized tea with fresh, vegetal flavors (0% oxidation)", "seo": "green-tea" },
-      { "lang": "ru-RU", "name": "Зелёный чай", "description": "Неокисленный чай со свежим травянистым вкусом (0% ферментации)", "seo": "zelenyj-chaj" },
-      { "lang": "zh-CN", "name": "绿茶", "description": "不发酵茶，清新鲜爽", "seo": "green-tea" }
+      { "lang": "en-US", "name": "Green Tea", "description": "Unoxidized tea with fresh, vegetal flavors (0-5% oxidation). 4120+ varieties", "seo": "green-tea" },
+      { "lang": "ru-RU", "name": "Зелёный чай", "description": "Неокисленный чай со свежим травянистым вкусом (0-5% ферментации). 4120+ сортов", "seo": "zelenyj-chaj" },
+      { "lang": "zh-CN", "name": "绿茶", "description": "不发酵茶(0-5%)，清新鲜爽。4120+品种", "seo": "green-tea" }
     ]
   },
   {
@@ -38,9 +38,9 @@
     "order": 2,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "White Tea", "description": "Minimally processed tea with delicate flavors (5-10% oxidation)", "seo": "white-tea" },
-      { "lang": "ru-RU", "name": "Белый чай", "description": "Минимально обработанный чай с деликатным вкусом (5-10% ферментации)", "seo": "belyj-chaj" },
-      { "lang": "zh-CN", "name": "白茶", "description": "轻微发酵，清雅淡然", "seo": "white-tea" }
+      { "lang": "en-US", "name": "White Tea", "description": "Minimally processed tea with delicate flavors (5-15% oxidation). 512 varieties", "seo": "white-tea" },
+      { "lang": "ru-RU", "name": "Белый чай", "description": "Минимально обработанный чай с деликатным вкусом (5-15% ферментации). 512 сортов", "seo": "belyj-chaj" },
+      { "lang": "zh-CN", "name": "白茶", "description": "轻微发酵(5-15%)，清雅淡然。512品种", "seo": "white-tea" }
     ]
   },
   {
@@ -49,9 +49,9 @@
     "order": 3,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Yellow Tea", "description": "Rare tea with unique yellowing process (10-20% oxidation)", "seo": "yellow-tea" },
-      { "lang": "ru-RU", "name": "Жёлтый чай", "description": "Редкий чай с уникальным процессом пожелтения (10-20% ферментации)", "seo": "zheltyj-chaj" },
-      { "lang": "zh-CN", "name": "黄茶", "description": "闷黄工艺，独特醇厚", "seo": "yellow-tea" }
+      { "lang": "en-US", "name": "Yellow Tea", "description": "Rare tea with unique yellowing process (5-20% oxidation). 145 varieties", "seo": "yellow-tea" },
+      { "lang": "ru-RU", "name": "Жёлтый чай", "description": "Редкий чай с уникальным процессом пожелтения (5-20% ферментации). 145 сортов", "seo": "zheltyj-chaj" },
+      { "lang": "zh-CN", "name": "黄茶", "description": "闷黄工艺(5-20%)，独特醇厚。145品种", "seo": "yellow-tea" }
     ]
   },
   {
@@ -60,9 +60,9 @@
     "order": 4,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Oolong Tea", "description": "Semi-oxidized tea with complex flavors (15-85% oxidation)", "seo": "oolong-tea" },
-      { "lang": "ru-RU", "name": "Улун", "description": "Полуферментированный чай со сложным вкусом (15-85% ферментации)", "seo": "ulun" },
-      { "lang": "zh-CN", "name": "乌龙茶", "description": "半发酵茶，香高味醇", "seo": "oolong-tea" }
+      { "lang": "en-US", "name": "Oolong Tea", "description": "Semi-oxidized tea with complex flavors (15-85% oxidation). 1180 varieties", "seo": "oolong-tea" },
+      { "lang": "ru-RU", "name": "Улун", "description": "Полуферментированный чай со сложным вкусом (15-85% ферментации). 1180 сортов", "seo": "ulun" },
+      { "lang": "zh-CN", "name": "乌龙茶", "description": "半发酵茶(15-85%)，香高味醇。1180品种", "seo": "oolong-tea" }
     ]
   },
   {
@@ -71,9 +71,9 @@
     "order": 5,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Red Tea (Black)", "description": "Fully oxidized tea with rich flavors (85-100% oxidation)", "seo": "red-tea" },
-      { "lang": "ru-RU", "name": "Красный чай (Чёрный)", "description": "Полностью ферментированный чай с насыщенным вкусом (85-100%)", "seo": "krasnyj-chaj" },
-      { "lang": "zh-CN", "name": "红茶", "description": "全发酵茶，浓郁醇和", "seo": "red-tea" }
+      { "lang": "en-US", "name": "Red Tea (Black)", "description": "Fully oxidized tea with rich flavors (85-100% oxidation). 890+ varieties", "seo": "red-tea" },
+      { "lang": "ru-RU", "name": "Красный чай (Чёрный)", "description": "Полностью ферментированный чай с насыщенным вкусом (85-100%). 890+ сортов", "seo": "krasnyj-chaj" },
+      { "lang": "zh-CN", "name": "红茶", "description": "全发酵茶(85-100%)，浓郁醇和。890+品种", "seo": "red-tea" }
     ]
   },
   {
@@ -82,9 +82,9 @@
     "order": 6,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Dark Tea", "description": "Post-fermented tea with earthy flavors", "seo": "dark-tea" },
-      { "lang": "ru-RU", "name": "Тёмный чай", "description": "Постферментированный чай с землистым вкусом", "seo": "tyomnyj-chaj" },
-      { "lang": "zh-CN", "name": "黑茶", "description": "后发酵茶，陈香醇厚", "seo": "dark-tea" }
+      { "lang": "en-US", "name": "Dark Tea", "description": "Post-fermented tea with earthy flavors. 245 varieties", "seo": "dark-tea" },
+      { "lang": "ru-RU", "name": "Тёмный чай", "description": "Постферментированный чай с землистым вкусом. 245 сортов", "seo": "tyomnyj-chaj" },
+      { "lang": "zh-CN", "name": "黑茶", "description": "后发酵茶，陈香醇厚。245品种", "seo": "dark-tea" }
     ]
   },
   {
@@ -93,9 +93,9 @@
     "order": 7,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Pu-erh Tea", "description": "Post-fermented tea from Yunnan with unique aging character", "seo": "puer-tea" },
-      { "lang": "ru-RU", "name": "Пуэр", "description": "Постферментированный чай из Юньнаня с уникальным характером выдержки", "seo": "puer" },
-      { "lang": "zh-CN", "name": "普洱茶", "description": "云南独特陈化茶", "seo": "puer-tea" }
+      { "lang": "en-US", "name": "Pu-erh Tea", "description": "Post-fermented tea from Yunnan with unique aging character. 485 varieties", "seo": "puer-tea" },
+      { "lang": "ru-RU", "name": "Пуэр", "description": "Постферментированный чай из Юньнаня с уникальным характером выдержки. 485 сортов", "seo": "puer" },
+      { "lang": "zh-CN", "name": "普洱茶", "description": "云南独特陈化茶。485品种", "seo": "puer-tea" }
     ]
   },
   {
@@ -104,9 +104,9 @@
     "order": 8,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Jasmine Tea", "description": "Tea scented with jasmine flowers", "seo": "jasmine-tea" },
-      { "lang": "ru-RU", "name": "Жасминовый чай", "description": "Чай ароматизированный цветами жасмина", "seo": "zhasminovyj-chaj" },
-      { "lang": "zh-CN", "name": "茉莉花茶", "description": "茉莉窨制，花香馥郁", "seo": "jasmine-tea" }
+      { "lang": "en-US", "name": "Jasmine Tea", "description": "Tea scented with jasmine flowers. UNESCO 2022", "seo": "jasmine-tea" },
+      { "lang": "ru-RU", "name": "Жасминовый чай", "description": "Чай ароматизированный цветами жасмина. ЮНЕСКО 2022", "seo": "zhasminovyj-chaj" },
+      { "lang": "zh-CN", "name": "茉莉花茶", "description": "茉莉窨制，花香馥郁。UNESCO 2022", "seo": "jasmine-tea" }
     ]
   },
   {
@@ -115,9 +115,9 @@
     "order": 9,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Herbal Tea", "description": "Caffeine-free herbal infusions (not Camellia sinensis)", "seo": "herbal-tea" },
-      { "lang": "ru-RU", "name": "Травяной чай", "description": "Травяные настои без кофеина (не Camellia sinensis)", "seo": "travyanoj-chaj" },
-      { "lang": "zh-CN", "name": "草本茶", "description": "无咖啡因草本饮品", "seo": "herbal-tea" }
+      { "lang": "en-US", "name": "Herbal Tea", "description": "Caffeine-free herbal infusions and tisanes (not Camellia sinensis). 255+ varieties", "seo": "herbal-tea" },
+      { "lang": "ru-RU", "name": "Травяной чай", "description": "Травяные настои и тизаны без кофеина (не Camellia sinensis). 255+ сортов", "seo": "travyanoj-chaj" },
+      { "lang": "zh-CN", "name": "草本茶", "description": "无咖啡因草本饮品与花草茶。255+品种", "seo": "herbal-tea" }
     ]
   },
   {
@@ -126,9 +126,9 @@
     "order": 10,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Purple Tea", "description": "Anthocyanin-rich tea with unique purple leaves (0-100% oxidation)", "seo": "purple-tea" },
-      { "lang": "ru-RU", "name": "Пурпурный чай", "description": "Чай с высоким содержанием антоцианов и уникальными пурпурными листьями", "seo": "purpurnyj-chaj" },
-      { "lang": "zh-CN", "name": "紫茶", "description": "富含花青素的紫叶茶", "seo": "purple-tea" }
+      { "lang": "en-US", "name": "Purple Tea", "description": "Anthocyanin-rich tea with unique purple leaves (0-100% oxidation). TRFK 306/1 cultivar. 28 varieties", "seo": "purple-tea" },
+      { "lang": "ru-RU", "name": "Пурпурный чай", "description": "Чай с высоким содержанием антоцианов (1,5-2,5%) и уникальными пурпурными листьями. Культивар TRFK 306/1. 28 сортов", "seo": "purpurnyj-chaj" },
+      { "lang": "zh-CN", "name": "紫茶", "description": "富含花青素(1.5-2.5%)的紫叶茶。TRFK 306/1品种。28品种", "seo": "purple-tea" }
     ]
   },
   {
@@ -137,9 +137,9 @@
     "order": 11,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "GABA Tea", "description": "Tea processed anaerobically to increase GABA content", "seo": "gaba-tea" },
-      { "lang": "ru-RU", "name": "ГАМК-чай (GABA)", "description": "Чай анаэробной обработки с повышенным содержанием ГАМК", "seo": "gaba-chaj" },
-      { "lang": "zh-CN", "name": "佳叶龙茶", "description": "厌氧发酵，高GABA含量", "seo": "gaba-tea" }
+      { "lang": "en-US", "name": "GABA Tea", "description": "Tea processed anaerobically to increase GABA content (150-400+ mg/100g). Invented 1987. 42 varieties", "seo": "gaba-tea" },
+      { "lang": "ru-RU", "name": "ГАМК-чай (GABA)", "description": "Чай анаэробной обработки с повышенным содержанием ГАМК (150-400+ мг/100г). Изобретён в 1987. 42 сорта", "seo": "gaba-chaj" },
+      { "lang": "zh-CN", "name": "佳叶龙茶", "description": "厌氧发酵(N₂, 38-42°C)，GABA含量150-400+ mg/100g。42品种", "seo": "gaba-tea" }
     ]
   },
   {
@@ -338,6 +338,28 @@
       { "lang": "en-US", "name": "Hainan", "description": "Tropical tea region - Wuzhishan teas (90 teas)", "seo": "hainan" },
       { "lang": "ru-RU", "name": "Хайнань", "description": "Тропический чайный регион — чаи Учжишань (90 чаёв)", "seo": "hainan" },
       { "lang": "zh-CN", "name": "海南", "description": "热带茶区，五指山茶", "seo": "hainan" }
+    ]
+  },
+  {
+    "code": "CAT-REGION-XINJIANG",
+    "parent": "CAT-REGION-CHINA",
+    "order": 17,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Xinjiang", "description": "Experimental tea region in western China (51 teas)", "seo": "xinjiang" },
+      { "lang": "ru-RU", "name": "Синьцзян", "description": "Экспериментальный чайный регион на западе Китая (51 чай)", "seo": "sinczyan" },
+      { "lang": "zh-CN", "name": "新疆", "description": "西部实验茶区", "seo": "xinjiang" }
+    ]
+  },
+  {
+    "code": "CAT-REGION-JILIN",
+    "parent": "CAT-REGION-CHINA",
+    "order": 18,
+    "published": true,
+    "translations": [
+      { "lang": "en-US", "name": "Jilin", "description": "Northern frontier tea region (30 teas)", "seo": "jilin" },
+      { "lang": "ru-RU", "name": "Цзилинь", "description": "Чайный регион на северной границе выращивания (30 чаёв)", "seo": "czilin" },
+      { "lang": "zh-CN", "name": "吉林", "description": "北方边界茶区", "seo": "jilin" }
     ]
   },
   {
