@@ -1,0 +1,72 @@
+{
+  "plansDirectory": "./docs/plans",
+  "language": "russian",
+  "showTurnDuration": true,
+  "spinnerTipsEnabled": true,
+  "env": {
+    "ENABLE_TOOL_SEARCH": "auto:5",
+    "BASH_DEFAULT_TIMEOUT_MS": "120000"
+  },
+  "permissions": {
+    "allow": [
+      "run_shell_command(dotnet *)",
+      "run_shell_command(pwsh *)",
+      "run_shell_command(git status)",
+      "run_shell_command(git status *)",
+      "run_shell_command(git diff)",
+      "run_shell_command(git diff *)",
+      "run_shell_command(git log *)",
+      "run_shell_command(git branch *)",
+      "run_shell_command(git fetch *)",
+      "run_shell_command(git remote *)",
+      "run_shell_command(npm *)",
+      "run_shell_command(pnpm *)",
+      "run_shell_command(npx *)",
+      "run_shell_command(node *)",
+      "run_shell_command(gh *)",
+      "run_shell_command(docker ps *)",
+      "run_shell_command(docker logs *)",
+      "run_shell_command(docker compose *)",
+      "run_shell_command(ls *)",
+      "run_shell_command(cat *)",
+      "run_shell_command(head *)",
+      "run_shell_command(tail *)",
+      "run_shell_command(wc *)",
+      "run_shell_command(which *)",
+      "run_shell_command(echo *)"
+    ],
+    "ask": [
+      "run_shell_command(git push *)",
+      "run_shell_command(git reset *)",
+      "run_shell_command(git checkout *)",
+      "run_shell_command(git rebase *)",
+      "run_shell_command(git merge *)",
+      "run_shell_command(rm -rf *)",
+      "run_shell_command(docker rm *)",
+      "run_shell_command(docker rmi *)"
+    ],
+    "deny": [
+      "Read(**/.env.local)",
+      "Read(**/secrets/**)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)"
+    ],
+    "additionalDirectories": [
+      "../libraries/DKH.Architecture",
+      "../DKH.Infrastructure"
+    ]
+  },
+  "hooks": {
+    "AfterTool": [
+      {
+        "matcher": "run_shell_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ $exit_code -ne 0 ]; then echo '⚠️ Command failed with exit code: '$exit_code; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
