@@ -79,3 +79,18 @@ Products JSON uses ProductCatalogService schema. Note: JSON uses short field nam
 # Import to ProductCatalogService
 ./scripts/Import-Data.ps1 -Profile "products" -File ./import/04-products/products-china-green.json
 ```
+
+<!-- BEGIN LOCAL-CLAUDE-RULES -->
+
+## Additional Local Rules (.gemini/rules)
+
+Before starting implementation, you MUST also read and follow these local rule files in this repository:
+
+- `.gemini/rules/commits.md`
+- `.gemini/rules/github-tasks.md`
+- `.gemini/rules/gitlab-workflow.md`
+- `.gemini/rules/security.md`
+
+These rules are mandatory and complement the baseline `AGENTS.md` and `DKH.Architecture` guidance.
+
+<!-- END LOCAL-CLAUDE-RULES -->
