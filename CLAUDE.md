@@ -79,3 +79,18 @@ Products JSON uses ProductCatalogService schema. Note: JSON uses short field nam
 # Import to ProductCatalogService
 ./scripts/Import-Data.ps1 -Profile "products" -File ./import/04-products/products-china-green.json
 ```
+
+<!-- BEGIN LOCAL-CLAUDE-RULES -->
+
+## Additional Local Rules (.claude/rules)
+
+Before starting implementation, you MUST also read and follow these local rule files in this repository:
+
+- `.claude/rules/commits.md`
+- `.claude/rules/github-tasks.md`
+- `.claude/rules/gitlab-workflow.md`
+- `.claude/rules/security.md`
+
+These rules are mandatory and complement the baseline `AGENTS.md` and `DKH.Architecture` guidance.
+
+<!-- END LOCAL-CLAUDE-RULES -->
