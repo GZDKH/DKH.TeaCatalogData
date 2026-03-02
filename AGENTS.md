@@ -102,6 +102,7 @@ These files are located in the DKH.Architecture repository (located in the sibli
 Before starting implementation, you MUST also read and follow these local rule files in this repository:
 
 - `.codex/rules/commits.md`
+- `.codex/rules/docs-after-impl.md`
 - `.codex/rules/github-tasks.md`
 - `.codex/rules/gitlab-workflow.md`
 - `.codex/rules/prod-config.md`

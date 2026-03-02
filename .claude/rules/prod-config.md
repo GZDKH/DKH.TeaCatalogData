@@ -1,1 +1,1 @@
-../../../libraries/DKH.Architecture/.claude/shared-rules/prod-config.md
+../../../../libraries/DKH.Architecture/.claude/shared-rules/prod-config.md

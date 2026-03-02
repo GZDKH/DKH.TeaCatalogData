@@ -1,1 +1,1 @@
-../../../libraries/DKH.Architecture/.gemini/shared-rules/github-tasks.md
+../../../../libraries/DKH.Architecture/.gemini/shared-rules/github-tasks.md

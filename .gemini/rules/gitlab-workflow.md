@@ -1,1 +1,1 @@
-../../../libraries/DKH.Architecture/.gemini/shared-rules/gitlab-workflow.md
+../../../../libraries/DKH.Architecture/.gemini/shared-rules/gitlab-workflow.md

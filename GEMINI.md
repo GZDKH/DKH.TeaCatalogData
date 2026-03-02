@@ -102,6 +102,7 @@ These files are located in the DKH.Architecture repository (located in the sibli
 Before starting implementation, you MUST also read and follow these local rule files in this repository:
 
 - `.gemini/rules/commits.md`
+- `.gemini/rules/docs-after-impl.md`
 - `.gemini/rules/github-tasks.md`
 - `.gemini/rules/gitlab-workflow.md`
 - `.gemini/rules/prod-config.md`
