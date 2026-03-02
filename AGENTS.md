@@ -80,17 +80,32 @@ Products JSON uses ProductCatalogService schema. Note: JSON uses short field nam
 ./scripts/Import-Data.ps1 -Profile "products" -File ./import/04-products/products-china-green.json
 ```
 
-<!-- BEGIN LOCAL-CLAUDE-RULES -->
+<!-- BEGIN REQUIRED-READING -->
 
-## Additional Local Rules (.claude/rules)
+## Required Reading (MUST read before working)
+
+Before starting any task in this repository, you MUST read these files from DKH.Architecture:
+
+1. **[AGENTS.md](https://github.com/GZDKH/DKH.Architecture/blob/main/AGENTS.md)** — baseline rules for all repos
+2. **[github-workflow.md](https://github.com/GZDKH/DKH.Architecture/blob/main/docs/github-workflow.md)** — GitHub Issues & Project Board
+
+These files are located in the DKH.Architecture repository (located in the sibling `libraries/DKH.Architecture` folder relative to your workspace).
+
+---
+
+<!-- END REQUIRED-READING -->
+
+<!-- BEGIN LOCAL-CODEX-RULES -->
+
+## Additional Local Rules (.codex/rules)
 
 Before starting implementation, you MUST also read and follow these local rule files in this repository:
 
-- `.claude/rules/commits.md`
-- `.claude/rules/github-tasks.md`
-- `.claude/rules/gitlab-workflow.md`
-- `.claude/rules/security.md`
+- `.codex/rules/commits.md`
+- `.codex/rules/github-tasks.md`
+- `.codex/rules/gitlab-workflow.md`
+- `.codex/rules/security.md`
 
 These rules are mandatory and complement the baseline `AGENTS.md` and `DKH.Architecture` guidance.
 
-<!-- END LOCAL-CLAUDE-RULES -->
+<!-- END LOCAL-CODEX-RULES -->
