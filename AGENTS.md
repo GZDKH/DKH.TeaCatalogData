@@ -104,6 +104,7 @@ Before starting implementation, you MUST also read and follow these local rule f
 - `.codex/rules/commits.md`
 - `.codex/rules/github-tasks.md`
 - `.codex/rules/gitlab-workflow.md`
+- `.codex/rules/prod-config.md`
 - `.codex/rules/security.md`
 
 These rules are mandatory and complement the baseline `AGENTS.md` and `DKH.Architecture` guidance.

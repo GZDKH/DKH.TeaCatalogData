@@ -104,6 +104,7 @@ Before starting implementation, you MUST also read and follow these local rule f
 - `.gemini/rules/commits.md`
 - `.gemini/rules/github-tasks.md`
 - `.gemini/rules/gitlab-workflow.md`
+- `.gemini/rules/prod-config.md`
 - `.gemini/rules/security.md`
 
 These rules are mandatory and complement the baseline `AGENTS.md` and `DKH.Architecture` guidance.
