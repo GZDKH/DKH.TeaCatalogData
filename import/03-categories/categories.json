@@ -5,9 +5,21 @@
     "order": 0,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Tea Catalog", "seo": "tea" },
-      { "lang": "ru-RU", "name": "Каталог чая", "seo": "chay" },
-      { "lang": "zh-CN", "name": "茶叶目录", "seo": "tea" }
+      {
+        "lang": "en-US",
+        "name": "Tea Catalog",
+        "seo": "tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Каталог чая",
+        "seo": "chay"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "茶叶目录",
+        "seo": "tea"
+      }
     ]
   },
   {
@@ -16,9 +28,21 @@
     "order": 1,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "By Type", "seo": "by-type" },
-      { "lang": "ru-RU", "name": "По типу", "seo": "po-tipu" },
-      { "lang": "zh-CN", "name": "按类型", "seo": "by-type" }
+      {
+        "lang": "en-US",
+        "name": "By Type",
+        "seo": "by-type"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "По типу",
+        "seo": "po-tipu"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "按类型",
+        "seo": "by-type"
+      }
     ]
   },
   {
@@ -27,9 +51,68 @@
     "order": 1,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Green Tea", "description": "Unoxidized tea with fresh, vegetal flavors (0-5% oxidation). 4120+ varieties", "seo": "green-tea" },
-      { "lang": "ru-RU", "name": "Зелёный чай", "description": "Неокисленный чай со свежим травянистым вкусом (0-5% ферментации). 4120+ сортов", "seo": "zelenyj-chaj" },
-      { "lang": "zh-CN", "name": "绿茶", "description": "不发酵茶(0-5%)，清新鲜爽。4120+品种", "seo": "green-tea" }
+      {
+        "lang": "en-US",
+        "name": "Green Tea",
+        "description": "Unoxidized tea with fresh, vegetal flavors (0-5% oxidation). 4120+ varieties",
+        "seo": "green-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Зелёный чай",
+        "description": "Неокисленный чай со свежим травянистым вкусом (0-5% ферментации). 4120+ сортов",
+        "seo": "zelenyj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "绿茶",
+        "description": "不发酵茶(0-5%)，清新鲜爽。4120+品种",
+        "seo": "green-tea"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "value": "70-85°C",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "value": "1-3 min",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      }
     ]
   },
   {
@@ -38,9 +121,68 @@
     "order": 2,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "White Tea", "description": "Minimally processed tea with delicate flavors (5-15% oxidation). 512 varieties", "seo": "white-tea" },
-      { "lang": "ru-RU", "name": "Белый чай", "description": "Минимально обработанный чай с деликатным вкусом (5-15% ферментации). 512 сортов", "seo": "belyj-chaj" },
-      { "lang": "zh-CN", "name": "白茶", "description": "轻微发酵(5-15%)，清雅淡然。512品种", "seo": "white-tea" }
+      {
+        "lang": "en-US",
+        "name": "White Tea",
+        "description": "Minimally processed tea with delicate flavors (5-15% oxidation). 512 varieties",
+        "seo": "white-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Белый чай",
+        "description": "Минимально обработанный чай с деликатным вкусом (5-15% ферментации). 512 сортов",
+        "seo": "belyj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "白茶",
+        "description": "轻微发酵(5-15%)，清雅淡然。512品种",
+        "seo": "white-tea"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-WHITE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-5-15",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "value": "80-90°C",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "value": "3-5 min",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-PALE-YELLOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      }
     ]
   },
   {
@@ -49,9 +191,68 @@
     "order": 3,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Yellow Tea", "description": "Rare tea with unique yellowing process (5-20% oxidation). 145 varieties", "seo": "yellow-tea" },
-      { "lang": "ru-RU", "name": "Жёлтый чай", "description": "Редкий чай с уникальным процессом пожелтения (5-20% ферментации). 145 сортов", "seo": "zheltyj-chaj" },
-      { "lang": "zh-CN", "name": "黄茶", "description": "闷黄工艺(5-20%)，独特醇厚。145品种", "seo": "yellow-tea" }
+      {
+        "lang": "en-US",
+        "name": "Yellow Tea",
+        "description": "Rare tea with unique yellowing process (5-20% oxidation). 145 varieties",
+        "seo": "yellow-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Жёлтый чай",
+        "description": "Редкий чай с уникальным процессом пожелтения (5-20% ферментации). 145 сортов",
+        "seo": "zheltyj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "黄茶",
+        "description": "闷黄工艺(5-20%)，独特醇厚。145品种",
+        "seo": "yellow-tea"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-YELLOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-5-20",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "value": "80-85°C",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "value": "2-3 min",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-GOLDEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      }
     ]
   },
   {
@@ -60,9 +261,61 @@
     "order": 4,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Oolong Tea", "description": "Semi-oxidized tea with complex flavors (15-85% oxidation). 1180 varieties", "seo": "oolong-tea" },
-      { "lang": "ru-RU", "name": "Улун", "description": "Полуферментированный чай со сложным вкусом (15-85% ферментации). 1180 сортов", "seo": "ulun" },
-      { "lang": "zh-CN", "name": "乌龙茶", "description": "半发酵茶(15-85%)，香高味醇。1180品种", "seo": "oolong-tea" }
+      {
+        "lang": "en-US",
+        "name": "Oolong Tea",
+        "description": "Semi-oxidized tea with complex flavors (15-85% oxidation). 1180 varieties",
+        "seo": "oolong-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Улун",
+        "description": "Полуферментированный чай со сложным вкусом (15-85% ферментации). 1180 сортов",
+        "seo": "ulun"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "乌龙茶",
+        "description": "半发酵茶(15-85%)，香高味醇。1180品种",
+        "seo": "oolong-tea"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-OOLONG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "value": "90-100°C",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "value": "0.5-2 min",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-AMBER",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      }
     ]
   },
   {
@@ -71,9 +324,68 @@
     "order": 5,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Red Tea (Black)", "description": "Fully oxidized tea with rich flavors (85-100% oxidation). 890+ varieties", "seo": "red-tea" },
-      { "lang": "ru-RU", "name": "Красный чай (Чёрный)", "description": "Полностью ферментированный чай с насыщенным вкусом (85-100%). 890+ сортов", "seo": "krasnyj-chaj" },
-      { "lang": "zh-CN", "name": "红茶", "description": "全发酵茶(85-100%)，浓郁醇和。890+品种", "seo": "red-tea" }
+      {
+        "lang": "en-US",
+        "name": "Red Tea (Black)",
+        "description": "Fully oxidized tea with rich flavors (85-100% oxidation). 890+ varieties",
+        "seo": "red-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Красный чай (Чёрный)",
+        "description": "Полностью ферментированный чай с насыщенным вкусом (85-100%). 890+ сортов",
+        "seo": "krasnyj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "红茶",
+        "description": "全发酵茶(85-100%)，浓郁醇和。890+品种",
+        "seo": "red-tea"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-RED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-85-100",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-HIGH",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "value": "90-100°C",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "value": "2-5 min",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-RED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      }
     ]
   },
   {
@@ -82,9 +394,68 @@
     "order": 6,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Dark Tea", "description": "Post-fermented tea with earthy flavors. 245 varieties", "seo": "dark-tea" },
-      { "lang": "ru-RU", "name": "Тёмный чай", "description": "Постферментированный чай с землистым вкусом. 245 сортов", "seo": "tyomnyj-chaj" },
-      { "lang": "zh-CN", "name": "黑茶", "description": "后发酵茶，陈香醇厚。245品种", "seo": "dark-tea" }
+      {
+        "lang": "en-US",
+        "name": "Dark Tea",
+        "description": "Post-fermented tea with earthy flavors. 245 varieties",
+        "seo": "dark-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Тёмный чай",
+        "description": "Постферментированный чай с землистым вкусом. 245 сортов",
+        "seo": "tyomnyj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "黑茶",
+        "description": "后发酵茶，陈香醇厚。245品种",
+        "seo": "dark-tea"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-DARK",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "value": "95-100°C",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "value": "1-3 min",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-DARK-BROWN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      }
     ]
   },
   {
@@ -93,9 +464,61 @@
     "order": 7,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Pu-erh Tea", "description": "Post-fermented tea from Yunnan with unique aging character. 485 varieties", "seo": "puer-tea" },
-      { "lang": "ru-RU", "name": "Пуэр", "description": "Постферментированный чай из Юньнаня с уникальным характером выдержки. 485 сортов", "seo": "puer" },
-      { "lang": "zh-CN", "name": "普洱茶", "description": "云南独特陈化茶。485品种", "seo": "puer-tea" }
+      {
+        "lang": "en-US",
+        "name": "Pu-erh Tea",
+        "description": "Post-fermented tea from Yunnan with unique aging character. 485 varieties",
+        "seo": "puer-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Пуэр",
+        "description": "Постферментированный чай из Юньнаня с уникальным характером выдержки. 485 сортов",
+        "seo": "puer"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "普洱茶",
+        "description": "云南独特陈化茶。485品种",
+        "seo": "puer-tea"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "value": "95-100°C",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "value": "0.5-2 min",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-DARK-BROWN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      }
     ]
   },
   {
@@ -104,9 +527,68 @@
     "order": 8,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Jasmine Tea", "description": "Tea scented with jasmine flowers. UNESCO 2022", "seo": "jasmine-tea" },
-      { "lang": "ru-RU", "name": "Жасминовый чай", "description": "Чай ароматизированный цветами жасмина. ЮНЕСКО 2022", "seo": "zhasminovyj-chaj" },
-      { "lang": "zh-CN", "name": "茉莉花茶", "description": "茉莉窨制，花香馥郁。UNESCO 2022", "seo": "jasmine-tea" }
+      {
+        "lang": "en-US",
+        "name": "Jasmine Tea",
+        "description": "Tea scented with jasmine flowers. UNESCO 2022",
+        "seo": "jasmine-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Жасминовый чай",
+        "description": "Чай ароматизированный цветами жасмина. ЮНЕСКО 2022",
+        "seo": "zhasminovyj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "茉莉花茶",
+        "description": "茉莉窨制，花香馥郁。UNESCO 2022",
+        "seo": "jasmine-tea"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-JASMINE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "value": "80-90°C",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "value": "2-3 min",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-PALE-YELLOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      }
     ]
   },
   {
@@ -115,9 +597,54 @@
     "order": 9,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Herbal Tea", "description": "Caffeine-free herbal infusions and tisanes (not Camellia sinensis). 255+ varieties", "seo": "herbal-tea" },
-      { "lang": "ru-RU", "name": "Травяной чай", "description": "Травяные настои и тизаны без кофеина (не Camellia sinensis). 255+ сортов", "seo": "travyanoj-chaj" },
-      { "lang": "zh-CN", "name": "草本茶", "description": "无咖啡因草本饮品与花草茶。255+品种", "seo": "herbal-tea" }
+      {
+        "lang": "en-US",
+        "name": "Herbal Tea",
+        "description": "Caffeine-free herbal infusions and tisanes (not Camellia sinensis). 255+ varieties",
+        "seo": "herbal-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Травяной чай",
+        "description": "Травяные настои и тизаны без кофеина (не Camellia sinensis). 255+ сортов",
+        "seo": "travyanoj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "草本茶",
+        "description": "无咖啡因草本饮品与花草茶。255+品种",
+        "seo": "herbal-tea"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-HERBAL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "value": "90-100°C",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "value": "5-10 min",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4
+      }
     ]
   },
   {
@@ -126,9 +653,61 @@
     "order": 10,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Purple Tea", "description": "Anthocyanin-rich tea with unique purple leaves (0-100% oxidation). TRFK 306/1 cultivar. 28 varieties", "seo": "purple-tea" },
-      { "lang": "ru-RU", "name": "Пурпурный чай", "description": "Чай с высоким содержанием антоцианов (1,5-2,5%) и уникальными пурпурными листьями. Культивар TRFK 306/1. 28 сортов", "seo": "purpurnyj-chaj" },
-      { "lang": "zh-CN", "name": "紫茶", "description": "富含花青素(1.5-2.5%)的紫叶茶。TRFK 306/1品种。28品种", "seo": "purple-tea" }
+      {
+        "lang": "en-US",
+        "name": "Purple Tea",
+        "description": "Anthocyanin-rich tea with unique purple leaves (0-100% oxidation). TRFK 306/1 cultivar. 28 varieties",
+        "seo": "purple-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Пурпурный чай",
+        "description": "Чай с высоким содержанием антоцианов (1,5-2,5%) и уникальными пурпурными листьями. Культивар TRFK 306/1. 28 сортов",
+        "seo": "purpurnyj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "紫茶",
+        "description": "富含花青素(1.5-2.5%)的紫叶茶。TRFK 306/1品种。28品种",
+        "seo": "purple-tea"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-PURPLE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-LOW",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "value": "80-90°C",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "value": "2-3 min",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-PURPLE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      }
     ]
   },
   {
@@ -137,9 +716,68 @@
     "order": 11,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "GABA Tea", "description": "Tea processed anaerobically to increase GABA content (150-400+ mg/100g). Invented 1987. 42 varieties", "seo": "gaba-tea" },
-      { "lang": "ru-RU", "name": "ГАМК-чай (GABA)", "description": "Чай анаэробной обработки с повышенным содержанием ГАМК (150-400+ мг/100г). Изобретён в 1987. 42 сорта", "seo": "gaba-chaj" },
-      { "lang": "zh-CN", "name": "佳叶龙茶", "description": "厌氧发酵(N₂, 38-42°C)，GABA含量150-400+ mg/100g。42品种", "seo": "gaba-tea" }
+      {
+        "lang": "en-US",
+        "name": "GABA Tea",
+        "description": "Tea processed anaerobically to increase GABA content (150-400+ mg/100g). Invented 1987. 42 varieties",
+        "seo": "gaba-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "ГАМК-чай (GABA)",
+        "description": "Чай анаэробной обработки с повышенным содержанием ГАМК (150-400+ мг/100г). Изобретён в 1987. 42 сорта",
+        "seo": "gaba-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "佳叶龙茶",
+        "description": "厌氧发酵(N₂, 38-42°C)，GABA含量150-400+ mg/100g。42品种",
+        "seo": "gaba-tea"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GABA",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-ANAEROBIC",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "attribute": "SPEC-BREW-TEMP",
+        "value": "90-95°C",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "attribute": "SPEC-BREW-TIME",
+        "value": "1-2 min",
+        "type": "CustomText",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-AMBER",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      }
     ]
   },
   {
@@ -148,9 +786,21 @@
     "order": 2,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "By Region", "seo": "by-region" },
-      { "lang": "ru-RU", "name": "По регионам", "seo": "po-regionam" },
-      { "lang": "zh-CN", "name": "按产地", "seo": "by-region" }
+      {
+        "lang": "en-US",
+        "name": "By Region",
+        "seo": "by-region"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "По регионам",
+        "seo": "po-regionam"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "按产地",
+        "seo": "by-region"
+      }
     ]
   },
   {
@@ -159,9 +809,24 @@
     "order": 1,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "China", "description": "Birthplace of tea with diverse traditions", "seo": "china" },
-      { "lang": "ru-RU", "name": "Китай", "description": "Родина чая с богатыми традициями", "seo": "kitaj" },
-      { "lang": "zh-CN", "name": "中国", "description": "茶的故乡，传统悠久", "seo": "china" }
+      {
+        "lang": "en-US",
+        "name": "China",
+        "description": "Birthplace of tea with diverse traditions",
+        "seo": "china"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Китай",
+        "description": "Родина чая с богатыми традициями",
+        "seo": "kitaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "中国",
+        "description": "茶的故乡，传统悠久",
+        "seo": "china"
+      }
     ]
   },
   {
@@ -170,9 +835,24 @@
     "order": 1,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Fujian", "description": "Home of white tea, rock oolongs and red tea (668 teas)", "seo": "fujian" },
-      { "lang": "ru-RU", "name": "Фуцзянь", "description": "Родина белого чая, утёсных улунов и красного чая (668 чаёв)", "seo": "fujian" },
-      { "lang": "zh-CN", "name": "福建", "description": "白茶、岩茶与红茶之乡", "seo": "fujian" }
+      {
+        "lang": "en-US",
+        "name": "Fujian",
+        "description": "Home of white tea, rock oolongs and red tea (668 teas)",
+        "seo": "fujian"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Фуцзянь",
+        "description": "Родина белого чая, утёсных улунов и красного чая (668 чаёв)",
+        "seo": "fujian"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "福建",
+        "description": "白茶、岩茶与红茶之乡",
+        "seo": "fujian"
+      }
     ]
   },
   {
@@ -181,9 +861,24 @@
     "order": 2,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Zhejiang", "description": "Home of Longjing - one of Ten Great Teas (385 teas)", "seo": "zhejiang" },
-      { "lang": "ru-RU", "name": "Чжэцзян", "description": "Родина Лунцзин — одного из Десяти великих чаёв (385 чаёв)", "seo": "zhejiang" },
-      { "lang": "zh-CN", "name": "浙江", "description": "龙井茶之乡，十大名茶", "seo": "zhejiang" }
+      {
+        "lang": "en-US",
+        "name": "Zhejiang",
+        "description": "Home of Longjing - one of Ten Great Teas (385 teas)",
+        "seo": "zhejiang"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Чжэцзян",
+        "description": "Родина Лунцзин — одного из Десяти великих чаёв (385 чаёв)",
+        "seo": "zhejiang"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "浙江",
+        "description": "龙井茶之乡，十大名茶",
+        "seo": "zhejiang"
+      }
     ]
   },
   {
@@ -192,9 +887,24 @@
     "order": 3,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Yunnan", "description": "Origin of tea trees, Pu-erh and Dianhong (479 teas)", "seo": "yunnan" },
-      { "lang": "ru-RU", "name": "Юньнань", "description": "Родина чайных деревьев, пуэра и дяньхуна (479 чаёв)", "seo": "yunnan" },
-      { "lang": "zh-CN", "name": "云南", "description": "茶树原产地，普洱与滇红之乡", "seo": "yunnan" }
+      {
+        "lang": "en-US",
+        "name": "Yunnan",
+        "description": "Origin of tea trees, Pu-erh and Dianhong (479 teas)",
+        "seo": "yunnan"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Юньнань",
+        "description": "Родина чайных деревьев, пуэра и дяньхуна (479 чаёв)",
+        "seo": "yunnan"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "云南",
+        "description": "茶树原产地，普洱与滇红之乡",
+        "seo": "yunnan"
+      }
     ]
   },
   {
@@ -203,9 +913,24 @@
     "order": 4,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Anhui", "description": "Home of 4 of Ten Great Teas - Huangshan Maofeng, Keemun (178 teas)", "seo": "anhui" },
-      { "lang": "ru-RU", "name": "Аньхой", "description": "Родина 4 из Десяти великих — Хуаншань Маофэн, Цимэнь (178 чаёв)", "seo": "anhui" },
-      { "lang": "zh-CN", "name": "安徽", "description": "四大名茶之乡，黄山毛峰、祁门红茶", "seo": "anhui" }
+      {
+        "lang": "en-US",
+        "name": "Anhui",
+        "description": "Home of 4 of Ten Great Teas - Huangshan Maofeng, Keemun (178 teas)",
+        "seo": "anhui"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Аньхой",
+        "description": "Родина 4 из Десяти великих — Хуаншань Маофэн, Цимэнь (178 чаёв)",
+        "seo": "anhui"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "安徽",
+        "description": "四大名茶之乡，黄山毛峰、祁门红茶",
+        "seo": "anhui"
+      }
     ]
   },
   {
@@ -214,9 +939,24 @@
     "order": 5,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Jiangsu", "description": "Famous for Biluochun - one of Ten Great Teas (111 teas)", "seo": "jiangsu" },
-      { "lang": "ru-RU", "name": "Цзянсу", "description": "Родина Билочунь — одного из Десяти великих чаёв (111 чаёв)", "seo": "jiangsu" },
-      { "lang": "zh-CN", "name": "江苏", "description": "碧螺春之乡，十大名茶", "seo": "jiangsu" }
+      {
+        "lang": "en-US",
+        "name": "Jiangsu",
+        "description": "Famous for Biluochun - one of Ten Great Teas (111 teas)",
+        "seo": "jiangsu"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Цзянсу",
+        "description": "Родина Билочунь — одного из Десяти великих чаёв (111 чаёв)",
+        "seo": "jiangsu"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "江苏",
+        "description": "碧螺春之乡，十大名茶",
+        "seo": "jiangsu"
+      }
     ]
   },
   {
@@ -225,9 +965,24 @@
     "order": 6,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Sichuan", "description": "Ancient tea region - Mengding Ganlu 2000+ years (240 teas)", "seo": "sichuan" },
-      { "lang": "ru-RU", "name": "Сычуань", "description": "Древнейший чайный регион — Мэндин Ганьлу 2000+ лет (240 чаёв)", "seo": "sychuan" },
-      { "lang": "zh-CN", "name": "四川", "description": "古老茶区，蒙顶甘露2000年历史", "seo": "sichuan" }
+      {
+        "lang": "en-US",
+        "name": "Sichuan",
+        "description": "Ancient tea region - Mengding Ganlu 2000+ years (240 teas)",
+        "seo": "sichuan"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Сычуань",
+        "description": "Древнейший чайный регион — Мэндин Ганьлу 2000+ лет (240 чаёв)",
+        "seo": "sychuan"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "四川",
+        "description": "古老茶区，蒙顶甘露2000年历史",
+        "seo": "sichuan"
+      }
     ]
   },
   {
@@ -236,9 +991,24 @@
     "order": 7,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Guangdong", "description": "Home of Phoenix Dancong oolongs and Yingde red tea (192 teas)", "seo": "guangdong" },
-      { "lang": "ru-RU", "name": "Гуандун", "description": "Родина улунов Фениксовых даньцунов и красного чая Индэ (192 чая)", "seo": "guangdong" },
-      { "lang": "zh-CN", "name": "广东", "description": "凤凰单丛与英德红茶之乡", "seo": "guangdong" }
+      {
+        "lang": "en-US",
+        "name": "Guangdong",
+        "description": "Home of Phoenix Dancong oolongs and Yingde red tea (192 teas)",
+        "seo": "guangdong"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Гуандун",
+        "description": "Родина улунов Фениксовых даньцунов и красного чая Индэ (192 чая)",
+        "seo": "guangdong"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "广东",
+        "description": "凤凰单丛与英德红茶之乡",
+        "seo": "guangdong"
+      }
     ]
   },
   {
@@ -247,9 +1017,24 @@
     "order": 8,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Hubei", "description": "Home of Enshi Yulu - only steamed green tea in China (287 teas)", "seo": "hubei" },
-      { "lang": "ru-RU", "name": "Хубэй", "description": "Родина Эньши Юйлу — единственного парового зелёного чая Китая (287 чаёв)", "seo": "hubei" },
-      { "lang": "zh-CN", "name": "湖北", "description": "恩施玉露之乡，中国唯一蒸青绿茶", "seo": "hubei" }
+      {
+        "lang": "en-US",
+        "name": "Hubei",
+        "description": "Home of Enshi Yulu - only steamed green tea in China (287 teas)",
+        "seo": "hubei"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Хубэй",
+        "description": "Родина Эньши Юйлу — единственного парового зелёного чая Китая (287 чаёв)",
+        "seo": "hubei"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "湖北",
+        "description": "恩施玉露之乡，中国唯一蒸青绿茶",
+        "seo": "hubei"
+      }
     ]
   },
   {
@@ -258,9 +1043,24 @@
     "order": 9,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Hunan", "description": "Center of dark tea (Anhua) and yellow tea (Junshan Yinzhen) (257 teas)", "seo": "hunan" },
-      { "lang": "ru-RU", "name": "Хунань", "description": "Центр тёмного (Аньхуа) и жёлтого чая (Цзюньшань Иньчжэнь) (257 чаёв)", "seo": "hunan" },
-      { "lang": "zh-CN", "name": "湖南", "description": "安化黑茶与君山银针之乡", "seo": "hunan" }
+      {
+        "lang": "en-US",
+        "name": "Hunan",
+        "description": "Center of dark tea (Anhua) and yellow tea (Junshan Yinzhen) (257 teas)",
+        "seo": "hunan"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Хунань",
+        "description": "Центр тёмного (Аньхуа) и жёлтого чая (Цзюньшань Иньчжэнь) (257 чаёв)",
+        "seo": "hunan"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "湖南",
+        "description": "安化黑茶与君山银针之乡",
+        "seo": "hunan"
+      }
     ]
   },
   {
@@ -269,9 +1069,24 @@
     "order": 10,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Guizhou", "description": "Duyun Maojian - Panama Gold Medal 1915, UNESCO 2022 (165 teas)", "seo": "guizhou" },
-      { "lang": "ru-RU", "name": "Гуйчжоу", "description": "Дуюнь Маоцзянь — золото Панамы 1915, UNESCO 2022 (165 чаёв)", "seo": "guizhou" },
-      { "lang": "zh-CN", "name": "贵州", "description": "都匀毛尖，1915巴拿马金奖，UNESCO 2022", "seo": "guizhou" }
+      {
+        "lang": "en-US",
+        "name": "Guizhou",
+        "description": "Duyun Maojian - Panama Gold Medal 1915, UNESCO 2022 (165 teas)",
+        "seo": "guizhou"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Гуйчжоу",
+        "description": "Дуюнь Маоцзянь — золото Панамы 1915, UNESCO 2022 (165 чаёв)",
+        "seo": "guizhou"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "贵州",
+        "description": "都匀毛尖，1915巴拿马金奖，UNESCO 2022",
+        "seo": "guizhou"
+      }
     ]
   },
   {
@@ -280,9 +1095,24 @@
     "order": 11,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Henan", "description": "Home of Xinyang Maojian - one of Ten Great Teas (140 teas)", "seo": "henan" },
-      { "lang": "ru-RU", "name": "Хэнань", "description": "Родина Синьян Маоцзянь — одного из Десяти великих чаёв (140 чаёв)", "seo": "henan" },
-      { "lang": "zh-CN", "name": "河南", "description": "信阳毛尖之乡，十大名茶", "seo": "henan" }
+      {
+        "lang": "en-US",
+        "name": "Henan",
+        "description": "Home of Xinyang Maojian - one of Ten Great Teas (140 teas)",
+        "seo": "henan"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Хэнань",
+        "description": "Родина Синьян Маоцзянь — одного из Десяти великих чаёв (140 чаёв)",
+        "seo": "henan"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "河南",
+        "description": "信阳毛尖之乡，十大名茶",
+        "seo": "henan"
+      }
     ]
   },
   {
@@ -291,9 +1121,24 @@
     "order": 12,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Guangxi", "description": "Home of Liu Bao dark tea - UNESCO 2022 (160 teas)", "seo": "guangxi" },
-      { "lang": "ru-RU", "name": "Гуанси", "description": "Родина тёмного чая Люйбао — UNESCO 2022 (160 чаёв)", "seo": "guangxi" },
-      { "lang": "zh-CN", "name": "广西", "description": "六堡茶之乡，UNESCO 2022", "seo": "guangxi" }
+      {
+        "lang": "en-US",
+        "name": "Guangxi",
+        "description": "Home of Liu Bao dark tea - UNESCO 2022 (160 teas)",
+        "seo": "guangxi"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Гуанси",
+        "description": "Родина тёмного чая Люйбао — UNESCO 2022 (160 чаёв)",
+        "seo": "guangxi"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "广西",
+        "description": "六堡茶之乡，UNESCO 2022",
+        "seo": "guangxi"
+      }
     ]
   },
   {
@@ -302,9 +1147,24 @@
     "order": 13,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Jiangxi", "description": "Lushan Cloud Mist and Ningzhou Gongfu red tea (170 teas)", "seo": "jiangxi" },
-      { "lang": "ru-RU", "name": "Цзянси", "description": "Лушань Юньу и красный чай Нинчжоу Гунфу (170 чаёв)", "seo": "jiangxi" },
-      { "lang": "zh-CN", "name": "江西", "description": "庐山云雾与宁红工夫之乡", "seo": "jiangxi" }
+      {
+        "lang": "en-US",
+        "name": "Jiangxi",
+        "description": "Lushan Cloud Mist and Ningzhou Gongfu red tea (170 teas)",
+        "seo": "jiangxi"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Цзянси",
+        "description": "Лушань Юньу и красный чай Нинчжоу Гунфу (170 чаёв)",
+        "seo": "jiangxi"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "江西",
+        "description": "庐山云雾与宁红工夫之乡",
+        "seo": "jiangxi"
+      }
     ]
   },
   {
@@ -313,9 +1173,24 @@
     "order": 14,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Shaanxi", "description": "Ziyang Maojian and Hanzhong Xianhao green teas (112 teas)", "seo": "shaanxi" },
-      { "lang": "ru-RU", "name": "Шэньси", "description": "Зелёные чаи Цзыян Маоцзянь и Ханьчжун Сяньхао (112 чаёв)", "seo": "shaanxi" },
-      { "lang": "zh-CN", "name": "陕西", "description": "紫阳毛尖与汉中仙毫之乡", "seo": "shaanxi" }
+      {
+        "lang": "en-US",
+        "name": "Shaanxi",
+        "description": "Ziyang Maojian and Hanzhong Xianhao green teas (112 teas)",
+        "seo": "shaanxi"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Шэньси",
+        "description": "Зелёные чаи Цзыян Маоцзянь и Ханьчжун Сяньхао (112 чаёв)",
+        "seo": "shaanxi"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "陕西",
+        "description": "紫阳毛尖与汉中仙毫之乡",
+        "seo": "shaanxi"
+      }
     ]
   },
   {
@@ -324,9 +1199,24 @@
     "order": 15,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Shandong", "description": "Laoshan green tea with unique sea terroir (125 teas)", "seo": "shandong" },
-      { "lang": "ru-RU", "name": "Шаньдун", "description": "Лаошань — зелёный чай с уникальным морским терруаром (125 чаёв)", "seo": "shandong" },
-      { "lang": "zh-CN", "name": "山东", "description": "崂山绿茶，独特海洋风土", "seo": "shandong" }
+      {
+        "lang": "en-US",
+        "name": "Shandong",
+        "description": "Laoshan green tea with unique sea terroir (125 teas)",
+        "seo": "shandong"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Шаньдун",
+        "description": "Лаошань — зелёный чай с уникальным морским терруаром (125 чаёв)",
+        "seo": "shandong"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "山东",
+        "description": "崂山绿茶，独特海洋风土",
+        "seo": "shandong"
+      }
     ]
   },
   {
@@ -335,9 +1225,24 @@
     "order": 16,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Hainan", "description": "Tropical tea region - Wuzhishan teas (90 teas)", "seo": "hainan" },
-      { "lang": "ru-RU", "name": "Хайнань", "description": "Тропический чайный регион — чаи Учжишань (90 чаёв)", "seo": "hainan" },
-      { "lang": "zh-CN", "name": "海南", "description": "热带茶区，五指山茶", "seo": "hainan" }
+      {
+        "lang": "en-US",
+        "name": "Hainan",
+        "description": "Tropical tea region - Wuzhishan teas (90 teas)",
+        "seo": "hainan"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Хайнань",
+        "description": "Тропический чайный регион — чаи Учжишань (90 чаёв)",
+        "seo": "hainan"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "海南",
+        "description": "热带茶区，五指山茶",
+        "seo": "hainan"
+      }
     ]
   },
   {
@@ -346,9 +1251,24 @@
     "order": 17,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Xinjiang", "description": "Experimental tea region in western China (51 teas)", "seo": "xinjiang" },
-      { "lang": "ru-RU", "name": "Синьцзян", "description": "Экспериментальный чайный регион на западе Китая (51 чай)", "seo": "sinczyan" },
-      { "lang": "zh-CN", "name": "新疆", "description": "西部实验茶区", "seo": "xinjiang" }
+      {
+        "lang": "en-US",
+        "name": "Xinjiang",
+        "description": "Experimental tea region in western China (51 teas)",
+        "seo": "xinjiang"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Синьцзян",
+        "description": "Экспериментальный чайный регион на западе Китая (51 чай)",
+        "seo": "sinczyan"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "新疆",
+        "description": "西部实验茶区",
+        "seo": "xinjiang"
+      }
     ]
   },
   {
@@ -357,9 +1277,24 @@
     "order": 18,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Jilin", "description": "Northern frontier tea region (30 teas)", "seo": "jilin" },
-      { "lang": "ru-RU", "name": "Цзилинь", "description": "Чайный регион на северной границе выращивания (30 чаёв)", "seo": "czilin" },
-      { "lang": "zh-CN", "name": "吉林", "description": "北方边界茶区", "seo": "jilin" }
+      {
+        "lang": "en-US",
+        "name": "Jilin",
+        "description": "Northern frontier tea region (30 teas)",
+        "seo": "jilin"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Цзилинь",
+        "description": "Чайный регион на северной границе выращивания (30 чаёв)",
+        "seo": "czilin"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "吉林",
+        "description": "北方边界茶区",
+        "seo": "jilin"
+      }
     ]
   },
   {
@@ -368,9 +1303,24 @@
     "order": 2,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Taiwan", "description": "High mountain oolong paradise - Alishan, Lishan, GABA (267 teas)", "seo": "taiwan" },
-      { "lang": "ru-RU", "name": "Тайвань", "description": "Рай высокогорных улунов — Алишань, Лишань, GABA (267 чаёв)", "seo": "tajvan" },
-      { "lang": "zh-CN", "name": "台湾", "description": "高山乌龙胜地，阿里山、梨山、GABA茶", "seo": "taiwan" }
+      {
+        "lang": "en-US",
+        "name": "Taiwan",
+        "description": "High mountain oolong paradise - Alishan, Lishan, GABA (267 teas)",
+        "seo": "taiwan"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Тайвань",
+        "description": "Рай высокогорных улунов — Алишань, Лишань, GABA (267 чаёв)",
+        "seo": "tajvan"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "台湾",
+        "description": "高山乌龙胜地，阿里山、梨山、GABA茶",
+        "seo": "taiwan"
+      }
     ]
   },
   {
@@ -379,9 +1329,24 @@
     "order": 3,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Japan", "description": "Home of matcha, sencha, gyokuro (120+ teas)", "seo": "japan" },
-      { "lang": "ru-RU", "name": "Япония", "description": "Родина матчи, сенчи, гёкуро (120+ чаёв)", "seo": "yaponiya" },
-      { "lang": "zh-CN", "name": "日本", "description": "抹茶、煎茶、玉露之乡", "seo": "japan" }
+      {
+        "lang": "en-US",
+        "name": "Japan",
+        "description": "Home of matcha, sencha, gyokuro (120+ teas)",
+        "seo": "japan"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Япония",
+        "description": "Родина матчи, сенчи, гёкуро (120+ чаёв)",
+        "seo": "yaponiya"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "日本",
+        "description": "抹茶、煎茶、玉露之乡",
+        "seo": "japan"
+      }
     ]
   },
   {
@@ -390,9 +1355,24 @@
     "order": 4,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "India", "description": "Darjeeling, Assam, Nilgiri traditions (85+ teas)", "seo": "india" },
-      { "lang": "ru-RU", "name": "Индия", "description": "Традиции Дарджилинга, Ассама, Нилгири (85+ чаёв)", "seo": "indiya" },
-      { "lang": "zh-CN", "name": "印度", "description": "大吉岭、阿萨姆、尼尔吉里传统", "seo": "india" }
+      {
+        "lang": "en-US",
+        "name": "India",
+        "description": "Darjeeling, Assam, Nilgiri traditions (85+ teas)",
+        "seo": "india"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Индия",
+        "description": "Традиции Дарджилинга, Ассама, Нилгири (85+ чаёв)",
+        "seo": "indiya"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "印度",
+        "description": "大吉岭、阿萨姆、尼尔吉里传统",
+        "seo": "india"
+      }
     ]
   },
   {
@@ -401,9 +1381,24 @@
     "order": 5,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Sri Lanka (Ceylon)", "description": "Classic Ceylon tea - Nuwara Eliya, Uva, Dimbula (35+ teas)", "seo": "sri-lanka" },
-      { "lang": "ru-RU", "name": "Шри-Ланка (Цейлон)", "description": "Классический цейлонский чай — Нувара Элия, Ува, Димбула (35+ чаёв)", "seo": "shri-lanka" },
-      { "lang": "zh-CN", "name": "斯里兰卡（锡兰）", "description": "经典锡兰茶，努瓦拉埃利亚、乌瓦、丁布拉", "seo": "sri-lanka" }
+      {
+        "lang": "en-US",
+        "name": "Sri Lanka (Ceylon)",
+        "description": "Classic Ceylon tea - Nuwara Eliya, Uva, Dimbula (35+ teas)",
+        "seo": "sri-lanka"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Шри-Ланка (Цейлон)",
+        "description": "Классический цейлонский чай — Нувара Элия, Ува, Димбула (35+ чаёв)",
+        "seo": "shri-lanka"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "斯里兰卡（锡兰）",
+        "description": "经典锡兰茶，努瓦拉埃利亚、乌瓦、丁布拉",
+        "seo": "sri-lanka"
+      }
     ]
   },
   {
@@ -412,9 +1407,24 @@
     "order": 6,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "South Korea", "description": "Nokcha, Balhyocha, Hwangcha traditions (45+ teas)", "seo": "korea" },
-      { "lang": "ru-RU", "name": "Южная Корея", "description": "Традиции Нокча, Бальхёча, Хванча (45+ чаёв)", "seo": "koreya" },
-      { "lang": "zh-CN", "name": "韩国", "description": "绿茶、发酵茶、黄茶传统", "seo": "korea" }
+      {
+        "lang": "en-US",
+        "name": "South Korea",
+        "description": "Nokcha, Balhyocha, Hwangcha traditions (45+ teas)",
+        "seo": "korea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Южная Корея",
+        "description": "Традиции Нокча, Бальхёча, Хванча (45+ чаёв)",
+        "seo": "koreya"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "韩国",
+        "description": "绿茶、发酵茶、黄茶传统",
+        "seo": "korea"
+      }
     ]
   },
   {
@@ -423,9 +1433,24 @@
     "order": 7,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Vietnam", "description": "Ancient tea trees - Shan Tuyet, GABA (25+ teas)", "seo": "vietnam" },
-      { "lang": "ru-RU", "name": "Вьетнам", "description": "Древние чайные деревья — Шан Туйет, GABA (25+ чаёв)", "seo": "vietnam" },
-      { "lang": "zh-CN", "name": "越南", "description": "古茶树，山雪、GABA茶", "seo": "vietnam" }
+      {
+        "lang": "en-US",
+        "name": "Vietnam",
+        "description": "Ancient tea trees - Shan Tuyet, GABA (25+ teas)",
+        "seo": "vietnam"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Вьетнам",
+        "description": "Древние чайные деревья — Шан Туйет, GABA (25+ чаёв)",
+        "seo": "vietnam"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "越南",
+        "description": "古茶树，山雪、GABA茶",
+        "seo": "vietnam"
+      }
     ]
   },
   {
@@ -434,9 +1459,24 @@
     "order": 8,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Nepal", "description": "Himalayan tea gardens - Jun Chiyabari (20+ teas)", "seo": "nepal" },
-      { "lang": "ru-RU", "name": "Непал", "description": "Гималайские чайные сады — Джун Чиябари (20+ чаёв)", "seo": "nepal" },
-      { "lang": "zh-CN", "name": "尼泊尔", "description": "喜马拉雅茶园", "seo": "nepal" }
+      {
+        "lang": "en-US",
+        "name": "Nepal",
+        "description": "Himalayan tea gardens - Jun Chiyabari (20+ teas)",
+        "seo": "nepal"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Непал",
+        "description": "Гималайские чайные сады — Джун Чиябари (20+ чаёв)",
+        "seo": "nepal"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "尼泊尔",
+        "description": "喜马拉雅茶园",
+        "seo": "nepal"
+      }
     ]
   },
   {
@@ -445,9 +1485,24 @@
     "order": 9,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Indonesia", "description": "Java and Sumatra teas", "seo": "indonesia" },
-      { "lang": "ru-RU", "name": "Индонезия", "description": "Чаи Явы и Суматры", "seo": "indoneziya" },
-      { "lang": "zh-CN", "name": "印度尼西亚", "description": "爪哇与苏门答腊茶", "seo": "indonesia" }
+      {
+        "lang": "en-US",
+        "name": "Indonesia",
+        "description": "Java and Sumatra teas",
+        "seo": "indonesia"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Индонезия",
+        "description": "Чаи Явы и Суматры",
+        "seo": "indoneziya"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "印度尼西亚",
+        "description": "爪哇与苏门答腊茶",
+        "seo": "indonesia"
+      }
     ]
   },
   {
@@ -456,9 +1511,24 @@
     "order": 10,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Kenya", "description": "African tea innovation - Purple Tea, CTC (25+ teas)", "seo": "kenya" },
-      { "lang": "ru-RU", "name": "Кения", "description": "Африканские чайные инновации — Пурпурный чай, CTC (25+ чаёв)", "seo": "keniya" },
-      { "lang": "zh-CN", "name": "肯尼亚", "description": "非洲茶叶创新，紫茶、CTC", "seo": "kenya" }
+      {
+        "lang": "en-US",
+        "name": "Kenya",
+        "description": "African tea innovation - Purple Tea, CTC (25+ teas)",
+        "seo": "kenya"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Кения",
+        "description": "Африканские чайные инновации — Пурпурный чай, CTC (25+ чаёв)",
+        "seo": "keniya"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "肯尼亚",
+        "description": "非洲茶叶创新，紫茶、CTC",
+        "seo": "kenya"
+      }
     ]
   },
   {
@@ -467,9 +1537,24 @@
     "order": 11,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Malawi", "description": "African specialty teas", "seo": "malawi" },
-      { "lang": "ru-RU", "name": "Малави", "description": "Африканские специальные чаи", "seo": "malavi" },
-      { "lang": "zh-CN", "name": "马拉维", "description": "非洲特色茶", "seo": "malawi" }
+      {
+        "lang": "en-US",
+        "name": "Malawi",
+        "description": "African specialty teas",
+        "seo": "malawi"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Малави",
+        "description": "Африканские специальные чаи",
+        "seo": "malavi"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "马拉维",
+        "description": "非洲特色茶",
+        "seo": "malawi"
+      }
     ]
   },
   {
@@ -478,9 +1563,24 @@
     "order": 12,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Georgia", "description": "Caucasus tea traditions - Ozurgeti (15+ teas)", "seo": "georgia" },
-      { "lang": "ru-RU", "name": "Грузия", "description": "Кавказские чайные традиции — Озургети (15+ чаёв)", "seo": "gruziya" },
-      { "lang": "zh-CN", "name": "格鲁吉亚", "description": "高加索茶文化", "seo": "georgia" }
+      {
+        "lang": "en-US",
+        "name": "Georgia",
+        "description": "Caucasus tea traditions - Ozurgeti (15+ teas)",
+        "seo": "georgia"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Грузия",
+        "description": "Кавказские чайные традиции — Озургети (15+ чаёв)",
+        "seo": "gruziya"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "格鲁吉亚",
+        "description": "高加索茶文化",
+        "seo": "georgia"
+      }
     ]
   },
   {
@@ -489,9 +1589,1036 @@
     "order": 99,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Other Regions", "description": "Emerging tea regions worldwide", "seo": "other-regions" },
-      { "lang": "ru-RU", "name": "Другие регионы", "description": "Развивающиеся чайные регионы", "seo": "drugie-regiony" },
-      { "lang": "zh-CN", "name": "其他产区", "description": "新兴茶区", "seo": "other-regions" }
+      {
+        "lang": "en-US",
+        "name": "Other Regions",
+        "description": "Emerging tea regions worldwide",
+        "seo": "other-regions"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Другие регионы",
+        "description": "Развивающиеся чайные регионы",
+        "seo": "drugie-regiony"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "其他产区",
+        "description": "新兴茶区",
+        "seo": "other-regions"
+      }
+    ]
+  },
+  {
+    "code": "CAT-BY-SPECIALTY",
+    "parent": "CAT-ROOT",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Specialty Tea",
+        "seo": "specialty-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Специальные чаи",
+        "seo": "specialnye-chai"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "特色茶",
+        "seo": "specialty-tea"
+      }
+    ]
+  },
+  {
+    "code": "CAT-SPEC-GUSHU",
+    "order": 1,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Ancient Tree Tea",
+        "description": "Tea from trees over 100 years old",
+        "seo": "ancient-tree-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Чай со старых деревьев",
+        "description": "Чай с деревьев старше 100 лет",
+        "seo": "chaj-so-staryh-derevev"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "古树茶",
+        "description": "百年以上古茶树",
+        "seo": "ancient-tree-tea"
+      }
+    ],
+    "parent": "CAT-BY-SPECIALTY",
+    "published": true
+  },
+  {
+    "code": "CAT-SPEC-YESHENG",
+    "order": 2,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Wild Tea",
+        "description": "Tea from wild-growing tea trees",
+        "seo": "wild-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Дикий чай",
+        "description": "Чай с дикорастущих чайных деревьев",
+        "seo": "dikij-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "野生茶",
+        "description": "野生茶树鲜叶制成",
+        "seo": "wild-tea"
+      }
+    ],
+    "parent": "CAT-BY-SPECIALTY",
+    "published": true
+  },
+  {
+    "code": "CAT-SPEC-GAOSHAN",
+    "order": 3,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "High Mountain Tea",
+        "description": "Tea grown above 1000m altitude",
+        "seo": "high-mountain-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Высокогорный чай",
+        "description": "Чай, выращенный выше 1000м",
+        "seo": "vysokogornyj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "高山茶",
+        "description": "海拔1000米以上茶园",
+        "seo": "high-mountain-tea"
+      }
+    ],
+    "parent": "CAT-BY-SPECIALTY",
+    "published": true
+  },
+  {
+    "code": "CAT-SPEC-YOUJI",
+    "order": 4,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Organic Tea",
+        "description": "Certified organic tea production",
+        "seo": "organic-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Органический чай",
+        "description": "Сертифицированное органическое производство",
+        "seo": "organicheskij-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "有机茶",
+        "description": "有机认证茶叶",
+        "seo": "organic-tea"
+      }
+    ],
+    "parent": "CAT-BY-SPECIALTY",
+    "published": true
+  },
+  {
+    "code": "CAT-SPEC-SHENGTAI",
+    "order": 5,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Ecological Tea",
+        "description": "Eco-friendly cultivation methods",
+        "seo": "ecological-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Экологический чай",
+        "description": "Экологичные методы выращивания",
+        "seo": "ekologicheskij-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "生态茶",
+        "description": "生态种植方式",
+        "seo": "ecological-tea"
+      }
+    ],
+    "parent": "CAT-BY-SPECIALTY",
+    "published": true
+  },
+  {
+    "code": "CAT-SPEC-SHOUGONG",
+    "order": 6,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Handmade Tea",
+        "description": "Fully hand-processed tea",
+        "seo": "handmade-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Ручной чай",
+        "description": "Полностью ручная обработка",
+        "seo": "ruchnoj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "手工茶",
+        "description": "全手工制作",
+        "seo": "handmade-tea"
+      }
+    ],
+    "parent": "CAT-BY-SPECIALTY",
+    "published": true
+  },
+  {
+    "code": "CAT-SPEC-DASHU",
+    "order": 7,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Big Tree Tea",
+        "description": "Tea from large arbor-type tea trees",
+        "seo": "big-tree-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Чай больших деревьев",
+        "description": "Чай с крупных древовидных чайных деревьев",
+        "seo": "chaj-bolshih-derevev"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "大树茶",
+        "description": "乔木型大茶树",
+        "seo": "big-tree-tea"
+      }
+    ],
+    "parent": "CAT-BY-SPECIALTY",
+    "published": true
+  },
+  {
+    "code": "CAT-SPEC-GONGFU",
+    "order": 8,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Gongfu Tea",
+        "description": "Tea for traditional Gongfu ceremony",
+        "seo": "gongfu-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Чай Гунфу",
+        "description": "Чай для традиционной церемонии Гунфу",
+        "seo": "chaj-gunfu"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "工夫茶",
+        "description": "工夫茶道专用茶",
+        "seo": "gongfu-tea"
+      }
+    ],
+    "parent": "CAT-BY-SPECIALTY",
+    "published": true
+  },
+  {
+    "code": "CAT-SPEC-GONGYI",
+    "order": 9,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Art/Blooming Tea",
+        "description": "Hand-tied flowering tea balls",
+        "seo": "blooming-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Связанный чай",
+        "description": "Вручную связанные чайные шарики с цветами",
+        "seo": "svyazannyj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "工艺花茶",
+        "description": "手工扎制花茶",
+        "seo": "blooming-tea"
+      }
+    ],
+    "parent": "CAT-BY-SPECIALTY",
+    "published": true
+  },
+  {
+    "code": "CAT-BY-PROCESSING",
+    "parent": "CAT-ROOT",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Special Processing",
+        "seo": "special-processing"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Особые методы обработки",
+        "seo": "osobye-metody-obrabotki"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "特殊工艺",
+        "seo": "special-processing"
+      }
+    ]
+  },
+  {
+    "code": "CAT-PROC-CHA-GAO",
+    "order": 1,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Tea Paste (Cha Gao)",
+        "description": "Concentrated tea extract paste",
+        "seo": "tea-paste"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Чайная паста (Ча Гао)",
+        "description": "Концентрированный чайный экстракт",
+        "seo": "chajnaya-pasta"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "茶膏",
+        "description": "浓缩茶膏",
+        "seo": "tea-paste"
+      }
+    ],
+    "parent": "CAT-BY-PROCESSING",
+    "published": true
+  },
+  {
+    "code": "CAT-PROC-SHAI-HONG",
+    "order": 2,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Sun-dried Red (Shai Hong)",
+        "description": "Sun-dried red tea processing",
+        "seo": "sun-dried-red"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Солнечная сушка красного (Шай Хун)",
+        "description": "Красный чай солнечной сушки",
+        "seo": "shaj-hun"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "晒红",
+        "description": "日晒红茶工艺",
+        "seo": "sun-dried-red"
+      }
+    ],
+    "parent": "CAT-BY-PROCESSING",
+    "published": true
+  },
+  {
+    "code": "CAT-PROC-GAN-JIE",
+    "order": 3,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Citrus Tea (Gan Jie Cha)",
+        "description": "Tea aged in citrus peel",
+        "seo": "citrus-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Цитрусовый чай (Гань Цзе Ча)",
+        "description": "Чай, выдержанный в цитрусовой кожуре",
+        "seo": "citrusovyj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "柑桔茶",
+        "description": "柑皮陈化茶",
+        "seo": "citrus-tea"
+      }
+    ],
+    "parent": "CAT-BY-PROCESSING",
+    "published": true
+  },
+  {
+    "code": "CAT-OOLONG-ROCK",
+    "parent": "CAT-OOLONG-TEA",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Rock Tea (Yan Cha)",
+        "description": "Wuyi Mountain rock oolongs",
+        "seo": "rock-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Утёсный чай",
+        "description": "Утёсные улуны гор Уи",
+        "seo": "utjosnyj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "岩茶",
+        "description": "武夷山岩茶",
+        "seo": "rock-tea"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-60-85",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-AMBER",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      }
+    ]
+  },
+  {
+    "code": "CAT-OOLONG-DANCONG",
+    "parent": "CAT-OOLONG-TEA",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Dancong",
+        "description": "Phoenix Mountain single-bush oolongs",
+        "seo": "dancong"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Даньцун",
+        "description": "Улуны одиночных кустов Фениксовой горы",
+        "seo": "dancun"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "单丛",
+        "description": "凤凰山单丛茶",
+        "seo": "dancong"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-30-60",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-GOLDEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      }
+    ]
+  },
+  {
+    "code": "CAT-OOLONG-TIEGUANYIN",
+    "parent": "CAT-OOLONG-TEA",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Tieguanyin",
+        "description": "Iron Goddess of Mercy oolong",
+        "seo": "tieguanyin"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Те Гуань Инь",
+        "description": "Железная Богиня Милосердия",
+        "seo": "te-guan-in"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "铁观音",
+        "description": "安溪铁观音",
+        "seo": "tieguanyin"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-15-30",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-GOLDEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      }
+    ]
+  },
+  {
+    "code": "CAT-OOLONG-TAIWAN",
+    "parent": "CAT-OOLONG-TEA",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Taiwan Oolong",
+        "description": "Taiwanese high mountain oolongs",
+        "seo": "taiwan-oolong"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Тайваньский улун",
+        "description": "Тайваньские высокогорные улуны",
+        "seo": "tajvanskij-ulun"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "台湾乌龙",
+        "description": "台湾高山乌龙茶",
+        "seo": "taiwan-oolong"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-15-30",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-GOLDEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      }
+    ]
+  },
+  {
+    "code": "CAT-GREEN-LONGJING",
+    "parent": "CAT-GREEN-TEA",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Longjing (Dragon Well)",
+        "description": "Pan-fired flat green tea from Hangzhou",
+        "seo": "longjing"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Лунцзин",
+        "description": "Плоский зелёный чай из Ханчжоу",
+        "seo": "lunczin"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "龙井",
+        "description": "杭州西湖龙井",
+        "seo": "longjing"
+      }
+    ]
+  },
+  {
+    "code": "CAT-GREEN-BILUOCHUN",
+    "parent": "CAT-GREEN-TEA",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Biluochun",
+        "description": "Spiral green tea from Jiangsu",
+        "seo": "biluochun"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Билочунь",
+        "description": "Спиральный зелёный чай из Цзянсу",
+        "seo": "bilochun"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "碧螺春",
+        "description": "江苏碧螺春",
+        "seo": "biluochun"
+      }
+    ]
+  },
+  {
+    "code": "CAT-GREEN-MAOFENG",
+    "parent": "CAT-GREEN-TEA",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Maofeng",
+        "description": "Downy tip green teas",
+        "seo": "maofeng"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Маофэн",
+        "description": "Зелёные чаи с пушистыми типсами",
+        "seo": "maofjen"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "毛峰",
+        "description": "毛峰类绿茶",
+        "seo": "maofeng"
+      }
+    ]
+  },
+  {
+    "code": "CAT-GREEN-JAPAN",
+    "parent": "CAT-GREEN-TEA",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Japanese Green Tea",
+        "description": "Steamed green teas from Japan",
+        "seo": "japanese-green-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Японский зелёный чай",
+        "description": "Паровые зелёные чаи из Японии",
+        "seo": "yaponskij-zeljonyj-chaj"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "日本绿茶",
+        "description": "日本蒸青绿茶",
+        "seo": "japanese-green-tea"
+      }
+    ]
+  },
+  {
+    "code": "CAT-WHITE-YINZHEN",
+    "parent": "CAT-WHITE-TEA",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Silver Needle (Yin Zhen)",
+        "description": "Buds-only white tea",
+        "seo": "silver-needle"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Серебряные иглы",
+        "description": "Белый чай только из почек",
+        "seo": "serebryanye-igly"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "银针",
+        "description": "纯芽白茶",
+        "seo": "silver-needle"
+      }
+    ]
+  },
+  {
+    "code": "CAT-WHITE-BAIMUDAN",
+    "parent": "CAT-WHITE-TEA",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "White Peony (Bai Mu Dan)",
+        "description": "Buds and leaves white tea",
+        "seo": "white-peony"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Белый пион",
+        "description": "Белый чай из почек и листьев",
+        "seo": "belyj-pion"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "白牡丹",
+        "description": "一芽二叶白茶",
+        "seo": "white-peony"
+      }
+    ]
+  },
+  {
+    "code": "CAT-WHITE-SHOUMEI",
+    "parent": "CAT-WHITE-TEA",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Shou Mei",
+        "description": "Mature leaf white tea",
+        "seo": "shou-mei"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Шоу Мэй",
+        "description": "Белый чай из зрелых листьев",
+        "seo": "shou-mej"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "寿眉",
+        "description": "成熟叶白茶",
+        "seo": "shou-mei"
+      }
+    ]
+  },
+  {
+    "code": "CAT-RED-KEEMUN",
+    "parent": "CAT-RED-TEA",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Keemun",
+        "description": "Anhui province red tea",
+        "seo": "keemun"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Кимэнь",
+        "description": "Красный чай из Аньхой",
+        "seo": "kimen"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "祁门",
+        "description": "安徽祁门红茶",
+        "seo": "keemun"
+      }
+    ]
+  },
+  {
+    "code": "CAT-RED-DIANHONG",
+    "parent": "CAT-RED-TEA",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Dianhong (Yunnan Red)",
+        "description": "Yunnan province red tea",
+        "seo": "dianhong"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Дянь Хун",
+        "description": "Красный чай из Юньнаня",
+        "seo": "dyan-hun"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "滇红",
+        "description": "云南滇红",
+        "seo": "dianhong"
+      }
+    ]
+  },
+  {
+    "code": "CAT-RED-LAPSANG",
+    "parent": "CAT-RED-TEA",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Lapsang Souchong",
+        "description": "Pine-smoked Wuyi red tea",
+        "seo": "lapsang-souchong"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Лапсанг Сушонг",
+        "description": "Копчёный красный чай из Уи",
+        "seo": "lapsang-sushong"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "正山小种",
+        "description": "武夷松烟红茶",
+        "seo": "lapsang-souchong"
+      }
+    ]
+  },
+  {
+    "code": "CAT-RED-JINJUNMEI",
+    "parent": "CAT-RED-TEA",
+    "order": 4,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Jin Jun Mei",
+        "description": "Premium buds-only red tea",
+        "seo": "jin-jun-mei"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Цзинь Цзюнь Мэй",
+        "description": "Премиальный красный чай из почек",
+        "seo": "czin-czjun-mej"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "金骏眉",
+        "description": "顶级芽头红茶",
+        "seo": "jin-jun-mei"
+      }
+    ]
+  },
+  {
+    "code": "CAT-DARK-LIUBAO",
+    "parent": "CAT-DARK-TEA",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Liubao",
+        "description": "Guangxi six-fortress dark tea",
+        "seo": "liubao"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Люй Бао",
+        "description": "Тёмный чай из Гуанси",
+        "seo": "ljuj-bao"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "六堡",
+        "description": "广西六堡茶",
+        "seo": "liubao"
+      }
+    ]
+  },
+  {
+    "code": "CAT-DARK-FUZHUAN",
+    "parent": "CAT-DARK-TEA",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Fu Zhuan",
+        "description": "Golden flower brick dark tea",
+        "seo": "fu-zhuan"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Фу Чжуань",
+        "description": "Кирпичный тёмный чай с золотым цветком",
+        "seo": "fu-chzhuan"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "茯砖",
+        "description": "金花茯砖茶",
+        "seo": "fu-zhuan"
+      }
+    ]
+  },
+  {
+    "code": "CAT-DARK-ANHUA",
+    "parent": "CAT-DARK-TEA",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Anhua Dark Tea",
+        "description": "Hunan Anhua dark tea",
+        "seo": "anhua-dark-tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Аньхуа Хэй Ча",
+        "description": "Тёмный чай из Аньхуа, Хунань",
+        "seo": "anhua-hej-cha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "安化黑茶",
+        "description": "湖南安化黑茶",
+        "seo": "anhua-dark-tea"
+      }
+    ]
+  },
+  {
+    "code": "CAT-PUER-SHENG",
+    "parent": "CAT-PUER-TEA",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Sheng (Raw) Pu-erh",
+        "description": "Naturally aged raw pu-erh",
+        "seo": "sheng-puer"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Шэн пуэр",
+        "description": "Естественно выдержанный сырой пуэр",
+        "seo": "shen-puer"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "生普",
+        "description": "自然陈化生普洱",
+        "seo": "sheng-puer"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-PUERH-SHENG",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      }
+    ]
+  },
+  {
+    "code": "CAT-PUER-SHU",
+    "parent": "CAT-PUER-TEA",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Shu (Ripe) Pu-erh",
+        "description": "Accelerated fermentation ripe pu-erh",
+        "seo": "shu-puer"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Шу пуэр",
+        "description": "Пуэр ускоренной ферментации",
+        "seo": "shu-puer"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "熟普",
+        "description": "渥堆发酵熟普洱",
+        "seo": "shu-puer"
+      }
+    ],
+    "specs": [
+      {
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-PUERH-SHU",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      }
+    ]
+  },
+  {
+    "code": "CAT-JASMINE-PEARL",
+    "parent": "CAT-JASMINE-TEA",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Jasmine Dragon Pearl",
+        "description": "Hand-rolled jasmine pearls",
+        "seo": "jasmine-dragon-pearl"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Жасминовая жемчужина дракона",
+        "description": "Скрученные вручную жасминовые жемчужины",
+        "seo": "zhasminovaya-zhemchuzhina"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "茉莉龙珠",
+        "description": "手工搓制茉莉龙珠",
+        "seo": "jasmine-dragon-pearl"
+      }
+    ]
+  },
+  {
+    "code": "CAT-JASMINE-YINZHEN",
+    "parent": "CAT-JASMINE-TEA",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Jasmine Silver Needle",
+        "description": "Jasmine-scented silver needle",
+        "seo": "jasmine-silver-needle"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Жасминовые серебряные иглы",
+        "description": "Серебряные иглы с ароматом жасмина",
+        "seo": "zhasminovye-serebryanye-igly"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "茉莉银针",
+        "description": "茉莉花窨银针",
+        "seo": "jasmine-silver-needle"
+      }
     ]
   }
 ]
