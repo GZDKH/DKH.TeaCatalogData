@@ -1,45 +1,1556 @@
 [
   {
-    "code": "CATALOG-JAPAN",
-    "currency": "USD",
-    "order": 2,
-    "published": true,
-    "translations": [
-      { "lang": "en-US", "name": "Japan Tea", "description": "Japanese green teas — matcha, sencha, gyokuro" },
-      { "lang": "ru-RU", "name": "Японский чай", "description": "Японские зелёные чаи — матча, сенча, гёкуро" },
-      { "lang": "zh-CN", "name": "日本茶", "description": "日本绿茶 — 抹茶、煎茶、玉露" }
-    ],
-    "categories": [
-      {
-        "category": "CAT-GREEN-TEA",
-        "order": 1,
-        "published": true,
-        "products": [
-          { "product": "TEA-JP-SUN-ROUGE", "order": 1, "published": true },
-          { "product": "TEA-JP-GYOKURO-UJI", "order": 2, "published": true }
-        ]
-      },
-      {
-        "category": "CAT-REGION-JAPAN",
-        "order": 2,
-        "published": true,
-        "products": [
-          { "product": "TEA-JP-SUN-ROUGE", "order": 1, "published": true },
-          { "product": "TEA-JP-GYOKURO-UJI", "order": 2, "published": true }
-        ]
-      }
-    ],
-    "media": []
-  },
-  {
     "code": "CATALOG-CHINA",
     "currency": "USD",
     "order": 1,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "China Tea", "description": "Premium teas from China — the birthplace of tea" },
-      { "lang": "ru-RU", "name": "Китайский чай", "description": "Премиальные чаи из Китая — родины чая" },
-      { "lang": "zh-CN", "name": "中国茶", "description": "来自茶叶故乡的优质茶叶" }
+      {
+        "lang": "en-US",
+        "name": "China Tea",
+        "description": "Premium teas from China — the birthplace of tea"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Китайский чай",
+        "description": "Премиальные чаи из Китая — родины чая"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "中国茶",
+        "description": "来自茶叶故乡的优质茶叶"
+      }
+    ],
+    "categories": [
+      {
+        "category": "CAT-DARK-ANHUA",
+        "order": 1,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-QIAN-LIANG-CHA",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ANHUA-TIAN-JIAN",
+            "order": 2,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-DARK-FUZHUAN",
+        "order": 2,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-FU-ZHUAN-CHA",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-DARK-LIUBAO",
+        "order": 3,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-LIU-BAO-CHA",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-DARK-TEA",
+        "order": 4,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-FU-ZHUAN-CHA",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-LIU-BAO-CHA",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-QIAN-LIANG-CHA",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ANHUA-TIAN-JIAN",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-SICHUAN-BIAN-CHA",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-LIU-AN-HEICHA",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-HEICHA-GENERAL",
+            "order": 7,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-GREEN-BILUOCHUN",
+        "order": 5,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-DONGTING-BILUOCHUN",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-GREEN-LONGJING",
+        "order": 6,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-XIHU-LONGJING",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-GREEN-MAOFENG",
+        "order": 7,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-HUANGSHAN-MAOFENG",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MENGDING-MAOFENG",
+            "order": 2,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-GREEN-TEA",
+        "order": 8,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-XIHU-LONGJING",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DONGTING-BILUOCHUN",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-HUANGSHAN-MAOFENG",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-TAIPING-HOUKUI",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-LIUAN-GUAPIAN",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-XINYANG-MAOJIAN",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ANJI-BAICHA",
+            "order": 7,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ENSHI-YULU",
+            "order": 8,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MENGDING-GANLU",
+            "order": 9,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ZHU-YE-QING",
+            "order": 10,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MENGDING-MAOFENG",
+            "order": 11,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-NANJING-YUHUA",
+            "order": 12,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-YUNNAN-LUCHA",
+            "order": 13,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-HUANGSHAN-YUNWU",
+            "order": 14,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DING-GU-DAFANG",
+            "order": 15,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-BAI-MAO-HOU",
+            "order": 16,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-LUCHA-GENERAL",
+            "order": 17,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-JASMINE-PEARL",
+        "order": 9,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-MOLI-LONGZHU",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-JASMINE-TEA",
+        "order": 10,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-MOLI-LONGZHU",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOLI-YINZHEN",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOLI-YIN-HAO",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOLI-PIAO-XUE",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOLI-FENG-YAN",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOLI-YU-DIE",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOLI-NUER-HUAN",
+            "order": 7,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-JASMINE-YINZHEN",
+        "order": 11,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-MOLI-YINZHEN",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-OOLONG-DANCONG",
+        "order": 12,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-DAN-CONG-MI-LAN-XIANG",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-OOLONG-ROCK",
+        "order": 13,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-DA-HONG-PAO",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-TIE-LUOHAN",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ROU-GUI",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-SHUI-XIAN",
+            "order": 4,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-OOLONG-TAIWAN",
+        "order": 14,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-DONG-DING-WULONG",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ALISHAN-WULONG",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DONGFANG-MEIREN",
+            "order": 3,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-OOLONG-TEA",
+        "order": 15,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-DA-HONG-PAO",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-TIE-LUOHAN",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ROU-GUI",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-SHUI-XIAN",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-TIE-GUANYIN",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DAN-CONG-MI-LAN-XIANG",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DONG-DING-WULONG",
+            "order": 7,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ALISHAN-WULONG",
+            "order": 8,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DONGFANG-MEIREN",
+            "order": 9,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-WULONG-GENERAL",
+            "order": 10,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-OOLONG-TIEGUANYIN",
+        "order": 16,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-TIE-GUANYIN",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-PROC-CHA-GAO",
+        "order": 17,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-CHA-GAO",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-PUER-SHENG",
+        "order": 18,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-SHENG-PUER",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-PUER-SHU",
+        "order": 19,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-SHU-PUER",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-GONGTING-PUER",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-LAO-CHA-TOU",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DA-JIN-YA",
+            "order": 4,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-PUER-TEA",
+        "order": 20,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-SHENG-PUER",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-SHU-PUER",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-GONGTING-PUER",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-LAO-CHA-TOU",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DA-JIN-YA",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-CHA-GAO",
+            "order": 6,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-PURPLE-TEA",
+        "order": 21,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-PURPLE-WHITE",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-RED-DIANHONG",
+        "order": 22,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-DIANHONG",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG-JIN-ZHEN",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG-JIN-LUO",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG-GONGFU",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG-YESHENG",
+            "order": 5,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-RED-JINJUNMEI",
+        "order": 23,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-JIN-JUN-MEI",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-RED-KEEMUN",
+        "order": 24,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-QIMEN-HONGCHA",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-RED-LAPSANG",
+        "order": 25,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-ZHENGSHAN-XIAOZHONG",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-RED-TEA",
+        "order": 26,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-JIN-JUN-MEI",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-QIMEN-HONGCHA",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG-JIN-ZHEN",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG-JIN-LUO",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ZHENGSHAN-XIAOZHONG",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-YIN-JUN-MEI",
+            "order": 7,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG-GONGFU",
+            "order": 8,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG-YESHENG",
+            "order": 9,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-HONGCHA-GENERAL",
+            "order": 10,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-REGION-CHINA",
+        "order": 27,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-XIHU-LONGJING",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DONGTING-BILUOCHUN",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-HUANGSHAN-MAOFENG",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-TAIPING-HOUKUI",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-LIUAN-GUAPIAN",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-XINYANG-MAOJIAN",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ANJI-BAICHA",
+            "order": 7,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ENSHI-YULU",
+            "order": 8,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MENGDING-GANLU",
+            "order": 9,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ZHU-YE-QING",
+            "order": 10,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MENGDING-MAOFENG",
+            "order": 11,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-NANJING-YUHUA",
+            "order": 12,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-YUNNAN-LUCHA",
+            "order": 13,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-HUANGSHAN-YUNWU",
+            "order": 14,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DING-GU-DAFANG",
+            "order": 15,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-BAI-MAO-HOU",
+            "order": 16,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-LUCHA-GENERAL",
+            "order": 17,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-BAIHAO-YINZHEN",
+            "order": 18,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-BAI-MUDAN",
+            "order": 19,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MUDAN-WANG",
+            "order": 20,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-GONG-MEI",
+            "order": 21,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-SHOU-MEI",
+            "order": 22,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-BAI-JIAN",
+            "order": 23,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-YUE-GUANG-BAI",
+            "order": 24,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-PURPLE-WHITE",
+            "order": 25,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-TALIENSIS-YINZHEN",
+            "order": 26,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-JUNSHAN-YINZHEN",
+            "order": 27,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MENGDING-HUANGYA",
+            "order": 28,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-HUOSHAN-HUANGYA",
+            "order": 29,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOGAN-HUANGYA",
+            "order": 30,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-GUIZHOU-YELLOW",
+            "order": 31,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-EMEI-HUANGYA",
+            "order": 32,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-HUANGCHA-GENERAL",
+            "order": 33,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DA-HONG-PAO",
+            "order": 34,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-TIE-LUOHAN",
+            "order": 35,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ROU-GUI",
+            "order": 36,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-SHUI-XIAN",
+            "order": 37,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-TIE-GUANYIN",
+            "order": 38,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DAN-CONG-MI-LAN-XIANG",
+            "order": 39,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DONG-DING-WULONG",
+            "order": 40,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ALISHAN-WULONG",
+            "order": 41,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DONGFANG-MEIREN",
+            "order": 42,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-WULONG-GENERAL",
+            "order": 43,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-JIN-JUN-MEI",
+            "order": 44,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-QIMEN-HONGCHA",
+            "order": 45,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG",
+            "order": 46,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG-JIN-ZHEN",
+            "order": 47,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG-JIN-LUO",
+            "order": 48,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ZHENGSHAN-XIAOZHONG",
+            "order": 49,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-YIN-JUN-MEI",
+            "order": 50,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG-GONGFU",
+            "order": 51,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DIANHONG-YESHENG",
+            "order": 52,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-HONGCHA-GENERAL",
+            "order": 53,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-FU-ZHUAN-CHA",
+            "order": 54,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-LIU-BAO-CHA",
+            "order": 55,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-QIAN-LIANG-CHA",
+            "order": 56,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-ANHUA-TIAN-JIAN",
+            "order": 57,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-SICHUAN-BIAN-CHA",
+            "order": 58,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-LIU-AN-HEICHA",
+            "order": 59,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-HEICHA-GENERAL",
+            "order": 60,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-SHENG-PUER",
+            "order": 61,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-SHU-PUER",
+            "order": 62,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-GONGTING-PUER",
+            "order": 63,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-LAO-CHA-TOU",
+            "order": 64,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-YA-BAO",
+            "order": 65,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-DA-JIN-YA",
+            "order": 66,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-CHA-GAO",
+            "order": 67,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOLI-LONGZHU",
+            "order": 68,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOLI-YINZHEN",
+            "order": 69,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOLI-YIN-HAO",
+            "order": 70,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOLI-PIAO-XUE",
+            "order": 71,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOLI-FENG-YAN",
+            "order": 72,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOLI-YU-DIE",
+            "order": 73,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOLI-NUER-HUAN",
+            "order": 74,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-WHITE-BAIMUDAN",
+        "order": 28,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-BAI-MUDAN",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MUDAN-WANG",
+            "order": 2,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-WHITE-SHOUMEI",
+        "order": 29,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-SHOU-MEI",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-WHITE-TEA",
+        "order": 30,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-BAIHAO-YINZHEN",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-BAI-MUDAN",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MUDAN-WANG",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-GONG-MEI",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-SHOU-MEI",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-BAI-JIAN",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-YUE-GUANG-BAI",
+            "order": 7,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-PURPLE-WHITE",
+            "order": 8,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-TALIENSIS-YINZHEN",
+            "order": 9,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-YA-BAO",
+            "order": 10,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-WHITE-YINZHEN",
+        "order": 31,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-BAIHAO-YINZHEN",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-TALIENSIS-YINZHEN",
+            "order": 2,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-YELLOW-TEA",
+        "order": 32,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-CN-JUNSHAN-YINZHEN",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MENGDING-HUANGYA",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-HUOSHAN-HUANGYA",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-MOGAN-HUANGYA",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-GUIZHOU-YELLOW",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-EMEI-HUANGYA",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-CN-HUANGCHA-GENERAL",
+            "order": 7,
+            "published": true
+          }
+        ]
+      }
+    ],
+    "media": []
+  },
+  {
+    "code": "CATALOG-JAPAN",
+    "currency": "USD",
+    "order": 2,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Japan Tea",
+        "description": "Japanese green teas — matcha, sencha, gyokuro"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Японский чай",
+        "description": "Японские зелёные чаи — матча, сенча, гёкуро"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "日本茶",
+        "description": "日本绿茶 — 抹茶、煎茶、玉露"
+      }
+    ],
+    "categories": [
+      {
+        "category": "CAT-GABA-TEA",
+        "order": 1,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-JP-GAB-001",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-GREEN-JAPAN",
+        "order": 2,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-JP-SEN-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-GYO-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-MAT-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-BAN-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-GEN-001",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-HOJ-001",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-KUK-001",
+            "order": 7,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-KON-001",
+            "order": 8,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-KAB-001",
+            "order": 9,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-TEN-001",
+            "order": 10,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-GUR-001",
+            "order": 11,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-KAM-001",
+            "order": 12,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-FUK-001",
+            "order": 13,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-SHI-001",
+            "order": 14,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-MAI-001",
+            "order": 15,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-GREEN-TEA",
+        "order": 3,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-JP-SEN-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-GYO-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-MAT-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-BAN-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-GEN-001",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-HOJ-001",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-KUK-001",
+            "order": 7,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-KON-001",
+            "order": 8,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-KAB-001",
+            "order": 9,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-TEN-001",
+            "order": 10,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-GUR-001",
+            "order": 11,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-KAM-001",
+            "order": 12,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-FUK-001",
+            "order": 13,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-SHI-001",
+            "order": 14,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-MAI-001",
+            "order": 15,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-RED-TEA",
+        "order": 4,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-JP-WAK-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-BEN-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-BEH-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-YAK-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-ASH-001",
+            "order": 5,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-REGION-JAPAN",
+        "order": 5,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-JP-SEN-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-GYO-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-MAT-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-BAN-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-GEN-001",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-HOJ-001",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-KUK-001",
+            "order": 7,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-KON-001",
+            "order": 8,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-KAB-001",
+            "order": 9,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-TEN-001",
+            "order": 10,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-GUR-001",
+            "order": 11,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-KAM-001",
+            "order": 12,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-FUK-001",
+            "order": 13,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-SHI-001",
+            "order": 14,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-MAI-001",
+            "order": 15,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-WAK-001",
+            "order": 16,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-BEN-001",
+            "order": 17,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-BEH-001",
+            "order": 18,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-YAK-001",
+            "order": 19,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-ASH-001",
+            "order": 20,
+            "published": true
+          },
+          {
+            "product": "TEA-JP-GAB-001",
+            "order": 21,
+            "published": true
+          }
+        ]
+      }
+    ],
+    "media": []
+  },
+  {
+    "code": "CATALOG-INDIA",
+    "currency": "USD",
+    "order": 3,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "India Tea",
+        "description": "Darjeeling, Assam, Nilgiri traditions"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Индийский чай",
+        "description": "Традиции Дарджилинга, Ассама, Нилгири"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "印度茶",
+        "description": "大吉岭、阿萨姆、尼尔吉里传统"
+      }
     ],
     "categories": [
       {
@@ -47,44 +1558,781 @@
         "order": 1,
         "published": true,
         "products": [
-          { "product": "TEA-CN-LONGJING-SHIFENG", "order": 1, "published": true }
-        ]
-      },
-      {
-        "category": "CAT-WHITE-TEA",
-        "order": 2,
-        "published": true,
-        "products": [
-          { "product": "TEA-CN-YINZHEN-FUDING", "order": 1, "published": true }
+          {
+            "product": "TEA-IN-DAR-GRN-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-ASM-GRN-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-NIL-GRN-001",
+            "order": 3,
+            "published": true
+          }
         ]
       },
       {
         "category": "CAT-OOLONG-TEA",
-        "order": 3,
+        "order": 2,
         "published": true,
-        "products": []
+        "products": [
+          {
+            "product": "TEA-IN-DAR-OOL-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-NIL-OOL-001",
+            "order": 2,
+            "published": true
+          }
+        ]
       },
       {
-        "category": "CAT-REGION-CHINA",
+        "category": "CAT-RED-TEA",
+        "order": 3,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-IN-DAR-FF-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-DAR-SF-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-DAR-AUT-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-ASM-ORT-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-ASM-CTC-001",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-ASM-SF-001",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-ASM-GLD-001",
+            "order": 7,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-MAS-001",
+            "order": 8,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-NIL-BLK-001",
+            "order": 9,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-NIL-WFR-001",
+            "order": 10,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-REGION-INDIA",
         "order": 4,
         "published": true,
         "products": [
-          { "product": "TEA-CN-LONGJING-SHIFENG", "order": 1, "published": true },
-          { "product": "TEA-CN-YINZHEN-FUDING", "order": 2, "published": true }
+          {
+            "product": "TEA-IN-DAR-FF-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-DAR-SF-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-DAR-AUT-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-DAR-OOL-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-DAR-WHT-001",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-DAR-GRN-001",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-ASM-ORT-001",
+            "order": 7,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-ASM-CTC-001",
+            "order": 8,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-ASM-SF-001",
+            "order": 9,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-ASM-GLD-001",
+            "order": 10,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-ASM-GRN-001",
+            "order": 11,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-MAS-001",
+            "order": 12,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-NIL-BLK-001",
+            "order": 13,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-NIL-WFR-001",
+            "order": 14,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-NIL-GRN-001",
+            "order": 15,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-NIL-WHT-001",
+            "order": 16,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-NIL-OOL-001",
+            "order": 17,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-WHITE-TEA",
+        "order": 5,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-IN-DAR-WHT-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-IN-NIL-WHT-001",
+            "order": 2,
+            "published": true
+          }
         ]
       }
     ],
     "media": []
   },
   {
-    "code": "CATALOG-TAIWAN",
+    "code": "CATALOG-SRILANKA",
     "currency": "USD",
-    "order": 3,
+    "order": 4,
     "published": true,
     "translations": [
-      { "lang": "en-US", "name": "Taiwan Tea", "description": "Taiwan high mountain oolongs" },
-      { "lang": "ru-RU", "name": "Тайваньский чай", "description": "Тайваньские высокогорные улуны" },
-      { "lang": "zh-CN", "name": "台湾茶", "description": "台湾高山乌龙茶" }
+      {
+        "lang": "en-US",
+        "name": "Sri Lanka Tea",
+        "description": "Classic Ceylon teas — Nuwara Eliya, Uva, Dimbula"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Цейлонский чай",
+        "description": "Классический цейлонский чай — Нувара Элия, Ува, Димбула"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "斯里兰卡茶",
+        "description": "经典锡兰茶"
+      }
+    ],
+    "categories": [
+      {
+        "category": "CAT-GREEN-TEA",
+        "order": 1,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-LK-GRN-001",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-RED-TEA",
+        "order": 2,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-LK-NUW-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-LK-UVA-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-LK-DIM-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-LK-RUH-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-LK-KAN-001",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-LK-EG-001",
+            "order": 6,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-REGION-SRILANKA",
+        "order": 3,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-LK-NUW-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-LK-UVA-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-LK-DIM-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-LK-RUH-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-LK-KAN-001",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-LK-WHT-001",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-LK-GRN-001",
+            "order": 7,
+            "published": true
+          },
+          {
+            "product": "TEA-LK-EG-001",
+            "order": 8,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-WHITE-TEA",
+        "order": 4,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-LK-WHT-001",
+            "order": 1,
+            "published": true
+          }
+        ]
+      }
+    ],
+    "media": []
+  },
+  {
+    "code": "CATALOG-KOREA",
+    "currency": "USD",
+    "order": 5,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Korea Tea",
+        "description": "Korean Nokcha, Balhyocha, Hwangcha traditions"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Корейский чай",
+        "description": "Традиции Нокча, Бальхёча, Хванча"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "韩国茶",
+        "description": "绿茶、发酵茶、黄茶传统"
+      }
+    ],
+    "categories": [
+      {
+        "category": "CAT-GREEN-TEA",
+        "order": 1,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-KR-GRN-SEJ-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-KR-GRN-UJE-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-KR-GRN-MAT-001",
+            "order": 3,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-OOLONG-TEA",
+        "order": 2,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-KR-OOL-JEJ-001",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-RED-TEA",
+        "order": 3,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-KR-BLK-BAL-001",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-REGION-KOREA",
+        "order": 4,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-KR-GRN-SEJ-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-KR-GRN-UJE-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-KR-YLW-HWA-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-KR-BLK-BAL-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-KR-GRN-MAT-001",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-KR-OOL-JEJ-001",
+            "order": 6,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-YELLOW-TEA",
+        "order": 5,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-KR-YLW-HWA-001",
+            "order": 1,
+            "published": true
+          }
+        ]
+      }
+    ],
+    "media": []
+  },
+  {
+    "code": "CATALOG-VIETNAM",
+    "currency": "USD",
+    "order": 6,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Vietnam Tea",
+        "description": "Ancient Shan Tuyet trees, diverse traditions"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Вьетнамский чай",
+        "description": "Древние деревья Шан Туйет, разнообразные традиции"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "越南茶",
+        "description": "古茶树山雪，多元传统"
+      }
+    ],
+    "categories": [
+      {
+        "category": "CAT-GABA-TEA",
+        "order": 1,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-VN-OOL-GAB-001",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-GREEN-TEA",
+        "order": 2,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-VN-GRN-SHT-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-VN-GRN-DRC-001",
+            "order": 2,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-HERBAL-TEA",
+        "order": 3,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-VN-GRN-LOT-001",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-OOLONG-TEA",
+        "order": 4,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-VN-OOL-JXN-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-VN-OOL-OBT-001",
+            "order": 2,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-RED-TEA",
+        "order": 5,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-VN-BLK-OLD-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-VN-BLK-SHT-001",
+            "order": 2,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-REGION-VIETNAM",
+        "order": 6,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-VN-GRN-SHT-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-VN-WHT-SHT-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-VN-BLK-OLD-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-VN-GRN-DRC-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-VN-OOL-JXN-001",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-VN-OOL-OBT-001",
+            "order": 6,
+            "published": true
+          },
+          {
+            "product": "TEA-VN-WHT-MTN-001",
+            "order": 7,
+            "published": true
+          },
+          {
+            "product": "TEA-VN-OOL-GAB-001",
+            "order": 8,
+            "published": true
+          },
+          {
+            "product": "TEA-VN-BLK-SHT-001",
+            "order": 9,
+            "published": true
+          },
+          {
+            "product": "TEA-VN-GRN-LOT-001",
+            "order": 10,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-WHITE-TEA",
+        "order": 7,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-VN-WHT-SHT-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-VN-WHT-MTN-001",
+            "order": 2,
+            "published": true
+          }
+        ]
+      }
+    ],
+    "media": []
+  },
+  {
+    "code": "CATALOG-NEPAL",
+    "currency": "USD",
+    "order": 7,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Nepal Tea",
+        "description": "Himalayan tea gardens"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Непальский чай",
+        "description": "Гималайские чайные сады"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "尼泊尔茶",
+        "description": "喜马拉雅茶园"
+      }
+    ],
+    "categories": [
+      {
+        "category": "CAT-GREEN-TEA",
+        "order": 1,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-NP-GRN-HIM-001",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-OOLONG-TEA",
+        "order": 2,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-NP-OOL-HIM-001",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-RED-TEA",
+        "order": 3,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-NP-BLK-GLD-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-NP-BLK-JCH-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-NP-BLK-FF-001",
+            "order": 3,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-REGION-NEPAL",
+        "order": 4,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-NP-BLK-GLD-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-NP-BLK-JCH-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-NP-BLK-FF-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-NP-OOL-HIM-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-NP-WHT-SIL-001",
+            "order": 5,
+            "published": true
+          },
+          {
+            "product": "TEA-NP-GRN-HIM-001",
+            "order": 6,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-WHITE-TEA",
+        "order": 5,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-NP-WHT-SIL-001",
+            "order": 1,
+            "published": true
+          }
+        ]
+      }
+    ],
+    "media": []
+  },
+  {
+    "code": "CATALOG-AFRICA",
+    "currency": "USD",
+    "order": 8,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "African Tea",
+        "description": "Kenyan innovation — Purple Tea, CTC"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Африканский чай",
+        "description": "Кенийские инновации — Пурпурный чай, CTC"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "非洲茶",
+        "description": "肯尼亚创新——紫茶、CTC"
+      }
     ],
     "categories": [
       {
@@ -92,15 +2340,255 @@
         "order": 1,
         "published": true,
         "products": [
-          { "product": "TEA-TW-ALISHAN-OOLONG", "order": 1, "published": true }
+          {
+            "product": "TEA-KE-OOL-PUR-001",
+            "order": 1,
+            "published": true
+          }
         ]
       },
       {
-        "category": "CAT-REGION-TAIWAN",
+        "category": "CAT-PURPLE-TEA",
         "order": 2,
         "published": true,
         "products": [
-          { "product": "TEA-TW-ALISHAN-OOLONG", "order": 1, "published": true }
+          {
+            "product": "TEA-KE-PUR-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-KE-WHT-PUR-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-KE-OOL-PUR-001",
+            "order": 3,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-RED-TEA",
+        "order": 3,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-KE-BLK-GLD-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-KE-BLK-OP-001",
+            "order": 2,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-REGION-KENYA",
+        "order": 4,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-KE-PUR-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-KE-BLK-GLD-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-KE-BLK-OP-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-KE-WHT-PUR-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-KE-OOL-PUR-001",
+            "order": 5,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-WHITE-TEA",
+        "order": 5,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-KE-WHT-PUR-001",
+            "order": 1,
+            "published": true
+          }
+        ]
+      }
+    ],
+    "media": []
+  },
+  {
+    "code": "CATALOG-ASIA-OTHER",
+    "currency": "USD",
+    "order": 9,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Southeast Asia Tea",
+        "description": "Indonesia, Thailand teas"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Чай Юго-Восточной Азии",
+        "description": "Чаи Индонезии, Таиланда"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "东南亚茶",
+        "description": "印度尼西亚、泰国茶"
+      }
+    ],
+    "categories": [
+      {
+        "category": "CAT-GREEN-TEA",
+        "order": 1,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-ID-GRN-NDL-001",
+            "order": 1,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-OOLONG-TEA",
+        "order": 2,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-ID-OOL-BAO-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-TH-OOL-JXN-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-TH-OOL-OBT-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-TH-OOL-RTG-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-TH-OOL-STR-001",
+            "order": 5,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-RED-TEA",
+        "order": 3,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-ID-BLK-PRM-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-ID-BLK-GBP-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-ID-BLK-GLD-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-TH-BLK-ANG-001",
+            "order": 4,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-REGION-INDONESIA",
+        "order": 4,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-ID-BLK-PRM-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-ID-BLK-GBP-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-ID-OOL-BAO-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-ID-GRN-NDL-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-ID-BLK-GLD-001",
+            "order": 5,
+            "published": true
+          }
+        ]
+      },
+      {
+        "category": "CAT-REGION-OTHER",
+        "order": 5,
+        "published": true,
+        "products": [
+          {
+            "product": "TEA-TH-OOL-JXN-001",
+            "order": 1,
+            "published": true
+          },
+          {
+            "product": "TEA-TH-OOL-OBT-001",
+            "order": 2,
+            "published": true
+          },
+          {
+            "product": "TEA-TH-BLK-ANG-001",
+            "order": 3,
+            "published": true
+          },
+          {
+            "product": "TEA-TH-OOL-RTG-001",
+            "order": 4,
+            "published": true
+          },
+          {
+            "product": "TEA-TH-OOL-STR-001",
+            "order": 5,
+            "published": true
+          }
         ]
       }
     ],
