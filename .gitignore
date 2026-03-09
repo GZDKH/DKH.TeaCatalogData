@@ -40,3 +40,6 @@ backup/
 .env.local
 .env.*
 !.env.example
+
+# Ralph Loop task file (local only)
+PROMPT.md
