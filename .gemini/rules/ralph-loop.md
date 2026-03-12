@@ -1,0 +1,1 @@
+../../../libraries/DKH.Architecture/.gemini/shared-rules/ralph-loop.md

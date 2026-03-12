@@ -32,8 +32,12 @@ _output/
 backup/
 
 # Claude Code local settings
-.gemini
 .claude/settings.local.json
+.gemini/settings.local.json
+.codex/settings.local.json
+.gemini/tmp/
+.claude/tmp/
+.codex/tmp/
 
 # Environment variables (secrets)
 .env
