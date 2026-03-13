@@ -1,1 +1,1 @@
-../../../../libraries/DKH.Architecture/.codex/shared-rules/commits.md
+../../../libraries/DKH.Architecture/.codex/shared-rules/commits.md
