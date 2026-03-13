@@ -1,0 +1,1 @@
+../../../libraries/DKH.Architecture/.gemini/shared-rules/prod-config.md

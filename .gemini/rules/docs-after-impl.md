@@ -1,0 +1,1 @@
+../../../libraries/DKH.Architecture/.gemini/shared-rules/docs-after-impl.md
