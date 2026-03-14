@@ -6,18 +6,31 @@ Convert tea product documentation from `docs/data/products/<REGION>/<filename>.m
 
 **One MD file = one JSON file = one product.** JSON file name MUST match source MD name (`.md` → `.json`).
 
+## Core Principle: MD Section = Specification Group
+
+**Each numbered MD section becomes a specification group.** The section title IS the group name. Bullet points inside the section become attributes of that group.
+
+```
+**5. Технология Производства:**              ← SPEC GROUP (name: "Технология Производства")
+* **Сбор (采摘 - cǎi zhāi):** ...            ← Attribute: "Сбор", type: CustomText
+* **Подвяливание (摊放):** ...                ← Attribute: "Подвяливание", type: CustomText
+* **Температура обжарки:** 80-100°C           ← Attribute: "Температура обжарки", type: Number
+```
+
 ## Source MD Structure
 
-### File naming patterns
+### File naming
 
 | Regions | Prefix | Example |
 |---|---|---|
 | CHINA-*, FLOWERS AND DRY | `+# ` | `+# Си Ху Лун Цзин (西湖龙井, Xīhú Lóngjǐng).md` |
 | All other regions | `# ` | `# Тенча (碾茶, Tencha).md` |
 
-Version suffix `v2` may appear: `+# Лю Бао Хэй Ча (六堡茶, Liù Bǎo Chá)v2.md`
+### Section count: 13–22
 
-### Standard 14-section template (China, India, Flowers, most regions)
+Files may have from 13 to 22 sections. Process ALL present sections according to rules below.
+
+**Standard core sections (1–12):**
 
 ```
 **1. Классификация и Происхождение:**
@@ -32,422 +45,368 @@ Version suffix `v2` may appear: `+# Лю Бао Хэй Ча (六堡茶, Liù Bǎ
 **10. Хранение:**
 **11. Цена и Подделки:**
 **12. Интересные Факты:**
-**13. Разновидности <Name>:** / **Сравнение с другими <Category>:** / **Виды чая:**
-**14. В заключение:** / **Возможные противопоказания:**
 ```
 
-### Japan template (13 sections, different structure)
+**Extended sections (13+, vary by file):**
+
+```
+**13. Разновидности <Name>:** / **Виды чая:** / **Сравнение с другими:**
+**14. Ошибки при заваривании и хранении:** / **Культура потребления:** / **В заключение:**
+**15. Прессовка и выдержка:** / **Культура потребления:** / **Мифы и Легенды:**
+**16. Как меняется чай со временем:** / **Сезонность:**
+**17. Как выбрать качественную партию:**
+**18. Вода и посуда:**
+**19. Быстрая памятка по завариванию:**
+**20. Дегустация и оценка:**
+**21. С чем пить и когда:**
+**22. Частые вопросы:**
+```
+
+**Japan template (13 sections, different headers):**
 
 ```
 **1. Определение и основные характеристики:**
 **2. История и происхождение:**
 **3. Производственный процесс:**
-**4. Разновидности и Градации:**
-**5. Внешний вид:**
-**6. Аромат и вкусовой профиль:**
-**7. Использование:**
-**8. Хранение:**
-**9. Культурное значение:**
-**10. Современные тенденции и инновации:**
-**11. Сенсорный Опыт:**
-**12. Гастрономические сочетания:**
-**13. Простота как основа:**
+...
 ```
 
-Some China-Green files have 13 sections (no section 14).
-
-### MD content format
-
-- Bold headers: `**Section Title:**`
-- Bullet points: `* **Bold term:** Description`
-- Chinese with pinyin: `(西湖龙井, Xīhú Lóngjǐng)`
-- Temperatures: `80-85°C`
-- Weights: `3-5 грамм на 150-200 мл`
-- Images: `![name](images/file.png)` — skip, not imported
-
-## Section → JSON Field Mapping
-
-### Section 1: Классификация и Происхождение
-
-Extract:
-
-| MD content | JSON field | How |
-|---|---|---|
-| `**Тип:** Зеленый чай` | `specifications[]: type Option` | Map to standard tea type option |
-| `**Категория:**` text | `specifications[]: grade Option` | If mentions "Десяти знаменитых чаев", top-10 etc |
-| `**Происхождение:** Китай, провинция X, город Y` | `origins[].country`, `.state`, `.city` | Country → ISO alpha-2 (`CN`, `JP`, `TW`, `IN`, `LK`) |
-| `**Географические координаты:** 30° с.ш., 120° в.д.` | `origins[].coordinates.lat`, `.lng` | Parse degrees |
-| Tea type keyword | `catalogs[].category` | Map from type word → category code (see table below) |
-| Also derives | `code`, `translations[].name` | From file title and section 1 name |
-
-**Tea type → category mapping:**
-
-| Russian keyword in section 1 | Category Code |
-|---|---|
-| Зеленый чай / зелёный | `CAT-GREEN-TEA` |
-| Белый чай | `CAT-WHITE-TEA` |
-| Жёлтый чай / желтый | `CAT-YELLOW-TEA` |
-| Улун / Оолонг / полуферментированный | `CAT-OOLONG-TEA` |
-| Красный чай / Red tea | `CAT-RED-TEA` |
-| Чёрный чай (хэй ча) / Тёмный / Dark | `CAT-DARK-TEA` |
-| Пуэр / Шэн / Шу | `CAT-PUERH-TEA` |
-| Жасминовый / ароматизированный / Scented | `CAT-SCENTED-TEA` |
-| Цветочный / травяной / Herbal / сухоцветы | `CAT-HERBAL-TEA` |
-| Матча / Маття | `CAT-MATCHA` |
-
-Also use the REGION folder name as hint: `CHINA-GREEN TEA` → `CAT-GREEN-TEA`.
-
-### Section 3: Ботаническое Описание и Сырьё
-
-Extract:
-
-| MD content | JSON field |
-|---|---|
-| `**Сорта:** Лун Цзин №43 / Цюнь Ти Чжун` | `specifications[]: SPEC-CULTIVAR, type: CustomText, value: "Longjing #43 / Quntizhong"` |
-| `**Стандарт сбора:** одна почка и один-два листочка` | `specifications[]: SPEC-PLUCKING-STANDARD, type: CustomText` |
-
-### Section 4: Терруар и Особенности Выращивания
-
-Extract:
-
-| MD content | JSON field |
-|---|---|
-| `**Высота произрастания:** 100-800 метров` | `origins[].altitude: { min: 100, max: 800, unit: "m" }` |
-| `**Высота:**` same data | `specifications[]: SPEC-ALTITUDE-RANGE, type: Range, valueMin/valueMax` |
-| `**Почвы:** Красные и желтые почвы` | `origins[].translations[].notes` (include in notes) |
-| `**Климат:** Мягкий субтропический` | `origins[].translations[].notes` (include in notes) |
-| Specific sub-regions (Ши Фэн, etc.) | `origins[].translations[].place` |
-
-### Section 5: Технология Производства
-
-Extract:
-
-| MD content | JSON field |
-|---|---|
-| `неферментированный` / degree info | `specifications[]: SPEC-FERMENTATION, type: Option` |
-| Kill-green method mentioned | `specifications[]: SPEC-KILL-GREEN, type: Option` |
-| Roast info | `specifications[]: SPEC-ROAST, type: Option` |
-| Oxidation level if mentioned | `specifications[]: SPEC-OXIDATION, type: CustomText` |
-| Drying method | `specifications[]: SPEC-DRYING, type: CustomText` |
-| Harvest season (`до Цинмина`, `весенний сбор`) | `specifications[]: SPEC-HARVEST, type: Option` |
-
-**Fermentation mapping from text:**
-
-| Russian text | Option code |
-|---|---|
-| неферментированный / 0% | `SPEC-FERM-0` |
-| слабоферментированный / 5-10% | `SPEC-FERM-5-10` |
-| 10-20% | `SPEC-FERM-10-20` |
-| лёгкая ферментация / 15-30% | `SPEC-FERM-15-30` |
-| средняя / 30-50% | `SPEC-FERM-30-50` |
-| сильная / 60-85% | `SPEC-FERM-60-85` |
-| полная / 85-100% | `SPEC-FERM-85-100` |
-| постферментированный / пуэр | `SPEC-FERM-POST` |
-
-**Harvest mapping:**
-
-| Russian text | Option code |
-|---|---|
-| до Цинмина / 明前 / Mingqian | `SPEC-HARV-MINGQIAN` |
-| до Гуюй / 雨前 / Yuqian | `SPEC-HARV-YUQIAN` |
-| весенний сбор / весна | `SPEC-HARV-SPRING` |
-| летний сбор / лето | `SPEC-HARV-SUMMER` |
-| осенний сбор / осень | `SPEC-HARV-AUTUMN` |
-| зимний сбор / зима | `SPEC-HARV-WINTER` |
-
-### Section 6: Органолептические Характеристики
-
-Extract:
-
-| MD content | JSON field |
-|---|---|
-| `**Аромат:**` keywords | `specifications[]: SPEC-AROMA, type: Option` — may be MULTIPLE entries |
-| `**Вкус:**` body description | `specifications[]: SPEC-BODY, type: Option` |
-| `**Цвет настоя:**` | `specifications[]: SPEC-LIQUOR-COLOR, type: Option` |
-
-**Aroma keyword → option mapping (multiple allowed):**
-
-| Russian keyword | Option code |
-|---|---|
-| цветочный / орхидея / жасмин | `SPEC-AROMA-FLORAL` |
-| фруктовый / персик / абрикос | `SPEC-AROMA-FRUITY` |
-| ореховый / каштан / семечки | `SPEC-AROMA-NUTTY` |
-| медовый / мёд | `SPEC-AROMA-HONEY` |
-| древесный / дуб | `SPEC-AROMA-WOODY` |
-| дымный / копчёный / сосна | `SPEC-AROMA-SMOKY` |
-| земляной / землистый / торф | `SPEC-AROMA-EARTHY` |
-| травяной / свежая зелень | `SPEC-AROMA-GRASSY` |
-| морской / водоросли / умами | `SPEC-AROMA-MARINE` |
-| сливочный / маслянистый / молочный | `SPEC-AROMA-CREAMY` |
-| пряный / специи / корица | `SPEC-AROMA-SPICY` |
-| минеральный / утёсный | `SPEC-AROMA-MINERAL` |
-
-**Body mapping:**
-
-| Russian text | Option code |
-|---|---|
-| лёгкий / нежный / деликатный | `SPEC-BODY-LIGHT` |
-| средний / сбалансированный | `SPEC-BODY-MEDIUM` |
-| полный / насыщенный / плотный / мощный | `SPEC-BODY-FULL` |
-
-**Liquor color options:**
-
-`SPEC-COLOR-PALE-GREEN`, `SPEC-COLOR-GREEN`, `SPEC-COLOR-YELLOW-GREEN`, `SPEC-COLOR-YELLOW`, `SPEC-COLOR-GOLD`, `SPEC-COLOR-AMBER`, `SPEC-COLOR-ORANGE`, `SPEC-COLOR-RED`, `SPEC-COLOR-DARK-RED`, `SPEC-COLOR-BROWN`
-
-### Section 7: Химический Состав
-
-Extract:
-
-| MD content | JSON field |
-|---|---|
-| `**Кофеином:** умеренное` | `specifications[]: SPEC-CAFFEINE, type: Option` |
-
-**Caffeine mapping:**
-
-| Russian text | Option code |
-|---|---|
-| без кофеина / нет | `SPEC-CAFF-NONE` |
-| низкое / слабое | `SPEC-CAFF-LOW` |
-| умеренное / среднее | `SPEC-CAFF-MED` |
-| высокое / много | `SPEC-CAFF-HIGH` |
-
-### Section 8: Полезные Свойства
-
-Extract → `tags[]` (health-related):
-
-| MD keyword | Tag code |
-|---|---|
-| антиоксидант | `TAG-ANTIOXIDANT` |
-| пищеварение / желудок | `TAG-DIGESTION` |
-| тонизирующий / бодрит | `TAG-ENERGY` |
-| успокаивающий / расслабление | `TAG-RELAXING` |
-| снижение веса / метаболизм | `TAG-WEIGHT-LOSS` |
-| иммунитет | `TAG-IMMUNITY` |
-| сердечно-сосудистая | `TAG-HEART-HEALTH` |
-
-### Section 9: Заваривание
-
-Extract:
-
-| MD content | JSON field |
-|---|---|
-| `**Температура воды:** 80-85°C` | `specifications[]: SPEC-BREW-TEMP, type: Number, value: "80"` (use lower bound) |
-| `**Количество чая:** 3-5 грамм на 150-200 мл` | `specifications[]: SPEC-BREW-RATIO, type: CustomText, value: "3-5g / 150-200ml"` |
-| `настаивайте 1-2 минуты` | `specifications[]: SPEC-STEEP-TIME, type: Range, valueMin: 60, valueMax: 120` (seconds) |
-| `3-5 раз` / `повторяйте` | `specifications[]: SPEC-INFUSIONS, type: Number, value: "5"` (upper bound) |
-| `гайвань / чайник` | `specifications[]: SPEC-GONGFU, type: Boolean, value: "true"` (if гайвань mentioned) |
-
-### Section 10: Хранение
-
-Extract:
-
-| MD content | JSON field |
-|---|---|
-| Shelf life info | `specifications[]: SPEC-SHELF-LIFE, type: Duration, value: "<seconds>"` |
-| `в холодильнике` / storage method | `specifications[]: SPEC-STORAGE, type: CustomText, value: "Refrigerated, airtight"` |
-
-### Section 11: Цена и Подделки
-
-Extract → `tags[]`:
-
-| MD keyword | Tag code |
-|---|---|
-| дорогих / элитных / premium | `TAG-PREMIUM` |
-| редкий / limited | `TAG-LIMITED-EDITION` |
-| коллекционный / инвестиционный | `TAG-COLLECTIBLE` |
-
-### Section 12: Интересные Факты
-
-Extract → `tags[]`:
-
-| MD keyword | Tag code |
-|---|---|
-| UNESCO / нематериальное наследие | `TAG-UNESCO` |
-| GI / географическое указание / защищённое | `TAG-GI-PROTECTED` |
-| Десяти знаменитых / Top 10 | `TAG-TOP10-CHINA` |
-| императорский / imperial | `TAG-IMPERIAL` |
-| древние деревья / ancient tree / 古树 | `TAG-ANCIENT-TREE` |
-
-### Sections 13-14: Разновидности / Заключение
-
-Skip — not imported. Only use for additional tags if sub-varieties or specific awards are mentioned.
-
-### Japan template mapping
-
-| Japan section | Maps to same fields as |
-|---|---|
-| 1. Определение и характеристики | Sections 1 + 3 (classification + botany) |
-| 2. История и происхождение | Section 2 (history) |
-| 3. Производственный процесс | Section 5 (processing) |
-| 4. Разновидности и Градации | Section 13 (varieties) — skip |
-| 5. Внешний вид | Section 6 partial (appearance) |
-| 6. Аромат и вкусовой профиль | Section 6 (organoleptic) |
-| 7. Использование | Section 9 (brewing/usage) |
-| 8. Хранение | Section 10 (storage) |
-| 9-13 | Cultural context — extract tags, skip rest |
-
-## JSON Output Structure
-
-```json
-[
-  {
-    "code": "TEA-CN-XIHU-LONGJING",
-    "sku": "XLJ-ZJ-2024-50G",
-    "order": 1,
-    "published": true,
-
-    "brand": {
-      "code": "BRAND-<DERIVED>",
-      "translations": [
-        { "lang": "en-US", "name": "..." },
-        { "lang": "ru-RU", "name": "..." }
-      ]
-    },
-
-    "manufacturer": {
-      "code": "MFR-<DERIVED>",
-      "translations": [
-        { "lang": "en-US", "name": "..." },
-        { "lang": "ru-RU", "name": "..." }
-      ]
-    },
-
-    "translations": [
-      {
-        "lang": "ru-RU",
-        "name": "<from title + section 1>",
-        "description": "<2-4 sentence summary from sections 1,2,6>",
-        "seo": "<transliterated-slug>",
-        "metaDescription": "<SEO meta, 150 chars>",
-        "metaTitle": "<SEO title, 60 chars>"
-      },
-      {
-        "lang": "en-US",
-        "name": "<translated>",
-        "description": "<translated summary>",
-        "seo": "<english-slug>",
-        "metaDescription": "<translated>",
-        "metaTitle": "<translated>"
-      },
-      {
-        "lang": "zh-CN",
-        "name": "<Chinese name from parentheses in title>",
-        "description": "<translated summary>",
-        "seo": "<pinyin-slug>"
-      }
-    ],
-
-    "catalogs": [
-      {
-        "catalog": "CATALOG-MAIN",
-        "catalogName": "Main Catalog",
-        "catalogLang": "en-US",
-        "catalogCurrency": "USD",
-        "category": "<from tea type>",
-        "categoryName": "<English name>",
-        "categoryLang": "en-US",
-        "order": 1,
-        "published": true
-      }
-    ],
-
-    "packages": [
-      { "package": "PKG-50G", "packageName": "50g", "packageUnit": "g", "quantity": 1, "default": true }
-    ],
-
-    "tags": [
-      { "code": "TAG-...", "name": "...", "lang": "en-US" }
-    ],
-
-    "specifications": [
-      {
-        "lang": "en-US",
-        "group": "SPEC-GROUP-...", "groupName": "...",
-        "attribute": "SPEC-...", "attributeName": "...",
-        "option": "SPEC-...", "optionName": "...",
-        "type": "Option",
-        "showOnPage": true,
-        "order": 1
-      }
-    ],
-
-    "origins": [
-      {
-        "country": "<ISO alpha-2>",
-        "state": "<province/region>",
-        "city": "<city if available>",
-        "altitude": { "min": 100, "max": 800, "unit": "m" },
-        "coordinates": { "lat": 30.0, "lng": 120.0 },
-        "translations": [
-          { "lang": "en-US", "place": "...", "notes": "..." },
-          { "lang": "ru-RU", "place": "...", "notes": "..." },
-          { "lang": "zh-CN", "place": "...", "notes": "..." }
-        ]
-      }
-    ],
-
-    "related": [],
-    "crossSells": []
-  }
-]
+## Section Processing Rules
+
+### Which sections become SPECIFICATION GROUPS
+
+**ALL sections become specification groups — no exceptions.** Each section title = group name, each bullet = attribute.
+
+Additionally, some sections ALSO produce `translations`, `origins`, or `tags`:
+
+| Section | → specifications (group) | Also → translations | Also → origins | Also → tags |
+|---|---|---|---|---|
+| 1. Классификация | **Yes** | name | country, state, city, coords | Top10, etc |
+| 2. История | **Yes** | description | | UNESCO, Imperial, Heritage |
+| 3. Ботаника | **Yes** | | | Ancient Tree |
+| 4. Терруар | **Yes** | | altitude, coords, notes | High Mountain |
+| 5. Производство | **Yes** | | | Smoked, Aged |
+| 6. Органолептика | **Yes** | description | | |
+| 7. Хим. состав | **Yes** | | | |
+| 8. Полезные свойства | **Yes** | | | health tags |
+| 9. Заваривание | **Yes** | | | |
+| 10. Хранение | **Yes** | | | |
+| 11. Цена и Подделки | **Yes** | | | Premium, Limited, Collectible |
+| 12. Интересные Факты | **Yes** | | | GI, Awards, UNESCO |
+| 13. Разновидности | **Yes** | | | |
+| 14. Ошибки заваривания | **Yes** | | | |
+| 15. Прессовка/выдержка | **Yes** | | | Pressed, Aged |
+| 16. Изменения со временем | **Yes** | | | |
+| 17. Выбор партии | **Yes** | | | |
+| 18. Вода и посуда | **Yes** | | | |
+| 19. Памятка заваривания | **Yes** | | | |
+| 20. Дегустация | **Yes** | | | |
+| 21. С чем пить | **Yes** | | | |
+| 22. Частые вопросы | **Yes** | | | |
+
+### How to create specs from section content
+
+Each bullet point `* **Bold term:** value text` in a section becomes a specification attribute:
+
+**1. Bold term → attribute name and code:**
+```
+* **Тип:** Зеленый чай
+  → attributeName: "Тип"
+  → attribute: "SPEC-TYPE" (transliterate+abbreviate the bold term)
 ```
 
-## Code Generation Rules
+**2. Value → determine type and fill accordingly:**
 
-| Field | Pattern | Source |
+| Value pattern | Spec type | JSON fields |
 |---|---|---|
-| `code` | `TEA-<CC>-<NAME>` | CC = country ISO alpha-2, NAME = transliterated abbreviated |
-| `sku` | `<ABBR>-<REGION>-<YEAR>-<WEIGHT>` | Abbreviation from name, region code, current year, default weight |
-| Brand `code` | `BRAND-<NAME>` | Derive from region/factory if mentioned in MD |
-| Manufacturer `code` | `MFR-<NAME>` | Derive from producer/factory if mentioned in MD |
-| Tag `code` | `TAG-<NAME>` | UPPERCASE, hyphens |
-| Spec group `code` | `SPEC-GROUP-<NAME>` | From standard table |
-| Spec attribute `code` | `SPEC-<NAME>` | From standard table or generated |
-| Spec option `code` | `SPEC-<ATTR>-<VALUE>` | From standard table |
+| Matches a predefined Option (see tables below) | `Option` | `option`, `optionName` |
+| Single number: `80°C`, `3 грамма` | `Number` | `value: "80"` |
+| Range: `80-85°C`, `100-800 метров` | `Range` | `valueMin: 80, valueMax: 85` |
+| `да` / `нет` / `true` / `false` | `Boolean` | `value: "true"` |
+| Date: `2024-03-28` | `Date` | `value: "2024-03-28"` |
+| Duration: `2 года` | `Duration` | `value: "63072000"` (seconds) |
+| URL | `Hyperlink` | `value: "https://..."` |
+| Everything else (free text) | `CustomText` | `value: "Longjing #43 / Quntizhong"` |
 
-All codes: UPPERCASE, Latin-only, hyphens for word separation.
+**3. Group code generation from section title:**
+```
+"5. Технология Производства" → code: "SPEC-GROUP-PROCESSING"
+"6. Органолептические Характеристики" → code: "SPEC-GROUP-ORGANOLEPTIC"
+```
 
-## Standard Specification Groups
+Use these standardized codes for core sections:
 
-| Code | Name (en-US) | order range |
+| # | Section title (ru) | Group code | Group name (en-US) |
+|---|---|---|---|
+| 1 | Классификация и Происхождение | `SPEC-GROUP-CLASSIFICATION` | Classification and Origin |
+| 2 | История и Культурное Значение | `SPEC-GROUP-HISTORY` | History and Cultural Significance |
+| 3 | Ботаническое Описание и Сырьё | `SPEC-GROUP-BOTANICAL` | Botanical Description |
+| 4 | Терруар и Особенности Выращивания | `SPEC-GROUP-TERROIR` | Terroir and Growing |
+| 5 | Технология Производства | `SPEC-GROUP-PROCESSING` | Production Technology |
+| 6 | Органолептические Характеристики | `SPEC-GROUP-ORGANOLEPTIC` | Organoleptic Characteristics |
+| 7 | Химический Состав | `SPEC-GROUP-CHEMISTRY` | Chemical Composition |
+| 8 | Полезные Свойства | `SPEC-GROUP-HEALTH` | Health Benefits |
+| 9 | Заваривание | `SPEC-GROUP-BREWING` | Brewing |
+| 10 | Хранение | `SPEC-GROUP-STORAGE` | Storage |
+| 11 | Цена и Подделки | `SPEC-GROUP-PRICE` | Price and Counterfeits |
+| 12 | Интересные Факты | `SPEC-GROUP-FACTS` | Interesting Facts |
+| 13 | Разновидности / Виды / Сравнение | `SPEC-GROUP-VARIETIES` | Varieties and Comparison |
+| 14 | Ошибки при заваривании и хранении | `SPEC-GROUP-MISTAKES` | Common Mistakes |
+| 15 | Прессовка и выдержка | `SPEC-GROUP-AGING` | Pressing and Aging |
+| 16 | Как меняется чай со временем | `SPEC-GROUP-EVOLUTION` | Aging Evolution |
+| 17 | Как выбрать качественную партию | `SPEC-GROUP-SELECTION` | Quality Selection |
+| 18 | Вода и посуда | `SPEC-GROUP-EQUIPMENT` | Water and Equipment |
+| 19 | Быстрая памятка по завариванию | `SPEC-GROUP-BREW-GUIDE` | Quick Brewing Guide |
+| 20 | Дегустация и оценка | `SPEC-GROUP-TASTING` | Tasting and Evaluation |
+| 21 | С чем пить и когда | `SPEC-GROUP-PAIRING` | Food Pairing |
+| 22 | Частые вопросы | `SPEC-GROUP-FAQ` | FAQ |
+
+For sections with non-standard titles (Japan template, etc.), generate group code from title: `SPEC-GROUP-<TRANSLITERATED-ABBREVIATION>`.
+
+## Predefined Option Values
+
+For common attributes, use standardized Option codes instead of CustomText:
+
+### Tea Type (`SPEC-TEA-TYPE`)
+
+| Option code | Option name | Russian keywords |
 |---|---|---|
-| `SPEC-GROUP-CLASSIFICATION` | Classification | 1-10 |
-| `SPEC-GROUP-PROCESSING` | Processing | 11-20 |
-| `SPEC-GROUP-BOTANICAL` | Botanical | 21-30 |
-| `SPEC-GROUP-ORIGIN` | Origin | 31-40 |
-| `SPEC-GROUP-ORGANOLEPTIC` | Tasting Notes | 41-60 |
-| `SPEC-GROUP-BREWING` | Brewing | 61-70 |
-| `SPEC-GROUP-STORAGE` | Storage | 71-80 |
+| `SPEC-TYPE-GREEN` | Green Tea | зеленый, зелёный, неферментированный |
+| `SPEC-TYPE-WHITE` | White Tea | белый чай |
+| `SPEC-TYPE-YELLOW` | Yellow Tea | жёлтый, желтый |
+| `SPEC-TYPE-OOLONG` | Oolong Tea | улун, оолонг |
+| `SPEC-TYPE-RED` | Red (Black) Tea | красный чай |
+| `SPEC-TYPE-DARK` | Dark Tea (Hei Cha) | тёмный, хэй ча |
+| `SPEC-TYPE-PUERH-SHENG` | Sheng Pu-erh | шэн пуэр, 生普 |
+| `SPEC-TYPE-PUERH-SHOU` | Shu Pu-erh | шу пуэр, 熟普, постферментированный |
+| `SPEC-TYPE-SCENTED` | Scented Tea | жасминовый, ароматизированный |
+| `SPEC-TYPE-HERBAL` | Herbal / Flower | цветочный, травяной, не является чаем |
+| `SPEC-TYPE-MATCHA` | Matcha | матча, маття |
 
-## Standard Tags (always include `name` + `lang: "en-US"`)
+### Fermentation (`SPEC-FERMENTATION`)
 
-Derive from sections 1, 8, 11, 12. Add `TAG-SINGLE-ORIGIN` to all single-origin teas. Use region folder name to derive region tag: `TAG-CHINA`, `TAG-JAPAN`, `TAG-INDIA`, `TAG-TAIWAN` etc.
+| Option code | Russian keywords |
+|---|---|
+| `SPEC-FERM-0` | неферментированный, 0% |
+| `SPEC-FERM-5-10` | слабоферментированный, 5-10% |
+| `SPEC-FERM-10-20` | лёгкая ферментация, 10-20% |
+| `SPEC-FERM-15-30` | 15-30% |
+| `SPEC-FERM-30-50` | средняя, 30-50% |
+| `SPEC-FERM-60-85` | сильная, 60-85% |
+| `SPEC-FERM-85-100` | полная, 85-100% |
+| `SPEC-FERM-POST` | постферментированный |
+
+### Roast (`SPEC-ROAST`)
+
+| Option code | Russian keywords |
+|---|---|
+| `SPEC-ROAST-NONE` | без обжарки |
+| `SPEC-ROAST-LIGHT` | лёгкая обжарка |
+| `SPEC-ROAST-MEDIUM` | средняя обжарка |
+| `SPEC-ROAST-HEAVY` | сильная, глубокая |
+| `SPEC-ROAST-CHARCOAL` | угольная, на углях |
+
+### Kill-green (`SPEC-KILL-GREEN`)
+
+| Option code | Russian keywords |
+|---|---|
+| `SPEC-KG-PAN` | обжарка в котлах, 杀青 |
+| `SPEC-KG-STEAM` | пропаривание, 蒸 |
+| `SPEC-KG-SUN` | солнечная сушка |
+| `SPEC-KG-NONE` | нет этапа (белый чай) |
+
+### Harvest (`SPEC-HARVEST`)
+
+| Option code | Russian keywords |
+|---|---|
+| `SPEC-HARV-MINGQIAN` | до Цинмина, 明前 |
+| `SPEC-HARV-YUQIAN` | до Гуюй, 雨前 |
+| `SPEC-HARV-SPRING` | весенний, весна |
+| `SPEC-HARV-SUMMER` | летний, лето |
+| `SPEC-HARV-AUTUMN` | осенний, осень |
+| `SPEC-HARV-WINTER` | зимний, зима |
+
+### Aroma (`SPEC-AROMA`) — MULTIPLE entries per product
+
+| Option code | Russian keywords |
+|---|---|
+| `SPEC-AROMA-FLORAL` | цветочный, орхидея, жасмин, роза, лотос |
+| `SPEC-AROMA-FRUITY` | фруктовый, персик, абрикос, слива, цитрус |
+| `SPEC-AROMA-NUTTY` | ореховый, каштан, семечки |
+| `SPEC-AROMA-HONEY` | медовый, мёд |
+| `SPEC-AROMA-WOODY` | древесный, дуб, кедр |
+| `SPEC-AROMA-SMOKY` | дымный, копчёный, сосна |
+| `SPEC-AROMA-EARTHY` | земляной, грибной, торф |
+| `SPEC-AROMA-GRASSY` | травяной, свежая зелень |
+| `SPEC-AROMA-MARINE` | морской, водоросли, умами |
+| `SPEC-AROMA-CREAMY` | сливочный, маслянистый, молочный |
+| `SPEC-AROMA-SPICY` | пряный, специи, корица |
+| `SPEC-AROMA-MINERAL` | минеральный, утёсный |
+| `SPEC-AROMA-CARAMEL` | карамельный, жжёный сахар |
+| `SPEC-AROMA-DRIED-FRUIT` | сухофрукты, чернослив, финик |
+| `SPEC-AROMA-CAMPHOR` | камфора, ментол |
+
+### Body (`SPEC-BODY`)
+
+| Option code | Russian keywords |
+|---|---|
+| `SPEC-BODY-LIGHT` | лёгкий, нежный, деликатный |
+| `SPEC-BODY-MEDIUM` | средний, сбалансированный |
+| `SPEC-BODY-FULL` | полный, насыщенный, плотный, маслянистый |
+
+### Caffeine (`SPEC-CAFFEINE`)
+
+| Option code | Russian keywords |
+|---|---|
+| `SPEC-CAFF-NONE` | без кофеина |
+| `SPEC-CAFF-LOW` | низкое, слабое |
+| `SPEC-CAFF-MED` | умеренное, среднее |
+| `SPEC-CAFF-HIGH` | высокое |
+
+### Liquor Color (`SPEC-LIQUOR-COLOR`)
+
+| Option code | Russian keywords |
+|---|---|
+| `SPEC-COLOR-PALE-GREEN` | бледно-зелёный, светло-зелёный |
+| `SPEC-COLOR-GREEN` | зелёный |
+| `SPEC-COLOR-YELLOW-GREEN` | жёлто-зелёный |
+| `SPEC-COLOR-YELLOW` | жёлтый, соломенный |
+| `SPEC-COLOR-GOLD` | золотистый |
+| `SPEC-COLOR-AMBER` | янтарный |
+| `SPEC-COLOR-ORANGE` | оранжевый, медный |
+| `SPEC-COLOR-RED` | красный, рубиновый |
+| `SPEC-COLOR-DARK-RED` | тёмно-красный, бордовый |
+| `SPEC-COLOR-BROWN` | коричневый, тёмный |
+
+### Altitude (`SPEC-ALTITUDE`)
+
+| Option code | Range |
+|---|---|
+| `SPEC-ALT-LOW` | <500m |
+| `SPEC-ALT-MID` | 500–1000m |
+| `SPEC-ALT-HIGH` | >1000m |
+
+### Pressing (`SPEC-PRESSING`)
+
+| Option code | Russian keywords |
+|---|---|
+| `SPEC-PRESS-CAKE` | блин, бин, 饼 |
+| `SPEC-PRESS-BRICK` | кирпич, 砖 |
+| `SPEC-PRESS-TUAN` | точа, туо, 沱 |
+| `SPEC-PRESS-LOOSE` | рассыпной |
+
+### Leaf Type (`SPEC-LEAF-TYPE`)
+
+| Option code | Russian keywords |
+|---|---|
+| `SPEC-LEAF-SMALL` | мелколистовой |
+| `SPEC-LEAF-MEDIUM` | среднелистовой |
+| `SPEC-LEAF-LARGE` | крупнолистовой, дайе, 大叶 |
+
+## Fields NOT in MD (do NOT populate)
+
+MD files are product documentation, NOT commercial data. The following JSON fields have **no source in MD** and must be left empty or omitted:
+
+| JSON field | Why absent |
+|---|---|
+| `price`, `oldPrice`, `catalogPrice`, `productCost` | No real prices — section 11 has general market ranges, not our prices |
+| `callForPrice`, `enteredPrice`, `minEnteredPrice`, `maxEnteredPrice` | Commercial settings, not in docs |
+| `tierPrices[]` | Wholesale pricing tiers — not in docs |
+| `catalogPrices[]` | Per-catalog price overrides — not in docs |
+| `media[]` | MD has `![image](images/...)` references but these are doc images, not product media assets in storage |
+| `related[]` | Cross-product relationships are not defined in individual MD files |
+| `crossSells[]` | Same — not in MD |
+| `availableStartDate`, `availableEndDate` | Availability dates — commercial, not in docs |
+| `availableForPreOrder`, `preOrderDate` | Pre-order settings — not in docs |
+| `markAsNew`, `markAsNewStartDate`, `markAsNewEndDate` | Marketing flags — not in docs |
+
+These fields can be populated later via separate import files or manual entry.
+
+## Non-Specification Fields
+
+### `translations[].description` — summary from sections 1, 2, 6
+
+2-4 sentence summary. Include Chinese name, what's special, flavor profile, historical note if notable.
+
+### `origins[]` — from sections 1, 4
+
+- `country`: ISO alpha-2 from section 1
+- `state`: province from section 1
+- `city`: city if mentioned
+- `altitude`: from section 4 (min/max/unit)
+- `coordinates`: from section 1 or 4
+- `translations[].place`: from section 4 sub-regions
+- `translations[].notes`: soil, climate, terroir notes from section 4
+
+### `tags[]` — from sections 1, 2, 3, 4, 5, 8, 10, 11, 12, 15
+
+| Source | Tag codes |
+|---|---|
+| `Десяти знаменитых` | `TAG-TOP10-CHINA` |
+| `императорский` | `TAG-IMPERIAL` |
+| `UNESCO` | `TAG-UNESCO` |
+| `древние деревья / 古树` | `TAG-ANCIENT-TREE` |
+| `высокогорный / >1000m` | `TAG-HIGH-MOUNTAIN` |
+| `копчение` | `TAG-SMOKED` |
+| Health keywords (sec 8) | `TAG-ANTIOXIDANT`, `TAG-DIGESTION`, `TAG-ENERGY`, `TAG-RELAXING`, `TAG-WARMING` |
+| `дорогой / элитный` | `TAG-PREMIUM` |
+| `редкий` | `TAG-LIMITED-EDITION` |
+| `коллекционный` | `TAG-COLLECTIBLE` |
+| `GI / защищённое` | `TAG-GI-PROTECTED` |
+| Pressed (sec 15) | `TAG-PRESSED` |
+| Aging (sec 10/15/16) | `TAG-AGED-TEA` |
+| `органический` | `TAG-ORGANIC` |
+| Always | `TAG-SINGLE-ORIGIN` |
+| Region folder → | `TAG-CHINA`, `TAG-JAPAN`, `TAG-INDIA`, `TAG-TAIWAN`, etc. |
+
+### `catalogs[]` — derived from tea type in section 1
+
+| Tea type keyword | Category code | Category name |
+|---|---|---|
+| зеленый | `CAT-GREEN-TEA` | Green Tea |
+| белый | `CAT-WHITE-TEA` | White Tea |
+| жёлтый | `CAT-YELLOW-TEA` | Yellow Tea |
+| улун | `CAT-OOLONG-TEA` | Oolong Tea |
+| красный | `CAT-RED-TEA` | Red (Black) Tea |
+| тёмный / хэй ча | `CAT-DARK-TEA` | Dark Tea |
+| пуэр | `CAT-PUERH-TEA` | Pu-erh Tea |
+| жасминовый | `CAT-SCENTED-TEA` | Scented Tea |
+| цветочный / травяной | `CAT-HERBAL-TEA` | Herbal & Flower Tea |
+| матча | `CAT-MATCHA` | Matcha |
+
+Also use REGION folder as hint. Default catalog: `CATALOG-MAIN`, `catalogCurrency: "USD"`.
+
+## Code Generation
+
+| Field | Pattern |
+|---|---|
+| `code` | `TEA-<CC>-<NAME>` (CC = ISO country, NAME = abbreviated Latin) |
+| `sku` | `<ABBR>-<REGION>-<YEAR>-<WEIGHT>` |
+| Brand | `BRAND-<NAME>` |
+| Manufacturer | `MFR-<NAME>` |
+| Group | `SPEC-GROUP-<NAME>` (from standard table or transliterated) |
+| Attribute | `SPEC-<ABBREVIATED-NAME>` |
+| Option | `SPEC-<ATTR>-<VALUE>` |
+
+All codes: UPPERCASE, Latin-only, hyphens.
 
 ## Locales
 
 - `ru-RU` — from MD source (primary)
-- `en-US` — translate from Russian
-- `zh-CN` — translate; for tea name use Chinese characters from title parentheses `(西湖龙井)`
-
-## Description Rules
-
-`description` is a **2-4 sentence summary**, NOT the entire MD. Include:
-- Chinese name with characters
-- What makes this tea special (from section 1)
-- Key flavor notes (from section 6)
-- Historical/cultural note if famous (from section 2)
+- `en-US` — translate
+- `zh-CN` — translate; tea name from title parentheses `(西湖龙井)`
 
 ## Validation Checklist
 
-- [ ] JSON file name = MD file name with `.json` extension
+- [ ] File name = MD source with `.json`
 - [ ] JSON is `[{ ... }]` (single-element array)
 - [ ] `code` unique, UPPERCASE, Latin
-- [ ] 3 locales in `translations` (ru-RU, en-US, zh-CN)
-- [ ] `brand` is nested object with translations
-- [ ] `catalogs[]` has CATALOG-MAIN with auto-create fields
-- [ ] `specifications[]` covers minimum: tea type, fermentation, aroma, body, caffeine, brew temp
-- [ ] `origins[]` has country (ISO), coordinates, altitude
-- [ ] `tags[]` have `code` + `name` + `lang`
-- [ ] All spec names use `lang: "en-US"` when `attributeName`/`optionName` present
-- [ ] Aroma specs: multiple entries if multiple aromas in MD
-- [ ] `lang` values are BCP 47: `ru-RU`, `en-US`, `zh-CN`
+- [ ] 3 locales in `translations`
+- [ ] `brand` nested with translations
+- [ ] `catalogs[]` with auto-create fields
+- [ ] Specs: EVERY MD section (1–22, all present) → spec group, no sections skipped
+- [ ] Aroma: MULTIPLE entries if multiple aromas detected
+- [ ] Predefined options used where applicable (not CustomText)
+- [ ] `origins[]` with country, coordinates, altitude
+- [ ] `tags[]` with `code` + `name` + `lang`
+- [ ] All `attributeName`/`optionName` include `lang: "en-US"`
