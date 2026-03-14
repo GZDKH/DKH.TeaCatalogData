@@ -1,0 +1,359 @@
+[
+  {
+    "code": "TEA-CN-ANHUA-TIAN-JIAN",
+    "sku": "ATJ-HN-2024-250G",
+    "order": 4,
+    "published": true,
+
+    "brand": "BRAND-ANHUA-TEA",
+    "brandName": "Anhua Tea Factory",
+    "brandLang": "en-US",
+
+    "manufacturer": "MFR-ANHUA-COUNTY",
+    "manufacturerName": "Anhua County Tea Corporation",
+    "manufacturerLang": "en-US",
+
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Аньхуа Тянь Цзянь Хэй Ча (安化天尖黑茶)",
+        "description": "Высший сорт постферментированного чая Хэй Ча из уезда Аньхуа, провинция Хунань. Изготавливается из самого нежного сырья — почки и один-два верхних листочка. Полный, насыщенный вкус с древесно-пряными нотами, оттенками сухофруктов, чернослива и земли. Тёмно-янтарный настой с долгим сладким послевкусием. Улучшается при длительном хранении. История производства насчитывает более тысячи лет, со времен династии Тан.",
+        "seo": "ankhua-tyan-tszyan-khey-cha"
+      },
+      {
+        "lang": "en-US",
+        "name": "Anhua Tian Jian Hei Cha (Heavenly Tip Dark Tea)",
+        "description": "The highest grade of post-fermented Hei Cha from Anhua County, Hunan Province. Made from the most tender raw material — buds and one or two top leaves. Full, rich flavor with woody-spicy notes, hints of dried fruits, prunes and earth. Dark amber liquor with a long sweet aftertaste. Improves with extended storage. Production history spans over a thousand years since the Tang Dynasty.",
+        "seo": "anhua-tian-jian-hei-cha"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "安化天尖黑茶",
+        "description": "湖南安化黑茶最高等级，选用最嫩芽叶——一芽一二叶精制而成。滋味醇厚饱满，带有木质辛香、干果梅子和泥土气息。汤色深琥珀色，回甘悠长。越陈越香。产茶历史可追溯至唐代，逾千年。",
+        "seo": "anhua-tian-jian-hei-cha"
+      }
+    ],
+
+    "tags": [
+      { "code": "TAG-AGED-TEA", "name": "Aged Tea", "lang": "en-US" },
+      { "code": "TAG-SINGLE-ORIGIN", "name": "Single Origin", "lang": "en-US" },
+      { "code": "TAG-DIGESTION", "name": "Digestion", "lang": "en-US" },
+      { "code": "TAG-HERITAGE", "name": "Heritage", "lang": "en-US" },
+      { "code": "TAG-WARMING", "name": "Согревающий", "lang": "ru-RU" },
+      { "code": "TAG-PINE-SMOKED", "name": "Копчение на сосне", "lang": "ru-RU" }
+    ],
+
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Hunan",
+        "city": "Yiyang",
+        "altitude": { "min": 300, "max": 1000, "unit": "m" },
+        "coordinates": { "lat": 28.0, "lng": 111.0 },
+        "translations": [
+          {
+            "lang": "en-US",
+            "place": "Anhua County, Yiyang, Hunan",
+            "notes": "Birthplace of Anhua Hei Cha. Selenium-rich red and yellow soils, subtropical monsoon climate with 1600-1800mm annual rainfall."
+          },
+          {
+            "lang": "ru-RU",
+            "place": "Уезд Аньхуа, Иян, Хунань",
+            "notes": "Родина Аньхуа Хэй Ча. Почвы богаты селеном (красноземы и желтоземы). Субтропический муссонный климат, осадки 1600-1800 мм/год."
+          },
+          {
+            "lang": "zh-CN",
+            "place": "湖南省益阳市安化县",
+            "notes": "安化黑茶发源地。富硒红壤和黄壤，亚热带季风气候，年降水量1600-1800毫米。"
+          }
+        ]
+      }
+    ],
+
+    "specifications": [
+      {
+        "group": "SPEC-GROUP-CLASSIFICATION",
+        "groupName": "Classification",
+        "attribute": "SPEC-TEA-TYPE",
+        "attributeName": "Tea Type",
+        "option": "SPEC-TYPE-DARK",
+        "optionName": "Dark Tea",
+        "lang": "en-US",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "group": "SPEC-GROUP-CLASSIFICATION",
+        "attribute": "SPEC-GRADE",
+        "attributeName": "Tea Grade",
+        "option": "SPEC-GRADE-PREMIUM",
+        "optionName": "Premium (天尖)",
+        "lang": "en-US",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "group": "SPEC-GROUP-PROCESSING",
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-POST",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "group": "SPEC-GROUP-PROCESSING",
+        "attribute": "SPEC-KILL-GREEN",
+        "option": "SPEC-KG-PAN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 4
+      },
+      {
+        "group": "SPEC-GROUP-PROCESSING",
+        "attribute": "SPEC-ROAST",
+        "option": "SPEC-ROAST-NONE",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 5
+      },
+      {
+        "group": "SPEC-GROUP-PROCESSING",
+        "attribute": "SPEC-HARVEST",
+        "option": "SPEC-HARV-SPRING",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "group": "SPEC-GROUP-BOTANICAL",
+        "attribute": "SPEC-CULTIVAR",
+        "attributeName": "Cultivar",
+        "lang": "en-US",
+        "type": "CustomText",
+        "value": "Local Anhua varieties (cultivated and wild)",
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "group": "SPEC-GROUP-BOTANICAL",
+        "attribute": "SPEC-PLUCKING-STANDARD",
+        "attributeName": "Plucking Standard",
+        "lang": "en-US",
+        "type": "CustomText",
+        "value": "Bud + 1-2 leaves (highest grade)",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "group": "SPEC-GROUP-ORIGIN",
+        "attribute": "SPEC-ALTITUDE",
+        "option": "SPEC-ALT-MID",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "group": "SPEC-GROUP-ORIGIN",
+        "attribute": "SPEC-ALTITUDE-RANGE",
+        "attributeName": "Altitude Range",
+        "lang": "en-US",
+        "type": "Range",
+        "valueMin": 300,
+        "valueMax": 1000,
+        "showOnPage": true,
+        "order": 10
+      },
+      {
+        "group": "SPEC-GROUP-ORGANOLEPTIC",
+        "attribute": "SPEC-AROMA",
+        "option": "SPEC-AROMA-WOODY",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 11
+      },
+      {
+        "group": "SPEC-GROUP-ORGANOLEPTIC",
+        "attribute": "SPEC-BODY",
+        "option": "SPEC-BODY-FULL",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 12
+      },
+      {
+        "group": "SPEC-GROUP-ORGANOLEPTIC",
+        "attribute": "SPEC-CAFFEINE",
+        "option": "SPEC-CAFF-MED",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 13
+      },
+      {
+        "group": "SPEC-GROUP-ORGANOLEPTIC",
+        "attribute": "SPEC-LIQUOR-COLOR",
+        "option": "SPEC-COLOR-AMBER",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 14
+      },
+      {
+        "group": "SPEC-GROUP-ORGANOLEPTIC",
+        "attribute": "SPEC-TASTE-NOTES",
+        "attributeName": "Taste Notes",
+        "lang": "en-US",
+        "type": "CustomText",
+        "value": "Woody, nutty, spicy, dried fruits, prunes, earth, sweet aftertaste",
+        "showOnPage": true,
+        "order": 15
+      },
+      {
+        "group": "SPEC-GROUP-ORGANOLEPTIC",
+        "attribute": "SPEC-DRY-LEAF",
+        "attributeName": "Dry Leaf Appearance",
+        "lang": "en-US",
+        "type": "CustomText",
+        "value": "Small, tight, longitudinally twisted leaves, dark brown with golden tips",
+        "showOnPage": true,
+        "order": 16
+      },
+      {
+        "group": "SPEC-GROUP-BREWING",
+        "attribute": "SPEC-BREW-TEMP",
+        "attributeName": "Brew Temperature",
+        "lang": "en-US",
+        "type": "CustomText",
+        "value": "95-100°C",
+        "showOnPage": true,
+        "order": 17
+      },
+      {
+        "group": "SPEC-GROUP-BREWING",
+        "attribute": "SPEC-BREW-AMOUNT",
+        "attributeName": "Brew Amount",
+        "lang": "en-US",
+        "type": "CustomText",
+        "value": "5-7g / 150-200ml",
+        "showOnPage": true,
+        "order": 18
+      },
+      {
+        "group": "SPEC-GROUP-BREWING",
+        "attribute": "SPEC-INFUSIONS",
+        "attributeName": "Infusions",
+        "lang": "en-US",
+        "type": "CustomText",
+        "value": "5-7+",
+        "showOnPage": true,
+        "order": 19
+      },
+      {
+        "group": "SPEC-GROUP-BREWING",
+        "attribute": "SPEC-BREW-METHOD",
+        "attributeName": "Brew Method",
+        "lang": "en-US",
+        "type": "CustomText",
+        "value": "Gongfu Cha, Gaiwan, Yixing clay teapot, boiling",
+        "showOnPage": true,
+        "order": 20
+      },
+      {
+        "group": "SPEC-GROUP-STORAGE",
+        "attribute": "SPEC-STORAGE-TEMP",
+        "attributeName": "Storage Temperature",
+        "lang": "en-US",
+        "type": "CustomText",
+        "value": "20-25°C",
+        "showOnPage": true,
+        "order": 21
+      },
+      {
+        "group": "SPEC-GROUP-STORAGE",
+        "attribute": "SPEC-STORAGE-HUMIDITY",
+        "attributeName": "Storage Humidity",
+        "lang": "en-US",
+        "type": "CustomText",
+        "value": "60-70%",
+        "showOnPage": true,
+        "order": 22
+      },
+      {
+        "group": "SPEC-GROUP-STORAGE",
+        "attribute": "SPEC-AGING-POTENTIAL",
+        "attributeName": "Aging Potential",
+        "lang": "en-US",
+        "type": "Boolean",
+        "value": "true",
+        "showOnPage": true,
+        "order": 23
+      },
+      {
+        "group": "SPEC-GROUP-HEALTH",
+        "attribute": "SPEC-HEALTH-BENEFITS",
+        "attributeName": "Health Benefits",
+        "lang": "en-US",
+        "type": "List",
+        "value": "[\"Warming effect\",\"Digestion improvement\",\"Antioxidant\",\"Cardiovascular support\",\"Detoxification\",\"Weight management\",\"Blood sugar regulation\"]",
+        "showOnPage": false,
+        "order": 24
+      },
+      {
+        "group": "SPEC-GROUP-CHEMICAL",
+        "attribute": "SPEC-KEY-COMPOUNDS",
+        "attributeName": "Key Compounds",
+        "lang": "en-US",
+        "type": "List",
+        "value": "[\"Polyphenols\",\"L-theanine\",\"Caffeine\",\"Theobromine\",\"Essential oils\",\"Selenium\",\"Vitamins C, B, E, K\"]",
+        "showOnPage": false,
+        "order": 25
+      }
+    ],
+
+    "media": [
+      {
+        "media": "products/tea-cn-anhua-tian-jian-cover.jpg",
+        "isCover": true,
+        "order": 1,
+        "titles": [
+          { "lang": "en-US", "title": "Anhua Tian Jian Hei Cha" },
+          { "lang": "ru-RU", "title": "Аньхуа Тянь Цзянь Хэй Ча" }
+        ]
+      },
+      {
+        "media": "products/tea-cn-anhua-tian-jian-dry-leaf.jpg",
+        "isCover": false,
+        "order": 2,
+        "titles": [
+          { "lang": "en-US", "title": "Tian Jian dry leaves" },
+          { "lang": "ru-RU", "title": "Сухой лист Тянь Цзянь" }
+        ]
+      },
+      {
+        "media": "products/tea-cn-anhua-tian-jian-liquor.jpg",
+        "isCover": false,
+        "order": 3,
+        "titles": [
+          { "lang": "en-US", "title": "Tian Jian liquor color" },
+          { "lang": "ru-RU", "title": "Цвет настоя Тянь Цзянь" }
+        ]
+      }
+    ],
+
+    "packages": [
+      { "package": "PKG-250G", "quantity": 1, "default": true },
+      { "package": "PKG-100G", "quantity": 1, "default": false },
+      { "package": "PKG-500G", "quantity": 1, "default": false }
+    ],
+
+    "related": [
+      { "product": "TEA-CN-FU-ZHUAN-CHA", "order": 1 },
+      { "product": "TEA-CN-LIU-BAO-CHA", "order": 2 },
+      { "product": "TEA-CN-QIAN-LIANG-CHA", "order": 3 }
+    ],
+
+    "crossSells": [
+      { "product": "TEA-CN-FU-ZHUAN-CHA" },
+      { "product": "TEA-CN-LIU-BAO-CHA" }
+    ]
+  }
+]

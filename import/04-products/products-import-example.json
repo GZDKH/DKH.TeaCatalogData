@@ -1,0 +1,136 @@
+[
+  {
+    "code": "TEA-EXAMPLE-ALL-SPEC-TYPES",
+    "sku": "EXAMPLE-2024-100G",
+    "order": 1,
+    "published": true,
+    "translations": [
+      {
+        "lang": "en-US",
+        "name": "Example Tea — All Specification Types",
+        "description": "Example product demonstrating all specification attribute types supported by the import system.",
+        "seo": "example-tea-all-spec-types"
+      },
+      {
+        "lang": "ru-RU",
+        "name": "Пример чая — все типы спецификаций",
+        "description": "Пример продукта, демонстрирующий все поддерживаемые типы атрибутов спецификаций при импорте.",
+        "seo": "primer-chaya-vse-tipy-specifikatsiy"
+      }
+    ],
+    "tags": [
+      { "code": "TAG-SINGLE-ORIGIN" }
+    ],
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "altitude": { "min": 800, "max": 1200, "unit": "m" },
+        "coordinates": { "lat": 27.5, "lng": 117.9 },
+        "translations": [
+          { "lang": "en-US", "place": "Wuyi Mountains", "notes": "UNESCO World Heritage Site" },
+          { "lang": "ru-RU", "place": "Горы Уишань", "notes": "Объект Всемирного наследия ЮНЕСКО" }
+        ]
+      }
+    ],
+    "specifications": [
+      {
+        "group": "SPEC-GROUP-CLASSIFICATION",
+        "attribute": "SPEC-TEA-TYPE",
+        "option": "SPEC-TYPE-GREEN",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 1
+      },
+      {
+        "group": "SPEC-GROUP-PROCESSING",
+        "attribute": "SPEC-FERMENTATION",
+        "option": "SPEC-FERM-0",
+        "type": "Option",
+        "showOnPage": true,
+        "order": 2
+      },
+      {
+        "group": "SPEC-GROUP-BOTANICAL",
+        "attribute": "SPEC-CULTIVAR",
+        "type": "CustomText",
+        "value": "Da Bai (Big White)",
+        "showOnPage": true,
+        "order": 3
+      },
+      {
+        "group": "SPEC-GROUP-BOTANICAL",
+        "attribute": "SPEC-CULTIVAR-DESCRIPTION",
+        "type": "CustomHtmlText",
+        "value": "<p>A traditional <strong>Fujian</strong> cultivar known for large, downy buds.</p>",
+        "showOnPage": false,
+        "order": 4
+      },
+      {
+        "group": "SPEC-GROUP-BOTANICAL",
+        "attribute": "SPEC-CULTIVAR-NOTES",
+        "type": "CustomMarkdownText",
+        "value": "## Cultivar Notes\n- Large leaf variety\n- High amino acid content\n- Suitable for white tea production",
+        "showOnPage": false,
+        "order": 5
+      },
+      {
+        "group": "SPEC-GROUP-ORIGIN",
+        "attribute": "SPEC-ALTITUDE",
+        "type": "Number",
+        "value": "1000",
+        "showOnPage": true,
+        "order": 6
+      },
+      {
+        "group": "SPEC-GROUP-ORIGIN",
+        "attribute": "SPEC-ALTITUDE-RANGE",
+        "type": "Range",
+        "valueMin": 800,
+        "valueMax": 1200,
+        "showOnPage": true,
+        "order": 7
+      },
+      {
+        "group": "SPEC-GROUP-CHEMICAL",
+        "attribute": "SPEC-ANTIOXIDANT-LIST",
+        "type": "List",
+        "value": "[\"EGCG\", \"ECG\", \"EGC\", \"EC\"]",
+        "showOnPage": true,
+        "order": 8
+      },
+      {
+        "group": "SPEC-GROUP-CLASSIFICATION",
+        "attribute": "SPEC-IS-ORGANIC",
+        "type": "Boolean",
+        "value": "true",
+        "showOnPage": true,
+        "order": 9
+      },
+      {
+        "group": "SPEC-GROUP-PROCESSING",
+        "attribute": "SPEC-HARVEST-DATE",
+        "type": "Date",
+        "value": "2024-04-05",
+        "showOnPage": true,
+        "order": 10
+      },
+      {
+        "group": "SPEC-GROUP-BREWING",
+        "attribute": "SPEC-STEEP-DURATION",
+        "type": "Duration",
+        "value": "180",
+        "showOnPage": true,
+        "order": 11
+      },
+      {
+        "group": "SPEC-GROUP-ORIGIN",
+        "attribute": "SPEC-FARM-WEBSITE",
+        "type": "Hyperlink",
+        "value": "https://example.com/wuyi-farm",
+        "showOnPage": true,
+        "order": 12
+      }
+    ]
+  }
+]
