@@ -6,78 +6,128 @@ DKH.TeaCatalogData is a data repository for tea product documentation and import
 
 ## Structure
 
-- `docs/regions/` - MD files with tea product documentation (592 files, 35 regions)
-- `docs/categories/` - Category description files
-- `import/` - JSON files for import via ProductCatalogService DataExchange API
-- `scripts/` - PowerShell scripts for conversion and import
+```
+DKH.TeaCatalogData/
+├── docs/data/products/        # MD files with tea product documentation (~600 files, 35 regions)
+├── import/                    # JSON files for import via ProductCatalogService DataExchange API
+│   ├── 01-reference/          # Catalogs, tags, brands, packages
+│   ├── 02-specifications/     # Groups → attributes → options
+│   ├── 03-categories/         # Categories hierarchy
+│   └── 04-products/           # Products (one file = one product)
+├── scripts/                   # PowerShell scripts for conversion and import
+└── .claude/rules/             # Agent rules for MD→JSON conversion
+```
 
 ## Locales
 
 All translations use BCP 47 locale codes (aligned with ReferenceService):
-- **ru-RU** — Russian (primary content language)
-- **en-US** — English
-- **zh-CN** — Simplified Chinese
+- **ru-RU** — Russian (primary content language, MD source)
+- **en-US** — English (translated)
+- **zh-CN** — Simplified Chinese (translated, tea names from MD parentheses)
 
 ## MD File Format
 
-Each MD file contains 14 numbered sections in Russian:
-1. Классификация и Происхождение (Classification)
-2. История и Культурное Значение (History)
-3. Ботаническое Описание (Botanical)
-4. Терруар и Особенности Выращивания (Terroir)
-5. Технология Производства (Processing)
-6. Органолептические Характеристики (Organoleptic)
-7. Химический Состав (Chemical)
-8. Полезные Свойства (Health Benefits)
-9. Заваривание (Brewing)
-10. Хранение (Storage)
-11. Цена и Подделки (Price)
-12. Интересные Факты (Facts)
-13. Виды чая (Types)
-14. Возможные противопоказания (Contraindications)
+Each MD file in `docs/data/products/<REGION>/` describes one tea product. Files have 13–22 numbered sections in Russian. Core sections (present in most files):
+
+1. Классификация и Происхождение
+2. История и Культурное Значение
+3. Ботаническое Описание и Сырьё
+4. Терруар и Особенности Выращивания
+5. Технология Производства
+6. Органолептические Характеристики
+7. Химический Состав
+8. Полезные Свойства
+9. Заваривание
+10. Хранение
+11. Цена и Подделки
+12. Интересные Факты
+13–22. Extended sections (Разновидности, Прессовка, Выдержка, Вода и посуда, Дегустация, FAQ, etc.)
+
+File naming: `+# <Name>.md` (China/Flowers) or `# <Name>.md` (other regions).
+
+See `.claude/rules/md-to-import-json.md` for complete conversion rules.
 
 ## JSON Import Format
 
-Products JSON uses ProductCatalogService schema. Note: JSON uses short field name `"lang"`, but values are BCP 47 locale codes.
+Products JSON uses ProductCatalogService DataExchange schema. One file = one product = single-element array `[{ ... }]`.
 
 ```json
-{
-  "code": "TEA-PRODUCT-CODE",
-  "sku": "SKU-CODE",
-  "translations": [
-    { "lang": "ru-RU", "name": "Название", "description": "Описание", "seo": "nazvanie" },
-    { "lang": "en-US", "name": "Name", "description": "Description", "seo": "name" },
-    { "lang": "zh-CN", "name": "名称", "description": "描述", "seo": "mingcheng" }
-  ],
-  "specifications": [...],
-  "tags": [{ "code": "TAG-CODE" }],
-  "origins": [...]
-}
+[
+  {
+    "code": "TEA-CN-XIHU-LONGJING",
+    "sku": "XLJ-ZJ-2024-50G",
+    "published": true,
+
+    "brand": {
+      "code": "BRAND-XIHU",
+      "translations": [
+        { "lang": "en-US", "name": "Xihu Tea" },
+        { "lang": "ru-RU", "name": "Сиху Чай" }
+      ]
+    },
+
+    "translations": [
+      { "lang": "ru-RU", "name": "...", "description": "...", "seo": "...", "metaDescription": "...", "metaTitle": "..." },
+      { "lang": "en-US", "name": "...", "description": "...", "seo": "..." },
+      { "lang": "zh-CN", "name": "西湖龙井", "description": "...", "seo": "..." }
+    ],
+
+    "catalogs": [
+      { "catalog": "CATALOG-MAIN", "catalogName": "Main Catalog", "catalogLang": "en-US", "catalogCurrency": "USD",
+        "category": "CAT-GREEN-TEA", "categoryName": "Green Tea", "categoryLang": "en-US", "order": 1, "published": true }
+    ],
+
+    "packages": [
+      { "package": "PKG-50G", "packageName": "50g", "packageUnit": "g", "quantity": 1, "default": true }
+    ],
+
+    "tags": [
+      { "code": "TAG-SINGLE-ORIGIN", "name": "Single Origin", "lang": "en-US" }
+    ],
+
+    "specifications": [
+      { "lang": "en-US", "group": "SPEC-GROUP-CLASSIFICATION", "groupName": "Classification and Origin",
+        "attribute": "SPEC-TEA-TYPE", "attributeName": "Tea Type",
+        "option": "SPEC-TYPE-GREEN", "optionName": "Green Tea",
+        "type": "Option", "showOnPage": true, "order": 1 }
+    ],
+
+    "origins": [
+      { "country": "CN", "state": "Zhejiang", "city": "Hangzhou",
+        "altitude": { "min": 100, "max": 800, "unit": "m" },
+        "coordinates": { "lat": 30.229, "lng": 120.108 },
+        "translations": [
+          { "lang": "en-US", "place": "Xihu District, Hangzhou", "notes": "..." },
+          { "lang": "ru-RU", "place": "Район Сиху, Ханчжоу", "notes": "..." }
+        ]
+      }
+    ]
+  }
+]
 ```
+
+**Not populated from MD** (no source data): `price`, `tierPrices`, `catalogPrices`, `media`, `related`, `crossSells`, availability/marketing fields.
 
 ## Import Order
 
-1. `01-reference/` - catalogs, tags, brands, packages
-2. `02-specifications/` - groups → attributes → options
-3. `03-categories/` - categories hierarchy
-4. `04-products/` - products by region
+1. `01-reference/` — catalogs, tags, brands, packages
+2. `02-specifications/` — groups → attributes → options
+3. `03-categories/` — categories hierarchy
+4. `04-products/` — products (one file per product)
 
-## Related Files
+## Related
 
-- `D:\projects\GZDKH\services\DKH.ProductCatalogService\docs\data-exchange\examples\` - JSON templates
-- `D:\projects\GZDKH\services\DKH.ProductCatalogService\` - ProductCatalogService source
+- [ProductCatalogService import examples](https://github.com/GZDKH/DKH.ProductCatalogService/tree/main/docs/data-exchange/examples)
+- [ProductCatalogService source](https://github.com/GZDKH/DKH.ProductCatalogService)
 
 ## Commands
 
 ```powershell
-# Convert MD to JSON
-./scripts/Convert-MdToJson.ps1 -SourcePath ./docs/regions/japan -OutputPath ./import/04-products
+# Import to ProductCatalogService via gRPC
+./import-grpc.ps1 -Profile "products" -FilePath ./import/04-products/<file>.json
 
-# Validate import data
-./scripts/Validate-Import.ps1 -Path ./import/01-reference
-
-# Import to ProductCatalogService
-./scripts/Import-Data.ps1 -Profile "products" -File ./import/04-products/products-china-green.json
+# Simple import (no field transformation)
+./do-import.ps1 -Profile "products" -FilePath ./import/04-products/<file>.json
 ```
 
 <!-- BEGIN REQUIRED-READING -->
@@ -101,12 +151,11 @@ These files are located in the DKH.Architecture repository (located in the sibli
 
 Before starting implementation, you MUST also read and follow these local rule files in this repository:
 
-- `.claude/rules/commits.md`
-- `.claude/rules/docs-after-impl.md`
-- `.claude/rules/github-tasks.md`
-- `.claude/rules/gitlab-workflow.md`
-- `.claude/rules/prod-config.md`
-- `.claude/rules/security.md`
+- `.claude/rules/md-to-import-json.md` — **MD→JSON conversion rules** (section mapping, spec groups, option codes)
+- `.claude/rules/commits.md` — commit message format
+- `.claude/rules/github-tasks.md` — GitHub issue tracking
+- `.claude/rules/gitlab-workflow.md` — branch & MR workflow
+- `.claude/rules/security.md` — security rules
 
 These rules are mandatory and complement the baseline `AGENTS.md` and `DKH.Architecture` guidance.
 
