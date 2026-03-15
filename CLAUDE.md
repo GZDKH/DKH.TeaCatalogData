@@ -80,8 +80,13 @@ Products JSON uses ProductCatalogService DataExchange schema. One file = one pro
     ],
 
     "catalogs": [
-      { "catalog": "CATALOG-MAIN", "catalogName": "Main Catalog", "catalogLang": "en-US", "catalogCurrency": "USD",
-        "category": "CAT-GREEN-TEA", "categoryName": "Green Tea", "categoryLang": "en-US", "order": 1, "published": true }
+      {
+        "catalog": { "code": "CATALOG-CHINESE-TEA", "currency": "CNY",
+          "translations": [{ "lang": "en-US", "name": "Chinese Tea" }, { "lang": "ru-RU", "name": "Китайский чай" }] },
+        "category": { "code": "CAT-GREEN-TEA", "parent": "CAT-TEA",
+          "translations": [{ "lang": "en-US", "name": "Green Tea" }, { "lang": "ru-RU", "name": "Зелёный чай" }] },
+        "order": 1, "published": true
+      }
     ],
 
     "packages": [

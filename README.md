@@ -85,10 +85,23 @@ One file = one product = single-element array. Auto-creates brands, manufacturer
 
     "catalogs": [
       {
-        "catalog": "CATALOG-MAIN", "catalogName": "Main Catalog",
-        "catalogLang": "en-US", "catalogCurrency": "USD",
-        "category": "CAT-GREEN-TEA", "categoryName": "Green Tea",
-        "categoryLang": "en-US", "order": 1, "published": true
+        "catalog": {
+          "code": "CATALOG-CHINESE-TEA", "currency": "CNY",
+          "translations": [
+            { "lang": "en-US", "name": "Chinese Tea" },
+            { "lang": "ru-RU", "name": "Китайский чай" },
+            { "lang": "zh-CN", "name": "中国茶" }
+          ]
+        },
+        "category": {
+          "code": "CAT-GREEN-TEA", "parent": "CAT-TEA",
+          "translations": [
+            { "lang": "en-US", "name": "Green Tea" },
+            { "lang": "ru-RU", "name": "Зелёный чай" },
+            { "lang": "zh-CN", "name": "绿茶" }
+          ]
+        },
+        "order": 1, "published": true
       }
     ],
 

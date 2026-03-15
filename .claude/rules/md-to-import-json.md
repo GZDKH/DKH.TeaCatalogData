@@ -378,59 +378,74 @@ Package codes: `PKG-30G`, `PKG-50G`, `PKG-100G`, `PKG-250G`, `PKG-500G`. Unit al
 | Always | `TAG-SINGLE-ORIGIN` |
 | Region folder → | `TAG-CHINA`, `TAG-JAPAN`, `TAG-INDIA`, `TAG-TAIWAN`, etc. |
 
-### `catalogs[]` — derived from tea type in section 1
+### `catalogs[]` — nested catalog + category with translations and parent
 
-| Tea type keyword | Category code | Category name |
-|---|---|---|
-| зеленый | `CAT-GREEN-TEA` | Green Tea |
-| белый | `CAT-WHITE-TEA` | White Tea |
-| жёлтый | `CAT-YELLOW-TEA` | Yellow Tea |
-| улун | `CAT-OOLONG-TEA` | Oolong Tea |
-| красный | `CAT-RED-TEA` | Red (Black) Tea |
-| тёмный / хэй ча | `CAT-DARK-TEA` | Dark Tea |
-| пуэр | `CAT-PUERH-TEA` | Pu-erh Tea |
-| жасминовый | `CAT-SCENTED-TEA` | Scented Tea |
-| цветочный / травяной | `CAT-HERBAL-TEA` | Herbal & Flower Tea |
-| матча | `CAT-MATCHA` | Matcha |
+Both `catalog` and `category` support nested format with multi-translations. Plain string code is also accepted for backward compat.
 
-**Catalog** is derived from the REGION folder (country/origin), NOT a generic "Main":
+**Category** derived from tea type in section 1:
 
-| Region folder | Catalog code | Catalog name |
-|---|---|---|
-| CHINA-* | `CATALOG-CHINESE-TEA` | Chinese Tea |
-| JAPAN | `CATALOG-JAPANESE-TEA` | Japanese Tea |
-| INDIA | `CATALOG-INDIAN-TEA` | Indian Tea |
-| SRI LANKA(CEYLON) | `CATALOG-CEYLON-TEA` | Ceylon Tea |
-| KOREA | `CATALOG-KOREAN-TEA` | Korean Tea |
-| NEPAL | `CATALOG-NEPALESE-TEA` | Nepalese Tea |
-| VIETNAM | `CATALOG-VIETNAMESE-TEA` | Vietnamese Tea |
-| INDONESIA | `CATALOG-INDONESIAN-TEA` | Indonesian Tea |
-| KENYA | `CATALOG-KENYAN-TEA` | Kenyan Tea |
-| GEORGIA | `CATALOG-GEORGIAN-TEA` | Georgian Tea |
-| FLOWERS AND DRY | `CATALOG-HERBAL-FLOWER` | Herbal & Flower |
-| OTHERS | `CATALOG-OTHER-TEA` | Other Tea |
-| *all other regions* | `CATALOG-<COUNTRY>-TEA` | \<Country\> Tea |
+| Tea type keyword | Category code | Category name (en-US) | Категория (ru-RU) | 分类 (zh-CN) |
+|---|---|---|---|---|
+| зеленый | `CAT-GREEN-TEA` | Green Tea | Зелёный чай | 绿茶 |
+| белый | `CAT-WHITE-TEA` | White Tea | Белый чай | 白茶 |
+| жёлтый | `CAT-YELLOW-TEA` | Yellow Tea | Жёлтый чай | 黄茶 |
+| улун | `CAT-OOLONG-TEA` | Oolong Tea | Улун | 乌龙茶 |
+| красный | `CAT-RED-TEA` | Red (Black) Tea | Красный чай | 红茶 |
+| тёмный / хэй ча | `CAT-DARK-TEA` | Dark Tea | Тёмный чай | 黑茶 |
+| пуэр | `CAT-PUERH-TEA` | Pu-erh Tea | Пуэр | 普洱茶 |
+| жасминовый | `CAT-SCENTED-TEA` | Scented Tea | Ароматизированный чай | 花茶 |
+| цветочный / травяной | `CAT-HERBAL-TEA` | Herbal & Flower Tea | Цветочный и травяной | 花草茶 |
+| матча | `CAT-MATCHA` | Matcha | Матча | 抹茶 |
 
-Default `catalogLang: "en-US"`. Currency matches the country:
+Categories can have parent: `"parent": "CAT-TEA"` to build hierarchy.
 
-| Region | Currency |
-|---|---|
-| CHINA-* | `CNY` |
-| JAPAN | `JPY` |
-| INDIA | `INR` |
-| SRI LANKA(CEYLON) | `LKR` |
-| KOREA | `KRW` |
-| NEPAL | `NPR` |
-| VIETNAM | `VND` |
-| INDONESIA | `IDR` |
-| KENYA | `KES` |
-| GEORGIA | `GEL` |
-| BRAZIL | `BRL` |
-| THAILAND | `THB` |
-| MYANMAR(BURMA) | `MMK` |
-| LAOS | `LAK` |
-| USA | `USD` |
-| *all other / OTHERS / FLOWERS* | `USD` |
+**Catalog** derived from REGION folder:
+
+| Region folder | Catalog code | Catalog name (en-US) | Currency |
+|---|---|---|---|
+| CHINA-* | `CATALOG-CHINESE-TEA` | Chinese Tea | `CNY` |
+| JAPAN | `CATALOG-JAPANESE-TEA` | Japanese Tea | `JPY` |
+| INDIA | `CATALOG-INDIAN-TEA` | Indian Tea | `INR` |
+| SRI LANKA(CEYLON) | `CATALOG-CEYLON-TEA` | Ceylon Tea | `LKR` |
+| KOREA | `CATALOG-KOREAN-TEA` | Korean Tea | `KRW` |
+| NEPAL | `CATALOG-NEPALESE-TEA` | Nepalese Tea | `NPR` |
+| VIETNAM | `CATALOG-VIETNAMESE-TEA` | Vietnamese Tea | `VND` |
+| INDONESIA | `CATALOG-INDONESIAN-TEA` | Indonesian Tea | `IDR` |
+| KENYA | `CATALOG-KENYAN-TEA` | Kenyan Tea | `KES` |
+| GEORGIA | `CATALOG-GEORGIAN-TEA` | Georgian Tea | `GEL` |
+| FLOWERS AND DRY | `CATALOG-HERBAL-FLOWER` | Herbal & Flower | `USD` |
+| *all other regions* | `CATALOG-<COUNTRY>-TEA` | \<Country\> Tea | `USD` |
+
+**JSON format:**
+
+```json
+"catalogs": [
+  {
+    "catalog": {
+      "code": "CATALOG-CHINESE-TEA",
+      "currency": "CNY",
+      "translations": [
+        { "lang": "en-US", "name": "Chinese Tea" },
+        { "lang": "ru-RU", "name": "Китайский чай" },
+        { "lang": "zh-CN", "name": "中国茶" }
+      ]
+    },
+    "category": {
+      "code": "CAT-GREEN-TEA",
+      "parent": "CAT-TEA",
+      "translations": [
+        { "lang": "en-US", "name": "Green Tea" },
+        { "lang": "ru-RU", "name": "Зелёный чай" },
+        { "lang": "zh-CN", "name": "绿茶" }
+      ]
+    },
+    "order": 1,
+    "published": true
+  }
+]
+```
+
+If catalog/category already exists by code — just used, not recreated. Translations only used during auto-create.
 
 ## Code Generation
 
