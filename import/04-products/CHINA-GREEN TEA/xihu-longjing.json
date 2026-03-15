@@ -1,0 +1,264 @@
+[
+  {
+    "code": "TEA-CN-XIHU-LONGJING",
+    "sku": "XIHU-LONGJING-ZJ",
+    "published": true,
+
+    "brand": {
+      "code": "BRAND-XIHU",
+      "translations": [
+        { "lang": "en-US", "name": "Xihu Tea" },
+        { "lang": "ru-RU", "name": "Сиху Чай" },
+        { "lang": "zh-CN", "name": "西湖茶" }
+      ]
+    },
+
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Си Ху Лун Цзин",
+        "description": "**Си Ху Лун Цзин** *(西湖龙井)* — знаменитый зелёный чай из провинции Чжэцзян, возглавляющий список **«Десяти знаменитых чаёв Китая»**. Обладает характерным ароматом *жареных каштанов* с цветочными и травяными нотами. Насыщенный, маслянистый вкус с лёгкой терпкостью и долгим освежающим послевкусием. **Императорский чай** с более чем 1200-летней историей.",
+        "seo": "si-hu-lun-czin",
+        "metaTitle": "Си Ху Лун Цзин — императорский зелёный чай из Ханчжоу",
+        "metaDescription": "Си Ху Лун Цзин — возглавляет список Десяти знаменитых чаёв Китая. Аромат жареных каштанов, насыщенный маслянистый вкус с освежающим послевкусием."
+      },
+      {
+        "lang": "en-US",
+        "name": "Xi Hu Long Jing (Dragon Well)",
+        "description": "**Xi Hu Long Jing** *(西湖龙井, Dragon Well)* is a renowned green tea from Zhejiang province, leading **China's Ten Famous Teas** list. Features a distinctive *roasted chestnut* aroma with floral and grassy notes. Rich, buttery taste with gentle astringency and a long refreshing aftertaste. An **imperial tea** with over 1,200 years of history.",
+        "seo": "xi-hu-long-jing-dragon-well"
+      },
+      {
+        "lang": "zh-CN",
+        "name": "西湖龙井",
+        "description": "**西湖龙井**是中国浙江省著名的绿茶，位居**中国十大名茶**之首。具有独特的*炒栗子*香气，伴有花香和草香。口感醇厚，带有轻微的涩味和持久清爽的回味。拥有超过1200年历史的**贡茶**。",
+        "seo": "xihu-longjing"
+      }
+    ],
+
+    "catalogs": [
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogName": "Chinese Tea",
+        "catalogLang": "en-US",
+        "catalogCurrency": "CNY",
+        "category": "CAT-GREEN-TEA",
+        "categoryName": "Green Tea",
+        "categoryLang": "en-US",
+        "order": 1,
+        "published": true
+      }
+    ],
+
+    "packages": [
+      { "package": "PKG-50G", "packageName": "50g", "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-100G", "packageName": "100g", "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-250G", "packageName": "250g", "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-500G", "packageName": "500g (一斤)", "packageUnit": "g", "quantity": 1, "default": true }
+    ],
+
+    "tags": [
+      { "code": "TAG-SINGLE-ORIGIN", "name": "Single Origin", "lang": "en-US" },
+      { "code": "TAG-CHINA", "name": "China", "lang": "en-US" },
+      { "code": "TAG-TOP10-CHINA", "name": "Ten Famous Teas of China", "lang": "en-US" },
+      { "code": "TAG-IMPERIAL", "name": "Imperial Tea", "lang": "en-US" },
+      { "code": "TAG-PREMIUM", "name": "Premium", "lang": "en-US" },
+      { "code": "TAG-GI-PROTECTED", "name": "GI Protected", "lang": "en-US" },
+      { "code": "TAG-ANTIOXIDANT", "name": "Antioxidant", "lang": "en-US" },
+      { "code": "TAG-DIGESTION", "name": "Digestive Aid", "lang": "en-US" },
+      { "code": "TAG-ENERGY", "name": "Energy & Focus", "lang": "en-US" }
+    ],
+
+    "specifications": [
+      { "lang": "en-US", "group": "SPEC-GROUP-CLASSIFICATION", "groupName": "Classification and Origin", "attribute": "SPEC-TEA-TYPE", "attributeName": "Tea Type", "option": "SPEC-TYPE-GREEN", "optionName": "Green Tea", "type": "Option", "showOnPage": true, "order": 1 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-CLASSIFICATION", "groupName": "Классификация и Происхождение", "attribute": "SPEC-TEA-TYPE", "attributeName": "Тип", "option": "SPEC-TYPE-GREEN", "optionName": "Зелёный чай", "type": "Option", "showOnPage": true, "order": 1 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-CLASSIFICATION", "groupName": "Classification and Origin", "attribute": "SPEC-FERMENTATION", "attributeName": "Fermentation", "option": "SPEC-FERM-0", "optionName": "Non-fermented (0%)", "type": "Option", "showOnPage": true, "order": 2 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-CLASSIFICATION", "groupName": "Классификация и Происхождение", "attribute": "SPEC-FERMENTATION", "attributeName": "Ферментация", "option": "SPEC-FERM-0", "optionName": "Неферментированный (0%)", "type": "Option", "showOnPage": true, "order": 2 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-CLASSIFICATION", "groupName": "Classification and Origin", "attribute": "SPEC-CATEGORY", "attributeName": "Category", "value": "Leads the list of **China's Ten Famous Teas**", "type": "CustomText", "showOnPage": true, "order": 3 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-CLASSIFICATION", "groupName": "Классификация и Происхождение", "attribute": "SPEC-CATEGORY", "attributeName": "Категория", "value": "Возглавляет список **«Десяти знаменитых чаёв Китая»**", "type": "CustomText", "showOnPage": true, "order": 3 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-CLASSIFICATION", "groupName": "Classification and Origin", "attribute": "SPEC-ORIGIN", "attributeName": "Origin", "value": "China, Zhejiang Province, Hangzhou, Lake Xihu area", "type": "CustomText", "showOnPage": true, "order": 4 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-CLASSIFICATION", "groupName": "Классификация и Происхождение", "attribute": "SPEC-ORIGIN", "attributeName": "Происхождение", "value": "Китай, провинция Чжэцзян, г. Ханчжоу, окрестности озера Сиху", "type": "CustomText", "showOnPage": true, "order": 4 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-CLASSIFICATION", "groupName": "Classification and Origin", "attribute": "SPEC-GEO-COORDINATES", "attributeName": "Geographic Coordinates", "value": "30°N, 120°E", "type": "CustomText", "showOnPage": true, "order": 5 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-CLASSIFICATION", "groupName": "Классификация и Происхождение", "attribute": "SPEC-GEO-COORDINATES", "attributeName": "Географические координаты", "value": "30° с.ш., 120° в.д.", "type": "CustomText", "showOnPage": true, "order": 5 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-HISTORY", "groupName": "History and Cultural Significance", "attribute": "SPEC-ANTIQUITY", "attributeName": "Antiquity", "value": "Over **1,200 years** of history. First mentioned during the *Tang Dynasty (618-907)*, referenced by **Lu Yu** in the *Classic of Tea*", "type": "CustomText", "showOnPage": true, "order": 1 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-HISTORY", "groupName": "История и Культурное Значение", "attribute": "SPEC-ANTIQUITY", "attributeName": "Древность", "value": "Более **1200 лет** истории. Первые упоминания — *династия Тан (618-907)*, **Лу Юй** в *«Чайном каноне»*", "type": "CustomText", "showOnPage": true, "order": 1 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-HISTORY", "groupName": "History and Cultural Significance", "attribute": "SPEC-IMPERIAL-STATUS", "attributeName": "Imperial Status", "value": "**Emperor Qianlong** *(Qing Dynasty)* granted **imperial tea** status. **18 tea bushes** at *Shi Feng* designated as imperial", "type": "CustomText", "showOnPage": true, "order": 2 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-HISTORY", "groupName": "История и Культурное Значение", "attribute": "SPEC-IMPERIAL-STATUS", "attributeName": "Императорский чай", "value": "**Император Цяньлун** *(династия Цин)* присвоил статус **«императорского чая»**. **18 кустам** на *Ши Фэн* дарован императорский статус", "type": "CustomText", "showOnPage": true, "order": 2 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-HISTORY", "groupName": "History and Cultural Significance", "attribute": "SPEC-NAME-MEANING", "attributeName": "Name Meaning", "value": "'Xi Hu' (西湖) — 'West Lake'; 'Long Jing' (龙井) — 'Dragon Well', named after a legendary dragon-inhabited well at Lion Peak", "type": "CustomText", "showOnPage": true, "order": 3 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-HISTORY", "groupName": "История и Культурное Значение", "attribute": "SPEC-NAME-MEANING", "attributeName": "Название", "value": "«Си Ху» (西湖) — «Западное озеро»; «Лун Цзин» (龙井) — «Колодец Дракона», по легенде в колодце у горы Ши Фэн жил дракон", "type": "CustomText", "showOnPage": true, "order": 3 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-HISTORY", "groupName": "History and Cultural Significance", "attribute": "SPEC-CULTURAL-SIGNIFICANCE", "attributeName": "Cultural Significance", "value": "Symbol of Hangzhou and Zhejiang Province. Deeply connected to Chinese culture, art, literature, and philosophy", "type": "CustomText", "showOnPage": true, "order": 4 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-HISTORY", "groupName": "История и Культурное Значение", "attribute": "SPEC-CULTURAL-SIGNIFICANCE", "attributeName": "Культурное значение", "value": "Символ Ханчжоу и провинции Чжэцзян. Тесно связан с китайской культурой, искусством и философией", "type": "CustomText", "showOnPage": true, "order": 4 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-BOTANICAL", "groupName": "Botanical Description", "attribute": "SPEC-CULTIVARS", "attributeName": "Cultivars", "value": "**Longjing #43** (most common, high yield), **Quntizhong** (heritage, complex flavor), **Longjing Chang**, **Jiukeng Zhong** (rare)", "type": "CustomText", "showOnPage": true, "order": 1 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-BOTANICAL", "groupName": "Ботаническое Описание и Сырьё", "attribute": "SPEC-CULTIVARS", "attributeName": "Сорта", "value": "**Лун Цзин №43** (самый распространённый), **Цюнь Ти Чжун** (старый местный, комплексный вкус), **Лун Цзин Чжан**, **Юань Чжи** (редкий)", "type": "CustomText", "showOnPage": true, "order": 1 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-BOTANICAL", "groupName": "Botanical Description", "attribute": "SPEC-HARVEST", "attributeName": "Harvest Season", "option": "SPEC-HARV-MINGQIAN", "optionName": "Pre-Qingming (Ming Qian)", "type": "Option", "showOnPage": true, "order": 2 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-BOTANICAL", "groupName": "Ботаническое Описание и Сырьё", "attribute": "SPEC-HARVEST", "attributeName": "Сезон сбора", "option": "SPEC-HARV-MINGQIAN", "optionName": "До Цинмина (明前)", "type": "Option", "showOnPage": true, "order": 2 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-BOTANICAL", "groupName": "Botanical Description", "attribute": "SPEC-PICKING-STANDARD", "attributeName": "Picking Standard", "value": "One bud and one-two top leaves. Highest grades: bud only or bud with one leaf", "type": "CustomText", "showOnPage": true, "order": 3 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-BOTANICAL", "groupName": "Ботаническое Описание и Сырьё", "attribute": "SPEC-PICKING-STANDARD", "attributeName": "Стандарт сбора", "value": "Одна почка и один-два верхних листочка. Высшие сорта: только почки или почка с одним листом", "type": "CustomText", "showOnPage": true, "order": 3 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-BOTANICAL", "groupName": "Botanical Description", "attribute": "SPEC-RAW-MATERIAL", "attributeName": "Raw Material Requirements", "value": "Highest quality: only tender, undamaged buds and leaves of uniform size", "type": "CustomText", "showOnPage": true, "order": 4 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-BOTANICAL", "groupName": "Ботаническое Описание и Сырьё", "attribute": "SPEC-RAW-MATERIAL", "attributeName": "Требования к сырью", "value": "Высочайшие требования: только нежные, неповреждённые почки и листочки одинакового размера", "type": "CustomText", "showOnPage": true, "order": 4 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-TERROIR", "groupName": "Terroir and Growing", "attribute": "SPEC-GROWING-REGION", "attributeName": "Growing Region", "value": "Five zones around *West Lake*: **Shi** (Lion), **Long** (Dragon), **Yun** (Cloud), **Hu** (Tiger), **Mei** (Plum)", "type": "CustomText", "showOnPage": true, "order": 1 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-TERROIR", "groupName": "Терруар и Особенности Выращивания", "attribute": "SPEC-GROWING-REGION", "attributeName": "Регион Сиху", "value": "Пять основных зон: **Ши** (Лев), **Лун** (Дракон), **Юнь** (Облако), **Ху** (Тигр), **Мэй** (Слива)", "type": "CustomText", "showOnPage": true, "order": 1 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-TERROIR", "groupName": "Terroir and Growing", "attribute": "SPEC-BEST-ZONES", "attributeName": "Best Zones", "value": "**Shi Feng** *(Lion Peak)* — finest quality; **Longjing Village** — historic origin; **Meijiawu** — renowned producer", "type": "CustomText", "showOnPage": true, "order": 2 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-TERROIR", "groupName": "Терруар и Особенности Выращивания", "attribute": "SPEC-BEST-ZONES", "attributeName": "Лучшие зоны", "value": "**Ши Фэн** *(Львиный пик)* — лучший Лун Цзин; **деревня Лун Цзин** — историческое место; **Мэй Цзя У** — известный производитель", "type": "CustomText", "showOnPage": true, "order": 2 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-TERROIR", "groupName": "Terroir and Growing", "attribute": "SPEC-SOILS", "attributeName": "Soils", "value": "Red and yellow soils, rich in organic matter and minerals", "type": "CustomText", "showOnPage": true, "order": 3 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-TERROIR", "groupName": "Терруар и Особенности Выращивания", "attribute": "SPEC-SOILS", "attributeName": "Почвы", "value": "Красные и жёлтые почвы, богатые органическими веществами и минералами", "type": "CustomText", "showOnPage": true, "order": 3 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-TERROIR", "groupName": "Terroir and Growing", "attribute": "SPEC-CLIMATE", "attributeName": "Climate", "value": "Mild subtropical with abundant rainfall, fog, and ample sunlight", "type": "CustomText", "showOnPage": true, "order": 4 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-TERROIR", "groupName": "Терруар и Особенности Выращивания", "attribute": "SPEC-CLIMATE", "attributeName": "Климат", "value": "Мягкий субтропический с обильными осадками, туманами и достаточным солнечным светом", "type": "CustomText", "showOnPage": true, "order": 4 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-TERROIR", "groupName": "Terroir and Growing", "attribute": "SPEC-GROWING-ALTITUDE", "attributeName": "Growing Altitude (m)", "valueMin": 100, "valueMax": 800, "type": "Range", "showOnPage": true, "order": 5 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-TERROIR", "groupName": "Терруар и Особенности Выращивания", "attribute": "SPEC-GROWING-ALTITUDE", "attributeName": "Высота произрастания (м)", "valueMin": 100, "valueMax": 800, "type": "Range", "showOnPage": true, "order": 5 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-PROCESSING", "groupName": "Production Technology", "attribute": "SPEC-HARVEST-STEP", "attributeName": "Harvesting", "value": "Early spring, primarily before Qingming Festival (early April)", "type": "CustomText", "showOnPage": true, "order": 1 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-PROCESSING", "groupName": "Технология Производства", "attribute": "SPEC-HARVEST-STEP", "attributeName": "Сбор", "value": "Ранней весной, до праздника Цинмин (начало апреля). Самый ценный — «Минцянь ча» (明前茶)", "type": "CustomText", "showOnPage": true, "order": 1 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-PROCESSING", "groupName": "Production Technology", "attribute": "SPEC-WITHERING", "attributeName": "Withering", "value": "Leaves spread in thin layer in shade for several hours to remove excess moisture", "type": "CustomText", "showOnPage": true, "order": 2 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-PROCESSING", "groupName": "Технология Производства", "attribute": "SPEC-WITHERING", "attributeName": "Подвяливание", "value": "Листья раскладывают тонким слоем в тени на несколько часов для удаления влаги", "type": "CustomText", "showOnPage": true, "order": 2 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-PROCESSING", "groupName": "Production Technology", "attribute": "SPEC-KILL-GREEN", "attributeName": "Kill-green", "option": "SPEC-KG-PAN", "optionName": "Pan-firing", "type": "Option", "showOnPage": true, "order": 3 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-PROCESSING", "groupName": "Технология Производства", "attribute": "SPEC-KILL-GREEN", "attributeName": "Убийство зелени (杀青)", "option": "SPEC-KG-PAN", "optionName": "Обжарка в котлах", "type": "Option", "showOnPage": true, "order": 3 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-PROCESSING", "groupName": "Production Technology", "attribute": "SPEC-ROLLING", "attributeName": "Rolling and Shaping", "value": "Hand-rolling during firing to create the characteristic flat, smooth 'sparrow tongue' shape", "type": "CustomText", "showOnPage": true, "order": 4 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-PROCESSING", "groupName": "Технология Производства", "attribute": "SPEC-ROLLING", "attributeName": "Сминание и придание формы", "value": "Ручное сминание в процессе обжарки для придания характерной плоской формы «язычка воробья»", "type": "CustomText", "showOnPage": true, "order": 4 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-PROCESSING", "groupName": "Production Technology", "attribute": "SPEC-FINAL-FIRING", "attributeName": "Final Firing", "value": "Extended pan-firing at gradually decreasing temperature (60-80°C). Final flavor and aroma formation", "type": "CustomText", "showOnPage": true, "order": 5 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-PROCESSING", "groupName": "Технология Производства", "attribute": "SPEC-FINAL-FIRING", "attributeName": "Обжарка (煇锅)", "value": "Продолжительная обжарка при снижающейся температуре (60-80°C). Формирование окончательного вкуса и аромата", "type": "CustomText", "showOnPage": true, "order": 5 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-PROCESSING", "groupName": "Production Technology", "attribute": "SPEC-SORTING", "attributeName": "Sorting", "value": "Graded by size, shape, and quality", "type": "CustomText", "showOnPage": true, "order": 6 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-PROCESSING", "groupName": "Технология Производства", "attribute": "SPEC-SORTING", "attributeName": "Сортировка", "value": "Сортировка по размеру, форме и качеству", "type": "CustomText", "showOnPage": true, "order": 6 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Organoleptic Characteristics", "attribute": "SPEC-DRY-LEAF-APPEARANCE", "attributeName": "Dry Leaf Appearance", "value": "Flat, smooth, pointed leaves resembling *«sparrow tongues»*. **Jade-green** color with yellowish tint and slight sheen", "type": "CustomText", "showOnPage": true, "order": 1 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Органолептические Характеристики", "attribute": "SPEC-DRY-LEAF-APPEARANCE", "attributeName": "Внешний вид сухого листа", "value": "Плоские, гладкие, заострённые листья — *«язычки воробья»*. **Нефритово-зелёный** цвет с желтоватым оттенком и лёгким блеском", "type": "CustomText", "showOnPage": true, "order": 1 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Organoleptic Characteristics", "attribute": "SPEC-DRY-LEAF-AROMA", "attributeName": "Dry Leaf Aroma", "value": "Intense, fresh, with notes of *roasted chestnuts*, *orchid*, and *fresh greens*", "type": "CustomText", "showOnPage": true, "order": 2 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Органолептические Характеристики", "attribute": "SPEC-DRY-LEAF-AROMA", "attributeName": "Аромат сухого листа", "value": "Интенсивный, свежий, с нотами *жареных каштанов*, *орхидеи*, *свежей зелени*", "type": "CustomText", "showOnPage": true, "order": 2 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Organoleptic Characteristics", "attribute": "SPEC-BREW-AROMA", "attributeName": "Brew Aroma", "value": "Clean, fresh, with dominant roasted chestnut, floral (orchid), and herbal nuances", "type": "CustomText", "showOnPage": true, "order": 3 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Органолептические Характеристики", "attribute": "SPEC-BREW-AROMA", "attributeName": "Аромат настоя", "value": "Чистый, свежий, с доминирующими нотами каштана, цветочными (орхидея) и травяными нюансами", "type": "CustomText", "showOnPage": true, "order": 3 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Organoleptic Characteristics", "attribute": "SPEC-TASTE", "attributeName": "Taste", "value": "**Rich**, smooth, *buttery*, sweetish with gentle astringency and **long refreshing aftertaste**", "type": "CustomText", "showOnPage": true, "order": 4 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Органолептические Характеристики", "attribute": "SPEC-TASTE", "attributeName": "Вкус", "value": "**Насыщенный**, мягкий, *маслянистый*, сладковатый с лёгкой терпкостью и **долгим освежающим послевкусием**", "type": "CustomText", "showOnPage": true, "order": 4 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Organoleptic Characteristics", "attribute": "SPEC-LIQUOR-COLOR", "attributeName": "Liquor Color", "option": "SPEC-COLOR-PALE-GREEN", "optionName": "Pale Green", "type": "Option", "showOnPage": true, "order": 5 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Органолептические Характеристики", "attribute": "SPEC-LIQUOR-COLOR", "attributeName": "Цвет настоя", "option": "SPEC-COLOR-PALE-GREEN", "optionName": "Светло-зелёный", "type": "Option", "showOnPage": true, "order": 5 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Organoleptic Characteristics", "attribute": "SPEC-WET-LEAF", "attributeName": "Wet Leaf (Spent Leaves)", "value": "Even, whole, resilient light-green leaves and buds", "type": "CustomText", "showOnPage": true, "order": 6 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Органолептические Характеристики", "attribute": "SPEC-WET-LEAF", "attributeName": "Чайное дно", "value": "Ровные, цельные, упругие листочки и почки светло-зелёного цвета", "type": "CustomText", "showOnPage": true, "order": 6 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Organoleptic Characteristics", "attribute": "SPEC-AROMA", "attributeName": "Aroma", "option": "SPEC-AROMA-NUTTY", "optionName": "Nutty", "type": "Option", "showOnPage": true, "order": 7 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Органолептические Характеристики", "attribute": "SPEC-AROMA", "attributeName": "Аромат", "option": "SPEC-AROMA-NUTTY", "optionName": "Ореховый", "type": "Option", "showOnPage": true, "order": 7 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Organoleptic Characteristics", "attribute": "SPEC-AROMA", "attributeName": "Aroma", "option": "SPEC-AROMA-FLORAL", "optionName": "Floral", "type": "Option", "showOnPage": true, "order": 8 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Органолептические Характеристики", "attribute": "SPEC-AROMA", "attributeName": "Аромат", "option": "SPEC-AROMA-FLORAL", "optionName": "Цветочный", "type": "Option", "showOnPage": true, "order": 8 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Organoleptic Characteristics", "attribute": "SPEC-AROMA", "attributeName": "Aroma", "option": "SPEC-AROMA-GRASSY", "optionName": "Grassy", "type": "Option", "showOnPage": true, "order": 9 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Органолептические Характеристики", "attribute": "SPEC-AROMA", "attributeName": "Аромат", "option": "SPEC-AROMA-GRASSY", "optionName": "Травяной", "type": "Option", "showOnPage": true, "order": 9 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Organoleptic Characteristics", "attribute": "SPEC-BODY", "attributeName": "Body", "option": "SPEC-BODY-FULL", "optionName": "Full-bodied", "type": "Option", "showOnPage": true, "order": 10 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Органолептические Характеристики", "attribute": "SPEC-BODY", "attributeName": "Тело", "option": "SPEC-BODY-FULL", "optionName": "Насыщенный, маслянистый", "type": "Option", "showOnPage": true, "order": 10 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-CHEMISTRY", "groupName": "Chemical Composition", "attribute": "SPEC-POLYPHENOLS", "attributeName": "Polyphenols (Catechins)", "value": "High in catechins, especially **EGCG** *(epigallocatechin gallate)*", "type": "CustomText", "showOnPage": true, "order": 1 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-CHEMISTRY", "groupName": "Химический Состав", "attribute": "SPEC-POLYPHENOLS", "attributeName": "Полифенолы (катехины)", "value": "Высокое содержание катехинов, особенно **EGCG** *(эпигаллокатехин галлат)*", "type": "CustomText", "showOnPage": true, "order": 1 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-CHEMISTRY", "groupName": "Chemical Composition", "attribute": "SPEC-AMINO-ACIDS", "attributeName": "Amino Acids", "value": "High **L-theanine** content — promotes *relaxation* and *concentration*", "type": "CustomText", "showOnPage": true, "order": 2 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-CHEMISTRY", "groupName": "Химический Состав", "attribute": "SPEC-AMINO-ACIDS", "attributeName": "Аминокислоты", "value": "Высокое содержание **L-теанина** — *расслабление* и *концентрация*", "type": "CustomText", "showOnPage": true, "order": 2 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-CHEMISTRY", "groupName": "Chemical Composition", "attribute": "SPEC-VITAMINS", "attributeName": "Vitamins", "value": "C, B1, B2, PP", "type": "CustomText", "showOnPage": true, "order": 3 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-CHEMISTRY", "groupName": "Химический Состав", "attribute": "SPEC-VITAMINS", "attributeName": "Витамины", "value": "C, B1, B2, PP", "type": "CustomText", "showOnPage": true, "order": 3 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-CHEMISTRY", "groupName": "Chemical Composition", "attribute": "SPEC-MINERALS", "attributeName": "Minerals", "value": "Fluorine, potassium, magnesium, zinc", "type": "CustomText", "showOnPage": true, "order": 4 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-CHEMISTRY", "groupName": "Химический Состав", "attribute": "SPEC-MINERALS", "attributeName": "Минералы", "value": "Фтор, калий, магний, цинк", "type": "CustomText", "showOnPage": true, "order": 4 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-CHEMISTRY", "groupName": "Chemical Composition", "attribute": "SPEC-CAFFEINE", "attributeName": "Caffeine", "option": "SPEC-CAFF-MED", "optionName": "Moderate", "type": "Option", "showOnPage": true, "order": 5 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-CHEMISTRY", "groupName": "Химический Состав", "attribute": "SPEC-CAFFEINE", "attributeName": "Кофеин", "option": "SPEC-CAFF-MED", "optionName": "Умеренное", "type": "Option", "showOnPage": true, "order": 5 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-HEALTH", "groupName": "Health Benefits", "attribute": "SPEC-ANTIOXIDANT-EFFECT", "attributeName": "Antioxidant Effect", "value": "Protects cells from free radical damage, slows aging, cancer prevention", "type": "CustomText", "showOnPage": true, "order": 1 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-HEALTH", "groupName": "Полезные Свойства", "attribute": "SPEC-ANTIOXIDANT-EFFECT", "attributeName": "Антиоксидантное действие", "value": "Защита клеток от свободных радикалов, замедление старения, профилактика онкологии", "type": "CustomText", "showOnPage": true, "order": 1 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-HEALTH", "groupName": "Health Benefits", "attribute": "SPEC-IMMUNITY-BOOST", "attributeName": "Immunity Boost", "value": "Strengthens the body's resistance to infections", "type": "CustomText", "showOnPage": true, "order": 2 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-HEALTH", "groupName": "Полезные Свойства", "attribute": "SPEC-IMMUNITY-BOOST", "attributeName": "Укрепление иммунитета", "value": "Повышает сопротивляемость организма инфекциям", "type": "CustomText", "showOnPage": true, "order": 2 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-HEALTH", "groupName": "Health Benefits", "attribute": "SPEC-DIGESTIVE-AID", "attributeName": "Digestive Aid", "value": "Stimulates gastric juice secretion, improves digestion", "type": "CustomText", "showOnPage": true, "order": 3 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-HEALTH", "groupName": "Полезные Свойства", "attribute": "SPEC-DIGESTIVE-AID", "attributeName": "Улучшение пищеварения", "value": "Стимулирует секрецию желудочного сока", "type": "CustomText", "showOnPage": true, "order": 3 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-HEALTH", "groupName": "Health Benefits", "attribute": "SPEC-CARDIOVASCULAR", "attributeName": "Cardiovascular Benefits", "value": "Reduces LDL cholesterol, strengthens blood vessels, normalizes blood pressure", "type": "CustomText", "showOnPage": true, "order": 4 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-HEALTH", "groupName": "Полезные Свойства", "attribute": "SPEC-CARDIOVASCULAR", "attributeName": "Сердечно-сосудистая система", "value": "Снижает уровень холестерина, укрепляет стенки сосудов, нормализует давление", "type": "CustomText", "showOnPage": true, "order": 4 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-HEALTH", "groupName": "Health Benefits", "attribute": "SPEC-TONIC-EFFECT", "attributeName": "Tonic Effect", "value": "Energizes, improves focus and concentration, clears the mind", "type": "CustomText", "showOnPage": true, "order": 5 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-HEALTH", "groupName": "Полезные Свойства", "attribute": "SPEC-TONIC-EFFECT", "attributeName": "Тонизирующий эффект", "value": "Бодрит, повышает работоспособность, улучшает концентрацию, проясняет ум", "type": "CustomText", "showOnPage": true, "order": 5 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-HEALTH", "groupName": "Health Benefits", "attribute": "SPEC-WEIGHT-MANAGEMENT", "attributeName": "Weight Management", "value": "Boosts metabolism, promotes fat breakdown", "type": "CustomText", "showOnPage": true, "order": 6 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-HEALTH", "groupName": "Полезные Свойства", "attribute": "SPEC-WEIGHT-MANAGEMENT", "attributeName": "Снижение веса", "value": "Ускоряет метаболизм, способствует расщеплению жиров", "type": "CustomText", "showOnPage": true, "order": 6 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-HEALTH", "groupName": "Health Benefits", "attribute": "SPEC-ANTI-INFLAMMATORY", "attributeName": "Anti-inflammatory", "value": "Helps with inflammatory processes in the body", "type": "CustomText", "showOnPage": true, "order": 7 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-HEALTH", "groupName": "Полезные Свойства", "attribute": "SPEC-ANTI-INFLAMMATORY", "attributeName": "Противовоспалительное действие", "value": "Помогает при воспалительных процессах в организме", "type": "CustomText", "showOnPage": true, "order": 7 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-BREWING", "groupName": "Brewing", "attribute": "SPEC-WATER-TEMP", "attributeName": "Water Temperature (°C)", "valueMin": 80, "valueMax": 85, "type": "Range", "showOnPage": true, "order": 1 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-BREWING", "groupName": "Заваривание", "attribute": "SPEC-WATER-TEMP", "attributeName": "Температура воды (°C)", "valueMin": 80, "valueMax": 85, "type": "Range", "showOnPage": true, "order": 1 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-BREWING", "groupName": "Brewing", "attribute": "SPEC-TEA-AMOUNT", "attributeName": "Tea Amount", "value": "3-5 g per 150-200 ml of water", "type": "CustomText", "showOnPage": true, "order": 2 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-BREWING", "groupName": "Заваривание", "attribute": "SPEC-TEA-AMOUNT", "attributeName": "Количество чая", "value": "3-5 грамм на 150-200 мл воды", "type": "CustomText", "showOnPage": true, "order": 2 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-BREWING", "groupName": "Brewing", "attribute": "SPEC-TEAWARE", "attributeName": "Teaware", "value": "Gaiwan, glass teapot, or Yixing clay teapot preferred", "type": "CustomText", "showOnPage": true, "order": 3 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-BREWING", "groupName": "Заваривание", "attribute": "SPEC-TEAWARE", "attributeName": "Посуда", "value": "Гайвань, стеклянный чайник или чайник из исинской глины", "type": "CustomText", "showOnPage": true, "order": 3 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-BREWING", "groupName": "Brewing", "attribute": "SPEC-BREWING-PROCESS", "attributeName": "Brewing Process", "value": "Preheat vessel. Rinse tea. Steep 1-2 min (first infusion). Re-steep 3-5 times, gradually increasing time", "type": "CustomText", "showOnPage": true, "order": 4 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-BREWING", "groupName": "Заваривание", "attribute": "SPEC-BREWING-PROCESS", "attributeName": "Процесс", "value": "Прогреть посуду. Промыть чай. Настаивать 1-2 мин (первый пролив). Повторять 3-5 раз, увеличивая время", "type": "CustomText", "showOnPage": true, "order": 4 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-STORAGE", "groupName": "Storage", "attribute": "SPEC-STORAGE-METHOD", "attributeName": "Storage Method", "value": "Dry, cool, dark place in airtight container (porcelain, glass, or tin). Ideally in refrigerator, separate compartment, away from odors", "type": "CustomText", "showOnPage": true, "order": 1 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-STORAGE", "groupName": "Хранение", "attribute": "SPEC-STORAGE-METHOD", "attributeName": "Метод хранения", "value": "Сухое, прохладное, тёмное место в герметичной таре (фарфор, стекло, жесть). Идеально — в холодильнике, в отдельном отсеке, вдали от запахов", "type": "CustomText", "showOnPage": true, "order": 1 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-PRICE", "groupName": "Price and Counterfeits", "attribute": "SPEC-PRICE-INFO", "attributeName": "Price and Authenticity", "value": "One of the world's most expensive teas. Many counterfeits — buy only from trusted specialty retailers. Unusually low price indicates a fake", "type": "CustomText", "showOnPage": true, "order": 1 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-PRICE", "groupName": "Цена и Подделки", "attribute": "SPEC-PRICE-INFO", "attributeName": "Цена и подлинность", "value": "Один из самых дорогих чаёв в мире. Множество подделок — покупать только у проверенных продавцов. Низкая цена — верный признак подделки", "type": "CustomText", "showOnPage": true, "order": 1 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-FACTS", "groupName": "Interesting Facts", "attribute": "SPEC-FACT-1", "attributeName": "Imperial Bushes", "value": "The 18 'imperial' tea bushes from Emperor Qianlong still grow on Lion Peak (Shi Feng), surrounded by a fence", "type": "CustomText", "showOnPage": true, "order": 1 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-FACTS", "groupName": "Интересные Факты", "attribute": "SPEC-FACT-1", "attributeName": "Императорские кусты", "value": "18 «императорских» чайных кустов до сих пор растут на Львином пике (Ши Фэн) и огорожены забором", "type": "CustomText", "showOnPage": true, "order": 1 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-FACTS", "groupName": "Interesting Facts", "attribute": "SPEC-FACT-2", "attributeName": "Tea Museum", "value": "A Longjing Tea Museum is located in Hangzhou", "type": "CustomText", "showOnPage": true, "order": 2 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-FACTS", "groupName": "Интересные Факты", "attribute": "SPEC-FACT-2", "attributeName": "Музей чая", "value": "В Ханчжоу расположен музей чая Лун Цзин", "type": "CustomText", "showOnPage": true, "order": 2 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-FACTS", "groupName": "Interesting Facts", "attribute": "SPEC-FACT-3", "attributeName": "Tea Festival", "value": "An annual Longjing tea harvest festival is held in Hangzhou", "type": "CustomText", "showOnPage": true, "order": 3 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-FACTS", "groupName": "Интересные Факты", "attribute": "SPEC-FACT-3", "attributeName": "Фестиваль чая", "value": "Ежегодно в Ханчжоу проводится фестиваль сбора чая Лун Цзин", "type": "CustomText", "showOnPage": true, "order": 3 },
+
+      { "lang": "en-US", "group": "SPEC-GROUP-CONCLUSION", "groupName": "Conclusion", "attribute": "SPEC-SUMMARY", "attributeName": "Summary", "value": "A cultural treasure of China, embodying harmony of nature and human craftsmanship. Jade-green flat leaves, roasted chestnut aroma, rich sweet taste with refreshing aftertaste", "type": "CustomText", "showOnPage": true, "order": 1 },
+      { "lang": "ru-RU", "group": "SPEC-GROUP-CONCLUSION", "groupName": "В заключение", "attribute": "SPEC-SUMMARY", "attributeName": "Резюме", "value": "Культурное достояние Китая, воплощение гармонии природы и мастерства. Изумрудные плоские листья, аромат каштанов, насыщенный сладковатый вкус с освежающим послевкусием", "type": "CustomText", "showOnPage": true, "order": 1 }
+    ],
+
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Zhejiang",
+        "city": "Hangzhou",
+        "altitude": { "min": 100, "max": 800, "unit": "m" },
+        "coordinates": { "lat": 30.229, "lng": 120.108 },
+        "translations": [
+          {
+            "lang": "en-US",
+            "place": "Xihu District, Hangzhou, Zhejiang",
+            "notes": "Five production zones around *West Lake*: **Shi Feng** (Lion Peak), **Longjing Village**, **Meijiawu**, **Yun Qi**, **Hu Pao**. Red and yellow soils rich in organic matter. Mild subtropical climate with fog and ample rainfall."
+          },
+          {
+            "lang": "ru-RU",
+            "place": "Район Сиху, Ханчжоу, Чжэцзян",
+            "notes": "Пять зон: **Ши Фэн** (Львиный пик), **деревня Лун Цзин**, **Мэй Цзя У**, **Юнь Ци**, **Ху Пао**. Красные и жёлтые почвы, богатые органикой. Мягкий субтропический климат с туманами и обильными осадками."
+          }
+        ]
+      }
+    ]
+  }
+]
