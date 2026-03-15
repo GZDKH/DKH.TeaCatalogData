@@ -2,9 +2,11 @@
 
 ## Goal
 
-Convert tea product documentation from `docs/data/products/<REGION>/<filename>.md` into import-ready JSON at `import/04-products/<filename>.json`.
+Convert tea product documentation from `docs/data/products/<REGION>/<filename>.md` into import-ready JSON at `import/04-products/<REGION>/<filename>.json`.
 
-**One MD file = one JSON file = one product.** JSON file name MUST match source MD name (`.md` → `.json`).
+**Folder structure in `import/04-products/` MUST mirror `docs/data/products/`.** Each region subfolder is preserved.
+
+**One MD file = one JSON file = one product.** JSON file name = pinyin tea name in lowercase kebab-case (e.g. `xihu-longjing.json`), derived from the Latin/pinyin name in the MD title parentheses.
 
 ## Core Principle: MD Section = Specification Group
 
@@ -338,6 +340,23 @@ These fields can be populated later via separate import files or manual entry.
 - `translations[].place`: from section 4 sub-regions
 - `translations[].notes`: soil, climate, terroir notes from section 4
 
+### `packages[]` — standard set per region (NOT from MD)
+
+MD has no packaging data. Include a standard set of packages based on the region:
+
+| Region | Packages (default marked `*`) | Notes |
+|---|---|---|
+| CHINA-* | 50g, 100g, 250g, **500g (一斤)\*** | Pricing standard is per 斤 (500g) |
+| JAPAN | 30g, 50g, 100g, **500g\*** | Small packages common, 500g default |
+| INDIA | 50g, 100g, 250g, **500g\*** | Standard tea packaging |
+| SRI LANKA(CEYLON) | 50g, 100g, 250g, **500g\*** | Standard tea packaging |
+| NEPAL | 50g, 100g, 250g, **500g\*** | Standard tea packaging |
+| KOREA | 30g, 50g, 100g, **500g\*** | Premium, small packages common |
+| FLOWERS AND DRY | 30g, 50g, 100g, **500g\*** | Lightweight products |
+| *all other regions* | 50g, 100g, 250g, **500g\*** | General default |
+
+Package codes: `PKG-30G`, `PKG-50G`, `PKG-100G`, `PKG-250G`, `PKG-500G`. Unit always `"g"`.
+
 ### `tags[]` — from sections 1, 2, 3, 4, 5, 8, 10, 11, 12, 15
 
 | Source | Tag codes |
@@ -374,14 +393,51 @@ These fields can be populated later via separate import files or manual entry.
 | цветочный / травяной | `CAT-HERBAL-TEA` | Herbal & Flower Tea |
 | матча | `CAT-MATCHA` | Matcha |
 
-Also use REGION folder as hint. Default catalog: `CATALOG-MAIN`, `catalogCurrency: "USD"`.
+**Catalog** is derived from the REGION folder (country/origin), NOT a generic "Main":
+
+| Region folder | Catalog code | Catalog name |
+|---|---|---|
+| CHINA-* | `CATALOG-CHINESE-TEA` | Chinese Tea |
+| JAPAN | `CATALOG-JAPANESE-TEA` | Japanese Tea |
+| INDIA | `CATALOG-INDIAN-TEA` | Indian Tea |
+| SRI LANKA(CEYLON) | `CATALOG-CEYLON-TEA` | Ceylon Tea |
+| KOREA | `CATALOG-KOREAN-TEA` | Korean Tea |
+| NEPAL | `CATALOG-NEPALESE-TEA` | Nepalese Tea |
+| VIETNAM | `CATALOG-VIETNAMESE-TEA` | Vietnamese Tea |
+| INDONESIA | `CATALOG-INDONESIAN-TEA` | Indonesian Tea |
+| KENYA | `CATALOG-KENYAN-TEA` | Kenyan Tea |
+| GEORGIA | `CATALOG-GEORGIAN-TEA` | Georgian Tea |
+| FLOWERS AND DRY | `CATALOG-HERBAL-FLOWER` | Herbal & Flower |
+| OTHERS | `CATALOG-OTHER-TEA` | Other Tea |
+| *all other regions* | `CATALOG-<COUNTRY>-TEA` | \<Country\> Tea |
+
+Default `catalogLang: "en-US"`. Currency matches the country:
+
+| Region | Currency |
+|---|---|
+| CHINA-* | `CNY` |
+| JAPAN | `JPY` |
+| INDIA | `INR` |
+| SRI LANKA(CEYLON) | `LKR` |
+| KOREA | `KRW` |
+| NEPAL | `NPR` |
+| VIETNAM | `VND` |
+| INDONESIA | `IDR` |
+| KENYA | `KES` |
+| GEORGIA | `GEL` |
+| BRAZIL | `BRL` |
+| THAILAND | `THB` |
+| MYANMAR(BURMA) | `MMK` |
+| LAOS | `LAK` |
+| USA | `USD` |
+| *all other / OTHERS / FLOWERS* | `USD` |
 
 ## Code Generation
 
 | Field | Pattern |
 |---|---|
 | `code` | `TEA-<CC>-<NAME>` (CC = ISO country, NAME = abbreviated Latin) |
-| `sku` | `<ABBR>-<REGION>-<YEAR>-<WEIGHT>` |
+| `sku` | `<NAME>-<REGION-ABBR>` (name + region abbreviation, no weight/year — MD has no packaging data) |
 | Brand | `BRAND-<NAME>` |
 | Manufacturer | `MFR-<NAME>` |
 | Group | `SPEC-GROUP-<NAME>` (from standard table or transliterated) |
@@ -389,6 +445,16 @@ Also use REGION folder as hint. Default catalog: `CATALOG-MAIN`, `catalogCurrenc
 | Option | `SPEC-<ATTR>-<VALUE>` |
 
 All codes: UPPERCASE, Latin-only, hyphens.
+
+## Markdown Formatting in Text Fields
+
+All `CustomText` values, `translations[].description`, and `origins[].translations[].notes` MUST use **Markdown** formatting:
+
+- **bold** (`**text**`) — key terms, proper names, cultivar names, zone names, important numbers
+- *italic* (`*text*`) — Chinese/Latin terms, dynasty names, botanical names, aroma/flavor descriptors
+- Combine: `**Shi Feng** *(Lion Peak)*` for names with translations
+
+Do NOT format: Option values, Range values, codes, short factual values (vitamins, minerals lists).
 
 ## Locales
 
@@ -398,7 +464,8 @@ All codes: UPPERCASE, Latin-only, hyphens.
 
 ## Validation Checklist
 
-- [ ] File name = MD source with `.json`
+- [ ] Output path = `import/04-products/<REGION>/<pinyin-name>.json` (same region folder as source MD)
+- [ ] File name = pinyin tea name in lowercase kebab-case (e.g. `xihu-longjing.json`)
 - [ ] JSON is `[{ ... }]` (single-element array)
 - [ ] `code` unique, UPPERCASE, Latin
 - [ ] 3 locales in `translations`

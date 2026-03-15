@@ -9,11 +9,18 @@ DKH.TeaCatalogData is a data repository for tea product documentation and import
 ```
 DKH.TeaCatalogData/
 ├── docs/data/products/        # MD files with tea product documentation (~600 files, 35 regions)
+│   ├── CHINA-GREEN TEA/       # Region subfolder
+│   ├── JAPAN/
+│   ├── INDIA/
+│   └── ...                    # 35 region folders total
 ├── import/                    # JSON files for import via ProductCatalogService DataExchange API
 │   ├── 01-reference/          # Catalogs, tags, brands, packages
 │   ├── 02-specifications/     # Groups → attributes → options
 │   ├── 03-categories/         # Categories hierarchy
-│   └── 04-products/           # Products (one file = one product)
+│   └── 04-products/           # Products (mirrors docs/data/products/ folder structure)
+│       ├── CHINA-GREEN TEA/   # Same region subfolders as source MD
+│       ├── JAPAN/
+│       └── ...
 ├── scripts/                   # PowerShell scripts for conversion and import
 └── .claude/rules/             # Agent rules for MD→JSON conversion
 ```
@@ -113,7 +120,7 @@ Products JSON uses ProductCatalogService DataExchange schema. One file = one pro
 1. `01-reference/` — catalogs, tags, brands, packages
 2. `02-specifications/` — groups → attributes → options
 3. `03-categories/` — categories hierarchy
-4. `04-products/` — products (one file per product)
+4. `04-products/<REGION>/` — products by region (mirrors `docs/data/products/` folder structure)
 
 ## Related
 
