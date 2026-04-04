@@ -1,1 +1,1 @@
-../../../libraries/DKH.Architecture/.codex/shared-rules/ralph-loop.md
+../../../../../libraries/DKH.Architecture/.codex/shared-rules/ralph-loop.md
