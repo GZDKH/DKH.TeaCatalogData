@@ -1,0 +1,1 @@
+../../../../agents/DKH.AgentRules/.gemini/shared-rules/contracts.md

@@ -1,1 +1,1 @@
-../../../libraries/DKH.Architecture/.gemini/shared-rules/prod-config.md
+../../../agents/DKH.AgentRules/.gemini/shared-rules/prod-config.md

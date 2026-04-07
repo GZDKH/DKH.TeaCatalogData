@@ -1,1 +1,1 @@
-../../../../../libraries/DKH.Architecture/.codex/shared-rules/ralph-loop.md
+../../../../agents/DKH.AgentRules/.codex/shared-rules/ralph-loop.md

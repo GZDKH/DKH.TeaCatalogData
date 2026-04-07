@@ -1,0 +1,1 @@
+../shared-rules/platform-release.md

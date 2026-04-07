@@ -1,1 +1,1 @@
-../../../../../libraries/DKH.Architecture/.codex/shared-rules/docs-after-impl.md
+../../../../agents/DKH.AgentRules/.codex/shared-rules/docs-after-impl.md

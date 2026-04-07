@@ -1,1 +1,1 @@
-../../../../../libraries/DKH.Architecture/.codex/shared-rules/commits.md
+../../../../agents/DKH.AgentRules/.codex/shared-rules/commits.md

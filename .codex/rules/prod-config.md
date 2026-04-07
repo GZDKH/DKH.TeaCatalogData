@@ -1,1 +1,1 @@
-../../../../../libraries/DKH.Architecture/.codex/shared-rules/prod-config.md
+../../../../agents/DKH.AgentRules/.codex/shared-rules/prod-config.md

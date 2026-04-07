@@ -1,1 +1,1 @@
-../../../libraries/DKH.Architecture/.gemini/shared-rules/commits.md
+../../../../agents/DKH.AgentRules/.gemini/shared-rules/commits.md

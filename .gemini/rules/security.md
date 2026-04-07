@@ -1,1 +1,1 @@
-../../../libraries/DKH.Architecture/.gemini/shared-rules/security.md
+../../../../agents/DKH.AgentRules/.gemini/shared-rules/security.md

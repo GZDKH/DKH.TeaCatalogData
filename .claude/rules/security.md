@@ -1,1 +1,1 @@
-../../../../libraries/DKH.Architecture/.claude/shared-rules/security.md
+../shared-rules/security.md

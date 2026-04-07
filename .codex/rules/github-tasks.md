@@ -1,1 +1,1 @@
-../../../../../libraries/DKH.Architecture/.codex/shared-rules/github-tasks.md
+../../../../agents/DKH.AgentRules/.codex/shared-rules/github-tasks.md

@@ -1,1 +1,1 @@
-../../../../libraries/DKH.Architecture/.claude/shared-rules/github-tasks.md
+../shared-rules/github-tasks.md

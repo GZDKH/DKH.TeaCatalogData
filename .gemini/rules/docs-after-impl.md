@@ -1,1 +1,1 @@
-../../../libraries/DKH.Architecture/.gemini/shared-rules/docs-after-impl.md
+../../../agents/DKH.AgentRules/.gemini/shared-rules/docs-after-impl.md

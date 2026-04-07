@@ -1,0 +1,1 @@
+../../../../agents/DKH.AgentRules/.codex/shared-rules/build-gates.md

@@ -1,1 +1,1 @@
-../../../../libraries/DKH.Architecture/.claude/shared-rules/gitlab-workflow.md
+../shared-rules/gitlab-workflow.md

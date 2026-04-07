@@ -1,1 +1,1 @@
-../../../libraries/DKH.Architecture/.gemini/shared-rules/ralph-loop.md
+../../../agents/DKH.AgentRules/.gemini/shared-rules/ralph-loop.md

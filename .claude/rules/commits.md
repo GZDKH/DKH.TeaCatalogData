@@ -1,1 +1,1 @@
-../../../../libraries/DKH.Architecture/.claude/shared-rules/commits.md
+../shared-rules/commits.md

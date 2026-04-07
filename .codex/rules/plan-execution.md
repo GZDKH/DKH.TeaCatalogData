@@ -1,1 +1,1 @@
-../../../../../libraries/DKH.Architecture/.codex/shared-rules/plan-execution.md
+../../../../agents/DKH.AgentRules/.codex/shared-rules/plan-execution.md
