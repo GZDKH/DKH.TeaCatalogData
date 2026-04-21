@@ -1,0 +1,110 @@
+[
+  {
+    "code": "TEA-CN-LU-JIA-YE",
+    "sku": "LU-JIA-YE-CN",
+    "nativeName": "绿佳叶",
+    "transcription": "Lǜ Jiāyè",
+    "published": true,
+    "order": 1,
+
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Люй Цзя Е",
+        "transcription": "Lǜ Jiāyè",
+        "description": "**Люй Цзя Е** *(绿佳叶, Lǜ Jiāyè — «Зелёный лучший лист»)* — зелёный чай из отборного весеннего сырья, представленный в нашей авторской линейке **佳叶** *(Jiāyè — «лучший лист»)*. Классическая технология зелёного чая: **обжарка в котлах** *(炒青, chǎoqīng)* сохраняет свежий зелёный цвет и растительные ароматы. Вкус свежий, с травяными и слегка ореховыми нотами, мягким сладковатым послевкусием. Настой светло-жёлто-зелёный, чистый и прозрачный.",
+        "seo": "lyuj-czya-e",
+        "metaTitle": "Люй Цзя Е (绿佳叶) — зелёный чай",
+        "metaDescription": "Люй Цзя Е — зелёный чай авторской линейки Цзя Е. Свежий травянистый вкус, ореховые ноты, светлый настой, классическая обжарка в котлах."
+      },
+      {
+        "lang": "en-US",
+        "name": "Lu Jia Ye (Green Fine Leaf)",
+        "transcription": "Lǜ Jiāyè",
+        "description": "**Lu Jia Ye** *(绿佳叶, Lǜ Jiāyè — 'Green Fine Leaf')* is a green tea from hand-selected spring pluck, part of our house **佳叶** *(Jiāyè — 'fine leaf')* signature line. Classic green-tea processing: **pan-firing** *(炒青, chǎoqīng)* preserves bright green colour and vegetal aromas. Fresh taste with grassy and lightly nutty notes and a soft sweet finish. Pale yellow-green, clean and clear liquor.",
+        "seo": "lu-jia-ye-green-fine-leaf",
+        "metaTitle": "Lu Jia Ye (Green Fine Leaf) — Green Tea",
+        "metaDescription": "Lu Jia Ye — house Jia Ye signature green tea. Fresh grassy taste, nutty notes, pan-fired, pale green liquor."
+      },
+      {
+        "lang": "zh-CN",
+        "name": "绿佳叶",
+        "transcription": "Lǜ Jiāyè",
+        "description": "**绿佳叶** *(Lǜ Jiāyè)* — 春季精选鲜叶制作的绿茶，本店 **佳叶** *(Jiāyè)* 自有系列。传统绿茶工艺 — **炒青** *(炒青, chǎoqīng)* 保留翠绿叶色与植物清香。滋味鲜爽，带草本与微坚果韵味，回甘柔和。汤色淡黄绿，清澈明亮。",
+        "seo": "lu-jia-ye-zh",
+        "metaTitle": "绿佳叶 — 绿茶",
+        "metaDescription": "绿佳叶 — 佳叶系列绿茶。鲜爽草本香，坚果韵味，清澈汤色。"
+      }
+    ],
+
+    "catalogs": [
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-GREEN-TEA",
+        "order": 1,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-REGION-CHINA",
+        "order": 2,
+        "published": true
+      }
+    ],
+
+    "packages": [
+      { "package": "PKG-50G",  "packageName": "50g",          "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-100G", "packageName": "100g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-250G", "packageName": "250g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-500G", "packageName": "500g (一斤)", "packageUnit": "g", "quantity": 1, "default": true }
+    ],
+
+    "tags": [
+      { "code": "TAG-CHINA",           "name": "China",            "lang": "en-US" },
+      { "code": "TAG-JIA-YE-SERIES",   "name": "Jia Ye Series",    "lang": "en-US" },
+      { "code": "TAG-PAN-FIRED",       "name": "Pan-fired (炒青)", "lang": "en-US" },
+      { "code": "TAG-SPRING-HARVEST",  "name": "Spring Harvest",   "lang": "en-US" },
+      { "code": "TAG-ANTIOXIDANT",     "name": "Antioxidant",      "lang": "en-US" },
+      { "code": "TAG-ENERGY",          "name": "Energy & Focus",   "lang": "en-US" }
+    ],
+
+    "origins": [
+      {
+        "country": "CN",
+        "altitude": { "min": 400, "max": 1000, "unit": "m" },
+        "translations": [
+          {
+            "lang": "ru-RU",
+            "place": "Китай",
+            "notes": "Зелёный чай нашей авторской линейки **Цзя Е**. Базовый регион производства — **Китай**, конкретная провинция и плантация могут меняться от партии к партии в зависимости от сезонного сорта."
+          },
+          {
+            "lang": "en-US",
+            "place": "China",
+            "notes": "Green tea from our **Jia Ye** signature line. Base production region — **China**; the specific province and plantation may vary per batch depending on seasonal cultivar."
+          },
+          {
+            "lang": "zh-CN",
+            "place": "中国",
+            "notes": "本店 **佳叶** 系列绿茶。基础产区为 **中国**，具体省份与茶园视季节品种而定，每批略有差异。"
+          }
+        ]
+      }
+    ],
+
+    "media": [
+      {
+        "url": "https://media.thetea.app/dkh-media/products/lu-jia-ye/cover.png",
+        "isCover": true,
+        "order": 1,
+        "titles": [
+          { "lang": "en-US", "title": "Lu Jia Ye — Green Fine Leaf", "alt": "Pan-fired green tea leaves" },
+          { "lang": "ru-RU", "title": "Люй Цзя Е — зелёный чай",    "alt": "Зелёный чай авторской линейки" },
+          { "lang": "zh-CN", "title": "绿佳叶",                        "alt": "炒青绿茶" }
+        ]
+      }
+    ]
+  }
+]

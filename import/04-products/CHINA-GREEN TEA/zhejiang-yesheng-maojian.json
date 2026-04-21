@@ -1,0 +1,132 @@
+[
+  {
+    "code": "TEA-CN-ZHEJIANG-YESHENG-MAOJIAN",
+    "sku": "ZJ-YESHENG-MAOJIAN-CN",
+    "nativeName": "浙江野生毛尖",
+    "transcription": "Zhèjiāng Yěshēng Máojiān",
+    "published": true,
+    "order": 1,
+
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Джэ Цзян Е Шэн Мао Цзянь Люй Ча",
+        "transcription": "Zhèjiāng Yěshēng Máojiān Lǜchá",
+        "description": "**Дикий Мао Цзянь из Чжэцзяна** *(浙江野生毛尖绿茶, Zhèjiāng Yěshēng Máojiān Lǜchá — «Дикорастущие пушистые кончики из Чжэцзяна»)* — редкий зелёный чай, собранный с **полудикорастущих и дикорастущих** *(野生)* чайных кустов в горных районах провинции **Чжэцзян**. Сорт Мао Цзянь *(毛尖 — «ворсистые кончики»)* отличается **нежными почками с обильным белым пушком**. Благодаря дикому происхождению листья имеют **выше концентрацию полифенолов и аминокислот**, вкус — **более глубокий и минеральный**, с травяными, цветочными и лёгкими ореховыми нотами. Настой светло-зелёный, прозрачный.",
+        "seo": "dzhe-dzyan-e-shen-mao-czyan-lyuj-cha",
+        "metaTitle": "Дикий Мао Цзянь из Чжэцзяна (浙江野生毛尖) — зелёный чай",
+        "metaDescription": "Дикий Мао Цзянь из Чжэцзяна — редкий зелёный чай с дикорастущих кустов. Почки с белым пушком, глубокий минеральный вкус, травяные ноты."
+      },
+      {
+        "lang": "en-US",
+        "name": "Zhejiang Wild Mao Jian Green Tea",
+        "transcription": "Zhèjiāng Yěshēng Máojiān Lǜchá",
+        "description": "**Zhejiang Wild Mao Jian** *(浙江野生毛尖绿茶, Zhèjiāng Yěshēng Máojiān Lǜchá — 'Zhejiang Wild Furry-tip Green Tea')* is a rare green tea harvested from **semi-wild and wild** *(野生, yěshēng)* tea bushes in mountain areas of **Zhejiang** Province. The Mao Jian style *(毛尖 — 'furry tips')* is defined by **tender buds coated in abundant white down**. Wild origin yields **higher polyphenol and amino-acid content**, producing a **deeper, more mineral taste** with grassy, floral and gentle nutty notes. Pale-green, clear liquor.",
+        "seo": "zhejiang-wild-mao-jian-green-tea",
+        "metaTitle": "Zhejiang Wild Mao Jian — Rare Chinese Green Tea",
+        "metaDescription": "Zhejiang Wild Mao Jian — rare green tea from wild bushes. Furry white-tipped buds, deep mineral taste, grassy floral notes."
+      },
+      {
+        "lang": "zh-CN",
+        "name": "浙江野生毛尖绿茶",
+        "transcription": "Zhèjiāng Yěshēng Máojiān Lǜchá",
+        "description": "**浙江野生毛尖绿茶** *(Zhèjiāng Yěshēng Máojiān Lǜchá)* — 采自 **浙江省** 山区 **野生与半野生** *(野生)* 茶树的稀有绿茶。毛尖 *(毛尖)* 风格以 **白毫密披的嫩芽** 著称。野生环境生长，叶片 **茶多酚与氨基酸含量更高**，滋味更 **深邃富矿物感**，带草木、花香与微坚果韵味。汤色淡绿，清澈透亮。",
+        "seo": "zhejiang-yesheng-maojian-zh",
+        "metaTitle": "浙江野生毛尖绿茶 — 稀有野生绿茶",
+        "metaDescription": "浙江野生毛尖绿茶 — 野生茶树珍稀绿茶。白毫满披，矿物感深邃，草木花香。"
+      }
+    ],
+
+    "catalogs": [
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-GREEN-TEA",
+        "order": 1,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-REGION-ZHEJIANG",
+        "order": 2,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-SPEC-YESHENG",
+        "order": 3,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-SPEC-GAOSHAN",
+        "order": 4,
+        "published": true
+      }
+    ],
+
+    "packages": [
+      { "package": "PKG-25G",  "packageName": "25g",   "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-50G",  "packageName": "50g",   "packageUnit": "g", "quantity": 1, "default": true  },
+      { "package": "PKG-100G", "packageName": "100g",  "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-250G", "packageName": "250g",  "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-500G", "packageName": "500g",  "packageUnit": "g", "quantity": 1, "default": false }
+    ],
+
+    "tags": [
+      { "code": "TAG-SINGLE-ORIGIN",   "name": "Single Origin",      "lang": "en-US" },
+      { "code": "TAG-CHINA",           "name": "China",              "lang": "en-US" },
+      { "code": "TAG-ZHEJIANG",        "name": "Zhejiang",           "lang": "en-US" },
+      { "code": "TAG-WILD-TEA",        "name": "Wild Tea (野生)",    "lang": "en-US" },
+      { "code": "TAG-HIGH-MOUNTAIN",   "name": "High Mountain",      "lang": "en-US" },
+      { "code": "TAG-BUDS-TIPS",       "name": "Buds & Tips",        "lang": "en-US" },
+      { "code": "TAG-RARE",            "name": "Rare",               "lang": "en-US" },
+      { "code": "TAG-PREMIUM",         "name": "Premium",            "lang": "en-US" },
+      { "code": "TAG-PESTICIDE-FREE",  "name": "Pesticide-free",     "lang": "en-US" },
+      { "code": "TAG-ANTIOXIDANT",     "name": "Antioxidant",        "lang": "en-US" },
+      { "code": "TAG-ENERGY",          "name": "Energy & Focus",     "lang": "en-US" }
+    ],
+
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Zhejiang",
+        "altitude": { "min": 600, "max": 1400, "unit": "m" },
+        "coordinates": { "lat": 29.2500, "lng": 120.1500 },
+        "translations": [
+          {
+            "lang": "ru-RU",
+            "place": "Горные районы провинции Чжэцзян",
+            "notes": "**Восточный Китай, провинция Чжэцзян** — одна из колыбелей китайского зелёного чая *(родина Лун Цзина, Би Ло Чуня и др.)*. Для этого чая используется сырьё с **полудикорастущих и дикорастущих** кустов на высотах **600–1400 м**. Влажный субтропический муссонный климат, плодородные кислые почвы. Стандарт сбора — только **нераспустившиеся почки и молодые нежные листочки с белым пушком**. Кусты не обрабатываются пестицидами и удобрениями."
+          },
+          {
+            "lang": "en-US",
+            "place": "Mountain areas of Zhejiang Province",
+            "notes": "**East China, Zhejiang Province** — a cradle of Chinese green tea *(home of Long Jing, Bi Luo Chun and others)*. This tea is plucked from **semi-wild and wild** bushes at **600–1400 m**. Humid subtropical monsoon climate, fertile acid soils. Plucking standard — **unopened buds and young tender leaves covered in white down**. Bushes are never treated with pesticides or fertilizers."
+          },
+          {
+            "lang": "zh-CN",
+            "place": "浙江省山区",
+            "notes": "**中国东部浙江省** — 中国绿茶发源地之一（龙井、碧螺春等名茶故乡）。此茶取自 **野生与半野生** 茶树，生长海拔 **600–1400 米**。亚热带湿润季风气候，酸性肥沃土壤。采摘标准为 **白毫披覆的未开放芽头与嫩叶**。不施农药化肥。"
+          }
+        ]
+      }
+    ],
+
+    "media": [
+      {
+        "url": "https://media.thetea.app/dkh-media/products/zhejiang-yesheng-maojian/cover.png",
+        "isCover": true,
+        "order": 1,
+        "titles": [
+          { "lang": "en-US", "title": "Zhejiang Wild Mao Jian — downy buds", "alt": "Wild furry-tip green tea" },
+          { "lang": "ru-RU", "title": "Дикий Мао Цзянь — почки с белым пушком", "alt": "Дикий зелёный чай с белыми ворсистыми почками" },
+          { "lang": "zh-CN", "title": "浙江野生毛尖 — 白毫嫩芽",                   "alt": "野生白毫毛尖绿茶" }
+        ]
+      }
+    ]
+  }
+]

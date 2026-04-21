@@ -1,0 +1,135 @@
+[
+  {
+    "code": "TEA-CN-HEI-JIN",
+    "sku": "HEI-JIN-FJ",
+    "nativeName": "黑金",
+    "transcription": "Hēi Jīn",
+    "published": true,
+    "order": 1,
+
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Хэй Цзинь",
+        "transcription": "Hēi Jīn",
+        "description": "**Хэй Цзинь** *(黑金, Hēi Jīn — «Чёрное золото»)* — современный авторский красный чай из провинции Фуцзянь, чаще всего из округа **Фудин** *(福鼎)*, но также из Чжэнхэ и гор Уишань. Появился в начале XXI века как результат экспериментов с сортами куста и технологиями. Отличительные черты — **тёмно-коричневые скрученные чаинки с яркими золотистыми типсами**, высокая степень ферментации и насыщенный, богатый вкус с нотами **шоколада, сухофруктов, карамели, солода** и долгим сладким послевкусием.",
+        "seo": "hej-czin",
+        "metaTitle": "Хэй Цзинь (黑金) — «Чёрное золото», красный чай из Фуцзяни",
+        "metaDescription": "Хэй Цзинь — современный красный чай с золотыми типсами из Фудина. Шоколадно-карамельный вкус, насыщенный настой, яркий характер."
+      },
+      {
+        "lang": "en-US",
+        "name": "Hei Jin (Black Gold)",
+        "transcription": "Hēi Jīn",
+        "description": "**Hei Jin** *(黑金, Hēi Jīn — 'Black Gold')* is a modern artisanal black tea from Fujian, most often from **Fuding** *(福鼎)* County, with variants from Zhenghe and the Wuyi Mountains. Emerged in the early 21st century through experimentation with cultivars and techniques. Signature traits — **dark brown rolled leaves with prominent golden tips**, high oxidation, rich deep flavor with **chocolate, dried fruit, caramel, malt** notes and a long sweet finish.",
+        "seo": "hei-jin-black-gold",
+        "metaTitle": "Hei Jin (Black Gold) — Fujian Artisan Black Tea",
+        "metaDescription": "Hei Jin — modern black tea with golden tips from Fuding. Chocolate-caramel taste, rich liquor, expressive character."
+      },
+      {
+        "lang": "zh-CN",
+        "name": "黑金",
+        "transcription": "Hēi Jīn",
+        "description": "**黑金** *(Hēi Jīn)* — 产自福建省的现代创新红茶。主产于 **福鼎**，亦见于政和与武夷山。21 世纪初由品种与工艺创新而生。标志性特点为 **乌润茶条带显著金毫**，发酵程度高，滋味浓醇厚重，具 **可可、蜜饯、焦糖、麦芽** 等香韵，回甘悠长。",
+        "seo": "hei-jin-zh",
+        "metaTitle": "黑金 — 福建创新红茶",
+        "metaDescription": "黑金 — 福鼎金毫红茶。可可焦糖香气，浓郁红汤，风格鲜明。"
+      }
+    ],
+
+    "catalogs": [
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-RED-TEA",
+        "order": 1,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-REGION-FUJIAN",
+        "order": 2,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-SPEC-GONGFU",
+        "order": 3,
+        "published": true
+      }
+    ],
+
+    "packages": [
+      { "package": "PKG-50G",  "packageName": "50g",          "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-100G", "packageName": "100g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-250G", "packageName": "250g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-500G", "packageName": "500g (一斤)", "packageUnit": "g", "quantity": 1, "default": true }
+    ],
+
+    "tags": [
+      { "code": "TAG-SINGLE-ORIGIN",   "name": "Single Origin",       "lang": "en-US" },
+      { "code": "TAG-CHINA",           "name": "China",               "lang": "en-US" },
+      { "code": "TAG-FUJIAN",          "name": "Fujian",              "lang": "en-US" },
+      { "code": "TAG-FUDING",          "name": "Fuding",              "lang": "en-US" },
+      { "code": "TAG-GOLDEN-TIPS",     "name": "Golden Tips",         "lang": "en-US" },
+      { "code": "TAG-ARTISAN",         "name": "Artisan",             "lang": "en-US" },
+      { "code": "TAG-PREMIUM",         "name": "Premium",             "lang": "en-US" },
+      { "code": "TAG-WARMING",         "name": "Warming",             "lang": "en-US" },
+      { "code": "TAG-ENERGY",          "name": "Energy & Focus",      "lang": "en-US" },
+      { "code": "TAG-ANTIOXIDANT",     "name": "Antioxidant",         "lang": "en-US" },
+      { "code": "TAG-DIGESTION",       "name": "Digestive Aid",       "lang": "en-US" }
+    ],
+
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "city": "Fuding",
+        "altitude": { "min": 300, "max": 1000, "unit": "m" },
+        "coordinates": { "lat": 27.3253, "lng": 120.2170 },
+        "translations": [
+          {
+            "lang": "ru-RU",
+            "place": "Фудин, провинция Фуцзянь",
+            "notes": "**Субтропический муссонный климат**: высокая влажность, обильные осадки, плодородные почвы. Плантации на высоте **300–1000 м**. Используются разные сорта чайного куста — локальные фуцзяньские (**Фудин Да Бай Ча**, Те Гуань Инь) и завозные (сычуаньские, юньнаньские). Сбор ранней весной, стандарт — почка + 1–2 листа, обязательно наличие **золотистых типсов**. Высокая степень ферментации и часто **лёгкая обжарка на финальной сушке** формируют глубокий шоколадно-карамельный профиль."
+          },
+          {
+            "lang": "en-US",
+            "place": "Fuding, Fujian Province",
+            "notes": "**Subtropical monsoon climate**: high humidity, abundant rainfall, fertile soils. Plantations at **300–1000 m**. Cultivars vary — local Fujian (**Fuding Da Bai Cha**, Tieguanyin) and introduced (Sichuan, Yunnan). Harvest early spring, standard: bud + 1–2 leaves, with mandatory **golden tips**. High oxidation plus **light roast during final drying** builds the deep chocolate-caramel profile."
+          },
+          {
+            "lang": "zh-CN",
+            "place": "福建省福鼎",
+            "notes": "**亚热带季风气候**：湿度高，雨量充沛，土壤肥沃。茶园海拔 **300–1000 米**。品种多样，包括本地福建品种（**福鼎大白茶**、铁观音）与外来品种（四川、云南）。早春采摘，标准为一芽一二叶，必具 **金毫**。高度发酵并常于干燥阶段进行 **轻焙**，造就可可与焦糖般深邃风味。"
+          }
+        ]
+      }
+    ],
+
+    "media": [
+      {
+        "url": "https://media.thetea.app/dkh-media/products/hei-jin/cover.png",
+        "isCover": true,
+        "order": 1,
+        "titles": [
+          { "lang": "en-US", "title": "Hei Jin — Black Gold",           "alt": "Dark rolled black tea with golden tips" },
+          { "lang": "ru-RU", "title": "Хэй Цзинь — Чёрное золото",      "alt": "Тёмный красный чай с золотыми типсами" },
+          { "lang": "zh-CN", "title": "黑金",                             "alt": "乌润带金毫的红茶干茶" }
+        ]
+      },
+      {
+        "url": "https://media.thetea.app/dkh-media/products/hei-jin/liquor.png",
+        "isCover": false,
+        "order": 2,
+        "titles": [
+          { "lang": "en-US", "title": "Deep amber-red liquor",         "alt": "Brewed Hei Jin" },
+          { "lang": "ru-RU", "title": "Глубокий янтарно-красный настой", "alt": "Заваренный Хэй Цзинь" },
+          { "lang": "zh-CN", "title": "深琥珀红汤",                      "alt": "冲泡后的黑金红茶" }
+        ]
+      }
+    ]
+  }
+]
