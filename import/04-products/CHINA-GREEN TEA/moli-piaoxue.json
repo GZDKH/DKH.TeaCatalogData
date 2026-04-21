@@ -1,0 +1,125 @@
+[
+  {
+    "code": "TEA-CN-MOLI-PIAOXUE",
+    "sku": "MOLI-PIAOXUE-SC",
+    "nativeName": "茉莉飘雪",
+    "transcription": "Mòlì Piāo Xuě",
+    "published": true,
+    "order": 1,
+
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Мо Ли Пяо Сюэ",
+        "transcription": "Mòlì Piāo Xuě",
+        "description": "**Мо Ли Пяо Сюэ** *(茉莉飘雪, Mòlì Piāo Xuě — «Парящий снег жасмина»)* — знаменитый ароматизированный зелёный чай из провинции **Сычуань**, из окрестностей горы **Эмей** *(峨眉, Éméi)* и уезда **Цзяцзян** *(夹江)*. Главная особенность — **послойная укладка** зелёного чая и свежих цветов *Jasminum sambac*, 5–7 циклов ароматизации, при этом **цветки жасмина остаются в готовом чае**, создавая эффект «снегопада». Мягкий, нежный вкус с утончённым жасминовым ароматом и долгим сладким послевкусием.",
+        "seo": "mo-li-pyao-syue",
+        "metaTitle": "Мо Ли Пяо Сюэ (茉莉飘雪) — Парящий снег жасмина",
+        "metaDescription": "Мо Ли Пяо Сюэ — сычуаньский зелёный чай с цветами жасмина внутри. Послойная ароматизация, нежный сладкий вкус, из окрестностей горы Эмей."
+      },
+      {
+        "lang": "en-US",
+        "name": "Moli Piao Xue (Floating Jasmine Snow)",
+        "transcription": "Mòlì Piāo Xuě",
+        "description": "**Moli Piao Xue** *(茉莉飘雪, Mòlì Piāo Xuě — 'Floating Jasmine Snow')* is a celebrated scented green tea from **Sichuan** Province, produced near Mount **Emei** *(峨眉, Éméi)* and **Jiajiang** County *(夹江)*. Signature feature — **layered scenting** of green tea with fresh *Jasminum sambac* flowers, 5–7 cycles, with **jasmine petals retained** in the finished tea, creating a 'snowfall' visual. Soft, tender taste with refined jasmine aroma and a long sweet aftertaste.",
+        "seo": "moli-piaoxue-floating-jasmine-snow",
+        "metaTitle": "Moli Piao Xue (Floating Jasmine Snow) — Sichuan Jasmine Tea",
+        "metaDescription": "Moli Piao Xue — Sichuan jasmine green tea with retained flowers. Layered scenting, soft sweet taste, from the Emei mountain area."
+      },
+      {
+        "lang": "zh-CN",
+        "name": "茉莉飘雪",
+        "transcription": "Mòlì Piāo Xuě",
+        "description": "**茉莉飘雪** *(Mòlì Piāo Xuě)* — 四川省名茶，主产于 **峨眉** *(峨眉)* 山一带与 **夹江县** *(夹江)*。核心工艺为 **茶花层层窨制**：绿茶与新鲜 *Jasminum sambac* 茉莉花逐层铺放，5–7 次窨香，**花瓣保留于成品茶中**，形成「雪花纷飞」视觉。滋味柔和细腻，茉莉香清雅，回甘悠长。",
+        "seo": "moli-piaoxue-zh",
+        "metaTitle": "茉莉飘雪 — 四川茉莉花茶",
+        "metaDescription": "茉莉飘雪 — 四川峨眉茉莉花茶。层层窨制保留花瓣，清雅柔甜。"
+      }
+    ],
+
+    "catalogs": [
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-JASMINE-TEA",
+        "order": 1,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-REGION-SICHUAN",
+        "order": 2,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-SPEC-GONGFU",
+        "order": 3,
+        "published": true
+      }
+    ],
+
+    "packages": [
+      { "package": "PKG-50G",  "packageName": "50g",          "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-100G", "packageName": "100g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-250G", "packageName": "250g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-500G", "packageName": "500g (一斤)", "packageUnit": "g", "quantity": 1, "default": true }
+    ],
+
+    "tags": [
+      { "code": "TAG-SINGLE-ORIGIN",     "name": "Single Origin",         "lang": "en-US" },
+      { "code": "TAG-CHINA",             "name": "China",                 "lang": "en-US" },
+      { "code": "TAG-SICHUAN",           "name": "Sichuan",               "lang": "en-US" },
+      { "code": "TAG-EMEI",              "name": "Mount Emei",            "lang": "en-US" },
+      { "code": "TAG-SCENTED",           "name": "Flower Scented",        "lang": "en-US" },
+      { "code": "TAG-JASMINE",           "name": "Jasmine",               "lang": "en-US" },
+      { "code": "TAG-WITH-PETALS",       "name": "With Visible Petals",   "lang": "en-US" },
+      { "code": "TAG-PREMIUM",           "name": "Premium",               "lang": "en-US" },
+      { "code": "TAG-RELAXING",          "name": "Relaxing",              "lang": "en-US" },
+      { "code": "TAG-DIGESTION",         "name": "Digestive Aid",         "lang": "en-US" },
+      { "code": "TAG-ANTIOXIDANT",       "name": "Antioxidant",           "lang": "en-US" }
+    ],
+
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Sichuan",
+        "city": "Emei / Jiajiang",
+        "altitude": { "min": 500, "max": 1500, "unit": "m" },
+        "coordinates": { "lat": 29.5956, "lng": 103.4844 },
+        "translations": [
+          {
+            "lang": "ru-RU",
+            "place": "Эмейшань и Цзяцзян, провинция Сычуань",
+            "notes": "**Юго-западный Китай, Сычуаньская котловина**. Горные районы с плодородными почвами, чистым воздухом и водой. **Эмейшань** — одна из четырёх священных буддийских гор Китая. Высота плантаций **500–1500 м**. Влажный субтропический климат, обильные осадки, частые туманы. Для базы используется сычуаньский зелёный чай весеннего сбора *(почка + 1–2 листа)*. Ароматизация — свежими цветами **жасмина самбак**, собранными вечером, **послойно** 5–7 циклов; после финальной сушки **цветы оставляют в готовом чае** — отсюда эффект «парящего снега»."
+          },
+          {
+            "lang": "en-US",
+            "place": "Mount Emei and Jiajiang, Sichuan Province",
+            "notes": "**Southwest China, Sichuan Basin**. Mountain areas with fertile soils, clean air and water. **Mount Emei** is one of China's four sacred Buddhist mountains. Plantation altitude **500–1500 m**. Humid subtropical climate, abundant rainfall, frequent mists. The base is Sichuan spring-picked green tea *(bud + 1–2 leaves)*. Scenting with fresh **Jasminum sambac** flowers picked at evening, **layered** 5–7 cycles; **petals are retained** in the finished tea after final drying — hence the 'floating snow' effect."
+          },
+          {
+            "lang": "zh-CN",
+            "place": "四川省峨眉山与夹江",
+            "notes": "**中国西南，四川盆地**。山区土壤肥沃，水清气净。**峨眉山** 为中国佛教四大名山之一。茶园海拔 **500–1500 米**。亚热带湿润气候，雨量充沛，多云雾。茶底选用四川春季绿茶（一芽一二叶）。以傍晚采摘的新鲜 **茉莉花** 进行 **层层窨制** 5–7 次，干燥后 **花瓣保留于成品茶中**，成就「飘雪」景观。"
+          }
+        ]
+      }
+    ],
+
+    "media": [
+      {
+        "url": "https://media.thetea.app/dkh-media/products/moli-piaoxue/cover.png",
+        "isCover": true,
+        "order": 1,
+        "titles": [
+          { "lang": "en-US", "title": "Moli Piao Xue — Floating Jasmine Snow",   "alt": "Green tea with white jasmine petals" },
+          { "lang": "ru-RU", "title": "Мо Ли Пяо Сюэ — Парящий снег жасмина",   "alt": "Зелёный чай с белыми цветами жасмина" },
+          { "lang": "zh-CN", "title": "茉莉飘雪",                                   "alt": "绿茶中的白色茉莉花瓣" }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "code": "TEA-TW-DONG-DING-WULONG",
+    "sku": "DONG-DING-WULONG-TW",
+    "nativeName": "冻顶乌龙",
+    "transcription": "Dòng Dǐng Wūlóng",
+    "published": true,
+    "order": 1,
+
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Дун Дин Улун",
+        "transcription": "Dòng Dǐng Wūlóng",
+        "description": "**Дун Дин Улун** *(冻顶乌龙, Dòng Dǐng Wūlóng — «Улун с Морозного Пика»)* — один из самых известных тайваньских улунов с историей более **150 лет**. Происхождение — гора **Дун Дин** *(凍頂山 — «Морозный/Замерзший Пик»)* в уезде **Наньтоу**, городской уезд **Лугу**. Производится из сорта **Цин Син Улун** *(青心乌龙)*, завезённого из Фуцзяни в середине XIX в. учёным **Линь Фэнчи** *(林鳳池)*. Средняя ферментация *(20–40%)*, **многократное скручивание** в полусферу, **средняя или сильная прожарка на углях** — характерная особенность, придающая чаю карамельно-ореховый и сухофруктовый профиль. «Отец» тайваньских улунов.",
+        "seo": "dun-din-ulun",
+        "metaTitle": "Дун Дин Улун (冻顶乌龙) — тайваньский улун с Морозного пика",
+        "metaDescription": "Дун Дин Улун — классический тайваньский улун из уезда Наньтоу. Сорт Цин Син, многократное скручивание, обжарка на углях. Карамельно-ореховый профиль."
+      },
+      {
+        "lang": "en-US",
+        "name": "Dong Ding Wulong (Frozen Peak Oolong)",
+        "transcription": "Dòng Dǐng Wūlóng",
+        "description": "**Dong Ding Wulong** *(冻顶乌龙, Dòng Dǐng Wūlóng — 'Frozen Peak Oolong')* is one of the most famous Taiwanese oolongs, with over **150 years** of history. Origin — **Dong Ding Mountain** *(凍頂山 — 'Frozen/Icy Peak')* in **Lugu** Township, **Nantou** County. Produced from the **Qing Xin Wulong** *(青心乌龙)* cultivar, brought from Fujian in the mid-19th century by scholar **Lin Fengchi** *(林鳳池)*. Medium oxidation *(20–40%)*, **multiple rolling** into semi-spheres, and **medium-to-heavy charcoal roast** — the signature step that lends a caramel-nutty-dried-fruit profile. The 'founding father' of Taiwanese oolongs.",
+        "seo": "dong-ding-wulong-frozen-peak-oolong",
+        "metaTitle": "Dong Ding Wulong (Frozen Peak Oolong) — Taiwan Classic",
+        "metaDescription": "Dong Ding Wulong — classic Taiwanese oolong from Nantou. Qing Xin cultivar, multiple rolling, charcoal roast. Caramel-nutty profile."
+      },
+      {
+        "lang": "zh-CN",
+        "name": "冻顶乌龙",
+        "transcription": "Dòng Dǐng Wūlóng",
+        "description": "**冻顶乌龙** *(Dòng Dǐng Wūlóng)* — 台湾最著名乌龙之一，已有 **150 余年** 历史。产自 **南投县鹿谷乡** 冻顶山 *(凍頂山)*。品种为 **青心乌龙** *(青心乌龙)*，19 世纪中叶由 **林鳳池** *(林鳳池)* 自福建引入。中度发酵 *(20–40%)*，**多次揉捻** 成半球状，**中火至重火炭焙** — 其标志工艺，造就焦糖、坚果、蜜饯丰富风韵。台湾乌龙「始祖」。",
+        "seo": "dong-ding-wulong-zh",
+        "metaTitle": "冻顶乌龙 — 台湾经典乌龙",
+        "metaDescription": "冻顶乌龙 — 南投鹿谷经典乌龙。青心乌龙品种，多次揉捻炭焙，焦糖坚果香。"
+      }
+    ],
+
+    "catalogs": [
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-OOLONG-TAIWAN",
+        "order": 1,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-REGION-TAIWAN",
+        "order": 2,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-SPEC-GONGFU",
+        "order": 3,
+        "published": true
+      }
+    ],
+
+    "packages": [
+      { "package": "PKG-50G",  "packageName": "50g",          "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-100G", "packageName": "100g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-150G", "packageName": "150g (真空)", "packageUnit": "g", "quantity": 1, "default": true  },
+      { "package": "PKG-250G", "packageName": "250g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-500G", "packageName": "500g (一斤)", "packageUnit": "g", "quantity": 1, "default": false }
+    ],
+
+    "tags": [
+      { "code": "TAG-SINGLE-ORIGIN",    "name": "Single Origin",            "lang": "en-US" },
+      { "code": "TAG-TAIWAN",           "name": "Taiwan",                   "lang": "en-US" },
+      { "code": "TAG-NANTOU",           "name": "Nantou",                   "lang": "en-US" },
+      { "code": "TAG-LUGU",             "name": "Lugu",                     "lang": "en-US" },
+      { "code": "TAG-QING-XIN",         "name": "Qing Xin Cultivar",        "lang": "en-US" },
+      { "code": "TAG-CHARCOAL-ROASTED", "name": "Charcoal Roasted (炭焙)",  "lang": "en-US" },
+      { "code": "TAG-ROLLED-OOLONG",    "name": "Rolled Semi-sphere",       "lang": "en-US" },
+      { "code": "TAG-HERITAGE",         "name": "Historical Heritage",      "lang": "en-US" },
+      { "code": "TAG-PREMIUM",          "name": "Premium",                  "lang": "en-US" },
+      { "code": "TAG-WARMING",          "name": "Warming",                  "lang": "en-US" },
+      { "code": "TAG-ANTIOXIDANT",      "name": "Antioxidant",              "lang": "en-US" },
+      { "code": "TAG-DIGESTION",        "name": "Digestive Aid",            "lang": "en-US" }
+    ],
+
+    "origins": [
+      {
+        "country": "TW",
+        "state": "Nantou",
+        "city": "Lugu, Dong Ding Mountain",
+        "altitude": { "min": 600, "max": 1000, "unit": "m" },
+        "coordinates": { "lat": 23.7500, "lng": 120.7500 },
+        "translations": [
+          {
+            "lang": "ru-RU",
+            "place": "Гора Дун Дин, уезд Лугу, Наньтоу, Тайвань",
+            "notes": "**Центральный Тайвань**. Гора **Дун Дин** *(凍頂山 — «Морозный пик»)* — около **750 м** над уровнем моря; плантации — **600–1000 м**. Название отражает либо частые туманы и иней на вершине, либо скользкий крутой подъём на местном диалекте. Плодородные хорошо дренированные **красноземы и желтоземы**, богатые органикой. **Субтропический муссонный климат**: мягкая зима, жаркое лето, высокая влажность, частые туманы, обильные осадки. Исторический сорт — **Цин Син Улун** *(青心乌龙)*, привезённый из Фуцзяни **Линь Фэнчи** в 1855 г.; также **Цзинь Сюань** *(金萱)*, **Цуй Юй** *(翠玉)*. Сбор весенний и зимний, стандарт — почка + 2–3 листа. Ключевая особенность технологии — **многократное скручивание** *(до 5–6 циклов)* с промежуточной сушкой и **обжарка на углях** средней или сильной степени."
+          },
+          {
+            "lang": "en-US",
+            "place": "Dong Ding Mountain, Lugu Township, Nantou, Taiwan",
+            "notes": "**Central Taiwan**. **Dong Ding Mountain** *(凍頂山 — 'Frozen Peak')* — about **750 m** elevation; plantations at **600–1000 m**. The name either refers to frequent mists and frost on the summit, or to the slippery steep climb in local dialect. Fertile well-drained **red and yellow earths**, rich in organic matter. **Subtropical monsoon climate**: mild winter, hot summer, high humidity, frequent mists, abundant rainfall. Historical cultivar — **Qing Xin Wulong** *(青心乌龙)*, brought from Fujian by **Lin Fengchi** in 1855; also **Jin Xuan** *(金萱)* and **Cui Yu** *(翠玉)*. Harvest in spring and winter, bud + 2–3 leaves. Defining production steps — **multiple rolling cycles** *(up to 5–6)* with intermediate drying and **medium-to-heavy charcoal roasting**."
+          },
+          {
+            "lang": "zh-CN",
+            "place": "台湾南投县鹿谷乡冻顶山",
+            "notes": "**台湾中部**。**冻顶山** *(凍頂山)* 海拔约 **750 米**，茶园位于 **600–1000 米**。山名含义一说峰顶云雾与寒霜，一说方言中指上山路滑陡。肥沃排水良好的 **红黄壤**，富含有机质。**亚热带季风气候**：冬温夏热，湿度高，多云雾，雨量充沛。传统品种为 **青心乌龙** *(青心乌龙)*，1855 年由 **林鳳池** 自福建引入；亦有 **金萱** *(金萱)*、**翠玉** *(翠玉)*。春冬两季采摘，一芽二三叶。核心工艺为 **多次揉捻**（可达 5–6 次）配中间干燥与 **中重炭焙火**。"
+          }
+        ]
+      }
+    ],
+
+    "media": [
+      {
+        "url": "https://media.thetea.app/dkh-media/products/dong-ding-wulong/cover.png",
+        "isCover": true,
+        "order": 1,
+        "titles": [
+          { "lang": "en-US", "title": "Dong Ding Wulong — rolled charcoal-roasted oolong", "alt": "Rolled Taiwanese oolong with charcoal roast" },
+          { "lang": "ru-RU", "title": "Дун Дин Улун — прожаренный тайваньский улун",         "alt": "Скрученный тайваньский улун с обжаркой на углях" },
+          { "lang": "zh-CN", "title": "冻顶乌龙 — 炭焙半球形乌龙",                             "alt": "炭焙台湾半球形乌龙茶" }
+        ]
+      },
+      {
+        "url": "https://media.thetea.app/dkh-media/products/dong-ding-wulong/liquor.png",
+        "isCover": false,
+        "order": 2,
+        "titles": [
+          { "lang": "en-US", "title": "Golden-amber liquor",        "alt": "Brewed Dong Ding" },
+          { "lang": "ru-RU", "title": "Золотисто-янтарный настой",  "alt": "Заваренный Дун Дин Улун" },
+          { "lang": "zh-CN", "title": "金黄琥珀茶汤",                 "alt": "冲泡后的冻顶乌龙" }
+        ]
+      }
+    ]
+  }
+]

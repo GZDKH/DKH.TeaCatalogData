@@ -1,0 +1,137 @@
+[
+  {
+    "code": "TEA-CN-BAIHAO-YINZHEN",
+    "sku": "BAIHAO-YINZHEN-FJ",
+    "nativeName": "白毫银针",
+    "transcription": "Báiháo Yínzhēn",
+    "published": true,
+    "order": 1,
+
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Бай Хао Инь Чжэнь",
+        "transcription": "Báiháo Yínzhēn",
+        "description": "**Бай Хао Инь Чжэнь** *(白毫银针, Báiháo Yínzhēn — «Серебряные Иглы с Белым Ворсом»)* — жемчужина среди китайских белых чаёв. Производится исключительно из **нераспустившихся почек**, густо покрытых серебристо-белым пушком, собранных вручную в короткое весеннее окно. Родина — провинция **Фуцзянь**, округа **Фудин** *(福鼎 — более сладкий, нежный стиль)* и **Чжэнхэ** *(政和 — более цветочный)*. Степень ферментации 5–7%. Технология минимальна: подвяливание и сушка на солнце. Вкус изысканный, чистый, медово-цветочный, с оттенками белого персика и дыни; настой бледно-жёлтый, почти прозрачный. Исторически — императорский чай.",
+        "seo": "baj-hao-in-chzhen",
+        "metaTitle": "Бай Хао Инь Чжэнь (白毫银针) — Серебряные Иглы из Фуцзяни",
+        "metaDescription": "Бай Хао Инь Чжэнь — элитный белый чай из почек сорта Фудин Да Бай Ча. Медово-цветочный вкус, минимальная обработка, высокогорная Фуцзянь."
+      },
+      {
+        "lang": "en-US",
+        "name": "Baihao Yinzhen (Silver Needles)",
+        "transcription": "Báiháo Yínzhēn",
+        "description": "**Baihao Yinzhen** *(白毫银针, Báiháo Yínzhēn — 'White-Hair Silver Needle')* is the pearl of Chinese white teas. Made exclusively from **unopened buds** densely covered in silvery-white down, hand-picked in a brief spring window. Origin — **Fujian Province**, counties **Fuding** *(福鼎 — sweeter, more delicate style)* and **Zhenghe** *(政和 — more floral)*. Fermentation 5–7%. Minimal processing: withering and sun-drying. Refined, clean taste with honey-floral notes, white peach and melon nuances; pale yellow, near-transparent liquor. Historically an imperial tribute tea.",
+        "seo": "baihao-yinzhen-silver-needles",
+        "metaTitle": "Baihao Yinzhen (Silver Needles) — Fujian White Tea",
+        "metaDescription": "Baihao Yinzhen — premium white tea of plump silver buds. Fuding Da Bai Cha cultivar. Honey-floral taste, minimal processing, highland Fujian."
+      },
+      {
+        "lang": "zh-CN",
+        "name": "白毫银针",
+        "transcription": "Báiháo Yínzhēn",
+        "description": "**白毫银针** *(Báiháo Yínzhēn)* — 中国白茶中的极品。采用全芽原料，芽头肥壮，密披银白色茸毛，春季短暂时节人工采摘。产区为 **福建省**，主要为 **福鼎**（口感甘甜细腻）与 **政和**（花香更浓郁）两大传统产区。发酵度 5–7%。工艺极简：萎凋与日晒干燥。滋味清雅甘醇，蜜香花香显著，带白桃、哈密瓜韵味；汤色淡黄近透明。历史上为清代贡茶。",
+        "seo": "baihao-yinzhen",
+        "metaTitle": "白毫银针 — 福建顶级白茶",
+        "metaDescription": "白毫银针 — 福鼎大白茶品种全芽制作，蜜香花香，自然萎凋日晒，福建高海拔茶园。"
+      }
+    ],
+
+    "catalogs": [
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-WHITE-YINZHEN",
+        "order": 1,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-REGION-FUJIAN",
+        "order": 2,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-SPEC-GONGFU",
+        "order": 3,
+        "published": true
+      }
+    ],
+
+    "packages": [
+      { "package": "PKG-25G",  "packageName": "25g",          "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-50G",  "packageName": "50g",          "packageUnit": "g", "quantity": 1, "default": true  },
+      { "package": "PKG-100G", "packageName": "100g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-250G", "packageName": "250g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-500G", "packageName": "500g (一斤)", "packageUnit": "g", "quantity": 1, "default": false }
+    ],
+
+    "tags": [
+      { "code": "TAG-SINGLE-ORIGIN",   "name": "Single Origin",        "lang": "en-US" },
+      { "code": "TAG-CHINA",           "name": "China",                "lang": "en-US" },
+      { "code": "TAG-FUJIAN",          "name": "Fujian",               "lang": "en-US" },
+      { "code": "TAG-FUDING",          "name": "Fuding",               "lang": "en-US" },
+      { "code": "TAG-IMPERIAL",        "name": "Imperial Tribute",     "lang": "en-US" },
+      { "code": "TAG-BUD-ONLY",        "name": "Single Bud (全芽)",    "lang": "en-US" },
+      { "code": "TAG-HANDMADE",        "name": "Handmade",             "lang": "en-US" },
+      { "code": "TAG-HAND-PICKED",     "name": "Hand-picked",          "lang": "en-US" },
+      { "code": "TAG-PREMIUM",         "name": "Premium",              "lang": "en-US" },
+      { "code": "TAG-COLLECTIBLE",     "name": "Collectible",          "lang": "en-US" },
+      { "code": "TAG-ANTIOXIDANT",     "name": "Antioxidant",          "lang": "en-US" },
+      { "code": "TAG-RELAXING",        "name": "Relaxing",             "lang": "en-US" }
+    ],
+
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "city": "Fuding",
+        "altitude": { "min": 600, "max": 900, "unit": "m" },
+        "coordinates": { "lat": 27.3253, "lng": 120.2170 },
+        "translations": [
+          {
+            "lang": "ru-RU",
+            "place": "Фудин и Чжэнхэ, провинция Фуцзянь",
+            "notes": "Два исторических центра производства белого чая. **Фудин (福鼎)** — ближе к морю, субтропический влажный муссонный климат, **красноземы**, дают более сладкий, тонкий стиль. **Чжэнхэ (政和)** — горная местность, прохладнее, более цветочный профиль. Высота плантаций **600–900 м**. Сбор — ранней весной, в короткое окно (~7–10 дней), только **нераспустившиеся почки**, вручную, в сухую погоду, утром до нагрева солнцем. Сорта: **Фудин Да Бай Ча** и **Чжэнхэ Да Бай Ча** — культивары с крупными мясистыми почками в густом серебряном ворсе."
+          },
+          {
+            "lang": "en-US",
+            "place": "Fuding and Zhenghe, Fujian Province",
+            "notes": "Two historic centers of white tea production. **Fuding (福鼎)** — closer to the sea, subtropical humid monsoon climate, **red soils**, yielding a sweeter, finer style. **Zhenghe (政和)** — mountainous, cooler, more floral profile. Plantation altitude **600–900 m**. Harvest — early spring, in a short window (~7–10 days), **unopened buds only**, hand-picked in dry weather, morning before sun heat. Cultivars: **Fuding Da Bai Cha** and **Zhenghe Da Bai Cha** — varieties with plump buds densely covered in silver down."
+          },
+          {
+            "lang": "zh-CN",
+            "place": "福建省福鼎与政和",
+            "notes": "两大白茶历史产区。**福鼎（福鼎）** 靠近海洋，亚热带湿润季风气候，**红土** 为主，风味甘甜细腻。**政和（政和）** 位于山区，气候较凉，花香更显。茶园海拔 **600–900 米**。采摘期为早春约 7–10 天短暂窗口，仅采 **未开放芽头**，晴天清晨人工采摘，在日照升温前完成。主要品种：**福鼎大白茶** 与 **政和大白茶**，芽头肥壮，银毫密披。"
+          }
+        ]
+      }
+    ],
+
+    "media": [
+      {
+        "url": "https://media.thetea.app/dkh-media/products/baihao-yinzhen/cover.png",
+        "isCover": true,
+        "order": 1,
+        "titles": [
+          { "lang": "en-US", "title": "Baihao Yinzhen — Silver Needles",     "alt": "Silvery downy white tea buds" },
+          { "lang": "ru-RU", "title": "Бай Хао Инь Чжэнь — Серебряные Иглы", "alt": "Серебристые покрытые пушком почки белого чая" },
+          { "lang": "zh-CN", "title": "白毫银针",                               "alt": "银毫满披的白茶芽头" }
+        ]
+      },
+      {
+        "url": "https://media.thetea.app/dkh-media/products/baihao-yinzhen/liquor.png",
+        "isCover": false,
+        "order": 2,
+        "titles": [
+          { "lang": "en-US", "title": "Pale yellow liquor in gaiwan",     "alt": "Brewed Baihao Yinzhen" },
+          { "lang": "ru-RU", "title": "Бледно-жёлтый настой в гайвани",   "alt": "Заваренный Бай Хао Инь Чжэнь" },
+          { "lang": "zh-CN", "title": "盖碗中的淡黄茶汤",                    "alt": "冲泡后的白毫银针" }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,124 @@
+[
+  {
+    "code": "TEA-TW-HONG-YU-JIA-YE",
+    "sku": "HONG-YU-JIA-YE-TW",
+    "nativeName": "红玉佳叶",
+    "transcription": "Hóngyù Jiāyè",
+    "published": true,
+    "order": 1,
+
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Хун Юй Цзя Е",
+        "transcription": "Hóngyù Jiāyè",
+        "description": "**Хун Юй Цзя Е** *(红玉佳叶, Hóngyù Jiāyè — «Красный нефрит, лучший лист»)* — тайваньский красный чай на основе сорта **Тай Ча №18** *(台茶18号, Tái Chá Shíbā Hào)*, известного как **Хун Юй** *(紅玉, «Красный нефрит»)*. Сорт выведен на Тайване как гибрид бирманского крупнолистного ассамского *(Camellia sinensis var. assamica)* и местного дикорастущего тайваньского чая. Производится в уезде **Ючи** *(魚池鄉)* у озера **Жиюэтань** *(日月潭)*, провинция **Наньтоу**. Визитная карточка — **уникальный корично-мятный (ментоловый) аромат**, усиленный нотами сухофруктов, сосновой смолы и мёда. Вкус бархатистый, сладкий, полнотелый, без горечи.",
+        "seo": "hun-yuj-czya-e",
+        "metaTitle": "Хун Юй Цзя Е (红玉佳叶) — тайваньский красный чай Тай Ча №18",
+        "metaDescription": "Хун Юй Цзя Е — тайваньский красный чай «Красный нефрит» Тай Ча №18. Корично-мятный аромат, бархатистый вкус, Жиюэтань."
+      },
+      {
+        "lang": "en-US",
+        "name": "Hong Yu Jia Ye (Red Jade)",
+        "transcription": "Hóngyù Jiāyè",
+        "description": "**Hong Yu Jia Ye** *(红玉佳叶, Hóngyù Jiāyè — 'Red Jade Fine Leaf')* is a Taiwanese black tea made from the **Tai Cha №18** *(台茶18号)* cultivar, known as **Hong Yu** *(紅玉, 'Red Jade')*. This cultivar is a Taiwan-bred hybrid of Burmese large-leaf Assam *(Camellia sinensis var. assamica)* and native wild Taiwanese tea. Grown in **Yuchi** Township *(魚池鄉)* around **Sun Moon Lake** *(日月潭)*, **Nantou** County. Signature — a **unique cinnamon-mint (menthol) aroma** complemented by dried fruit, pine resin, and honey notes. Velvety, sweet, full-bodied, bitter-free taste.",
+        "seo": "hong-yu-jia-ye-red-jade",
+        "metaTitle": "Hong Yu Jia Ye (Red Jade) — Taiwan Tai Cha #18 Black Tea",
+        "metaDescription": "Hong Yu Jia Ye — Taiwanese black tea from cultivar Tai Cha #18 Red Jade. Cinnamon-mint aroma, velvety sweet taste, Sun Moon Lake."
+      },
+      {
+        "lang": "zh-CN",
+        "name": "红玉佳叶",
+        "transcription": "Hóngyù Jiāyè",
+        "description": "**红玉佳叶** *(Hóngyù Jiāyè)* — 台湾红茶，采用 **台茶18号** *(台茶18号)* 品种制作，又名 **红玉** *(紅玉)*。此品种由台湾培育，为缅甸大叶阿萨姆 *(Camellia sinensis var. assamica)* 与台湾野生山茶的杂交。产自 **南投县鱼池乡**，**日月潭** *(日月潭)* 周边。标志性 **肉桂薄荷 (薄荷脑) 香气**，伴有蜜饯、松脂、蜂蜜韵味。口感醇厚甘甜，丝滑无涩。",
+        "seo": "hong-yu-jia-ye-zh",
+        "metaTitle": "红玉佳叶 — 台湾台茶18号红茶",
+        "metaDescription": "红玉佳叶 — 台湾日月潭台茶18号红玉红茶。肉桂薄荷香，醇厚甘甜。"
+      }
+    ],
+
+    "catalogs": [
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-RED-TEA",
+        "order": 1,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-REGION-TAIWAN",
+        "order": 2,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-SPEC-GONGFU",
+        "order": 3,
+        "published": true
+      }
+    ],
+
+    "packages": [
+      { "package": "PKG-50G",  "packageName": "50g",   "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-100G", "packageName": "100g",  "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-250G", "packageName": "250g",  "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-500G", "packageName": "500g",  "packageUnit": "g", "quantity": 1, "default": true  }
+    ],
+
+    "tags": [
+      { "code": "TAG-SINGLE-ORIGIN",   "name": "Single Origin",         "lang": "en-US" },
+      { "code": "TAG-TAIWAN",          "name": "Taiwan",                "lang": "en-US" },
+      { "code": "TAG-NANTOU",          "name": "Nantou",                "lang": "en-US" },
+      { "code": "TAG-SUN-MOON-LAKE",   "name": "Sun Moon Lake",         "lang": "en-US" },
+      { "code": "TAG-HONG-YU",         "name": "Red Jade (Hong Yu)",    "lang": "en-US" },
+      { "code": "TAG-TAI-CHA-18",      "name": "Tai Cha #18",           "lang": "en-US" },
+      { "code": "TAG-CINNAMON-MINT",   "name": "Cinnamon & Mint Aroma", "lang": "en-US" },
+      { "code": "TAG-PREMIUM",         "name": "Premium",               "lang": "en-US" },
+      { "code": "TAG-ANTIOXIDANT",     "name": "Antioxidant",           "lang": "en-US" },
+      { "code": "TAG-WARMING",         "name": "Warming",               "lang": "en-US" }
+    ],
+
+    "origins": [
+      {
+        "country": "TW",
+        "state": "Nantou",
+        "city": "Yuchi, Sun Moon Lake",
+        "altitude": { "min": 600, "max": 1000, "unit": "m" },
+        "coordinates": { "lat": 23.8650, "lng": 120.9150 },
+        "translations": [
+          {
+            "lang": "ru-RU",
+            "place": "Посёлок Ючи, озеро Жиюэтань, уезд Наньтоу, Тайвань",
+            "notes": "**Центральный Тайвань**, район крупнейшего природного озера **Жиюэтань** *(日月潭)*. Плантации на высоте **600–1000 м**. Субтропический муссонный климат, высокая влажность, **2000 мм** осадков в год, частые туманы. Плодородные, хорошо дренированные почвы. Сорт **Тай Ча №18** *«Хун Юй»* *(台茶18号 / 紅玉)* создан Исследовательской станцией улучшения чая *(TRES)* на основе бирманского крупнолистного ассама и местного дикорастущего тайваньского чая. Отличительная особенность — природные **корично-ментоловые терпены** в листе. Полная ферментация формирует глубокий бархатистый вкус с сухофруктами, мёдом и сосновыми оттенками."
+          },
+          {
+            "lang": "en-US",
+            "place": "Yuchi Township, Sun Moon Lake, Nantou County, Taiwan",
+            "notes": "**Central Taiwan**, around the island's largest natural lake, **Sun Moon Lake** *(日月潭)*. Plantations at **600–1000 m**. Subtropical monsoon climate, high humidity, **2000 mm** rainfall/year, frequent mists. Fertile, well-drained soils. The **Tai Cha №18** *'Hong Yu'* *(台茶18号 / 紅玉)* cultivar was developed by the Tea Research and Extension Station *(TRES)* from Burmese large-leaf Assam crossed with native wild Taiwanese tea. Natural **cinnamon-menthol terpenes** define the leaf. Full oxidation produces a deep velvety taste with dried fruit, honey, and pine nuances."
+          },
+          {
+            "lang": "zh-CN",
+            "place": "台湾南投县鱼池乡日月潭",
+            "notes": "**台湾中部**，环绕台湾最大天然湖 **日月潭** *(日月潭)*。茶园海拔 **600–1000 米**。亚热带季风气候，湿度高，年降水量 **约 2000 毫米**，多雾。土壤肥沃、排水良好。**台茶18号** *「红玉」* *(台茶18号 / 紅玉)* 由茶业改良场 *(TRES)* 以缅甸大叶阿萨姆与台湾野生山茶杂交选育。叶内天然 **肉桂薄荷萜类** 赋予独特风味。全发酵造就醇厚顺滑，蜜饯、蜂蜜与松香韵味兼具。"
+          }
+        ]
+      }
+    ],
+
+    "media": [
+      {
+        "url": "https://media.thetea.app/dkh-media/products/hong-yu-jia-ye/cover.png",
+        "isCover": true,
+        "order": 1,
+        "titles": [
+          { "lang": "en-US", "title": "Hong Yu Jia Ye — Red Jade Tai Cha #18", "alt": "Taiwanese Red Jade black tea" },
+          { "lang": "ru-RU", "title": "Хун Юй Цзя Е — Красный нефрит Тай Ча №18", "alt": "Тайваньский красный чай «Красный нефрит»" },
+          { "lang": "zh-CN", "title": "红玉佳叶 — 台茶18号红玉",                   "alt": "台湾红玉红茶" }
+        ]
+      }
+    ]
+  }
+]

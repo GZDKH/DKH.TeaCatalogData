@@ -1,0 +1,147 @@
+[
+  {
+    "code": "TEA-CN-JIN-JUN-MEI",
+    "sku": "JIN-JUN-MEI-FJ",
+    "nativeName": "金骏眉",
+    "transcription": "Jīn Jùn Méi",
+    "published": true,
+    "order": 1,
+
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Цзинь Цзюнь Мэй",
+        "transcription": "Jīn Jùn Méi",
+        "description": "**Цзинь Цзюнь Мэй** *(金骏眉, Jīn Jùn Méi — «Золотые изящные брови»)* — элитный красный чай из деревни **Тунму** *(桐木村)* в заповеднике **гор Уишань** *(武夷山)*, провинция Фуцзянь. Создан в **2005 году** как бездымная премиальная версия Чжэн Шань Сяо Чжун. Изготавливается **исключительно из нераспустившихся почек**, покрытых золотистым ворсом, собранных вручную ранней весной. Вкус невероятно мягкий, сладкий, без горечи, с нотами **мёда, личи, лонгана, персика, цветов, шоколада** и долгим медово-фруктовым послевкусием. Один из самых дорогих красных чаёв в мире.",
+        "seo": "czin-czyun-mej",
+        "metaTitle": "Цзинь Цзюнь Мэй (金骏眉) — элитный красный чай из Тунму",
+        "metaDescription": "Цзинь Цзюнь Мэй — премиальный красный чай из почек. Тунму, Уишань. Медово-фруктовый вкус, нет горечи. Бездымная версия Лапсанг Сушонг."
+      },
+      {
+        "lang": "en-US",
+        "name": "Jin Jun Mei",
+        "transcription": "Jīn Jùn Méi",
+        "description": "**Jin Jun Mei** *(金骏眉, Jīn Jùn Méi — 'Golden Graceful Eyebrows')* is an elite black tea from **Tongmu** village *(桐木村)* in the **Wuyi Mountains** reserve *(武夷山)*, Fujian. Created in **2005** as a smokeless premium version of Zheng Shan Xiao Zhong. Made **exclusively from unopened buds** covered in golden down, hand-picked in early spring. Incredibly smooth, sweet, bitter-free taste with notes of **honey, lychee, longan, peach, flowers, chocolate** and a long honey-fruit aftertaste. One of the world's most expensive black teas.",
+        "seo": "jin-jun-mei",
+        "metaTitle": "Jin Jun Mei — Premium Tongmu Black Tea",
+        "metaDescription": "Jin Jun Mei — elite all-bud black tea from Tongmu, Wuyi. Honey-fruit taste, no bitterness. Smokeless premium version of Lapsang Souchong."
+      },
+      {
+        "lang": "zh-CN",
+        "name": "金骏眉",
+        "transcription": "Jīn Jùn Méi",
+        "description": "**金骏眉** *(Jīn Jùn Méi)* — 福建 **武夷山** 自然保护区 **桐木村** 出产的顶级红茶。**2005 年** 创制，是正山小种的无烟高端版本。采用 **纯单芽原料**，金毫密披，早春人工采摘。口感极为细腻甘甜、无苦无涩，具 **蜂蜜、荔枝、龙眼、桃、花香、巧克力** 等香韵，回甘持久蜜果交融。是全球最昂贵的红茶之一。",
+        "seo": "jin-jun-mei-zh",
+        "metaTitle": "金骏眉 — 桐木顶级红茶",
+        "metaDescription": "金骏眉 — 武夷山桐木单芽红茶。蜜韵果香，无苦涩，正山小种无烟高端版。"
+      }
+    ],
+
+    "catalogs": [
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-RED-JINJUNMEI",
+        "order": 1,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-REGION-FUJIAN",
+        "order": 2,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-SPEC-GAOSHAN",
+        "order": 3,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-SPEC-GONGFU",
+        "order": 4,
+        "published": true
+      }
+    ],
+
+    "packages": [
+      { "package": "PKG-25G",  "packageName": "25g",          "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-50G",  "packageName": "50g",          "packageUnit": "g", "quantity": 1, "default": true  },
+      { "package": "PKG-100G", "packageName": "100g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-250G", "packageName": "250g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-500G", "packageName": "500g (一斤)", "packageUnit": "g", "quantity": 1, "default": false }
+    ],
+
+    "tags": [
+      { "code": "TAG-SINGLE-ORIGIN",   "name": "Single Origin",         "lang": "en-US" },
+      { "code": "TAG-CHINA",           "name": "China",                 "lang": "en-US" },
+      { "code": "TAG-FUJIAN",          "name": "Fujian",                "lang": "en-US" },
+      { "code": "TAG-WUYI",            "name": "Wuyi Mountains",        "lang": "en-US" },
+      { "code": "TAG-TONGMU",          "name": "Tongmu Village",        "lang": "en-US" },
+      { "code": "TAG-UNESCO",          "name": "UNESCO",                "lang": "en-US" },
+      { "code": "TAG-BUD-ONLY",        "name": "Single Bud (全芽)",     "lang": "en-US" },
+      { "code": "TAG-HAND-PICKED",     "name": "Hand-picked",           "lang": "en-US" },
+      { "code": "TAG-HIGH-MOUNTAIN",   "name": "High Mountain",         "lang": "en-US" },
+      { "code": "TAG-PREMIUM",         "name": "Premium",               "lang": "en-US" },
+      { "code": "TAG-LIMITED-EDITION", "name": "Limited Edition",       "lang": "en-US" },
+      { "code": "TAG-COLLECTIBLE",     "name": "Collectible",           "lang": "en-US" },
+      { "code": "TAG-ANTIOXIDANT",     "name": "Antioxidant",           "lang": "en-US" },
+      { "code": "TAG-ENERGY",          "name": "Energy & Focus",        "lang": "en-US" },
+      { "code": "TAG-WARMING",         "name": "Warming",               "lang": "en-US" }
+    ],
+
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Fujian",
+        "city": "Tongmu Village, Wuyi Mountains",
+        "altitude": { "min": 1200, "max": 1500, "unit": "m" },
+        "coordinates": { "lat": 27.7333, "lng": 117.6333 },
+        "translations": [
+          {
+            "lang": "ru-RU",
+            "place": "Деревня Тунму, горы Уишань, Наньпин, Фуцзянь",
+            "notes": "**Сердце заповедника Уишань — объекта Всемирного наследия ЮНЕСКО**. Горы из красного песчаника с отвесными скалами и ущельями. Деревня Тунму — **колыбель красного чая**, расположена на высоте **1200–1500 м**. Почвы — красные, богатые минералами, с вкраплениями песчаника и гравия, отлично дренируются. **Субтропический муссонный климат**: высокая влажность, обильные осадки, частые туманы, прохладные температуры, среднегодовая 18 °C. Сырьё — мелколистные **местные дикие и полудикие** чайные кусты, только **нераспустившиеся почки**, собранные вручную ранней весной."
+          },
+          {
+            "lang": "en-US",
+            "place": "Tongmu Village, Wuyi Mountains, Nanping, Fujian",
+            "notes": "**The heart of the Wuyishan UNESCO World Heritage reserve**. Red sandstone mountains with sheer cliffs and gorges. Tongmu village — the **cradle of black tea** — sits at **1200–1500 m**. Soils: mineral-rich red earth with sandstone and gravel inclusions, excellent drainage. **Subtropical monsoon climate**: high humidity, abundant rainfall, frequent mists, cool temperatures, 18 °C average. Source material — small-leaf **local wild and semi-wild** tea bushes, **unopened buds only**, hand-picked in early spring."
+          },
+          {
+            "lang": "zh-CN",
+            "place": "福建省南平市武夷山桐木村",
+            "notes": "**武夷山世界文化与自然双重遗产的核心区**。丹霞地貌红砂岩山体，悬崖峡谷壮丽。桐木村为 **红茶发源地**，海拔 **1200–1500 米**。土壤为富含矿物质的红壤，夹砂岩砾石，排水极佳。**亚热带季风气候**：湿度大，降水丰沛，多云雾，气温凉爽，年均温 18 ℃。原料取自 **本地野生与半野生** 小叶茶树，**纯单芽**，早春手工采摘。"
+          }
+        ]
+      }
+    ],
+
+    "media": [
+      {
+        "url": "https://media.thetea.app/dkh-media/products/jin-jun-mei/cover.png",
+        "isCover": true,
+        "order": 1,
+        "titles": [
+          { "lang": "en-US", "title": "Jin Jun Mei — Golden Eyebrows Tea",    "alt": "Golden tipped black tea buds" },
+          { "lang": "ru-RU", "title": "Цзинь Цзюнь Мэй — Золотые брови",      "alt": "Красный чай из золотистых почек" },
+          { "lang": "zh-CN", "title": "金骏眉 — 金毫单芽红茶",                   "alt": "金毫密披的单芽红茶" }
+        ]
+      },
+      {
+        "url": "https://media.thetea.app/dkh-media/products/jin-jun-mei/liquor.png",
+        "isCover": false,
+        "order": 2,
+        "titles": [
+          { "lang": "en-US", "title": "Amber-golden liquor",     "alt": "Brewed Jin Jun Mei" },
+          { "lang": "ru-RU", "title": "Янтарно-золотой настой",  "alt": "Заваренный Цзинь Цзюнь Мэй" },
+          { "lang": "zh-CN", "title": "金黄琥珀茶汤",              "alt": "冲泡后的金骏眉" }
+        ]
+      }
+    ]
+  }
+]

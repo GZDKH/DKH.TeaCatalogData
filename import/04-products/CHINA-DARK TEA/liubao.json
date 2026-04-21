@@ -1,0 +1,139 @@
+[
+  {
+    "code": "TEA-CN-LIUBAO",
+    "sku": "LIUBAO-GX",
+    "nativeName": "六堡茶",
+    "transcription": "Liù Bǎo Chá",
+    "published": true,
+    "order": 1,
+
+    "translations": [
+      {
+        "lang": "ru-RU",
+        "name": "Лю Бао Хэй Ча",
+        "transcription": "Liù Bǎo Chá",
+        "description": "**Лю Бао Ча** *(六堡茶, Liù Bǎo Chá — «Чай шести фортов»)* — один из самых самобытных постферментированных *(хэй ча)* чаёв Китая с историей более **1500 лет**. Происхождение — волость **Любао** *(六堡镇)*, уезд Цанъу, городской округ Учжоу, **Гуанси-Чжуанский автономный район**. Известен «четырьмя совершенствами» — **красный, густой, выдержанный, мягкий** *(红、浓、陈、醇)* — и неповторимым **ароматом бетелевой пальмы** *(槟榔香)*, не встречающимся ни в одном другом чае мира. Исторически экспортировался через «Чайный лодочный путь» *(茶船古道)* в Юго-Восточную Азию — стал «чаем шахтёров» в Малайзии. Национальный GI с 2011 г., ЮНЕСКО с 2022 г. «Антиквариат, который можно пить» — с возрастом становится лучше.",
+        "seo": "lyu-bao-hej-cha",
+        "metaTitle": "Лю Бао Хэй Ча (六堡茶) — постферментированный чай из Гуанси",
+        "metaDescription": "Лю Бао Ча — тёмный чай из Гуанси с ароматом бетелевой пальмы. 1500 лет истории, «Чайный лодочный путь», ЮНЕСКО. Улучшается с возрастом."
+      },
+      {
+        "lang": "en-US",
+        "name": "Liubao Hei Cha",
+        "transcription": "Liù Bǎo Chá",
+        "description": "**Liubao Cha** *(六堡茶, Liù Bǎo Chá — 'Six-Fortress Tea')* is one of China's most distinctive post-fermented *(hei cha)* teas, with over **1500 years** of history. Origin — **Liubao** town *(六堡镇)*, Cangwu County, Wuzhou city, **Guangxi Zhuang Autonomous Region**. Famed for the 'four perfections' — **red, thick, aged, smooth** *(红、浓、陈、醇)* — and the unique **betel-nut aroma** *(槟榔香)*, unmatched by any other tea in the world. Historically exported along the 'Tea Boat Ancient Road' *(茶船古道)* to Southeast Asia — became the 'miners' tea' in Malaysia. National GI since 2011, UNESCO heritage since 2022. An 'antique you can drink' — improves with age.",
+        "seo": "liubao-hei-cha",
+        "metaTitle": "Liubao Hei Cha — Post-fermented Tea from Guangxi",
+        "metaDescription": "Liubao Cha — dark tea from Guangxi with betel-nut aroma. 1500 years of history, Tea Boat Road, UNESCO heritage. Improves with age."
+      },
+      {
+        "lang": "zh-CN",
+        "name": "六堡茶",
+        "transcription": "Liù Bǎo Chá",
+        "description": "**六堡茶** *(Liù Bǎo Chá)* — 中国最具特色的后发酵黑茶之一，已有 **1500 年** 以上历史。产地为 **广西壮族自治区** 梧州市苍梧县 **六堡镇** *(六堡镇)*。以「**红、浓、陈、醇**」四大特色与独有的 **槟榔香** *(槟榔香)* 闻名，为世上其他茶所无。历史上经「**茶船古道**」远销东南亚，成为马来西亚锡矿「矿工茶」。2011 年获国家地理标志，2022 年被列入联合国教科文组织非物质文化遗产。「**可以喝的古董**」— 陈化愈久愈佳。",
+        "seo": "liubao-cha",
+        "metaTitle": "六堡茶 — 广西后发酵黑茶",
+        "metaDescription": "六堡茶 — 广西梧州苍梧黑茶。独有槟榔香，茶船古道，联合国非遗。越陈越香。"
+      }
+    ],
+
+    "catalogs": [
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-DARK-LIUBAO",
+        "order": 1,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-REGION-GUANGXI",
+        "order": 2,
+        "published": true
+      },
+      {
+        "catalog": "CATALOG-CHINESE-TEA",
+        "catalogCurrency": "CNY",
+        "category": "CAT-SPEC-GONGFU",
+        "order": 3,
+        "published": true
+      }
+    ],
+
+    "packages": [
+      { "package": "PKG-50G",  "packageName": "50g",          "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-100G", "packageName": "100g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-250G", "packageName": "250g",         "packageUnit": "g", "quantity": 1, "default": false },
+      { "package": "PKG-500G", "packageName": "500g (一斤)", "packageUnit": "g", "quantity": 1, "default": true },
+      { "package": "PKG-BASKET-1KG", "packageName": "1 kg basket (箩)", "packageUnit": "g", "quantity": 1000, "default": false }
+    ],
+
+    "tags": [
+      { "code": "TAG-SINGLE-ORIGIN",        "name": "Single Origin",         "lang": "en-US" },
+      { "code": "TAG-CHINA",                "name": "China",                 "lang": "en-US" },
+      { "code": "TAG-GUANGXI",              "name": "Guangxi",               "lang": "en-US" },
+      { "code": "TAG-WUZHOU",               "name": "Wuzhou",                "lang": "en-US" },
+      { "code": "TAG-GI-PROTECTED",         "name": "GI Protected",          "lang": "en-US" },
+      { "code": "TAG-UNESCO",               "name": "UNESCO",                "lang": "en-US" },
+      { "code": "TAG-HERITAGE",             "name": "Historical Heritage",   "lang": "en-US" },
+      { "code": "TAG-AGED-TEA",             "name": "Aged Tea",              "lang": "en-US" },
+      { "code": "TAG-POST-FERMENTED",       "name": "Post-fermented",        "lang": "en-US" },
+      { "code": "TAG-BETEL-NUT-AROMA",      "name": "Betel-nut Aroma (槟榔香)", "lang": "en-US" },
+      { "code": "TAG-COLLECTIBLE",          "name": "Collectible",           "lang": "en-US" },
+      { "code": "TAG-WARMING",              "name": "Warming",               "lang": "en-US" },
+      { "code": "TAG-DIGESTION",            "name": "Digestive Aid",         "lang": "en-US" },
+      { "code": "TAG-DETOX",                "name": "Detox",                 "lang": "en-US" }
+    ],
+
+    "origins": [
+      {
+        "country": "CN",
+        "state": "Guangxi",
+        "city": "Liubao Town, Cangwu County, Wuzhou",
+        "altitude": { "min": 300, "max": 1400, "unit": "m" },
+        "coordinates": { "lat": 23.9833, "lng": 110.9167 },
+        "translations": [
+          {
+            "lang": "ru-RU",
+            "place": "Волость Любао, уезд Цанъу, городской округ Учжоу, Гуанси",
+            "notes": "**Гуанси-Чжуанский автономный район, север тропика Рака**. Холмисто-среднегорная местность на стыке гор **Далянь** *(大连山)* и реки **Гуйцзян**, густая речная сеть, субтропические вечнозелёные леса. **Высота плантаций 300–1000 м**, лучшие — **800–1400 м**. Почвы — кислые красноземы *(红壤, pH 4.5–5.5)*, богатые гумусом, фосфором и железом. **Субтропический муссонный климат**: среднегодовая **21 °C**, осадки 1500–1800 мм/год, высокая влажность, круглогодичные туманы — **«круглый год в объятиях облаков и тумана»** *(终年云雾缭绕)*. Сорт — местный **Цанъу Цюньти Чжун** *(苍梧群体种)* и крупно-среднелистные культивары Гуанси. Особую ценность представляют деревья старше 100 лет *(老树)*. Лучшие деревни — **Гунчжоу** *(恭州)* и **Хэйши** *(黑石)*."
+          },
+          {
+            "lang": "en-US",
+            "place": "Liubao Town, Cangwu County, Wuzhou, Guangxi",
+            "notes": "**Guangxi Zhuang Autonomous Region, just north of the Tropic of Cancer**. Hilly mid-mountain terrain where the **Dalian Mountains** *(大连山)* meet the **Gui River**, dense river network, subtropical evergreen forests. **Plantation altitude 300–1000 m**, finest at **800–1400 m**. Soils — acid red earth *(红壤, pH 4.5–5.5)*, rich in humus, phosphorus and iron. **Subtropical monsoon climate**: mean annual **21 °C**, 1500–1800 mm rainfall, high humidity, year-round mist — **'wrapped in clouds and fog all year round'** *(终年云雾缭绕)*. Cultivar — local **Cangwu Qunti Zhong** *(苍梧群体种)* and Guangxi large/medium-leaf varieties. Trees older than 100 years *(老树)* are especially valued. Premier villages — **Gongzhou** *(恭州)* and **Heishi** *(黑石)*."
+          },
+          {
+            "lang": "zh-CN",
+            "place": "广西壮族自治区梧州市苍梧县六堡镇",
+            "notes": "**广西壮族自治区，北回归线以北**。大连山与桂江交汇之丘陵中山地带，河网密布，亚热带常绿阔叶林。**茶园海拔 300–1000 米**，精品产于 **800–1400 米**。土壤为酸性红壤 *(pH 4.5–5.5)*，富含腐殖质、磷、铁。**亚热带季风气候**：年均温 **21 ℃**，年降水量 1500–1800 毫米，湿度大，**终年云雾缭绕**。品种以 **苍梧群体种** *(苍梧群体种)* 及广西大中叶种为主。百年以上 **老树** 尤为珍贵。最佳村落为 **恭州** *(恭州)* 与 **黑石** *(黑石)*。"
+          }
+        ]
+      }
+    ],
+
+    "media": [
+      {
+        "url": "https://media.thetea.app/dkh-media/products/liubao/cover.png",
+        "isCover": true,
+        "order": 1,
+        "titles": [
+          { "lang": "en-US", "title": "Liubao Hei Cha — loose dark tea",    "alt": "Dark aged tea leaves from Guangxi" },
+          { "lang": "ru-RU", "title": "Лю Бао Хэй Ча — рассыпной тёмный чай", "alt": "Выдержанный тёмный чай из Гуанси" },
+          { "lang": "zh-CN", "title": "六堡茶 — 散茶",                        "alt": "广西陈年黑茶" }
+        ]
+      },
+      {
+        "url": "https://media.thetea.app/dkh-media/products/liubao/liquor.png",
+        "isCover": false,
+        "order": 2,
+        "titles": [
+          { "lang": "en-US", "title": "Deep red-brown liquor",     "alt": "Brewed Liubao" },
+          { "lang": "ru-RU", "title": "Тёмно-красно-коричневый настой", "alt": "Заваренный Лю Бао" },
+          { "lang": "zh-CN", "title": "深红褐茶汤",                  "alt": "冲泡后的六堡茶" }
+        ]
+      }
+    ]
+  }
+]
