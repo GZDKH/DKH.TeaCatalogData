@@ -141,34 +141,3 @@ Products JSON uses ProductCatalogService DataExchange schema. One file = one pro
 # Simple import (no field transformation)
 ./do-import.ps1 -Profile "products" -FilePath ./import/04-products/<file>.json
 ```
-
-<!-- BEGIN REQUIRED-READING -->
-
-## Required Reading (MUST read before working)
-
-Before starting any task in this repository, you MUST read these files from DKH.Architecture:
-
-1. **[AGENTS.md](https://github.com/GZDKH/DKH.Architecture/blob/main/AGENTS.md)** — baseline rules for all repos
-2. **[github-workflow.md](https://github.com/GZDKH/DKH.Architecture/blob/main/docs/github-workflow.md)** — GitHub Issues & Project Board
-
-These files are located in the DKH.Architecture repository (located in the sibling `libraries/DKH.Architecture` folder relative to your workspace).
-
----
-
-<!-- END REQUIRED-READING -->
-
-<!-- BEGIN LOCAL-CLAUDE-RULES -->
-
-## Additional Local Rules (.claude/rules)
-
-Before starting implementation, you MUST also read and follow these local rule files in this repository:
-
-- `.claude/rules/md-to-import-json.md` — **MD→JSON conversion rules** (section mapping, spec groups, option codes)
-- `.claude/rules/commits.md` — commit message format
-- `.claude/rules/github-tasks.md` — GitHub issue tracking
-- `.claude/rules/gitlab-workflow.md` — branch & MR workflow
-- `.claude/rules/security.md` — security rules
-
-These rules are mandatory and complement the baseline `AGENTS.md` and `DKH.Architecture` guidance.
-
-<!-- END LOCAL-CLAUDE-RULES -->
