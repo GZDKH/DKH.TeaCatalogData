@@ -1,0 +1,144 @@
+# Huoshan Huang Ya (霍山黄芽, Huòshān huáng yá)
+
+**Huoshan Huang Ya (霍山黄芽, Huòshān huáng yá)**
+
+![Huoshan Huang Ya (霍山黄芽, Huòshān huáng yá)](images/Хо%20Шань%20Хуан%20Я%20(霍山黄芽,%20Huò%20Shān%20Huáng%20Yá).png)
+
+![Huoshan Huang Ya (霍山黄芽, Huòshān huáng yá)-1](images/Хошань%20Хуан%20Я%20(霍山黄芽,%20Huòshān%20Huáng%20Yá)-1.png)
+
+**Huoshan Huang Ya (霍山黄芽, Huòshān huáng yá)** — uno de los cuatro grandes tés amarillos tradicionales de China y, probablemente, el más antiguo documentalmente confirmado: sus huellas se encuentran ya en las «Memorias Históricas» (《史记》) de Sima Qian — uno de los textos fundamentales de la civilización china. Este té nació en el corazón mismo de la cordillera Dabie (大别山) — sistema montañoso que separa el Norte y Sur de China — y en esta posición geográfica radica su carácter: Huoshan Huang Ya es un té en la encrucijada, un té-puente, donde la fortaleza mineral del norte encuentra la dulzura tierna del sur. Su tecnología se basa en «tan-fang huangbian» (摊放黄变, «extendido para amarillear») — el método más pausado y contemplativo de menhuang entre los tés amarillos, donde la hoja no se «cuece» en montón ni se envuelve en papel, sino que simplemente se extiende y se le permite amarillear por sí misma, sin presión ni prisa — uno o dos días, y en algunos maestros hasta diez. Su tarjeta de visita es «banlixiang» (板栗香, aroma de castaña tostada), por el cual Huoshan Huang Ya fue apodado «té de las tres frescuras» (三鲜, sān xiān): frescura del aroma, sabor y color de la infusión.
+
+**1. Clasificación y Origen:**
+
+* **Tipo:** Té amarillo (黄茶, huángchá), ligeramente fermentado. Pertenece a la subcategoría «té amarillo de brotes» (黄芽茶, huáng yá chá) — la más alta en calidad de materia prima.
+* **Categoría:** Uno de los cuatro grandes tés amarillos tradicionales de China (中国四大传统黄茶) — junto con Junshan Yin Zhen, Mengding Huang Ya y Pingyang Huang Tang. Té imperial histórico. Producto con indicación geográfica protegida (2006). La tecnología de producción está incluida en el registro de patrimonio cultural inmaterial de la provincia de Anhui. 2024 — inclusión en el «Registro de Memoria del Patrimonio Agrícola de China» (《中国农耕农品记忆索引名》).
+* **Origen:** China, provincia de Anhui (安徽, Ānhuī), prefectura de Lu'an (六安, Lù'ān), condado de Huoshan (霍山县, Huòshān Xiàn). Huoshan está ubicado en la parte central de la cordillera Dabie (大别山, Dàbié Shān) — sistema montañoso que separa las cuencas de los ríos Yangtsé y Huaihe, sirviendo como frontera natural entre el norte y sur de China. Zona núcleo — pueblo de Dahuaping (大化坪镇, Dàhuàpíng Zhèn): montañas Jinjishán (金鸡山, «Montaña del Gallo Dorado»), Jinjidan (金鸡凼), Jinzhuping (金竹坪) y Wumijian (乌米尖), así como la zona forestal de alta montaña del pueblo de Mozhitan (磨子潭镇). Estos lugares son conocidos en el mundo del té como «tres dorados y uno negro» (三金一乌, sān jīn yī wū) — por los primeros caracteres de los topónimos, y precisamente aquí se produce el té de más alta calidad.
+* **Coordenadas geográficas:** Aproximadamente 31° latitud norte, 116° longitud este.
+
+**2. Historia y Significado Cultural:**
+
+* **Historia:**
+    * **Han Occidental (西汉, 206 a.C. — 8 d.C.) — primera mención:** Las «Memorias Históricas» (《史记》) de Sima Qian contienen la frase: «En las montañas de Shouchun hay brotes amarillos — se pueden hervir y beber; con uso prolongado se obtendrá la inmortalidad» (寿春之山有黄芽焉，可煮而饮，久服得仙). Huoshan en ese tiempo formaba parte del distrito de Shouzhou (寿州), y las «montañas de Shouchun» son las montañas del actual condado de Huoshan. Esta es una de las menciones más antiguas del té amarillo en la literatura china — hace más de 2000 años. Debe aclararse que «huang ya» en esos tiempos podía designar simplemente brotes de té de color amarillento, y no té procesado por la tecnología menhuang.
+    * **Tang (唐, 618–907) — estatus de té imperial:** Li Zhao (李肇) en «Suplementos a la Historia del Estado» (《国史补》) incluyó «Shouzhou Huoshan Huang Ya» (寿州霍山黄芽) en la lista de catorce denominaciones de tés imperiales. Allí mismo se registra el famoso episodio diplomático: «Chang Lu-gong, siendo embajador en el Tíbet, preparaba té en la tienda. El Zanpu [gobernante tibetano] preguntó: "¿Qué es esto?" — "Té, — respondió Lu-gong, — purifica de las preocupaciones y calma la sed." — "Yo también tengo", — dijo el zanpu y ordenó mostrar: "Este es de Shouzhou, este es de Yinghu"». El té de Huoshan, por tanto, ya en los siglos VIII–IX había llegado al Tíbet. En la época Tang, Huang Ya se producía en forma de tortas prensadas (饼茶, bincha) y pequeños «panqueques» (小团, xiaotuan). «Shanfu jingshou lu» (《膳夫经手录》) señala: «De Shouzhou hay pequeños panqueques de Huoshan — posiblemente imitación de las pequeñas placas "long ya" [«brotes de dragón»]; su número es muy reducido».
+    * **Song (宋, 960–1279) — gran centro comercial:** Se estableció la «Oficina de Té de Huoshan» (霍山茶场), volumen anual de ventas — 266 154,5 jin (~133 toneladas). Huang Ya gradualmente pasó de la forma de tortas prensadas al té suelto (散茶), aunque el «kill-green» (杀青, shāqīng) aún se producía por vaporización (蒸青).
+    * **Ming (明, 1368–1644) — florecimiento y nacimiento de la tecnología moderna:** Huang Ya fue incluido en el registro de tributos imperiales. El «Compendio de la Prefectura de Lu'an» (《六安州志》) testimonia: cuota inicial — 200 sacos de té; después de la separación de Huoshan en condado independiente (1496), a Lu'an le correspondieron 25 sacos, y a Huoshan — 175 (¡87,5%!), lo que muestra: la masa principal del «té de Lu'an» en realidad era de Huoshan. El funcionario Cao Hu (曹琥) en «Nota sobre los brotes amarillos» (《注黄芽茶疏》) se quejaba: «La cuota anual de tributos — solo 20 jin… pero en el 10º año de Zhengde (1515) se confiscaron 1200 jin de té de brotes y 6000 jin de té fino… por un jin de té de brotes piden un liang de plata, y aun así no siempre se logra comprar». El magistrado del condado Wang Piweng (王毗翁) dirigió personalmente la preparación del té y dejó «Poemas sobre el tostado de brotes amarillos» (《黄芽焙茗诗》): «Brotes rocosos, finos, apenas verdecidos — y ya apresúrate, antes de que la hoja envejezca. En cada casa — fuego bajo la ventana de montaña, y cada primavera todo el condado se perfuma» (露蕊纤纤才吐碧，即防叶老采须忙，家家篝火山窗下，每到春来一县香). En la época Ming ocurrió la transición tecnológica decisiva: el «kill-green» fue cambiado de vaporización a fritura (改蒸为炒), y apareció la etapa «menhuang» (闷黄, cocción) — nació el té amarillo en el sentido moderno. El autor Ming Xu Cishu (许次纾) en «Notas sobre el Té» (《茶疏》) escribía: «Al norte del Gran Río, en Huoshan se produce la mayor cantidad de té… la gente de Shanxi y Shaanxi lo bebe. En el sur dicen que elimina la grasa y disuelve el estancamiento, y también lo valoran mucho».
+    * **Qing (清, 1644–1911) — té «interno» imperial:** Huoshan Huang Ya fue designado como «té interno» (内用) — para consumo personal de la familia imperial, lo que lo colocaba un escalón por encima del tributo imperial ordinario. El «Compendio del Condado de Huoshan» (《霍山县志》) de la época Guangxu: «En las aldeas del sur, en los picos Wumijian y Gualongjian, producen el mejor té de todo el condado; su elaboración es refinada, y el precio duplica al té de otras aldeas». En otro fragmento: «El té es el principal de los productos montañosos del condado. El mejor de ellos es Yin Zhen [agujas de plata], luego Queshe [lenguas de gorrión], después Meihua Pian [láminas de ciruela]…»
+    * **1915 — Exposición de Panamá:** El té de Huoshan de la marca «Bao'er Zhongxiu» (抱儿钟秀, «Niño en brazos, campana y belleza») obtuvo la Medalla de Oro de la Exposición Universal de Panamá — el único té amarillo entre los galardonados.
+    * **1940s–1960s — pérdida:** Las guerras y convulsiones económicas llevaron al cese virtual de la producción de Huang Ya. La tecnología no fue registrada por escrito y se conservaba solo en la memoria de algunos ancianos productores de té. Según algunos datos, hasta la restauración el té se producía para comerciantes de Shandong bajo el nombre de «micha» (米茶, «té de arroz»).
+    * **1971–1972 — renacimiento:** La Oficina de Té del condado de Huoshan organizó una expedición a Wumijian. Tres especialistas técnicos junto con tres productores de té de 70–80 años recrearon la tecnología. Del 27 al 30 de abril de 1972 se fabricaron 14 jin (7 kg) de lote experimental. 6 jin fueron sellados en latas blancas de hojalata y enviados directamente al Consejo de Estado de la RPC para evaluación — hecho excepcional: té «presentado al gobierno» en el primer año de renacimiento. Desde el año siguiente comenzó la producción regular en tres puntos: Jinjishán (principal), Wumijian y Jinzhuping. Las muestras de 1972 fueron utilizadas para recibir huéspedes extranjeros a nivel estatal. Los volúmenes crecieron gradualmente: 1973 — 178 kg, 1980 — 644 kg, 1985 — 3700 kg.
+    * **2006 — indicación geográfica.** 2019 — La Asociación China de Comercio de Té otorgó a Huoshan el título de «Cuna del té amarillo chino» (中国黄茶之乡). Para 2022 el área de plantaciones de té de Huoshan alcanzó 206 400 mu (~13 760 ha).
+
+* **Nombre:**
+    * «Huoshan» (霍山) — montaña Huo, también condado de Huoshan. El carácter «huo» (霍) significa «impetuoso», «súbito» — posiblemente una referencia a la inclinación de las laderas montañosas.
+    * «Huang Ya» (黄芽) — «brotes amarillos». En las fuentes más antiguas esto podía significar simplemente «brotes amarillentos», pero desde la época Ming comenzó a designar té procesado por la tecnología menhuang.
+    * Nombre histórico de la región: Shouzhou (寿州) — bajo este nombre el té de Huoshan figura en las «Memorias Históricas» y «Suplementos a la Historia del Estado».
+
+* **Significado cultural:** Huoshan Huang Ya es uno de los pocos tés cuya historia está confirmada por una cadena continua de fuentes desde el Han Occidental hasta nuestros días: Sima Qian → Lu Yu → Li Zhao → Xu Cishu → Cao Hu → Wang Piweng → compendios del condado → Exposición de Panamá → renacimiento estatal de 1972. La leyenda del Gallo Dorado (金鸡) de la montaña Jinjishán — sobre un árbol de té mágico con aroma indescriptible, guardado por una pareja de gallos dorados, que eran visibles solo una vez al año al primer canto al amanecer antes de Guyu — es una de las más poéticas en la mitología del té de Anhui. Huoshan forma parte del «Corredor del Té» (茶叶走廊) de la cordillera Dabie, que se extiende desde el sur de Henan a través del oeste de Anhui — una de las rutas históricas del comercio de té.
+
+**3. Descripción Botánica y Materia Prima:**
+
+* **Variedad:** Cultivar principal — Huoshan Jinji Zhong (霍山金鸡种, «Raza del Gallo Dorado de Huoshan») — población grupal local, reconocida a nivel provincial. Características: polifenoles del té 14,9%, aminoácidos 4,97% — combinación inusual de «doble alto» (双高, shuāng gāo), proporcionando tanto astringencia como dulzura simultáneamente. Alta «resistencia a la ternura» (持嫩性强), buena adaptación a condiciones montañosas. Adicionalmente se usan: Zhuye Qi (槠叶齐) y Huangshan Daye Zhong (黄山大叶种) — para intensificar la aromática y variabilidad.
+* **Recolección:** Período Guyu (谷雨, ~20 abril) ± 2–3 días para el macizo principal. Plantaciones núcleo de «tres dorados y uno negro» — más tarde, cerca del final de abril debido a mayor altitud. Período total de recolección — alrededor de un mes, 3–4 lotes de té de primavera.
+* **Estándar de recolección:** Especial primero (特一级) — brote con una hoja en inicio de apertura (一芽一叶初展), vello dorado, forma de «lengua de gorrión». Especial segundo (特二级) — brote con una o dos hojas (一芽一叶至一芽二叶初展). Primer grado — brote con dos hojas (一芽二叶). Segundo grado — «hojas pareadas» maduras (对夹叶).
+* **Requisitos para la materia prima:** Rige el principio de «tres uniformidades y cuatro prohibiciones» (三个一致，四不采): uniformidad de forma, tamaño y color; no recoger brotes abiertos (开口芽), dañados por plagas (虫伤芽), helados (霜冻芽), púrpuras (紫色芽). Todo el equipo — de bambú; el contacto con hierro está categóricamente prohibido (全程忌铁器防腥, «todo el proceso sin instrumentos de hierro para evitar sabor metálico»).
+
+**4. Terroir y Características de Cultivo:**
+
+* **Región:** Huoshan está ubicado en el centro de la cordillera Dabie (大别山), en la confluencia de las provincias Anhui, Hubei y Henan. Pico principal — Baimajian (白马尖, 1774 m). El condado está surcado por cordilleras en dirección suroeste — noreste; fenómeno geológico característico — «Arco de Huoshan» (霍山弧, Huòshān Hú) — curvatura abrupta del pliegue montañoso, creando múltiples microvalles con regímenes climáticos propios. Bingjiyan (冰碛岩, tillita glacial) — roca montañosa antigua de ~600 millones de años de edad, que aflora en la zona núcleo — proporciona composición mineral única de los suelos.
+* **Altitud de crecimiento:** ≥600 m sobre el nivel del mar para materia prima estándar. Zona núcleo Jinjidan — ~720 m. Área de jardines de té en Jinjidan — solo alrededor de 3 mu (~0,2 ha), volumen anual — menos de 50 kg, lo que explica la excepcional rareza y alto costo del té de este microdistrito.
+* **Suelos:** Suelos montañosos amarillo-pardos (黄棕壤), formados sobre la base de tillita glacial (冰碛岩). pH 5,0–6,5. Contenido de materia orgánica — ~2,5%. Enriquecidos en selenio (Se) — característica particular de los suelos de Huoshan. Los llamados «usha tu» (乌沙土, «suelo arenoso oscuro») — fracciones arenosas en mezcla con suelo amarillo. Estructura — suelta, con excelente drenaje.
+* **Clima:** Transicional entre subtropical y templado. Temperatura media anual ~15,1°C. Precipitación anual — 1100–1600 mm. Humedad relativa ≥80%. Número de días nublados y con niebla — hasta 181 al año. Diferencia entre temperaturas diurnas y nocturnas — 8–10°C — factor crucial para la acumulación de sustancias aromáticas y aminoácidos. Cobertura forestal — 75,1%. Los embalses Foziling (佛子岭) y Mozhitan (磨子潭) en las cabeceras del río Dongpihe suavizan adicionalmente el microclima.
+* **Características:** El Arco de Huoshan crea múltiples microclimas, explicando la variabilidad significativa del sabor: té de Jinjishán (金鸡山) — más denso, oleoso; de Wumijian (乌米尖) — más mineral, austero; de Mozhitan (磨子潭) — más tierno, floral. Huoshan está ubicado en la frontera norte de la zona productora de té del Este de China (我国东部茶叶产区的北缘), lo que acentúa aún más el carácter «fronterizo» del té — crecimiento lento, despertar tardío, máxima acumulación de sustancias gustativas.
+
+**5. Tecnología de Producción:**
+
+La tecnología de Huoshan Huang Ya se diferencia de otros tés amarillos por el método de amarilleamiento: aquí se usa no el cocimiento envuelto (como en Mengding Huang Ya) ni el wozui en montón (como en Haima Gong Cha), sino «tan-fang huangbian» (摊放黄变, «extendido para amarillear») — la hoja simplemente se extiende en capa fina y se le permite amarillear lentamente a temperatura ambiente. Este es el método más «contemplativo» de menhuang. El ciclo completo incluye:
+
+* **Extendido (摊放 — tān fàng):** Las hojas frescas se extienden en cedazos de bambú (竹制簸箕). Tiempo — 1–2 horas. Evaporación parcial de humedad, inicio de formación aromática.
+* **«Kill-green» (杀青 — shā qīng):** Fritura de dos etapas:
+    * **Shenguo (生锅, «caldero crudo»):** Temperatura ~150°C. Procesamiento rápido a alta temperatura para inactivar enzimas.
+    * **Shuguo (熟锅, «caldero cocido»):** Temperatura ~130°C. Formado — dar a la hoja la forma característica de «lengua de gorrión» (雀舌形, quèshé xíng): cordones rectos, ligeramente desplegados. Los maestros tradicionales usan fuego de leña con carbón de roble (青杠木炭) — se considera que tal fuego da aroma más puro sin sabor ahumado.
+* **Secado inicial / Chuhong (初烘 — chū hōng):** Temperatura ~100°C. Secado hasta ~70% de sequedad.
+* **Extendido para amarillear / Tan-fang huangbian (摊放黄变 — tān fàng huáng biàn):** Etapa clave y única. La hoja presecada se extiende en capa fina y se deja a temperatura ambiente por 1–2 días. Esto es «cocimiento seco» (干闷, gān mèn): la hoja amarillea lentamente, sin calentamiento forzado y humedad elevada. Ocurre destrucción gradual de clorofila, oxidación no fermentativa de catequinas esterificadas, formación de pigmentos amarillos y suavidad característica. Algunos maestros llevan esta etapa hasta 10 y más días para máxima profundidad del «carácter amarillo». Otros alternan cocimiento «seco» y «húmedo» (湿闷) — cuando la hoja se coloca en montón inmediatamente después del shaqing, mientras aún está húmeda.
+* **Secado repetido / Zuhuo (足火 — zú huǒ):** Temperatura ~90°C. Llevado hasta ~90% de sequedad.
+* **Segundo extendido (摊放):** Otro ciclo de nivelación de humedad y completado del amarilleamiento.
+* **Clasificación (拣剔 — jiǎn tī):** Eliminación de hojas no estándar, pecíolos, inclusiones extrañas.
+* **Secado final / Fuhuo (复火 — fù huǒ):** Temperatura 100–120°C. Llevado hasta sequedad completa. Después de esto el té puede colocarse en cestas de bambú por el método «踩筒» (cǎi tǒng) — apisonado para almacenamiento compacto.
+
+**6. Características Organolépticas:**
+
+* **Apariencia de la hoja seca:** Cordones rectos, ligeramente desplegados, que recuerdan lengua de gorrión (形似雀舌, xíng sì quèshé). Uniformes en tamaño, reunidos en «ramilletitos» ordenados (匀齐成朵). Color — verde tierno con matiz amarillento y brillo oleoso (嫩绿披毫, nèn lǜ pī háo). Abundante vello blanco o dorado.
+* **Aroma de la hoja seca:** Puro, persistente, con nota pronunciada de castaña tostada (板栗香, bǎnlì xiāng) — principal firma aromática de Huoshan Huang Ya. También presente ligero matiz de maíz hervido (毫香, máo xiāng — aroma del vello), matices florales y melosos.
+* **Aroma de la infusión:** «Qingxiang chijiu» (清香持久) — puro, persistente, refinado. Nota de castaña — base; en vertidos posteriores se revelan matices florales y frutales. El aroma de Huoshan Huang Ya es más «norteño», más contenido y mineral que el de los tés amarillos del sur.
+* **Sabor:** «Xianchun nonhou» (鲜醇浓厚) — fresco, suave, denso, oleoso. Dulzón, refrescante. Dualidad característica: astringencia inicial (más pronunciada que en Mengding Huang Ya o Pingyang Huang Tang) se transforma en retorno dulce profundo y prolongado (回甘). Amargura expresada mínimamente. Ligera «frescura pura» (清凉感), atribuida al alto contenido de selenio en los suelos. Sabor — el más «mineral» y «estructural» entre los cuatro grandes tés amarillos. Contenido de aminoácidos ≥5,2%, polifenoles ≥28%.
+* **Color de la infusión:** «Huanglü qingche» (黄绿清澈) — amarillo-verde, transparente, con brillo claro y matiz dorado. En grados superiores — puro, luminoso.
+* **Fondo del té (hoja infusionada):** Brotes y hojas tiernamente amarillos, elásticos, reunidos en «ramilletitos» ordenados (嫩黄明亮，匀齐成朵). Enteros, tiernos, plenos.
+
+**7. Composición Química:**
+
+* **Polifenoles:** ≥28% de la materia seca — indicador alto entre los tés amarillos. El amarilleamiento prolongado «seco» transforma parte de las catequinas esterificadas en formas más suaves, pero conserva porción significativa de compuestos nativos, lo que explica la astringencia más pronunciada comparada con otros amarillos.
+* **Aminoácidos:** ≥5,2% de la materia seca. L-teanina — componente dominante. Proporciona dulzura pronunciada y «umami» en el regusto. El cultivar Jinji Zhong con aminoácidos 4,97% — ya a nivel de materia prima crea base para la suavidad.
+* **Alcaloides:** Cafeína — contenido estándar. Sinergia con L-teanina proporciona tonificación suave.
+* **Vitaminas:** Vitamina C, vitaminas del grupo B, vitamina E.
+* **Minerales:** Potasio, magnesio, zinc. Flúor — contenido hasta 246 mg/kg (indicador alto, significativo para salud de dientes y huesos). Selenio (Se) — característica particular de los suelos de Huoshan sobre tillita glacial.
+* **Polisacáridos del té (茶多糖, cháduōtáng):** Contenido significativo, proporcionando actividad inmunomoduladora.
+
+**8. Propiedades Beneficiosas:**
+
+* **Apoyo al metabolismo lipídico:** Alto contenido de polifenoles (≥28%) proporciona asistencia efectiva en la descomposición de grasas. La efectividad se estima en ~1,8 veces mayor que el té verde de materia prima análoga.
+* **Salud de dientes y huesos:** Alto contenido de flúor (246 mg/kg) contribuye al fortalecimiento del esmalte dental.
+* **Inmunomodulación:** Los polisacáridos del té activan macrófagos — células del sistema inmune.
+* **Protección antioxidante:** Sistema doble — polifenoles + selenio — proporciona potente actividad antioxidante.
+* **Tonificación suave:** L-teanina + cafeína — combinación clásica para vigilia tranquila. Contribuye a la relajación y alivio del estrés sin somnolencia.
+* **Impacto suave en el estómago:** A pesar del mayor contenido de polifenoles, el amarilleamiento prolongado (1–2 días y más) suaviza la agresividad de las catequinas. Sin embargo, no se recomienda beber en ayunas debido al contenido residual de taninos.
+* **Apoyo a la visión:** En la medicina tradicional china el té amarillo se considera beneficioso para los ojos.
+
+**9. Preparación:**
+
+* **Temperatura del agua:** 80–90°C. Se recomienda hervir el agua y dejarla enfriar ~2 minutos. Agua demasiado caliente puede «quemar» los brotes tiernos y provocar amargura.
+* **Cantidad de té:** 3 g por 150 ml de agua.
+* **Utensilios:** Vaso de vidrio — para observar el color de la infusión y estética de los brotes que se despliegan. Gaiwan de porcelana blanca — para máximo desarrollo del aroma.
+* **Proceso:**
+    1. Calentar los utensilios con agua hirviendo, vaciar.
+    2. Agregar 3 g de té.
+    3. Verter agua de 80–90°C hasta un tercio del volumen. Humedecer todas las hojas, esperar 30 segundos. La primera infusión no se desecha — contiene el máximo de aroma del vello (毫香) y notas de castaña; desecharla significa perder la principal «primera frescura».
+    4. Completar con agua hasta 7/10 del volumen. Infusionar 1–2 minutos.
+    5. Observar el «brotar de retoños primaverales» (春笋出土): los brotes descienden verticalmente al fondo, recordando brotes de bambú que emergen de la tierra. La infusión debe ser amarillo-verde, transparente.
+    6. Infusiones repetidas: hasta 3 vertidos, aumentando el tiempo en 15–20 segundos.
+
+**10. Almacenamiento:**
+
+Óptimamente — empaque hermético en bolsa laminada o lata de hojalata / porcelana. Refrigerador (0…+5°C) o congelador (−10…−18°C). A temperatura ambiente — en lugar oscuro y seco, lejos de olores; consumir dentro de 6 meses. Enemigos del té: luz, calor, humedad, olores extraños, oxígeno. Almacenamiento tradicional — en recipientes de bambú; el contacto con utensilios metálicos (especialmente de hierro) es indeseable.
+
+**11. Precio y Falsificaciones:**
+
+Huoshan Huang Ya es un té raro y caro con amplio rango de precios. Especial primer grado de la zona núcleo Jinjidan (~720 m, área ~3 mu, volumen anual menos de 50 kg) — desde 2000 yuanes por jin (500 g) y significativamente más. Especial primero de Dahuaping — 800–1500 yuanes. Primer y segundo grados — categorías accesibles para consumo diario.
+
+* **Cómo evitar falsificaciones:**
+    * Problema principal: parte significativa del «Huoshan Huang Ya» en el mercado es — de hecho té verde sin etapa completa de menhuang (闷黄). El verdadero Huang Ya amarillo tiene matiz distintamente amarillento (no verde brillante) de hoja e infusión, así como aroma de castaña con sobretono de maíz. La versión «verde» — más fresca, cortante, sin «suavidad amarilla».
+    * Forma — «lengua de gorrión» (雀舌): cordones rectos, ligeramente desplegados con abundante vello, no enrollados ni planos.
+    * Infusión — amarillo-verde (黄绿), transparente, con matiz dorado, no verde brillante.
+    * Adquiera de proveedores confiables con marcado «Indicación Geográfica Nacional» e indicación del pueblo productor específico.
+    * Precio demasiado bajo — signo seguro de falsificación o ausencia de etapa completa de amarilleamiento.
+
+**12. Datos Interesantes:**
+
+* Huoshan Huang Ya es el único té amarillo mencionado (bajo el nombre antiguo «寿春黄芽») en las «Memorias Históricas» de Sima Qian. Este hecho lo convierte en uno de los tés con el linaje documentado más largo — más de 2000 años.
+* Huoshan Huang Ya es apodado «té de las tres frescuras» (三鲜茶) por la triple frescura: del aroma, sabor y color de la infusión. Esto es simultáneamente definición de marketing y descripción precisa de la experiencia sensorial.
+* En 1972, durante la restauración de la tecnología, seis jin de té experimental fueron enviados directamente al Consejo de Estado de la RPC — uno de los casos más raros en la historia, cuando el té fue «presentado al gobierno» en el primer año de renacimiento.
+* Leyenda del Gallo Dorado: en la montaña Jinjishán crecía un árbol de té mágico, guardado por una pareja de gallos dorados. El árbol era invisible para la mayoría de las personas, pero una vez al año, al primer canto del gallo al amanecer antes de Guyu, se volvía visible, y solo un afortunado podía recoger sus hojas. Una vez un joven, que había venido a reenterrar los restos de un ancestro, persiguió a los gallos dorados — estos cayeron en el arroyo, y desde entonces el arroyo se llama «Luojihe» (落鸡河, «Río de los gallos caídos»), y el claro — «Jinjidan» (金鸡凼).
+* Huoshan Huang Ya es el único té amarillo que obtuvo la Medalla de Oro de la Exposición Universal de Panamá (1915). La marca galardonada «Bao'er Zhongxiu» (抱儿钟秀) existe hasta hoy.
+* En la época Ming la cuota de tributos imperiales de Huoshan constituía 175 sacos de 200 totales — es decir, 87,5% de todo el «té de Lu'an» en realidad era de Huoshan. Esta es una paradoja histórica: el té era famoso bajo nombre ajeno (六安茶, «Té de Lu'an»), y solo después de la separación de Huoshan en condado independiente la justicia fue parcialmente restaurada.
+* El aroma «de nuez» (板栗香, banlixiang) es la tarjeta de visita de Huoshan Huang Ya, distinguiéndolo entre todos los tés amarillos. Se forma por la combinación de dos factores: características del cultivar Jinji Zhong y amarilleamiento «seco» prolongado.
+* Todo el proceso de producción se lleva sin contacto con hierro (全程忌铁器) — se usan solo bambú, madera y cerámica. Este es uno de los pocos tés donde la prohibición del metal se mantiene como regla vigente, y no detalle de museo.
+
+**13. Comparación con otros Tés Amarillos:**
+
+* **Mengding Huang Ya (蒙顶黄芽):** Ambos — «huang ya cha» de brotes, ambos — tés imperiales históricos con linajes antiguos. Mengding — más dulce, meloso, de forma de espada, con tecnología «tres frituras — tres cocciones en papel». Huoshan — más mineral, estructural, con «lengua de gorrión» y «extendido seco». Mengding — romántico con leyenda del taoísta Wu Lizhen; Huoshan — intelectual con cita de Sima Qian.
+* **Pingyang Huang Tang (平阳黄汤):** Pingyang — marino, de maíz, amarillo albaricoque, enrollado. Huoshan — montañoso, de castaña, amarillo-verde, recto. Pingyang — «nueve secados, nueve cocciones» en 72 horas; Huoshan — «extendido seco» en 1–2 días (a veces hasta 10). Pingyang — suave y envolvente; Huoshan — con «columna vertebral» y estructura mineral.
+* **Junshan Yin Zhen (君山银针):** Ambos — «huang ya cha», ambos — en el «cuarteto de grandes». Junshan — oleoso, sedoso, de aguja; Huoshan — más seco, astringente, de «lengua». Junshan — lacustre, con clima húmedo de Dongtinghu; Huoshan — montañoso, con cambios bruscos de temperatura.
+* **Huoshan Huangdacha (霍山黄大茶):** «Hermano mayor» de Huang Ya del mismo condado. Huangdacha — té amarillo de hoja grande (一芽四五叶), con carácter tostado, «de pan» y nota de costra de arroz quemada (锅巴香). Dicho de los productores locales: «Hoja grande — puede envolver sal, tallo largo — puede sostener bote» (叶大能包盐，梗长能撑船). Huang Ya — tierno, de castaña, de brotes; Huangdacha — tosco, tostado, popular.
+
+**En conclusión:**
+
+Huoshan Huang Ya es un té con el carácter de la cordillera montañosa donde crece. Dabie separa el Norte y Sur de China, y en la taza de Huoshan Huang Ya se escuchan ambos lados: la rectitud mineral del norte y la dulzura tierna del sur, la astringencia del primer sorbo y el retorno meloso del regusto, la austeridad del aroma de castaña y la suavidad del susurro de maíz. Su tecnología es la más «pausada» entre los tés amarillos: la hoja no se envuelve, no se prensa, no se cuece en montón — simplemente se extiende y se espera, día tras día, hasta que amarillee por sí misma, en su propio ritmo. «Té de las tres frescuras» — frescura del aroma, sabor, color — y simultáneamente té con la memoria más larga: desde Sima Qian hasta la Exposición de Panamá, desde tiendas tibetanas hasta el Consejo de Estado de la RPC. Quizás precisamente por eso en las «Memorias Históricas» se dijo: «En las montañas de Shouchun hay brotes amarillos — con uso prolongado se obtendrá la inmortalidad». La inmortalidad es cuestión discutible. Pero la paciencia que enseña Huoshan Huang Ya es cosa muy real.
