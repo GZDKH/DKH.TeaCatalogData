@@ -21,20 +21,20 @@
       "Bash(git fetch *)",
       "Bash(git remote *)",
       "Bash(git add *)",
-      "Bash(git commit *)",
+      "Bash(*git commit *)",
       "Bash(git tag *)",
-      "Bash(git stash *)",
+      "Bash(*git stash *)",
       "Bash(git show *)",
       "Bash(git rev-parse *)",
       "Bash(git describe *)",
       "Bash(git -C *)",
-      "Bash(git checkout *)",
-      "Bash(git push *)",
-      "Bash(git pull *)",
-      "Bash(git merge *)",
+      "Bash(*git checkout *)",
+      "Bash(*git push *)",
+      "Bash(*git pull *)",
+      "Bash(*git merge *)",
       "Bash(git mv *)",
-      "Bash(git cherry-pick *)",
-      "Bash(git clean *)",
+      "Bash(*git cherry-pick *)",
+      "Bash(*git clean *)",
       "Bash(git config *)",
       "Bash(npm *)",
       "Bash(pnpm *)",
@@ -75,20 +75,6 @@
       "Bash(CURRENT_BRANCH=*)",
       "WebSearch",
       "WebFetch",
-      "mcp__filesystem__list_directory",
-      "mcp__filesystem__list_directory_with_sizes",
-      "mcp__filesystem__read_file",
-      "mcp__filesystem__read_text_file",
-      "mcp__filesystem__read_media_file",
-      "mcp__filesystem__read_multiple_files",
-      "mcp__filesystem__directory_tree",
-      "mcp__filesystem__list_allowed_directories",
-      "mcp__filesystem__search_files",
-      "mcp__filesystem__create_directory",
-      "mcp__filesystem__edit_file",
-      "mcp__filesystem__write_file",
-      "mcp__filesystem__move_file",
-      "mcp__filesystem__get_file_info",
       "mcp__github__get_issue",
       "mcp__github__list_issues",
       "mcp__github__create_issue",
@@ -122,12 +108,12 @@
       "mcp__postgres__query"
     ],
     "ask": [
-      "Bash(git reset --hard *)",
-      "Bash(git push --force *)",
-      "Bash(git push * --force)",
-      "Bash(rm -rf *)",
-      "Bash(docker rm *)",
-      "Bash(docker rmi *)"
+      "Bash(*git reset --hard *)",
+      "Bash(*git push --force *)",
+      "Bash(*git push * --force)",
+      "Bash(*rm -rf *)",
+      "Bash(*docker rm *)",
+      "Bash(*docker rmi *)"
     ],
     "deny": [
       "Read(**/.env.local)",
@@ -146,19 +132,255 @@
     "commit-commands@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
     "ralph-loop@claude-plugins-official": true,
-    "claude-md-management@claude-plugins-official": true
+    "claude-md-management@claude-plugins-official": true,
+    "csharp-lsp@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "microsoft-docs@claude-plugins-official": true,
+    "beads@beads-marketplace": true,
+    "template-bridge@template-bridge-marketplace": true
   },
   "hooks": {
-    "PostToolUse": [
+    "PreToolUse": [
       {
         "matcher": "Bash",
         "hooks": [
           {
             "type": "command",
-            "command": "if [ $exit_code -ne 0 ]; then echo '⚠️ Command failed with exit code: '$exit_code; fi"
+            "if": "Bash(*git commit*)",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" block-commit-wrong-branch.sh",
+            "statusMessage": "Branch safety check..."
+          },
+          {
+            "type": "command",
+            "if": "Bash(*git *)",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" block-destructive-git.sh",
+            "statusMessage": "Destructive command check..."
+          },
+          {
+            "type": "command",
+            "if": "Bash(*git push*)",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" block-push-main.sh",
+            "statusMessage": "Push safety check..."
+          },
+          {
+            "type": "command",
+            "if": "Bash(*git commit*)",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" check-issue-in-branch.sh",
+            "statusMessage": "Checking issue in branch..."
+          },
+          {
+            "type": "command",
+            "if": "Bash(*git commit*)",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" validate-commit-message.sh",
+            "statusMessage": "Commit message validation..."
+          },
+          {
+            "type": "command",
+            "if": "Bash(*git commit*)",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" auto-phase-to-github.sh",
+            "statusMessage": "Checking for phase auto-issue..."
+          },
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" block-destructive.sh",
+            "statusMessage": "Deep destructive check..."
+          }
+        ]
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" block-edit-on-main.sh",
+            "statusMessage": "Branch check for edit..."
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" block-edit-on-main.sh",
+            "statusMessage": "Branch check for write..."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" auto-plan-to-beads.sh",
+            "statusMessage": "Auto-registering plan in beads..."
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" auto-plan-to-beads.sh",
+            "statusMessage": "Auto-registering plan in beads..."
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(*git commit*)",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" reminder-hook.sh commit",
+            "statusMessage": "Commit reminder..."
+          },
+          {
+            "type": "command",
+            "if": "Bash(*git pull*)",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" reminder-hook.sh pull-main",
+            "statusMessage": "Pull-main reminder..."
+          },
+          {
+            "type": "command",
+            "if": "Bash(*git push*)",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" reminder-hook.sh mr-push",
+            "statusMessage": "MR-push reminder..."
+          },
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" suggest-skills.sh",
+            "statusMessage": "Checking for relevant skills..."
+          },
+          {
+            "type": "command",
+            "if": "Bash(*git push*)",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" remind-board-after-push.sh",
+            "statusMessage": "Board status reminder..."
+          },
+          {
+            "type": "command",
+            "if": "Bash(*git push*)",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" monitor-pipeline-after-push.sh",
+            "statusMessage": "Pipeline monitoring..."
+          },
+          {
+            "type": "command",
+            "if": "Bash(*git commit*)",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" check-plan-on-commit.sh",
+            "statusMessage": "Plan persistence check..."
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" session-cleanup-branches.sh",
+            "statusMessage": "Cleaning up merged branches..."
+          },
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" auto-close-beads-on-merge.sh",
+            "statusMessage": "Auto-closing beads whose issue is merged..."
+          },
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" session-workflow-reminder.sh"
+          },
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" session-check-user-settings-drift.sh",
+            "statusMessage": "Checking ~/.claude/settings.json drift..."
+          },
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" session-check-subrepo-settings-drift.sh",
+            "statusMessage": "Checking subrepo .claude/settings.json drift..."
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" pre-compact.sh",
+            "statusMessage": "Saving state before compaction..."
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" post-compact.sh",
+            "statusMessage": "Restoring plan context..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" block-stop-on-pipeline.sh",
+            "statusMessage": "Verifying CI/CD pipelines..."
+          },
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" stop-check-state.sh",
+            "statusMessage": "Checking for unfinished work..."
+          },
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" session-push-beads.sh",
+            "statusMessage": "Pushing beads state to remote..."
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" notify-macos.sh"
           }
         ]
       }
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" statusline.sh"
+  },
+  "extraKnownMarketplaces": {
+    "beads-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "steveyegge/beads"
+      }
+    },
+    "template-bridge-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "maslennikov-ig/template-bridge"
+      }
+    }
   }
 }
