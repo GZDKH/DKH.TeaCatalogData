@@ -1,187 +1,130 @@
 # DKH.TeaCatalogData
 
-Tea product documentation (MD) and import data (JSON) for ProductCatalogService.
+Data tooling for loading tea catalog content into ProductCatalogService.
+
+The old checked-in markdown/product JSON corpus has been removed. Current imports are generated from TheTea API snapshots and validated against the current production ProductCatalog catalog/category state before any write.
 
 ## Structure
 
-```
+```text
 DKH.TeaCatalogData/
-├── docs/data/products/            # MD files with tea documentation (~600 files, 35 regions)
-│   ├── CHINA-GREEN TEA/
-│   ├── CHINA-WHITE TEA/
-│   ├── CHINA-OOLONG TEA/
-│   ├── JAPAN/
-│   ├── INDIA/
-│   └── ... (35 regions)
-├── import/                        # JSON files for import
-│   ├── 01-reference/              # Catalogs, tags, brands, packages
-│   ├── 02-specifications/         # Groups → attributes → options
-│   ├── 03-categories/             # Category hierarchy
-│   └── 04-products/               # Products (one file = one product)
-├── scripts/                       # PowerShell scripts
-├── .claude/rules/                 # Agent rules (MD→JSON conversion)
-│   └── md-to-import-json.md       # Complete conversion guide
-└── CLAUDE.md                      # Agent context
+├── scripts/
+│   ├── thetea/                 # TheTea snapshot, transform, validation, and import workflow
+│   ├── lib/config.js           # AdminGateway/Keycloak token helper
+│   └── env.prod.template       # Production environment template
+├── sources/                    # Ignored generated source snapshots
+│   ├── thetea/snapshots/
+│   └── prod/catalog-reference/
+├── import/thetea/              # Ignored generated ProductCatalog JSON
+├── reports/thetea/             # Ignored generated validation/mapping reports
+└── AGENTS.md / CLAUDE.md       # Agent context
 ```
 
 ## Locales
 
-BCP 47 locale codes (aligned with ReferenceService):
+Production snapshots load every locale advertised by TheTea `/api/v2/meta.locales` using `--langs=all`. At the time of writing the public docs show 72 locales.
 
-- **ru-RU** — Russian (MD source language)
-- **en-US** — English
-- **zh-CN** — Simplified Chinese
+Product translations use BCP 47 locale codes from TheTea, with DKH aliases for existing storefront defaults:
 
-## Import Order
+- TheTea `en` -> `en-US`
+- TheTea `ru` -> `ru-RU`
+- TheTea `zh` / `zh-CN` -> `zh-CN`
+- Other TheTea locales keep their BCP 47 code, for example `zh-HK`, `nb`, `de`, `fr`.
 
-Import in this exact order (foreign key dependencies):
+## Workflow
 
-1. `01-reference/` — catalogs, tags, brands, packages
-2. `02-specifications/` — groups → attributes → options
-3. `03-categories/` — categories hierarchy
-4. `04-products/` — products (one file per product)
+Put secrets in `.env` using `scripts/env.prod.template`. The TheTea text API key is read from `THETEA_API_KEY` or `THE_TEA_API_KEY`.
 
-## Product JSON Format
+Fetch TheTea source snapshot:
 
-One file = one product = single-element array. Auto-creates brands, manufacturers, catalogs, categories, tags, packages, and specification groups/attributes/options if they don't exist.
-
-```json
-[
-  {
-    "code": "TEA-CN-XIHU-LONGJING",
-    "sku": "XLJ-ZJ-2024-50G",
-    "order": 1,
-    "published": true,
-
-    "brand": {
-      "code": "BRAND-XIHU",
-      "translations": [
-        { "lang": "en-US", "name": "Xihu Tea" },
-        { "lang": "ru-RU", "name": "Сиху Чай" },
-        { "lang": "zh-CN", "name": "西湖茶" }
-      ]
-    },
-
-    "manufacturer": {
-      "code": "MFR-SHIFENG",
-      "translations": [
-        { "lang": "en-US", "name": "Shifeng Peak Tea Factory" },
-        { "lang": "ru-RU", "name": "Чайная фабрика Шифэн" }
-      ]
-    },
-
-    "translations": [
-      {
-        "lang": "ru-RU",
-        "name": "Си Ху Лун Цзин (西湖龙井)",
-        "description": "...",
-        "seo": "si-khu-lun-tszin",
-        "metaDescription": "...",
-        "metaTitle": "..."
-      },
-      { "lang": "en-US", "name": "Xihu Longjing", "description": "...", "seo": "xihu-longjing" },
-      { "lang": "zh-CN", "name": "西湖龙井", "description": "...", "seo": "xihu-longjing" }
-    ],
-
-    "catalogs": [
-      {
-        "catalog": {
-          "code": "CATALOG-CHINESE-TEA", "currency": "CNY",
-          "translations": [
-            { "lang": "en-US", "name": "Chinese Tea" },
-            { "lang": "ru-RU", "name": "Китайский чай" },
-            { "lang": "zh-CN", "name": "中国茶" }
-          ]
-        },
-        "category": {
-          "code": "CAT-GREEN-TEA", "parent": "CAT-TEA",
-          "translations": [
-            { "lang": "en-US", "name": "Green Tea" },
-            { "lang": "ru-RU", "name": "Зелёный чай" },
-            { "lang": "zh-CN", "name": "绿茶" }
-          ]
-        },
-        "order": 1, "published": true
-      }
-    ],
-
-    "packages": [
-      { "package": "PKG-50G", "packageName": "50g", "packageUnit": "g", "quantity": 1, "default": true }
-    ],
-
-    "tags": [
-      { "code": "TAG-TOP10-CHINA", "name": "Top 10 Famous Teas of China", "lang": "en-US" },
-      { "code": "TAG-SINGLE-ORIGIN", "name": "Single Origin", "lang": "en-US" }
-    ],
-
-    "specifications": [
-      {
-        "lang": "en-US",
-        "group": "SPEC-GROUP-CLASSIFICATION", "groupName": "Classification and Origin",
-        "attribute": "SPEC-TEA-TYPE", "attributeName": "Tea Type",
-        "option": "SPEC-TYPE-GREEN", "optionName": "Green Tea",
-        "type": "Option", "showOnPage": true, "order": 1
-      },
-      {
-        "lang": "en-US",
-        "group": "SPEC-GROUP-PROCESSING", "groupName": "Production Technology",
-        "attribute": "SPEC-FERMENTATION", "attributeName": "Fermentation Level",
-        "option": "SPEC-FERM-0", "optionName": "0% (Unfermented)",
-        "type": "Option", "showOnPage": true, "order": 11
-      },
-      {
-        "lang": "en-US",
-        "group": "SPEC-GROUP-ORGANOLEPTIC", "groupName": "Organoleptic Characteristics",
-        "attribute": "SPEC-AROMA", "attributeName": "Aroma",
-        "option": "SPEC-AROMA-NUTTY", "optionName": "Nutty / Chestnut",
-        "type": "Option", "showOnPage": true, "order": 46
-      },
-      {
-        "lang": "en-US",
-        "group": "SPEC-GROUP-BREWING", "groupName": "Brewing",
-        "attribute": "SPEC-BREW-TEMP", "attributeName": "Water Temperature (°C)",
-        "type": "Number", "value": "80",
-        "showOnPage": true, "order": 66
-      }
-    ],
-
-    "origins": [
-      {
-        "country": "CN", "state": "Zhejiang", "city": "Hangzhou",
-        "altitude": { "min": 100, "max": 800, "unit": "m" },
-        "coordinates": { "lat": 30.229, "lng": 120.108 },
-        "translations": [
-          { "lang": "en-US", "place": "Xihu District, Hangzhou", "notes": "Red/yellow soils, subtropical climate" },
-          { "lang": "ru-RU", "place": "Район Сиху, Ханчжоу", "notes": "Красные и жёлтые почвы, субтропический климат" }
-        ]
-      }
-    ]
-  }
-]
+```bash
+node scripts/thetea/fetch-snapshot.js --snapshot=thetea-2026-06-01 --langs=all
 ```
 
-**Not populated from MD** (no source): `price`, `tierPrices`, `catalogPrices`, `media`, `related`, `crossSells`.
+The snapshot fetches per-field details by default using `GET /api/v2/tea/{slug}/{lang}/field/{code}` for every field discovered in every TeaCard. It also stores localized Markdown pages, localized map payloads, and similar-tea endpoint payloads. Use `--skip-fields`, `--skip-md`, or `--skip-similar` only for fast diagnostic runs that will not be imported as complete data.
 
-## MD File Format
+For a production-size run, use a conservative concurrency and resume on retry:
 
-Each MD file has 13–22 numbered sections in Russian. Every section maps to a specification group. See `.claude/rules/md-to-import-json.md` for complete mapping rules.
-
-## Commands
-
-```powershell
-# Import via gRPC (with field transformation)
-./import-grpc.ps1 -Profile "products" -FilePath ./import/04-products/<file>.json
-
-# Simple import (no transformation)
-./do-import.ps1 -Profile "products" -FilePath ./import/04-products/<file>.json
+```bash
+node scripts/thetea/fetch-snapshot.js --snapshot=thetea-2026-06-01 --langs=all --concurrency=4 --resume
 ```
+
+The source of truth is the raw API snapshot under `sources/thetea/snapshots/<id>/raw/`. Generated files under `import/thetea/<id>/` are disposable derived artifacts. Each snapshot also stores the API contract files from the same run under `raw/source/` (`docs.html`, `openapi.yaml`, `llms.txt`) for audit and replay.
+
+Fetch current production catalog/category reference through AdminGateway:
+
+```bash
+node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-01
+```
+
+Generate ProductCatalog import JSON and mapping report:
+
+```bash
+node scripts/thetea/generate-import.js \
+  --snapshot=thetea-2026-06-01 \
+  --out=import/thetea/thetea-2026-06-01 \
+  --packages=standard \
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json
+```
+
+Generation uses every locale recorded in the snapshot manifest unless `--langs=<list>` is passed for a partial run.
+
+Validate generated files locally:
+
+```bash
+node scripts/thetea/validate-generated.js \
+  --dir=import/thetea/thetea-2026-06-01 \
+  --report=thetea-2026-06-01-prod-map \
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json
+```
+
+Check that the generated data will make the POS catalog visible instead of
+empty:
+
+```bash
+node scripts/thetea/check-seed-readiness.js \
+  --dir=import/thetea/thetea-2026-06-01 \
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json \
+  --report=thetea-2026-06-01-pos-readiness \
+  --min-products=1 \
+  --min-categories=1
+```
+
+For production loads, raise `--min-products` and `--min-categories` to the
+expected snapshot size. The report must show `Ready: yes`, `Catalog found: yes`,
+`Catalog published: yes`, and non-zero published products/category assignments.
+
+Validate through AdminGateway without writing:
+
+```bash
+node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01
+```
+
+Apply only after approval:
+
+```bash
+node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01 --apply --yes
+```
+
+## Production Gates
+
+Before any production write:
+
+- `reports/thetea/<id>/summary.md` must show `Valid: yes`.
+- `Prod Catalog Mapping` must show `Catalog found: yes`.
+- `Missing categories` must be `0`.
+- The load must be approved for TheTea commercial/licensing terms.
+- Re-runs through SetupTool/DataExchange upsert deterministic codes and replace
+  dependent product collections. Legacy junk from the early bad import can be
+  cleaned with `scripts/thetea/cleanup-prod-junk.js`, but apply requires
+  `CatalogDelete`.
 
 ## Related
 
 | Repository | Description |
 |---|---|
-| [DKH.ProductCatalogService](https://github.com/GZDKH/DKH.ProductCatalogService) | Consumes import JSON via gRPC DataExchange API |
-| [DKH.Architecture](https://github.com/GZDKH/DKH.Architecture) | Architecture docs and agent rules |
+| [DKH.ProductCatalogService](https://github.com/GZDKH/DKH.ProductCatalogService) | Consumes ProductCatalog DataExchange JSON |
+| [DKH.Architecture](https://github.com/GZDKH/DKH.Architecture) | Architecture docs and shared rules |
 
 ## License
 

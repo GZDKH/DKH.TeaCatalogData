@@ -27,6 +27,13 @@ temp/
 output/
 _output/
 
+# TheTea ETL generated data
+sources/thetea/snapshots/
+sources/prod/catalog-reference/
+import/thetea/
+reports/thetea/
+artifacts/
+
 # Backup files
 *.bak
 backup/
@@ -44,6 +51,7 @@ backup/
 .env.local
 .env.*
 !.env.example
+scripts/env.prod
 
 # Ralph Loop task file (local only)
 PROMPT.md
