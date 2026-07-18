@@ -9,13 +9,14 @@ function buildCatalogBindingCatalog(options = {}) {
     for (const product of products) {
         for (const assignment of product.catalogs || []) {
             if (!sameCode(assignment.catalog, catalogCode) || !assignment.category) continue;
-            const list = productsByCategory.get(assignment.category) || [];
+            const categoryCode = referenceCode(assignment.category);
+            const list = productsByCategory.get(categoryCode) || [];
             list.push({
                 product: product.code,
                 order: Number.isFinite(product.order) ? product.order : list.length + 1,
                 published: assignment.published !== false,
             });
-            productsByCategory.set(assignment.category, list);
+            productsByCategory.set(categoryCode, list);
         }
     }
 
@@ -72,7 +73,11 @@ function compareCategories(left, right) {
 }
 
 function sameCode(left, right) {
-    return String(left || '').toUpperCase() === String(right || '').toUpperCase();
+    return referenceCode(left).toUpperCase() === referenceCode(right).toUpperCase();
+}
+
+function referenceCode(value) {
+    return String(value && typeof value === 'object' ? value.code : value || '');
 }
 
 module.exports = {

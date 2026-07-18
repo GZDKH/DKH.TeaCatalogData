@@ -14,7 +14,7 @@ DKH.TeaCatalogData/
 │   └── env.prod.template       # Production environment template
 ├── sources/                    # Ignored generated source snapshots
 │   ├── thetea/snapshots/
-│   └── prod/catalog-reference/
+│   └── prod/{catalog-reference,product-reference}/
 ├── import/thetea/              # Ignored generated ProductCatalog JSON
 ├── reports/thetea/             # Ignored generated validation/mapping reports
 └── AGENTS.md / CLAUDE.md       # Agent context
@@ -33,7 +33,7 @@ Product translations use BCP 47 locale codes from TheTea, with DKH aliases for e
 
 ## Workflow
 
-Put secrets in `.env` using `scripts/env.prod.template`. The TheTea text API key is read from `THETEA_API_KEY` or `THE_TEA_API_KEY`.
+Put secrets in `.env` using `scripts/env.prod.template`. The TheTea text API key is read from `THETEA_API_KEY` or `THE_TEA_API_KEY`. ProductCatalog export/validate/import also requires `PRODUCT_CATALOG_WORKSPACE_ID`.
 
 Fetch TheTea source snapshot:
 
@@ -57,6 +57,12 @@ Fetch current production catalog/category reference through AdminGateway:
 node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-01
 ```
 
+Fetch a marked complete, unpaged nested JSON product baseline through ProductCatalog DataExchange:
+
+```bash
+node scripts/thetea/fetch-prod-products.js --snapshot=prod-products-2026-06-01
+```
+
 Generate ProductCatalog import JSON and mapping report:
 
 ```bash
@@ -64,10 +70,11 @@ node scripts/thetea/generate-import.js \
   --snapshot=thetea-2026-06-01 \
   --out=import/thetea/thetea-2026-06-01 \
   --packages=standard \
-  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-06-01
 ```
 
-Generation uses every locale recorded in the snapshot manifest unless `--langs=<list>` is passed for a partial run.
+Generation uses every locale recorded in the snapshot manifest unless `--langs=<list>` is passed for a partial run. Without both production references, only an explicitly flagged diagnostic artifact can be generated, and that artifact cannot be applied.
 
 Validate generated files locally:
 
@@ -75,7 +82,8 @@ Validate generated files locally:
 node scripts/thetea/validate-generated.js \
   --dir=import/thetea/thetea-2026-06-01 \
   --report=thetea-2026-06-01-prod-map \
-  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-06-01
 ```
 
 Check that the generated data will make the POS catalog visible instead of
@@ -97,27 +105,36 @@ expected snapshot size. The report must show `Ready: yes`, `Catalog found: yes`,
 Validate through AdminGateway without writing:
 
 ```bash
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01
+node scripts/thetea/import-generated.js \
+  --snapshot=thetea-2026-06-01 \
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-06-01 \
+  --only=TEA-CN-XIHU-LONGJING --limit=1
 ```
 
-Apply only after approval:
+Apply only as an approved one-product canary first:
 
 ```bash
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01 --apply --yes
+node scripts/thetea/import-generated.js \
+  --snapshot=thetea-2026-06-01 \
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-06-01 \
+  --only=TEA-CN-XIHU-LONGJING --limit=1 --apply --yes
 ```
+
+Mass apply is a separate approval after read-back comparison. `import-generated.js` supports only categories/products; definitions require an ordered SetupTool workflow, while article/FAQ sidecars require their dedicated downstream importer.
 
 ## Production Gates
 
 Before any production write:
 
 - `reports/thetea/<id>/summary.md` must show `Valid: yes`.
+- `artifact-manifest.json` must contain non-empty source, catalog-reference, and full-product-baseline hashes.
 - `Prod Catalog Mapping` must show `Catalog found: yes`.
 - `Missing categories` must be `0`.
+- The ProductCatalog product export/import round trip must preserve catalog-scoped tier-price catalog codes; otherwise canary and mass apply are blocked.
 - The load must be approved for TheTea commercial/licensing terms.
-- Re-runs through SetupTool/DataExchange upsert deterministic codes and replace
-  dependent product collections. Legacy junk from the early bad import can be
-  cleaned with `scripts/thetea/cleanup-prod-junk.js`, but apply requires
-  `CatalogDelete`.
+- Product DataExchange replaces dependent collections. The ETL therefore overlays managed TheTea fields on the exact complete baseline and validates that unrelated specs, tags, assignments, packages, prices, overrides, and relations are preserved. Legacy junk from the early bad import can be cleaned with `scripts/thetea/cleanup-prod-junk.js`, but apply requires `CatalogDelete`.
 
 ## Related
 

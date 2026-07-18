@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const assert = require('assert');
 const { buildSpecificationDefinitions } = require('./lib/spec-definitions');
+const { buildSpecs } = require('./lib/spec-registry');
 
 const products = [
     {
@@ -36,6 +37,16 @@ const products = [
                 type: 'Date',
                 value: '2026-04-08',
                 order: 3,
+            },
+            {
+                lang: 'en-US',
+                group: 'SPEC-GROUP-MANUAL',
+                groupName: 'Manual',
+                attribute: 'SPEC-MANUAL',
+                attributeName: 'Manual',
+                type: 'CustomText',
+                value: 'Preserved but externally defined.',
+                order: 4,
             },
         ],
     },
@@ -113,5 +124,39 @@ assert.strictEqual(historyAttribute.comparable, false);
 assert(!definitions.groups.some(g => /MARKDOWN|EXT-\d+/.test(g.code)));
 assert(!definitions.attributes.some(a => /-X\d+(?:$|-)/.test(a.code) || /Field \d+/.test(a.translations[0].name)));
 assert(!definitions.options.some(o => /MARKDOWN|EXT-\d+|-X\d+(?:$|-)/.test(o.code)));
+
+const typedCard = {
+    slug: 'typed',
+    lang: 'en',
+    meta: {
+        tea_type: 'green',
+        oxidation_min: 0,
+        oxidation_max: 15,
+        brew_temp_min: 80,
+        brew_temp_max: null,
+    },
+};
+const typedSpecs = buildSpecs(typedCard, { productCode: 'TEA-CN-TYPED' });
+const localizedDefinitions = buildSpecificationDefinitions(
+    [{ code: 'TEA-CN-TYPED', specifications: typedSpecs }],
+    {
+        observations: [
+            ...typedSpecs,
+            ...buildSpecs({ ...typedCard, lang: 'ru' }, { productCode: 'TEA-CN-TYPED' }),
+            ...buildSpecs({ ...typedCard, lang: 'zh-CN' }, { productCode: 'TEA-CN-TYPED' }),
+        ],
+        locales: ['en-US', 'ru-RU', 'zh-CN'],
+    });
+const oxidation = localizedDefinitions.attributes
+    .find(attribute => attribute.code === 'SPEC-TT-ATOMIC-OXIDATION');
+assert.strictEqual(oxidation.type, 'Range');
+assert.strictEqual(oxidation.unit, '%');
+assert.deepStrictEqual(oxidation.translations.map(item => item.lang), ['en-US', 'ru-RU', 'zh-CN']);
+assert.strictEqual(oxidation.translations.find(item => item.lang === 'ru-RU').name, 'Окисление');
+const brewTemperature = localizedDefinitions.attributes
+    .find(attribute => attribute.code === 'SPEC-TT-BREWING-BREW-TEMP');
+assert.strictEqual(brewTemperature.type, 'Range');
+assert.strictEqual(brewTemperature.unit, '°C');
+assert.strictEqual(localizedDefinitions.localization.fallbackCount, 0);
 
 console.log('test-spec-definitions: OK');

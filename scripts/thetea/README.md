@@ -9,8 +9,8 @@ Authoritative import sources:
 - `GET /api/v2/teas` — slug list and coarse filters.
 - `GET /api/v2/tea/{slug}` — canonical TeaCard: metadata, names, sections, recipe, harvest, sensory, tags, enrichment, SEO.
 - `GET /api/v2/tea/{slug}/{lang}/field/{code}` — per-field detail. The snapshot fetches this for every field discovered under each TeaCard `sections` object and generation overlays `value_md` / `value_num` onto the card before building descriptions and specs.
-- `GET /api/v2/tea/{slug}.md` — full localized Markdown page; stored as raw source content, not imported as product specifications.
-- `GET /api/v2/tea/{slug}/similar` — localized similar-tea endpoint payload; stored as raw source content. Curated related products are a separate follow-up.
+- `GET /api/v2/tea/{slug}.md` — full localized Markdown page; stored as raw source content and routed to article sidecars, never flattened into specifications.
+- `GET /api/v2/tea/{slug}/similar` — localized similar-tea fallback for `related[]`; curated `enrichment.similar_teas` wins, then endpoint results are resolved, deduplicated, self-filtered, and capped at 12.
 - `GET /api/v2/meta`, `/api/v2/family`, `/api/v2/glossary`, `/api/v2/map` — reference and map payloads for reports, category/origin checks, and later curation.
 
 Discovery-only methods:
@@ -31,6 +31,8 @@ THE_TEA_API_KEY=<secret>
 The scripts print only whether a key is configured. They do not print the key.
 
 AdminGateway validation/import uses Keycloak. `KEYCLOAK_GRANT_TYPE=client_credentials` is preferred for automation, but the `dkh-admin-gateway` service account must have a role accepted by the `CatalogImport` policy: `super-admin`, `full-access`, `catalog-manager`, or granular `catalog:import`. If using `KEYCLOAK_GRANT_TYPE=password`, the configured user needs the same access.
+
+Current ProductCatalog export, validate, and import endpoints also require a workspace header. Set `PRODUCT_CATALOG_WORKSPACE_ID=<uuid>` or pass `--workspace-id=<uuid>`. Export needs `CatalogExport` plus workspace Viewer access; import needs `CatalogImport` plus workspace Manager access.
 
 ## Workflow
 
@@ -62,30 +64,48 @@ Fetch the current production ProductCatalog catalog/category reference through A
 node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-01
 ```
 
-Generate ProductCatalog import JSON:
+Fetch the complete, unpaged nested JSON `products` DataExchange baseline. The script writes `products.json` plus a completeness/hash manifest atomically:
 
 ```bash
-node scripts/thetea/generate-import.js --snapshot=smoke --out=import/thetea/smoke --packages=standard
+node scripts/thetea/fetch-prod-products.js --snapshot=prod-products-2026-06-01
+```
+
+Do not substitute the normal products list endpoint. Product DataExchange replace mode requires all dependent collections, including specifications, tags, catalog assignments, packages, prices, origins, related products, and cross-sells.
+
+Generate a diagnostics-only ProductCatalog artifact without production references:
+
+```bash
+node scripts/thetea/generate-import.js \
+  --snapshot=smoke \
+  --out=import/thetea/smoke \
+  --packages=standard \
+  --allow-missing-catalog-reference \
+  --allow-missing-product-reference
 ```
 
 By default generation uses every locale recorded in the snapshot manifest. Pass `--langs=<list>` only for a controlled partial run.
 
 Generation refuses snapshots without per-field endpoint details or Markdown pages unless `--allow-missing-field-details` / `--allow-missing-markdown` is passed for diagnostics only.
 
-Generate with a production catalog/category mapping check:
+Generate a production-eligible artifact with exact catalog and full-product references:
 
 ```bash
 node scripts/thetea/generate-import.js \
   --snapshot=thetea-2026-06-01 \
   --out=import/thetea/thetea-2026-06-01 \
   --packages=standard \
-  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-06-01
 ```
+
+The resync workflow fails if a generated product code is absent from the marked complete baseline. New-product creation is intentionally outside this workflow.
 
 Validate generated files locally:
 
 ```bash
-node scripts/thetea/validate-generated.js --dir=import/thetea/smoke --report=smoke-validation
+node scripts/thetea/validate-generated.js \
+  --dir=import/thetea/smoke \
+  --report=smoke-validation
 ```
 
 Validate generated files against the current prod catalog/category snapshot:
@@ -94,7 +114,8 @@ Validate generated files against the current prod catalog/category snapshot:
 node scripts/thetea/validate-generated.js \
   --dir=import/thetea/thetea-2026-06-01 \
   --report=thetea-2026-06-01-prod-map \
-  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-06-01
 ```
 
 Check that the generated data is ready for POS catalog browsing:
@@ -125,14 +146,27 @@ node scripts/thetea/test-transform.js
 Validate through AdminGateway without writing:
 
 ```bash
-node scripts/thetea/import-generated.js --snapshot=smoke
+node scripts/thetea/import-generated.js \
+  --snapshot=thetea-2026-06-01 \
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-06-01 \
+  --only=TEA-CN-XIHU-LONGJING \
+  --limit=1
 ```
 
 Apply to the configured gateway only after approval:
 
 ```bash
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01 --apply --yes
+node scripts/thetea/import-generated.js \
+  --snapshot=thetea-2026-06-01 \
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-06-01 \
+  --only=TEA-CN-XIHU-LONGJING \
+  --limit=1 \
+  --apply --yes
 ```
+
+That command is a canary, not a mass load. Read the product back and compare its group/attribute/value structure before requesting a separate mass-apply approval. Apply is forbidden when either reference hash or the source snapshot hash is missing or changed.
 
 Clean legacy junk from the earlier bad imports only after reviewing the dry-run
 list. This removes legacy full-page/similar attributes, synthetic `*_xN`
@@ -162,6 +196,10 @@ For full production loads, prefer `DKH.SetupTool` manifest mode over
 categories, and products in one ordered run, refreshes the Keycloak token during
 long imports, and retries one `401` after token refresh.
 
+The generated `artifact-manifest.json` is an ETL integrity manifest, not a
+SetupTool execution manifest. An operator must still assemble the approved
+ordered SetupTool workflow, including specification definitions before products.
+
 ## Mapping Rules
 
 - Product writes go through AdminGateway/ProductCatalogService DataExchange. Do not write directly to the production database.
@@ -172,42 +210,41 @@ long imports, and retries one `401` after token refresh.
 - Production snapshots store localized Markdown under `raw/markdown/<lang>/<slug>.md`, similar endpoint payloads under `raw/similar/<lang>/<slug>.json`, and localized map payloads under `raw/map-<lang>.json`.
 - Product translations use BCP 47 locale codes. DKH aliases TheTea `en` to `en-US`, `ru` to `ru-RU`, and `zh`/`zh-CN` to `zh-CN`; all other TheTea BCP 47 codes are preserved.
 - Without a key, the transformer keeps name-only fallbacks for `ru-RU` and `zh-CN` from `names.ru` and `names.zh` when those localized cards are unavailable.
-- First pass does not import live prices, stock, media attachment ids, related products, or cross-sells.
-- Production writes are safe to re-run through SetupTool manifest mode after a
-  clean preflight. The ProductCatalog DataExchange profiles upsert deterministic
-  catalog/category/product codes and replace dependent product collections,
-  preventing duplicate catalog/category assignments and specification rows.
-- Before any production import, generate or validate with `--catalog-ref=...` from `fetch-prod-reference.js`. The report must show `Catalog found: yes` and `Missing categories: 0`.
+- Similar-tea inputs populate `related[]`. Existing related links and cross-sells are preserved from the complete production baseline; TheTea does not derive cross-sells.
+- Product DataExchange replaces dependent collections. Safety comes from overlaying generated TheTea fields on the exact complete baseline, not from upsert alone. Unrelated specs, translations, tags, catalog assignments, packages, prices, overrides, relations, and other baseline fields are preserved and validated.
+- Before any production import, use both `--catalog-ref=...` and `--product-ref=...`. The report must show `Catalog found: yes`, `Missing categories: 0`, exact artifact parity, and non-empty source/reference hashes.
+- `artifact-manifest.json` inventories every generated file and hash. Generation uses an atomic staging/swap, so stale files are removed only after the replacement bundle validates.
 
 ## Specification Policy
 
-TheTea has many fields, including stable named fields and numbered `*_xN` fields.
-The ETL imports stable named fields as specifications and keeps synthetic
-numbered prose in product descriptions plus raw source snapshots:
+Every managed specification has exactly one group and one attribute. A product has at most one row per managed attribute; conflicting type, unit, parent, option, or translation metadata is fatal.
 
-- Controlled enums become `Option` specs, for example tea type, shape, roast level, caffeine level, difficulty, season, occasion, and flavor tags.
-- Min/max pairs become `Range` specs, for example oxidation, brewing temperature, and altitude.
-- Numeric field payloads become `Number` specs when TheTea provides `num`.
-- Numeric field endpoint payloads also create `SPEC-TT-FIELD-DETAIL-...` `CustomMarkdownText` specs so `value_md` prose is not lost when `value_num` is imported as a number.
-- Rich stable prose fields become `CustomMarkdownText`.
-- Unknown `*_xN` fields are not imported as specification attributes. Their text is retained in generated descriptions and the raw API source snapshot, so ProductCatalog does not get technical attributes like `TheTea Terroir Field 8`.
+- Controlled singletons become `Option`: tea type, shape, processing, roast, caffeine, difficulty, and price tier.
+- Repeated scalar arrays become one `List` value encoded as a JSON array string: seasons, occasions, flavor tags, food pairings, and harvest months.
+- Oxidation and brew temperature become `Range`; a missing bound is copied into a point range. Altitude lives only in `ProductOrigin`.
+- Known numeric values and sensory scores become `Number`; recipe time becomes `Duration` in seconds; flags become `Boolean`.
+- Repeated objects are flattened by stable discriminator: recipe `style`, harvest `phase`, sensory descriptor.
+- All localized section prose is copied to the article sidecar so non-canonical locale values are preserved. Short stable canonical text may also remain a typed text spec; synthetic `*_xN`/`ext_*`, full Markdown, long narratives, and FAQ never become technical attributes and live only under `06-routed-content/`.
+- A raw field and a derived field never coexist under different codes for the same semantic. Canonical typed data is stored once; extra prose is a distinct detail semantic or routed content.
 
 Stable code format:
 
 - Groups: `SPEC-TT-GROUP-<SECTION>`
 - Derived attributes from metadata/enrichment/recipes: `SPEC-TT-<SECTION>-<FIELD>`
-- Raw TeaCard section attributes: `SPEC-TT-FIELD-<SECTION>-<FIELD>`
-- Raw field endpoint detail attributes: `SPEC-TT-FIELD-DETAIL-<SECTION>-<FIELD>`
+- Stable TeaCard section attributes: `SPEC-TT-FIELD-<SECTION>-<FIELD>`
+- Distinct field endpoint detail attributes: `SPEC-TT-FIELD-DETAIL-<SECTION>-<FIELD>`
 - Derived options: `SPEC-TT-OPT-<SECTION>-<FIELD>-<VALUE>`
 - Raw TeaCard section options: `SPEC-TT-FIELD-OPT-<SECTION>-<FIELD>-<VALUE>`
 
-`generate-import.js` also writes explicit ProductCatalog DataExchange definition
+`generate-import.js` writes explicit ProductCatalog DataExchange definition
 files under `02-specifications/`. SetupTool imports them before categories and
 products using `specification_groups`, `specification_attributes`, and
 `specification_attribute_options`, so repeated production runs upsert definitions
 by code instead of relying on product import auto-creation.
 
-Derived attributes and raw section attributes intentionally use different namespaces. For example, `meta.altitude_min/max` becomes a curated `Range` attribute, while `sections.terroir.altitude` remains available as the raw TheTea field. ProductCatalog stores one non-option custom value per product/attribute, so sharing the same attribute code would lose data.
+Definitions include every required locale. Known structural labels have curated `en-US`, `ru-RU`, and `zh-CN` names; other locales receive an explicitly reported English fallback.
+
+`import-generated.js` imports only `categories` or `products`. It does not import definition files, catalog bindings, article records, or FAQ metaobjects. Use SetupTool or another approved ordered workflow for definitions before products, and a dedicated downstream importer for routed content.
 
 ## Production Notes
 
@@ -215,6 +252,7 @@ Generated snapshots, generated import JSON, and reports are ignored by git by de
 
 - `sources/thetea/snapshots/`
 - `sources/prod/catalog-reference/`
+- `sources/prod/product-reference/`
 - `import/thetea/`
 - `reports/thetea/`
 

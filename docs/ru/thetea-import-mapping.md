@@ -1,8 +1,8 @@
 # Маппинг импорта TheTea в DKH ProductCatalog
 
-Статус: документ согласования перед импортом для `GZDKH/DKH.TeaCatalogData#14`.
+Статус: контракт синхронизации типизированной детализации для `GZDKH/DKH.TeaCatalogData#15`.
 
-Этот документ фиксирует, какие данные TheTea API сохраняются как первоисточник и как сгенерированный import JSON попадает в структуру DKH ProductCatalog DataExchange. Продовый импорт нельзя применять, пока этот маппинг, validation report и prod category mapping report не согласованы.
+Этот документ фиксирует, какие данные TheTea API сохраняются как первоисточник и как сгенерированный import JSON попадает в структуру DKH ProductCatalog DataExchange. Продовый импорт нельзя применять, пока не согласованы этот маппинг, validation report, точные hashes prod catalog и полного product baseline, а также результат canary.
 
 ## Первоисточник
 
@@ -30,28 +30,37 @@ sources/thetea/snapshots/<snapshot-id>/raw/
 | `GET /api/v2/tea/{slug}?lang=<lang>` | `raw/cards/<lang>/<slug>.json` | Главная TeaCard: product core, translations, catalog/category mapping, tags, origins, recipes, sensory, base specifications. |
 | `GET /api/v2/tea/{slug}/{lang}/field/{code}` | `raw/fields/<lang>/<slug>/<section>/<field>.json` | Детализация каждого поля для каждой locale в production snapshot. `value_md`, `value_num`, `unit` накладываются на TeaCard перед генерацией. |
 | `GET /api/v2/tea/{slug}/{lang}/field/{code}` с ответом `404` | `raw/field-missing/<lang>/<slug>/<section>/<field>.json` | Audit trail для поля, которое есть в TeaCard, но не доступно через detail endpoint TheTea. Это warning, не fatal fetch error. |
-| `GET /api/v2/tea/{slug}.md?lang=<lang>` | `raw/markdown/<lang>/<slug>.md` | Полная локализованная Markdown-страница сохраняется как source/audit content. В product specifications не импортируется. |
-| `GET /api/v2/tea/{slug}/similar?lang=<lang>&limit=12` | `raw/similar/<lang>/<slug>.json` | Локализованный similar-tea payload сохраняется как source/audit content. Curated related-product links - отдельный follow-up. |
+| `GET /api/v2/tea/{slug}.md?lang=<lang>` | `raw/markdown/<lang>/<slug>.md` | Полная локализованная Markdown-страница сохраняется как source/audit content и маршрутизируется в article sidecar. В product specifications не разворачивается. |
+| `GET /api/v2/tea/{slug}/similar?lang=<lang>&limit=12` | `raw/similar/<lang>/<slug>.json` | Source/audit payload и fallback для `related[]`. Сначала используются curated `enrichment.similar_teas`, затем endpoint; self-links и дубликаты отбрасываются, generated relations ограничены 12. |
 
 Runtime/query методы `/search`, `/semantic`, `/ask`, `/compare`, `/random` не являются детерминированным источником всех продуктов: они зависят от запроса или случайности. Их контракт сохраняется в `raw/source/openapi.yaml`, но в первый импорт как canonical product input они не используются.
 
 ## Куда генерируется импорт
 
-Генератор пишет один JSON array на один продукт:
+Генератор пишет один JSON array на один продукт; имя файла строится из детерминированного product code:
 
 ```text
-import/thetea/<snapshot-id>/04-products/<THE_TEA_CATEGORY>/<slug>.json
+import/thetea/<snapshot-id>/04-products/<THE_TEA_CATEGORY>/<PRODUCT-CODE>.json
 ```
 
 Внутри файла - один объект ProductCatalog DataExchange product.
 
-Генератор также пишет определения категорий из того же snapshot:
+Полная структура артефакта:
 
 ```text
-import/thetea/<snapshot-id>/03-categories/categories.json
+01-reference/                 catalog reference record
+02-specifications/            определения groups, attributes и options
+03-categories/                отсутствующие определения категорий
+04-products/                  по одному продукту в файле
+05-catalog-bindings/          привязки catalog/category/product
+06-routed-content/articles/   локализованный Markdown и long narratives
+06-routed-content/metaobjects локализованные FAQ
+artifact-manifest.json        точный inventory, hashes, locales и loss events
 ```
 
-Если передан `--catalog-ref=...`, файл `03-categories/categories.json` содержит только категории, которых нет в production category reference, плюс отсутствующих родителей. Без `--catalog-ref` это полный generated TheTea taxonomy для локального ревью; напрямую применять такой файл в production нельзя, потому что category import может обновить уже существующие категории.
+Output сначала собирается в соседней временной директории и заменяет текущий каталог атомарно только после semantic и manifest validation. При успехе stale files удаляются; при ошибке предыдущий валидный output остается нетронутым.
+
+С `--catalog-ref=...` файл `03-categories/categories.json` содержит только категории, которых нет в этом exact production reference, плюс отсутствующих родителей. Без catalog reference и полного `--product-ref=...` разрешена только diagnostic generation с явными `--allow-missing-*`. У diagnostic artifact пустые reference hashes, поэтому apply запрещён.
 
 ## Маппинг продукта
 
@@ -62,12 +71,14 @@ import/thetea/<snapshot-id>/03-categories/categories.json
 | `published` | Import option | По умолчанию `false`. `--publish` только после отдельного согласования. |
 | `nativeName` | TeaCard `names.zh` / `names.zh-CN` | Китайское нативное имя, если есть. |
 | `transcription` | TeaCard `name` | Текст из последнего parenthesized transcription segment. |
-| `translations[]` | Локализованные TeaCards | По одной translation на каждую локаль из snapshot manifest. Description собирается из enrichment, recipes и выбранных section details. |
+| `translations[]` | Локализованные TeaCards | По одной translation на каждую локаль из snapshot manifest. Короткий description содержит enrichment и recipe summary; полный Markdown и narratives маршрутизируются отдельно. |
 | `catalogs[]` | TeaCard `meta.tea_type`, `meta.province`, `meta.shape`, `meta.processing`, `meta.roast_level`, `meta.family_id`, TeaCard `tags` | Всегда `CATALOG-CHINESE-TEA`; устойчивые taxonomy-поля TheTea мапятся в категории типа, региона, формы листа, обработки, прожарки, семейства и особенностей. |
 | `packages[]` | Import option | По умолчанию `PKG-50G`; `--packages=standard` добавляет 25g, 100g, 250g, 500g. |
 | `tags[]` | TeaCard `tags`, `enrichment.flavor_tags` | Детерминированные коды `TAG-TT-*` и `TAG-FLAVOR-*`. |
 | `specifications[]` | TeaCard `meta`, `sections`, `recipe`, `harvest`, `sensory`, `enrichment`, field endpoints | См. раздел "Маппинг спецификаций". |
 | `origins[]` | TeaCard `meta`, локализованные origin/terroir sections | Country, state/province, city/county, altitude, coordinates и локализованные notes. |
+| `related[]` | `enrichment.similar_teas`, локализованный `/similar`, production baseline | Slug преобразуется в deterministic product code в two-pass transform; self/duplicates отбрасываются, generated links ограничены 12, существующие ручные связи сохраняются. |
+| `crossSells[]` | Полный production product baseline | TheTea не выводит cross-sells; существующие значения сохраняются без изменений. |
 
 ## Маппинг локалей
 
@@ -81,6 +92,8 @@ import/thetea/<snapshot-id>/03-categories/categories.json
 | Остальные BCP 47 значения | Сохраняются как есть, например `zh-HK`, `zh-TW`, `nb`, `de`, `fr`. |
 
 Если diagnostic snapshot не содержит локализованную карточку, генератор может создать name-only fallback для `en-US`, `ru-RU`, `zh-CN`. Для полного продового запуска это неприемлемо: production должен идти через `--langs=all`.
+
+Definitions групп, атрибутов и опций получают translation row для каждой required locale. Для известных структурных labels есть curated названия `en-US`, `ru-RU`, `zh-CN`. Для остальных локалей используется явно отражённый в отчёте и manifest English fallback; он не выдаётся за перевод из источника.
 
 ## Каталог и категории
 
@@ -116,7 +129,9 @@ CATALOG-CHINESE-TEA
 
 Поля `enrichment.flavor_tags`, `enrichment.occasion`, `enrichment.best_season`, `enrichment.caffeine_level`, `enrichment.difficulty`, `enrichment.price_tier` остаются тегами/спецификациями, а не ветками дерева категорий. Это фильтры и контекстные атрибуты, не стабильные разделы каталога.
 
-Перед импортом `fetch-prod-reference.js` должен сохранить текущие prod catalog/categories. `generate-import.js` или `validate-generated.js` должны запускаться с `--catalog-ref=...`. В отчете должно быть:
+Перед импортом `fetch-prod-reference.js` должен сохранить текущие prod catalog/categories, а полный nested JSON export DataExchange profile `products` — production product baseline. Generation и все последующие validate/import команды используют одни и те же exact `--catalog-ref=...` и `--product-ref=...`; их SHA-256 записываются в `artifact-manifest.json`.
+
+В отчете должно быть:
 
 ```text
 Catalog found: yes
@@ -125,31 +140,46 @@ Missing categories: 0
 
 ## Маппинг спецификаций
 
-Группы спецификаций используют `SPEC-TT-GROUP-<SECTION>`.
+У каждой managed specification ровно одна группа и один атрибут. У продукта может быть не более одной value row для каждого managed attribute. Группы используют `SPEC-TT-GROUP-<SECTION>`, все managed definitions — namespace `SPEC-TT-*`.
 
 | Source | ProductCatalog spec type | Code namespace |
 |---|---|---|
-| Controlled values: tea type, shape, roast level, caffeine level, seasons, occasions, flavor tags | `Option` | `SPEC-TT-*` или `SPEC-TT-FIELD-*` плюс option code |
-| Min/max пары: oxidation, brew temperature, altitude | `Range` | `SPEC-TT-<SECTION>-<FIELD>` |
-| Numeric field endpoint values (`value_num`) | `Number` | `SPEC-TT-FIELD-<SECTION>-<FIELD>` |
-| Полный field endpoint prose (`value_md`) из primary card locale | `CustomMarkdownText` | `SPEC-TT-FIELD-DETAIL-<SECTION>-<FIELD>` |
-| Rich TeaCard section prose | `CustomMarkdownText` | `SPEC-TT-FIELD-<SECTION>-<FIELD>` |
-| List-like values | `List` | `SPEC-TT-*` |
+| Controlled singleton: tea type, shape, processing, roast level, caffeine level, difficulty, price tier | `Option` | Атрибут плюс один стабильный option code |
+| Repeated scalars: seasons, occasions, flavor tags, food pairings, harvest months | `List` | Один атрибут, `value` — JSON-строка массива |
+| Min/max: oxidation и brew temperature | `Range` | Всегда обе границы; одностороннее значение становится point range с одинаковыми границами |
+| Известные numeric значения и sensory descriptor scores | `Number` | Числовая строка в `value`, unit при наличии контракта |
+| Recipe time | `Duration` | Секунды в `value`, unit `s` |
+| Флаги, например geographical-indication status | `Boolean` | Каноническая строка `true`/`false` |
+| Stable short/rich text | `CustomText` / `CustomMarkdownText` | Одна canonical semantic; дополнительный prose отделён или routed |
 | Dates | `Date` | `SPEC-TT-SOURCE-LAST-UPDATED` |
 
-Неизвестные numbered fields вроде `*_xN` не выбрасываются: они сохраняются с детерминированными именами.
+Repeated objects разворачиваются по стабильному discriminator, а не пишутся как `List<object>`: recipe по `style`, harvest по `phase`, sensory по descriptor. Конфликт type, unit, parent, option или translation metadata — fatal.
 
-## Что не импортируется в первом запуске
+Origin country/place, coordinates и altitude живут только в `origins[]`; altitude не дублируется specification. Исправление дробных тысяч применяется только при подтверждающем контексте и всегда отражается в warnings.
 
-В первый импорт намеренно не пишем:
+Весь локализованный section prose сохраняется в article sidecar, поэтому значения non-canonical локалей не схлопываются. Короткое stable canonical значение может дополнительно остаться typed text specification. Synthetic `*_xN` и `ext_*`, полный Markdown, FAQ и длинные narratives никогда не становятся техническими product attributes и существуют только в `06-routed-content/`. Текущий ProductCatalog importer эти sidecars не импортирует; для них нужен отдельный article/metaobject шаг canary workflow.
 
-- Prices, tier prices, catalog prices.
+Transformer не создаёт параллельные raw и derived attributes одной семантики. Canonical typed value хранится один раз; дополнительный prose — отдельная detail semantic либо routed content.
+
+## Baseline overlay при replace-mode
+
+Product DataExchange заменяет dependent collections. Повторный upsert безопасен только после overlay generated TheTea data на полный текущий production product export.
+
+Для существующего продукта ETL заменяет managed `SPEC-TT-*` и generated TheTea origins, но сохраняет unrelated specifications, translations неизвестных локалей, manual tags, catalog assignments, packages, prices, store overrides, cross-sells, существующие related links и остальные baseline fields. Generated related объединяются с существующими. Baseline-preservation validation падает, если unrelated entry исчезает или меняется.
+
+Для нового продукта TheTea не выдумывает live prices, inventory, media IDs или cross-sells. Без полного product baseline hash apply запрещён.
+
+## Что не выводится из TheTea
+
+Для новых товаров из TheTea не выводятся:
+
+- Live prices, tier prices, catalog prices и store overrides.
 - Stock или inventory quantities.
 - Media uploads и ProductCatalog media attachment IDs.
-- Cross-sells как product relations.
+- Cross-sells.
 - Runtime AI answers из `/ask`, произвольные search/semantic queries и random samples.
 
-Контракт этих методов остается в `raw/source/openapi.yaml`.
+Значения существующих продуктов, доступные в baseline DataExchange, сохраняются. Контракт runtime-методов остается в `raw/source/openapi.yaml`.
 
 ## Gates перед импортом
 
@@ -157,27 +187,30 @@ Missing categories: 0
 
 1. Raw source snapshot создан и имеет `Errors: 0`. Warnings типа `missing-field-detail` допустимы только когда TheTea возвращает `404` на field endpoint; они должны быть сохранены в `raw/field-missing/`. Production snapshot не должен иметь partial field locales.
 2. В snapshot есть `Source contract files: 4`.
-3. Generated report показывает `Valid: yes`.
-4. Если новых TheTea категорий нет в prod, `03-categories/categories.json` генерируется через `--catalog-ref=...`, dry-run валидируется через `--profile=categories`, применяется только после согласования, затем prod references загружаются заново.
-5. Финальный prod mapping report показывает `Catalog found: yes` и `Missing categories: 0`.
-6. Token AdminGateway проходит `CatalogImport` policy (`super-admin`, `full-access`, `catalog-manager` или `catalog:import`).
-7. Generated import прошел dry-run validate через локальный AdminGateway over VPN.
-8. Пользователь явно согласовал `--apply --yes`.
+3. Есть текущий catalog/category reference и полный DataExchange JSON baseline профиля `products`.
+4. Generated report и `artifact-manifest.json` показывают `Valid: yes`, exact file parity и непустые source/catalog/baseline hashes.
+5. После применения категорий нужно получить новый catalog reference и полностью пересобрать artifact; новый reference с прежним artifact будет отклонён по hash.
+6. Финальный mapping показывает `Catalog found: yes` и `Missing categories: 0`.
+7. Definitions импортируются до products через SetupTool или другой approved ordered DataExchange workflow. `import-generated.js` поддерживает только `categories` и `products`; definitions, bindings, articles и FAQ sidecars он не загружает.
+8. Token проходит нужные `CatalogExport`/`CatalogImport` policies и workspace access.
+9. One-product canary проходит dry-run, применяется только после отдельного canary approval и сравнивается после read-back.
+10. Пользователь отдельно согласовал массовый `--apply --yes`.
 
 ## Команды первого импорта
 
 ```bash
 node scripts/thetea/fetch-snapshot.js --snapshot=thetea-2026-06-02 --langs=all --field-langs=all --concurrency=4 --resume
 node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-02
-node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-02 --out=import/thetea/thetea-2026-06-02 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --profile=categories
-node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-02-after-categories
-node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-06-02 --report=thetea-2026-06-02-prod-map --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02-after-categories.json
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02
+node scripts/thetea/fetch-prod-products.js --snapshot=prod-products-2026-06-02
+node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-02 --out=import/thetea/thetea-2026-06-02 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02
+node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-06-02 --report=thetea-2026-06-02-prod-map --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02
+node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --only=TEA-CN-XIHU-LONGJING --limit=1
 ```
 
-Apply command, только после согласования:
+Canary apply, только после отдельного явного согласования:
 
 ```bash
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --apply --yes
+node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --only=TEA-CN-XIHU-LONGJING --limit=1 --apply --yes
 ```
+
+Массовый product apply — отдельная команда и отдельное согласование после canary read-back. Routed article/FAQ content через `import-generated.js` не применяется.

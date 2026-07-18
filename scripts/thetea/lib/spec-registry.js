@@ -1,4 +1,13 @@
 const crypto = require('crypto');
+const { toProductLocale } = require('./locales');
+const {
+    encodeListValue,
+    normalizeBoolean,
+    normalizeDurationSeconds,
+    normalizeSpecifications,
+    uniqueRepeatedObjects,
+} = require('./spec-contract');
+const { localizeSpecLabel } = require('./spec-labels');
 
 const GROUPS = {
     classification_origin: 'Classification and Origin',
@@ -47,6 +56,12 @@ const FIELD_NAMES = {
     gi_standard: 'Geographical Indication Standard',
     water_temp: 'Water Temperature',
     tea_amount: 'Tea Amount',
+    tea_grams: 'Tea Amount',
+    water_ml: 'Water Volume',
+    steep_sec: 'Steep Duration',
+    increment_sec: 'Steep Increment',
+    max_steeps: 'Maximum Infusions',
+    rinse: 'Rinse Required',
     teaware: 'Teaware',
     taste: 'Taste',
     liquor_color: 'Liquor Color',
@@ -76,25 +91,41 @@ const FIELD_NAMES = {
     version: 'TheTea Version',
 };
 
-const NARRATIVE_NOTE_NAMES = {
-    atomic: 'Core Tea Notes',
-    botany_material: 'Botany and Raw Material Notes',
-    brewing: 'Brewing Notes',
-    chemical_composition: 'Chemical Composition Notes',
-    chemistry: 'Chemical Composition Notes',
-    classification_origin: 'Classification and Origin Notes',
-    comparison: 'Comparison Notes',
-    conclusion: 'Conclusion',
-    contraindications: 'Contraindications',
-    facts: 'Facts',
-    health: 'Health Notes',
-    history_culture: 'History and Culture Notes',
-    organoleptic: 'Organoleptic Profile Notes',
-    price_counterfeit: 'Price and Authenticity Notes',
-    production: 'Production Notes',
-    storage: 'Storage Notes',
-    terroir: 'Terroir Notes',
-};
+const RAW_FIELD_CONTRACTS = new Map([
+    ['atomic.gi_status', { type: 'Boolean' }],
+    ['brewing.water_temp', { type: 'Number', unit: '°C' }],
+    ['storage.temperature', { type: 'Number', unit: '°C' }],
+]);
+
+const ORIGIN_FIELD_KEYS = new Set([
+    'atomic.altitude_core',
+    'atomic.altitude_min',
+    'atomic.altitude_max',
+    'atomic.lat',
+    'atomic.lng',
+    'classification_origin.coordinates',
+    'classification_origin.origin',
+    'classification_origin.origin_country',
+    'classification_origin.province',
+    'terroir.altitude',
+]);
+
+const META_OWNED_FIELD_KEYS = new Set([
+    'atomic.brew_temp_max',
+    'atomic.brew_temp_min',
+    'atomic.gi_status',
+    'atomic.oxidation_max',
+    'atomic.oxidation_min',
+    'atomic.processing',
+    'atomic.roast_level',
+    'atomic.shape',
+    'atomic.tea_type',
+    'classification_origin.category',
+    'classification_origin.type',
+    'brewing.water_temp',
+]);
+
+const ROUTED_NARRATIVE_MIN_LENGTH = 300;
 
 function normalizeCodePart(value) {
     const ascii = String(value ?? '')
@@ -130,47 +161,60 @@ function groupCode(section) {
     return makeCode('SPEC-TT-GROUP', section);
 }
 
-function groupName(section) {
-    if (GROUPS[section]) return GROUPS[section];
-    if (/^ext_\d+$/.test(section)) return `Extended Section ${section.slice(4)}`;
-    return titleize(section);
+function groupName(section, lang = 'en-US') {
+    const fallbackName = GROUPS[section]
+        || (/^ext_\d+$/.test(section) ? `Extended Section ${section.slice(4)}` : titleize(section));
+    return localizeSpecLabel('group', section, lang, fallbackName).name;
 }
 
-function fieldName(section, field) {
-    if (FIELD_NAMES[field]) return FIELD_NAMES[field];
+function fieldName(section, field, lang = 'en-US') {
+    let fallbackName;
+    if (FIELD_NAMES[field]) fallbackName = FIELD_NAMES[field];
     const match = /^(.+)_x(\d+)$/.exec(field);
-    if (match) return `TheTea ${titleize(match[1])} Field ${Number(match[2]) + 1}`;
-    return titleize(field);
+    if (!fallbackName && match) fallbackName = `TheTea ${titleize(match[1])} Field ${Number(match[2]) + 1}`;
+    if (!fallbackName) fallbackName = titleize(field);
+    return localizeSpecLabel('attribute', `${section}.${field}`, lang, fallbackName).name;
 }
 
 function isSyntheticTheTeaField(section, field) {
     return /^ext_\d+$/i.test(String(section || '')) || /(?:^|_)x\d+$/i.test(String(field || ''));
 }
 
-function syntheticFieldOrder(field) {
-    const match = /(?:^|_)x(\d+)$/i.exec(String(field || ''));
-    return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
-}
-
-function narrativeNoteName(section) {
-    if (NARRATIVE_NOTE_NAMES[section]) return NARRATIVE_NOTE_NAMES[section];
-    const group = groupName(section);
-    return /\bnotes?$/i.test(group) ? group : `${group} Notes`;
+function isRoutedTheTeaField(section, field, payload) {
+    if (isSyntheticTheTeaField(section, field)) return true;
+    const values = [
+        payload && typeof payload === 'object' ? payload.value : payload,
+        payload?.endpoint?.value_md,
+    ]
+        .filter(value => value !== null && value !== undefined)
+        .map(value => String(value).trim())
+        .filter(Boolean);
+    if (!values.length) return false;
+    if (META_OWNED_FIELD_KEYS.has(`${section}.${field}`)) return true;
+    return values.some(value => value.length > ROUTED_NARRATIVE_MIN_LENGTH);
 }
 
 function specBase(section, field, type, order, options = {}) {
     const attributePrefix = options.attributePrefix || ['SPEC-TT'];
     const attributeParts = options.attributeParts || [section, field];
+    const lang = toProductLocale(options.lang || 'en-US');
 
     return {
-        lang: 'en-US',
+        lang,
         group: groupCode(section),
-        groupName: groupName(section),
+        groupName: groupName(section, lang),
         attribute: makeCode(...attributePrefix, ...attributeParts),
-        attributeName: fieldName(section, field),
+        attributeName: localizeSpecLabel(
+            'attribute',
+            options.semanticAttributeKey || `${section}.${field}`,
+            lang,
+            options.attributeFallbackName || FIELD_NAMES[field] || titleize(field)).name,
         type,
+        unit: options.unit,
         showOnPage: true,
         order,
+        groupKey: section,
+        attributeKey: options.semanticAttributeKey || `${section}.${field}`,
     };
 }
 
@@ -178,11 +222,14 @@ function optionSpec(section, field, value, order, optionName = value, options = 
     if (value === null || value === undefined || value === '') return null;
     const optionPrefix = options.optionPrefix || ['SPEC-TT-OPT'];
     const optionParts = options.optionParts || [section, field, value];
+    const lang = toProductLocale(options.lang || 'en-US');
+    const optionKey = options.semanticOptionKey || `${section}.${field}.${value}`;
 
     return {
         ...specBase(section, field, 'Option', order, options),
         option: makeCode(...optionPrefix, ...optionParts),
-        optionName: String(optionName),
+        optionName: localizeSpecLabel('option', optionKey, lang, String(optionName)).name,
+        optionKey,
     };
 }
 
@@ -202,80 +249,129 @@ function numberSpec(section, field, value, order, options = {}) {
     };
 }
 
+function booleanSpec(section, field, value, order, options = {}) {
+    if (value === null || value === undefined || value === '') return null;
+    return {
+        ...specBase(section, field, 'Boolean', order, options),
+        value: String(normalizeBoolean(value)),
+    };
+}
+
+function durationSpec(section, field, value, order, options = {}) {
+    if (value === null || value === undefined || value === '') return null;
+    return {
+        ...specBase(section, field, 'Duration', order, options),
+        value: String(normalizeDurationSeconds(value)),
+    };
+}
+
 function rangeSpec(section, field, min, max, order, options = {}) {
     if (min === null && max === null) return null;
     if (min === undefined && max === undefined) return null;
+    const normalizedMin = min === null || min === undefined ? Number(max) : Number(min);
+    const normalizedMax = max === null || max === undefined ? Number(min) : Number(max);
     return {
         ...specBase(section, field, 'Range', order, options),
-        valueMin: min === null || min === undefined ? undefined : Number(min),
-        valueMax: max === null || max === undefined ? undefined : Number(max),
+        valueMin: normalizedMin,
+        valueMax: normalizedMax,
     };
 }
 
 function listSpec(section, field, values, order, options = {}) {
-    const items = (values || []).filter(Boolean);
-    if (items.length === 0) return null;
-    return textSpec(section, field, items.join(', '), order, 'List', options);
+    const items = Array.isArray(values) ? values : [];
+    const encoded = encodeListValue(items);
+    if (encoded === '[]') return null;
+    return textSpec(section, field, encoded, order, 'List', options);
 }
 
-function narrativeNotesSpec(section, values, order) {
-    const markdown = values
-        .slice()
-        .sort((a, b) => syntheticFieldOrder(a.field) - syntheticFieldOrder(b.field))
-        .map(item => String(item.value || '').trim())
-        .filter(Boolean)
-        .join('\n\n');
-    const spec = textSpec(section, 'notes', markdown, order, 'CustomMarkdownText', {
-        attributePrefix: ['SPEC-TT-NOTES'],
-        attributeParts: [section],
-    });
-    if (spec) spec.attributeName = narrativeNoteName(section);
-    return spec;
-}
-
-function sectionFieldOptions(section, field, value) {
+function sectionFieldOptions(section, field, value, lang) {
     return {
         attributePrefix: ['SPEC-TT-FIELD'],
         attributeParts: [section, field],
         optionPrefix: ['SPEC-TT-FIELD-OPT'],
         optionParts: [section, field, value],
+        lang,
     };
 }
 
-function sectionFieldDetailOptions(section, field) {
+function sectionFieldDetailOptions(section, field, lang) {
     return {
         attributePrefix: ['SPEC-TT-FIELD-DETAIL'],
         attributeParts: [section, field],
+        semanticAttributeKey: `${section}.${field}.detail`,
+        lang,
     };
 }
 
-function fieldDetailSpec(section, field, value, order) {
-    const spec = textSpec(section, field, value, order, 'CustomMarkdownText', sectionFieldDetailOptions(section, field));
-    if (spec) spec.attributeName = `${fieldName(section, field)} Detail`;
+function fieldDetailSpec(section, field, value, order, lang) {
+    const spec = textSpec(
+        section,
+        field,
+        value,
+        order,
+        'CustomMarkdownText',
+        sectionFieldDetailOptions(section, field, lang));
+    if (spec) {
+        const fallbackName = `${FIELD_NAMES[field] || titleize(field)} Detail`;
+        spec.attributeName = localizeSpecLabel(
+            'attribute',
+            `${section}.${field}.detail`,
+            toProductLocale(lang || 'en-US'),
+            fallbackName).name;
+    }
     return spec;
 }
 
-function specFromTheTeaField(section, field, payload, order) {
+function specFromTheTeaField(section, field, payload, order, context = {}) {
+    const fieldKey = `${section}.${field}`;
+    if (ORIGIN_FIELD_KEYS.has(fieldKey)) return [];
+
     const value = payload && typeof payload === 'object' ? payload.value : payload;
     const num = payload && typeof payload === 'object' ? payload.num : null;
-    const options = sectionFieldOptions(section, field, value);
+    const lang = context.lang || 'en-US';
+    const options = sectionFieldOptions(section, field, value, lang);
     const endpointValue = payload?.endpoint?.value_md;
+    const routeNarrative = context.routeNarrative === true
+        || isRoutedTheTeaField(section, field, payload);
+
+    const canonicalMetaOwnsField = META_OWNED_FIELD_KEYS.has(fieldKey)
+        && !(fieldKey === 'brewing.water_temp' && context.canonicalBrewTempPresent !== true);
+    if (canonicalMetaOwnsField) {
+        return [];
+    }
 
     if (['shape', 'processing', 'roast_level'].includes(field) && value) {
-        const detail = endpointValue && endpointValue !== value
-            ? fieldDetailSpec(section, field, endpointValue, order + 10000)
+        const detail = !routeNarrative && endpointValue && endpointValue !== value
+            ? fieldDetailSpec(section, field, endpointValue, order + 10000, lang)
             : null;
         return [optionSpec(section, field, value, order, titleize(value), options), detail];
     }
 
-    if (num !== null && num !== undefined && Number.isFinite(Number(num))) {
-        const detail = endpointValue
-            ? fieldDetailSpec(section, field, endpointValue, order + 10000)
+    const contract = RAW_FIELD_CONTRACTS.get(fieldKey);
+    if (contract?.type === 'Boolean') {
+        const booleanValue = num ?? value;
+        const detail = !routeNarrative
+            && endpointValue && String(endpointValue).trim() !== String(value ?? '').trim()
+            ? fieldDetailSpec(section, field, endpointValue, order + 10000, lang)
+            : null;
+        return [booleanSpec(section, field, booleanValue, order, options), detail];
+    }
+
+    if (contract?.type === 'Number' && num !== null && num !== undefined && Number.isFinite(Number(num))) {
+        options.unit = contract.unit || payload?.unit || payload?.endpoint?.unit;
+        const detail = !routeNarrative && endpointValue
+            ? fieldDetailSpec(section, field, endpointValue, order + 10000, lang)
             : null;
         return [numberSpec(section, field, num, order, options), detail];
     }
 
-    return textSpec(section, field, value, order, 'CustomMarkdownText', options);
+    if (contract?.type === 'Number') {
+        return routeNarrative
+            ? []
+            : fieldDetailSpec(section, field, endpointValue || value, order + 10000, lang);
+    }
+
+    return routeNarrative ? [] : textSpec(section, field, value, order, 'CustomMarkdownText', options);
 }
 
 function push(specs, spec) {
@@ -290,95 +386,144 @@ function stripUndefined(value) {
     return Object.fromEntries(Object.entries(value).filter(([, v]) => v !== undefined));
 }
 
-function buildSpecs(card) {
+function buildSpecs(card, context = {}) {
     const specs = [];
     let order = 1;
     const meta = card.meta || {};
-    const syntheticNarratives = new Map();
+    const lang = toProductLocale(card.lang || context.lang || 'en-US');
+    const options = { lang };
 
-    push(specs, optionSpec('classification_origin', 'tea_type', meta.tea_type, order++, titleize(meta.tea_type)));
-    push(specs, optionSpec('source', 'category_code', meta.category_code, order++, meta.category_code));
-    push(specs, optionSpec('classification_origin', 'origin_country', meta.origin_country, order++, meta.origin_country));
-    push(specs, optionSpec('classification_origin', 'province', meta.province, order++, meta.province));
-    push(specs, rangeSpec('atomic', 'oxidation', meta.oxidation_min, meta.oxidation_max, order++));
-    push(specs, rangeSpec('brewing', 'brew_temp', meta.brew_temp_min, meta.brew_temp_max, order++));
-    push(specs, rangeSpec('terroir', 'altitude', meta.altitude_min, meta.altitude_max, order++));
-    push(specs, optionSpec('atomic', 'shape', meta.shape, order++, titleize(meta.shape)));
-    push(specs, optionSpec('atomic', 'processing', meta.processing, order++, titleize(meta.processing)));
-    push(specs, optionSpec('atomic', 'roast_level', meta.roast_level, order++, titleize(meta.roast_level)));
-    push(specs, textSpec('classification_origin', 'gi_status', meta.gi_status, order++, 'CustomText'));
-    push(specs, textSpec('classification_origin', 'gi_standard', meta.gi_standard, order++, 'CustomText'));
-    push(specs, textSpec('source', 'version', meta.version, order++, 'CustomText'));
-    push(specs, textSpec('source', 'last_updated', meta.last_updated, order++, 'Date'));
-    push(specs, optionSpec('source', 'review_status', meta.review_status, order++, titleize(meta.review_status)));
+    push(specs, optionSpec('classification_origin', 'tea_type', meta.tea_type, order++, titleize(meta.tea_type), options));
+    push(specs, optionSpec('source', 'category_code', meta.category_code, order++, meta.category_code, options));
+    push(specs, rangeSpec('atomic', 'oxidation', meta.oxidation_min, meta.oxidation_max, order++, { ...options, unit: '%' }));
+    push(specs, rangeSpec('brewing', 'brew_temp', meta.brew_temp_min, meta.brew_temp_max, order++, { ...options, unit: '°C' }));
+    push(specs, optionSpec('atomic', 'shape', meta.shape, order++, titleize(meta.shape), options));
+    push(specs, optionSpec('atomic', 'processing', meta.processing, order++, titleize(meta.processing), options));
+    push(specs, optionSpec('atomic', 'roast_level', meta.roast_level, order++, titleize(meta.roast_level), options));
+    push(specs, booleanSpec('classification_origin', 'gi_status', meta.gi_status, order++, options));
+    push(specs, textSpec('classification_origin', 'gi_standard', meta.gi_standard, order++, 'CustomText', options));
+    push(specs, textSpec('source', 'version', meta.version, order++, 'CustomText', options));
+    push(specs, textSpec('source', 'last_updated', meta.last_updated, order++, 'Date', options));
+    push(specs, optionSpec('source', 'review_status', meta.review_status, order++, titleize(meta.review_status), options));
 
     for (const [section, fields] of Object.entries(card.sections || {})) {
         for (const [field, payload] of Object.entries(fields || {})) {
             if (isSyntheticTheTeaField(section, field)) {
-                const value = payload && typeof payload === 'object' ? payload.value : payload;
-                if (value !== null && value !== undefined && String(value).trim() !== '') {
-                    if (!syntheticNarratives.has(section)) syntheticNarratives.set(section, []);
-                    syntheticNarratives.get(section).push({ field, value });
-                }
                 continue;
             }
-            push(specs, specFromTheTeaField(section, field, payload, order++));
+            push(specs, specFromTheTeaField(section, field, payload, order++, {
+                lang,
+                canonicalBrewTempPresent: (meta.brew_temp_min !== null
+                    && meta.brew_temp_min !== undefined)
+                    || (meta.brew_temp_max !== null && meta.brew_temp_max !== undefined),
+                routeNarrative: context.routedFieldKeys?.has(`${section}.${field}`) === true,
+            }));
         }
     }
 
-    for (const [section, values] of syntheticNarratives.entries()) {
-        push(specs, narrativeNotesSpec(section, values, order++));
-    }
-
-    for (const recipe of card.recipe || []) {
-        const style = normalizeCodePart(recipe.style).toLowerCase();
-        const label = titleize(recipe.style);
+    for (const { key: rawStyle, item: recipe } of uniqueRepeatedObjects(
+        card.recipe || [],
+        item => item.style,
+        'recipe')) {
+        const style = normalizeCodePart(rawStyle).toLowerCase();
+        const label = titleize(rawStyle);
         const recipeFields = [
-            ['water_temp', recipe.water_temp],
-            ['tea_grams', recipe.tea_grams],
-            ['water_ml', recipe.water_ml],
-            ['steep_sec', recipe.steep_sec],
-            ['increment_sec', recipe.increment_sec],
-            ['max_steeps', recipe.max_steeps],
-            ['rinse', recipe.rinse],
+            ['water_temp', recipe.water_temp, 'Number', '°C'],
+            ['tea_grams', recipe.tea_grams, 'Number', 'g'],
+            ['water_ml', recipe.water_ml, 'Number', 'ml'],
+            ['steep_sec', recipe.steep_sec, 'Duration', 's'],
+            ['increment_sec', recipe.increment_sec, 'Duration', 's'],
+            ['max_steeps', recipe.max_steeps, 'Number'],
+            ['rinse', recipe.rinse, 'Boolean'],
         ];
 
-        for (const [field, value] of recipeFields) {
-            const spec = numberSpec('recipe', `${style}_${field}`, value, order++);
+        for (const [field, value, type, unit] of recipeFields) {
+            const attributeField = `${style}_${field}`;
+            const fieldOptions = {
+                lang,
+                unit,
+                semanticAttributeKey: `recipe.${attributeField}`,
+            };
+            const spec = type === 'Duration'
+                ? durationSpec('recipe', attributeField, value, order++, fieldOptions)
+                : type === 'Boolean'
+                    ? booleanSpec('recipe', attributeField, value, order++, fieldOptions)
+                    : numberSpec('recipe', attributeField, value, order++, fieldOptions);
             if (spec) {
-                spec.attributeName = `${label} ${fieldName('recipe', field)}`;
+                const fallbackName = `${label} ${FIELD_NAMES[field] || titleize(field)}`;
+                spec.attributeName = localizeSpecLabel(
+                    'attribute',
+                    `recipe.${attributeField}`,
+                    lang,
+                    fallbackName).name;
                 push(specs, spec);
             }
         }
     }
 
-    for (const harvest of card.harvest || []) {
-        if (!harvest.phase) continue;
-        push(specs, optionSpec('harvest', 'phase', harvest.phase, order++, titleize(harvest.phase)));
-        push(specs, textSpec('harvest', `${harvest.phase}_months`, harvest.months, order++, 'CustomText'));
+    for (const { key: rawPhase, item: harvest } of uniqueRepeatedObjects(
+        card.harvest || [],
+        item => item.phase,
+        'harvest')) {
+        const phase = normalizeCodePart(rawPhase).toLowerCase();
+        const attributeField = `${phase}_months`;
+        const spec = listSpec(
+            'harvest',
+            attributeField,
+            harvestMonths(harvest.months),
+            order++,
+            { lang, semanticAttributeKey: `harvest.${attributeField}` });
+        if (spec) {
+            const fallbackName = `${titleize(rawPhase)} Harvest Months`;
+            spec.attributeName = localizeSpecLabel(
+                'attribute',
+                `harvest.${attributeField}`,
+                lang,
+                fallbackName).name;
+            push(specs, spec);
+        }
     }
 
-    for (const sensory of card.sensory || []) {
-        const descriptor = sensory.descriptor_id || sensory.descriptor || 'unknown';
-        const spec = numberSpec('sensory', `descriptor_${descriptor}_intensity`, sensory.intensity, order++);
+    for (const { key: rawDescriptor, item: sensory } of uniqueRepeatedObjects(
+        card.sensory || [],
+        item => item.descriptor_id || item.descriptor,
+        'sensory')) {
+        const descriptor = normalizeCodePart(rawDescriptor).toLowerCase();
+        const attributeField = `descriptor_${descriptor}_intensity`;
+        const spec = numberSpec(
+            'sensory',
+            attributeField,
+            sensory.intensity,
+            order++,
+            { lang, semanticAttributeKey: `sensory.${attributeField}` });
         if (spec) {
-            spec.attributeName = `Sensory ${sensory.descriptor || descriptor} Intensity`;
+            const canonicalDescriptor = context.canonicalSensoryLabels?.[rawDescriptor]
+                || rawDescriptor;
+            const fallbackName = `Sensory ${titleize(canonicalDescriptor)} Intensity`;
+            spec.attributeName = localizeSpecLabel(
+                'attribute',
+                `sensory.${attributeField}`,
+                lang,
+                fallbackName).name;
             push(specs, spec);
         }
     }
 
     const enrichment = card.enrichment || {};
-    push(specs, optionSpec('enrichment', 'caffeine_level', enrichment.caffeine_level, order++, titleize(enrichment.caffeine_level)));
-    push(specs, optionSpec('enrichment', 'difficulty', enrichment.difficulty, order++, titleize(enrichment.difficulty)));
-    push(specs, optionSpec('enrichment', 'price_tier', enrichment.price_tier, order++, titleize(enrichment.price_tier)));
-    for (const value of enrichment.best_season || []) push(specs, optionSpec('enrichment', 'best_season', value, order++, titleize(value)));
-    for (const value of enrichment.occasion || []) push(specs, optionSpec('enrichment', 'occasion', value, order++, titleize(value)));
-    for (const value of enrichment.flavor_tags || []) push(specs, optionSpec('enrichment', 'flavor_tags', value, order++, titleize(value)));
-    push(specs, listSpec('enrichment', 'food_pairings', enrichment.food_pairings, order++));
-    push(specs, textSpec('enrichment', 'tasting_note', enrichment.tasting_note, order++));
-    push(specs, listSpec('enrichment', 'similar_teas', enrichment.similar_teas, order++));
+    push(specs, optionSpec('enrichment', 'caffeine_level', enrichment.caffeine_level, order++, titleize(enrichment.caffeine_level), options));
+    push(specs, optionSpec('enrichment', 'difficulty', enrichment.difficulty, order++, titleize(enrichment.difficulty), options));
+    push(specs, optionSpec('enrichment', 'price_tier', enrichment.price_tier, order++, titleize(enrichment.price_tier), options));
+    push(specs, listSpec('enrichment', 'best_season', enrichment.best_season, order++, options));
+    push(specs, listSpec('enrichment', 'occasion', enrichment.occasion, order++, options));
+    push(specs, listSpec('enrichment', 'flavor_tags', enrichment.flavor_tags, order++, options));
+    push(specs, listSpec('enrichment', 'food_pairings', enrichment.food_pairings, order++, options));
+    return normalizeSpecifications(specs, context.productCode || card.slug || '<unknown>');
+}
 
-    return specs;
+function harvestMonths(value) {
+    if (Array.isArray(value)) return value;
+    if (value === null || value === undefined) return [];
+    return String(value).split(/[,;\s]+/).filter(Boolean);
 }
 
 module.exports = {
@@ -387,6 +532,7 @@ module.exports = {
     makeCode,
     normalizeCodePart,
     titleize,
+    isRoutedTheTeaField,
     isSyntheticTheTeaField,
     buildSpecs,
 };

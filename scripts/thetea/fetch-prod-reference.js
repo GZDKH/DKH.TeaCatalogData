@@ -3,7 +3,14 @@ const fs = require('fs');
 const path = require('path');
 const http = require('http');
 const https = require('https');
-const { REPO_ROOT, parseArgs } = require('./lib/env');
+const { REPO_ROOT, loadDotEnv, parseArgs } = require('./lib/env');
+const { assertScopedPath } = require('./lib/generated-output');
+const {
+    catalogWorkspaceHeader,
+    resolveCatalogWorkspaceId,
+} = require('./lib/catalog-workspace');
+
+loadDotEnv();
 
 function usage() {
     console.log(`Usage:
@@ -12,10 +19,11 @@ function usage() {
 Options:
   --snapshot=<id>       Writes sources/prod/catalog-reference/<id>.json
   --out=<path>          Writes an explicit JSON file path
+  --workspace-id=<uuid> ProductCatalog workspace; or PRODUCT_CATALOG_WORKSPACE_ID
   --page-size=<n>       Page size for AdminGateway reads, default 500`);
 }
 
-function requestJson(url, token) {
+function requestJson(url, token, workspaceId) {
     const parsed = new URL(url);
     const lib = parsed.protocol === 'https:' ? https : http;
     return new Promise((resolve, reject) => {
@@ -24,6 +32,7 @@ function requestJson(url, token) {
             headers: {
                 Accept: 'application/json',
                 Authorization: `Bearer ${token}`,
+                ...catalogWorkspaceHeader(workspaceId),
             },
         }, res => {
             let data = '';
@@ -56,11 +65,14 @@ function extractPage(payload) {
     return { items, totalCount, page, pageSize };
 }
 
-async function fetchPaged(gatewayUrl, token, endpoint, pageSize) {
+async function fetchPaged(gatewayUrl, token, workspaceId, endpoint, pageSize) {
     const all = [];
     for (let page = 1; ; page++) {
         const separator = endpoint.includes('?') ? '&' : '?';
-        const payload = await requestJson(`${gatewayUrl}${endpoint}${separator}page=${page}&pageSize=${pageSize}`, token);
+        const payload = await requestJson(
+            `${gatewayUrl}${endpoint}${separator}page=${page}&pageSize=${pageSize}`,
+            token,
+            workspaceId);
         const current = extractPage(payload);
         all.push(...current.items);
 
@@ -81,6 +93,19 @@ function resolveOut(args) {
     return path.join(REPO_ROOT, 'sources', 'prod', 'catalog-reference', `${args.snapshot}.json`);
 }
 
+function writeFileAtomic(file, value) {
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    const temporary = path.join(
+        path.dirname(file),
+        `.${path.basename(file)}.tmp-${process.pid}-${Date.now()}`);
+    try {
+        fs.writeFileSync(temporary, `${JSON.stringify(value, null, 2)}\n`);
+        fs.renameSync(temporary, file);
+    } finally {
+        if (fs.existsSync(temporary)) fs.unlinkSync(temporary);
+    }
+}
+
 async function main() {
     const args = parseArgs();
     if (args.help || args.h) {
@@ -89,7 +114,13 @@ async function main() {
     }
 
     const pageSize = args['page-size'] ? Number(args['page-size']) : 500;
-    const out = resolveOut(args);
+    const out = assertScopedPath(resolveOut(args), {
+        repoRoot: REPO_ROOT,
+        allowedRoot: path.join(REPO_ROOT, 'sources', 'prod', 'catalog-reference'),
+        allowedDescription: 'sources/prod/catalog-reference/',
+        label: 'Catalog reference output',
+    });
+    const workspaceId = resolveCatalogWorkspaceId(args);
     const { GATEWAY_URL, getToken } = require('../lib/config');
 
     console.log('Fetching prod ProductCatalog references through AdminGateway...');
@@ -97,19 +128,29 @@ async function main() {
     console.log(`Output: ${out}`);
 
     const token = await getToken();
-    const catalogs = await fetchPaged(GATEWAY_URL, token, '/api/v1/catalogs?deletedFilter=active', pageSize);
-    const categories = await fetchPaged(GATEWAY_URL, token, '/api/v1/categories?deletedFilter=active', pageSize);
+    const catalogs = await fetchPaged(
+        GATEWAY_URL,
+        token,
+        workspaceId,
+        '/api/v1/catalogs?deletedFilter=active',
+        pageSize);
+    const categories = await fetchPaged(
+        GATEWAY_URL,
+        token,
+        workspaceId,
+        '/api/v1/categories?deletedFilter=active',
+        pageSize);
 
     const reference = {
         source: 'AdminGateway ProductCatalog',
         gatewayUrl: GATEWAY_URL,
+        workspaceId,
         fetchedAt: new Date().toISOString(),
         catalogs,
         categories,
     };
 
-    fs.mkdirSync(path.dirname(out), { recursive: true });
-    fs.writeFileSync(out, JSON.stringify(reference, null, 2));
+    writeFileAtomic(out, reference);
 
     console.log(`Catalogs: ${catalogs.length}`);
     console.log(`Categories: ${categories.length}`);

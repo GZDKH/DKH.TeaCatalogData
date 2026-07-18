@@ -24,10 +24,11 @@ The previous checked-in markdown corpus and static product/category JSON files w
 
 1. Fetch TheTea source payloads into ignored snapshots under `sources/thetea/snapshots/<id>/`.
    - Per-field details from `GET /api/v2/tea/{slug}/{lang}/field/{code}` are fetched by default for every TeaCard section field. Do not import snapshots created with `--skip-fields`.
-2. Fetch current production ProductCatalog catalog/category reference into ignored snapshots under `sources/prod/catalog-reference/<id>.json`.
-3. Generate ignored ProductCatalog import JSON under `import/thetea/<id>/04-products/...`.
-4. Validate generated JSON and prod catalog/category mapping before any AdminGateway import.
-5. Import through AdminGateway DataExchange only; never write directly to production DB.
+2. Fetch current production ProductCatalog catalog/category reference under `sources/prod/catalog-reference/<id>.json`.
+3. Fetch the complete nested JSON `products` DataExchange baseline under `sources/prod/product-reference/<id>/`; never substitute the list endpoint.
+4. Generate the ignored, hashed artifact under `import/thetea/<id>/` with both exact references.
+5. Validate artifact parity, baseline preservation, and prod mapping before any AdminGateway import.
+6. Import through AdminGateway DataExchange only; never write directly to production DB.
 
 ## Locales
 
@@ -40,16 +41,21 @@ Product translations use BCP 47 locale codes. DKH aliases TheTea `en` to `en-US`
 ```bash
 node scripts/thetea/fetch-snapshot.js --snapshot=thetea-2026-06-01 --langs=all --resume --concurrency=4
 node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-01
-node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-01 --out=import/thetea/thetea-2026-06-01 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json
-node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-06-01 --report=thetea-2026-06-01-prod-map --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01
+node scripts/thetea/fetch-prod-products.js --snapshot=prod-products-2026-06-01
+node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-01 --out=import/thetea/thetea-2026-06-01 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json --product-ref=sources/prod/product-reference/prod-products-2026-06-01
+node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-06-01 --report=thetea-2026-06-01-prod-map --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json --product-ref=sources/prod/product-reference/prod-products-2026-06-01
+node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json --product-ref=sources/prod/product-reference/prod-products-2026-06-01 --only=<product-code> --limit=1
 ```
 
 Use `--apply --yes` with `import-generated.js` only after explicit approval.
 
 ## Production Gates
 
-- Generated validation report must be valid.
+- `PRODUCT_CATALOG_WORKSPACE_ID` is required for ProductCatalog export/validate/import.
+- Generated validation report and artifact manifest must be valid with non-empty source/reference hashes.
 - Prod mapping report must show the target catalog exists and `Missing categories: 0`.
+- Full baseline overlay must preserve every unrelated replace-mode collection entry.
+- ProductCatalog must preserve catalog-scoped tier-price catalog codes across product export/import before canary.
+- Definitions and routed article/FAQ content need their ordered downstream paths before the product canary is considered complete.
 - TheTea commercial/licensing approval must be confirmed before loading production.
-- Re-runs are not idempotent until AdminGateway/ProductCatalogService supports `ImportOptions.update_existing` end to end.
+- Apply a one-product canary and verify read-back before requesting a separate mass apply approval.
