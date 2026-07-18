@@ -30,6 +30,7 @@ _output/
 # TheTea ETL generated data
 sources/thetea/snapshots/
 sources/prod/catalog-reference/
+sources/prod/product-reference/
 import/thetea/
 reports/thetea/
 artifacts/

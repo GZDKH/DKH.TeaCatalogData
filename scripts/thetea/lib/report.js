@@ -1,92 +1,12 @@
 const fs = require('fs');
 const path = require('path');
-const { analyzeCatalogMapping } = require('./catalog-mapping');
-
-const CODE_RE = /^[A-Z0-9][A-Z0-9_-]{1,99}$/;
-const KNOWN_PACKAGES = new Set([
-    'PKG-25G',
-    'PKG-50G',
-    'PKG-75G',
-    'PKG-100G',
-    'PKG-150G',
-    'PKG-250G',
-    'PKG-300G',
-    'PKG-500G',
-    'PKG-600G',
-    'PKG-BASKET-1KG',
-]);
+const { KNOWN_PACKAGES, validateArtifact } = require('./artifact-validator');
 
 function validateProducts(products, options = {}) {
-    const knownPackages = options.knownPackages || KNOWN_PACKAGES;
-    const catalogReference = options.catalogReference || null;
-    const requiredCatalogCode = options.requiredCatalogCode || 'CATALOG-CHINESE-TEA';
-    const errors = [];
-    const warnings = [];
-    const codes = new Map();
-    const languageCoverage = {};
-    const specTypes = {};
-
-    for (const product of products) {
-        if (!CODE_RE.test(product.code || '')) {
-            errors.push(`${product.code || '<missing>'}: invalid product code`);
-        }
-
-        if (codes.has(product.code)) {
-            errors.push(`${product.code}: duplicate product code also seen in ${codes.get(product.code)}`);
-        }
-        codes.set(product.code, product.sku || product.code);
-
-        const translations = product.translations || [];
-        if (!translations.some(t => t.lang === 'en-US' && t.name)) {
-            errors.push(`${product.code}: missing en-US translation with name`);
-        }
-        for (const t of translations) {
-            languageCoverage[t.lang] = (languageCoverage[t.lang] || 0) + 1;
-        }
-
-        if (!Array.isArray(product.catalogs) || product.catalogs.length === 0) {
-            errors.push(`${product.code}: no catalog/category assignments`);
-        }
-        for (const pkg of product.packages || []) {
-            if (pkg.package && !knownPackages.has(pkg.package)) {
-                warnings.push(`${product.code}: package ${pkg.package} is not in known package set`);
-            }
-        }
-
-        const customAttributeSeen = new Set();
-        for (const spec of product.specifications || []) {
-            if (!CODE_RE.test(spec.group || '')) errors.push(`${product.code}: invalid spec group code ${spec.group}`);
-            if (!CODE_RE.test(spec.attribute || '')) errors.push(`${product.code}: invalid spec attribute code ${spec.attribute}`);
-            if (spec.option && !CODE_RE.test(spec.option)) errors.push(`${product.code}: invalid spec option code ${spec.option}`);
-
-            specTypes[spec.type] = (specTypes[spec.type] || 0) + 1;
-            if (spec.type !== 'Option') {
-                const key = spec.attribute;
-                if (customAttributeSeen.has(key)) {
-                    errors.push(`${product.code}: repeated non-option spec attribute ${key}; ProductCatalog keeps one custom value per attribute`);
-                }
-                customAttributeSeen.add(key);
-            }
-        }
+    if (!options.definitions) {
+        throw new Error('validateProducts requires specification definitions; use validateArtifact for complete bundle validation.');
     }
-
-    const catalogMapping = catalogReference
-        ? analyzeCatalogMapping(products, catalogReference, { requiredCatalogCode })
-        : null;
-    if (catalogMapping) {
-        errors.push(...catalogMapping.errors);
-        warnings.push(...catalogMapping.warnings);
-    }
-
-    return {
-        valid: errors.length === 0,
-        productCount: products.length,
-        languageCoverage,
-        specTypes,
-        catalogMapping,
-        errors,
-        warnings,
-    };
+    return validateArtifact({ products, ...options });
 }
 
 function writeReport(reportDir, summary) {
@@ -117,6 +37,63 @@ function toMarkdown(summary) {
         '',
         ...Object.entries(summary.specTypes || {}).map(([type, count]) => `- ${type}: ${count}`),
     ];
+
+    const definitionCounts = summary.specificationDefinitionCounts;
+    if (definitionCounts) {
+        lines.push(
+            '',
+            '## Specification Definitions',
+            '',
+            `- Groups: ${definitionCounts.groups ?? 0}`,
+            `- Attributes: ${definitionCounts.attributes ?? 0}`,
+            `- Options: ${definitionCounts.options ?? 0}`);
+    }
+
+    const localization = summary.specificationLocalization;
+    if (localization) {
+        lines.push(
+            '',
+            '## Specification Localization',
+            '',
+            `- Required locales: ${(localization.requiredLocales || []).length}`,
+            `- Definitions: ${localization.definitionCount ?? 0}`,
+            `- Translation rows: ${localization.translationCount ?? 0}`,
+            `- Explicit fallback labels: ${localization.fallbackCount ?? 0}`);
+    }
+
+    if (summary.relations) {
+        lines.push(
+            '',
+            '## Product Relations',
+            '',
+            `- Related: ${summary.relations.related ?? 0}`,
+            `- Cross-sells: ${summary.relations.crossSells ?? 0}`);
+    }
+
+    if (summary.routedContentCounts) {
+        const routed = summary.routedContentCounts;
+        lines.push(
+            '',
+            '## Routed Content',
+            '',
+            `- Article records: ${routed.articles ?? 0}`,
+            `- Article translations: ${routed.articleTranslations ?? 0}`,
+            `- Markdown payloads: ${routed.markdown ?? 0}`,
+            `- Narrative fields: ${routed.narratives ?? 0}`,
+            `- FAQ metaobjects: ${routed.metaobjects ?? 0}`,
+            `- FAQ items: ${routed.faqItems ?? 0}`);
+    }
+
+    if (summary.sourceManifestSha256 || summary.sourceFilesSha256) {
+        lines.push(
+            '',
+            '## Artifact Integrity',
+            '',
+            `- Source manifest SHA-256: ${summary.sourceManifestSha256 || 'missing'}`,
+            `- Source files SHA-256: ${summary.sourceFilesSha256 || 'missing'}`,
+            `- Catalog reference SHA-256: ${summary.catalogReferenceSha256 || 'diagnostic artifact: missing'}`,
+            `- Product baseline SHA-256: ${summary.baselineReferenceSha256 || 'diagnostic artifact: missing'}`);
+    }
 
     if (summary.catalogMapping) {
         const mapping = summary.catalogMapping;

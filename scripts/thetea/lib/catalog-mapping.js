@@ -15,7 +15,8 @@ function flattenCategories(categories = []) {
 }
 
 function normalizeCode(value) {
-    return String(value || '').trim().toUpperCase();
+    const code = value && typeof value === 'object' ? value.code : value;
+    return String(code || '').trim().toUpperCase();
 }
 
 function itemName(item, preferredLang = 'en-US') {

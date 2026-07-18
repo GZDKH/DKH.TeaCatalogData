@@ -2,32 +2,38 @@
 const fs = require('fs');
 const path = require('path');
 const { REPO_ROOT, loadDotEnv, parseArgs, csv, requireArg } = require('./lib/env');
-const { transformCardSet } = require('./lib/transform');
-const { validateProducts, writeReport } = require('./lib/report');
+const { productCodeForCardSet, transformCardSet } = require('./lib/transform');
+const { writeReport } = require('./lib/report');
 const { flattenCategories, loadCatalogReference } = require('./lib/catalog-mapping');
-const { canonicalLocale } = require('./lib/locales');
+const { canonicalLocale, toProductLocale } = require('./lib/locales');
 const { applyFieldDetails } = require('./lib/field-details');
 const { buildTheTeaCategories } = require('./lib/category-taxonomy');
 const { buildCatalogBindingCatalog, defaultCatalogTranslations } = require('./lib/catalog-bindings');
 const { assertCompleteFieldLocales } = require('./lib/snapshot-options');
 const { buildSpecificationDefinitions } = require('./lib/spec-definitions');
+const { validateArtifact } = require('./lib/artifact-validator');
+const { assertScopedPath, withStagedOutput } = require('./lib/generated-output');
+const {
+    createArtifactManifest,
+    readArtifactBundle,
+    sha256,
+    writeJson,
+} = require('./lib/artifact-bundle');
+const { normalizeProductForImport } = require('./lib/import-contract');
+const { overlayExistingProduct } = require('./lib/product-overlay');
+const { loadVerifiedProductReference } = require('./lib/product-reference');
 
 loadDotEnv();
 
 function readJson(file) {
-    return JSON.parse(fs.readFileSync(file, 'utf-8').replace(/^\uFEFF/, ''));
-}
-
-function writeJson(file, value) {
-    fs.mkdirSync(path.dirname(file), { recursive: true });
-    fs.writeFileSync(file, JSON.stringify(value, null, 2));
+    return JSON.parse(fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, ''));
 }
 
 function safeFolder(value) {
     return String(value || 'UNCATEGORIZED')
         .toUpperCase()
         .replace(/[^A-Z0-9_-]+/g, '-')
-        .replace(/^-+|-+$/g, '');
+        .replace(/^-+|-+$/g, '') || 'UNCATEGORIZED';
 }
 
 function repoPath(value) {
@@ -35,33 +41,36 @@ function repoPath(value) {
     return path.isAbsolute(String(value)) ? String(value) : path.join(REPO_ROOT, String(value));
 }
 
-function walkJson(dir) {
+function walkFiles(dir, predicate = () => true) {
     if (!fs.existsSync(dir)) return [];
     const files = [];
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
         const full = path.join(dir, entry.name);
-        if (entry.isDirectory()) files.push(...walkJson(full));
-        else if (entry.isFile() && entry.name.endsWith('.json')) files.push(full);
+        if (entry.isSymbolicLink()) throw new Error(`Input reference must not contain symlinks: ${full}`);
+        if (entry.isDirectory()) files.push(...walkFiles(full, predicate));
+        else if (entry.isFile() && predicate(full)) files.push(full);
     }
     return files.sort();
+}
+
+function walkJson(dir) {
+    return walkFiles(dir, file => file.endsWith('.json'));
 }
 
 function readFieldDetails(snapshotRoot, lang, slug) {
     const dir = path.join(snapshotRoot, 'raw', 'fields', lang, slug);
     return walkJson(dir).map(file => {
         const rel = path.relative(dir, file).split(path.sep);
-        const field = path.basename(file, '.json');
-        const section = rel.length > 1 ? rel[0] : undefined;
         return {
-            section,
-            field,
+            section: rel.length > 1 ? rel[0] : undefined,
+            field: path.basename(file, '.json'),
             payload: readJson(file),
         };
     });
 }
 
 function readTextIfExists(file) {
-    return fs.existsSync(file) ? fs.readFileSync(file, 'utf-8') : null;
+    return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
 }
 
 function readSimilar(snapshotRoot, lang, slug) {
@@ -69,107 +78,229 @@ function readSimilar(snapshotRoot, lang, slug) {
     return fs.existsSync(file) ? readJson(file) : null;
 }
 
-function truncateText(value, maxLength) {
-    if (typeof value !== 'string' || value.length <= maxLength) return value;
-    return value.slice(0, maxLength).replace(/\s+\S*$/, '').trimEnd();
+function assertSafeSlug(value) {
+    const slug = String(value || '').trim();
+    if (!/^[a-z0-9][a-z0-9_-]*$/i.test(slug)) {
+        throw new Error(`Unsafe or invalid TheTea slug '${value}'.`);
+    }
+    return slug;
 }
 
-function normalizeAltitudeValue(value) {
-    if (value === null || value === undefined || value === '') return undefined;
-    const numeric = typeof value === 'number'
-        ? value
-        : Number(String(value).replace(/,/g, '').trim());
-    if (!Number.isFinite(numeric)) return undefined;
+function loadCardSet({
+    snapshotRoot,
+    manifest,
+    langs,
+    slug,
+    allowMissingFieldDetails,
+    allowMissingMarkdown,
+    warnings,
+}) {
+    const cardSet = {};
+    for (const lang of langs) {
+        const file = path.join(snapshotRoot, 'raw', 'cards', lang, `${slug}.json`);
+        if (!fs.existsSync(file)) continue;
 
-    const meters = Math.abs(numeric) > 0 && Math.abs(numeric) < 10
-        ? numeric * 1000
-        : numeric;
-    const rounded = Math.round(meters);
-    if (rounded < -2147483648 || rounded > 2147483647) return undefined;
-    return rounded;
+        const card = readJson(file);
+        const fieldDetails = readFieldDetails(snapshotRoot, lang, slug);
+        const fieldLangs = Array.isArray(manifest.fieldLangs) ? manifest.fieldLangs : null;
+        const fieldsExpectedForLang = fieldLangs === null || fieldLangs.includes(lang);
+        if (!fieldDetails.length && !allowMissingFieldDetails && fieldsExpectedForLang) {
+            warnings.push(`No field detail endpoint files found for ${slug}/${lang}.`);
+        }
+        const enriched = fieldDetails.length ? applyFieldDetails(card, fieldDetails) : card;
+        const markdown = readTextIfExists(
+            path.join(snapshotRoot, 'raw', 'markdown', lang, `${slug}.md`));
+        if (markdown) enriched.markdown = markdown;
+        else if (!allowMissingMarkdown) {
+            warnings.push(`No markdown endpoint file found for ${slug}/${lang}.`);
+        }
+
+        const similar = readSimilar(snapshotRoot, lang, slug);
+        if (similar) enriched.similarEndpoint = similar;
+        cardSet[lang] = enriched;
+    }
+    return cardSet;
 }
 
-function normalizeProductForImport(product) {
-    product.code = truncateText(product.code, 100);
-    product.sku = truncateText(product.sku, 100);
-    product.mpn = truncateText(product.mpn, 100);
-    product.gtin = truncateText(product.gtin, 100);
-    product.nativeName = truncateText(product.nativeName, 500);
-    product.transcription = truncateText(product.transcription, 500);
+function primaryCard(cardSet, langs) {
+    return cardSet.en || cardSet['en-US'] || cardSet[langs[0]] || Object.values(cardSet)[0];
+}
 
-    for (const translation of product.translations || []) {
-        translation.lang = truncateText(translation.lang, 10);
-        translation.name = truncateText(translation.name, 256);
-        translation.transcription = truncateText(translation.transcription, 500);
-        translation.seo = truncateText(translation.seo, 256);
-        translation.metaTitle = truncateText(translation.metaTitle, 128);
-        translation.metaDescription = truncateText(translation.metaDescription, 1024);
-        translation.description = truncateText(translation.description, 2000);
+function loadPrimaryCard(snapshotRoot, langs, slug) {
+    const orderedLangs = [...new Set(['en', 'en-US', ...langs])];
+    for (const lang of orderedLangs) {
+        const file = path.join(snapshotRoot, 'raw', 'cards', lang, `${slug}.json`);
+        if (fs.existsSync(file)) return readJson(file);
+    }
+    return null;
+}
+
+function hashInputPath(inputPath) {
+    if (!inputPath) return '';
+    const stat = fs.lstatSync(inputPath);
+    if (stat.isSymbolicLink()) throw new Error(`Input reference must not be a symlink: ${inputPath}`);
+    const files = stat.isDirectory() ? walkFiles(inputPath) : [inputPath];
+    const hash = require('crypto').createHash('sha256');
+    for (const file of files) {
+        const relative = stat.isDirectory() ? path.relative(inputPath, file) : path.basename(file);
+        hash.update(relative.split(path.sep).join('/'));
+        hash.update('\0');
+        hash.update(sha256(fs.readFileSync(file)));
+        hash.update('\n');
+    }
+    return hash.digest('hex');
+}
+
+function hashSnapshotFiles(snapshotRoot, manifest) {
+    const rootStat = fs.lstatSync(snapshotRoot);
+    if (rootStat.isSymbolicLink() || !rootStat.isDirectory()) {
+        throw new Error(`Snapshot root must be a real directory, not a symlink: ${snapshotRoot}`);
+    }
+    const files = [...new Set(manifest.files || [])].sort();
+    if (!files.length) throw new Error('Snapshot manifest has no source file inventory.');
+    const hash = require('crypto').createHash('sha256');
+    for (const relativePath of files) {
+        const file = resolveSnapshotPath(snapshotRoot, relativePath);
+        if (!fs.existsSync(file) || !fs.statSync(file).isFile()) {
+            throw new Error(`Snapshot source file from manifest is missing: ${relativePath}`);
+        }
+        hash.update(String(relativePath).split(path.sep).join('/'));
+        hash.update('\0');
+        hash.update(sha256(fs.readFileSync(file)));
+        hash.update('\n');
+    }
+    return hash.digest('hex');
+}
+
+function resolveSnapshotPath(snapshotRoot, relativePath) {
+    if (path.isAbsolute(relativePath)) throw new Error(`Snapshot manifest path must be relative: ${relativePath}`);
+    const resolvedRoot = path.resolve(snapshotRoot);
+    const resolved = path.resolve(resolvedRoot, relativePath);
+    if (!resolved.startsWith(`${resolvedRoot}${path.sep}`)) {
+        throw new Error(`Snapshot manifest path escapes snapshot root: ${relativePath}`);
+    }
+    let current = resolvedRoot;
+    for (const segment of path.relative(resolvedRoot, resolved).split(path.sep)) {
+        current = path.join(current, segment);
+        const stat = fs.lstatSync(current);
+        if (stat.isSymbolicLink()) {
+            throw new Error(`Snapshot manifest path contains a symlink: ${relativePath}`);
+        }
+    }
+    const realRoot = fs.realpathSync(resolvedRoot);
+    const realFile = fs.realpathSync(resolved);
+    if (!realFile.startsWith(`${realRoot}${path.sep}`)) {
+        throw new Error(`Snapshot manifest path resolves outside snapshot root: ${relativePath}`);
+    }
+    return realFile;
+}
+
+function assertGeneratorOutputPath(outputPath) {
+    return assertScopedPath(outputPath, {
+        repoRoot: REPO_ROOT,
+        allowedRoot: path.join(REPO_ROOT, 'import', 'thetea'),
+        allowedDescription: 'import/thetea/',
+        label: 'Generated output',
+    });
+}
+
+function productRelativePath(product, primary) {
+    const categoryFolder = safeFolder(primary?.meta?.category_code || product.catalogs?.[0]?.category);
+    return path.posix.join('04-products', categoryFolder, `${product.code}.json`);
+}
+
+function writeGeneratedBundle(stagingRoot, artifact) {
+    writeJson(path.join(stagingRoot, '03-categories', 'categories.json'), artifact.categories);
+    writeJson(
+        path.join(stagingRoot, '02-specifications', 'specification_groups.json'),
+        artifact.definitions.groups);
+    writeJson(
+        path.join(stagingRoot, '02-specifications', 'specification_attributes.json'),
+        artifact.definitions.attributes);
+    writeJson(
+        path.join(stagingRoot, '02-specifications', 'specification_attribute_options.json'),
+        artifact.definitions.options);
+    writeJson(path.join(stagingRoot, '01-reference', 'catalogs.json'), [artifact.catalog]);
+    writeJson(path.join(stagingRoot, '05-catalog-bindings', 'catalogs.json'), [artifact.catalogBinding]);
+    writeRoutedRecords(stagingRoot, 'articles', artifact.routedContent.articles);
+    writeRoutedRecords(stagingRoot, 'metaobjects', artifact.routedContent.metaobjects);
+
+    for (const record of artifact.productRecords) {
+        writeJson(path.join(stagingRoot, ...record.relativePath.split('/')), [record.product]);
     }
 
-    for (const origin of product.origins || []) {
-        origin.country = truncateText(origin.country, 10);
-        origin.state = truncateText(origin.state, 50);
-        origin.city = truncateText(origin.city, 50);
-
-        if (origin.altitude) {
-            const min = normalizeAltitudeValue(origin.altitude.min);
-            const max = normalizeAltitudeValue(origin.altitude.max);
-            if (min === undefined && max === undefined) {
-                delete origin.altitude;
-            } else {
-                origin.altitude.min = min;
-                origin.altitude.max = max;
-                origin.altitude.unit = truncateText(origin.altitude.unit, 10);
-            }
-        }
-
-        for (const translation of origin.translations || []) {
-            translation.lang = truncateText(translation.lang, 10);
-            translation.place = truncateText(translation.place, 500);
-        }
+    const manifest = createArtifactManifest(stagingRoot, {
+        snapshotId: artifact.snapshotId,
+        sourceManifestSha256: artifact.sourceManifestSha256,
+        sourceFilesSha256: artifact.sourceFilesSha256,
+        catalogReferenceSha256: artifact.catalogReferenceSha256,
+        baselineReferenceSha256: artifact.baselineReferenceSha256,
+        generatedAt: artifact.generatedAt,
+        requiredLocales: artifact.requiredLocales,
+        productCodes: artifact.products.map(product => product.code),
+        products: artifact.productRecords.map(record => ({
+            code: record.product.code,
+            path: record.relativePath,
+        })),
+        lossEvents: artifact.lossEvents,
+        localization: artifact.definitions.localization,
+    });
+    const reloaded = readArtifactBundle(stagingRoot);
+    if (!reloaded.valid) {
+        throw new Error(`Staged artifact integrity validation failed:\n${reloaded.errors.join('\n')}`);
     }
+    return manifest;
+}
 
-    const specs = [];
-    const seenAttributes = new Set();
-    const seenAttributeNames = new Set();
-    for (const spec of product.specifications || []) {
-        const attribute = String(spec.attribute || '').toUpperCase();
-        const lang = String(spec.lang || '').trim().toLowerCase();
-        const attributeName = String(spec.attributeName || '').trim().toLowerCase();
-        const attributeNameKey = attributeName ? `${lang}|${attributeName}` : '';
-        if (!attribute || seenAttributes.has(attribute) || (attributeNameKey && seenAttributeNames.has(attributeNameKey))) {
-            continue;
-        }
-        seenAttributes.add(attribute);
-        if (attributeNameKey) seenAttributeNames.add(attributeNameKey);
-        if (typeof spec.value === 'string') {
-            spec.value = truncateText(spec.value, 4000);
-        }
-        specs.push(spec);
+function writeRoutedRecords(stagingRoot, kind, records) {
+    const index = [];
+    for (const record of records) {
+        const relativePath = path.posix.join(
+            '06-routed-content',
+            kind,
+            'records',
+            `${record.code}.json`);
+        writeJson(path.join(stagingRoot, ...relativePath.split('/')), [record]);
+        index.push({ code: record.code, path: relativePath });
     }
-    product.specifications = specs;
-
-    return product;
+    writeJson(
+        path.join(stagingRoot, '06-routed-content', kind, 'index.json'),
+        index.sort((a, b) => a.code.localeCompare(b.code)));
 }
 
 function main() {
     const args = parseArgs();
     const snapshotId = requireArg(args, 'snapshot');
-    const snapshotRoot = path.join(REPO_ROOT, 'sources', 'thetea', 'snapshots', snapshotId);
+    const snapshotRoot = args['snapshot-root']
+        ? path.resolve(REPO_ROOT, String(args['snapshot-root']))
+        : path.join(REPO_ROOT, 'sources', 'thetea', 'snapshots', snapshotId);
     const manifestPath = path.join(snapshotRoot, 'manifest.json');
-    if (!fs.existsSync(manifestPath)) {
-        throw new Error(`Snapshot manifest not found: ${manifestPath}`);
+    if (!fs.existsSync(manifestPath)) throw new Error(`Snapshot manifest not found: ${manifestPath}`);
+
+    const outDir = assertGeneratorOutputPath(path.resolve(
+        REPO_ROOT,
+        args.out ? String(args.out) : path.join('import', 'thetea', snapshotId)));
+    const catalogReferencePath = repoPath(args['catalog-ref'] || args['prod-ref']);
+    const productReferencePath = repoPath(args['product-ref']);
+    if (!catalogReferencePath && args['allow-missing-catalog-reference'] !== true) {
+        throw new Error('Safe generation requires --catalog-ref=...; use --allow-missing-catalog-reference only for diagnostics.');
+    }
+    if (!productReferencePath && args['allow-missing-product-reference'] !== true) {
+        throw new Error('Safe generation requires a full products DataExchange --product-ref=... to preserve replace-mode collections; use --allow-missing-product-reference only for diagnostics.');
     }
 
-    const outDir = path.resolve(REPO_ROOT, args.out ? String(args.out) : path.join('import', 'thetea', snapshotId));
-    const catalogReferencePath = args['catalog-ref'] || args['prod-ref'];
-    const catalogReference = catalogReferencePath ? loadCatalogReference(repoPath(catalogReferencePath)) : null;
+    const catalogReference = catalogReferencePath ? loadCatalogReference(catalogReferencePath) : null;
+    const baselineReference = productReferencePath
+        ? loadVerifiedProductReference(productReferencePath)
+        : null;
+    const baselineProducts = baselineReference?.products || [];
+    const baselineByCode = new Map(baselineProducts.map(product => [normalizeCode(product.code), product]));
     const manifest = readJson(manifestPath);
     const requestedLangs = csv(args.langs);
     const langs = requestedLangs.length
         ? requestedLangs.map(canonicalLocale)
-        : (manifest.langs || ['en']);
+        : (manifest.langs || ['en']).map(canonicalLocale);
+    const requiredLocales = [...new Set(langs.map(toProductLocale).filter(Boolean))];
     const allowMissingFieldDetails = args['allow-missing-field-details'] === true;
     if (!allowMissingFieldDetails && (manifest.includeFields === false || !manifest.fieldFiles?.length)) {
         throw new Error('Snapshot has no per-field endpoint details. Re-fetch without --skip-fields or pass --allow-missing-field-details for diagnostics only.');
@@ -181,84 +312,117 @@ function main() {
     if (!allowMissingMarkdown && manifest.includeMarkdown === false) {
         throw new Error('Snapshot has no markdown endpoint pages. Re-fetch without --skip-md or pass --allow-missing-markdown for diagnostics only.');
     }
-    const products = [];
-    const primaryCards = [];
+
     const warnings = [];
-    const family = fs.existsSync(path.join(snapshotRoot, 'raw', 'family.json'))
-        ? readJson(path.join(snapshotRoot, 'raw', 'family.json'))
-        : null;
+    const records = [];
+    const slugs = new Set();
+    const codes = new Set();
+    for (const rawSlug of manifest.slugs || []) {
+        const slug = assertSafeSlug(rawSlug);
+        const slugKey = slug.toLowerCase();
+        if (slugs.has(slugKey)) throw new Error(`Duplicate normalized slug '${slug}' in snapshot manifest.`);
+        slugs.add(slugKey);
 
-    for (const slug of manifest.slugs || []) {
-        const cardSet = {};
-        for (const lang of langs) {
-            const file = path.join(snapshotRoot, 'raw', 'cards', lang, `${slug}.json`);
-            if (fs.existsSync(file)) {
-                const card = readJson(file);
-                const fieldDetails = readFieldDetails(snapshotRoot, lang, slug);
-                const fieldLangs = Array.isArray(manifest.fieldLangs) ? manifest.fieldLangs : null;
-                const fieldsExpectedForLang = fieldLangs === null || fieldLangs.includes(lang);
-                if (!fieldDetails.length && !allowMissingFieldDetails && fieldsExpectedForLang) {
-                    warnings.push(`No field detail endpoint files found for ${slug}/${lang}.`);
-                }
-                const enriched = fieldDetails.length ? applyFieldDetails(card, fieldDetails) : card;
-                const markdown = readTextIfExists(path.join(snapshotRoot, 'raw', 'markdown', lang, `${slug}.md`));
-                if (markdown) enriched.markdown = markdown;
-                else if (!allowMissingMarkdown) warnings.push(`No markdown endpoint file found for ${slug}/${lang}.`);
-
-                const similar = readSimilar(snapshotRoot, lang, slug);
-                if (similar) enriched.similarEndpoint = similar;
-                cardSet[lang] = enriched;
-            }
-        }
-
-        if (!cardSet.en && Object.keys(cardSet).length === 0) {
+        const primary = loadPrimaryCard(snapshotRoot, langs, slug);
+        if (!primary) {
             warnings.push(`No cards found for slug ${slug}; skipped.`);
             continue;
         }
-
-        const { product, warnings: productWarnings } = transformCardSet(cardSet, {
-            publish: args.publish === true,
-            packages: args.packages || 'default',
-            order: products.length + 1,
+        const code = productCodeForCardSet({ [primary.lang || 'en']: primary });
+        if (codes.has(code)) throw new Error(`Duplicate generated product code ${code}.`);
+        codes.add(code);
+        records.push({
+            slug,
+            code,
+            primary: { slug: primary.slug, meta: primary.meta, tags: primary.tags },
         });
-        warnings.push(...productWarnings);
-        normalizeProductForImport(product);
-        products.push(product);
-        primaryCards.push(cardSet.en || cardSet[langs[0]] || Object.values(cardSet)[0]);
+    }
+    if (!records.length) throw new Error('Snapshot did not produce any card sets.');
+    records.sort((a, b) => a.code.localeCompare(b.code));
 
-        const categoryFolder = safeFolder(cardSet.en?.meta?.category_code || product.catalogs?.[0]?.category);
-        const file = path.join(outDir, '04-products', categoryFolder, `${slug}.json`);
-        writeJson(file, [product]);
+    if (baselineReference) {
+        const baselineCodes = new Set(baselineProducts.map(product => normalizeCode(product.code)));
+        const missingBaselineCodes = records
+            .map(record => record.code)
+            .filter(code => !baselineCodes.has(normalizeCode(code)));
+        if (missingBaselineCodes.length) {
+            throw new Error(
+                `Full production baseline does not contain ${missingBaselineCodes.length} resync product(s): ${missingBaselineCodes.slice(0, 10).join(', ')}. New-product creation is outside this resync workflow.`);
+        }
     }
 
+    const productCodeBySlug = new Map(records.map(record => [record.slug.toLowerCase(), record.code]));
     const existingCategoryCodes = catalogReference
         ? new Set(flattenCategories(catalogReference.categories || [])
-            .map(category => String(category.code || '').toUpperCase())
+            .map(category => normalizeCode(category.code))
             .filter(Boolean))
         : null;
-    const categories = buildTheTeaCategories(primaryCards, { family, existingCategoryCodes });
-    writeJson(path.join(outDir, '03-categories', 'categories.json'), categories);
-    const specificationDefinitions = buildSpecificationDefinitions(products);
-    writeJson(
-        path.join(outDir, '02-specifications', 'specification_groups.json'),
-        specificationDefinitions.groups);
-    writeJson(
-        path.join(outDir, '02-specifications', 'specification_attributes.json'),
-        specificationDefinitions.attributes);
-    writeJson(
-        path.join(outDir, '02-specifications', 'specification_attribute_options.json'),
-        specificationDefinitions.options);
+    const catalogCode = String(args.catalog || 'CATALOG-CHINESE-TEA').toUpperCase();
+    const products = [];
+    const primaryCards = [];
+    const definitionObservationMap = new Map();
+    const lossEvents = [];
+    const routedContent = { articles: [], metaobjects: [] };
+    const productRecords = [];
 
-    const catalogCode = args.catalog || 'CATALOG-CHINESE-TEA';
+    for (const [index, record] of records.entries()) {
+        const cardSet = loadCardSet({
+            snapshotRoot,
+            manifest,
+            langs,
+            slug: record.slug,
+            allowMissingFieldDetails,
+            allowMissingMarkdown,
+            warnings,
+        });
+        const transformed = transformCardSet(cardSet, {
+            publish: args.publish === true,
+            publishExisting: args.publish === true,
+            packages: args.packages || 'default',
+            order: index + 1,
+            productCodeBySlug,
+            catalog: catalogCode,
+            knownCategories: existingCategoryCodes || new Set(),
+        });
+        warnings.push(...transformed.warnings);
+        collectDefinitionObservations(definitionObservationMap, transformed.definitionObservations);
+        lossEvents.push(...transformed.lossEvents.map(event => ({
+            ...event,
+            product: transformed.product.code,
+        })));
+        routedContent.articles.push(...transformed.routedContent.articles);
+        routedContent.metaobjects.push(...transformed.routedContent.metaobjects);
+
+        const baseline = baselineByCode.get(normalizeCode(transformed.product.code));
+        const product = overlayExistingProduct(transformed.product, baseline, {
+            publishExisting: args.publish === true,
+        });
+        normalizeProductForImport(product);
+        products.push(product);
+        primaryCards.push(record.primary);
+        productRecords.push({
+            product,
+            relativePath: productRelativePath(product, record.primary),
+        });
+    }
+
+    const family = fs.existsSync(path.join(snapshotRoot, 'raw', 'family.json'))
+        ? readJson(path.join(snapshotRoot, 'raw', 'family.json'))
+        : null;
+    const categories = buildTheTeaCategories(primaryCards, { family, existingCategoryCodes });
+    const definitions = buildSpecificationDefinitions(products, {
+        observations: [...definitionObservationMap.values()],
+        locales: requiredLocales,
+    });
     const catalogCurrency = args.currency || 'CNY';
     const catalogTranslations = defaultCatalogTranslations();
-    writeJson(path.join(outDir, '01-reference', 'catalogs.json'), [{
+    const catalog = {
         code: catalogCode,
         currency: catalogCurrency,
         order: 0,
         published: true,
         translations: catalogTranslations,
-    }]);
+    };
     const catalogBinding = buildCatalogBindingCatalog({
         catalogCode,
         currency: catalogCurrency,
@@ -266,25 +430,36 @@ function main() {
         categories,
         products,
     });
-    writeJson(path.join(outDir, '05-catalog-bindings', 'catalogs.json'), [catalogBinding]);
 
-    const validation = validateProducts(products, {
+    const validation = validateArtifact({
+        products,
+        definitions,
+        requiredLocales,
+        lossEvents,
+        routedContent,
         catalogReference,
-        requiredCatalogCode: args.catalog || 'CATALOG-CHINESE-TEA',
+        requiredCatalogCode: catalogCode,
+        baselineProducts,
     });
+    const generatedAt = new Date().toISOString();
+    const sourceManifestSha256 = sha256(fs.readFileSync(manifestPath));
+    const sourceFilesSha256 = hashSnapshotFiles(snapshotRoot, manifest);
+    const baselineReferenceSha256 = hashInputPath(productReferencePath);
+    const catalogReferenceSha256 = hashInputPath(catalogReferencePath);
     const summary = {
         snapshotId,
-        generatedAt: new Date().toISOString(),
+        generatedAt,
         outputDir: outDir,
         valid: validation.valid,
-        productCount: products.length,
+        productCount: validation.productCount,
         languageCoverage: validation.languageCoverage,
         specTypes: validation.specTypes,
-        specificationDefinitionCounts: {
-            groups: specificationDefinitions.groups.length,
-            attributes: specificationDefinitions.attributes.length,
-            options: specificationDefinitions.options.length,
-        },
+        specificationDefinitionCounts: validation.definitionCounts,
+        specificationLocalization: definitions.localization,
+        localeCoverage: validation.localeCoverage,
+        relations: validation.relationCounts,
+        lossEvents,
+        routedContentCounts: validation.routedContentCounts,
         catalogMapping: validation.catalogMapping,
         categoryDefinitionCount: categories.length,
         categoryDefinitionMode: existingCategoryCodes ? 'missing-from-catalog-ref' : 'full-generated-taxonomy',
@@ -295,28 +470,101 @@ function main() {
         missingFieldDetailFiles: manifest.missingFieldDetailFiles?.length || 0,
         markdownFiles: manifest.markdownFiles?.length || 0,
         similarFiles: manifest.similarFiles?.length || 0,
+        sourceManifestSha256,
+        sourceFilesSha256,
+        baselineReferenceSha256,
+        catalogReferenceSha256,
+        baselineProductCount: baselineProducts.length,
+        overlaidProductCount: products.filter(product => baselineByCode.has(normalizeCode(product.code))).length,
         errors: validation.errors,
         warnings: [...warnings, ...validation.warnings],
     };
 
+    let artifactManifest = null;
+    if (summary.valid) {
+        artifactManifest = withStagedOutput(outDir, stagingRoot => writeGeneratedBundle(stagingRoot, {
+            snapshotId,
+            generatedAt,
+            sourceManifestSha256,
+            sourceFilesSha256,
+            baselineReferenceSha256,
+            catalogReferenceSha256,
+            requiredLocales,
+            products,
+            productRecords,
+            definitions,
+            categories,
+            catalog,
+            catalogBinding,
+            lossEvents,
+            routedContent,
+        }));
+        summary.artifactFileCount = artifactManifest.files.length;
+    }
+
     const reportDir = path.join(REPO_ROOT, 'reports', 'thetea', snapshotId);
     writeReport(reportDir, summary);
-
     console.log(`Generated products: ${products.length}`);
-    console.log(`Output: ${outDir}`);
+    console.log(`Output: ${summary.valid ? outDir : 'not replaced (validation failed)'}`);
     console.log(`Report: ${reportDir}`);
     console.log(`Errors: ${summary.errors.length}`);
     console.log(`Warnings: ${summary.warnings.length}`);
-
     if (summary.errors.length) {
         for (const error of summary.errors.slice(0, 10)) console.log(`ERROR: ${error}`);
-        process.exit(1);
+        process.exitCode = 1;
+    }
+    return { summary, artifactManifest };
+}
+
+function collectDefinitionObservations(target, observations) {
+    for (const observation of observations || []) {
+        const compact = Object.fromEntries(Object.entries(observation)
+            .filter(([key, value]) => value !== undefined
+                && !['value', 'valueMin', 'valueMax', 'showOnPage'].includes(key)));
+        const key = [compact.group, compact.attribute, compact.option || '', compact.lang || '']
+            .map(value => String(value || '').toUpperCase())
+            .join('|');
+        const existing = target.get(key);
+        if (!existing) {
+            target.set(key, compact);
+            continue;
+        }
+        if (definitionObservationSignature(existing) !== definitionObservationSignature(compact)) {
+            throw new Error(`Conflicting definition observation for ${key}.`);
+        }
+        if (Number.isInteger(compact.order)
+            && (!Number.isInteger(existing.order) || compact.order < existing.order)) {
+            existing.order = compact.order;
+        }
     }
 }
 
-try {
-    main();
-} catch (error) {
-    console.error(`FATAL: ${error.message}`);
-    process.exit(1);
+function definitionObservationSignature(value) {
+    const comparable = { ...value };
+    delete comparable.order;
+    return JSON.stringify(Object.fromEntries(Object.entries(comparable).sort(([a], [b]) => a.localeCompare(b))));
 }
+
+function normalizeCode(value) {
+    const code = value && typeof value === 'object' ? value.code : value;
+    return String(code || '').trim().toUpperCase();
+}
+
+if (require.main === module) {
+    try {
+        main();
+    } catch (error) {
+        console.error(`FATAL: ${error.message}`);
+        process.exitCode = 1;
+    }
+}
+
+module.exports = {
+    assertGeneratorOutputPath,
+    assertSafeSlug,
+    hashSnapshotFiles,
+    hashInputPath,
+    main,
+    productRelativePath,
+    writeGeneratedBundle,
+};

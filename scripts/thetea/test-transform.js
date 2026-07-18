@@ -78,6 +78,7 @@ const xihu = {
         tasting_note: 'Delicate and sweet.',
         food_pairings: ['Tofu'],
         similar_teas: ['dongting-biluochun'],
+        faq: [{ q: 'How?', a: 'Carefully.' }],
     },
     seo: {
         title: 'Xi Hu Long Jing',
@@ -89,9 +90,13 @@ const zhCnXihu = {
     ...xihu,
     lang: 'zh-cn',
     name: xihu.name,
+    enrichment: {
+        ...xihu.enrichment,
+        faq: [{ q: '如何？' }, { a: '小心。' }],
+    },
 };
 
-const { product, warnings } = transformCardSet({ en: xihu, 'zh-CN': zhCnXihu }, {
+const { product, warnings, lossEvents, routedContent } = transformCardSet({ en: xihu, 'zh-CN': zhCnXihu }, {
     knownCategories: new Set([
         'CAT-GREEN-TEA',
         'CAT-REGION-ZHEJIANG',
@@ -102,6 +107,10 @@ const { product, warnings } = transformCardSet({ en: xihu, 'zh-CN': zhCnXihu }, 
     ]),
     publish: false,
     packages: 'standard',
+    productCodeBySlug: new Map([
+        ['xihu-longjing', 'TEA-CN-XIHU-LONGJING'],
+        ['dongting-biluochun', 'TEA-CN-DONGTING-BILUOCHUN'],
+    ]),
 });
 
 assert.strictEqual(product.code, 'TEA-CN-XIHU-LONGJING');
@@ -130,22 +139,23 @@ assert(product.origins[0].coordinates.lat === 30.22);
 
 const specs = product.specifications;
 assert(specs.some(s => s.attribute === 'SPEC-TT-BREWING-BREW-TEMP' && s.type === 'Range'));
-assert(specs.some(s => s.attribute === 'SPEC-TT-FIELD-BREWING-WATER-TEMP' && s.type === 'Number'));
+assert(!specs.some(s => s.attribute === 'SPEC-TT-FIELD-BREWING-WATER-TEMP'));
+assert(!specs.some(s => s.attribute === 'SPEC-TT-FIELD-DETAIL-BREWING-WATER-TEMP'));
 assert(specs.some(s => s.attribute === 'SPEC-TT-ATOMIC-OXIDATION' && s.type === 'Range'));
-assert(specs.some(s => s.attribute === 'SPEC-TT-TERROIR-ALTITUDE' && s.type === 'Range'));
-assert(specs.some(s => s.attribute === 'SPEC-TT-FIELD-TERROIR-ALTITUDE' && s.type === 'Number'));
+assert(!specs.some(s => /TERROIR-ALTITUDE/.test(s.attribute)));
+assert.deepStrictEqual(product.origins[0].altitude, { min: 100, max: 800, unit: 'm' });
 assert(specs.some(s => s.attribute === 'SPEC-TT-RECIPE-GONGFU-WATER-TEMP' && s.type === 'Number'));
-assert(specs.find(s => s.attribute === 'SPEC-TT-RECIPE-GONGFU-RINSE').attributeName === 'Gongfu Rinse');
+assert(specs.find(s => s.attribute === 'SPEC-TT-RECIPE-GONGFU-RINSE').attributeName === 'Gongfu Rinse Required');
+assert.strictEqual(specs.find(s => s.attribute === 'SPEC-TT-RECIPE-GONGFU-RINSE').value, 'false');
+assert.strictEqual(specs.find(s => s.attribute === 'SPEC-TT-RECIPE-GONGFU-STEEP-SEC').type, 'Duration');
 assert(specs.find(s => s.attribute === 'SPEC-TT-RECIPE-WESTERN-WATER-TEMP').attributeName === 'Western Water Temperature');
-assert(specs.some(s => s.attribute === 'SPEC-TT-HARVEST-PHASE' && s.option === 'SPEC-TT-OPT-HARVEST-PHASE-EARLY'));
-assert(specs.some(s => s.attribute === 'SPEC-TT-NOTES-TERROIR'
-    && s.attributeName === 'Terroir Notes'
-    && s.type === 'CustomMarkdownText'
-    && s.value.includes('Unknown but retained field.')));
-assert(specs.some(s => s.attribute === 'SPEC-TT-NOTES-HEALTH'
-    && s.attributeName === 'Health Notes'
-    && s.type === 'CustomMarkdownText'
-    && s.value.includes('Supports digestion after heavy meals.')));
+assert.strictEqual(
+    specs.find(s => s.attribute === 'SPEC-TT-HARVEST-EARLY-MONTHS').value,
+    '["3"]');
+assert.strictEqual(
+    specs.find(s => s.attribute === 'SPEC-TT-ENRICHMENT-OCCASION').value,
+    '["morning","focus"]');
+assert(!specs.some(s => s.attribute.startsWith('SPEC-TT-NOTES-')));
 assert(specs.some(s => s.attribute === 'SPEC-TT-TERRORIR-TERRORIR-X7') === false);
 assert(!specs.some(s => /^TheTea .* Field \d+$/.test(s.attributeName || '')));
 
@@ -157,5 +167,72 @@ for (const spec of specs) {
 }
 
 assert(warnings.some(w => w.includes('Missing localized ru card')));
+assert.deepStrictEqual(product.related, [{
+    product: 'TEA-CN-DONGTING-BILUOCHUN',
+    catalog: 'CATALOG-CHINESE-TEA',
+    order: 1,
+}]);
+assert.strictEqual(routedContent.articles.length, 1);
+assert(routedContent.articles[0].translations[0].narratives.terroir.terroir_x7
+    .includes('Unknown but retained field.'));
+assert(routedContent.articles[0].translations[0].narratives.brewing.water_temp
+    .includes('80-90°C.'));
+assert(routedContent.articles[0].translations[0].narratives.organoleptic.taste
+    .includes('Chestnut, orchid, umami.'));
+assert.strictEqual(routedContent.metaobjects[0].locales.reduce(
+    (sum, locale) => sum + locale.items.length, 0), 2);
+assert(lossEvents.some(event => event.source === 'localized-section-narratives' && event.count >= 8));
+assert(lossEvents.some(event => event.source === 'enrichment.faq' && event.count === 2));
+
+const fallbackCard = JSON.parse(JSON.stringify(zhCnXihu));
+fallbackCard.sections.history_culture = {
+    history: { value: 'Only available outside English.', num: null, unit: null },
+};
+const fallbackResult = transformCardSet({ en: xihu, 'zh-CN': fallbackCard });
+assert(fallbackResult.product.specifications.some(
+    spec => spec.attribute === 'SPEC-TT-FIELD-HISTORY-CULTURE-HISTORY'));
+assert(fallbackResult.lossEvents.some(event =>
+    event.source === 'localized-only-specifications'
+    && event.fields.some(field => field.attribute === 'SPEC-TT-FIELD-HISTORY-CULTURE-HISTORY')));
+
+const longNarrativeCard = JSON.parse(JSON.stringify(zhCnXihu));
+longNarrativeCard.sections.organoleptic.taste = {
+    value: `本地化长文 ${'细节'.repeat(180)}`,
+    num: null,
+    unit: null,
+};
+const longNarrativeResult = transformCardSet({ en: xihu, 'zh-CN': longNarrativeCard });
+assert(!longNarrativeResult.product.specifications.some(
+    spec => spec.attribute === 'SPEC-TT-FIELD-ORGANOLEPTIC-TASTE'));
+assert(longNarrativeResult.routedContent.articles[0].translations
+    .find(translation => translation.lang === 'zh-CN')
+    .narratives.organoleptic.taste.includes('本地化长文'));
+
+const missingFaqCard = JSON.parse(JSON.stringify(zhCnXihu));
+missingFaqCard.enrichment.faq = [];
+const faqFallbackResult = transformCardSet({ en: xihu, 'zh-CN': missingFaqCard });
+assert.strictEqual(faqFallbackResult.routedContent.metaobjects[0].locales.length, 2);
+assert(faqFallbackResult.lossEvents.some(event =>
+    event.source === 'enrichment.faq-fallback'
+    && event.locales.some(locale => locale.lang === 'zh-CN' && locale.from === 'en-US')));
+
+const pointRangeCard = JSON.parse(JSON.stringify(xihu));
+pointRangeCard.meta.brew_temp_max = null;
+const pointRange = transformCardSet({ en: pointRangeCard }).product.specifications
+    .find(spec => spec.attribute === 'SPEC-TT-BREWING-BREW-TEMP');
+assert.deepStrictEqual([pointRange.valueMin, pointRange.valueMax], [80, 80]);
+
+const kilometerAltitudeCard = JSON.parse(JSON.stringify(xihu));
+kilometerAltitudeCard.meta.altitude_min = 1.2;
+kilometerAltitudeCard.meta.altitude_max = 1.6;
+assert.deepStrictEqual(
+    transformCardSet({ en: kilometerAltitudeCard }).product.origins[0].altitude,
+    { min: 1200, max: 1600, unit: 'm' });
+const lowAltitudeCard = JSON.parse(JSON.stringify(xihu));
+lowAltitudeCard.meta.altitude_min = 5;
+lowAltitudeCard.meta.altitude_max = 50;
+assert.deepStrictEqual(
+    transformCardSet({ en: lowAltitudeCard }).product.origins[0].altitude,
+    { min: 5, max: 50, unit: 'm' });
 
 console.log('test-transform: OK');
