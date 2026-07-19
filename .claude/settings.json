@@ -153,6 +153,12 @@
           {
             "type": "command",
             "if": "Bash(*git *)",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" block-primary-worktree-switch.sh",
+            "statusMessage": "Primary worktree switch check..."
+          },
+          {
+            "type": "command",
+            "if": "Bash(*git *)",
             "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" block-destructive-git.sh",
             "statusMessage": "Destructive command check..."
           },
@@ -327,6 +333,11 @@
             "type": "command",
             "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" post-compact.sh",
             "statusMessage": "Restoring plan context..."
+          },
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" check-runaway-output.sh",
+            "statusMessage": "Checking summary for runaway garbage..."
           }
         ]
       }
@@ -349,6 +360,23 @@
             "type": "command",
             "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" session-push-beads.sh",
             "statusMessage": "Pushing beads state to remote..."
+          },
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" check-runaway-output.sh",
+            "statusMessage": "Checking for runaway output..."
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ ! -f \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" ] || bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/dispatch.sh\" check-runaway-output.sh",
+            "statusMessage": "Checking for runaway output..."
           }
         ]
       }
