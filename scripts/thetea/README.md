@@ -143,6 +143,22 @@ node scripts/thetea/reconcile-generated.js \
   --report=thetea-2026-06-01-reconciliation
 ```
 
+Validate or apply that exact plan through a resumable, read-back-verified runner.
+Every batch is validated first and recorded in `product-sync-checkpoint.json`.
+Apply automatically restores the current batch if read-back fails; the exact
+baseline can also be restored with `--rollback --yes`:
+
+```bash
+node scripts/thetea/run-product-sync.js \
+  --plan=reports/thetea/thetea-2026-06-01-reconciliation
+node scripts/thetea/run-product-sync.js \
+  --plan=reports/thetea/thetea-2026-06-01-reconciliation \
+  --apply --yes
+node scripts/thetea/run-product-sync.js \
+  --plan=reports/thetea/thetea-2026-06-01-reconciliation \
+  --rollback --yes
+```
+
 Check that the generated data is ready for POS catalog browsing:
 
 ```bash
