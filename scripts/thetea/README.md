@@ -130,6 +130,19 @@ node scripts/thetea/validate-generated.js \
   --product-ref=sources/prod/product-reference/prod-products-2026-06-01
 ```
 
+Build the complete read-only field-level reconciliation before any server-side
+validation or apply. The report classifies every selected product as
+`create`/`update`/`noop`/`conflict`, lists changes by stable nested keys, rejects
+removal of unrelated production associations, and writes exact desired and
+rollback product payloads:
+
+```bash
+node scripts/thetea/reconcile-generated.js \
+  --dir=import/thetea/thetea-2026-06-01 \
+  --product-ref=sources/prod/product-reference/prod-products-2026-06-01 \
+  --report=thetea-2026-06-01-reconciliation
+```
+
 Check that the generated data is ready for POS catalog browsing:
 
 ```bash
