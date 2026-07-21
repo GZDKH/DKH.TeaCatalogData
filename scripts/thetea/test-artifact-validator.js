@@ -390,6 +390,23 @@ externalBaselineArtifact.baselineProducts = [
 const externalBaselineResult = validateArtifact(externalBaselineArtifact);
 assert.strictEqual(externalBaselineResult.valid, true, externalBaselineResult.errors.join('\n'));
 
+const ungroupedLegacyBaselineArtifact = fixture();
+const ungroupedLegacySpec = {
+    attribute: 'SPEC-LEGACY-UNGROUPED',
+    type: 'CustomText',
+    value: 'preserve exactly',
+};
+ungroupedLegacyBaselineArtifact.products[0].specifications.push(ungroupedLegacySpec);
+ungroupedLegacyBaselineArtifact.baselineProducts = [{
+    code: 'TEA-CN-ONE',
+    specifications: [ungroupedLegacySpec],
+}];
+const ungroupedLegacyBaselineResult = validateArtifact(ungroupedLegacyBaselineArtifact);
+assert.strictEqual(
+    ungroupedLegacyBaselineResult.valid,
+    true,
+    ungroupedLegacyBaselineResult.errors.join('\n'));
+
 expectInvalid(artifact => {
     artifact.catalogReference.catalogs = [];
 }, 'Required prod catalog CATALOG-CHINESE-TEA was not found');

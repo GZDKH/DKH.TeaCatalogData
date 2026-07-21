@@ -9,6 +9,7 @@ const {
     catalogWorkspaceHeader,
     resolveCatalogWorkspaceId,
 } = require('./lib/catalog-workspace');
+const { requestDataExchangeExport } = require('./fetch-prod-products');
 
 loadDotEnv();
 
@@ -137,6 +138,24 @@ function writeFileAtomic(file, value) {
     }
 }
 
+async function fetchDataExchangeArray(gatewayUrl, token, workspaceId, profile) {
+    const response = await requestDataExchangeExport(
+        gatewayUrl,
+        token,
+        workspaceId,
+        profile);
+    let records;
+    try {
+        records = JSON.parse(response.toString('utf8').replace(/^\uFEFF/, ''));
+    } catch (error) {
+        throw new Error(`Invalid ${profile} DataExchange export: ${error.message}`);
+    }
+    if (!Array.isArray(records)) {
+        throw new Error(`${profile} DataExchange export must be an array.`);
+    }
+    return records;
+}
+
 async function main() {
     const args = parseArgs();
     if (args.help || args.h) {
@@ -159,19 +178,37 @@ async function main() {
     console.log(`Output: ${out}`);
 
     const token = await getToken();
-    const catalogs = await fetchPaged(
-        GATEWAY_URL,
-        token,
-        workspaceId,
-        '/api/v1/catalogs?deletedFilter=active',
-        pageSize);
-    const categories = await fetchPaged(
-        GATEWAY_URL,
-        token,
-        workspaceId,
-        '/api/v1/categories?deletedFilter=active',
-        pageSize);
-    const geography = await fetchGeography(GATEWAY_URL, token, workspaceId);
+    const [catalogs, categories, geography, specificationGroups,
+        specificationAttributes, specificationAttributeOptions] = await Promise.all([
+        fetchPaged(
+            GATEWAY_URL,
+            token,
+            workspaceId,
+            '/api/v1/catalogs?deletedFilter=active',
+            pageSize),
+        fetchPaged(
+            GATEWAY_URL,
+            token,
+            workspaceId,
+            '/api/v1/categories?deletedFilter=active',
+            pageSize),
+        fetchGeography(GATEWAY_URL, token, workspaceId),
+        fetchDataExchangeArray(
+            GATEWAY_URL,
+            token,
+            workspaceId,
+            'specification_groups'),
+        fetchDataExchangeArray(
+            GATEWAY_URL,
+            token,
+            workspaceId,
+            'specification_attributes'),
+        fetchDataExchangeArray(
+            GATEWAY_URL,
+            token,
+            workspaceId,
+            'specification_attribute_options'),
+    ]);
 
     const reference = {
         source: 'AdminGateway ProductCatalog',
@@ -181,6 +218,9 @@ async function main() {
         catalogs,
         categories,
         geography,
+        specificationGroups,
+        specificationAttributes,
+        specificationAttributeOptions,
     };
 
     writeFileAtomic(out, reference);
@@ -189,9 +229,19 @@ async function main() {
     console.log(`Categories: ${categories.length}`);
     console.log(`States/provinces: ${geography.states.length}`);
     console.log(`Cities: ${geography.states.reduce((sum, state) => sum + state.cities.length, 0)}`);
+    console.log(`Specification groups: ${specificationGroups.length}`);
+    console.log(`Specification attributes: ${specificationAttributes.length}`);
+    console.log(`Specification options: ${specificationAttributeOptions.length}`);
 }
 
-main().catch(error => {
-    console.error(`FATAL: ${error.message}`);
-    process.exit(1);
-});
+if (require.main === module) {
+    main().catch(error => {
+        console.error(`FATAL: ${error.message}`);
+        process.exitCode = 1;
+    });
+}
+
+module.exports = {
+    fetchDataExchangeArray,
+    main,
+};

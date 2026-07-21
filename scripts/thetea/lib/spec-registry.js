@@ -490,20 +490,24 @@ function buildSpecs(card, context = {}) {
         'sensory')) {
         const canonicalDescriptor = context.canonicalSensoryLabels?.[rawDescriptor]
             || sensory.descriptor;
-        if (!canonicalDescriptor) continue;
         const descriptor = normalizeCodePart(rawDescriptor).toLowerCase();
         const attributeField = `descriptor_${descriptor}_intensity`;
+        const fallbackName = canonicalDescriptor
+            ? `Sensory ${titleize(canonicalDescriptor)} Intensity`
+            : `Sensory Source Descriptor ${sourceDescriptorCode(rawDescriptor)} Intensity`;
+        const semanticAttributeKey = canonicalDescriptor
+            ? `sensory.${attributeField}`
+            : `sensory.source_${attributeField}`;
         const spec = numberSpec(
             'sensory',
             attributeField,
             sensory.intensity,
             order++,
-            { lang, semanticAttributeKey: `sensory.${attributeField}` });
+            { lang, semanticAttributeKey, attributeFallbackName: fallbackName });
         if (spec) {
-            const fallbackName = `Sensory ${titleize(canonicalDescriptor)} Intensity`;
             spec.attributeName = localizeSpecLabel(
                 'attribute',
-                `sensory.${attributeField}`,
+                semanticAttributeKey,
                 lang,
                 fallbackName).name;
             push(specs, spec);
@@ -519,6 +523,11 @@ function buildSpecs(card, context = {}) {
     push(specs, listSpec('enrichment', 'flavor_tags', enrichment.flavor_tags, order++, options));
     push(specs, listSpec('enrichment', 'food_pairings', enrichment.food_pairings, order++, options));
     return normalizeSpecifications(specs, context.productCode || card.slug || '<unknown>');
+}
+
+function sourceDescriptorCode(rawDescriptor) {
+    const normalized = String(rawDescriptor || '').trim().toLowerCase();
+    return normalized ? normalized[0].toUpperCase() + normalized.slice(1) : normalized;
 }
 
 function harvestMonths(value) {

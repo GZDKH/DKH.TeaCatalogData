@@ -315,12 +315,26 @@ function sameCanonicalEnglish(left, right) {
     return normalize(left) === normalize(right);
 }
 
+function dynamicLabels(kind, semanticKey) {
+    if (kind !== 'attribute') return null;
+    const match = /^sensory\.source_descriptor_([a-z0-9_]+)_intensity$/.exec(semanticKey);
+    if (!match) return null;
+    const normalizedCode = match[1].replace(/_/g, '-');
+    const code = normalizedCode[0].toUpperCase() + normalizedCode.slice(1);
+    return {
+        [CANONICAL_LOCALE]: `Sensory Source Descriptor ${code} Intensity`,
+        'ru-RU': `Интенсивность исходного сенсорного дескриптора ${code}`,
+        'zh-CN': `源感官描述符 ${code} 强度`,
+    };
+}
+
 function localizeSpecLabel(kind, semanticKey, locale, fallbackName) {
     const normalizedKind = normalizeKind(kind);
     const normalizedKey = resolveSemanticKey(normalizedKind, semanticKey);
     const normalizedLocale = normalizeLocale(locale);
     const fallback = normalizeFallbackName(fallbackName);
-    const curated = LABEL_REGISTRY.get(registryKey(normalizedKind, normalizedKey));
+    const curated = LABEL_REGISTRY.get(registryKey(normalizedKind, normalizedKey))
+        || dynamicLabels(normalizedKind, normalizedKey);
 
     if (!curated) return { name: fallback, source: 'fallback' };
 
