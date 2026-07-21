@@ -45,4 +45,33 @@ assert.throws(
     () => resolveOriginLocation(card, { countryCode: 'CN', states: [] }),
     /absent from the production geography reference/);
 
+const proseAfterProvince = {
+    slug: 'baihao-yinzhen-xin-cha',
+    meta: { origin_country: 'CN', province: 'Fujian', city: null },
+    sections: {
+        classification_origin: {
+            origin: {
+                value: 'China, primarily Fujian Province (福建, Fujian). Classic centers are Fuding and Zhenghe; stylizations exist in other regions.',
+            },
+        },
+    },
+};
+assert.strictEqual(extractCityCandidate(proseAfterProvince), undefined);
+assert.deepStrictEqual(resolveOriginLocation(proseAfterProvince), {
+    country: 'CN',
+    state: 'FJ',
+    city: undefined,
+});
+
+const longExplicitCityWarnings = [];
+assert.deepStrictEqual(resolveOriginLocation({
+    slug: 'invalid-long-city',
+    meta: { origin_country: 'CN', province: 'Fujian', city: 'A deliberately invalid city candidate that is longer than fifty characters' },
+}, undefined, longExplicitCityWarnings), {
+    country: 'CN',
+    state: 'FJ',
+    city: undefined,
+});
+assert.match(longExplicitCityWarnings[0], /50-character import limit/);
+
 console.log('test-origin-reference: OK');
