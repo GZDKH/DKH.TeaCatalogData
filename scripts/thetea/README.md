@@ -185,6 +185,25 @@ list. This removes legacy full-page/similar attributes, synthetic `*_xN`
 field attributes (`SPEC-TT-FIELD...-Xn`), and obsolete markdown/related/`EXT`
 groups through AdminGateway delete endpoints:
 
+Before the product resync, normalize the seven active legacy Pu-erh definition
+attributes that production currently leaves ungrouped. The repair assigns only
+their definition-level `group` field to `SPEC-TT-GROUP-ATOMIC`; product values
+are untouched. It requires the complete specification-definition catalog
+reference, writes an exact rollback payload, fails if live definitions drift,
+and verifies every non-group field after apply:
+
+```bash
+node scripts/thetea/repair-puerh-spec-groups.js \
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-07-22.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-07-22
+node scripts/thetea/repair-puerh-spec-groups.js \
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-07-22.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-07-22 \
+  --remote-validate
+```
+
+Use `--apply --yes` only as part of the separately approved production apply.
+
 ```bash
 node scripts/thetea/cleanup-prod-junk.js
 node scripts/thetea/cleanup-prod-junk.js --apply --yes
