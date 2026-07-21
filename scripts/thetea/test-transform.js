@@ -136,6 +136,11 @@ assert(product.packages.some(p => p.package === 'PKG-50G' && p.default === true)
 assert(product.tags.some(t => t.code === 'TAG-TT-GI'));
 assert(product.tags.some(t => t.code === 'TAG-FLAVOR-CHESTNUT'));
 assert(product.origins[0].coordinates.lat === 30.22);
+assert.strictEqual(product.origins[0].state, 'ZJ');
+assert.strictEqual(product.origins[0].city, 'Hangzhou');
+assert(product.specifications
+    .filter(spec => spec.group === 'SPEC-TT-GROUP-SOURCE')
+    .every(spec => spec.showOnPage === false));
 
 const specs = product.specifications;
 assert(specs.some(s => s.attribute === 'SPEC-TT-BREWING-BREW-TEMP' && s.type === 'Range'));
@@ -207,6 +212,14 @@ assert(!longNarrativeResult.product.specifications.some(
 assert(longNarrativeResult.routedContent.articles[0].translations
     .find(translation => translation.lang === 'zh-CN')
     .narratives.organoleptic.taste.includes('本地化长文'));
+
+const unlabelledSensoryCard = JSON.parse(JSON.stringify(xihu));
+unlabelledSensoryCard.sensory = [{ descriptor_id: 'Mw', descriptor: null, intensity: 4 }];
+const unlabelledSensoryResult = transformCardSet({ en: unlabelledSensoryCard });
+assert(!unlabelledSensoryResult.product.specifications.some(
+    spec => spec.attribute === 'SPEC-TT-SENSORY-DESCRIPTOR-MW-INTENSITY'));
+assert(unlabelledSensoryResult.lossEvents.some(
+    event => event.source === 'sensory-without-label' && event.count === 1));
 
 const missingFaqCard = JSON.parse(JSON.stringify(zhCnXihu));
 missingFaqCard.enrichment.faq = [];

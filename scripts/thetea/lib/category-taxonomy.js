@@ -34,6 +34,30 @@ const PROVINCE_CATEGORY = {
     Zhejiang: 'CAT-REGION-ZHEJIANG',
 };
 
+const PROVINCE_CODE = {
+    Anhui: 'AH',
+    Chongqing: 'CQ',
+    Fujian: 'FJ',
+    Guangdong: 'GD',
+    Guangxi: 'GX',
+    Guizhou: 'GZ',
+    Hainan: 'HI',
+    Henan: 'HA',
+    Hubei: 'HB',
+    Hunan: 'HN',
+    Jiangsu: 'JS',
+    Jiangxi: 'JX',
+    Jilin: 'JL',
+    Shaanxi: 'SN',
+    Shandong: 'SD',
+    Sichuan: 'SC',
+    Taiwan: 'TW',
+    Tibet: 'XZ',
+    Xinjiang: 'XJ',
+    Yunnan: 'YN',
+    Zhejiang: 'ZJ',
+};
+
 const TYPE_DETAILS = {
     green: names('Green Tea', 'Зеленый чай', '绿茶', 'green-tea'),
     white: names('White Tea', 'Белый чай', '白茶', 'white-tea'),
@@ -328,6 +352,7 @@ function titleCase(value) {
 module.exports = {
     TEA_TYPE_CATEGORY,
     PROVINCE_CATEGORY,
+    PROVINCE_CODE,
     SHAPE_CATEGORY,
     PROCESSING_CATEGORY,
     ROAST_CATEGORY,

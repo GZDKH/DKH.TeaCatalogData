@@ -70,6 +70,12 @@ Fetch the current production ProductCatalog catalog/category reference through A
 node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-01
 ```
 
+The same immutable reference also captures the production China province and
+city dictionaries. Origin generation writes the province code and only accepts
+a city parsed from TheTea prose when it resolves uniquely in that province;
+otherwise the city is omitted and reported instead of being stored as a
+specification or an invented reference value.
+
 Fetch the complete, unpaged nested JSON `products` DataExchange baseline. The script writes `products.json` plus a completeness/hash manifest atomically:
 
 ```bash

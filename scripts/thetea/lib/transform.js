@@ -9,6 +9,7 @@ const {
 const { stripDefinitionMetadata } = require('./spec-contract');
 const { toProductLocale } = require('./locales');
 const { buildCategoryAssignments, PROVINCE_CATEGORY, TEA_TYPE_CATEGORY } = require('./category-taxonomy');
+const { resolveOriginLocation } = require('./origin-reference');
 
 const FALLBACK_SOURCE_LOCALES = ['en', 'ru', 'zh'];
 
@@ -32,8 +33,10 @@ function transformCardSet(cardSet, options = {}) {
     const warnings = [];
     const code = productCodeForCardSet(cardSet);
     const canonicalSensoryLabels = Object.fromEntries((primary.sensory || [])
-        .filter(item => item?.descriptor_id || item?.descriptor)
-        .map(item => [String(item.descriptor_id || item.descriptor), item.descriptor || item.descriptor_id]));
+        .filter(item => item?.descriptor)
+        .map(item => [String(item.descriptor_id || item.descriptor), item.descriptor]));
+    const unresolvedSensory = (primary.sensory || [])
+        .filter(item => item?.descriptor_id && !item?.descriptor);
     const fieldRouting = collectFieldRouting(cardSet);
     const localizedSpecificationSets = Object.entries(cardSet)
         .filter(([, card]) => Boolean(card))
@@ -70,7 +73,7 @@ function transformCardSet(cardSet, options = {}) {
         packages: options.packages === 'standard' ? STANDARD_PACKAGES : DEFAULT_PACKAGES,
         tags: buildTags(primary),
         specifications: selectedSpecifications.specifications.map(stripDefinitionMetadata),
-        origins: buildOrigins(cardSet, primary, warnings),
+        origins: buildOrigins(cardSet, primary, warnings, options.geographyReference),
         related: resolveRelatedProducts(relationCandidates, code, options, warnings),
         crossSells: [],
     };
@@ -80,7 +83,17 @@ function transformCardSet(cardSet, options = {}) {
         warnings,
         definitionObservations,
         relationCandidates,
-        lossEvents: [...routed.events, ...selectedSpecifications.events],
+        lossEvents: [
+            ...routed.events,
+            ...selectedSpecifications.events,
+            ...(unresolvedSensory.length ? [{
+                severity: 'warning',
+                source: 'sensory-without-label',
+                count: unresolvedSensory.length,
+                routed: false,
+                message: 'Unlabelled sensory descriptor IDs are retained in the immutable source snapshot and omitted from visible ProductCatalog specifications.',
+            }] : []),
+        ],
         routedContent: routed.content,
     };
 }
@@ -488,8 +501,9 @@ function buildTags(card) {
     return dedupeBy(tags, t => t.code);
 }
 
-function buildOrigins(cardSet, primary, warnings) {
+function buildOrigins(cardSet, primary, warnings, geographyReference) {
     const meta = primary.meta || {};
+    const location = resolveOriginLocation(primary, geographyReference, warnings);
     const altitude = normalizeAltitudeRange(
         meta.altitude_min,
         meta.altitude_max,
@@ -498,9 +512,9 @@ function buildOrigins(cardSet, primary, warnings) {
         warnings.push(`Normalized fractional-thousand altitude values to meters for ${primary.slug}.`);
     }
     const origin = {
-        country: meta.origin_country || 'CN',
-        state: meta.province,
-        city: meta.city || meta.county,
+        country: location.country,
+        state: location.state,
+        city: location.city,
         altitude: altitude.min !== undefined || altitude.max !== undefined
             ? { min: altitude.min, max: altitude.max, unit: 'm' }
             : undefined,
