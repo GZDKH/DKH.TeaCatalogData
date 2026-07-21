@@ -2,6 +2,8 @@
 const assert = require('assert');
 const {
     buildReconciliation,
+    canonicalCollectionItem,
+    canonicalTypedValue,
     collectionDiff,
     diffProduct,
     sha256,
@@ -100,6 +102,38 @@ assert.doesNotThrow(() => buildReconciliation([
 ], [
     product('TEA-A', { catalogs: [{ catalog: { code: 'CAT' }, category: { code: 'A' } }] }),
 ]));
+assert.deepStrictEqual(diffProduct({
+    catalogs: [{ catalog: { code: 'CAT', currency: 'CNY' }, category: { code: 'A' }, order: 1 }],
+    origins: [{
+        country: { code: 'CN' },
+        state: { code: 'ZJ' },
+        city: { code: 'Hangzhou' },
+        altitude: { min: '100.000000', max: '800.000000', unit: { code: 'm' } },
+        coordinates: { lat: '30.220000', lng: '120.130000' },
+    }],
+    specifications: [{
+        group: { code: 'GROUP' },
+        attribute: { code: 'ATTR' },
+        type: 'Number',
+        value: '80.000000',
+        order: 1,
+    }],
+}, {
+    catalogs: [{ catalog: 'CAT', catalogCurrency: 'CNY', category: 'A', order: 1 }],
+    origins: [{
+        country: 'CN',
+        state: 'ZJ',
+        city: 'Hangzhou',
+        altitude: { min: 100, max: 800, unit: 'm' },
+        coordinates: { lat: 30.22, lng: 120.13 },
+    }],
+    specifications: [{ group: 'GROUP', attribute: 'ATTR', type: 'Number', value: '80', order: 1 }],
+}), {});
+assert.strictEqual(canonicalTypedValue('Boolean', '0'), false);
+assert.deepStrictEqual(canonicalTypedValue('List', '["spring"]'), ['spring']);
+assert.deepStrictEqual(canonicalCollectionItem('tags', { code: { code: 'TAG-A' }, ignored: true }), {
+    code: 'TAG-A',
+});
 assert.deepStrictEqual(diffProduct({ a: 1, origins: [] }, { a: 2, origins: [{ country: 'CN' }] }), {
     a: { before: 1, after: 2 },
     origins: { added: 1, removed: 0, changed: 0 },

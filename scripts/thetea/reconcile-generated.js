@@ -19,6 +19,8 @@ const COLLECTION_KEYS = {
     crossSells: item => `${normalizeCode(item?.product)}|${normalizeCode(item?.catalog)}`,
 };
 
+const KEYED_FIELDS = new Set(Object.keys(COLLECTION_KEYS));
+
 function usage() {
     console.log(`Usage:
   node scripts/thetea/reconcile-generated.js \\
@@ -69,6 +71,106 @@ function collectionDiff(before, after, keyFn) {
     return { added: added.sort(), removed: removed.sort(), changed: changed.sort() };
 }
 
+function canonicalReference(value) {
+    const code = value && typeof value === 'object' ? value.code : value;
+    return code === undefined || code === null ? null : normalizeCode(code);
+}
+
+function canonicalTypedValue(type, value) {
+    if (value === undefined || value === null) return null;
+    const normalizedType = String(type || '').toLowerCase();
+    if (normalizedType === 'number' || normalizedType === 'duration') {
+        const number = Number(value);
+        return Number.isFinite(number) ? number : String(value);
+    }
+    if (normalizedType === 'boolean') {
+        if (value === true || value === 1 || value === '1' || String(value).toLowerCase() === 'true') return true;
+        if (value === false || value === 0 || value === '0' || String(value).toLowerCase() === 'false') return false;
+        return String(value);
+    }
+    if (normalizedType === 'list' && typeof value === 'string') {
+        try {
+            const parsed = JSON.parse(value);
+            return Array.isArray(parsed) ? parsed : value;
+        } catch {
+            return value;
+        }
+    }
+    return value;
+}
+
+function canonicalCollectionItem(field, item) {
+    const copy = { ...item };
+    if (field === 'translations') return copy;
+    if (field === 'specifications') {
+        copy.group = canonicalReference(copy.group);
+        copy.attribute = canonicalReference(copy.attribute);
+        copy.option = canonicalReference(copy.option);
+        copy.unit = canonicalReference(copy.unit) || copy.unit || null;
+        copy.value = canonicalTypedValue(copy.type, copy.value);
+        return removeUndefined(copy);
+    }
+    if (field === 'tags') return { code: canonicalReference(copy.code) };
+    if (field === 'catalogs') {
+        const catalogCurrency = copy.catalogCurrency ?? copy.catalog?.currency ?? null;
+        copy.catalog = canonicalReference(copy.catalog);
+        copy.category = canonicalReference(copy.category);
+        copy.catalogCurrency = canonicalReference(catalogCurrency);
+        return removeUndefined(copy);
+    }
+    if (field === 'packages') {
+        copy.package = canonicalReference(copy.package);
+        return removeUndefined(copy);
+    }
+    if (field === 'related' || field === 'crossSells') {
+        copy.product = canonicalReference(copy.product);
+        copy.catalog = canonicalReference(copy.catalog);
+        return removeUndefined(copy);
+    }
+    return removeUndefined(copy);
+}
+
+function canonicalFieldValue(field, value) {
+    if (KEYED_FIELDS.has(field)) {
+        return (value || [])
+            .map(item => canonicalCollectionItem(field, item))
+            .sort((left, right) => COLLECTION_KEYS[field](left).localeCompare(COLLECTION_KEYS[field](right)));
+    }
+    if (field === 'origins') {
+        return (value || []).map(origin => {
+            const copy = { ...origin };
+            copy.country = canonicalReference(copy.country);
+            copy.state = canonicalReference(copy.state);
+            copy.city = canonicalReference(copy.city);
+            if (copy.altitude) {
+                copy.altitude = {
+                    ...copy.altitude,
+                    min: canonicalTypedValue('Number', copy.altitude.min),
+                    max: canonicalTypedValue('Number', copy.altitude.max),
+                    unit: canonicalReference(copy.altitude.unit) || copy.altitude.unit || null,
+                };
+            }
+            if (copy.coordinates) {
+                copy.coordinates = {
+                    ...copy.coordinates,
+                    lat: canonicalTypedValue('Number', copy.coordinates.lat),
+                    lng: canonicalTypedValue('Number', copy.coordinates.lng),
+                };
+            }
+            if (copy.translations) {
+                copy.translations = [...copy.translations]
+                    .sort((left, right) => String(left.lang || '').localeCompare(String(right.lang || '')));
+            }
+            return removeUndefined(copy);
+        }).sort((left, right) => stableStringify(left).localeCompare(stableStringify(right)));
+    }
+    return value;
+}
+
+function removeUndefined(value) {
+    return Object.fromEntries(Object.entries(value).filter(([, item]) => item !== undefined));
+}
+
 function keyedCollection(value, keyFn, label) {
     if (!Array.isArray(value)) throw new Error(`${label} collection must be an array.`);
     const result = new Map();
@@ -101,9 +203,14 @@ function diffProduct(before, after) {
     const fields = {};
     const allFields = [...new Set([...Object.keys(before), ...Object.keys(after)])].sort();
     for (const field of allFields) {
-        if (stableStringify(before[field]) === stableStringify(after[field])) continue;
+        const canonicalBefore = canonicalFieldValue(field, before[field]);
+        const canonicalAfter = canonicalFieldValue(field, after[field]);
+        if (stableStringify(canonicalBefore) === stableStringify(canonicalAfter)) continue;
         if (COLLECTION_KEYS[field]) {
-            fields[field] = collectionDiff(before[field] || [], after[field] || [], COLLECTION_KEYS[field]);
+            fields[field] = collectionDiff(
+                canonicalBefore,
+                canonicalAfter,
+                COLLECTION_KEYS[field]);
         } else if (Array.isArray(before[field]) || Array.isArray(after[field])) {
             fields[field] = structuralCollectionDiff(before[field] || [], after[field] || []);
         } else {
@@ -228,6 +335,7 @@ function main() {
         artifactRoot,
         artifactManifestSha256: hashInputPath(path.join(artifactRoot, 'artifact-manifest.json')),
         productReferenceSha256: hashInputPath(productReferencePath),
+        productReferencePath,
         workspaceId: reference.manifest.workspaceId,
         selectedProductCount: selected.length,
         counts: reconciliation.counts,
@@ -267,4 +375,11 @@ if (require.main === module) {
     }
 }
 
-module.exports = { buildReconciliation, collectionDiff, diffProduct, sha256 };
+module.exports = {
+    buildReconciliation,
+    canonicalCollectionItem,
+    canonicalTypedValue,
+    collectionDiff,
+    diffProduct,
+    sha256,
+};
