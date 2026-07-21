@@ -56,6 +56,12 @@ Full production snapshots are large because every localized TeaCard fans out int
 node scripts/thetea/fetch-snapshot.js --snapshot=thetea-2026-06-01 --langs=all --field-langs=all --concurrency=4 --resume
 ```
 
+Without an API key, request starts are automatically spaced by 550 ms to stay
+below the public 120 requests/minute limit. Override only when the subscribed
+plan documents a different limit, using `--min-interval-ms=<number>` or
+`THETEA_FETCH_MIN_INTERVAL_MS`. HTTP 429 retries honor `Retry-After` and
+otherwise wait one minute instead of recording a burst of false source gaps.
+
 Treat `sources/thetea/snapshots/<id>/raw/` as the source of truth. It stores exact API responses and text payloads; `import/thetea/<id>/` is regenerated from that source. The snapshot also stores `raw/source/docs.html`, `raw/source/openapi.yaml`, and `raw/source/llms.txt`, so later audits can see which TheTea contract was used for the load.
 
 Fetch the current production ProductCatalog catalog/category reference through AdminGateway:

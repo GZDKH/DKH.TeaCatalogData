@@ -7,10 +7,13 @@ const { localesFromMeta, resolveRequestedLocales } = require('./lib/locales');
 const { extractFieldRefs } = require('./lib/field-details');
 const { classifyFetchIssue } = require('./lib/snapshot-errors');
 const { resolveFieldLocales, shouldFetchFieldsForLang } = require('./lib/snapshot-options');
+const { createRequestStartGate } = require('./lib/request-start-gate');
 
 const API_BASE = 'https://api.thetea.app';
 
 loadDotEnv();
+
+let waitForRequestStart = async () => {};
 
 function ensureDir(dir) {
     fs.mkdirSync(dir, { recursive: true });
@@ -35,10 +38,12 @@ function headers() {
 }
 
 async function getJson(endpoint) {
+    await waitForRequestStart();
     return requestJson(`${API_BASE}${endpoint}`, { headers: headers(), timeoutMs: 30000, retries: 2 });
 }
 
 async function getText(endpoint) {
+    await waitForRequestStart();
     const response = await requestText(endpointUrl(endpoint), { headers: headers(), timeoutMs: 30000, retries: 2 });
     return response.body;
 }
@@ -122,6 +127,11 @@ async function main() {
     const force = args.force === true;
     const resume = args.resume === true;
     const concurrency = Math.max(1, Number(args.concurrency || process.env.THETEA_FETCH_CONCURRENCY || 4));
+    const minIntervalMs = Math.max(0, Number(
+        args['min-interval-ms']
+        ?? process.env.THETEA_FETCH_MIN_INTERVAL_MS
+        ?? (getTheTeaApiKey() ? 0 : 550)));
+    waitForRequestStart = createRequestStartGate(minIntervalMs);
     const includeMarkdown = args['skip-md'] !== true;
     const includeFields = args['skip-fields'] !== true;
     const includeSimilar = args['skip-similar'] !== true;
@@ -170,6 +180,7 @@ async function main() {
     console.log(`Languages: ${langs.length} (${langs.join(', ')})`);
     console.log(`API key: ${getTheTeaApiKey() ? 'configured' : 'not configured'}`);
     console.log(`Concurrency: ${concurrency}`);
+    console.log(`Minimum request interval: ${minIntervalMs} ms`);
     console.log(`Resume: ${resume ? 'yes' : 'no'}`);
     console.log(`Field languages: ${fieldLangs === null ? 'all' : fieldLangs.join(', ') || 'none'}`);
 
