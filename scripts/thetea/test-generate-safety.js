@@ -29,8 +29,16 @@ try {
     const raw = path.join(snapshot, 'raw');
     fs.mkdirSync(raw, { recursive: true });
     fs.writeFileSync(path.join(raw, 'card.json'), '{}');
-    const manifest = { files: ['raw/card.json'] };
-    assert.match(hashSnapshotFiles(snapshot, manifest), /^[a-f0-9]{64}$/);
+    fs.mkdirSync(path.join(raw, 'fields'), { recursive: true });
+    fs.writeFileSync(path.join(raw, 'fields', 'origin.json'), '{"value":"Zhejiang"}');
+    const manifest = {
+        files: ['raw/card.json'],
+        fieldFiles: ['raw/fields/origin.json'],
+    };
+    const initialSnapshotHash = hashSnapshotFiles(snapshot, manifest);
+    assert.match(initialSnapshotHash, /^[a-f0-9]{64}$/);
+    fs.writeFileSync(path.join(raw, 'fields', 'origin.json'), '{"value":"Fujian"}');
+    assert.notStrictEqual(hashSnapshotFiles(snapshot, manifest), initialSnapshotHash);
 
     const outside = path.join(tempRoot, 'outside.json');
     fs.writeFileSync(outside, '{}');

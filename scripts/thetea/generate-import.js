@@ -156,7 +156,15 @@ function hashSnapshotFiles(snapshotRoot, manifest) {
     if (rootStat.isSymbolicLink() || !rootStat.isDirectory()) {
         throw new Error(`Snapshot root must be a real directory, not a symlink: ${snapshotRoot}`);
     }
-    const files = [...new Set(manifest.files || [])].sort();
+    const files = [...new Set([
+        ...(manifest.files || []),
+        ...(manifest.fieldFiles || []),
+        ...(manifest.markdownFiles || []),
+        ...(manifest.similarFiles || []),
+        ...(manifest.mapFiles || []),
+        ...(manifest.sourceContractFiles || []),
+        ...(manifest.missingFieldDetailFiles || []),
+    ])].sort();
     if (!files.length) throw new Error('Snapshot manifest has no source file inventory.');
     const hash = require('crypto').createHash('sha256');
     for (const relativePath of files) {
