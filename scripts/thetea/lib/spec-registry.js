@@ -211,7 +211,7 @@ function specBase(section, field, type, order, options = {}) {
             options.attributeFallbackName || FIELD_NAMES[field] || titleize(field)).name,
         type,
         unit: options.unit,
-        showOnPage: true,
+        showOnPage: section !== 'source',
         order,
         groupKey: section,
         attributeKey: options.semanticAttributeKey || `${section}.${field}`,
@@ -488,6 +488,9 @@ function buildSpecs(card, context = {}) {
         card.sensory || [],
         item => item.descriptor_id || item.descriptor,
         'sensory')) {
+        const canonicalDescriptor = context.canonicalSensoryLabels?.[rawDescriptor]
+            || sensory.descriptor;
+        if (!canonicalDescriptor) continue;
         const descriptor = normalizeCodePart(rawDescriptor).toLowerCase();
         const attributeField = `descriptor_${descriptor}_intensity`;
         const spec = numberSpec(
@@ -497,8 +500,6 @@ function buildSpecs(card, context = {}) {
             order++,
             { lang, semanticAttributeKey: `sensory.${attributeField}` });
         if (spec) {
-            const canonicalDescriptor = context.canonicalSensoryLabels?.[rawDescriptor]
-                || rawDescriptor;
             const fallbackName = `Sensory ${titleize(canonicalDescriptor)} Intensity`;
             spec.attributeName = localizeSpecLabel(
                 'attribute',

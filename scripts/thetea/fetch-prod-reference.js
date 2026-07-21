@@ -81,6 +81,37 @@ async function fetchPaged(gatewayUrl, token, workspaceId, endpoint, pageSize) {
     return all;
 }
 
+function unwrapCollection(payload, key) {
+    const body = payload?.data || payload || {};
+    const value = body[key] || body[key[0].toUpperCase() + key.slice(1)] || [];
+    if (!Array.isArray(value)) throw new Error(`Reference response '${key}' must be an array.`);
+    return value;
+}
+
+async function fetchGeography(gatewayUrl, token, workspaceId, countryCode = 'CN') {
+    const statePayload = await requestJson(
+        `${gatewayUrl}/api/v1/management/state-provinces/countries/${countryCode}?languageCode=en-US`,
+        token,
+        workspaceId);
+    const states = unwrapCollection(statePayload, 'stateProvinces');
+    const result = [];
+    for (const state of states) {
+        const code = String(state.code || state.Code || '').trim();
+        const name = String(state.name || state.Name || '').trim();
+        if (!code || !name) throw new Error('State/province reference must contain code and name.');
+        const cityPayload = await requestJson(
+            `${gatewayUrl}/api/v1/management/cities/countries/${countryCode}/states/${encodeURIComponent(code)}?languageCode=en-US`,
+            token,
+            workspaceId);
+        const cities = unwrapCollection(cityPayload, 'cities').map(city => ({
+            code: String(city.code || city.Code || '').trim(),
+            name: String(city.name || city.Name || '').trim(),
+        })).filter(city => city.code && city.name);
+        result.push({ code, name, cities });
+    }
+    return { countryCode, states: result };
+}
+
 function resolveOut(args) {
     if (args.out) {
         return path.isAbsolute(String(args.out)) ? String(args.out) : path.join(REPO_ROOT, String(args.out));
@@ -140,6 +171,7 @@ async function main() {
         workspaceId,
         '/api/v1/categories?deletedFilter=active',
         pageSize);
+    const geography = await fetchGeography(GATEWAY_URL, token, workspaceId);
 
     const reference = {
         source: 'AdminGateway ProductCatalog',
@@ -148,12 +180,15 @@ async function main() {
         fetchedAt: new Date().toISOString(),
         catalogs,
         categories,
+        geography,
     };
 
     writeFileAtomic(out, reference);
 
     console.log(`Catalogs: ${catalogs.length}`);
     console.log(`Categories: ${categories.length}`);
+    console.log(`States/provinces: ${geography.states.length}`);
+    console.log(`Cities: ${geography.states.reduce((sum, state) => sum + state.cities.length, 0)}`);
 }
 
 main().catch(error => {

@@ -290,6 +290,9 @@ function main() {
     }
 
     const catalogReference = catalogReferencePath ? loadCatalogReference(catalogReferencePath) : null;
+    if (catalogReference && !catalogReference.geography?.states?.length) {
+        throw new Error('Production catalog reference has no geography snapshot. Re-fetch it with fetch-prod-reference.js before generation.');
+    }
     const baselineReference = productReferencePath
         ? loadVerifiedProductReference(productReferencePath)
         : null;
@@ -383,6 +386,7 @@ function main() {
             productCodeBySlug,
             catalog: catalogCode,
             knownCategories: existingCategoryCodes || new Set(),
+            geographyReference: catalogReference?.geography,
         });
         warnings.push(...transformed.warnings);
         collectDefinitionObservations(definitionObservationMap, transformed.definitionObservations);
