@@ -53,7 +53,7 @@ function transformCardSet(cardSet, options = {}) {
         .flatMap(item => item.specifications);
     const selectedSpecifications = selectCanonicalSpecifications(localizedSpecificationSets, code);
     const relationCandidates = collectRelationCandidates(cardSet, primary, warnings);
-    const routed = buildRoutedContent(cardSet, code, fieldRouting.routedContentKeys);
+    const routed = buildRoutedContent(cardSet, code, fieldRouting.routedContentKeys, primary.slug);
     const product = {
         code,
         sku: `${normalizeCodePart(primary.slug)}-${normalizeCodePart(meta.origin_country || 'CN')}`,
@@ -166,7 +166,7 @@ function collectFieldRouting(cardSet) {
     return { routedContentKeys, suppressedSpecificationKeys };
 }
 
-function buildRoutedContent(cardSet, productCode, routedFieldKeys = new Set()) {
+function buildRoutedContent(cardSet, productCode, routedFieldKeys = new Set(), productSlug = '') {
     const articleTranslations = [];
     const faqByLocale = new Map();
     const productLocales = [];
@@ -279,12 +279,14 @@ function buildRoutedContent(cardSet, productCode, routedFieldKeys = new Set()) {
             articles: articleTranslations.length ? [{
                 code: makeCode('ARTICLE-TT', productCode, 'DETAIL'),
                 product: productCode,
+                slug: seoSlug(productSlug),
                 translations: articleTranslations,
             }] : [],
             metaobjects: faqLocales.length ? [{
                 code: makeCode('METAOBJECT-TT', productCode, 'FAQ'),
                 type: 'product_faq',
                 product: productCode,
+                slug: seoSlug(productSlug),
                 locales: faqLocales,
             }] : [],
         },

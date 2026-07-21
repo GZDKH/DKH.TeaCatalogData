@@ -244,7 +244,28 @@ by code instead of relying on product import auto-creation.
 
 Definitions include every required locale. Known structural labels have curated `en-US`, `ru-RU`, and `zh-CN` names; other locales receive an explicitly reported English fallback.
 
-`import-generated.js` imports only `categories` or `products`. It does not import definition files, catalog bindings, article records, or FAQ metaobjects. Use SetupTool or another approved ordered workflow for definitions before products, and a dedicated downstream importer for routed content.
+`import-generated.js` imports only `categories` or `products`. It does not import definition files or catalog bindings. Use SetupTool or another approved ordered workflow for definitions before products.
+
+Import routed articles and localized product FAQ metaobjects through the supported Storefront APIs:
+
+```bash
+# Read-only diff (default)
+node scripts/thetea/import-routed-content.js \
+  --snapshot=<snapshot-id> \
+  --storefront-id=<storefront-uuid> \
+  --only=xihu-longjing
+
+# Apply only after reviewing the exact diff
+node scripts/thetea/import-routed-content.js \
+  --snapshot=<snapshot-id> \
+  --storefront-id=<storefront-uuid> \
+  --only=xihu-longjing \
+  --catalog-ref=<immutable-catalog-reference.json> \
+  --product-ref=<immutable-full-product-reference.json> \
+  --apply --yes
+```
+
+The importer upserts draft articles by slug and one `product_faq` entry per product. FAQ values retain `product_code`, `article_slug`, and every localized question/answer set. It refuses to overwrite an unowned article or an incompatible existing definition, and refuses apply for a diagnostic artifact or when the immutable source/catalog/product hashes cannot be re-verified. It writes a rollback artifact before any mutation and re-reads all selected resources after apply. The apply succeeds only when the verification pass reports every resource as `noop`.
 
 ## Production Notes
 
