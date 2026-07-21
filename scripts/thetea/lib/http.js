@@ -11,6 +11,20 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function parseRetryAfterMs(value, nowMs = Date.now()) {
+    if (value === undefined || value === null || value === '') return null;
+    const seconds = Number(value);
+    if (Number.isFinite(seconds) && seconds >= 0) return Math.ceil(seconds * 1000);
+    const dateMs = Date.parse(String(value));
+    return Number.isFinite(dateMs) ? Math.max(0, dateMs - nowMs) : null;
+}
+
+function responseRetryDelay(status, responseHeaders, retryDelayMs, attemptNumber) {
+    const exponential = retryDelayMs * Math.pow(2, attemptNumber);
+    if (status !== 429) return exponential;
+    return parseRetryAfterMs(responseHeaders?.['retry-after']) ?? Math.max(60000, exponential);
+}
+
 function requestText(url, options = {}) {
     const {
         headers = {},
@@ -49,7 +63,7 @@ function attempt(url, headers, timeoutMs, retries, retryDelayMs, attemptNumber) 
 
                 const retryable = status === 429 || status >= 500;
                 if (retryable && attemptNumber < retries) {
-                    await sleep(retryDelayMs * Math.pow(2, attemptNumber));
+                    await sleep(responseRetryDelay(status, res.headers, retryDelayMs, attemptNumber));
                     attempt(url, headers, timeoutMs, retries, retryDelayMs, attemptNumber + 1)
                         .then(resolve, reject);
                     return;
@@ -86,6 +100,8 @@ async function requestJson(url, options = {}) {
 }
 
 module.exports = {
+    parseRetryAfterMs,
+    responseRetryDelay,
     requestText,
     requestJson,
 };
