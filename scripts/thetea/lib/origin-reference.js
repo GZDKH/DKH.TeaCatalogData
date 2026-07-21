@@ -1,5 +1,7 @@
 const { PROVINCE_CODE } = require('./category-taxonomy');
 
+const CITY_MAX_LENGTH = 50;
+
 function normalizePlaceName(value) {
     return String(value || '')
         .normalize('NFKD')
@@ -27,7 +29,11 @@ function extractCityCandidate(card) {
         .filter(Boolean);
     const provinceIndex = simpleParts.findIndex(part => normalizePlaceName(part) === province);
     if (provinceIndex >= 0 && simpleParts[provinceIndex + 1]) {
-        return simpleParts[provinceIndex + 1];
+        const candidate = simpleParts[provinceIndex + 1];
+        const words = candidate.split(/\s+/u).filter(Boolean);
+        if (candidate.length <= CITY_MAX_LENGTH && words.length <= 4 && !/[;:.!?]/u.test(candidate)) {
+            return candidate;
+        }
     }
     return undefined;
 }
@@ -73,7 +79,9 @@ function resolveOriginLocation(card, geography, warnings = []) {
     } else if (rawCity && geography) {
         warnings.push(`ProductOrigin city '${rawCity}' has no ${stateCode || rawProvince} city reference (${card.slug}); city omitted.`);
     } else if (rawCity) {
-        city = displayPlaceName(rawCity);
+        const candidate = displayPlaceName(rawCity);
+        if (candidate && candidate.length <= CITY_MAX_LENGTH) city = candidate;
+        else warnings.push(`ProductOrigin city candidate exceeds the ${CITY_MAX_LENGTH}-character import limit (${card.slug}); city omitted.`);
     }
 
     return { country, state: stateCode, city };
