@@ -143,6 +143,19 @@ node scripts/thetea/reconcile-generated.js \
   --report=thetea-2026-06-01-reconciliation
 ```
 
+Reconcile the shared `SPEC-TT-*` definition registry separately. This produces
+ordered upserts/deletes and exact rollback payloads. A stale definition is never
+eligible for deletion when the complete product baseline shows use outside the
+artifact's product set:
+
+```bash
+node scripts/thetea/reconcile-definitions.js \
+  --dir=import/thetea/thetea-2026-06-01 \
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-06-01 \
+  --report=thetea-2026-06-01-definitions
+```
+
 Validate or apply that exact plan through a resumable, read-back-verified runner.
 Every batch is validated first and recorded in `product-sync-checkpoint.json`.
 Apply automatically restores the current batch if read-back fails; the exact
