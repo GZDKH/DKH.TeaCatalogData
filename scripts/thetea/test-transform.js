@@ -216,10 +216,11 @@ assert(longNarrativeResult.routedContent.articles[0].translations
 const unlabelledSensoryCard = JSON.parse(JSON.stringify(xihu));
 unlabelledSensoryCard.sensory = [{ descriptor_id: 'Mw', descriptor: null, intensity: 4 }];
 const unlabelledSensoryResult = transformCardSet({ en: unlabelledSensoryCard });
-assert(!unlabelledSensoryResult.product.specifications.some(
-    spec => spec.attribute === 'SPEC-TT-SENSORY-DESCRIPTOR-MW-INTENSITY'));
-assert(unlabelledSensoryResult.lossEvents.some(
-    event => event.source === 'sensory-without-label' && event.count === 1));
+assert(unlabelledSensoryResult.product.specifications.some(
+    spec => spec.attribute === 'SPEC-TT-SENSORY-DESCRIPTOR-MW-INTENSITY'
+        && spec.value === '4'));
+assert(!unlabelledSensoryResult.lossEvents.some(
+    event => event.source === 'sensory-without-label'));
 
 const missingFaqCard = JSON.parse(JSON.stringify(zhCnXihu));
 missingFaqCard.enrichment.faq = [];

@@ -472,7 +472,13 @@ function validateProductSpecifications(context) {
         }
 
         const attributeCode = validateCode(spec.attribute, `${prefix}.attribute`, errors);
-        const groupCode = validateCode(spec.group, `${prefix}.group`, errors);
+        const managed = isManagedSpecification(spec);
+        const groupCode = hasDefined(spec, 'group')
+            ? validateCode(spec.group, `${prefix}.group`, errors)
+            : '';
+        if (managed && !groupCode) {
+            errors.push(`${prefix}.group is required for a managed specification.`);
+        }
         const type = spec.type;
         if (ATTRIBUTE_TYPE_SET.has(type)) {
             specTypes[type] = (specTypes[type] || 0) + 1;
@@ -481,7 +487,6 @@ function validateProductSpecifications(context) {
             errors.push(`${prefix}: unsupported type '${type}'.`);
         }
 
-        const managed = isManagedSpecification(spec);
         if (attributeCode && managed) {
             if (seenAttributes.has(attributeCode)) {
                 errors.push(`${productLabel}: specification attribute ${attributeCode} occurs more than once.`);

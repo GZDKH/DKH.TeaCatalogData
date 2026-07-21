@@ -39,9 +39,9 @@ function resolveOut(args) {
         String(args.snapshot));
 }
 
-function requestProductExport(gatewayUrl, token, workspaceId) {
+function requestDataExchangeExport(gatewayUrl, token, workspaceId, profile) {
     const url = new URL('/api/v1/data-exchange/export/stream', gatewayUrl);
-    const body = Buffer.from(JSON.stringify({ profile: 'products', format: 'json' }));
+    const body = Buffer.from(JSON.stringify({ profile, format: 'json' }));
     const transport = url.protocol === 'https:' ? https : http;
 
     return new Promise((resolve, reject) => {
@@ -74,6 +74,10 @@ function requestProductExport(gatewayUrl, token, workspaceId) {
         req.on('error', reject);
         req.end(body);
     });
+}
+
+function requestProductExport(gatewayUrl, token, workspaceId) {
+    return requestDataExchangeExport(gatewayUrl, token, workspaceId, 'products');
 }
 
 async function main() {
@@ -119,6 +123,7 @@ if (require.main === module) {
 
 module.exports = {
     main,
+    requestDataExchangeExport,
     requestProductExport,
     resolveOut,
 };

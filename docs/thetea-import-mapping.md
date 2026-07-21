@@ -155,6 +155,8 @@ Every managed specification has exactly one group and one attribute. A product m
 
 Repeated objects are flattened by a stable discriminator instead of being stored as a `List<object>`: recipe by `style`, harvest by `phase`, and sensory data by descriptor. Conflicting type, unit, parent, option, or translation metadata is fatal.
 
+When the source returns a sensory `descriptor_id` and intensity but leaves `descriptor` null, the value is still imported as a typed numeric attribute. Its visible label explicitly includes the immutable source descriptor ID; the ETL never guesses a semantic name and never drops the score.
+
 Origin country/place, coordinates, and altitude live only in `origins[]`; altitude is not duplicated as a specification. Plausible fractional-thousand altitude defects are normalized only when contextual evidence supports it and are always reported.
 
 All localized section prose is preserved in the article sidecar so non-canonical locale values are not collapsed. Short stable canonical values may also remain typed text specifications. Synthetic `*_xN` and `ext_*` fields, full Markdown, FAQ, and long narrative sections never become technical product attributes; they exist only in `06-routed-content/`. The current ProductCatalog importer does not ingest those sidecars, so they require a dedicated article/metaobject downstream step in the canary workflow.

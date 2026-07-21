@@ -155,6 +155,8 @@ Missing categories: 0
 
 Repeated objects разворачиваются по стабильному discriminator, а не пишутся как `List<object>`: recipe по `style`, harvest по `phase`, sensory по descriptor. Конфликт type, unit, parent, option или translation metadata — fatal.
 
+Если источник возвращает сенсорные `descriptor_id` и intensity, но оставляет `descriptor` равным null, значение всё равно импортируется как типизированный числовой атрибут. В видимой подписи явно указывается неизменяемый ID дескриптора источника: ETL не угадывает его смысл и не теряет оценку.
+
 Origin country/place, coordinates и altitude живут только в `origins[]`; altitude не дублируется specification. Исправление дробных тысяч применяется только при подтверждающем контексте и всегда отражается в warnings.
 
 Весь локализованный section prose сохраняется в article sidecar, поэтому значения non-canonical локалей не схлопываются. Короткое stable canonical значение может дополнительно остаться typed text specification. Synthetic `*_xN` и `ext_*`, полный Markdown, FAQ и длинные narratives никогда не становятся техническими product attributes и существуют только в `06-routed-content/`. Текущий ProductCatalog importer эти sidecars не импортирует; для них нужен отдельный article/metaobject шаг canary workflow.

@@ -4,7 +4,10 @@ const fs = require('fs');
 const http = require('http');
 const os = require('os');
 const path = require('path');
-const { requestProductExport } = require('./fetch-prod-products');
+const {
+    requestDataExchangeExport,
+    requestProductExport,
+} = require('./fetch-prod-products');
 const {
     PRODUCT_REFERENCE_DATA_FILE,
     loadVerifiedProductReference,
@@ -79,6 +82,7 @@ assert.strictEqual(
 assert.throws(() => resolveCatalogWorkspaceId({}), /workspace is required/i);
 
 async function testRequest() {
+    let expectedProfile = 'products';
     const server = http.createServer((request, response) => {
         const chunks = [];
         request.on('data', chunk => chunks.push(chunk));
@@ -89,7 +93,7 @@ async function testRequest() {
             assert.strictEqual(request.headers['x-workspace-id'], WORKSPACE_ID);
             assert.deepStrictEqual(
                 JSON.parse(Buffer.concat(chunks).toString('utf8')),
-                { profile: 'products', format: 'json' });
+                { profile: expectedProfile, format: 'json' });
             response.setHeader('Content-Type', 'application/json');
             response.end(JSON.stringify([product('TEA-CN-A')]));
         });
@@ -102,6 +106,13 @@ async function testRequest() {
             'test-token',
             WORKSPACE_ID);
         assert.deepStrictEqual(JSON.parse(result.toString('utf8')), [product('TEA-CN-A')]);
+        expectedProfile = 'specification_attributes';
+        const definitions = await requestDataExchangeExport(
+            `http://127.0.0.1:${address.port}`,
+            'test-token',
+            WORKSPACE_ID,
+            expectedProfile);
+        assert.deepStrictEqual(JSON.parse(definitions.toString('utf8')), [product('TEA-CN-A')]);
     } finally {
         await new Promise((resolve, reject) => server.close(error => error ? reject(error) : resolve()));
     }

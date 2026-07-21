@@ -33,6 +33,20 @@ assert.deepStrictEqual(
 assert.deepStrictEqual(
     localizeSpecLabel('attribute', 'production.unmapped_process', 'ru', 'Traditional drying method'),
     { name: 'Traditional drying method', source: 'fallback' });
+assert.deepStrictEqual(
+    localizeSpecLabel(
+        'attribute',
+        'sensory.source_descriptor_mw_intensity',
+        'ru',
+        'Sensory Source Descriptor Mw Intensity'),
+    { name: 'Интенсивность исходного сенсорного дескриптора Mw', source: 'curated' });
+assert.deepStrictEqual(
+    localizeSpecLabel(
+        'attribute',
+        'sensory.source_descriptor_mw_intensity',
+        'zh-CN',
+        'Sensory Source Descriptor Mw Intensity'),
+    { name: '源感官描述符 Mw 强度', source: 'curated' });
 
 const localized = buildLocalizedTranslations({
     kind: 'attribute',

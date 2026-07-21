@@ -24,7 +24,7 @@ The previous checked-in markdown corpus and static product/category JSON files w
 
 1. Fetch TheTea source payloads into ignored snapshots under `sources/thetea/snapshots/<id>/`.
    - Per-field details from `GET /api/v2/tea/{slug}/{lang}/field/{code}` are fetched by default for every TeaCard section field. Do not import snapshots created with `--skip-fields`.
-2. Fetch current production ProductCatalog catalog/category reference under `sources/prod/catalog-reference/<id>.json`.
+2. Fetch current production ProductCatalog catalog/category/geography and complete specification-definition references under `sources/prod/catalog-reference/<id>.json`.
 3. Fetch the complete nested JSON `products` DataExchange baseline under `sources/prod/product-reference/<id>/`; never substitute the list endpoint.
 4. Generate the ignored, hashed artifact under `import/thetea/<id>/` with both exact references.
 5. Validate artifact parity, baseline preservation, and prod mapping before any AdminGateway import.

@@ -35,8 +35,6 @@ function transformCardSet(cardSet, options = {}) {
     const canonicalSensoryLabels = Object.fromEntries((primary.sensory || [])
         .filter(item => item?.descriptor)
         .map(item => [String(item.descriptor_id || item.descriptor), item.descriptor]));
-    const unresolvedSensory = (primary.sensory || [])
-        .filter(item => item?.descriptor_id && !item?.descriptor);
     const fieldRouting = collectFieldRouting(cardSet);
     const localizedSpecificationSets = Object.entries(cardSet)
         .filter(([, card]) => Boolean(card))
@@ -86,13 +84,6 @@ function transformCardSet(cardSet, options = {}) {
         lossEvents: [
             ...routed.events,
             ...selectedSpecifications.events,
-            ...(unresolvedSensory.length ? [{
-                severity: 'warning',
-                source: 'sensory-without-label',
-                count: unresolvedSensory.length,
-                routed: false,
-                message: 'Unlabelled sensory descriptor IDs are retained in the immutable source snapshot and omitted from visible ProductCatalog specifications.',
-            }] : []),
         ],
         routedContent: routed.content,
     };
