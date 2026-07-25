@@ -64,10 +64,12 @@ write(path.join(source, '04-products/CAT/TEA-ONE.json'), [{
     published: false,
     translations: [{ lang: 'en-US', name: 'Tea One' }],
     tags: [{ code: 'TAG-ONE', name: 'One', lang: 'en-US' }],
+    catalogs: [{ catalog: 'CATALOG-TEA', category: 'CAT-ROOT', order: 3, published: true }],
 }]);
 write(path.join(source, '05-catalog-bindings/catalogs.json'), [{
     code: 'CATALOG-TEA',
     translations: [{ lang: 'en-US', name: 'Tea' }],
+    categories: [{ category: 'CAT-ROOT', order: 1, published: true, products: [] }],
 }]);
 write(path.join(source, '06-routed-content/articles/index.json'), []);
 write(path.join(source, '06-routed-content/metaobjects/index.json'), []);
@@ -110,6 +112,13 @@ assert.strictEqual(product['translations.en-US.name'], 'Tea One');
 assert.strictEqual(product['tags.code'], 'TAG-ONE');
 assert.strictEqual(product['translations/0/name'], 'Tea One');
 assert.strictEqual(product['tags/0/code'], 'TAG-ONE');
+
+const catalogBinding = read(path.join(target, '05-catalog-bindings/catalogs.json'))[0];
+assert.deepStrictEqual(catalogBinding.categories[0].products, [{
+    product: 'TEA-ONE',
+    order: 3,
+    published: true,
+}]);
 
 fs.rmSync(root, { recursive: true, force: true });
 console.log('test-admin-json-contract-artifact: OK');
