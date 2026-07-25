@@ -175,6 +175,83 @@ function convertCategories(root) {
     writeJson(file, normalizeRows(rows));
 }
 
+function productFiles(root) {
+    const productsRoot = path.join(root, '04-products');
+    const files = [];
+    for (const folder of fs.readdirSync(productsRoot, { withFileTypes: true })) {
+        if (!folder.isDirectory()) continue;
+        const folderPath = path.join(productsRoot, folder.name);
+        for (const entry of fs.readdirSync(folderPath, { withFileTypes: true })) {
+            if (entry.isFile() && entry.name.endsWith('.json')) {
+                files.push(path.join(folderPath, entry.name));
+            }
+        }
+    }
+    return files.sort();
+}
+
+function collectCatalogAssignments(root) {
+    const assignments = new Map();
+    for (const file of productFiles(root)) {
+        for (const product of asArray(readJson(file))) {
+            const productCode = String(product.code || '').trim();
+            if (!productCode) continue;
+
+            asArray(product.catalogs).forEach((assignment, index) => {
+                const catalogCode = String(assignment?.catalog || assignment?.catalogCode || '').trim();
+                const categoryCode = String(assignment?.category || assignment?.categoryCode || '').trim();
+                if (!catalogCode || !categoryCode) return;
+
+                const key = `${catalogCode.toUpperCase()}\u0000${categoryCode.toUpperCase()}\u0000${productCode.toUpperCase()}`;
+                assignments.set(key, {
+                    catalog: catalogCode,
+                    category: categoryCode,
+                    product: productCode,
+                    order: assignment.order ?? assignment.displayOrder ?? index + 1,
+                    published: assignment.published ?? true,
+                });
+            });
+        }
+    }
+    return [...assignments.values()].sort((left, right) =>
+        left.catalog.localeCompare(right.catalog) ||
+        left.category.localeCompare(right.category) ||
+        Number(left.order) - Number(right.order) ||
+        left.product.localeCompare(right.product));
+}
+
+function convertCatalogBindings(root) {
+    const file = path.join(root, '05-catalog-bindings', 'catalogs.json');
+    if (!fs.existsSync(file)) return;
+
+    const assignments = collectCatalogAssignments(root);
+    if (assignments.length === 0) return;
+
+    const assignmentsByCatalogCategory = new Map();
+    for (const assignment of assignments) {
+        const key = `${assignment.catalog.toUpperCase()}\u0000${assignment.category.toUpperCase()}`;
+        if (!assignmentsByCatalogCategory.has(key)) assignmentsByCatalogCategory.set(key, []);
+        assignmentsByCatalogCategory.get(key).push({
+            product: assignment.product,
+            order: assignment.order,
+            published: assignment.published,
+        });
+    }
+
+    const catalogs = asArray(readJson(file)).map(catalog => {
+        const catalogCode = String(catalog.code || '').trim();
+        const categories = asArray(catalog.categories).map(category => {
+            const categoryCode = String(category.category || category.categoryCode || '').trim();
+            const key = `${catalogCode.toUpperCase()}\u0000${categoryCode.toUpperCase()}`;
+            const products = assignmentsByCatalogCategory.get(key);
+            return products ? { ...category, products } : category;
+        });
+        return { ...catalog, categories };
+    });
+
+    writeJson(file, catalogs);
+}
+
 function convertProductFile(file) {
     const products = readJson(file);
     const rows = products.map(product => {
@@ -239,15 +316,8 @@ function convertProductFile(file) {
 }
 
 function convertProducts(root) {
-    const productsRoot = path.join(root, '04-products');
-    for (const folder of fs.readdirSync(productsRoot, { withFileTypes: true })) {
-        if (!folder.isDirectory()) continue;
-        const folderPath = path.join(productsRoot, folder.name);
-        for (const entry of fs.readdirSync(folderPath, { withFileTypes: true })) {
-            if (entry.isFile() && entry.name.endsWith('.json')) {
-                convertProductFile(path.join(folderPath, entry.name));
-            }
-        }
+    for (const file of productFiles(root)) {
+        convertProductFile(file);
     }
 }
 
@@ -282,6 +352,7 @@ function main() {
     const root = path.resolve(dst);
     convertSpecificationGroups(root);
     convertCategories(root);
+    convertCatalogBindings(root);
     convertProducts(root);
     const manifest = rebuildManifest(root);
     console.log(`Converted artifact: ${root}`);
