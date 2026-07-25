@@ -146,7 +146,7 @@ function readArtifactBundle(root) {
             resolvedRoot,
             '02-specifications/specification_attributes.json',
             errors),
-        options: readRequiredArray(
+        options: readOptionalArray(
             resolvedRoot,
             '02-specifications/specification_attribute_options.json',
             errors),
@@ -261,6 +261,25 @@ function readRequiredArray(root, relativePath, errors) {
         errors.push(`Required artifact file is missing: ${relativePath}.`);
         return [];
     }
+    try {
+        const value = readJson(file);
+        if (!Array.isArray(value)) throw new Error('root value must be an array');
+        return value;
+    } catch (error) {
+        errors.push(`Cannot read ${relativePath}: ${error.message}`);
+        return [];
+    }
+}
+
+function readOptionalArray(root, relativePath, errors) {
+    let file;
+    try {
+        file = resolveArtifactPath(root, relativePath);
+    } catch (error) {
+        errors.push(error.message);
+        return [];
+    }
+    if (!fs.existsSync(file)) return [];
     try {
         const value = readJson(file);
         if (!Array.isArray(value)) throw new Error('root value must be an array');

@@ -153,7 +153,7 @@ function convertSpecificationGroups(root) {
     });
 
     writeJson(groupsFile, normalizeRows(rows));
-    writeJson(optionsFile, []);
+    if (fs.existsSync(optionsFile)) fs.unlinkSync(optionsFile);
 }
 
 function convertCategories(root) {

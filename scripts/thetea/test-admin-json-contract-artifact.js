@@ -96,8 +96,10 @@ assert.strictEqual(groups[0]['translations/0/name'], 'Group');
 assert.strictEqual(groups[0]['attributes/0/code'], 'SPEC-ATTRIBUTE');
 assert.strictEqual(groups[0]['attributes/0/options/0/code'], 'SPEC-OPTION');
 
-const options = read(path.join(target, '02-specifications/specification_attribute_options.json'));
-assert.deepStrictEqual(options, []);
+assert.strictEqual(
+    fs.existsSync(path.join(target, '02-specifications/specification_attribute_options.json')),
+    false,
+);
 
 const categories = read(path.join(target, '03-categories/categories.json'));
 assert.strictEqual(categories[0]['translations.en-US.name'], 'Root');
