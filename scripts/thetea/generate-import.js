@@ -57,6 +57,11 @@ function walkJson(dir) {
     return walkFiles(dir, file => file.endsWith('.json'));
 }
 
+function isImageFile(file) {
+    return ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif', '.svg'].includes(
+        path.extname(file).toLowerCase());
+}
+
 function readFieldDetails(snapshotRoot, lang, slug) {
     const dir = path.join(snapshotRoot, 'raw', 'fields', lang, slug);
     return walkJson(dir).map(file => {
@@ -232,6 +237,7 @@ function writeGeneratedBundle(stagingRoot, artifact) {
     writeJson(path.join(stagingRoot, '05-catalog-bindings', 'catalogs.json'), [artifact.catalogBinding]);
     writeRoutedRecords(stagingRoot, 'articles', artifact.routedContent.articles);
     writeRoutedRecords(stagingRoot, 'metaobjects', artifact.routedContent.metaobjects);
+    writeProductMedia(stagingRoot, artifact.productMedia);
 
     for (const record of artifact.productRecords) {
         writeJson(path.join(stagingRoot, ...record.relativePath.split('/')), [record.product]);
@@ -276,12 +282,65 @@ function writeRoutedRecords(stagingRoot, kind, records) {
         index.sort((a, b) => a.code.localeCompare(b.code)));
 }
 
+function writeProductMedia(stagingRoot, productMedia) {
+    if (!productMedia?.records?.length) return;
+    for (const asset of productMedia.assets) {
+        fs.mkdirSync(path.dirname(path.join(stagingRoot, ...asset.relativePath.split('/'))), { recursive: true });
+        fs.copyFileSync(asset.sourcePath, path.join(stagingRoot, ...asset.relativePath.split('/')));
+    }
+    writeJson(
+        path.join(stagingRoot, '07-media', 'products', 'media.json'),
+        productMedia.records);
+}
+
+function collectProductMedia(records, { mediaRoot }) {
+    const result = { records: [], assets: [] };
+    if (!mediaRoot || !fs.existsSync(mediaRoot)) return result;
+
+    for (const record of records) {
+        const sourceDir = findProductMediaSourceDir(mediaRoot, record);
+        if (!sourceDir) continue;
+
+        const images = walkFiles(sourceDir, isImageFile);
+        if (!images.length) continue;
+
+        const artifactFolder = path.posix.join('07-media', 'products', record.slug);
+        result.records.push({
+            product: record.code,
+            path: artifactFolder,
+            replace: true,
+        });
+
+        for (const sourcePath of images) {
+            result.assets.push({
+                sourcePath,
+                relativePath: path.posix.join(artifactFolder, path.basename(sourcePath)),
+            });
+        }
+    }
+
+    result.records.sort((a, b) => a.product.localeCompare(b.product));
+    result.assets.sort((a, b) => a.relativePath.localeCompare(b.relativePath));
+    return result;
+}
+
+function findProductMediaSourceDir(mediaRoot, record) {
+    for (const candidate of [record.slug, record.code].filter(Boolean)) {
+        const dir = path.join(mediaRoot, candidate);
+        if (fs.existsSync(dir) && fs.statSync(dir).isDirectory()) return dir;
+    }
+    return null;
+}
+
 function main() {
     const args = parseArgs();
     const snapshotId = requireArg(args, 'snapshot');
     const snapshotRoot = args['snapshot-root']
         ? path.resolve(REPO_ROOT, String(args['snapshot-root']))
         : path.join(REPO_ROOT, 'sources', 'thetea', 'snapshots', snapshotId);
+    const mediaRoot = args['media-root']
+        ? path.resolve(REPO_ROOT, String(args['media-root']))
+        : path.join(snapshotRoot, 'media');
     const manifestPath = path.join(snapshotRoot, 'manifest.json');
     if (!fs.existsSync(manifestPath)) throw new Error(`Snapshot manifest not found: ${manifestPath}`);
 
@@ -442,6 +501,7 @@ function main() {
         categories,
         products,
     });
+    const productMedia = collectProductMedia(records, { mediaRoot });
 
     const validation = validateArtifact({
         products,
@@ -482,6 +542,8 @@ function main() {
         missingFieldDetailFiles: manifest.missingFieldDetailFiles?.length || 0,
         markdownFiles: manifest.markdownFiles?.length || 0,
         similarFiles: manifest.similarFiles?.length || 0,
+        productMediaProductCount: productMedia.records.length,
+        productMediaAssetCount: productMedia.assets.length,
         sourceManifestSha256,
         sourceFilesSha256,
         baselineReferenceSha256,
@@ -510,6 +572,7 @@ function main() {
             catalogBinding,
             lossEvents,
             routedContent,
+            productMedia,
         }));
         summary.artifactFileCount = artifactManifest.files.length;
     }

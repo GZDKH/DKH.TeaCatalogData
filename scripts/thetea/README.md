@@ -288,6 +288,26 @@ ordered SetupTool workflow, including specification definitions before products.
 - Before any production import, use both `--catalog-ref=...` and `--product-ref=...`. The report must show `Catalog found: yes`, `Missing categories: 0`, exact artifact parity, and non-empty source/reference hashes.
 - `artifact-manifest.json` inventories every generated file and hash. Generation uses an atomic staging/swap, so stale files are removed only after the replacement bundle validates.
 
+## Product Media Artifact
+
+Product photos are optional and live outside ProductCatalog DataExchange JSON. Put source images under
+`sources/thetea/snapshots/<snapshot>/media/<slug>/` or pass `--media-root=<path>` to `generate-import.js`.
+When a product folder exists, generation copies all image files to `07-media/products/<slug>/` and writes a
+single `07-media/products/media.json` manifest:
+
+```json
+[
+  {
+    "product": "TEA-CN-XIHU-LONGJING",
+    "path": "07-media/products/xihu-longjing",
+    "replace": true
+  }
+]
+```
+
+Admin import reads every image in the declared folder in filename order. The first image becomes the
+product cover unless the manifest later declares explicit `items` or `cover`.
+
 ## Specification Policy
 
 Every managed specification has exactly one group and one attribute. A product has at most one row per managed attribute; conflicting type, unit, parent, option, or translation metadata is fatal.
