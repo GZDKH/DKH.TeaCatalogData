@@ -4,6 +4,7 @@ const path = require('path');
 const { REPO_ROOT, parseArgs, requireArg } = require('./lib/env');
 const { writeReport } = require('./lib/report');
 const { loadCatalogReference } = require('./lib/catalog-mapping');
+const { summarizeCatalogPlacement } = require('./lib/catalog-bindings');
 const { readArtifactBundle, sha256 } = require('./lib/artifact-bundle');
 const { validateArtifact } = require('./lib/artifact-validator');
 const {
@@ -75,12 +76,17 @@ function main() {
         requiredCatalogCode: args.catalog || 'CATALOG-CHINESE-TEA',
         baselineProducts,
     });
+    const catalogPlacement = summarizeCatalogPlacement(
+        bundle.products,
+        bundle.catalogBindings,
+        args.catalog || 'CATALOG-CHINESE-TEA');
     const summary = {
         ...semantic,
         valid: integrityErrors.length === 0 && semantic.valid,
         artifactDirectory: dir,
         artifactFileCount: manifest.files?.length || 0,
         productFileCount: bundle.productFiles.length,
+        catalogPlacement,
         sourceManifestSha256: manifest.sourceManifestSha256,
         sourceFilesSha256: manifest.sourceFilesSha256,
         catalogReferenceSha256: manifest.catalogReferenceSha256,

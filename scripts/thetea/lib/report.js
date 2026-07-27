@@ -121,6 +121,19 @@ function toMarkdown(summary) {
         }
     }
 
+    if (summary.catalogPlacement) {
+        const placement = summary.catalogPlacement;
+        lines.push(
+            '',
+            '## Catalog Placement',
+            '',
+            `- Required catalog: ${placement.requiredCatalog}`,
+            `- Binding categories: ${placement.bindingCategoryCount}`,
+            `- Binding assignments: ${placement.bindingAssignmentCount}`,
+            `- Assigned products: ${placement.assignedProductCount}`,
+            `- Unassigned products: ${placement.unassignedProductCount}`);
+    }
+
     if (summary.errors.length) {
         lines.push('', '## Errors', '', ...summary.errors.map(e => `- ${e}`));
     }

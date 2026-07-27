@@ -5,6 +5,7 @@ const {
     catalogBindingCategoriesForProducts,
     catalogBindingCategoriesFromReference,
     mergeCatalogBindingCategories,
+    summarizeCatalogPlacement,
 } = require('./lib/catalog-bindings');
 
 const categories = [
@@ -95,5 +96,18 @@ assert.deepStrictEqual(
         'CATALOG-CHINESE-TEA',
         [...categories, { code: 'CAT-UNUSED', order: 99, published: true }]),
     [{ code: 'CAT-GREEN-TEA', order: 1, published: true }]);
+assert.deepStrictEqual(
+    summarizeCatalogPlacement(
+        products,
+        [catalog],
+        'CATALOG-CHINESE-TEA'),
+    {
+        requiredCatalog: 'CATALOG-CHINESE-TEA',
+        productCount: 2,
+        bindingCategoryCount: 2,
+        bindingAssignmentCount: 2,
+        assignedProductCount: 2,
+        unassignedProductCount: 0,
+    });
 
 console.log('test-catalog-bindings: OK');

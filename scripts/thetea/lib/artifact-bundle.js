@@ -37,6 +37,7 @@ function createArtifactManifest(root, metadata = {}) {
             .sort((a, b) => a.code.localeCompare(b.code) || a.path.localeCompare(b.path)),
         lossEvents: [...(metadata.lossEvents || [])],
         localization: metadata.localization || null,
+        catalogPlacement: metadata.catalogPlacement || null,
         files,
     };
     writeJson(path.join(resolvedRoot, ARTIFACT_MANIFEST_FILE), manifest);
