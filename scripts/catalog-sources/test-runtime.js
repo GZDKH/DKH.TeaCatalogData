@@ -100,6 +100,7 @@ function checkpoint(observedAt) {
     return {
         sourceId: 'fixture-source',
         snapshotId: 'stable-snapshot',
+        connectorVersion: 'fixture-connector-v1',
         parserVersion: 'fixture-parser-v1',
         observedAt,
         diagnostics: [],
@@ -121,6 +122,8 @@ async function main() {
             now: () => new Date('2026-07-27T03:00:00Z'),
         });
         assert.strictEqual(result.manifest.itemCount, 5);
+        assert.strictEqual(result.manifest.connectorVersion, 'fixture-connector-v1');
+        assert.strictEqual(result.artifact.source.connectorVersion, 'fixture-connector-v1');
         assert.strictEqual(result.artifact.snapshot.complete, true);
         assert.strictEqual(result.artifact.snapshot.authoritativeForDeletion, false);
         assert.deepStrictEqual(result.artifact.deletions, []);
@@ -269,6 +272,16 @@ async function main() {
         assert.strictEqual(
             buildArtifact(checkpoint('2026-07-27T01:00:00.000Z'), [itemAtOne]).semanticDigest,
             buildArtifact(checkpoint('2026-07-27T02:00:00.000Z'), [itemAtTwo]).semanticDigest,
+        );
+        assert.notStrictEqual(
+            buildArtifact(checkpoint('2026-07-27T01:00:00.000Z'), [itemAtOne]).semanticDigest,
+            buildArtifact(
+                {
+                    ...checkpoint('2026-07-27T01:00:00.000Z'),
+                    connectorVersion: 'fixture-connector-v2',
+                },
+                [itemAtOne],
+            ).semanticDigest,
         );
 
         console.log('test-catalog-source-runtime: OK');
