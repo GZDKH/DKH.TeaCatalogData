@@ -15,7 +15,12 @@ function normalizedItem(externalId) {
     return {
         schemaVersion: 'catalog-source-item-v1',
         externalId: String(externalId),
-        localizedFields: { 'zh-CN': { name: `Tea ${externalId}` } },
+        localizedFields: {
+            'zh-CN': {
+                name: `Tea ${externalId}`,
+                description: `Source description ${externalId}`,
+            },
+        },
         facts: { year: 2025 },
         images: [],
         sourceLinks: {
@@ -127,6 +132,9 @@ async function main() {
         assert.strictEqual(result.artifact.snapshot.complete, true);
         assert.strictEqual(result.artifact.snapshot.authoritativeForDeletion, false);
         assert.deepStrictEqual(result.artifact.deletions, []);
+        assert.ok(result.artifact.items.every(item =>
+            item.localizedFields['zh-CN'].description ===
+                `Source description ${item.externalId}`));
         assert.ok(result.artifact.items.every(item =>
             item.referencePrices.every(price => price.retailPrice === false)));
         assert.strictEqual(first.state.listFetches, 3);
@@ -273,6 +281,23 @@ async function main() {
             buildArtifact(checkpoint('2026-07-27T01:00:00.000Z'), [itemAtOne]).semanticDigest,
             buildArtifact(checkpoint('2026-07-27T02:00:00.000Z'), [itemAtTwo]).semanticDigest,
         );
+        const itemWithChangedDescription = {
+            ...itemAtOne,
+            localizedFields: {
+                ...itemAtOne.localizedFields,
+                'zh-CN': {
+                    ...itemAtOne.localizedFields['zh-CN'],
+                    description: 'Changed source description',
+                },
+            },
+        };
+        assert.notStrictEqual(
+            buildArtifact(checkpoint('2026-07-27T01:00:00.000Z'), [itemAtOne]).semanticDigest,
+            buildArtifact(
+                checkpoint('2026-07-27T01:00:00.000Z'),
+                [itemWithChangedDescription],
+            ).semanticDigest,
+        );
         assert.notStrictEqual(
             buildArtifact(checkpoint('2026-07-27T01:00:00.000Z'), [itemAtOne]).semanticDigest,
             buildArtifact(
@@ -282,6 +307,23 @@ async function main() {
                 },
                 [itemAtOne],
             ).semanticDigest,
+        );
+        const itemWithPiiDescription = {
+            ...itemAtOne,
+            localizedFields: {
+                ...itemAtOne.localizedFields,
+                'zh-CN': {
+                    ...itemAtOne.localizedFields['zh-CN'],
+                    description: 'Call 13800138000',
+                },
+            },
+        };
+        assert.throws(
+            () => buildArtifact(
+                checkpoint('2026-07-27T01:00:00.000Z'),
+                [itemWithPiiDescription],
+            ),
+            error => error.code === 'SOURCE_ARTIFACT_PII_POLICY_VIOLATION',
         );
 
         console.log('test-catalog-source-runtime: OK');

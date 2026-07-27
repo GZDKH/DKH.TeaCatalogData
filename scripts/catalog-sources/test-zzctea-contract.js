@@ -33,6 +33,14 @@ function encrypted(name) {
     return encryptFixture(readFixture(name));
 }
 
+function readFixtureValue(name) {
+    return JSON.parse(readFixture(name));
+}
+
+function encryptedValue(value) {
+    return encryptFixture(Buffer.from(JSON.stringify(value)));
+}
+
 function assertRejectsCode(action, code) {
     assert.throws(action, error => error.code === code);
 }
@@ -81,6 +89,10 @@ function main() {
     const caseItem = normalizeDetail(encrypted('detail-case.json'));
     assert.strictEqual(caseItem.externalId, '17627');
     assert.strictEqual(caseItem.localizedFields['zh-CN'].name, 'Fixture Case Tea');
+    assert.strictEqual(
+        caseItem.localizedFields['zh-CN'].description,
+        '云南大叶种晒青毛茶制成，饼形端正。 香气清晰，滋味醇厚。',
+    );
     assert.strictEqual(caseItem.sourceLinks.stableLookupUrl, 'https://zzctea.com/teaDetail/17627.html');
     assert.deepStrictEqual(caseItem.package.components, [
         { quantity: '357', containedUnitCode: 'g', containerUnitCode: 'cake' },
@@ -107,10 +119,78 @@ function main() {
     assert.ok(caseItem.referencePrices.every(price => price.retailPrice === false));
 
     const bundle = normalizeDetail(encrypted('detail-bundle.json'));
+    assert.strictEqual(
+        Object.prototype.hasOwnProperty.call(bundle.localizedFields['zh-CN'], 'description'),
+        false,
+    );
+    assert.ok(!bundle.diagnostics.includes('ZZCTEA_SOURCE_DESCRIPTION_UNSAFE'));
     assert.strictEqual(bundle.referencePrices.at(-1).basisUnitCode, 'cake');
     assert.strictEqual(bundle.referencePrices.at(-1).derivation.cumulativeDivisor, '7');
     const box = normalizeDetail(encrypted('detail-box-case.json'));
     assert.strictEqual(box.referencePrices.at(-1).derivation.cumulativeDivisor, '42');
+
+    const unsafeDescription = normalizeDetail(encrypted('detail-description-unsafe.json'));
+    assert.strictEqual(
+        Object.prototype.hasOwnProperty.call(
+            unsafeDescription.localizedFields['zh-CN'],
+            'description',
+        ),
+        false,
+    );
+    assert.ok(unsafeDescription.diagnostics.includes('ZZCTEA_SOURCE_DESCRIPTION_UNSAFE'));
+
+    const unsafeDescriptionFixture = readFixtureValue('detail-description-unsafe.json');
+    for (const description of [
+        '<p>Product-specific text</p>',
+        'Product\u0000specific text',
+        'See https://example.com/tea for details',
+        'See example.com/tea for details',
+        '找找茶提供茶品资料',
+        '查看找茶出茶供需和价格走势',
+        '茶'.repeat(4_001),
+    ]) {
+        const payload = {
+            ...unsafeDescriptionFixture,
+            data: {
+                ...unsafeDescriptionFixture.data,
+                description,
+            },
+        };
+        const normalized = normalizeDetail(encryptedValue(payload));
+        assert.strictEqual(
+            Object.prototype.hasOwnProperty.call(
+                normalized.localizedFields['zh-CN'],
+                'description',
+            ),
+            false,
+        );
+        assert.ok(normalized.diagnostics.includes('ZZCTEA_SOURCE_DESCRIPTION_UNSAFE'));
+    }
+
+    const maximumDescriptionPayload = {
+        ...unsafeDescriptionFixture,
+        data: {
+            ...unsafeDescriptionFixture.data,
+            description: '茶'.repeat(4_000),
+        },
+    };
+    assert.strictEqual(
+        normalizeDetail(encryptedValue(maximumDescriptionPayload))
+            .localizedFields['zh-CN'].description.length,
+        4_000,
+    );
+
+    const piiDescriptionPayload = {
+        ...unsafeDescriptionFixture,
+        data: {
+            ...unsafeDescriptionFixture.data,
+            description: 'Product details 13800138000',
+        },
+    };
+    assertRejectsCode(
+        () => normalizeDetail(encryptedValue(piiDescriptionPayload)),
+        'ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED',
+    );
 
     const hidden = normalizeDetail(encrypted('detail-hidden-price.json'));
     assert.deepStrictEqual(hidden.referencePrices, []);
@@ -128,6 +208,19 @@ function main() {
     assert.strictEqual(page.totalCount, 5);
     assert.strictEqual(page.items.length, 5);
     assert.strictEqual(new Set(page.items.map(item => item.externalId)).size, 5);
+    const listWithDescription = readFixtureValue('list-page.json');
+    listWithDescription.data[0].description = 'List payload description must not be imported';
+    const normalizedListWithDescription = normalizeListPage(
+        encryptedValue(listWithDescription),
+        36,
+    );
+    assert.strictEqual(
+        Object.prototype.hasOwnProperty.call(
+            normalizedListWithDescription.items[0].localizedFields['zh-CN'],
+            'description',
+        ),
+        false,
+    );
 
     const exact = divideDecimal('900719925474099312345.67', '7', 8);
     assert.strictEqual(exact.amount, '128674275067728473192.23857143');

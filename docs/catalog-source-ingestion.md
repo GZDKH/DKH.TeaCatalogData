@@ -13,13 +13,21 @@ schedules, but cannot upload or execute parser JavaScript.
 ZZCTea is a market/reference-price source. Its values never overwrite DKH retail
 or catalog prices. The normalized artifact distinguishes original observations
 from derived package-unit observations and records exact derivation provenance.
-Customer-facing descriptions are a later DKH-authored projection and must not
-embed `zzctea.com` boilerplate.
+The artifact retains only reviewed safe plain-text detail descriptions as source
+evidence. The offline projection creates `zh-CN` and `en-US` DKH factual
+descriptions from structured facts and exact package components; it neither
+copies source prose nor embeds `zzctea.com` boilerplate.
 
 The runtime fetches neither seller/buyer lists nor contact/profile data. Raw
 encrypted list/detail responses are stored only after the decrypted payload
 passes PII policy. A partial or drifted run preserves the last good artifact and
 cannot create tombstones or production mutations.
+
+The verified offline projection emits provider-neutral CommerceNetwork
+observation DTOs plus a deterministic report and hash manifest. It performs no
+network or production writes. ProductCatalog reconciliation and CommerceNetwork
+publication require complete authoritative references, read-back, a
+one-product canary, and the later reviewed apply phase.
 
 See [`../scripts/catalog-sources/README.md`](../scripts/catalog-sources/README.md)
 for commands, output layout and operator gates.

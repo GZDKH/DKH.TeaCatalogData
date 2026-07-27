@@ -1,0 +1,18 @@
+{
+  "status": 1,
+  "data": {
+    "id": 17628,
+    "name": "Fixture Unsafe Description Tea",
+    "description": "找找茶提供最新报价、找茶出茶供需和价格走势，详情请访问 zzctea.com。",
+    "year": "2025年",
+    "yearInt": 2025,
+    "productionTechnology": "生茶",
+    "specification": "357克/片 7片/提",
+    "price": 1400,
+    "unit": "提",
+    "brandId": 2,
+    "brand": "Fixture Brand",
+    "priceDisplayStatus": 1,
+    "marketStatus": 1
+  }
+}

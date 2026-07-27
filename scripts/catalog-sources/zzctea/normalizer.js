@@ -5,12 +5,20 @@ const { divideDecimal, decimalParts, multiplyDecimal } = require('./decimal');
 const { decodeEnvelope } = require('./decoder');
 const { normalizeDecimal, normalizeUnit, parsePackage } = require('./package-parser');
 
-const PARSER_VERSION = 'zzctea-public-catalog-js-v1';
+const PARSER_VERSION = 'zzctea-public-catalog-js-v2';
 const MAXIMUM_TOTAL_COUNT = 100_000;
+const MAXIMUM_SOURCE_DESCRIPTION_LENGTH = 4_000;
 const SAFE_IMAGE_HOSTS = new Set(['oss.yf-gz.cn']);
 const FORBIDDEN_KEYS =
     /(?:phone|mobile|customer|avatar|contact|wechat|weixin)|^(?:sell|buy)(?!Count$)|^(?:seller|buyer)|(?:UserId|CustomerId)$/i;
 const PHONE = /(?<!\d)1[3-9]\d{9}(?!\d)/;
+const SOURCE_DESCRIPTION_CONTROL =
+    /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]/;
+const SOURCE_DESCRIPTION_HTML = /<(?:(?:\/?[A-Za-z])|!DOCTYPE|!--|\?xml)[^>]*>/i;
+const SOURCE_DESCRIPTION_URL = /\b(?:https?:\/\/|www\.)\S+/iu;
+const SOURCE_DESCRIPTION_DOMAIN = /\b(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,63}\b/iu;
+const SOURCE_DESCRIPTION_BOILERPLATE =
+    /zzctea|找找茶|找茶.{0,16}出茶|(?:找茶|出茶)(?:\d+条|信息|线索|供需)|供需线索|茶友讨论|最新报价|价格走势|相关知识/iu;
 
 function assertPublicCatalogPayload(value) {
     function visit(current) {
@@ -42,6 +50,29 @@ function positiveDecimal(value) {
 
 function optionalString(source, key) {
     return typeof source[key] === 'string' ? source[key].trim() || null : null;
+}
+
+function normalizeSourceDescription(source, diagnostics) {
+    const raw = source.description;
+    if (raw === undefined || raw === null) return null;
+    if (typeof raw !== 'string') {
+        diagnostics.push('ZZCTEA_SOURCE_DESCRIPTION_UNSAFE');
+        return null;
+    }
+
+    const normalized = raw.trim().replace(/\s+/gu, ' ');
+    if (!normalized) return null;
+    if (normalized.length > MAXIMUM_SOURCE_DESCRIPTION_LENGTH ||
+        SOURCE_DESCRIPTION_CONTROL.test(raw) ||
+        SOURCE_DESCRIPTION_HTML.test(normalized) ||
+        SOURCE_DESCRIPTION_URL.test(normalized) ||
+        SOURCE_DESCRIPTION_DOMAIN.test(normalized) ||
+        SOURCE_DESCRIPTION_BOILERPLATE.test(normalized)) {
+        diagnostics.push('ZZCTEA_SOURCE_DESCRIPTION_UNSAFE');
+        return null;
+    }
+
+    return normalized;
 }
 
 function sourceTimestamp(value, diagnostics) {
@@ -184,7 +215,7 @@ function normalizeRelease(source, basisUnitCode, diagnostics) {
     };
 }
 
-function normalizeProduct(source) {
+function normalizeProduct(source, options = {}) {
     if (!source || Array.isArray(source) || typeof source !== 'object') {
         reject('ZZCTEA_PRODUCT_SHAPE_INVALID');
     }
@@ -220,6 +251,9 @@ function normalizeProduct(source) {
     }
     const brandId = intValue(source.brandId);
     const brandName = optionalString(source, 'brand');
+    const description = options.includeDescription
+        ? normalizeSourceDescription(source, diagnostics)
+        : null;
 
     return {
         schemaVersion: 'catalog-source-item-v1',
@@ -227,6 +261,7 @@ function normalizeProduct(source) {
         localizedFields: {
             'zh-CN': {
                 name,
+                ...(description ? { description } : {}),
             },
         },
         facts: {
@@ -270,7 +305,7 @@ function normalizeDetail(responseBody) {
     if (!root.data || Array.isArray(root.data) || typeof root.data !== 'object') {
         reject('ZZCTEA_DETAIL_DATA_MISSING');
     }
-    return normalizeProduct(root.data);
+    return normalizeProduct(root.data, { includeDescription: true });
 }
 
 function normalizeListPage(responseBody, requestedPageSize) {

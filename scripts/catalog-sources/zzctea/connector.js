@@ -58,7 +58,7 @@ function createZzcTeaConnector(options = {}) {
 
     return Object.freeze({
         id: 'zzctea',
-        connectorVersion: 'zzctea-connector-v1',
+        connectorVersion: 'zzctea-connector-v2',
         parserVersion: PARSER_VERSION,
         defaultPageSize: 36,
         maximumPageSize: 250,

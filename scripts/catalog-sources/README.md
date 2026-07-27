@@ -27,6 +27,21 @@ node scripts/catalog-sources/fetch-snapshot.js \
   --replay
 ```
 
+Project one complete, verified artifact into provider-neutral CommerceNetwork
+observation DTOs without making any service or database writes:
+
+```bash
+node scripts/catalog-sources/project-artifact.js \
+  --artifact-dir=artifacts/catalog-sources/zzctea/zzctea-2026-07-27
+```
+
+The projection is written atomically below
+`artifacts/catalog-source-projections/<source>/<snapshot>/`. It contains a
+content-addressed projection, a deterministic dry-run report, and a manifest
+binding both outputs to the input artifact and checkpoint hashes. The loader
+rejects incomplete, extra, symlinked, hash-mismatched, deletion-authoritative,
+or retail-price-marked input.
+
 The connector is fixed to the public HTTPS list and single-tea endpoints used by
 the website. It sends `HEAD` only to
 `https://zzctea.com/teaDetail/{externalId}.html` and accepts a validated
@@ -85,6 +100,18 @@ The semantic digest uses deterministic item/key ordering and excludes
 observation time. Offline replay verifies and reproduces a stored snapshot but
 never promotes that snapshot over the current `last-good.json`.
 
+When a reviewed plain-text description is present in the public detail payload,
+the normalized artifact retains it as source evidence. List-page prose is never
+trusted as a description. HTML, control characters, URLs, domains, source-site
+branding, transaction boilerplate, and overlong text are omitted with a
+diagnostic; PII remains a hard rejection.
+
+Customer-facing projection text is generated from structured facts such as
+brand, year, batch, process, shape, and exact package components. It does not
+copy source prose and does not include `zzctea.com`. Both `zh-CN` and `en-US`
+factual descriptions are emitted, using the source title as a non-translated
+fallback when no reviewed English title exists.
+
 ## Gates
 
 The runtime fails closed on:
@@ -97,9 +124,11 @@ The runtime fails closed on:
 - a total-count drop or growth outside the reviewed thresholds.
 
 No code in this directory writes ProductCatalog, CommerceNetwork, or any
-production database. ProductCatalog projection and a future CommerceNetwork
-bridge are separate reviewed phases. A bridge that changes protobuf contracts
-requires the normal explicit proto approval and contract-version workflow.
+production database. The offline projection matches the approved
+CommerceNetwork observation contract but deliberately has no network client.
+ProductCatalog reconciliation, authoritative reference acquisition, source
+registration, one-product canary, and mass apply remain separate reviewed
+steps.
 
 Run the offline suite:
 
@@ -108,4 +137,6 @@ node scripts/catalog-sources/test-zzctea-contract.js
 node scripts/catalog-sources/test-zzctea-connector.js
 node scripts/catalog-sources/test-http.js
 node scripts/catalog-sources/test-runtime.js
+node scripts/catalog-sources/test-projection.js
+node scripts/catalog-sources/test-projection-cli.js
 ```
