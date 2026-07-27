@@ -335,6 +335,9 @@ function rebuildManifest(root) {
         products: previous.products || [],
         lossEvents: previous.lossEvents || [],
         localization: previous.localization || {},
+        catalogPlacement: previous.catalogPlacement || null,
+        catalogTargets: previous.targets?.catalogCodes || [],
+        storefrontTargets: previous.targets?.storefrontCodes || [],
     });
     const bundle = readArtifactBundle(root);
     if (!bundle.valid) {

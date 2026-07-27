@@ -124,10 +124,12 @@ node scripts/thetea/generate-import.js \
   --out=import/thetea/thetea-2026-06-01 \
   --packages=standard \
   --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json \
-  --product-ref=sources/prod/product-reference/prod-products-2026-06-01
+  --product-ref=sources/prod/product-reference/prod-products-2026-06-01 \
+  --storefronts=shop-thetea,thetea-wiki
 ```
 
 The resync workflow fails if a generated product code is absent from the marked complete baseline. New-product creation is intentionally outside this workflow.
+The artifact manifest records exact catalog/storefront target codes. Category normalization falls back from empty structured meta fields to conservative canonical origin/type/name evidence and writes the complete coverage/unresolved audit to `reports/thetea/<snapshot>/category-coverage.json`.
 
 Validate generated files locally:
 
@@ -304,6 +306,7 @@ ordered SetupTool workflow, including specification definitions before products.
 - Product DataExchange replaces dependent collections. Safety comes from overlaying generated TheTea fields on the exact complete baseline, not from upsert alone. Unrelated specs, translations, tags, catalog assignments, packages, prices, overrides, relations, and other baseline fields are preserved and validated.
 - Before any production import, use both `--catalog-ref=...` and `--product-ref=...`. The report must show `Catalog found: yes`, `Missing categories: 0`, exact artifact parity, and non-empty source/reference hashes.
 - `artifact-manifest.json` inventories every generated file and hash. Generation uses an atomic staging/swap, so stale files are removed only after the replacement bundle validates.
+- `artifact-manifest.json.targets` contains the exact catalog and storefront codes that an import console must resolve before writes; source-declared targets are not an operator override.
 
 ## Product Media Artifact
 

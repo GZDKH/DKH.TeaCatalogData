@@ -26,6 +26,8 @@ try {
         productCodes: ['TEA-CN-ONE'],
         products: [{ code: 'TEA-CN-ONE', path: '04-products/GREEN/one.json' }],
         lossEvents: [],
+        catalogTargets: ['CATALOG-CHINESE-TEA'],
+        storefrontTargets: ['thetea-wiki', 'shop-thetea', 'shop-thetea'],
         catalogPlacement: {
             requiredCatalog: 'CATALOG-CHINESE-TEA',
             productCount: 1,
@@ -40,6 +42,10 @@ try {
     const valid = verifyArtifactManifest(root);
     assert.strictEqual(valid.valid, true, valid.errors.join('\n'));
     assert.deepStrictEqual(valid.manifest.requiredLocales, ['en-US', 'ru-RU']);
+    assert.deepStrictEqual(valid.manifest.targets, {
+        catalogCodes: ['CATALOG-CHINESE-TEA'],
+        storefrontCodes: ['shop-thetea', 'thetea-wiki'],
+    });
     assert.strictEqual(valid.manifest.catalogPlacement.unassignedProductCount, 0);
     const bundle = readArtifactBundle(root);
     assert.strictEqual(bundle.valid, true, bundle.errors.join('\n'));

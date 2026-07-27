@@ -11,6 +11,7 @@ const { toProductLocale } = require('./locales');
 const { buildCategoryAssignments, PROVINCE_CATEGORY, TEA_TYPE_CATEGORY } = require('./category-taxonomy');
 const { resolveOriginLocation } = require('./origin-reference');
 const { decomposeTeaName } = require('./product-naming');
+const { inferTaxonomy } = require('./taxonomy-inference');
 
 const FALLBACK_SOURCE_LOCALES = ['en', 'ru', 'zh'];
 
@@ -32,6 +33,17 @@ function transformCardSet(cardSet, options = {}) {
 
     const meta = primary.meta || {};
     const warnings = [];
+    const taxonomy = inferTaxonomy(primary);
+    warnings.push(...taxonomy.warnings);
+    const catalogTaxonomy = options.inferCatalogTaxonomy === false
+        ? {
+            ...taxonomy,
+            province: meta.province,
+            shapes: meta.shape ? [meta.shape] : [],
+            processing: meta.processing ? [meta.processing] : [],
+            categoryCodes: [],
+        }
+        : taxonomy;
     const code = productCodeForCardSet(cardSet);
     const canonicalSensoryLabels = Object.fromEntries((primary.sensory || [])
         .filter(item => item?.descriptor)
@@ -68,11 +80,12 @@ function transformCardSet(cardSet, options = {}) {
             primary,
             options.knownCategories || new Set(),
             warnings,
-            options.catalog),
+            options.catalog,
+            catalogTaxonomy),
         packages: options.packages === 'standard' ? STANDARD_PACKAGES : DEFAULT_PACKAGES,
         tags: buildTags(primary),
         specifications: selectedSpecifications.specifications.map(stripDefinitionMetadata),
-        origins: buildOrigins(cardSet, primary, warnings, options.geographyReference),
+        origins: buildOrigins(cardSet, primary, warnings, options.geographyReference, taxonomy),
         related: resolveRelatedProducts(relationCandidates, code, options, warnings),
         crossSells: [],
     };
@@ -87,6 +100,7 @@ function transformCardSet(cardSet, options = {}) {
             ...selectedSpecifications.events,
         ],
         routedContent: routed.content,
+        taxonomy,
     };
 }
 
@@ -460,8 +474,14 @@ function buildDescription(card) {
     return chunks.filter(Boolean).join('\n\n');
 }
 
-function buildCatalogAssignments(card, knownCategories, warnings, catalog = 'CATALOG-CHINESE-TEA') {
-    const categoryCodes = buildCategoryAssignments(card, warnings);
+function buildCatalogAssignments(
+    card,
+    knownCategories,
+    warnings,
+    catalog = 'CATALOG-CHINESE-TEA',
+    taxonomy,
+) {
+    const categoryCodes = buildCategoryAssignments(card, warnings, taxonomy);
 
     return [...new Set(categoryCodes)]
         .filter(code => {
@@ -499,9 +519,13 @@ function buildTags(card) {
     return dedupeBy(tags, t => t.code);
 }
 
-function buildOrigins(cardSet, primary, warnings, geographyReference) {
+function buildOrigins(cardSet, primary, warnings, geographyReference, taxonomy) {
     const meta = primary.meta || {};
-    const location = resolveOriginLocation(primary, geographyReference, warnings);
+    const location = resolveOriginLocation(
+        primary,
+        geographyReference,
+        warnings,
+        taxonomy?.province);
     const altitude = normalizeAltitudeRange(
         meta.altitude_min,
         meta.altitude_max,

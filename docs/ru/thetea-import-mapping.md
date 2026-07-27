@@ -115,17 +115,19 @@ CATALOG-CHINESE-TEA
 | `dark` | `CAT-DARK-TEA` |
 | `puer` | `CAT-PUER-TEA` |
 
-Провинция дает вторую региональную категорию, например `Zhejiang -> CAT-REGION-ZHEJIANG`. Сейчас известны: Anhui, Chongqing, Fujian, Guangdong, Guangxi, Guizhou, Hainan, Henan, Hubei, Hunan, Jiangsu, Jiangxi, Jilin, Shaanxi, Shandong, Sichuan, Taiwan, Tibet, Xinjiang, Yunnan, Zhejiang. Неизвестные провинции получают fallback `CAT-REGION-CHINA` с warning и должны быть проверены до production import.
+Провинция дает вторую региональную категорию, например `Zhejiang -> CAT-REGION-ZHEJIANG`. Сначала используется `meta.province`; если поле пустое, провинция извлекается из первого канонического английского предложения `classification_origin.origin`. Явная конструкция `<name> Province` имеет приоритет над упоминаниями границы или плато. Несколько одинаково явных провинций попадают в отчёт и не угадываются. Категорийные маппинги есть для Anhui, Chongqing, Fujian, Guangdong, Guangxi, Guizhou, Hainan, Henan, Hubei, Hunan, Jiangsu, Jiangxi, Jilin, Shaanxi, Shandong, Sichuan, Taiwan, Tibet, Xinjiang, Yunnan, Zhejiang. Провинция из production geography без отдельной leaf-категории получает `CAT-REGION-CHINA` с warning.
 
 Дополнительные generated category dimensions:
 
 | TheTea source | DKH category namespace | Комментарий |
 |---|---|---|
-| `meta.shape` | `CAT-SHAPE-*` под `CAT-BY-SHAPE` | Needle, flat, strip, spiral, brick, pearl, cake. |
-| `meta.processing` | `CAT-PROC-*` под `CAT-BY-PROCESSING` | `chaoqing`, `hongqing`, `zhengqing`. |
+| `meta.shape` или canonical `classification_origin.type` | `CAT-SHAPE-*` под `CAT-BY-SHAPE` | Needle, flat, strip, spiral, brick, pearl, cake, bud-only, powder, tuo, compressed, blooming. Несколько явно заявленных форм остаются несколькими assignments. Контрастные фразы вроде “unlike pan-fired tea” исключаются. |
+| `meta.processing` или canonical `classification_origin.type` | `CAT-PROC-*` под `CAT-BY-PROCESSING` | Pan-fired, baked, steamed, sun-dried, sun-dried red, charcoal roasted, wet-piled, smoked, CTC, orthodox, shaded, tea-paste, citrus. |
 | `meta.roast_level` | `CAT-ROAST-*` под `CAT-BY-ROAST` | `none`, `light`, `medium`, `heavy`. |
 | TeaCard `tags` | `CAT-SPEC-*` под `CAT-BY-SPECIALTY` | В категории идут только устойчивые недублирующие теги: GI, UNESCO ICH, Ten Famous Teas, Three Needles, Needle Shape. Type/region теги игнорируются, потому что дублируют более надежные поля. |
-| `/api/v2/family` | `CAT-FAMILY-*` под `CAT-BY-FAMILY` | Family categories генерируются как справочник. К продуктам они назначаются только если TeaCard содержит `meta.family_id`. В текущем snapshot от 2026-06-02 все `family_id` пустые, поэтому family categories пока не назначаются товарам. |
+| Canonical name/slug/type и province/type cross-facets | Named tea, cultivar, family, puer, herbal, specialty categories | Точные source names покрывают Longjing, Biluochun, Maofeng, Maojian, Guapian, Wuyi rock, Dancong, Tieguanyin, white/red/dark subtypes, compressed shapes и семь записей `FLOWERS AND DRY`. Cross-facet family mapping ограничен однозначными комбинациями: Zhejiang green, Fujian white/red, Taiwan oolong, Guangdong oolong. |
+| Structured recipes и canonical `brewing.teaware` | `CAT-BREW-*` | Назначаются только явно присутствующие в источнике способы и посуда. |
+| `/api/v2/family` | `CAT-FAMILY-*` под `CAT-BY-FAMILY` | Family definitions строятся из справочника; product assignments выводятся из явных названий и консервативных cross-facet rules, потому что текущие D1 `family_id` пустые. |
 
 Поля `enrichment.flavor_tags`, `enrichment.occasion`, `enrichment.best_season`, `enrichment.caffeine_level`, `enrichment.difficulty`, `enrichment.price_tier` остаются тегами/спецификациями, а не ветками дерева категорий. Это фильтры и контекстные атрибуты, не стабильные разделы каталога.
 
@@ -137,6 +139,10 @@ CATALOG-CHINESE-TEA
 Catalog found: yes
 Missing categories: 0
 ```
+
+Генерация также пишет `category-coverage.json`: все использованные category codes, histogram assignments по продуктам, покрытие region/shape/processing/family/herbal/brewing и полный список unresolved.
+
+`artifact-manifest.json.targets` объявляет назначения импорта. Production TheTea artifact по умолчанию содержит catalog `CATALOG-CHINESE-TEA` и storefront codes `shop-thetea`, `thetea-wiki`; менять их можно только явным `--storefronts=<codes>`.
 
 ## Маппинг спецификаций
 
@@ -204,7 +210,7 @@ Product DataExchange заменяет dependent collections. Повторный 
 node scripts/thetea/fetch-snapshot.js --snapshot=thetea-2026-06-02 --langs=all --field-langs=all --concurrency=4 --resume
 node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-02
 node scripts/thetea/fetch-prod-products.js --snapshot=prod-products-2026-06-02
-node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-02 --out=import/thetea/thetea-2026-06-02 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02
+node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-02 --out=import/thetea/thetea-2026-06-02 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --storefronts=shop-thetea,thetea-wiki
 node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-06-02 --report=thetea-2026-06-02-prod-map --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02
 node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --only=TEA-CN-XIHU-LONGJING --limit=1
 ```

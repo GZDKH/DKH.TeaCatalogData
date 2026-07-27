@@ -1,4 +1,5 @@
 const { normalizeCodePart } = require('./spec-registry');
+const { inferTaxonomy } = require('./taxonomy-inference');
 
 const TEA_TYPE_CATEGORY = {
     green: 'CAT-GREEN-TEA',
@@ -100,6 +101,11 @@ const SHAPE_CATEGORY = {
     brick: 'CAT-SHAPE-BRICK',
     pearl: 'CAT-SHAPE-PEARL',
     cake: 'CAT-SHAPE-CAKE',
+    bud: 'CAT-SHAPE-BUD',
+    powder: 'CAT-SHAPE-POWDER',
+    tuo: 'CAT-SHAPE-TUO',
+    compressed: 'CAT-SHAPE-COMPRESSED',
+    blooming: 'CAT-SHAPE-BLOOMING',
 };
 
 const SHAPE_DETAILS = {
@@ -110,18 +116,43 @@ const SHAPE_DETAILS = {
     brick: names('Brick Tea', 'Кирпич', '砖形', 'brick-tea'),
     pearl: names('Pearl Tea', 'Жемчужина', '珠形', 'pearl-tea'),
     cake: names('Cake Tea', 'Блин', '饼形', 'cake-tea'),
+    bud: names('Bud-only Tea', 'Только почки', '芽形', 'bud-only-tea'),
+    powder: names('Powdered Tea', 'Порошковый чай', '粉末茶', 'powdered-tea'),
+    tuo: names('Tuo Tea', 'Точа', '沱茶', 'tuo-tea'),
+    compressed: names('Compressed Tea', 'Прессованный чай', '紧压茶', 'compressed-tea'),
+    blooming: names('Blooming Tea', 'Связанный чай', '工艺花茶', 'blooming-tea'),
 };
 
 const PROCESSING_CATEGORY = {
     chaoqing: 'CAT-PROC-CHAOQING',
     hongqing: 'CAT-PROC-HONGQING',
     zhengqing: 'CAT-PROC-ZHENGQING',
+    shaiqing: 'CAT-PROC-SHAIQING',
+    shai_hong: 'CAT-PROC-SHAI-HONG',
+    tanbei: 'CAT-PROC-TANBEI',
+    wodui: 'CAT-PROC-WODUI',
+    smoked: 'CAT-PROC-SMOKED',
+    ctc: 'CAT-PROC-CTC',
+    orthodox: 'CAT-PROC-ORTHODOX',
+    shaded: 'CAT-PROC-SHADED',
+    cha_gao: 'CAT-PROC-CHA-GAO',
+    gan_jie: 'CAT-PROC-GAN-JIE',
 };
 
 const PROCESSING_DETAILS = {
     chaoqing: names('Pan-Fired Processing', 'Обжарка на сковороде', '炒青', 'pan-fired-processing'),
     hongqing: names('Baked Processing', 'Сушка пропеканием', '烘青', 'baked-processing'),
     zhengqing: names('Steamed Processing', 'Паровая обработка', '蒸青', 'steamed-processing'),
+    shaiqing: names('Sun-dried Processing', 'Солнечная сушка', '晒青', 'sun-dried-processing'),
+    shai_hong: names('Sun-dried Red Tea', 'Красный чай солнечной сушки', '晒红', 'sun-dried-red-tea'),
+    tanbei: names('Charcoal Roasting', 'Угольная прожарка', '炭焙', 'charcoal-roasting'),
+    wodui: names('Wet Piling', 'Влажное скирдование', '渥堆', 'wet-piling'),
+    smoked: names('Smoked Processing', 'Копчение', '烟熏', 'smoked-processing'),
+    ctc: names('CTC Processing', 'Обработка CTC', 'CTC工艺', 'ctc-processing'),
+    orthodox: names('Orthodox Processing', 'Ортодоксальная обработка', '传统工艺', 'orthodox-processing'),
+    shaded: names('Shaded Growing', 'Теневое выращивание', '遮阴栽培', 'shaded-growing'),
+    cha_gao: names('Tea Paste', 'Чайная паста', '茶膏', 'tea-paste'),
+    gan_jie: names('Citrus Tea', 'Цитрусовый чай', '柑桔茶', 'citrus-tea'),
 };
 
 const ROAST_CATEGORY = {
@@ -198,21 +229,28 @@ function category(code, parent, order, detail, description, extra = {}) {
     };
 }
 
-function buildCategoryAssignments(card, warnings = []) {
+function buildCategoryAssignments(card, warnings = [], inferredTaxonomy) {
     const meta = card.meta || {};
     const codes = [];
+    const inferred = inferredTaxonomy || inferTaxonomy(card);
+    if (!inferredTaxonomy) warnings.push(...inferred.warnings);
 
     addMapped(codes, TEA_TYPE_CATEGORY, meta.tea_type, 'tea_type', card, warnings);
 
-    const provinceCategory = PROVINCE_CATEGORY[meta.province];
+    const province = meta.province || inferred.province;
+    const provinceCategory = PROVINCE_CATEGORY[province];
     if (provinceCategory) codes.push(provinceCategory);
-    else if (meta.province) {
+    else if (province) {
         codes.push('CAT-REGION-CHINA');
-        warnings.push(`No DKH region category mapping for province '${meta.province}' (${card.slug}); used CAT-REGION-CHINA.`);
+        warnings.push(`No DKH region category mapping for province '${province}' (${card.slug}); used CAT-REGION-CHINA.`);
     }
 
-    addMapped(codes, SHAPE_CATEGORY, meta.shape, 'shape', card, warnings);
-    addMapped(codes, PROCESSING_CATEGORY, meta.processing, 'processing', card, warnings);
+    for (const shape of inferred.shapes) {
+        addMapped(codes, SHAPE_CATEGORY, shape, 'shape', card, warnings);
+    }
+    for (const processing of inferred.processing) {
+        addMapped(codes, PROCESSING_CATEGORY, processing, 'processing', card, warnings);
+    }
     addMapped(codes, ROAST_CATEGORY, meta.roast_level, 'roast_level', card, warnings);
 
     if (meta.family_id !== undefined && meta.family_id !== null && meta.family_id !== '') {
@@ -225,6 +263,7 @@ function buildCategoryAssignments(card, warnings = []) {
         const categoryCode = SPECIALTY_TAG_CATEGORY[normalized];
         if (categoryCode) codes.push(categoryCode);
     }
+    codes.push(...inferred.categoryCodes);
 
     return [...new Set(codes)];
 }

@@ -115,17 +115,19 @@ Tea type mapping:
 | `dark` | `CAT-DARK-TEA` |
 | `puer` | `CAT-PUER-TEA` |
 
-Province mapping assigns a second region category, for example `Zhejiang -> CAT-REGION-ZHEJIANG`. Known province mappings currently include Anhui, Chongqing, Fujian, Guangdong, Guangxi, Guizhou, Hainan, Henan, Hubei, Hunan, Jiangsu, Jiangxi, Jilin, Shaanxi, Shandong, Sichuan, Taiwan, Tibet, Xinjiang, Yunnan, and Zhejiang. Unknown provinces fall back to `CAT-REGION-CHINA` with a warning and must be reviewed before production import.
+Province mapping assigns a second region category, for example `Zhejiang -> CAT-REGION-ZHEJIANG`. The transformer first uses `meta.province`; when that field is empty, it extracts a province from the first canonical English `classification_origin.origin` sentence. An explicit `<name> Province` phrase wins over incidental border/plateau mentions. Multiple equally explicit provinces are reported and omitted instead of guessed. Known category mappings currently include Anhui, Chongqing, Fujian, Guangdong, Guangxi, Guizhou, Hainan, Henan, Hubei, Hunan, Jiangsu, Jiangxi, Jilin, Shaanxi, Shandong, Sichuan, Taiwan, Tibet, Xinjiang, Yunnan, and Zhejiang. A production-geography province without a dedicated leaf category uses `CAT-REGION-CHINA` with a warning.
 
 Additional generated category dimensions:
 
 | TheTea source | DKH category namespace | Notes |
 |---|---|---|
-| `meta.shape` | `CAT-SHAPE-*` under `CAT-BY-SHAPE` | Needle, flat, strip, spiral, brick, pearl, cake. |
-| `meta.processing` | `CAT-PROC-*` under `CAT-BY-PROCESSING` | `chaoqing`, `hongqing`, `zhengqing`. |
+| `meta.shape` or canonical `classification_origin.type` | `CAT-SHAPE-*` under `CAT-BY-SHAPE` | Needle, flat, strip, spiral, brick, pearl, cake, bud-only, powder, tuo, compressed, and blooming. Multiple explicitly offered forms remain multiple category assignments. Contrast clauses such as “unlike pan-fired tea” are excluded. |
+| `meta.processing` or canonical `classification_origin.type` | `CAT-PROC-*` under `CAT-BY-PROCESSING` | Pan-fired, baked, steamed, sun-dried, sun-dried red, charcoal roasted, wet-piled, smoked, CTC, orthodox, shaded, tea-paste, and citrus processing. |
 | `meta.roast_level` | `CAT-ROAST-*` under `CAT-BY-ROAST` | `none`, `light`, `medium`, `heavy`. |
 | TeaCard `tags` | `CAT-SPEC-*` under `CAT-BY-SPECIALTY` | Only stable non-duplicate tags become categories: GI, UNESCO ICH, Ten Famous Teas, Three Needles, Needle Shape. Type and region tags are ignored because they duplicate stronger fields. |
-| `/api/v2/family` | `CAT-FAMILY-*` under `CAT-BY-FAMILY` | Family categories are generated as reference categories. Products are assigned to them only when TeaCard `meta.family_id` is present. In the current 2026-06-02 snapshot all TeaCard `family_id` values are empty, so family categories are not assigned to products yet. |
+| Canonical name/slug/type plus province/type cross-facets | Named tea, cultivar, family, puer, herbal, and specialty categories | Exact source names map Longjing, Biluochun, Maofeng, Maojian, Guapian, Wuyi rock teas, Dancong, Tieguanyin, white/red/dark subtypes, compressed shapes, and the seven `FLOWERS AND DRY` records. Cross-facet family mapping is limited to unambiguous combinations such as Zhejiang green, Fujian white/red, Taiwan oolong, and Guangdong oolong. |
+| Structured recipes and canonical `brewing.teaware` | `CAT-BREW-*` | Only methods or vessels explicitly present in the source are assigned. |
+| `/api/v2/family` | `CAT-FAMILY-*` under `CAT-BY-FAMILY` | Family definitions are generated from the family reference; product assignments come from explicit names or conservative cross-facet rules because the current D1 `family_id` values are empty. |
 
 Fields such as `enrichment.flavor_tags`, `enrichment.occasion`, `enrichment.best_season`, `enrichment.caffeine_level`, `enrichment.difficulty`, and `enrichment.price_tier` stay as tags/specifications rather than navigation categories. They are high-cardinality filter attributes or user-context attributes, not stable catalog-tree branches.
 
@@ -137,6 +139,10 @@ The report must show:
 Catalog found: yes
 Missing categories: 0
 ```
+
+Generation also writes `category-coverage.json`. It records every used category code, per-product assignment histogram, coverage by region/shape/processing/family/herbal/brewing dimensions, and the complete unresolved list.
+
+`artifact-manifest.json.targets` declares the intended import destinations. Production TheTea artifacts default to catalog `CATALOG-CHINESE-TEA` and storefronts `shop-thetea` plus `thetea-wiki`; override storefront codes only with the explicit `--storefronts=<codes>` option.
 
 ## Specification Mapping
 
@@ -204,7 +210,7 @@ The first production import can proceed only when all gates pass:
 node scripts/thetea/fetch-snapshot.js --snapshot=thetea-2026-06-02 --langs=all --field-langs=all --concurrency=4 --resume
 node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-02
 node scripts/thetea/fetch-prod-products.js --snapshot=prod-products-2026-06-02
-node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-02 --out=import/thetea/thetea-2026-06-02 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02
+node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-02 --out=import/thetea/thetea-2026-06-02 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --storefronts=shop-thetea,thetea-wiki
 node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-06-02 --report=thetea-2026-06-02-prod-map --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02
 node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --only=TEA-CN-XIHU-LONGJING --limit=1
 ```
