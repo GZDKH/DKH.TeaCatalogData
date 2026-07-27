@@ -1,6 +1,11 @@
 #!/usr/bin/env node
 const assert = require('assert');
-const { buildCatalogBindingCatalog } = require('./lib/catalog-bindings');
+const {
+    buildCatalogBindingCatalog,
+    catalogBindingCategoriesForProducts,
+    catalogBindingCategoriesFromReference,
+    mergeCatalogBindingCategories,
+} = require('./lib/catalog-bindings');
 
 const categories = [
     {
@@ -61,5 +66,34 @@ assert.deepStrictEqual(green.products, [
     { product: 'TEA-GREEN-2', order: 5, published: true },
     { product: 'TEA-GREEN-1', order: 10, published: true },
 ]);
+
+const productionCategories = catalogBindingCategoriesFromReference({
+    catalogs: [{
+        code: 'CATALOG-CHINESE-TEA',
+        categories: [
+            { category: 'CAT-ROOT', order: 0, published: true, products: [] },
+            { category: { code: 'CAT-GREEN-TEA' }, order: 1, published: true, products: [] },
+        ],
+    }],
+}, 'catalog-chinese-tea');
+assert.deepStrictEqual(productionCategories, [
+    { code: 'CAT-ROOT', order: 0, published: true },
+    { code: 'CAT-GREEN-TEA', order: 1, published: true },
+]);
+assert.deepStrictEqual(
+    mergeCatalogBindingCategories(
+        productionCategories,
+        [{ code: 'CAT-GREEN-TEA', order: 7, published: false }, { code: 'CAT-NEW' }]),
+    [
+        { code: 'CAT-ROOT', order: 0, published: true },
+        { code: 'CAT-GREEN-TEA', order: 7, published: false },
+        { code: 'CAT-NEW' },
+    ]);
+assert.deepStrictEqual(
+    catalogBindingCategoriesForProducts(
+        products,
+        'CATALOG-CHINESE-TEA',
+        [...categories, { code: 'CAT-UNUSED', order: 99, published: true }]),
+    [{ code: 'CAT-GREEN-TEA', order: 1, published: true }]);
 
 console.log('test-catalog-bindings: OK');

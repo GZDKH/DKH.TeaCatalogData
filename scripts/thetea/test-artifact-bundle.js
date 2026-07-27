@@ -17,6 +17,7 @@ try {
     writeJson(path.join(root, '02-specifications', 'specification_attribute_options.json'), []);
     writeJson(path.join(root, '06-routed-content', 'articles', 'index.json'), []);
     writeJson(path.join(root, '06-routed-content', 'metaobjects', 'index.json'), []);
+    writeJson(path.join(root, '05-catalog-bindings', 'catalogs.json'), []);
     writeJson(path.join(root, '04-products', 'GREEN', 'one.json'), [{ code: 'TEA-CN-ONE' }]);
     createArtifactManifest(root, {
         snapshotId: 'snapshot-one',

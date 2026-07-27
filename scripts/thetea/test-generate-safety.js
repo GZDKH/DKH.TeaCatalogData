@@ -6,6 +6,7 @@ const path = require('path');
 const { REPO_ROOT } = require('./lib/env');
 const {
     assertGeneratorOutputPath,
+    findNewProductCodes,
     hashInputPath,
     hashSnapshotFiles,
 } = require('./generate-import');
@@ -50,6 +51,15 @@ try {
     const referenceLink = path.join(tempRoot, 'reference-link.json');
     fs.symlinkSync(outside, referenceLink);
     assert.throws(() => hashInputPath(referenceLink), /symlink/);
+
+    assert.deepStrictEqual(
+        findNewProductCodes(
+            [{ code: 'TEA-CN-EXISTING' }, { code: 'tea-cn-new' }],
+            [{ code: 'tea-cn-existing' }]),
+        ['TEA-CN-NEW']);
+    assert.deepStrictEqual(
+        findNewProductCodes([{ code: 'TEA-CN-EXISTING' }], [{ code: 'TEA-CN-EXISTING' }]),
+        []);
 } finally {
     fs.rmSync(tempRoot, { recursive: true, force: true });
 }

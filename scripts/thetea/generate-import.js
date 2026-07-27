@@ -9,7 +9,13 @@ const { flattenCategories, loadCatalogReference } = require('./lib/catalog-mappi
 const { canonicalLocale, toApiLocale, toProductLocale } = require('./lib/locales');
 const { applyFieldDetails } = require('./lib/field-details');
 const { buildTheTeaCategories } = require('./lib/category-taxonomy');
-const { buildCatalogBindingCatalog, defaultCatalogTranslations } = require('./lib/catalog-bindings');
+const {
+    buildCatalogBindingCatalog,
+    catalogBindingCategoriesForProducts,
+    catalogBindingCategoriesFromReference,
+    defaultCatalogTranslations,
+    mergeCatalogBindingCategories,
+} = require('./lib/catalog-bindings');
 const { assertCompleteFieldLocales } = require('./lib/snapshot-options');
 const { buildSpecificationDefinitions } = require('./lib/spec-definitions');
 const { validateArtifact } = require('./lib/artifact-validator');
@@ -359,6 +365,14 @@ function findProductMediaSourceDir(mediaRoot, record) {
     return null;
 }
 
+function findNewProductCodes(records, baselineProducts) {
+    const baselineCodes = new Set(
+        (baselineProducts || []).map(product => normalizeCode(product?.code)).filter(Boolean));
+    return (records || [])
+        .map(record => normalizeCode(record?.code))
+        .filter(code => code && !baselineCodes.has(code));
+}
+
 function main() {
     const args = parseArgs();
     const snapshotId = requireArg(args, 'snapshot');
@@ -441,15 +455,12 @@ function main() {
     if (!records.length) throw new Error('Snapshot did not produce any card sets.');
     records.sort((a, b) => a.code.localeCompare(b.code));
 
-    if (baselineReference) {
-        const baselineCodes = new Set(baselineProducts.map(product => normalizeCode(product.code)));
-        const missingBaselineCodes = records
-            .map(record => record.code)
-            .filter(code => !baselineCodes.has(normalizeCode(code)));
-        if (missingBaselineCodes.length) {
-            throw new Error(
-                `Full production baseline does not contain ${missingBaselineCodes.length} resync product(s): ${missingBaselineCodes.slice(0, 10).join(', ')}. New-product creation is outside this resync workflow.`);
-        }
+    const newProductCodes = baselineReference
+        ? findNewProductCodes(records, baselineProducts)
+        : [];
+    if (newProductCodes.length && args['allow-new-products'] !== true) {
+        throw new Error(
+            `Full production baseline does not contain ${newProductCodes.length} product(s): ${newProductCodes.slice(0, 10).join(', ')}. Re-run with --allow-new-products only after the complete production baseline and target catalog mappings have been verified.`);
     }
 
     const productCodeBySlug = new Map(records.map(record => [record.slug.toLowerCase(), record.code]));
@@ -529,7 +540,13 @@ function main() {
         catalogCode,
         currency: catalogCurrency,
         translations: catalogTranslations,
-        categories,
+        categories: mergeCatalogBindingCategories(
+            catalogBindingCategoriesFromReference(catalogReference, catalogCode),
+            catalogBindingCategoriesForProducts(
+                products,
+                catalogCode,
+                catalogReference?.categories),
+            categories),
         products,
     });
     const productMedia = collectProductMedia(records, { mediaRoot });
@@ -537,6 +554,7 @@ function main() {
     const validation = validateArtifact({
         products,
         definitions,
+        catalogBindings: [catalogBinding],
         requiredLocales,
         lossEvents,
         routedContent,
@@ -582,6 +600,8 @@ function main() {
         catalogReferenceSha256,
         baselineProductCount: baselineProducts.length,
         overlaidProductCount: products.filter(product => baselineByCode.has(normalizeCode(product.code))).length,
+        newProductCount: newProductCodes.length,
+        newProductCodes,
         errors: validation.errors,
         warnings: [...warnings, ...validation.warnings],
     };
@@ -672,6 +692,7 @@ module.exports = {
     hashSnapshotFiles,
     hashInputPath,
     main,
+    findNewProductCodes,
     productRelativePath,
     writeGeneratedBundle,
 };

@@ -109,6 +109,12 @@ function validateArtifact(input = {}) {
         if (!isPlainObject(product)) continue;
         validateProductRelations(product, knownProductCodes, relationCounts, errors);
     }
+    if (input.catalogBindings !== undefined) {
+        errors.push(...validateCatalogBindingCoverage(
+            products,
+            input.catalogBindings,
+            input.requiredCatalogCode || DEFAULT_CATALOG_CODE));
+    }
 
     validateDefinitionParity({
         groups,
@@ -160,6 +166,58 @@ function validateArtifact(input = {}) {
         routedContentCounts,
         lossEvents: lossEvents.slice(),
     };
+}
+
+function validateCatalogBindingCoverage(products, catalogBindings, requiredCatalogCode) {
+    const errors = [];
+    if (!Array.isArray(catalogBindings)) {
+        return ['catalogBindings must be an array.'];
+    }
+    const catalogCode = normalizeCode(requiredCatalogCode);
+    const binding = catalogBindings.find(item => normalizeCode(item?.code) === catalogCode);
+    if (!binding) {
+        return [`Catalog binding ${catalogCode} was not found.`];
+    }
+    if (!Array.isArray(binding.categories) || binding.categories.length === 0) {
+        return [`Catalog binding ${catalogCode} has no categories.`];
+    }
+
+    const productsByCategory = new Map();
+    for (const [index, category] of binding.categories.entries()) {
+        const categoryCode = normalizeCode(category?.category);
+        if (!categoryCode) {
+            errors.push(`Catalog binding ${catalogCode} categories[${index}] has no category code.`);
+            continue;
+        }
+        const productCodes = new Set(
+            (Array.isArray(category?.products) ? category.products : [])
+                .map(item => normalizeCode(item?.product))
+                .filter(Boolean));
+        productsByCategory.set(categoryCode, productCodes);
+    }
+
+    for (const product of products || []) {
+        const productCode = normalizeCode(product?.code);
+        const assignments = (Array.isArray(product?.catalogs) ? product.catalogs : [])
+            .filter(item => normalizeCode(item?.catalog) === catalogCode
+                && normalizeCode(item?.category));
+        if (assignments.length === 0) {
+            errors.push(`${productCode || '<product>'}: no category placement in ${catalogCode}.`);
+            continue;
+        }
+        for (const assignment of assignments) {
+            const categoryCode = normalizeCode(assignment.category);
+            const boundProducts = productsByCategory.get(categoryCode);
+            if (!boundProducts) {
+                errors.push(
+                    `${productCode}: category ${categoryCode} is absent from catalog binding ${catalogCode}.`);
+            } else if (!boundProducts.has(productCode)) {
+                errors.push(
+                    `${productCode}: missing from ${catalogCode}/${categoryCode} catalog binding products.`);
+            }
+        }
+    }
+    return errors;
 }
 
 function arrayInput(value, label, errors, optional = false) {
@@ -1142,5 +1200,6 @@ function isDuration(value) {
 
 module.exports = {
     KNOWN_PACKAGES,
+    validateCatalogBindingCoverage,
     validateArtifact,
 };

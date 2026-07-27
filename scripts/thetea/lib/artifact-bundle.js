@@ -155,6 +155,10 @@ function readArtifactBundle(root) {
         articles: readRoutedRecords(resolvedRoot, 'articles', errors),
         metaobjects: readRoutedRecords(resolvedRoot, 'metaobjects', errors),
     };
+    const catalogBindings = readRequiredArray(
+        resolvedRoot,
+        '05-catalog-bindings/catalogs.json',
+        errors);
 
     const actualCodes = sortedUnique(products.map(product => product?.code));
     const manifestCodes = sortedUnique(manifestValidation.manifest?.productCodes || []);
@@ -195,6 +199,7 @@ function readArtifactBundle(root) {
         manifest: manifestValidation.manifest,
         products,
         definitions,
+        catalogBindings,
         routedContent,
         productFiles,
     };
