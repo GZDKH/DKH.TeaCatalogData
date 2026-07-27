@@ -6,7 +6,7 @@ const readline = require('readline');
 const zlib = require('zlib');
 const { REPO_ROOT, parseArgs, requireArg } = require('./lib/env');
 const { assertScopedPath } = require('./lib/generated-output');
-const { toApiLocale } = require('./lib/locales');
+const { d1LocaleCandidates, toApiLocale } = require('./lib/locales');
 
 function readJson(file) {
     return JSON.parse(fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, ''));
@@ -85,6 +85,9 @@ function validateCardIdentity(card, slug, lang) {
     if (!card?.names || typeof card.names !== 'object') {
         throw new Error(`${slug}/${lang}: card has no names map.`);
     }
+    if (!d1LocaleCandidates(lang).some(candidate => card.names[candidate])) {
+        throw new Error(`${slug}/${lang}: names map has no localized source name.`);
+    }
 }
 
 async function validateFieldPacks(d1Directory, fieldManifest, slugs, locales) {
@@ -104,11 +107,16 @@ async function validateFieldPacks(d1Directory, fieldManifest, slugs, locales) {
         const pack = JSON.parse(zlib.gunzipSync(compressed).toString('utf8'));
         if (pack.slug !== slug) throw new Error(`${slug}: field-pack identity mismatch.`);
         let packRows = 0;
+        const packLocales = new Set();
         for (const [sourceLang, details] of Object.entries(pack.locales || {})) {
             const lang = toApiLocale(sourceLang);
             if (!locales.has(lang)) {
                 throw new Error(`${slug}: unknown field-pack locale '${sourceLang}'.`);
             }
+            if (packLocales.has(lang)) {
+                throw new Error(`${slug}: duplicate normalized field-pack locale '${lang}'.`);
+            }
+            packLocales.add(lang);
             if (!Array.isArray(details)) throw new Error(`${slug}/${lang}: invalid field details.`);
             packRows += details.length;
             localeCounts.set(lang, (localeCounts.get(lang) || 0) + details.length);
@@ -121,7 +129,16 @@ async function validateFieldPacks(d1Directory, fieldManifest, slugs, locales) {
         if (packRows !== record.fieldCount || packRows !== pack.fieldCount) {
             throw new Error(`${slug}: field-pack row count mismatch.`);
         }
+        if (packLocales.size !== locales.size
+            || [...locales].some(lang => !packLocales.has(lang))) {
+            throw new Error(
+                `${slug}: field pack covers ${packLocales.size}/${locales.size} locales.`);
+        }
         rowCount += packRows;
+    }
+    if (packSlugs.size !== fieldManifest.packCount) {
+        throw new Error(
+            `Field-pack manifest declares ${fieldManifest.packCount} packs, found ${packSlugs.size}.`);
     }
     if (rowCount !== fieldManifest.rowCount) {
         throw new Error(
@@ -165,6 +182,13 @@ async function main() {
     if (manifest.snapshotId !== snapshotId) errors.push('Snapshot manifest identity mismatch.');
     if (manifest.errors?.length) errors.push(`Snapshot records ${manifest.errors.length} fatal errors.`);
     if (d1Manifest.complete !== true) errors.push('D1 manifest is incomplete.');
+    if (d1Manifest.tableCount !== d1Manifest.tables?.length) {
+        errors.push('D1 manifest table count disagrees with its table inventory.');
+    }
+    if (d1Manifest.rowCount !== (d1Manifest.tables || [])
+        .reduce((sum, item) => sum + Number(item.rowCount || 0), 0)) {
+        errors.push('D1 manifest row count disagrees with its table inventory.');
+    }
     if (new Set(manifest.slugs || []).size !== manifest.slugs?.length) {
         errors.push('Snapshot manifest has duplicate tea slugs.');
     }

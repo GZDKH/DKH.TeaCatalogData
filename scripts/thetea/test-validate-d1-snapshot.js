@@ -22,5 +22,13 @@ assert.throws(() => validateCardIdentity({
     meta: { slug: 'other' },
     names: { en: 'Other' },
 }, 'xihu-longjing', 'en'), /card slug mismatch/);
+assert.throws(() => validateCardIdentity({
+    slug: 'xihu-longjing',
+    lang: 'nb',
+    kind: 'tea',
+    name: 'Fallback English name',
+    meta: { slug: 'xihu-longjing' },
+    names: { en: 'Fallback English name' },
+}, 'xihu-longjing', 'nb'), /no localized source name/);
 
 console.log('test-validate-d1-snapshot: OK');
