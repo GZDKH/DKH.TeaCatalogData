@@ -11,6 +11,23 @@ Authoritative import sources:
 - `GET /api/v2/tea/{slug}/{lang}/field/{code}` — per-field detail. The snapshot fetches this for every field discovered under each TeaCard `sections` object and generation overlays `value_md` / `value_num` onto the card before building descriptions and specs.
 - `GET /api/v2/tea/{slug}.md` — full localized Markdown page; stored as raw source content and routed to article sidecars, never flattened into specifications.
 - `GET /api/v2/tea/{slug}/similar` — localized similar-tea fallback for `related[]`; curated `enrichment.similar_teas` wins, then endpoint results are resolved, deduplicated, self-filtered, and capped at 12.
+
+For complete Cloudflare D1 captures, use the resumable table exporter and
+compact materialization flow:
+
+```bash
+node scripts/thetea/export-d1-content.js --snapshot=thetea-content-d1-2026-07-27 --resume
+node scripts/thetea/build-d1-field-packs.js --snapshot=thetea-content-d1-2026-07-27
+node scripts/thetea/materialize-d1-snapshot.js --snapshot=thetea-content-d1-2026-07-27
+node scripts/thetea/validate-d1-snapshot.js --snapshot=thetea-content-d1-2026-07-27
+```
+
+The raw D1 snapshot remains table-complete. `materialize-d1-snapshot.js` writes
+compact TeaCard shells for every tea and locale while keeping the roughly two
+million localized section rows in hashed gzip field packs. Import generation
+overlays those packs and treats their Markdown-valued fields as the complete
+localized narrative source. Curated `tea_comparison.other_slug` rows are also
+eligible for product relations when Vectorize `/similar` output is unavailable.
 - `GET /api/v2/meta`, `/api/v2/family`, `/api/v2/glossary`, `/api/v2/map` — reference and map payloads for reports, category/origin checks, and later curation.
 
 Discovery-only methods:

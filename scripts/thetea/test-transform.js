@@ -249,4 +249,24 @@ assert.deepStrictEqual(
     transformCardSet({ en: lowAltitudeCard }).product.origins[0].altitude,
     { min: 5, max: 50, unit: 'm' });
 
+const comparisonRelationCard = JSON.parse(JSON.stringify(xihu));
+comparisonRelationCard.enrichment.similar_teas = [];
+comparisonRelationCard.comparison = [{
+    other_slug: 'dongting-biluochun',
+    other_name: 'Dongting Biluochun',
+    differences_md: 'Different leaf shape.',
+}];
+assert.deepStrictEqual(
+    transformCardSet({ en: comparisonRelationCard }, {
+        productCodeBySlug: new Map([
+            ['xihu-longjing', 'TEA-CN-XIHU-LONGJING'],
+            ['dongting-biluochun', 'TEA-CN-DONGTING-BILUOCHUN'],
+        ]),
+    }).product.related,
+    [{
+        product: 'TEA-CN-DONGTING-BILUOCHUN',
+        catalog: 'CATALOG-CHINESE-TEA',
+        order: 1,
+    }]);
+
 console.log('test-transform: OK');

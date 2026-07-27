@@ -32,6 +32,65 @@ function safePathPart(value) {
     return String(value || 'unknown').replace(/[^A-Za-z0-9._-]+/g, '_');
 }
 
+function relativeSnapshotPath(snapshotRoot, file) {
+    const root = path.resolve(snapshotRoot);
+    const resolved = path.resolve(file);
+    const relative = path.relative(root, resolved);
+    if (!relative || relative === '..' || relative.startsWith(`..${path.sep}`)) {
+        throw new Error(`D1 field-pack path must be inside the snapshot: ${file}`);
+    }
+    return relative.split(path.sep).join('/');
+}
+
+function loadD1FieldPacks(snapshotRoot, configuredPath, slugs = []) {
+    if (!configuredPath) return null;
+    const manifestPath = path.isAbsolute(String(configuredPath))
+        ? String(configuredPath)
+        : path.join(snapshotRoot, String(configuredPath));
+    if (!fs.existsSync(manifestPath)) {
+        throw new Error(`D1 field-pack manifest not found: ${manifestPath}`);
+    }
+    const payload = readJson(manifestPath);
+    if (!Array.isArray(payload.files) || payload.files.length === 0) {
+        throw new Error('D1 field-pack manifest has no files.');
+    }
+    const directory = path.dirname(manifestPath);
+    const bySlug = new Map(payload.files.map(item => [String(item.slug || ''), item]));
+    const missingSlugs = slugs.filter(slug => !bySlug.has(slug));
+    const files = payload.files.map(item => {
+        const file = path.join(directory, 'field-packs', String(item.file || ''));
+        if (!fs.existsSync(file)) throw new Error(`D1 field-pack file is missing: ${file}`);
+        return relativeSnapshotPath(snapshotRoot, file);
+    });
+    const d1ManifestPath = path.join(directory, 'manifest.json');
+    if (!fs.existsSync(d1ManifestPath)) {
+        throw new Error(`D1 snapshot manifest not found: ${d1ManifestPath}`);
+    }
+    const d1Manifest = readJson(d1ManifestPath);
+    if (d1Manifest.complete !== true || !Array.isArray(d1Manifest.tables)) {
+        throw new Error('D1 snapshot manifest is incomplete.');
+    }
+    const d1Files = [
+        relativeSnapshotPath(snapshotRoot, d1ManifestPath),
+        relativeSnapshotPath(snapshotRoot, manifestPath),
+    ];
+    for (const table of d1Manifest.tables) {
+        for (const relative of [table.file, table.schemaFile]) {
+            const file = path.join(directory, String(relative || ''));
+            if (!fs.existsSync(file)) throw new Error(`D1 snapshot file is missing: ${file}`);
+            d1Files.push(relativeSnapshotPath(snapshotRoot, file));
+        }
+    }
+    d1Files.push(...files);
+    return {
+        manifestPath,
+        payload,
+        files,
+        d1Files: [...new Set(d1Files)].sort(),
+        missingSlugs,
+    };
+}
+
 function headers() {
     const key = getTheTeaApiKey();
     return key ? { Authorization: `Bearer ${key}` } : {};
@@ -138,6 +197,7 @@ async function main() {
     const includeMarkdown = args['skip-md'] !== true;
     const includeFields = args['skip-fields'] !== true;
     const includeSimilar = args['skip-similar'] !== true;
+    const configuredFieldPacks = args['d1-field-packs'];
 
     const root = path.join(REPO_ROOT, 'sources', 'thetea', 'snapshots', snapshotId);
     const raw = path.join(root, 'raw');
@@ -170,6 +230,8 @@ async function main() {
         slugs: [],
         files: [],
         fieldFiles: [],
+        fieldPackFiles: [],
+        d1Files: [],
         missingFieldDetailFiles: [],
         markdownFiles: [],
         mapFiles: [],
@@ -242,7 +304,21 @@ async function main() {
     if (limit) items = items.slice(0, limit);
 
     manifest.slugs = items.map(item => item.slug);
+    const d1FieldPacks = loadD1FieldPacks(root, configuredFieldPacks, manifest.slugs);
+    if (d1FieldPacks) {
+        manifest.fieldSource = 'cloudflare-d1-packs';
+        manifest.fieldPackFiles = d1FieldPacks.files;
+        manifest.d1Files = d1FieldPacks.d1Files;
+        for (const slug of d1FieldPacks.missingSlugs) {
+            manifest.warnings.push({
+                type: 'missing-d1-field-pack',
+                slug,
+                message: `No D1 field pack exists for ${slug}.`,
+            });
+        }
+    }
     console.log(`Cards to fetch: ${manifest.slugs.length}`);
+    console.log(`Field source: ${d1FieldPacks ? 'Cloudflare D1 packs' : 'per-field API'}`);
 
     const cardTasks = manifest.slugs.flatMap(slug => langs.map(lang => ({ slug, lang })));
     await mapLimit(cardTasks, concurrency, async ({ slug, lang }) => {
@@ -265,7 +341,7 @@ async function main() {
             process.stdout.write('x');
         }
 
-        if (includeFields && card && shouldFetchFieldsForLang(lang, fieldLangs)) {
+        if (includeFields && !d1FieldPacks && card && shouldFetchFieldsForLang(lang, fieldLangs)) {
             const fieldRefs = extractFieldRefs(card);
             for (const ref of fieldRefs) {
                 const fieldRel = `raw/fields/${safePathPart(lang)}/${safePathPart(slug)}/${safePathPart(ref.section)}/${safePathPart(ref.field)}.json`;
@@ -367,6 +443,7 @@ async function main() {
 
     console.log(`Snapshot written: ${root}`);
     console.log(`Field files: ${manifest.fieldFiles.length}`);
+    console.log(`Field pack files: ${manifest.fieldPackFiles.length}`);
     console.log(`Missing field detail files: ${manifest.missingFieldDetailFiles.length}`);
     console.log(`Markdown files: ${manifest.markdownFiles.length}`);
     console.log(`Similar files: ${manifest.similarFiles.length}`);

@@ -1,6 +1,12 @@
 #!/usr/bin/env node
 const assert = require('assert');
-const { localesFromMeta, resolveRequestedLocales, toProductLocale } = require('./lib/locales');
+const {
+    d1LocaleCandidates,
+    localesFromMeta,
+    resolveRequestedLocales,
+    toApiLocale,
+    toProductLocale,
+} = require('./lib/locales');
 const { transformCardSet } = require('./lib/transform');
 
 const meta = {
@@ -35,6 +41,11 @@ assert.strictEqual(toProductLocale('zh'), 'zh-CN');
 assert.strictEqual(toProductLocale('zh-CN'), 'zh-CN');
 assert.strictEqual(toProductLocale('zh-HK'), 'zh-HK');
 assert.strictEqual(toProductLocale('nb'), 'nb');
+assert.strictEqual(toApiLocale('no'), 'nb');
+assert.strictEqual(toApiLocale('zh'), 'zh-CN');
+assert.strictEqual(toApiLocale('zh-hk'), 'zh-HK');
+assert.deepStrictEqual(d1LocaleCandidates('nb'), ['nb', 'no']);
+assert.deepStrictEqual(d1LocaleCandidates('zh-CN'), ['zh-CN', 'zh-cn', 'zh']);
 
 const baseCard = {
     slug: 'xihu-longjing',

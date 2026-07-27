@@ -113,6 +113,9 @@ function collectRelationCandidates(cardSet, primary, warnings) {
     };
 
     for (const value of primary.enrichment?.similar_teas || []) add(value, 'enrichment.similar_teas');
+    for (const value of primary.comparison || []) {
+        add({ slug: value?.other_slug }, 'comparison');
+    }
 
     const localizedCards = Object.entries(cardSet)
         .filter(([, card]) => Boolean(card))
