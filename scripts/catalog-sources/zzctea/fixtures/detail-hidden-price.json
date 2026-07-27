@@ -1,0 +1,16 @@
+{
+  "status": 1,
+  "data": {
+    "id": 9001,
+    "name": "Fixture Hidden Price Tea",
+    "year": "2024年",
+    "yearInt": 2024,
+    "specification": "200克/饼 5饼/提",
+    "price": 1900,
+    "priceDisplayStatus": 0,
+    "unit": "提",
+    "brandId": 12,
+    "brand": "Fixture Brand Two",
+    "marketStatus": 1
+  }
+}
