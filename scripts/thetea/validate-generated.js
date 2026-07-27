@@ -67,6 +67,7 @@ function main() {
     const semantic = validateArtifact({
         products: bundle.products,
         definitions: bundle.definitions,
+        catalogBindings: bundle.catalogBindings,
         requiredLocales: manifest.requiredLocales || [],
         lossEvents: manifest.lossEvents || [],
         routedContent: bundle.routedContent,

@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 const assert = require('assert');
-const { validateArtifact } = require('./lib/artifact-validator');
+const {
+    validateArtifact,
+    validateCatalogBindingCoverage,
+} = require('./lib/artifact-validator');
 const { ATTRIBUTE_TYPES } = require('./lib/spec-contract');
 
 const REQUIRED_LOCALES = ['en-US', 'ru-RU'];
@@ -410,5 +413,41 @@ assert.strictEqual(
 expectInvalid(artifact => {
     artifact.catalogReference.catalogs = [];
 }, 'Required prod catalog CATALOG-CHINESE-TEA was not found');
+
+const bindingProducts = [{
+    code: 'TEA-CN-ONE',
+    catalogs: [{
+        catalog: 'CATALOG-CHINESE-TEA',
+        category: 'CAT-GREEN-TEA',
+    }],
+}];
+const validBindings = [{
+    code: 'CATALOG-CHINESE-TEA',
+    categories: [{
+        category: 'CAT-GREEN-TEA',
+        products: [{ product: 'TEA-CN-ONE' }],
+    }],
+}];
+assert.deepStrictEqual(
+    validateCatalogBindingCoverage(
+        bindingProducts,
+        validBindings,
+        'CATALOG-CHINESE-TEA'),
+    []);
+assert.match(
+    validateCatalogBindingCoverage(
+        bindingProducts,
+        [{ code: 'CATALOG-CHINESE-TEA', categories: [{ category: 'CAT-OTHER', products: [] }] }],
+        'CATALOG-CHINESE-TEA').join('\n'),
+    /CAT-GREEN-TEA is absent/);
+assert.match(
+    validateCatalogBindingCoverage(
+        bindingProducts,
+        [{
+            code: 'CATALOG-CHINESE-TEA',
+            categories: [{ category: 'CAT-GREEN-TEA', products: [] }],
+        }],
+        'CATALOG-CHINESE-TEA').join('\n'),
+    /missing from CATALOG-CHINESE-TEA\/CAT-GREEN-TEA/);
 
 console.log('test-artifact-validator: OK');

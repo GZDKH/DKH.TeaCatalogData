@@ -40,6 +40,62 @@ function buildCatalogBindingCatalog(options = {}) {
     };
 }
 
+function catalogBindingCategoriesFromReference(reference, catalogCode) {
+    const source = reference?.data || reference || {};
+    const catalogs = source.catalogs?.items || source.catalogs || [];
+    const catalog = catalogs.find(item => sameCode(item?.code, catalogCode));
+    return (catalog?.categories || [])
+        .map(item => ({
+            code: referenceCode(item?.category || item),
+            order: Number.isFinite(item?.order) ? item.order : 0,
+            published: item?.published !== false,
+        }))
+        .filter(item => item.code);
+}
+
+function catalogBindingCategoriesForProducts(products, catalogCode, categories) {
+    const categoryIndex = new Map(
+        flattenCategories(categories)
+            .map(category => [referenceCode(category?.code).toUpperCase(), category])
+            .filter(([code]) => code));
+    const result = new Map();
+    for (const product of products || []) {
+        for (const assignment of product?.catalogs || []) {
+            if (!sameCode(assignment?.catalog, catalogCode)) continue;
+            const code = referenceCode(assignment?.category).toUpperCase();
+            const category = categoryIndex.get(code);
+            if (!code || !category) continue;
+            result.set(code, {
+                code: referenceCode(category.code),
+                order: Number.isFinite(category.order) ? category.order : 0,
+                published: category.published !== false,
+            });
+        }
+    }
+    return [...result.values()];
+}
+
+function mergeCatalogBindingCategories(...collections) {
+    const merged = new Map();
+    for (const categories of collections) {
+        for (const category of categories || []) {
+            const code = referenceCode(category?.code);
+            if (!code) continue;
+            merged.set(code.toUpperCase(), { ...merged.get(code.toUpperCase()), ...category, code });
+        }
+    }
+    return [...merged.values()];
+}
+
+function flattenCategories(categories) {
+    const result = [];
+    for (const category of categories || []) {
+        result.push(category);
+        result.push(...flattenCategories(category?.children));
+    }
+    return result;
+}
+
 function defaultCatalogTranslations() {
     return [
         {
@@ -82,5 +138,8 @@ function referenceCode(value) {
 
 module.exports = {
     buildCatalogBindingCatalog,
+    catalogBindingCategoriesForProducts,
+    catalogBindingCategoriesFromReference,
     defaultCatalogTranslations,
+    mergeCatalogBindingCategories,
 };
