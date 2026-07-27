@@ -18,6 +18,11 @@ function writeReport(reportDir, summary) {
             path.join(reportDir, 'product-naming.json'),
             JSON.stringify(summary.productNaming, null, 2));
     }
+    if (summary.categoryCoverage) {
+        fs.writeFileSync(
+            path.join(reportDir, 'category-coverage.json'),
+            JSON.stringify(summary.categoryCoverage, null, 2));
+    }
 }
 
 function toMarkdown(summary) {
@@ -160,6 +165,48 @@ function toMarkdown(summary) {
             `- Binding assignments: ${placement.bindingAssignmentCount}`,
             `- Assigned products: ${placement.assignedProductCount}`,
             `- Unassigned products: ${placement.unassignedProductCount}`);
+    }
+
+    if (summary.importTargets) {
+        lines.push(
+            '',
+            '## Import Targets',
+            '',
+            `- Catalogs: ${(summary.importTargets.catalogCodes || []).join(', ') || 'none'}`,
+            `- Storefronts: ${(summary.importTargets.storefrontCodes || []).join(', ') || 'none'}`);
+    }
+
+    if (summary.categoryCoverage) {
+        const coverage = summary.categoryCoverage;
+        lines.push(
+            '',
+            '## Category Coverage',
+            '',
+            `- Category codes used: ${coverage.categoryCodeCount ?? 0}`,
+            `- Product-category assignments: ${coverage.assignmentCount ?? 0}`,
+            `- Assignments per product: ${coverage.minimumAssignmentsPerProduct ?? 0}–${coverage.maximumAssignmentsPerProduct ?? 0}`,
+            `- Products with region: ${coverage.productsWithRegion ?? 0}`,
+            `- Products with leaf shape: ${coverage.productsWithShape ?? 0}`,
+            `- Products with processing: ${coverage.productsWithProcessing ?? 0}`,
+            `- Products with family: ${coverage.productsWithFamily ?? 0}`,
+            `- Products with herbal type: ${coverage.productsWithHerbalType ?? 0}`,
+            `- Products with brewing method: ${coverage.productsWithBrewingMethod ?? 0}`,
+            `- Provinces inferred from canonical origin text: ${coverage.inferredProvinceCount ?? 0}`,
+            `- Unresolved taxonomy records: ${(coverage.unresolved || []).length}`);
+
+        if (coverage.categoryUsage?.length) {
+            lines.push('', '### Normalized Category Usage', '');
+            for (const item of coverage.categoryUsage) {
+                lines.push(`- ${item.code}: ${item.productCount} product(s)`);
+            }
+        }
+
+        if (coverage.unresolved?.length) {
+            lines.push('', '### Unresolved Taxonomy', '');
+            for (const item of coverage.unresolved) {
+                lines.push(`- ${item.product} (${item.slug}): ${item.warnings.join(' ')}`);
+            }
+        }
     }
 
     if (summary.errors.length) {

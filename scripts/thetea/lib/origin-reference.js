@@ -46,10 +46,10 @@ function displayPlaceName(value) {
         .trim() || undefined;
 }
 
-function resolveOriginLocation(card, geography, warnings = []) {
+function resolveOriginLocation(card, geography, warnings = [], inferredProvince) {
     const meta = card?.meta || {};
     const country = String(meta.origin_country || 'CN').toUpperCase();
-    const rawProvince = String(meta.province || '').trim();
+    const rawProvince = String(meta.province || inferredProvince || '').trim();
     const staticStateCode = country === 'CN' ? PROVINCE_CODE[rawProvince] : undefined;
     const states = geographyStates(geography, country);
     const state = states.find(item => normalizePlaceName(item.code) === normalizePlaceName(staticStateCode)

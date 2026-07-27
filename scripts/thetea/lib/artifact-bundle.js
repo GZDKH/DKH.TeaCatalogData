@@ -38,6 +38,10 @@ function createArtifactManifest(root, metadata = {}) {
         lossEvents: [...(metadata.lossEvents || [])],
         localization: metadata.localization || null,
         catalogPlacement: metadata.catalogPlacement || null,
+        targets: {
+            catalogCodes: sortedUnique(metadata.catalogTargets),
+            storefrontCodes: sortedUnique(metadata.storefrontTargets),
+        },
         files,
     };
     writeJson(path.join(resolvedRoot, ARTIFACT_MANIFEST_FILE), manifest);
@@ -76,6 +80,14 @@ function verifyArtifactManifest(root) {
     if (!Array.isArray(manifest.productCodes)) errors.push('Artifact manifest productCodes must be an array.');
     if (!Array.isArray(manifest.products)) errors.push('Artifact manifest products must be an array.');
     if (!Array.isArray(manifest.lossEvents)) errors.push('Artifact manifest lossEvents must be an array.');
+    if (manifest.targets !== undefined) {
+        if (!Array.isArray(manifest.targets?.catalogCodes)) {
+            errors.push('Artifact manifest targets.catalogCodes must be an array.');
+        }
+        if (!Array.isArray(manifest.targets?.storefrontCodes)) {
+            errors.push('Artifact manifest targets.storefrontCodes must be an array.');
+        }
+    }
 
     const expected = new Map();
     for (const [index, entry] of (Array.isArray(manifest.files) ? manifest.files : []).entries()) {

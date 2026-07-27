@@ -19,6 +19,21 @@ assert.deepStrictEqual(resolveOriginLocation(card), {
     state: 'ZJ',
     city: 'Hangzhou',
 });
+assert.deepStrictEqual(resolveOriginLocation({
+    ...card,
+    meta: { origin_country: 'CN', province: null, city: null },
+}, {
+    countryCode: 'CN',
+    states: [{
+        code: 'ZJ',
+        name: 'Zhejiang',
+        cities: [{ code: 'HZ', name: 'Hangzhou' }],
+    }],
+}, [], 'Zhejiang'), {
+    country: 'CN',
+    state: 'ZJ',
+    city: 'Hangzhou',
+});
 assert.deepStrictEqual(resolveOriginLocation(card, {
     countryCode: 'CN',
     states: [{

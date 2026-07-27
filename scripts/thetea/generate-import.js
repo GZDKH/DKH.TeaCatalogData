@@ -293,6 +293,8 @@ function writeGeneratedBundle(stagingRoot, artifact) {
         lossEvents: artifact.lossEvents,
         localization: artifact.definitions.localization,
         catalogPlacement: artifact.catalogPlacement,
+        catalogTargets: artifact.catalogTargets,
+        storefrontTargets: artifact.storefrontTargets,
     });
     const reloaded = readArtifactBundle(stagingRoot);
     if (!reloaded.valid) {
@@ -472,8 +474,14 @@ function main() {
             .filter(Boolean))
         : null;
     const catalogCode = String(args.catalog || 'CATALOG-CHINESE-TEA').toUpperCase();
+    const storefrontTargetCodes = (csv(args.storefronts).length
+        ? csv(args.storefronts)
+        : ['shop-thetea', 'thetea-wiki'])
+        .map(code => String(code).trim().toLowerCase())
+        .filter(Boolean);
     const products = [];
     const primaryCards = [];
+    const taxonomyAudits = [];
     const definitionObservationMap = new Map();
     const lossEvents = [];
     const routedContent = { articles: [], metaobjects: [] };
@@ -498,8 +506,14 @@ function main() {
             catalog: catalogCode,
             knownCategories: existingCategoryCodes || new Set(),
             geographyReference: catalogReference?.geography,
+            inferCatalogTaxonomy: Boolean(catalogReference),
         });
         warnings.push(...transformed.warnings);
+        taxonomyAudits.push({
+            product: transformed.product.code,
+            slug: record.slug,
+            ...transformed.taxonomy,
+        });
         collectDefinitionObservations(definitionObservationMap, transformed.definitionObservations);
         lossEvents.push(...transformed.lossEvents.map(event => ({
             ...event,
@@ -590,6 +604,11 @@ function main() {
         productNaming: validation.productNaming,
         catalogMapping: validation.catalogMapping,
         catalogPlacement,
+        importTargets: {
+            catalogCodes: [catalogCode],
+            storefrontCodes: storefrontTargetCodes,
+        },
+        categoryCoverage: summarizeCategoryCoverage(products, taxonomyAudits, catalogCode),
         categoryDefinitionCount: categories.length,
         categoryDefinitionMode: existingCategoryCodes ? 'missing-from-catalog-ref' : 'full-generated-taxonomy',
         catalogBindingCategoryCount: catalogBinding.categories.length,
@@ -631,6 +650,8 @@ function main() {
             catalog,
             catalogBinding,
             catalogPlacement,
+            catalogTargets: [catalogCode],
+            storefrontTargets: storefrontTargetCodes,
             lossEvents,
             routedContent,
             productMedia,
@@ -650,6 +671,53 @@ function main() {
         process.exitCode = 1;
     }
     return { summary, artifactManifest };
+}
+
+function summarizeCategoryCoverage(products, taxonomyAudits, catalogCode) {
+    const usage = new Map();
+    const assignmentCounts = [];
+    for (const product of products) {
+        const categories = [...new Set((product.catalogs || [])
+            .filter(item => normalizeCode(item.catalog) === normalizeCode(catalogCode))
+            .map(item => normalizeCode(item.category))
+            .filter(Boolean))];
+        assignmentCounts.push(categories.length);
+        for (const code of categories) usage.set(code, (usage.get(code) || 0) + 1);
+    }
+
+    const categories = [...usage.entries()]
+        .map(([code, productCount]) => ({ code, productCount }))
+        .sort((a, b) => b.productCount - a.productCount || a.code.localeCompare(b.code));
+    const countProductsWithPrefix = prefix => products.filter(product =>
+        (product.catalogs || []).some(item =>
+            normalizeCode(item.catalog) === normalizeCode(catalogCode)
+            && normalizeCode(item.category).startsWith(prefix))).length;
+    const histogram = {};
+    for (const count of assignmentCounts) histogram[count] = (histogram[count] || 0) + 1;
+
+    return {
+        categoryCodeCount: categories.length,
+        assignmentCount: categories.reduce((sum, item) => sum + item.productCount, 0),
+        minimumAssignmentsPerProduct: assignmentCounts.length ? Math.min(...assignmentCounts) : 0,
+        maximumAssignmentsPerProduct: assignmentCounts.length ? Math.max(...assignmentCounts) : 0,
+        assignmentsPerProduct: histogram,
+        productsWithRegion: countProductsWithPrefix('CAT-REGION-'),
+        productsWithShape: countProductsWithPrefix('CAT-SHAPE-'),
+        productsWithProcessing: countProductsWithPrefix('CAT-PROC-'),
+        productsWithFamily: countProductsWithPrefix('CAT-FAMILY-'),
+        productsWithHerbalType: countProductsWithPrefix('CAT-HERBAL-'),
+        productsWithBrewingMethod: countProductsWithPrefix('CAT-BREW-'),
+        inferredProvinceCount: taxonomyAudits.filter(item =>
+            item.province && item.provinceEvidence !== 'meta.province').length,
+        unresolved: taxonomyAudits
+            .filter(item => item.warnings?.length)
+            .map(item => ({
+                product: item.product,
+                slug: item.slug,
+                warnings: item.warnings,
+            })),
+        categoryUsage: categories,
+    };
 }
 
 function collectDefinitionObservations(target, observations) {
