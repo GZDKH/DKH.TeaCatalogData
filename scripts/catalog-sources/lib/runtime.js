@@ -297,6 +297,25 @@ function assertArtifactSafe(artifact) {
     }
 }
 
+function artifactSemanticDigest(artifact) {
+    const semanticProjection = {
+        ...artifact,
+        semanticDigest: undefined,
+        snapshot: {
+            ...artifact.snapshot,
+            observedAt: undefined,
+        },
+        items: artifact.items.map(item => ({
+            ...item,
+            provenance: {
+                ...item.provenance,
+                observedAt: undefined,
+            },
+        })),
+    };
+    return sha256(stableJson(semanticProjection));
+}
+
 function buildArtifact(checkpoint, items) {
     const sortedItems = [...items].sort((left, right) =>
         String(left.externalId).localeCompare(String(right.externalId), 'en', { numeric: true }));
@@ -329,21 +348,7 @@ function buildArtifact(checkpoint, items) {
         deletions: [],
         diagnostics: [...checkpoint.diagnostics].sort(),
     };
-    const semanticProjection = {
-        ...artifact,
-        snapshot: {
-            ...artifact.snapshot,
-            observedAt: undefined,
-        },
-        items: artifact.items.map(item => ({
-            ...item,
-            provenance: {
-                ...item.provenance,
-                observedAt: undefined,
-            },
-        })),
-    };
-    artifact.semanticDigest = sha256(stableJson(semanticProjection));
+    artifact.semanticDigest = artifactSemanticDigest(artifact);
     assertArtifactSafe(artifact);
     return artifact;
 }
@@ -556,6 +561,7 @@ module.exports = {
     ARTIFACT_SCHEMA,
     CHECKPOINT_SCHEMA,
     MANIFEST_SCHEMA,
+    artifactSemanticDigest,
     assertArtifactSafe,
     buildArtifact,
     ingestSourceSnapshot,

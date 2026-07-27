@@ -47,6 +47,7 @@ node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-06-01 
 node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json --product-ref=sources/prod/product-reference/prod-products-2026-06-01 --only=<product-code> --limit=1
 node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --resume --concurrency=4
 node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --replay
+node scripts/catalog-sources/project-artifact.js --artifact-dir=artifacts/catalog-sources/zzctea/zzctea-2026-07-27
 ```
 
 Use `--apply --yes` with `import-generated.js` only after explicit approval.
