@@ -1,0 +1,61 @@
+{
+  "status": 1,
+  "extra": {
+    "count": 5
+  },
+  "data": [
+    {
+      "id": 17627,
+      "name": "Fixture Case Tea",
+      "year": "2025年",
+      "yearInt": 2025,
+      "batch": "2501",
+      "productionTechnology": "生茶",
+      "specification": "357克/片 7片/提 6提/件",
+      "price": 8700,
+      "date": 1773719605000,
+      "unit": "件",
+      "brandId": 2,
+      "brand": "Fixture Brand"
+    },
+    {
+      "id": 2731,
+      "name": "Fixture Bundle Tea",
+      "year": "2010年",
+      "yearInt": 2010,
+      "specification": "357克/片 7片/提",
+      "price": 50000,
+      "date": "2026-07-20",
+      "unit": "提",
+      "brandId": 2,
+      "brand": "Fixture Brand"
+    },
+    {
+      "id": 773,
+      "name": "Fixture Box Case Tea",
+      "year": "2005年",
+      "yearInt": 2005,
+      "specification": "357克/片 7片/盒 6盒/件",
+      "price": 30000,
+      "date": "2026-07-19",
+      "unit": "件",
+      "brandId": 2,
+      "brand": "Fixture Brand"
+    },
+    {
+      "id": 9001,
+      "name": "Fixture Hidden Price Tea",
+      "specification": "200克/饼 5饼/提",
+      "price": 1900,
+      "priceDisplayStatus": 0,
+      "unit": "提"
+    },
+    {
+      "id": 9002,
+      "name": "Fixture Malformed Package Tea",
+      "specification": "357克/片 7片/提 6盒/件",
+      "price": 1200,
+      "unit": "件"
+    }
+  ]
+}

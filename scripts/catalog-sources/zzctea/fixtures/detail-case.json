@@ -1,0 +1,23 @@
+{
+  "status": 1,
+  "data": {
+    "id": 17627,
+    "name": "Fixture Case Tea",
+    "year": "2025年",
+    "yearInt": 2025,
+    "batch": "2501",
+    "productionTechnology": "生茶",
+    "specification": "357克/片 7片/提 6提/件",
+    "img1": "https://oss.yf-gz.cn/file/fixture-case.jpg",
+    "price": 8700,
+    "date": 1773719605000,
+    "unit": "件",
+    "brandId": 2,
+    "brand": "Fixture Brand",
+    "shape": "饼茶",
+    "distributionPrice": 7200,
+    "distributionCount": 1600,
+    "priceDisplayStatus": 1,
+    "marketStatus": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": 1,
+  "data": {
+    "id": 9002,
+    "name": "Fixture Malformed Package Tea",
+    "year": "2023年",
+    "yearInt": 2023,
+    "specification": "357克/片 7片/提 6盒/件",
+    "price": 1200,
+    "date": "not-a-date",
+    "unit": "件",
+    "brandId": 12,
+    "brand": "Fixture Brand Two",
+    "img1": "http://unsafe.example/fixture.jpg",
+    "priceDisplayStatus": 1,
+    "marketStatus": 1
+  }
+}

@@ -10,10 +10,12 @@ The old checked-in markdown/product JSON corpus has been removed. Current import
 DKH.TeaCatalogData/
 ├── scripts/
 │   ├── thetea/                 # TheTea snapshot, transform, validation, and import workflow
+│   ├── catalog-sources/        # Generic public-source snapshot runtime and reviewed connectors
 │   ├── lib/config.js           # AdminGateway/Keycloak token helper
 │   └── env.prod.template       # Production environment template
 ├── sources/                    # Ignored generated source snapshots
 │   ├── thetea/snapshots/
+│   ├── catalog-sources/
 │   └── prod/{catalog-reference,product-reference}/
 ├── import/thetea/              # Ignored generated ProductCatalog JSON
 ├── reports/thetea/             # Ignored generated validation/mapping reports
@@ -32,6 +34,25 @@ Product translations use BCP 47 locale codes from TheTea, with DKH aliases for e
 - Other TheTea locales keep their BCP 47 code, for example `zh-HK`, `nb`, `de`, `fr`.
 
 ## Workflow
+
+Public reference catalogs use the source-agnostic runtime under
+`scripts/catalog-sources/`. ZZCTea is the first reviewed connector:
+
+```bash
+node scripts/catalog-sources/fetch-snapshot.js \
+  --source=zzctea \
+  --snapshot=zzctea-2026-07-27 \
+  --resume \
+  --concurrency=4
+```
+
+This command fetches only the allowlisted public list/detail endpoints and
+canonical-link HEAD redirect. It writes no production data. Raw encrypted
+responses and the resumable checkpoint are stored under the ignored
+`sources/catalog-sources/` tree; a complete, hashed, source-agnostic artifact is
+written under ignored `artifacts/catalog-sources/`. See
+[`scripts/catalog-sources/README.md`](scripts/catalog-sources/README.md) for
+replay, drift, PII and reference-price rules.
 
 Put secrets in `.env` using `scripts/env.prod.template`. The TheTea text API key is read from `THETEA_API_KEY` or `THE_TEA_API_KEY`. ProductCatalog export/validate/import also requires `PRODUCT_CATALOG_WORKSPACE_ID`.
 

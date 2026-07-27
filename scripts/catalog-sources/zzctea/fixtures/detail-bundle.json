@@ -1,0 +1,19 @@
+{
+  "status": 1,
+  "data": {
+    "id": 2731,
+    "name": "Fixture Bundle Tea",
+    "year": "2010年",
+    "yearInt": 2010,
+    "productionTechnology": "熟茶",
+    "specification": "357克/片 7片/提",
+    "img1": "https://oss.yf-gz.cn/file/fixture-bundle.jpg",
+    "price": 50000,
+    "date": "2026-07-20",
+    "unit": "提",
+    "brandId": 2,
+    "brand": "Fixture Brand",
+    "priceDisplayStatus": 1,
+    "marketStatus": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": 1,
+  "data": {
+    "id": 773,
+    "name": "Fixture Box Case Tea",
+    "year": "2005年",
+    "yearInt": 2005,
+    "productionTechnology": "生茶",
+    "specification": "357克/片 7片/盒 6盒/件",
+    "price": 30000,
+    "date": "2026-07-19",
+    "unit": "件",
+    "brandId": 2,
+    "brand": "Fixture Brand",
+    "priceDisplayStatus": 1,
+    "marketStatus": 1
+  }
+}
