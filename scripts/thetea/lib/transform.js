@@ -10,6 +10,7 @@ const { stripDefinitionMetadata } = require('./spec-contract');
 const { toProductLocale } = require('./locales');
 const { buildCategoryAssignments, PROVINCE_CATEGORY, TEA_TYPE_CATEGORY } = require('./category-taxonomy');
 const { resolveOriginLocation } = require('./origin-reference');
+const { decomposeTeaName } = require('./product-naming');
 
 const FALLBACK_SOURCE_LOCALES = ['en', 'ru', 'zh'];
 
@@ -398,20 +399,21 @@ function localeRelationOrder(value) {
 
 function buildTranslations(cardSet, primary, warnings) {
     const translations = new Map();
+    const primaryNaming = decomposeTeaName(primary.name);
 
     for (const [sourceLang, card] of Object.entries(cardSet)) {
         if (!card) continue;
         const bcp47 = toProductLocale(card.lang || sourceLang);
         if (!bcp47 || translations.has(bcp47)) continue;
         const rawName = localizedName(card, sourceLang, primary);
-        const displayName = cleanDisplayName(rawName);
+        const naming = decomposeTeaName(rawName);
 
         translations.set(bcp47, {
-            name: displayName,
-            transcription: extractTranscription(rawName || card.name || primary.name),
+            name: naming.displayName,
+            transcription: naming.transcription || primaryNaming.transcription,
             description: buildDescription(card),
             seo: seoSlug(card.slug || primary.slug),
-            metaTitle: card.seo?.title,
+            metaTitle: card.seo?.title || naming.editorialTitle,
             metaDescription: card.seo?.description,
         });
     }
@@ -421,10 +423,12 @@ function buildTranslations(cardSet, primary, warnings) {
         if (translations.has(bcp47)) continue;
         const fallbackName = nameFallback(primary, lang);
         if (fallbackName) {
+            const naming = decomposeTeaName(fallbackName);
             translations.set(bcp47, {
-                name: cleanDisplayName(fallbackName),
-                transcription: extractTranscription(primary.name),
+                name: naming.displayName,
+                transcription: naming.transcription || primaryNaming.transcription,
                 seo: seoSlug(primary.slug),
+                metaTitle: naming.editorialTitle,
             });
             warnings.push(`Missing localized ${lang} card for ${primary.slug}; generated name-only ${bcp47} translation.`);
         }
@@ -616,26 +620,17 @@ function localizedName(card, sourceLang, primary) {
 }
 
 function cleanDisplayName(name) {
-    if (!name) return name;
-    const original = String(name).trim();
-    let value = original;
-    while (true) {
-        const next = value.replace(/\s*\((?=[^)]*[\u3400-\u9fff])[^)]*\)\s*$/u, '').trim();
-        if (!next || next === value) return value || original;
-        value = next;
-    }
+    return decomposeTeaName(name).displayName;
 }
 
 function extractNativeName(card) {
     const zh = card.names?.zh || card.names?.['zh-CN'];
     if (!zh) return undefined;
-    return cleanDisplayName(zh) || undefined;
+    return decomposeTeaName(zh).displayName || undefined;
 }
 
 function extractTranscription(name) {
-    if (!name) return undefined;
-    const match = /\((?:[^,()]+,\s*)?([^()]+)\)\s*$/.exec(name);
-    return match ? match[1].trim() : undefined;
+    return decomposeTeaName(name).transcription;
 }
 
 function seoSlug(slug) {

@@ -587,6 +587,7 @@ function main() {
         relations: validation.relationCounts,
         lossEvents,
         routedContentCounts: validation.routedContentCounts,
+        productNaming: validation.productNaming,
         catalogMapping: validation.catalogMapping,
         catalogPlacement,
         categoryDefinitionCount: categories.length,

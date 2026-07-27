@@ -1,6 +1,7 @@
 const { analyzeCatalogMapping, DEFAULT_CATALOG_CODE } = require('./catalog-mapping');
 const { ATTRIBUTE_TYPES } = require('./spec-contract');
 const { isManagedSpecification, validateBaselinePreservation } = require('./product-overlay');
+const { auditProductNaming } = require('./product-naming');
 
 const CODE_RE = /^[A-Z0-9][A-Z0-9_-]{1,99}$/;
 const ATTRIBUTE_TYPE_SET = new Set(ATTRIBUTE_TYPES);
@@ -134,6 +135,9 @@ function validateArtifact(input = {}) {
         errors);
     validateLossEvents(lossEvents, errors, warnings);
     errors.push(...validateBaselinePreservation(products, input.baselineProducts || []));
+    const productNaming = auditProductNaming(products);
+    errors.push(...productNaming.errors);
+    warnings.push(...productNaming.warnings);
 
     let catalogMapping = null;
     if (input.catalogReference !== null && input.catalogReference !== undefined) {
@@ -156,6 +160,7 @@ function validateArtifact(input = {}) {
         languageCoverage,
         specTypes,
         catalogMapping,
+        productNaming,
         definitionCounts: {
             groups: groups.length,
             attributes: attributes.length,

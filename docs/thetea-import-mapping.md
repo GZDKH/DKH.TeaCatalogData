@@ -69,9 +69,9 @@ With `--catalog-ref=...`, `03-categories/categories.json` contains only definiti
 | `code` | TeaCard `meta.origin_country`, `slug` | `TEA-<COUNTRY>-<SLUG>`, normalized to ProductCatalog code format. Example: `TEA-CN-XIHU-LONGJING`. |
 | `sku` | TeaCard `slug`, `meta.origin_country` | `<SLUG>-<COUNTRY>`, normalized. |
 | `published` | Import option | `false` by default. `--publish` only after explicit approval. |
-| `nativeName` | TeaCard `names.zh` / `names.zh-CN` | Chinese native name when present. |
-| `transcription` | TeaCard `name` | Text inside the final parenthesized transcription segment. |
-| `translations[]` | Localized TeaCards | One translation per TheTea locale from the snapshot manifest. Compact product descriptions contain enrichment and recipe summaries; full Markdown and narratives are routed separately. |
+| `nativeName` | TeaCard `names.zh` / `names.zh-CN` | Native-script product name only. Parenthesized transcription and editorial subtitle text are removed. |
+| `transcription` | TeaCard `name` | Romanized pronunciation only. Native-script aliases are never stored as transcription. |
+| `translations[]` | Localized TeaCards | One translation per TheTea locale from the snapshot manifest. `name` contains only the localized display name. When a source `name` is an editorial headline, the complete headline is retained as `metaTitle`. Compact product descriptions contain enrichment and recipe summaries; full Markdown and narratives are routed separately. |
 | `catalogs[]` | TeaCard `meta.tea_type`, `meta.province`, `meta.shape`, `meta.processing`, `meta.roast_level`, `meta.family_id`, TeaCard `tags` | Always assigned to `CATALOG-CHINESE-TEA`; stable TheTea taxonomy fields are mapped to type, region, shape, processing, roast, family, and specialty categories. |
 | `packages[]` | Import option | Default package `PKG-50G`; `--packages=standard` adds 25g, 100g, 250g, 500g. |
 | `tags[]` | TeaCard `tags`, `enrichment.flavor_tags` | Deterministic `TAG-TT-*` and `TAG-FLAVOR-*` codes. |
