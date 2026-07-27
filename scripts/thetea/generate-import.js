@@ -15,6 +15,7 @@ const {
     catalogBindingCategoriesFromReference,
     defaultCatalogTranslations,
     mergeCatalogBindingCategories,
+    summarizeCatalogPlacement,
 } = require('./lib/catalog-bindings');
 const { assertCompleteFieldLocales } = require('./lib/snapshot-options');
 const { buildSpecificationDefinitions } = require('./lib/spec-definitions');
@@ -291,6 +292,7 @@ function writeGeneratedBundle(stagingRoot, artifact) {
         })),
         lossEvents: artifact.lossEvents,
         localization: artifact.definitions.localization,
+        catalogPlacement: artifact.catalogPlacement,
     });
     const reloaded = readArtifactBundle(stagingRoot);
     if (!reloaded.valid) {
@@ -550,6 +552,10 @@ function main() {
         products,
     });
     const productMedia = collectProductMedia(records, { mediaRoot });
+    const catalogPlacement = summarizeCatalogPlacement(
+        products,
+        [catalogBinding],
+        catalogCode);
 
     const validation = validateArtifact({
         products,
@@ -582,6 +588,7 @@ function main() {
         lossEvents,
         routedContentCounts: validation.routedContentCounts,
         catalogMapping: validation.catalogMapping,
+        catalogPlacement,
         categoryDefinitionCount: categories.length,
         categoryDefinitionMode: existingCategoryCodes ? 'missing-from-catalog-ref' : 'full-generated-taxonomy',
         catalogBindingCategoryCount: catalogBinding.categories.length,
@@ -622,6 +629,7 @@ function main() {
             categories,
             catalog,
             catalogBinding,
+            catalogPlacement,
             lossEvents,
             routedContent,
             productMedia,

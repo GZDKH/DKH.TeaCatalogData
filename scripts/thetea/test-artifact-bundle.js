@@ -26,12 +26,21 @@ try {
         productCodes: ['TEA-CN-ONE'],
         products: [{ code: 'TEA-CN-ONE', path: '04-products/GREEN/one.json' }],
         lossEvents: [],
+        catalogPlacement: {
+            requiredCatalog: 'CATALOG-CHINESE-TEA',
+            productCount: 1,
+            bindingCategoryCount: 1,
+            bindingAssignmentCount: 1,
+            assignedProductCount: 1,
+            unassignedProductCount: 0,
+        },
         generatedAt: '2026-07-17T00:00:00.000Z',
     });
 
     const valid = verifyArtifactManifest(root);
     assert.strictEqual(valid.valid, true, valid.errors.join('\n'));
     assert.deepStrictEqual(valid.manifest.requiredLocales, ['en-US', 'ru-RU']);
+    assert.strictEqual(valid.manifest.catalogPlacement.unassignedProductCount, 0);
     const bundle = readArtifactBundle(root);
     assert.strictEqual(bundle.valid, true, bundle.errors.join('\n'));
     assert.strictEqual(bundle.products.length, 1);

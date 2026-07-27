@@ -87,6 +87,44 @@ function mergeCatalogBindingCategories(...collections) {
     return [...merged.values()];
 }
 
+function summarizeCatalogPlacement(products, catalogBindings, requiredCatalogCode) {
+    const catalogCode = referenceCode(requiredCatalogCode).toUpperCase();
+    const binding = (catalogBindings || [])
+        .find(item => referenceCode(item?.code).toUpperCase() === catalogCode);
+    const categories = Array.isArray(binding?.categories) ? binding.categories : [];
+    const boundPairs = new Set();
+    let bindingAssignmentCount = 0;
+    for (const category of categories) {
+        const categoryCode = referenceCode(category?.category).toUpperCase();
+        for (const product of Array.isArray(category?.products) ? category.products : []) {
+            const productCode = referenceCode(product?.product).toUpperCase();
+            if (!categoryCode || !productCode) continue;
+            bindingAssignmentCount += 1;
+            boundPairs.add(`${productCode}|${categoryCode}`);
+        }
+    }
+
+    let assignedProductCount = 0;
+    for (const product of products || []) {
+        const productCode = referenceCode(product?.code).toUpperCase();
+        const assigned = (product?.catalogs || []).some(assignment => {
+            if (referenceCode(assignment?.catalog).toUpperCase() !== catalogCode) return false;
+            const categoryCode = referenceCode(assignment?.category).toUpperCase();
+            return categoryCode && boundPairs.has(`${productCode}|${categoryCode}`);
+        });
+        if (assigned) assignedProductCount += 1;
+    }
+
+    return {
+        requiredCatalog: catalogCode,
+        productCount: (products || []).length,
+        bindingCategoryCount: categories.length,
+        bindingAssignmentCount,
+        assignedProductCount,
+        unassignedProductCount: (products || []).length - assignedProductCount,
+    };
+}
+
 function flattenCategories(categories) {
     const result = [];
     for (const category of categories || []) {
@@ -142,4 +180,5 @@ module.exports = {
     catalogBindingCategoriesFromReference,
     defaultCatalogTranslations,
     mergeCatalogBindingCategories,
+    summarizeCatalogPlacement,
 };
