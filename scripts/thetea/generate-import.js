@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
+const zlib = require('zlib');
 const { REPO_ROOT, loadDotEnv, parseArgs, csv, requireArg } = require('./lib/env');
 const { productCodeForCardSet, transformCardSet } = require('./lib/transform');
 const { writeReport } = require('./lib/report');
 const { flattenCategories, loadCatalogReference } = require('./lib/catalog-mapping');
-const { canonicalLocale, toProductLocale } = require('./lib/locales');
+const { canonicalLocale, toApiLocale, toProductLocale } = require('./lib/locales');
 const { applyFieldDetails } = require('./lib/field-details');
 const { buildTheTeaCategories } = require('./lib/category-taxonomy');
 const { buildCatalogBindingCatalog, defaultCatalogTranslations } = require('./lib/catalog-bindings');
@@ -74,6 +75,24 @@ function readFieldDetails(snapshotRoot, lang, slug) {
     });
 }
 
+function readD1FieldPack(snapshotRoot, slug) {
+    const file = path.join(snapshotRoot, 'raw', 'd1', 'field-packs', `${slug}.json.gz`);
+    if (!fs.existsSync(file)) return null;
+    const payload = JSON.parse(zlib.gunzipSync(fs.readFileSync(file)).toString('utf8'));
+    if (payload.slug !== slug || !payload.locales || typeof payload.locales !== 'object') {
+        throw new Error(`Invalid D1 field pack for ${slug}.`);
+    }
+    const locales = {};
+    for (const [sourceLang, details] of Object.entries(payload.locales)) {
+        const lang = toApiLocale(sourceLang);
+        if (locales[lang]) {
+            throw new Error(`Duplicate normalized D1 field-pack locale ${lang} for ${slug}.`);
+        }
+        locales[lang] = details;
+    }
+    return { ...payload, locales };
+}
+
 function readTextIfExists(file) {
     return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
 }
@@ -101,15 +120,21 @@ function loadCardSet({
     warnings,
 }) {
     const cardSet = {};
+    const d1FieldPack = readD1FieldPack(snapshotRoot, slug);
+    const noFieldDataExpected = (manifest.noFieldDataSlugs || []).includes(slug);
     for (const lang of langs) {
         const file = path.join(snapshotRoot, 'raw', 'cards', lang, `${slug}.json`);
         if (!fs.existsSync(file)) continue;
 
         const card = readJson(file);
-        const fieldDetails = readFieldDetails(snapshotRoot, lang, slug);
+        const fieldDetails = d1FieldPack?.locales?.[lang]
+            || readFieldDetails(snapshotRoot, lang, slug);
         const fieldLangs = Array.isArray(manifest.fieldLangs) ? manifest.fieldLangs : null;
         const fieldsExpectedForLang = fieldLangs === null || fieldLangs.includes(lang);
-        if (!fieldDetails.length && !allowMissingFieldDetails && fieldsExpectedForLang) {
+        if (!fieldDetails.length
+            && !allowMissingFieldDetails
+            && fieldsExpectedForLang
+            && !noFieldDataExpected) {
             warnings.push(`No field detail endpoint files found for ${slug}/${lang}.`);
         }
         const enriched = fieldDetails.length ? applyFieldDetails(card, fieldDetails) : card;
@@ -164,6 +189,8 @@ function hashSnapshotFiles(snapshotRoot, manifest) {
     const files = [...new Set([
         ...(manifest.files || []),
         ...(manifest.fieldFiles || []),
+        ...(manifest.fieldPackFiles || []),
+        ...(manifest.d1Files || []),
         ...(manifest.markdownFiles || []),
         ...(manifest.similarFiles || []),
         ...(manifest.mapFiles || []),
@@ -372,14 +399,18 @@ function main() {
         : (manifest.langs || ['en']).map(canonicalLocale);
     const requiredLocales = [...new Set(langs.map(toProductLocale).filter(Boolean))];
     const allowMissingFieldDetails = args['allow-missing-field-details'] === true;
-    if (!allowMissingFieldDetails && (manifest.includeFields === false || !manifest.fieldFiles?.length)) {
+    const hasFieldDetails = Boolean(
+        manifest.fieldFiles?.length || manifest.fieldPackFiles?.length);
+    if (!allowMissingFieldDetails && (manifest.includeFields === false || !hasFieldDetails)) {
         throw new Error('Snapshot has no per-field endpoint details. Re-fetch without --skip-fields or pass --allow-missing-field-details for diagnostics only.');
     }
     if (!allowMissingFieldDetails && args['allow-partial-field-locales'] !== true) {
         assertCompleteFieldLocales({ langs, fieldLangs: manifest.fieldLangs });
     }
     const allowMissingMarkdown = args['allow-missing-markdown'] === true;
-    if (!allowMissingMarkdown && manifest.includeMarkdown === false) {
+    const hasD1NarrativeSource = manifest.markdownSource === 'd1-field-packs'
+        && hasFieldDetails;
+    if (!allowMissingMarkdown && manifest.includeMarkdown === false && !hasD1NarrativeSource) {
         throw new Error('Snapshot has no markdown endpoint pages. Re-fetch without --skip-md or pass --allow-missing-markdown for diagnostics only.');
     }
 
@@ -442,7 +473,7 @@ function main() {
             langs,
             slug: record.slug,
             allowMissingFieldDetails,
-            allowMissingMarkdown,
+            allowMissingMarkdown: allowMissingMarkdown || hasD1NarrativeSource,
             warnings,
         });
         const transformed = transformCardSet(cardSet, {
@@ -539,6 +570,7 @@ function main() {
         catalogBindingProductAssignmentCount: catalogBinding.categories
             .reduce((sum, category) => sum + category.products.length, 0),
         fieldDetailFiles: manifest.fieldFiles?.length || 0,
+        fieldPackFiles: manifest.fieldPackFiles?.length || 0,
         missingFieldDetailFiles: manifest.missingFieldDetailFiles?.length || 0,
         markdownFiles: manifest.markdownFiles?.length || 0,
         similarFiles: manifest.similarFiles?.length || 0,

@@ -5,6 +5,13 @@ const PRODUCT_LOCALE_ALIASES = {
     'zh-cn': 'zh-CN',
 };
 
+const D1_TO_API_LOCALE_ALIASES = {
+    no: 'nb',
+    zh: 'zh-CN',
+    'zh-hk': 'zh-HK',
+    'zh-tw': 'zh-TW',
+};
+
 function canonicalLocale(value) {
     const raw = String(value || '').trim().replace(/_/g, '-');
     if (!raw) return '';
@@ -59,9 +66,28 @@ function toProductLocale(sourceLocale) {
     return alias || source;
 }
 
+function toApiLocale(sourceLocale) {
+    const source = canonicalLocale(sourceLocale);
+    return D1_TO_API_LOCALE_ALIASES[source.toLowerCase()] || source;
+}
+
+function d1LocaleCandidates(apiLocale) {
+    const target = toApiLocale(apiLocale);
+    const aliases = Object.entries(D1_TO_API_LOCALE_ALIASES)
+        .filter(([, value]) => value.toLowerCase() === target.toLowerCase())
+        .map(([value]) => value);
+    return [...new Set([
+        target,
+        target.toLowerCase(),
+        ...aliases,
+    ])];
+}
+
 module.exports = {
     canonicalLocale,
+    d1LocaleCandidates,
     localesFromMeta,
     resolveRequestedLocales,
+    toApiLocale,
     toProductLocale,
 };
