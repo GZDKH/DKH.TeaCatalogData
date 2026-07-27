@@ -13,6 +13,11 @@ function writeReport(reportDir, summary) {
     fs.mkdirSync(reportDir, { recursive: true });
     fs.writeFileSync(path.join(reportDir, 'summary.json'), JSON.stringify(summary, null, 2));
     fs.writeFileSync(path.join(reportDir, 'summary.md'), toMarkdown(summary));
+    if (summary.productNaming) {
+        fs.writeFileSync(
+            path.join(reportDir, 'product-naming.json'),
+            JSON.stringify(summary.productNaming, null, 2));
+    }
 }
 
 function toMarkdown(summary) {
@@ -68,6 +73,29 @@ function toMarkdown(summary) {
             '',
             `- Related: ${summary.relations.related ?? 0}`,
             `- Cross-sells: ${summary.relations.crossSells ?? 0}`);
+    }
+
+    if (summary.productNaming) {
+        const naming = summary.productNaming;
+        const counts = naming.counts || {};
+        lines.push(
+            '',
+            '## Product Naming',
+            '',
+            `- Valid: ${naming.valid ? 'yes' : 'no'}`,
+            `- Translation rows audited: ${counts.translationRows ?? 0}`,
+            `- Composite translation names: ${counts.compositeTranslationRows ?? 0}`,
+            `- Composite native names: ${counts.compositeNativeNames ?? 0}`,
+            `- Native-script transcriptions: ${counts.cjkTranscriptions ?? 0}`,
+            `- Editorial display names: ${counts.editorialDisplayNames ?? 0}`,
+            `- Duplicate en-US display names: ${counts.duplicateEnglishNames ?? 0}`);
+
+        if (naming.duplicateEnglishNames?.length) {
+            lines.push('', '### Duplicate en-US Display Names', '');
+            for (const duplicate of naming.duplicateEnglishNames) {
+                lines.push(`- ${duplicate.name}: ${duplicate.codes.join(', ')}`);
+            }
+        }
     }
 
     if (summary.routedContentCounts) {

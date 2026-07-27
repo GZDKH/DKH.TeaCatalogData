@@ -131,6 +131,11 @@ assert.strictEqual(valid.localeCoverage['ru-RU'].options, 1);
 assert.deepStrictEqual(valid.relationCounts, { related: 1, crossSells: 1, total: 2 });
 assert.deepStrictEqual(Object.keys(valid.specTypes).sort(), [...ATTRIBUTE_TYPES].sort());
 assert.strictEqual(valid.catalogMapping.valid, true);
+assert.strictEqual(valid.productNaming.valid, true);
+
+expectInvalid(artifact => {
+    artifact.products[0].nativeName = '安茶 (ānchá)';
+}, 'nativeName still contains transcription');
 
 expectInvalid(artifact => {
     artifact.products = [];

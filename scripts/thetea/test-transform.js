@@ -126,6 +126,33 @@ assert.strictEqual(product.translations.find(t => t.lang === 'en-US')?.name, 'X�
 assert.strictEqual(product.translations.find(t => t.lang === 'ru-RU')?.name, 'Си Ху Лун Цзин');
 assert.strictEqual(product.translations.find(t => t.lang === 'zh-CN')?.name, '西湖龙井');
 assert.strictEqual(cleanDisplayName('阿里山乌龙 (阿里山乌龙, Ālǐshān Wūlóng) (阿里山乌龙)'), '阿里山乌龙');
+
+const anchaEditorialTitle =
+    'Ancha (安茶, ānchá): One Character, Different Teas — A Guide to 同名异物';
+const anchaEn = {
+    ...xihu,
+    slug: 'ancha',
+    name: anchaEditorialTitle,
+    names: {
+        en: anchaEditorialTitle,
+        zh: '安茶 (ānchá)：一字多茶——“同名异物”指南',
+    },
+    seo: {},
+};
+const anchaZh = {
+    ...anchaEn,
+    lang: 'zh-cn',
+    name: anchaEn.names.zh,
+};
+const anchaProduct = transformCardSet({ en: anchaEn, 'zh-CN': anchaZh }).product;
+assert.strictEqual(anchaProduct.nativeName, '安茶');
+assert.strictEqual(anchaProduct.transcription, 'ānchá');
+assert.strictEqual(anchaProduct.translations.find(t => t.lang === 'en-US')?.name, 'Ancha');
+assert.strictEqual(anchaProduct.translations.find(t => t.lang === 'en-US')?.transcription, 'ānchá');
+assert.strictEqual(anchaProduct.translations.find(t => t.lang === 'en-US')?.metaTitle, anchaEditorialTitle);
+assert.strictEqual(anchaProduct.translations.find(t => t.lang === 'zh-CN')?.name, '安茶');
+assert.strictEqual(anchaProduct.translations.find(t => t.lang === 'zh-CN')?.transcription, 'ānchá');
+
 assert(product.catalogs.some(c => c.category === 'CAT-GREEN-TEA'));
 assert(product.catalogs.some(c => c.category === 'CAT-REGION-ZHEJIANG'));
 assert(product.catalogs.some(c => c.category === 'CAT-SHAPE-FLAT'));

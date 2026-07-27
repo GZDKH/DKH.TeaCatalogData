@@ -69,9 +69,9 @@ Output сначала собирается в соседней временно�
 | `code` | TeaCard `meta.origin_country`, `slug` | `TEA-<COUNTRY>-<SLUG>`, нормализуется под ProductCatalog code. Пример: `TEA-CN-XIHU-LONGJING`. |
 | `sku` | TeaCard `slug`, `meta.origin_country` | `<SLUG>-<COUNTRY>`, нормализуется. |
 | `published` | Import option | По умолчанию `false`. `--publish` только после отдельного согласования. |
-| `nativeName` | TeaCard `names.zh` / `names.zh-CN` | Китайское нативное имя, если есть. |
-| `transcription` | TeaCard `name` | Текст из последнего parenthesized transcription segment. |
-| `translations[]` | Локализованные TeaCards | По одной translation на каждую локаль из snapshot manifest. Короткий description содержит enrichment и recipe summary; полный Markdown и narratives маршрутизируются отдельно. |
+| `nativeName` | TeaCard `names.zh` / `names.zh-CN` | Только имя продукта в нативном написании. Транскрипция в скобках и редакционный подзаголовок удаляются. |
+| `transcription` | TeaCard `name` | Только романизированное произношение. Алиасы в нативном написании никогда не сохраняются как транскрипция. |
+| `translations[]` | Локализованные TeaCards | По одной translation на каждую локаль из snapshot manifest. В `name` хранится только локализованное отображаемое имя. Если исходный `name` является редакционным заголовком, полный заголовок сохраняется в `metaTitle`. Короткий description содержит enrichment и recipe summary; полный Markdown и narratives маршрутизируются отдельно. |
 | `catalogs[]` | TeaCard `meta.tea_type`, `meta.province`, `meta.shape`, `meta.processing`, `meta.roast_level`, `meta.family_id`, TeaCard `tags` | Всегда `CATALOG-CHINESE-TEA`; устойчивые taxonomy-поля TheTea мапятся в категории типа, региона, формы листа, обработки, прожарки, семейства и особенностей. |
 | `packages[]` | Import option | По умолчанию `PKG-50G`; `--packages=standard` добавляет 25g, 100g, 250g, 500g. |
 | `tags[]` | TeaCard `tags`, `enrichment.flavor_tags` | Детерминированные коды `TAG-TT-*` и `TAG-FLAVOR-*`. |
