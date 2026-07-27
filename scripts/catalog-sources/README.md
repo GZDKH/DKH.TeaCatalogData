@@ -71,14 +71,14 @@ The manifest is written atomically after the artifact and portable checkpoint.
 A partial run cannot publish a manifest, update `last-good.json`, or declare
 deletions. The artifact always sets `authoritativeForDeletion: false`.
 
-Each item has an immutable external ID, factual localized fields, images, stable
-and observed canonical links, exact package components, raw package text,
+The artifact and manifest expose the exact connector version, while each item
+has an immutable external ID, factual localized fields, images, stable and
+observed canonical links, exact package components, raw package text,
 diagnostics and per-payload digests. Source prices are reference observations,
-never retail prices. Money and quantities are decimal strings. A derived
-package price carries its original amount/basis, exact cumulative divisor,
-reduced exact fraction and `half-up` scale-8 display rounding policy. The
-original observation has `roundingPolicy.mode: none`; derivation stops before
-measurement units.
+never retail prices. Money and quantities are decimal strings. A derived package
+price carries its original amount/basis, exact cumulative divisor, reduced exact
+fraction and `half-up` scale-8 display rounding policy. The original observation
+has `roundingPolicy.mode: none`; derivation stops before measurement units.
 
 The manifest exposes both a byte-level artifact hash and a semantic digest.
 The semantic digest uses deterministic item/key ordering and excludes

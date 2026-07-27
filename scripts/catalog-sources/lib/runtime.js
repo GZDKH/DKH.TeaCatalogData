@@ -312,6 +312,7 @@ function buildArtifact(checkpoint, items) {
         schemaVersion: ARTIFACT_SCHEMA,
         source: {
             id: checkpoint.sourceId,
+            connectorVersion: checkpoint.connectorVersion,
             kind: 'public-reference-catalog',
             referencePricesAreRetailPrices: false,
         },
@@ -368,6 +369,7 @@ function publishArtifact(context, artifact, options = {}) {
     const manifest = {
         schemaVersion: MANIFEST_SCHEMA,
         sourceId: checkpoint.sourceId,
+        connectorVersion: checkpoint.connectorVersion,
         snapshotId: checkpoint.snapshotId,
         parserVersion: checkpoint.parserVersion,
         observedAt: checkpoint.observedAt,
