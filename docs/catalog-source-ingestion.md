@@ -29,5 +29,14 @@ network or production writes. ProductCatalog reconciliation and CommerceNetwork
 publication require complete authoritative references, read-back, a
 one-product canary, and the later reviewed apply phase.
 
+The offline ProductCatalog reconciliation uses exact immutable
+`ZZC-<externalId>` product codes and a complete nested product export. It emits
+full baseline-preserving product patches, rollback aggregates, deterministic
+source mappings, and Draft-only reports for missing products. It does not
+perform fuzzy matching or mutate any retail/catalog price. The current catalog
+reference snapshot is structurally verified and hashed but lacks its own
+completeness manifest, so reconciliation remains explicitly non-authoritative
+and publication-ineligible.
+
 See [`../scripts/catalog-sources/README.md`](../scripts/catalog-sources/README.md)
 for commands, output layout and operator gates.

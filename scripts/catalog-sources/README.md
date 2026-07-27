@@ -42,6 +42,36 @@ binding both outputs to the input artifact and checkpoint hashes. The loader
 rejects incomplete, extra, symlinked, hash-mismatched, deletion-authoritative,
 or retail-price-marked input.
 
+Reconcile a verified projection against the complete ProductCatalog product
+baseline and the current catalog/definition reference:
+
+```bash
+node scripts/catalog-sources/reconcile-projection.js \
+  --projection-dir=artifacts/catalog-source-projections/zzctea/zzctea-2026-07-27 \
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-07-27.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-07-27 \
+  --only=17641
+```
+
+The optional `--only` accepts exactly one canonical positive ZZCTea external
+ID. Reconciliation uses only the immutable mapping
+`externalId -> ZZC-<externalId>`; it never fuzzy-matches names. Existing
+products are emitted as complete baseline-preserving patches and rollback
+records. Only `en-US`/`zh-CN` description and meta-description fields may
+change. Retail/catalog/tier/store prices and every unrelated nested collection
+remain untouched. Missing products are reported as Draft-only proposals without
+inventing a ProductCatalog payload.
+
+Outputs live under a reference-bound ignored path below
+`artifacts/catalog-source-reconciliations/`. The content-addressed bundle
+contains mappings, full product patches, rollback products, a report, and a
+manifest written last. It records the projection, catalog reference, product
+manifest/tree/data/code-set hashes and workspace ID. The product export has a
+strict complete manifest; the current catalog reference has no completeness
+manifest, so the output explicitly sets
+`catalogReferenceCompletenessProven: false`,
+`productCatalogReconciliationComplete: false`, and `productionWrites: false`.
+
 The connector is fixed to the public HTTPS list and single-tea endpoints used by
 the website. It sends `HEAD` only to
 `https://zzctea.com/teaDetail/{externalId}.html` and accepts a validated
@@ -139,4 +169,7 @@ node scripts/catalog-sources/test-http.js
 node scripts/catalog-sources/test-runtime.js
 node scripts/catalog-sources/test-projection.js
 node scripts/catalog-sources/test-projection-cli.js
+node scripts/catalog-sources/test-reconciliation-references.js
+node scripts/catalog-sources/test-reconciliation.js
+node scripts/catalog-sources/test-reconciliation-cli.js
 ```
