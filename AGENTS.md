@@ -48,6 +48,7 @@ node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01 --catalog-r
 node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --resume --concurrency=4
 node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --replay
 node scripts/catalog-sources/project-artifact.js --artifact-dir=artifacts/catalog-sources/zzctea/zzctea-2026-07-27
+node scripts/catalog-sources/reconcile-projection.js --projection-dir=artifacts/catalog-source-projections/zzctea/zzctea-2026-07-27 --catalog-ref=sources/prod/catalog-reference/prod-2026-07-27.json --product-ref=sources/prod/product-reference/prod-products-2026-07-27 --only=17641
 ```
 
 Use `--apply --yes` with `import-generated.js` only after explicit approval.

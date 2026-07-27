@@ -36,5 +36,14 @@ CommerceNetwork, детерминированный отчёт и manifest с х
 публикации в CommerceNetwork нужны полные authoritative references, read-back,
 canary одного продукта и отдельный проверяемый этап apply.
 
+Офлайн-reconciliation ProductCatalog использует только точный неизменяемый код
+`ZZC-<externalId>` и полный nested export продуктов. Результат содержит полные
+baseline-preserving product patches, rollback aggregates, детерминированные
+source mappings и Draft-only отчёт для отсутствующих продуктов. Fuzzy matching
+и изменение retail/catalog prices запрещены. Текущий catalog reference
+структурно проверяется и хешируется, но пока не имеет собственного completeness
+manifest, поэтому reconciliation явно остаётся non-authoritative и не готов к
+публикации.
+
 Команды, структура output и operator gates описаны в
 [`scripts/catalog-sources/README.md`](../../scripts/catalog-sources/README.md).
