@@ -4,6 +4,7 @@ const {
     buildCatalogBindingCatalog,
     catalogBindingCategoriesForProducts,
     catalogBindingCategoriesFromReference,
+    defaultCatalogTranslations,
     mergeCatalogBindingCategories,
     summarizeCatalogPlacement,
 } = require('./lib/catalog-bindings');
@@ -43,6 +44,27 @@ const products = [
         ],
     },
 ];
+
+const REQUIRED_LOCALES = [
+    'af',
+    'de',
+    'en-US',
+    'ja',
+    'ru-RU',
+    'zh-CN',
+    'zh-HK',
+    'zh-TW',
+];
+const localizedCatalog = defaultCatalogTranslations(REQUIRED_LOCALES);
+assert.strictEqual(localizedCatalog.length, REQUIRED_LOCALES.length);
+assert.deepStrictEqual(localizedCatalog.map(item => item.lang), REQUIRED_LOCALES);
+assert.strictEqual(localizedCatalog.find(item => item.lang === 'de').name, 'Chinesischer Tee');
+assert.strictEqual(localizedCatalog.find(item => item.lang === 'ja').name, '中国茶');
+assert.strictEqual(localizedCatalog.find(item => item.lang === 'zh-HK').name, '中國茶');
+assert(localizedCatalog.every(item => item.name && item.description && item.seo));
+assert.throws(
+    () => defaultCatalogTranslations(['en-US', 'xx-TEST']),
+    /no maintained translation for required locale xx-Test/);
 
 const catalog = buildCatalogBindingCatalog({
     catalogCode: 'CATALOG-CHINESE-TEA',

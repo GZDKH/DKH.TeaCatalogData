@@ -1,7 +1,9 @@
+const { catalogTranslationsForLocales } = require('./catalog-localizations');
+
 function buildCatalogBindingCatalog(options = {}) {
     const catalogCode = options.catalogCode || 'CATALOG-CHINESE-TEA';
     const currency = options.currency || 'CNY';
-    const translations = options.translations || defaultCatalogTranslations();
+    const translations = options.translations || defaultCatalogTranslations(options.locales);
     const categories = options.categories || [];
     const products = options.products || [];
 
@@ -134,27 +136,8 @@ function flattenCategories(categories) {
     return result;
 }
 
-function defaultCatalogTranslations() {
-    return [
-        {
-            lang: 'en-US',
-            name: 'Chinese Tea',
-            description: 'TheTea Chinese tea catalog',
-            seo: 'chinese-tea',
-        },
-        {
-            lang: 'ru-RU',
-            name: 'Китайский чай',
-            description: 'Каталог китайского чая TheTea',
-            seo: 'kitayskiy-chay',
-        },
-        {
-            lang: 'zh-CN',
-            name: '中国茶',
-            description: 'TheTea 中国茶目录',
-            seo: 'zhong-guo-cha',
-        },
-    ];
+function defaultCatalogTranslations(locales) {
+    return catalogTranslationsForLocales(locales);
 }
 
 function compareCategories(left, right) {

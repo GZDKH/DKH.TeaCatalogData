@@ -144,6 +144,12 @@ Generation also writes `category-coverage.json`. It records every used category 
 
 `artifact-manifest.json.targets` declares the intended import destinations. Production TheTea artifacts default to catalog `CATALOG-CHINESE-TEA` and storefronts `shop-thetea` plus `thetea-wiki`; override storefront codes only with the explicit `--storefronts=<codes>` option.
 
+The generated `CATALOG-CHINESE-TEA` reference and catalog-binding records contain
+exactly one maintained translation for every required snapshot locale. Artifact
+validation rejects missing, empty, or duplicate catalog locales. The reference
+and binding translation arrays must remain identical so ordered imports cannot
+replace the localized catalog with a reduced locale set.
+
 ## Specification Mapping
 
 Every managed specification has exactly one group and one attribute. A product may contain at most one value row for a given managed attribute. Specification groups use `SPEC-TT-GROUP-<SECTION>` and all managed definitions use the `SPEC-TT-*` namespace.

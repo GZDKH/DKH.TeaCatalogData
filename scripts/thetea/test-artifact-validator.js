@@ -3,6 +3,7 @@ const assert = require('assert');
 const {
     validateArtifact,
     validateCatalogBindingCoverage,
+    validateCatalogReferenceParity,
 } = require('./lib/artifact-validator');
 const { ATTRIBUTE_TYPES } = require('./lib/spec-contract');
 
@@ -444,6 +445,11 @@ const bindingProducts = [{
 }];
 const validBindings = [{
     code: 'CATALOG-CHINESE-TEA',
+    translations: translations('Chinese Tea').map(item => ({
+        ...item,
+        description: `Catalog ${item.lang}`,
+        seo: 'chinese-tea',
+    })),
     categories: [{
         category: 'CAT-GREEN-TEA',
         products: [{ product: 'TEA-CN-ONE' }],
@@ -453,8 +459,32 @@ assert.deepStrictEqual(
     validateCatalogBindingCoverage(
         bindingProducts,
         validBindings,
-        'CATALOG-CHINESE-TEA'),
+        'CATALOG-CHINESE-TEA',
+        REQUIRED_LOCALES),
     []);
+assert.match(
+    validateCatalogBindingCoverage(
+        bindingProducts,
+        [{
+            ...validBindings[0],
+            translations: validBindings[0].translations.filter(item => item.lang !== 'ru-RU'),
+        }],
+        'CATALOG-CHINESE-TEA',
+        REQUIRED_LOCALES).join('\n'),
+    /missing required ru-RU translation/);
+assert.match(
+    validateCatalogBindingCoverage(
+        bindingProducts,
+        [{
+            ...validBindings[0],
+            translations: [
+                ...validBindings[0].translations,
+                translation('en-US', 'Duplicate'),
+            ],
+        }],
+        'CATALOG-CHINESE-TEA',
+        REQUIRED_LOCALES).join('\n'),
+    /duplicate en-US translation/);
 assert.match(
     validateCatalogBindingCoverage(
         bindingProducts,
@@ -470,5 +500,47 @@ assert.match(
         }],
         'CATALOG-CHINESE-TEA').join('\n'),
     /missing from CATALOG-CHINESE-TEA\/CAT-GREEN-TEA/);
+
+const catalogLocaleArtifact = fixture();
+catalogLocaleArtifact.catalogBindings = [{
+    code: 'CATALOG-CHINESE-TEA',
+    translations: translations('Chinese Tea').map(item => ({
+        ...item,
+        description: `Catalog ${item.lang}`,
+        seo: 'chinese-tea',
+    })),
+    categories: [{
+        category: 'CAT-GREEN',
+        products: [
+            { product: 'TEA-CN-ONE' },
+            { product: 'TEA-CN-TWO' },
+        ],
+    }],
+}];
+catalogLocaleArtifact.catalogs = [{
+    code: 'CATALOG-CHINESE-TEA',
+    translations: clone(catalogLocaleArtifact.catalogBindings[0].translations),
+}];
+const catalogLocaleResult = validateArtifact(catalogLocaleArtifact);
+assert.strictEqual(catalogLocaleResult.valid, true, catalogLocaleResult.errors.join('\n'));
+catalogLocaleArtifact.catalogBindings[0].translations =
+    catalogLocaleArtifact.catalogBindings[0].translations
+        .filter(item => item.lang !== 'ru-RU');
+const missingCatalogLocaleResult = validateArtifact(catalogLocaleArtifact);
+assert.strictEqual(missingCatalogLocaleResult.valid, false);
+assert(
+    missingCatalogLocaleResult.errors.some(error =>
+        error.includes('missing required ru-RU translation')),
+    missingCatalogLocaleResult.errors.join('\n'));
+catalogLocaleArtifact.catalogBindings[0].translations =
+    clone(catalogLocaleArtifact.catalogs[0].translations);
+catalogLocaleArtifact.catalogs[0].translations[0].name = 'Different';
+assert.match(
+    validateCatalogReferenceParity(
+        catalogLocaleArtifact.catalogs,
+        catalogLocaleArtifact.catalogBindings,
+        'CATALOG-CHINESE-TEA',
+        REQUIRED_LOCALES).join('\n'),
+    /translations differ from its catalog binding/);
 
 console.log('test-artifact-validator: OK');

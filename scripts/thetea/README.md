@@ -312,6 +312,10 @@ ordered SetupTool workflow, including specification definitions before products.
 - Before any production import, use both `--catalog-ref=...` and `--product-ref=...`. The report must show `Catalog found: yes`, `Missing categories: 0`, exact artifact parity, and non-empty source/reference hashes.
 - `artifact-manifest.json` inventories every generated file and hash. Generation uses an atomic staging/swap, so stale files are removed only after the replacement bundle validates.
 - `artifact-manifest.json.targets` contains the exact catalog and storefront codes that an import console must resolve before writes; source-declared targets are not an operator override.
+- The `CATALOG-CHINESE-TEA` reference and catalog-binding records contain one
+  maintained translation for every required snapshot locale. Generation fails
+  for an unknown locale until its catalog name is added, and semantic
+  validation rejects missing, empty, or duplicate catalog translations.
 
 ## Product Media Artifact
 

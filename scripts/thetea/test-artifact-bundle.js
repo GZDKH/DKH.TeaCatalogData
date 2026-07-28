@@ -17,6 +17,7 @@ try {
     writeJson(path.join(root, '02-specifications', 'specification_attribute_options.json'), []);
     writeJson(path.join(root, '06-routed-content', 'articles', 'index.json'), []);
     writeJson(path.join(root, '06-routed-content', 'metaobjects', 'index.json'), []);
+    writeJson(path.join(root, '01-reference', 'catalogs.json'), []);
     writeJson(path.join(root, '05-catalog-bindings', 'catalogs.json'), []);
     writeJson(path.join(root, '04-products', 'GREEN', 'one.json'), [{ code: 'TEA-CN-ONE' }]);
     createArtifactManifest(root, {
@@ -52,6 +53,7 @@ try {
     const bundle = readArtifactBundle(root);
     assert.strictEqual(bundle.valid, true, bundle.errors.join('\n'));
     assert.strictEqual(bundle.products.length, 1);
+    assert.deepStrictEqual(bundle.catalogs, []);
 
     fs.writeFileSync(path.join(root, '04-products', 'GREEN', 'one.json'), '[]\n');
     const changed = verifyArtifactManifest(root);

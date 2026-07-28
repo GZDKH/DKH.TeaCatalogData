@@ -144,6 +144,13 @@ Missing categories: 0
 
 `artifact-manifest.json.targets` объявляет назначения импорта. Production TheTea artifact по умолчанию содержит catalog `CATALOG-CHINESE-TEA` и storefront codes `shop-thetea`, `thetea-wiki`; менять их можно только явным `--storefronts=<codes>`.
 
+Сгенерированные записи reference и catalog binding для
+`CATALOG-CHINESE-TEA` содержат ровно один поддерживаемый перевод для каждой
+обязательной локали snapshot. Валидация артефакта отклоняет отсутствующие,
+пустые и дублирующиеся локали каталога. Массивы переводов в reference и binding
+должны оставаться идентичными, чтобы упорядоченный импорт не заменил
+локализованный каталог сокращённым набором локалей.
+
 ## Маппинг спецификаций
 
 У каждой managed specification ровно одна группа и один атрибут. У продукта может быть не более одной value row для каждого managed attribute. Группы используют `SPEC-TT-GROUP-<SECTION>`, все managed definitions — namespace `SPEC-TT-*`.

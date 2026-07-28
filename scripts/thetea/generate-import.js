@@ -554,7 +554,7 @@ function main() {
         locales: requiredLocales,
     });
     const catalogCurrency = args.currency || 'CNY';
-    const catalogTranslations = defaultCatalogTranslations();
+    const catalogTranslations = defaultCatalogTranslations(requiredLocales);
     const catalog = {
         code: catalogCode,
         currency: catalogCurrency,
@@ -584,6 +584,7 @@ function main() {
     const validation = validateArtifact({
         products,
         definitions,
+        catalogs: [catalog],
         catalogBindings: [catalogBinding],
         requiredLocales,
         lossEvents,
