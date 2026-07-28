@@ -465,6 +465,112 @@ async function main() {
             ),
             error => error.code === 'SOURCE_ARTIFACT_PII_POLICY_VIOLATION',
         );
+        const itemWithOpaqueImageIdentifier = {
+            ...itemAtOne,
+            images: [{
+                role: 'source-reference',
+                url: 'https://oss.yf-gz.cn/file/asset_13800138000.jpg' +
+                    '?x-oss-process=style/square300',
+            }],
+        };
+        const checkpointWithPublicImagePolicy = {
+            ...checkpoint('2026-07-27T01:00:00.000Z'),
+            requestParameters: {
+                publicImagePolicy: {
+                    schemaVersion:
+                        'catalog-source-image-reference-policy-v1',
+                    allowedHosts: ['oss.yf-gz.cn'],
+                    pathPrefix: '/file/',
+                    queryRules: {
+                        'x-oss-process': 'style-name',
+                    },
+                    sourcePolicyVersion:
+                        'zzctea-public-image-url-v1',
+                },
+            },
+        };
+        assert.strictEqual(
+            buildArtifact(
+                checkpointWithPublicImagePolicy,
+                [
+                    itemWithOpaqueImageIdentifier,
+                    {
+                        ...itemAtOne,
+                        externalId: '2',
+                        images: [{
+                            role: 'source-reference',
+                            url: 'https://oss.yf-gz.cn/file/' +
+                                'asset_01012345678.jpg',
+                        }],
+                    },
+                    {
+                        ...itemAtOne,
+                        externalId: '3',
+                        images: [{
+                            role: 'source-reference',
+                            url: 'https://oss.yf-gz.cn/file/' +
+                                'line-artwork.jpg',
+                        }],
+                    },
+                    {
+                        ...itemAtOne,
+                        externalId: '4',
+                        images: [{
+                            role: 'source-reference',
+                            url: 'https://oss.yf-gz.cn/file/' +
+                                'contact-sheet.jpg',
+                        }],
+                    },
+                ],
+            ).itemCount,
+            4,
+        );
+        const itemWithImageContactHandle = {
+            ...itemAtOne,
+            images: [{
+                role: 'source-reference',
+                url: 'https://oss.yf-gz.cn/file/wxid_abcd1234.jpg',
+            }],
+        };
+        assert.throws(
+            () => buildArtifact(
+                checkpointWithPublicImagePolicy,
+                [itemWithImageContactHandle],
+            ),
+            error => error.code === 'SOURCE_ARTIFACT_PII_POLICY_VIOLATION',
+        );
+        for (const unsafeImageReference of [
+            '13800138000',
+            'https://evil.example/file/asset_13800138000.jpg',
+            'http://127.0.0.1/file/asset_13800138000.jpg',
+            'https://oss.yf-gz.cn/file/asset.jpg' +
+                '?x-oss-process=style/13800138000',
+            'https://evil.example/file/asset.jpg',
+            'http://127.0.0.1/file/asset.jpg',
+            'not-a-url',
+            'https://oss.yf-gz.cn/profile/asset.jpg',
+            'https://oss.yf-gz.cn/file/phone-01012345678.jpg',
+            'https://oss.yf-gz.cn/file/contact-8001234567.jpg',
+            'https://oss.yf-gz.cn/file/wechat-abcdef.jpg',
+            'https://oss.yf-gz.cn/file/qq-12345678.jpg',
+            'https://oss.yf-gz.cn/file/telegram-1234567.jpg',
+            'https://oss.yf-gz.cn/file/line-1234567.jpg',
+        ]) {
+            assert.throws(
+                () => buildArtifact(
+                    checkpointWithPublicImagePolicy,
+                    [{
+                        ...itemAtOne,
+                        images: [{
+                            role: 'source-reference',
+                            url: unsafeImageReference,
+                        }],
+                    }],
+                ),
+                error => error.code ===
+                    'SOURCE_ARTIFACT_PII_POLICY_VIOLATION',
+            );
+        }
 
         console.log('test-catalog-source-runtime: OK');
     } finally {

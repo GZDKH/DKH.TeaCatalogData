@@ -13,6 +13,11 @@ const {
     writeJsonAtomic,
 } = require('./artifacts');
 const { reject } = require('./errors');
+const {
+    hasForbiddenPublicText,
+    isAllowedPublicImageReference,
+    isForbiddenPublicKey,
+} = require('./public-pii');
 
 const CHECKPOINT_SCHEMA = 'catalog-source-checkpoint-v1';
 const ARTIFACT_SCHEMA = 'catalog-source-artifact-v1';
@@ -381,15 +386,37 @@ async function collectDetails(context, listItems) {
 }
 
 function assertArtifactSafe(artifact) {
-    const serialized = JSON.stringify(artifact);
-    const forbidden = [
-        /"(?:[^"]*(?:phone|mobile|customer|avatar|contact|wechat|weixin|seller|buyer|userId)[^"]*)"\s*:/i,
-        /"(?:sell|buy)(?!Count")[^"]*"\s*:/i,
-        /(?<!\d)1[3-9]\d{9}(?!\d)/,
-    ];
-    if (forbidden.some(pattern => pattern.test(serialized))) {
-        reject('SOURCE_ARTIFACT_PII_POLICY_VIOLATION');
+    function visit(current, path = []) {
+        if (typeof current === 'string') {
+            const isImageUrl =
+                path.at(-1) === 'url' && path.at(-3) === 'images';
+            const imageReferencePolicy =
+                artifact.source?.imageReferencePolicy;
+            if (isImageUrl && imageReferencePolicy) {
+                if (!isAllowedPublicImageReference(
+                    current,
+                    imageReferencePolicy,
+                ) || hasForbiddenPublicText(current, {
+                    allowOpaqueImageNumericIdentifier: true,
+                })) {
+                    reject('SOURCE_ARTIFACT_PII_POLICY_VIOLATION');
+                }
+                return;
+            }
+            if (hasForbiddenPublicText(current)) {
+                reject('SOURCE_ARTIFACT_PII_POLICY_VIOLATION');
+            }
+            return;
+        }
+        if (!current || typeof current !== 'object') return;
+        for (const [key, child] of Object.entries(current)) {
+            if (isForbiddenPublicKey(key)) {
+                reject('SOURCE_ARTIFACT_PII_POLICY_VIOLATION');
+            }
+            visit(child, [...path, key]);
+        }
     }
+    visit(artifact);
 }
 
 function artifactSemanticDigest(artifact) {
@@ -433,6 +460,8 @@ function buildArtifact(checkpoint, items) {
         source: {
             id: checkpoint.sourceId,
             connectorVersion: checkpoint.connectorVersion,
+            imageReferencePolicy:
+                checkpoint.requestParameters?.publicImagePolicy || null,
             kind: 'public-reference-catalog',
             referencePricesAreRetailPrices: false,
         },

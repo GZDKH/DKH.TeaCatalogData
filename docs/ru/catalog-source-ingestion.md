@@ -55,6 +55,13 @@ resumable checkpoint, поэтому продолженный запуск не 
 сохраняет последний успешный artifact и не может создавать tombstones или
 изменять production.
 
+Файлы изображений не копируются. Product envelope может сохранить только
+версионированные HTTPS-ссылки `oss.yf-gz.cn` под `/file/`, без credentials,
+port и fragment и максимум с точным transform
+`x-oss-process=style/...`. Эта узкая URL-политика отличает непрозрачные
+числовые идентификаторы файлов от телефонов, не ослабляя PII-проверки остальных
+полей продукта.
+
 Проверяемая офлайн-проекция создаёт provider-neutral DTO наблюдений
 CommerceNetwork, детерминированный отчёт и manifest с хешами. Она не выполняет
 сетевых запросов и production-записей. Для reconciliation с ProductCatalog и

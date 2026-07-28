@@ -413,6 +413,52 @@ async function main() {
         ),
         false,
     );
+    const opaqueImageIdentifier = sanitizeDetailHtml(nuxtHtml({
+        teaDetail: {
+            id: 17627,
+            img1: 'https://oss.yf-gz.cn/file/asset_13800138000.jpg' +
+                '?x-oss-process=style/square300',
+            name: 'Fixture Case Tea',
+        },
+    }), '17627');
+    assert.ok(opaqueImageIdentifier.includes('asset_13800138000.jpg'));
+    for (const invalidButNonPiiImage of [
+        'https://evil.example/file/asset.jpg',
+        'https://oss.yf-gz.cn/profile/asset.jpg',
+    ]) {
+        const invalidImageItem = connector.parseDetail(
+            sanitizeDetailHtml(nuxtHtml({
+                teaDetail: {
+                    id: 17627,
+                    img1: invalidButNonPiiImage,
+                    name: 'Fixture Case Tea',
+                },
+            }), '17627'),
+        );
+        assert.deepStrictEqual(invalidImageItem.images, []);
+        assert.ok(invalidImageItem.diagnostics.includes('ZZCTEA_IMAGE_URL_INVALID'));
+    }
+    assert.throws(
+        () => sanitizeDetailHtml(nuxtHtml({
+            teaDetail: {
+                id: 17627,
+                img1: 'https://oss.yf-gz.cn/file/asset.jpg' +
+                    '?contact=13800138000',
+                name: 'Fixture Case Tea',
+            },
+        }), '17627'),
+        error => error.code === 'ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED',
+    );
+    assert.throws(
+        () => sanitizeDetailHtml(nuxtHtml({
+            teaDetail: {
+                id: 17627,
+                img1: 'https://oss.yf-gz.cn/file/wxid_abcd1234.jpg',
+                name: 'Fixture Case Tea',
+            },
+        }), '17627'),
+        error => error.code === 'ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED',
+    );
 
     const unsafeProductKey = ['ph', 'one'].join('');
     await assert.rejects(

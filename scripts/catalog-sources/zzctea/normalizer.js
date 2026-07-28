@@ -2,14 +2,16 @@
 
 const { reject } = require('../lib/errors');
 const { divideDecimal, decimalParts, multiplyDecimal } = require('./decimal');
-const { assertPublicCatalogPayload } = require('./policy');
+const {
+    assertPublicCatalogPayload,
+    validatePublicImageUrl,
+} = require('./policy');
 const { decodeSanitizedEnvelope } = require('./sanitized-envelope');
 const { normalizeDecimal, normalizeUnit, parsePackage } = require('./package-parser');
 
 const PARSER_VERSION = 'zzctea-public-html-nuxt-v4';
 const MAXIMUM_TOTAL_PAGES = 10_000;
 const MAXIMUM_SOURCE_DESCRIPTION_LENGTH = 4_000;
-const SAFE_IMAGE_HOSTS = new Set(['oss.yf-gz.cn']);
 const SOURCE_DESCRIPTION_CONTROL =
     /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]/;
 const SOURCE_DESCRIPTION_HTML = /<(?:(?:\/?[A-Za-z])|!DOCTYPE|!--|\?xml)[^>]*>/i;
@@ -80,16 +82,8 @@ function normalizeImages(source, diagnostics) {
         if (!raw) continue;
         let url;
         try {
-            url = new URL(raw);
+            url = validatePublicImageUrl(raw);
         } catch {
-            diagnostics.push('ZZCTEA_IMAGE_URL_INVALID');
-            continue;
-        }
-        if (url.protocol !== 'https:' ||
-            url.username ||
-            url.password ||
-            url.port ||
-            !SAFE_IMAGE_HOSTS.has(url.hostname.toLowerCase())) {
             diagnostics.push('ZZCTEA_IMAGE_URL_INVALID');
             continue;
         }

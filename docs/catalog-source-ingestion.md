@@ -46,6 +46,12 @@ the last page before completion. A partial or drifted
 run preserves the last good artifact and cannot create tombstones or production
 mutations.
 
+Image binaries are not copied. The product envelope may retain only versioned
+HTTPS references on `oss.yf-gz.cn` under `/file/`, with no credentials, port, or
+fragment and at most the exact `x-oss-process=style/...` transform. This narrow
+URL policy distinguishes opaque numeric asset IDs from contact numbers without
+weakening the PII checks for any other product text.
+
 The verified offline projection emits provider-neutral CommerceNetwork
 observation DTOs plus a deterministic report and hash manifest. It performs no
 network or production writes. ProductCatalog reconciliation and CommerceNetwork

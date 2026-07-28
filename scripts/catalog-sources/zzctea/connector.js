@@ -12,7 +12,11 @@ const {
     normalizeListPage,
 } = require('./normalizer');
 const { decodeSanitizedEnvelope } = require('./sanitized-envelope');
-const { assertPublicText } = require('./policy');
+const {
+    PUBLIC_IMAGE_POLICY,
+    PUBLIC_IMAGE_POLICY_VERSION,
+    assertPublicText,
+} = require('./policy');
 const {
     MAXIMUM_HTML_BYTES,
     sanitizeDetailHtml,
@@ -238,7 +242,7 @@ function createZzcTeaConnector(options = {}) {
 
     return Object.freeze({
         id: 'zzctea',
-        connectorVersion: 'zzctea-public-html-v4',
+        connectorVersion: 'zzctea-public-html-v5',
         parserVersion: PARSER_VERSION,
         defaultPageSize: 36,
         maximumPageSize: 36,
@@ -250,6 +254,8 @@ function createZzcTeaConnector(options = {}) {
                 canonicalHeadPattern: `${SOURCE_ORIGIN}${DETAIL_PATH_PATTERN}`,
                 canonicalDestinationPathPattern: '/tea/{slug}.html',
                 maximumCanonicalRedirects: MAXIMUM_CANONICAL_REDIRECTS,
+                publicImagePolicy: PUBLIC_IMAGE_POLICY,
+                publicImagePolicyVersion: PUBLIC_IMAGE_POLICY_VERSION,
                 requestPacing: testRequest
                     ? { mode: 'offline-test-double' }
                     : {

@@ -272,6 +272,14 @@ store. Preserve the successful artifact/checkpoint as a CI artifact or external
 object before relying on cross-run resume; if it is unavailable or incompatible,
 the runner fails closed.
 
+Source image binaries are not downloaded. Only references accepted by the
+versioned public-image policy are retained: HTTPS `oss.yf-gz.cn` `/file/...`
+image paths, with no credentials, port, or fragment and at most the exact
+`x-oss-process=style/...` transform. Opaque asset identifiers may contain long
+digit sequences; they bypass the phone-number heuristic only after the entire
+URL satisfies this narrow policy. Invalid non-PII image references remain
+diagnostic input and are excluded from the normalized artifact.
+
 Only a complete run publishes:
 
 ```text
