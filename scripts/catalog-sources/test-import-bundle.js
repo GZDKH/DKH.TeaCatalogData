@@ -140,8 +140,15 @@ function createContext() {
         path.join(sourceRoot, 'source-checkpoint.json'),
         {
             status: 'complete',
-            connectorVersion: 'zzctea-public-html-v7',
+            connectorVersion: 'zzctea-public-html-v8',
             requestParameters: {
+                detailValidationRetry: {
+                    maxAttempts: 3,
+                    retryableCodes: [
+                        'ZZCTEA_NUXT_DETAIL_ID_MISMATCH',
+                        'ZZCTEA_PRODUCT_ID_INVALID',
+                    ],
+                },
                 seed: {
                     schemaVersion: 'catalog-source-external-id-seed-v1',
                     mode: 'external-ids',
@@ -180,7 +187,7 @@ function createContext() {
         schemaVersion: 'catalog-source-artifact-manifest-v1',
         complete: true,
         sourceId: 'zzctea',
-        connectorVersion: 'zzctea-public-html-v7',
+        connectorVersion: 'zzctea-public-html-v8',
         snapshotId: 'snapshot-test',
         itemCount: 3,
         artifactFile: 'catalog-source-artifact-v1.source.json',

@@ -429,7 +429,7 @@ function createZzcTeaConnector(options = {}) {
 
     return Object.freeze({
         id: 'zzctea',
-        connectorVersion: 'zzctea-public-html-v7',
+        connectorVersion: 'zzctea-public-html-v8',
         parserVersion: PARSER_VERSION,
         defaultPageSize: 36,
         maximumPageSize: 36,
@@ -440,6 +440,11 @@ function createZzcTeaConnector(options = {}) {
                 listPagePattern: `${SOURCE_ORIGIN}${LIST_PATH}?page={page}`,
                 detailPagePattern: `${SOURCE_ORIGIN}${DETAIL_PATH_PATTERN}`,
                 detailRedirectMode: 'bounded-manual-get-chain',
+                detailValidationRetry: {
+                    maxAttempts: MAXIMUM_DETAIL_VALIDATION_ATTEMPTS,
+                    retryableCodes:
+                        [...RETRYABLE_DETAIL_VALIDATION_CODES].sort(),
+                },
                 canonicalHeadPattern: `${SOURCE_ORIGIN}${DETAIL_PATH_PATTERN}`,
                 canonicalDestinationPathPattern: '/tea/{slug}.html',
                 maximumCanonicalRedirects: MAXIMUM_CANONICAL_REDIRECTS,

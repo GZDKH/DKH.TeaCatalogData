@@ -119,12 +119,19 @@ function assertSeededWeeklyCheckpoint(context) {
     ));
     const seed = checkpoint.seed;
     const parameters = checkpoint.requestParameters?.seed;
+    const detailValidationRetry =
+        checkpoint.requestParameters?.detailValidationRetry;
     const artifactIds = sourceBundle.artifact.items
         .map(item => String(item?.externalId || ''))
         .sort(compareNumericExternalIds);
     if (checkpoint.status !== 'complete' ||
-        checkpoint.connectorVersion !== 'zzctea-public-html-v7' ||
+        checkpoint.connectorVersion !== 'zzctea-public-html-v8' ||
         sourceBundle.manifest.connectorVersion !== checkpoint.connectorVersion ||
+        detailValidationRetry?.maxAttempts !== 3 ||
+        stableJson(detailValidationRetry.retryableCodes) !== stableJson([
+            'ZZCTEA_NUXT_DETAIL_ID_MISMATCH',
+            'ZZCTEA_PRODUCT_ID_INVALID',
+        ]) ||
         seed?.schemaVersion !== 'catalog-source-external-id-seed-v1' ||
         seed.mode !== 'external-ids' ||
         !Array.isArray(seed.externalIds) ||

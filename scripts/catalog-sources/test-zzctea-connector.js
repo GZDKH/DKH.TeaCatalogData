@@ -142,6 +142,16 @@ async function main() {
         validationVersion: 'zzctea-robots-agent-query-v2',
     });
     assert.deepStrictEqual(
+        connector.requestParameters().detailValidationRetry,
+        {
+            maxAttempts: 3,
+            retryableCodes: [
+                'ZZCTEA_NUXT_DETAIL_ID_MISMATCH',
+                'ZZCTEA_PRODUCT_ID_INVALID',
+            ],
+        },
+    );
+    assert.deepStrictEqual(
         connector.requestParameters().requestPacing,
         { mode: 'offline-test-double' },
     );
