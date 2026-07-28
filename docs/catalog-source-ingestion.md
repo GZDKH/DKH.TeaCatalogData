@@ -76,18 +76,19 @@ and publication-ineligible.
 
 ## Operator import bundle
 
-Complete source, projection, reconciliation, and media outputs are assembled
-into one ignored `import/zzctea/current/` directory. `artifacts/` remains the
-immutable evidence layer; `import/zzctea/current/` is the stable
-operator-facing version. The builder validates all input bindings, clones real
-files without symlinks, writes a final hash manifest, and swaps the directory
-atomically.
+Complete source, projection, reconciliation, and media outputs are verified
+into two ignored atomic outputs. Internal evidence and the reusable
+content-addressed cache remain under
+`artifacts/catalog-source-import-bundles/zzctea/current/`.
+`import/zzctea/current/` contains only the numbered Data Import Console layout:
+one record per `04-products` file, catalog bindings, an
+`artifact-manifest.json`, and product-scoped local images plus
+`07-media/products/media.json`. Rollback arrays, checkpoints, projections and
+other evidence never enter the selected import tree.
 
-The bundle contains ProductCatalog product patches, immutable source-product
-mappings, provider-neutral CommerceNetwork observations with source links and
-reference-price/package evidence, source/projection/reconciliation evidence,
-and content-addressed media. It remains `applyAllowed: false` until SetupTool verifies the bundle and
-per-file hashes immediately before upload and a one-product canary passes.
+The Console artifact remains `applyAllowed: false` and `canaryRequired: true`.
+Validate the full folder, import one product, verify its Chinese source fields
+and local images, then run the full import.
 
 See [`../scripts/catalog-sources/README.md`](../scripts/catalog-sources/README.md)
 for commands, output layout and operator gates.

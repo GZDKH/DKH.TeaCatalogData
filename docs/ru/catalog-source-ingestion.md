@@ -86,20 +86,20 @@ manifest, поэтому reconciliation явно остаётся non-authoritat
 
 ## Операторский import bundle
 
-Полные source, projection, reconciliation и media outputs собираются в один
-игнорируемый каталог `import/zzctea/current/`. `artifacts/` остаётся
-неизменяемым слоем доказательств, а `import/zzctea/current/` — стабильной
-версией для оператора. Сборщик проверяет связи всех входов, клонирует реальные
-файлы без symlink, записывает итоговый hash manifest и атомарно заменяет
-каталог.
+Полные source, projection, reconciliation и media outputs проверяются и
+атомарно публикуются в два игнорируемых каталога. Внутренние evidence и
+переиспользуемый content-addressed cache остаются в
+`artifacts/catalog-source-import-bundles/zzctea/current/`.
+`import/zzctea/current/` содержит только нумерованную структуру Data Import
+Console: один товар в каждом файле `04-products`, catalog bindings,
+`artifact-manifest.json`, локальные изображения по товарам и
+`07-media/products/media.json`. Rollback-массивы, checkpoints, projections и
+другие evidence-файлы в выбираемый каталог импорта не попадают.
 
-Bundle содержит ProductCatalog product patches, неизменяемые source-product
-mappings, provider-neutral CommerceNetwork observations со ссылками источника,
-справочными ценами и упаковкой, evidence source/projection/reconciliation и
-content-addressed media.
-Он остаётся с `applyAllowed: false`, пока SetupTool не начнёт проверять bundle и
-hash каждого файла непосредственно перед upload и не будет успешно пройден
-canary одного товара.
+Console artifact остаётся с `applyAllowed: false` и
+`canaryRequired: true`. Сначала нужно проверить весь каталог, импортировать
+один товар, сверить китайские поля источника и локальные изображения, и только
+после этого запускать полный импорт.
 
 Команды, структура output и operator gates описаны в
 [`scripts/catalog-sources/README.md`](../../scripts/catalog-sources/README.md).

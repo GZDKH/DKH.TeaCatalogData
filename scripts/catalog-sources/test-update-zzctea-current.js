@@ -134,6 +134,10 @@ async function testHappyPath(root) {
     );
     assert.strictEqual(calls[4].args.out, undefined);
     assert.strictEqual(
+        calls[4].args['catalog-ref'],
+        args['catalog-ref'],
+    );
+    assert.strictEqual(
         calls[4].args['media-dir'],
         path.join(root, 'artifacts', 'media'),
     );

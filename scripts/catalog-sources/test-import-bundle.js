@@ -22,6 +22,7 @@ const {
     buildOutputDocuments,
 } = require('./lib/media-materialization');
 const {
+    assertCacheOutputPath,
     assertOutputPath,
 } = require('./build-import-bundle');
 const {
@@ -545,6 +546,33 @@ function testSymlinkGates() {
         () => assertOutputPath(
             linkedRootRepository,
             path.join(linkedRootRepository, 'import', 'zzctea', 'current'),
+        ),
+        /root cannot contain symlink ancestors/,
+    );
+
+    const cacheRepository = temporaryDirectory();
+    assert.throws(
+        () => assertCacheOutputPath(
+            cacheRepository,
+            path.join(temporaryDirectory(), 'external-cache'),
+        ),
+        /must resolve inside/,
+    );
+    const linkedCacheRepository = temporaryDirectory();
+    const cacheRoot = path.join(
+        linkedCacheRepository,
+        'artifacts',
+        'catalog-source-import-bundles',
+    );
+    fs.mkdirSync(cacheRoot, { recursive: true });
+    fs.symlinkSync(
+        temporaryDirectory(),
+        path.join(cacheRoot, 'zzctea'),
+    );
+    assert.throws(
+        () => assertCacheOutputPath(
+            linkedCacheRepository,
+            path.join(cacheRoot, 'zzctea', 'current'),
         ),
         /root cannot contain symlink ancestors/,
     );

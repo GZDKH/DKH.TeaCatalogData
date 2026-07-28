@@ -221,6 +221,7 @@ async function updateZzcTeaCurrent(args, options = {}) {
     }
     const bundle = await stages.buildBundle({
         'artifact-dir': artifactDirectory,
+        'catalog-ref': validated.catalogReference,
         'media-dir': media.outputDirectory,
         'projection-dir': projected.outputDirectory,
         'reconciliation-dir': reconciled.outputDirectory,
