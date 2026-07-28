@@ -48,10 +48,13 @@ node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01 --catalog-r
 node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --resume --concurrency=4
 node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --replay
 node scripts/catalog-sources/project-artifact.js --artifact-dir=artifacts/catalog-sources/zzctea/zzctea-2026-07-27
+node scripts/catalog-sources/publish-commerce-observations.js --projection-dir=artifacts/catalog-source-projections/<source>/<snapshot> --only=<external-id> --participant-id="$COMMERCE_CATALOG_SOURCE_PARTICIPANT_ID" --commerce-channel-id="$COMMERCE_CATALOG_SOURCE_CHANNEL_ID"
 node scripts/catalog-sources/reconcile-projection.js --projection-dir=artifacts/catalog-source-projections/zzctea/zzctea-2026-07-27 --catalog-ref=sources/prod/catalog-reference/prod-2026-07-27.json --product-ref=sources/prod/product-reference/prod-products-2026-07-27 --only=17641
 ```
 
 Use `--apply --yes` with `import-generated.js` only after explicit approval.
+The Commerce observation publisher is also dry-run by default and requires the
+separate `--apply --yes` confirmation for its one-item canary.
 
 ## Production Gates
 
@@ -62,4 +65,6 @@ Use `--apply --yes` with `import-generated.js` only after explicit approval.
 - ProductCatalog must preserve catalog-scoped tier-price catalog codes across product export/import before canary.
 - Definitions and routed article/FAQ content need their ordered downstream paths before the product canary is considered complete.
 - TheTea commercial/licensing approval must be confirmed before loading production.
+- Current ZZCTea `robots.txt` disallows `/api/`; do not execute or schedule a
+  live fetch until source-access and legal review explicitly clear it.
 - Apply a one-product canary and verify read-back before requesting a separate mass apply approval.
