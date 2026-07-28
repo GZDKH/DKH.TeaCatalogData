@@ -28,6 +28,7 @@ try {
         lossEvents: [],
         catalogTargets: ['CATALOG-CHINESE-TEA'],
         storefrontTargets: ['thetea-wiki', 'shop-thetea', 'shop-thetea'],
+        catalogAssignmentMode: 'target-only',
         catalogPlacement: {
             requiredCatalog: 'CATALOG-CHINESE-TEA',
             productCount: 1,
@@ -45,6 +46,7 @@ try {
     assert.deepStrictEqual(valid.manifest.targets, {
         catalogCodes: ['CATALOG-CHINESE-TEA'],
         storefrontCodes: ['shop-thetea', 'thetea-wiki'],
+        catalogAssignmentMode: 'target-only',
     });
     assert.strictEqual(valid.manifest.catalogPlacement.unassignedProductCount, 0);
     const bundle = readArtifactBundle(root);

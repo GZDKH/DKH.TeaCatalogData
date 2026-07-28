@@ -125,10 +125,12 @@ node scripts/thetea/generate-import.js \
   --packages=standard \
   --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json \
   --product-ref=sources/prod/product-reference/prod-products-2026-06-01 \
+  --catalog-assignment-mode=target-only \
   --storefronts=shop-thetea,thetea-wiki
 ```
 
 The resync workflow fails if a generated product code is absent from the marked complete baseline. New-product creation is intentionally outside this workflow.
+The default `--catalog-assignment-mode=preserve` keeps unrelated baseline catalog placements. Use `target-only` only for an approved catalog migration: it preserves baseline assignments inside the selected `--catalog` while removing assignments to other catalogs. All nested production reference objects are canonicalized to scalar import codes before validation.
 The artifact manifest records exact catalog/storefront target codes. Category normalization falls back from empty structured meta fields to conservative canonical origin/type/name evidence and writes the complete coverage/unresolved audit to `reports/thetea/<snapshot>/category-coverage.json`.
 
 Validate generated files locally:
