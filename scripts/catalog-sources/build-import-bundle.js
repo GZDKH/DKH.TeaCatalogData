@@ -14,7 +14,12 @@ const {
 } = require('../thetea/lib/generated-output');
 const {
     readJson,
+    sha256,
 } = require('./lib/artifacts');
+const {
+    verifyAdminConsoleArtifact,
+    writeAdminConsoleArtifact,
+} = require('./lib/admin-console-artifact');
 const {
     verifyImportBundle,
     writeImportBundle,
@@ -39,6 +44,15 @@ function resolveDirectory(repositoryRoot, value, label) {
         throw new Error(`${label} must be a real directory.`);
     }
     return directory;
+}
+
+function resolveFile(repositoryRoot, value, label) {
+    const file = path.resolve(repositoryRoot, value);
+    const stat = fs.lstatSync(file);
+    if (stat.isSymbolicLink() || !stat.isFile()) {
+        throw new Error(`${label} must be a real file.`);
+    }
+    return file;
 }
 
 function assertOutputPath(repositoryRoot, outputDirectory) {
@@ -83,6 +97,66 @@ function assertOutputPath(repositoryRoot, outputDirectory) {
     return canonicalOutput;
 }
 
+function assertCacheOutputPath(repositoryRoot, outputDirectory) {
+    const canonicalRepositoryRoot = fs.realpathSync(repositoryRoot);
+    const allowedRoot = path.join(
+        canonicalRepositoryRoot,
+        'artifacts',
+        'catalog-source-import-bundles',
+        'zzctea',
+    );
+    let current = canonicalRepositoryRoot;
+    for (const segment of [
+        'artifacts',
+        'catalog-source-import-bundles',
+        'zzctea',
+    ]) {
+        current = path.join(current, segment);
+        if (fs.existsSync(current)) {
+            const stat = fs.lstatSync(current);
+            if (stat.isSymbolicLink() || !stat.isDirectory()) {
+                throw new Error(
+                    'ZZCTea cache bundle root cannot contain symlink ancestors.',
+                );
+            }
+        } else {
+            fs.mkdirSync(current);
+        }
+    }
+    const canonicalOutput = assertScopedPath(outputDirectory, {
+        repoRoot: canonicalRepositoryRoot,
+        allowedRoot,
+        allowedDescription:
+            'artifacts/catalog-source-import-bundles/zzctea/',
+        label: 'ZZCTea verified cache bundle output',
+    });
+    const canonicalAllowedRoot = fs.realpathSync(allowedRoot);
+    const relative = path.relative(canonicalAllowedRoot, canonicalOutput);
+    if (!relative ||
+        relative === '..' ||
+        relative.startsWith(`..${path.sep}`) ||
+        path.isAbsolute(relative)) {
+        throw new Error(
+            'ZZCTea cache bundle must resolve inside ' +
+            'artifacts/catalog-source-import-bundles/zzctea/.',
+        );
+    }
+    current = allowedRoot;
+    for (const segment of path.relative(
+        allowedRoot,
+        outputDirectory,
+    ).split(path.sep)) {
+        current = path.join(current, segment);
+        if (!fs.existsSync(current)) break;
+        if (fs.lstatSync(current).isSymbolicLink()) {
+            throw new Error(
+                'ZZCTea cache bundle path cannot contain symlink ancestors.',
+            );
+        }
+    }
+    return canonicalOutput;
+}
+
 async function buildZzcTeaImportBundle(args, options = {}) {
     const repositoryRoot = path.resolve(options.repositoryRoot || REPO_ROOT);
     const sourceBundle = loadVerifiedCatalogSourceBundle(resolveDirectory(
@@ -108,6 +182,15 @@ async function buildZzcTeaImportBundle(args, options = {}) {
     const mediaManifest = readJson(path.join(mediaRoot, 'media-manifest.json'));
     const mediaReceipt = readJson(path.join(mediaRoot, mediaManifest.receiptFile));
     const mediaCheckpoint = readJson(path.join(mediaRoot, 'media-checkpoint.json'));
+    const catalogReferenceFile = resolveFile(
+        repositoryRoot,
+        requireArg(args, 'catalog-ref'),
+        'Catalog reference',
+    );
+    const catalogReferenceBuffer = fs.readFileSync(catalogReferenceFile);
+    const catalogReference = JSON.parse(
+        catalogReferenceBuffer.toString('utf8').replace(/^\uFEFF/, ''),
+    );
 
     await materializeVerifiedMedia({
         artifactBundle: sourceBundle,
@@ -130,6 +213,8 @@ async function buildZzcTeaImportBundle(args, options = {}) {
             : path.join(repositoryRoot, 'import', 'zzctea', 'current'),
     );
     const context = {
+        catalogReference,
+        catalogReferenceSha256: sha256(catalogReferenceBuffer),
         mappingsBundle,
         mediaCheckpoint,
         mediaManifest,
@@ -138,22 +223,55 @@ async function buildZzcTeaImportBundle(args, options = {}) {
         projectionBundle,
         sourceBundle,
     };
+    const cacheOutputDirectory = assertCacheOutputPath(
+        repositoryRoot,
+        args['cache-out']
+            ? path.resolve(repositoryRoot, String(args['cache-out']))
+            : path.join(
+                repositoryRoot,
+                'artifacts',
+                'catalog-source-import-bundles',
+                'zzctea',
+                'current',
+            ),
+    );
+    const cacheDocuments = withStagedOutput(
+        cacheOutputDirectory,
+        stagingDirectory => {
+            const written = writeImportBundle(stagingDirectory, context);
+            verifyImportBundle(stagingDirectory);
+            return written;
+        },
+    );
+    const cacheVerified = verifyImportBundle(cacheOutputDirectory);
+
     const documents = withStagedOutput(outputDirectory, stagingDirectory => {
-        const written = writeImportBundle(stagingDirectory, context);
-        verifyImportBundle(stagingDirectory);
+        const written = writeAdminConsoleArtifact(stagingDirectory, context);
+        verifyAdminConsoleArtifact(stagingDirectory);
         return written;
     });
-    const verified = verifyImportBundle(outputDirectory);
-    return { documents, outputDirectory, verified };
+    const verified = verifyAdminConsoleArtifact(outputDirectory);
+    return {
+        cacheDocuments,
+        cacheOutputDirectory,
+        cacheVerified,
+        documents,
+        outputDirectory,
+        verified,
+    };
 }
 
 async function main() {
     const result = await buildZzcTeaImportBundle(parseArgs());
     console.log(`Version: ${result.verified.manifest.version}`);
-    console.log(`Products: ${result.verified.manifest.counts.matchedProducts}`);
+    console.log(`Products: ${result.verified.manifest.counts.products}`);
     console.log(`Media items: ${result.verified.manifest.counts.mediaItems}`);
-    console.log(`Unique blobs: ${result.verified.manifest.counts.uniqueMediaBlobs}`);
+    console.log(
+        `Unique source blobs: ` +
+        `${result.verified.manifest.counts.uniqueSourceMediaBlobs}`,
+    );
     console.log(`Output: ${result.outputDirectory}`);
+    console.log(`Verified cache: ${result.cacheOutputDirectory}`);
     console.log('Apply allowed: false');
     console.log('Production writes: none');
 }
@@ -166,7 +284,9 @@ if (require.main === module) {
 }
 
 module.exports = {
+    assertCacheOutputPath,
     assertOutputPath,
     buildZzcTeaImportBundle,
     resolveDirectory,
+    resolveFile,
 };

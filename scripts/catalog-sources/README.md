@@ -16,7 +16,7 @@ node scripts/catalog-sources/update-zzctea-current.js \
   --snapshot=zzctea-2026-07-28-weekly-v1 \
   --catalog-ref=sources/prod/catalog-reference/prod-2026-07-27.json \
   --product-ref=sources/prod/product-reference/prod-products-2026-07-28-post-import \
-  --previous-media-dir=/absolute/path/to/import/zzctea/current/media \
+  --previous-media-dir=/absolute/path/to/artifacts/catalog-source-import-bundles/zzctea/current/media \
   --minimum-request-interval-ms=1000
 ```
 
@@ -277,9 +277,12 @@ Optional limits:
 - `--minimum-request-interval-ms=<1000..60000>`
 
 The weekly command also requires an absolute, normalized
-`--previous-media-dir`. It must point to a verified prior canonical media
-directory. Unchanged blobs are reused with copy-on-write cloning; new or
-changed source URLs are downloaded and verified before the atomic bundle swap.
+`--previous-media-dir`. It must point to the verified prior internal cache at
+`artifacts/catalog-source-import-bundles/zzctea/current/media`. Unchanged blobs
+are reused with copy-on-write cloning; new or changed source URLs are
+downloaded and verified before either atomic output is swapped. The internal
+cache is deliberately outside `import/zzctea/`, so selecting the import folder
+cannot expose evidence JSON to Data Import Console.
 
 After the source, projection, reconciliation, and media outputs are complete,
 assemble one operator-facing version:
@@ -287,43 +290,49 @@ assemble one operator-facing version:
 ```bash
 node scripts/catalog-sources/build-import-bundle.js \
   --artifact-dir=artifacts/catalog-sources/zzctea/<snapshot> \
+  --catalog-ref=sources/prod/catalog-reference/<snapshot>.json \
   --projection-dir=artifacts/catalog-source-projections/zzctea/<snapshot> \
   --reconciliation-dir=artifacts/catalog-source-reconciliations/zzctea/<snapshot>/<reference-binding>/full \
   --media-dir=artifacts/catalog-source-media/zzctea/<snapshot>/<artifact-sha>/<mapping-sha>/full
 ```
 
-The default output is ignored `import/zzctea/current/`. It contains:
+The default operator output is ignored `import/zzctea/current/`. It contains
+only Data Import Console-supported files:
 
 ```text
 import/zzctea/current/
-├── import-bundle-manifest.json
-├── import-plan.json
-├── data/
-│   ├── products.json
-│   ├── source-product-mappings.json
-│   └── commerce-observations.json
-├── evidence/
-│   ├── source/
-│   ├── projection/
-│   └── reconciliation/
-└── media/
-    ├── media-manifest.json
-    ├── media-items.json
-    ├── media-receipt.json
-    ├── media-checkpoint.json
-    └── blobs/
+├── 01-reference/catalogs.json
+├── 02-specifications/
+├── 03-categories/categories.json
+├── 04-products/<category>/ZZC-<id>.json
+├── 05-catalog-bindings/catalogs.json
+├── 06-routed-content/
+├── 07-media/products/
+│   ├── media.json
+│   └── ZZC-<id>/<ordered-local-image>
+└── artifact-manifest.json
 ```
 
-Inputs are revalidated before packaging. Files are copied with filesystem
-copy-on-write cloning when available, never symlinked. A staged directory is
-verified and atomically replaces `current`, with the final bundle manifest
-written last. `artifacts/` remains the immutable evidence layer while
-`import/zzctea/current/` is the single operator-facing version.
+Each product file contains exactly one record and stays below the Console's
+3 MiB batching ceiling, so canary imports really select one product. The media
+manifest preserves source order and cover selection; every referenced image is
+local to its product directory. Evidence, rollback arrays and checkpoints are
+never copied into the selected import tree.
 
-The generated `import-plan.json` deliberately has `applyAllowed: false` and
-media `enabled: false`. Do not edit those flags manually. Enable production
-apply only after SetupTool verifies the bundle manifest, every media hash and
-size immediately before upload, and a one-product canary passes.
+Inputs are revalidated before packaging. Files are copied with filesystem
+copy-on-write cloning when available, never symlinked. The builder first
+atomically refreshes the verified internal cache under
+`artifacts/catalog-source-import-bundles/zzctea/current/`, then atomically
+replaces the Console artifact. The final `artifact-manifest.json` binds every
+file and records `applyAllowed: false`, `productionWrites: false`, and
+`canaryRequired: true`. Do not edit those flags manually. Validate the whole
+folder and import one product before importing all products and media.
+
+The reusable cache is not a release pointer and may safely advance if final
+Console publication fails. Each cached file remains bound to its verified
+source receipt; the next run reuses only matching source URLs and hashes. The
+operator-visible `import/zzctea/current/` is replaced only after its own full
+staging verification succeeds.
 
 The connector is fixed to the robots-allowed public HTML routes
 `https://zzctea.com/teaList?page={page}&brandIds={reviewed-brand}` and

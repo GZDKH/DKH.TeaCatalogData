@@ -18,7 +18,7 @@ DKH.TeaCatalogData/
 │   ├── catalog-sources/
 │   └── prod/{catalog-reference,product-reference}/
 ├── import/thetea/              # Ignored generated ProductCatalog JSON
-├── import/zzctea/current/      # Ignored atomic ZZCTea data + media import bundle
+├── import/zzctea/current/      # Ignored Data Import Console artifact
 ├── reports/thetea/             # Ignored generated validation/mapping reports
 └── AGENTS.md / CLAUDE.md       # Agent context
 ```
@@ -46,7 +46,7 @@ node scripts/catalog-sources/update-zzctea-current.js \
   --snapshot=zzctea-2026-07-28-weekly-v1 \
   --catalog-ref=sources/prod/catalog-reference/prod-2026-07-27.json \
   --product-ref=sources/prod/product-reference/prod-products-2026-07-28-post-import \
-  --previous-media-dir=/absolute/path/to/import/zzctea/current/media \
+  --previous-media-dir=/absolute/path/to/artifacts/catalog-source-import-bundles/zzctea/current/media \
   --minimum-request-interval-ms=1000
 ```
 
@@ -65,11 +65,13 @@ under ignored `artifacts/`. See
 [`scripts/catalog-sources/README.md`](scripts/catalog-sources/README.md) for
 replay, drift, PII and reference-price rules.
 
-The final stage atomically replaces ignored `import/zzctea/current/`. That
-directory is the single version to inspect and later import; `artifacts/`
-remains the immutable evidence input. The bundle carries
-`applyAllowed: false` until the verified SetupTool media gate and one-product
-canary are complete.
+The final stage atomically replaces ignored `import/zzctea/current/` with a
+Data Import Console artifact using the same numbered layout as TheTea. Products
+are split into one JSON file each under `04-products/`; local images and their
+manifest are under `07-media/`. Internal source, rollback, reconciliation and
+content-addressed cache evidence remains outside the selected import tree under
+ignored `artifacts/`. The artifact carries `applyAllowed: false`; validate it
+and run a one-product canary in Data Import Console before importing all files.
 
 Put secrets in `.env` using `scripts/env.prod.template`. The TheTea text API key is read from `THETEA_API_KEY` or `THE_TEA_API_KEY`. ProductCatalog export/validate/import also requires `PRODUCT_CATALOG_WORKSPACE_ID`.
 
