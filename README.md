@@ -144,6 +144,10 @@ node scripts/thetea/import-generated.js \
 ```
 
 Mass apply is a separate approval after read-back comparison. `import-generated.js` supports only categories/products; definitions require an ordered SetupTool workflow, while article/FAQ sidecars require their dedicated downstream importer.
+Apply preflight enforces the catalog assignment policy recorded in the hashed
+artifact manifest. A `target-only` artifact intentionally replaces stale catalog
+placements with the single declared target catalog; `preserve` retains unrelated
+catalog placements.
 
 ## Production Gates
 

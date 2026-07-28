@@ -242,6 +242,9 @@ node scripts/thetea/import-generated.js \
 ```
 
 That command is a canary, not a mass load. Read the product back and compare its group/attribute/value structure before requesting a separate mass-apply approval. Apply is forbidden when either reference hash or the source snapshot hash is missing or changed.
+Apply also enforces `targets.catalogAssignmentMode` from the hashed artifact
+manifest. `target-only` removes stale placements outside the single declared
+target catalog, while `preserve` retains unrelated catalog placements.
 
 Clean legacy junk from the earlier bad imports only after reviewing the dry-run
 list. This removes legacy full-page/similar attributes, synthetic `*_xN`
