@@ -37,9 +37,11 @@ cannot silently increase the crawl rate.
 Full HTML and the complete embedded Nuxt state remain in memory and are never
 persisted. Only strict product-field allowlisted, PII-free list/detail envelopes
 are stored; seller/buyer/contact/profile sibling branches are discarded before
-serialization. A strict `HEAD` on each stable detail URL records the separately
-validated final canonical `/tea/{slug}.html` destination exactly as supplied by
-`Location`. A sanitized `totalPages + 1` probe must be empty or exactly repeat
+serialization. A standalone canonical check uses bounded strict `HEAD` requests.
+During ingestion the final canonical `/tea/{slug}.html` destination and detail
+body are obtained through a maximum of four manually validated GET redirect hops,
+with robots and host/path policy rechecked at every hop; automatic redirect
+following is disabled. A sanitized `totalPages + 1` probe must be empty or exactly repeat
 the last page before completion. A partial or drifted
 run preserves the last good artifact and cannot create tombstones or production
 mutations.

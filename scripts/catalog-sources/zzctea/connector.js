@@ -33,6 +33,7 @@ const ROBOTS_URL = `${SOURCE_ORIGIN}/robots.txt`;
 const LIST_PATH = '/teaList';
 const DETAIL_PATH_PATTERN = '/teaDetail/{externalId}.html';
 const DEFAULT_MINIMUM_REQUEST_INTERVAL_MS = 1_000;
+const MAXIMUM_CANONICAL_REDIRECTS = 4;
 
 function createZzcTeaConnector(options = {}) {
     const minimumRequestIntervalMs = options.minimumRequestIntervalMs ??
@@ -63,6 +64,8 @@ function createZzcTeaConnector(options = {}) {
             sleep: options.sleep,
         }));
     let robotsPolicyPromise;
+    const canonicalUrlPromises = new Map();
+    const detailDocumentPromises = new Map();
 
     async function loadRobotsPolicy() {
         const response = await request(ROBOTS_URL, {
@@ -103,6 +106,136 @@ function createZzcTeaConnector(options = {}) {
         return response.body;
     }
 
+    function validateCanonicalDestination(location, currentUrl) {
+        if (!location) reject('ZZCTEA_CANONICAL_REDIRECT_MISSING');
+        const destination = validateAllowedUrl(
+            new URL(location, currentUrl).toString(),
+            SOURCE_HOSTS,
+        );
+        if (!/^\/tea\/[A-Za-z0-9][A-Za-z0-9-]*\.html$/u.test(
+            destination.pathname,
+        ) ||
+            destination.search ||
+            destination.hash) {
+            reject('ZZCTEA_CANONICAL_REDIRECT_INVALID');
+        }
+        assertPublicText(destination.toString());
+        return destination;
+    }
+
+    function stableDetailUrl(externalId) {
+        if (!/^[1-9]\d*$/.test(String(externalId))) {
+            throw new Error('ZZCTea external ID must be a positive integer.');
+        }
+        const key = String(externalId);
+        const path = DETAIL_PATH_PATTERN.replace('{externalId}', key);
+        return { key, path, url: new URL(path, SOURCE_ORIGIN) };
+    }
+
+    function observeCanonicalUrl(externalId) {
+        const { key, url: stableUrl } = stableDetailUrl(externalId);
+        if (canonicalUrlPromises.has(key)) {
+            return canonicalUrlPromises.get(key);
+        }
+        const promise = (async () => {
+            let currentUrl = stableUrl;
+            for (let redirectCount = 0;
+                redirectCount <= MAXIMUM_CANONICAL_REDIRECTS;
+                redirectCount += 1) {
+                await assertRouteAllowed(currentUrl.pathname);
+                const response = await request(currentUrl.toString(), {
+                    acceptedStatuses: [200, 301, 302, 307, 308],
+                    allowedHosts: SOURCE_HOSTS,
+                    headers: {
+                        'User-Agent': CRAWLER_USER_AGENT,
+                    },
+                    maxResponseBytes: 0,
+                    method: 'HEAD',
+                    retries: 2,
+                    timeoutMs: 20_000,
+                });
+                if (response.status === 200) {
+                    if (currentUrl.href === stableUrl.href) {
+                        reject('ZZCTEA_CANONICAL_REDIRECT_MISSING');
+                    }
+                    const observedDestination = currentUrl.toString();
+                    assertPublicText(observedDestination);
+                    return observedDestination;
+                }
+                if (redirectCount === MAXIMUM_CANONICAL_REDIRECTS) {
+                    reject('ZZCTEA_CANONICAL_REDIRECT_LIMIT_EXCEEDED');
+                }
+                currentUrl = validateCanonicalDestination(
+                    response.headers.get('location'),
+                    currentUrl,
+                );
+            }
+            reject('ZZCTEA_CANONICAL_REDIRECT_LIMIT_EXCEEDED');
+        })();
+        canonicalUrlPromises.set(key, promise);
+        return promise;
+    }
+
+    async function fetchDetailDocument(externalId) {
+        const { key, url: stableUrl } = stableDetailUrl(externalId);
+        if (detailDocumentPromises.has(key)) {
+            return detailDocumentPromises.get(key);
+        }
+        const promise = (async () => {
+            let currentUrl = canonicalUrlPromises.has(key)
+                ? new URL(await canonicalUrlPromises.get(key))
+                : stableUrl;
+            for (let redirectCount = 0;
+                redirectCount <= MAXIMUM_CANONICAL_REDIRECTS;
+                redirectCount += 1) {
+                await assertRouteAllowed(currentUrl.pathname);
+                const response = await request(currentUrl.toString(), {
+                    acceptedStatuses: [200, 301, 302, 307, 308],
+                    allowedHosts: SOURCE_HOSTS,
+                    headers: {
+                        Accept: 'text/html,application/xhtml+xml',
+                        'User-Agent': CRAWLER_USER_AGENT,
+                    },
+                    maxResponseBytes: MAXIMUM_HTML_BYTES,
+                    method: 'GET',
+                    retries: 3,
+                    timeoutMs: 30_000,
+                });
+                if (response.status === 200) {
+                    if (currentUrl.href === stableUrl.href) {
+                        reject('ZZCTEA_CANONICAL_REDIRECT_MISSING');
+                    }
+                    const observedCanonicalUrl = currentUrl.toString();
+                    assertPublicText(observedCanonicalUrl);
+                    canonicalUrlPromises.set(
+                        key,
+                        Promise.resolve(observedCanonicalUrl),
+                    );
+                    return {
+                        observedCanonicalUrl,
+                        raw: sanitizeDetailHtml(response.body, key),
+                    };
+                }
+                if (redirectCount === MAXIMUM_CANONICAL_REDIRECTS) {
+                    reject('ZZCTEA_CANONICAL_REDIRECT_LIMIT_EXCEEDED');
+                }
+                currentUrl = validateCanonicalDestination(
+                    response.headers.get('location'),
+                    currentUrl,
+                );
+            }
+            reject('ZZCTEA_CANONICAL_REDIRECT_LIMIT_EXCEEDED');
+        })();
+        detailDocumentPromises.set(key, promise);
+        try {
+            return await promise;
+        } finally {
+            if (detailDocumentPromises.get(key) === promise) {
+                detailDocumentPromises.delete(key);
+            }
+        }
+    }
+
     return Object.freeze({
         id: 'zzctea',
         connectorVersion: 'zzctea-public-html-v4',
@@ -113,8 +246,10 @@ function createZzcTeaConnector(options = {}) {
             return {
                 listPagePattern: `${SOURCE_ORIGIN}${LIST_PATH}?page={page}`,
                 detailPagePattern: `${SOURCE_ORIGIN}${DETAIL_PATH_PATTERN}`,
+                detailRedirectMode: 'bounded-manual-get-chain',
                 canonicalHeadPattern: `${SOURCE_ORIGIN}${DETAIL_PATH_PATTERN}`,
                 canonicalDestinationPathPattern: '/tea/{slug}.html',
+                maximumCanonicalRedirects: MAXIMUM_CANONICAL_REDIRECTS,
                 requestPacing: testRequest
                     ? { mode: 'offline-test-double' }
                     : {
@@ -190,53 +325,11 @@ function createZzcTeaConnector(options = {}) {
             }
         },
         async fetchDetail({ externalId }) {
-            if (!/^[1-9]\d*$/.test(String(externalId))) {
-                throw new Error('ZZCTea external ID must be a positive integer.');
-            }
-            const path = DETAIL_PATH_PATTERN.replace(
-                '{externalId}',
-                String(externalId),
-            );
-            await assertRouteAllowed(path);
-            return sanitizeDetailHtml(
-                await fetchHtml(new URL(path, SOURCE_ORIGIN)),
-                String(externalId),
-            );
+            return (await fetchDetailDocument(externalId)).raw;
         },
         parseDetail: normalizeDetail,
         async resolveCanonicalUrl({ externalId }) {
-            if (!/^[1-9]\d*$/.test(String(externalId))) {
-                throw new Error('ZZCTea external ID must be a positive integer.');
-            }
-            const stable = `${SOURCE_ORIGIN}/teaDetail/${externalId}.html`;
-            await assertRouteAllowed(`/teaDetail/${externalId}.html`);
-            const response = await request(stable, {
-                acceptedStatuses: [301, 302, 307, 308],
-                allowedHosts: SOURCE_HOSTS,
-                headers: {
-                    'User-Agent': CRAWLER_USER_AGENT,
-                },
-                maxResponseBytes: 0,
-                method: 'HEAD',
-                retries: 2,
-                timeoutMs: 20_000,
-            });
-            const location = response.headers.get('location');
-            if (!location) reject('ZZCTEA_CANONICAL_REDIRECT_MISSING');
-            const destination = validateAllowedUrl(
-                new URL(location, stable).toString(),
-                SOURCE_HOSTS,
-            );
-            if (!/^\/tea\/[A-Za-z0-9][A-Za-z0-9-]*\.html$/u.test(
-                destination.pathname,
-            ) ||
-                destination.search ||
-                destination.hash) {
-                reject('ZZCTEA_CANONICAL_REDIRECT_INVALID');
-            }
-            const observedDestination = destination.toString();
-            assertPublicText(observedDestination);
-            return observedDestination;
+            return observeCanonicalUrl(externalId);
         },
     });
 }

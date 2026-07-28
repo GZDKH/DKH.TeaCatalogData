@@ -6,7 +6,7 @@ const { assertPublicCatalogPayload } = require('./policy');
 const { decodeSanitizedEnvelope } = require('./sanitized-envelope');
 const { normalizeDecimal, normalizeUnit, parsePackage } = require('./package-parser');
 
-const PARSER_VERSION = 'zzctea-public-html-nuxt-v3';
+const PARSER_VERSION = 'zzctea-public-html-nuxt-v4';
 const MAXIMUM_TOTAL_PAGES = 10_000;
 const MAXIMUM_SOURCE_DESCRIPTION_LENGTH = 4_000;
 const SAFE_IMAGE_HOSTS = new Set(['oss.yf-gz.cn']);

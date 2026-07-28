@@ -13,6 +13,7 @@ const {
     createZzcTeaConnector,
 } = require('./zzctea/connector');
 const {
+    MAXIMUM_HTML_BYTES,
     extractNuxtState,
     sanitizeDetailHtml,
     sanitizeTerminalProbeHtml,
@@ -83,9 +84,9 @@ async function main() {
         assert.ok(!url.pathname.includes('/api/'));
         assert.ok(!url.pathname.includes('/official/'));
         if (rawUrl === ROBOTS_URL) return robotsResponse();
-        if (options.method === 'HEAD') {
+        if (url.pathname.startsWith('/teaDetail/')) {
             return {
-                status: 302,
+                status: 301,
                 headers: new Headers({
                     location: 'https://www.zzctea.com/tea/fixture-case-tea.html',
                 }),
@@ -156,12 +157,12 @@ async function main() {
                     status: 200,
                 });
             }
-            if (options.method === 'HEAD') {
+            if (url.pathname.startsWith('/teaDetail/')) {
                 return new Response(null, {
                     headers: {
                         location: 'https://www.zzctea.com/tea/fixture-case-tea.html',
                     },
-                    status: 302,
+                    status: 301,
                 });
             }
             return new Response(fixture('detail-case.html'), {
@@ -185,7 +186,7 @@ async function main() {
         { clock: 1_000, method: 'GET', target: '/teaList?page=1' },
         { clock: 2_000, method: 'GET', target: '/teaList?page=1' },
         { clock: 3_000, method: 'GET', target: '/teaDetail/17627.html' },
-        { clock: 4_000, method: 'HEAD', target: '/teaDetail/17627.html' },
+        { clock: 4_000, method: 'GET', target: '/tea/fixture-case-tea.html' },
     ]);
     assert.throws(
         () => createZzcTeaConnector({ minimumRequestIntervalMs: 999 }),
@@ -263,7 +264,7 @@ async function main() {
             '/teaList?page=1',
             '/teaList?page=2',
             '/teaDetail/17627.html',
-            '/teaDetail/17627.html',
+            '/tea/fixture-case-tea.html',
         ],
     );
     assert.strictEqual(calls.filter(call => call.url.pathname === '/robots.txt').length, 1);
@@ -271,16 +272,114 @@ async function main() {
     assert.strictEqual(calls[0].options.maxResponseBytes, MAXIMUM_ROBOTS_BYTES);
     assert.ok(calls.every(call =>
         call.options.headers['User-Agent'] === CRAWLER_USER_AGENT));
-    assert.ok(calls.slice(1, 4).every(call =>
+    assert.ok(calls.slice(1).every(call =>
         call.options.headers.Accept === 'text/html,application/xhtml+xml'));
-    assert.ok(calls.slice(1, 4).every(call =>
+    assert.ok([calls[1], calls[2]].every(call =>
         call.options.acceptedStatuses.join(',') === '200'));
-    assert.strictEqual(calls[4].options.method, 'HEAD');
-    assert.deepStrictEqual(calls[4].options.acceptedStatuses, [301, 302, 307, 308]);
-    assert.strictEqual(calls[4].options.maxResponseBytes, 0);
+    assert.ok([calls[3], calls[4]].every(call =>
+        call.options.method === 'GET'));
+    assert.ok([calls[3], calls[4]].every(call =>
+        call.options.acceptedStatuses.join(',') === '200,301,302,307,308'));
+    assert.ok([calls[3], calls[4]].every(call =>
+        call.options.maxResponseBytes === MAXIMUM_HTML_BYTES));
     assert.ok([pageRaw, terminalRaw, detailRaw].every(raw =>
         !/(?:sellList|buyList|phone|mobile|customer|avatar)/iu.test(raw.toString('utf8')) &&
         !/(?<!\d)1[3-9]\d{9}(?!\d)/u.test(raw.toString('utf8'))));
+
+    const chainedCalls = [];
+    const chainedRedirect = createZzcTeaConnector({
+        testMode: true,
+        testRequest: requestWithRobots(async rawUrl => {
+            const url = new URL(rawUrl);
+            chainedCalls.push(url.pathname);
+            if (url.pathname === '/teaDetail/17627.html') {
+                return {
+                    status: 301,
+                    headers: new Headers({ location: '/tea/t17627.html' }),
+                    body: Buffer.alloc(0),
+                };
+            }
+            if (url.pathname === '/tea/t17627.html') {
+                return {
+                    status: 308,
+                    headers: new Headers({
+                        location: '/tea/t17627-2501-fixture.html',
+                    }),
+                    body: Buffer.alloc(0),
+                };
+            }
+            return {
+                status: 200,
+                headers: new Headers({
+                    'content-type': 'text/html; charset=utf-8',
+                }),
+                body: fixture('detail-case.html'),
+            };
+        }),
+    });
+    assert.strictEqual(
+        chainedRedirect.parseDetail(
+            await chainedRedirect.fetchDetail({ externalId: '17627' }),
+        ).externalId,
+        '17627',
+    );
+    assert.strictEqual(
+        await chainedRedirect.resolveCanonicalUrl({ externalId: '17627' }),
+        'https://zzctea.com/tea/t17627-2501-fixture.html',
+    );
+    assert.deepStrictEqual(chainedCalls, [
+        '/teaDetail/17627.html',
+        '/tea/t17627.html',
+        '/tea/t17627-2501-fixture.html',
+    ]);
+
+    let sequentialDetailDocuments = 0;
+    const sequentialConnector = createZzcTeaConnector({
+        testMode: true,
+        testRequest: requestWithRobots(async rawUrl => {
+            const url = new URL(rawUrl);
+            const stableMatch = url.pathname.match(/^\/teaDetail\/(\d+)\.html$/u);
+            if (stableMatch) {
+                return {
+                    status: 301,
+                    headers: new Headers({
+                        location: `/tea/t${stableMatch[1]}-fixture.html`,
+                    }),
+                    body: Buffer.alloc(0),
+                };
+            }
+            const canonicalMatch = url.pathname.match(
+                /^\/tea\/t(\d+)-fixture\.html$/u,
+            );
+            assert.ok(canonicalMatch);
+            sequentialDetailDocuments += 1;
+            return {
+                status: 200,
+                headers: new Headers({
+                    'content-type': 'text/html; charset=utf-8',
+                }),
+                body: nuxtHtml({
+                    teaDetail: {
+                        id: Number(canonicalMatch[1]),
+                        name: `Fixture Tea ${canonicalMatch[1]}`,
+                        teaId: Number(canonicalMatch[1]),
+                    },
+                }),
+            };
+        }),
+    });
+    for (let externalId = 1; externalId <= 250; externalId += 1) {
+        assert.strictEqual(
+            sequentialConnector.parseDetail(
+                await sequentialConnector.fetchDetail({
+                    externalId: String(externalId),
+                }),
+            ).externalId,
+            String(externalId),
+        );
+    }
+    await sequentialConnector.fetchDetail({ externalId: '1' });
+    assert.strictEqual(sequentialDetailDocuments, 251);
 
     const forbiddenSiblingKey = ['sell', 'List'].join('');
     const forbiddenValue = ['138', '0013', '8000'].join('');
@@ -290,6 +389,11 @@ async function main() {
             teaId: 17627,
             name: 'Fixture Case Tea',
             specification: '357克/片',
+            risePriceDisplay: {
+                color: 'green',
+                status: 'flat',
+                text: '0.00',
+            },
         },
         [forbiddenSiblingKey]: [{
             [['ph', 'one'].join('')]: forbiddenValue,
@@ -302,6 +406,13 @@ async function main() {
     );
     assert.ok(!sanitized.includes(forbiddenValue));
     assert.ok(!sanitized.includes(forbiddenSiblingKey));
+    assert.strictEqual(
+        Object.prototype.hasOwnProperty.call(
+            JSON.parse(sanitized).data,
+            'risePriceDisplay',
+        ),
+        false,
+    );
 
     const unsafeProductKey = ['ph', 'one'].join('');
     await assert.rejects(
@@ -349,6 +460,25 @@ async function main() {
             error => error.code === 'ZZCTEA_NUXT_SERIALIZATION_INVALID',
         );
     }
+    assert.strictEqual(
+        extractNuxtState(Buffer.from(
+            '<script>window.__NUXT__={data:[{value:.00,negative:-.25}]};</script>',
+        )).data[0].value,
+        '.00',
+    );
+    assert.strictEqual(
+        extractNuxtState(Buffer.from(
+            '<script>window.__NUXT__={data:[{value:.00,negative:-.25}]};</script>',
+        )).data[0].negative,
+        '-.25',
+    );
+    assert.strictEqual(
+        extractNuxtState(Buffer.from(
+            '<script>window.__NUXT__=(function(a){return {data:[{value:a}]}}' +
+            '(\"inside\"));</script>',
+        )).data[0].value,
+        'inside',
+    );
 
     const missingRedirect = createZzcTeaConnector({
         testMode: true,
@@ -507,6 +637,41 @@ async function main() {
         detailBlocked.fetchDetail({ externalId: '17627' }),
         error => error.code === 'ZZCTEA_ROBOTS_ROUTE_DISALLOWED',
     );
+
+    let canonicalDestinationFetched = false;
+    const canonicalBlocked = createZzcTeaConnector({
+        testMode: true,
+        testRequest: async rawUrl => {
+            if (rawUrl === ROBOTS_URL) {
+                return robotsResponse(Buffer.from(
+                    'User-agent: *\nAllow: /teaDetail/\nDisallow: /tea/\n',
+                ));
+            }
+            const url = new URL(rawUrl);
+            if (url.pathname === '/teaDetail/17627.html') {
+                return {
+                    status: 301,
+                    headers: new Headers({
+                        location: '/tea/t17627-fixture.html',
+                    }),
+                    body: Buffer.alloc(0),
+                };
+            }
+            canonicalDestinationFetched = true;
+            return {
+                status: 200,
+                headers: new Headers({
+                    'content-type': 'text/html; charset=utf-8',
+                }),
+                body: fixture('detail-case.html'),
+            };
+        },
+    });
+    await assert.rejects(
+        canonicalBlocked.fetchDetail({ externalId: '17627' }),
+        error => error.code === 'ZZCTEA_ROBOTS_ROUTE_DISALLOWED',
+    );
+    assert.strictEqual(canonicalDestinationFetched, false);
 
     assert.strictEqual(DETAIL_PATH_PATTERN, '/teaDetail/{externalId}.html');
     console.log('test-zzctea-connector: OK');

@@ -37,7 +37,6 @@ const productFields = Object.freeze([
     'thisYearMinPrice',
     'rise',
     'risePercent',
-    'risePriceDisplay',
     'halfYearPercent',
     'monthPercent',
     'threeMonthPercent',
@@ -64,7 +63,8 @@ function parser(text) {
     let index = 0;
     let nodes = 0;
     const identifierPattern = /[A-Za-z_$][A-Za-z0-9_$]*/uy;
-    const numberPattern = /-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/uy;
+    const numberPattern =
+        /-?(?:(?:0|[1-9]\d*)(?:\.\d+)?|\.\d+)(?:[eE][+-]?\d+)?/uy;
 
     function countNode(depth) {
         nodes += 1;
@@ -238,7 +238,9 @@ function parser(text) {
             countNode(depth);
             return string();
         }
-        if (token === '-' || /\d/u.test(token || '')) {
+        if (token === '-' ||
+            (token === '.' && /\d/u.test(text[index + 1] || '')) ||
+            /\d/u.test(token || '')) {
             countNode(depth);
             return number();
         }
@@ -280,7 +282,11 @@ function parser(text) {
         whitespace();
         if (text[index] === ';') index += 1;
         expect('}');
-        expect(')');
+        whitespace();
+        const invocationInsideGroup = text[index] === '(';
+        if (!invocationInsideGroup) {
+            expect(')');
+        }
         expect('(');
         const argumentsList = [];
         whitespace();
@@ -296,6 +302,9 @@ function parser(text) {
             }
         }
         expect(')');
+        if (invocationInsideGroup) {
+            expect(')');
+        }
         if (argumentsList.length !== parameters.length) fail();
         const bindings = new Map(parameters.map((name, offset) => [
             name,

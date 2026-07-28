@@ -232,11 +232,14 @@ product token, full HTTP User-Agent and validation version are checkpoint-bound
 request parameters.
 
 For each product, the stable lookup URL remains
-`/teaDetail/{externalId}.html`. A separate bounded `HEAD` request observes its
-final canonical redirect: only 301/302/307/308 with a required `Location` on an
-allowlisted host and an exact `/tea/{slug}.html` path are accepted; query strings
-and fragments are rejected. The validated `Location` destination is preserved
-exactly as observed, including an allowlisted `www` hostname.
+`/teaDetail/{externalId}.html`. The detail loader follows at most four manual
+301/302/307/308 hops and accepts content only after a final 200 response. Every
+hop is rechecked against robots policy, the host allowlist, and the exact
+`/tea/{slug}.html` path; query strings and fragments are rejected. Automatic
+redirect following is never enabled. The final destination is preserved exactly
+as observed, including an allowlisted `www` hostname. A standalone canonical
+lookup uses the same validation with bounded `HEAD` requests; the normal detail
+flow reuses its already observed final URL and sends no duplicate request.
 
 The HTML and complete `window.__NUXT__` state exist only transiently in memory.
 A bounded parser supports the site's serialized data form without `eval` or a
