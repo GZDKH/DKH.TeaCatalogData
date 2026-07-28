@@ -10,8 +10,10 @@ const {
 const { divideDecimal } = require('./zzctea/decimal');
 const {
     assertPublicCatalogPayload,
+    marketDecimal,
     normalizeDetail,
     normalizeListPage,
+    subtractMarketDecimal,
 } = require('./zzctea/normalizer');
 const { parsePackage } = require('./zzctea/package-parser');
 const { PRODUCT_FIELDS } = require('./zzctea/nuxt');
@@ -133,7 +135,59 @@ function main() {
     });
     assert.strictEqual(caseItem.facts.release.amount, '7200');
     assert.strictEqual(caseItem.facts.release.quantity, '1600');
+    assert.deepStrictEqual(caseItem.facts.market, {
+        sourceUpdatedAt: '2026-03-17T03:53:25.000Z',
+        pricing: {
+            currencyCode: 'CNY',
+            basisUnitCode: 'case',
+            currentAmount: '8700',
+            previousAmount: '8000',
+            previousAmountDerivation:
+                'current-minus-source-absolute-change',
+            ranges: {
+                source: {
+                    minimumAmount: '6300',
+                    maximumAmount: '8700',
+                },
+                week: {
+                    minimumAmount: '8700',
+                    maximumAmount: '8700',
+                },
+                year: {
+                    minimumAmount: '6300',
+                    maximumAmount: '8700',
+                },
+            },
+            trends: {
+                absoluteChangeAmount: '700',
+                displayPercentChange: '8.8',
+                periodRatios: {
+                    halfYear: '0.12987012987012986',
+                },
+            },
+        },
+        aggregates: {
+            demandCount: 29,
+            supplyCount: 10,
+            followerCount: 1007,
+            commentCount: 7,
+            forumCount: 10,
+            demandParticipantCount: 29,
+            supplyParticipantCount: 10,
+        },
+    });
     assert.ok(caseItem.referencePrices.every(price => price.retailPrice === false));
+    assert.strictEqual(marketDecimal('-.16666666666666666'), '-0.16666666666666666');
+    assert.strictEqual(marketDecimal('.12987012987012986'), '0.12987012987012986');
+    assert.strictEqual(marketDecimal('-0.000'), '0');
+    assert.strictEqual(
+        subtractMarketDecimal('30000', '-4000'),
+        '34000',
+    );
+    assert.strictEqual(
+        marketDecimal('1.1234567890123456789'),
+        null,
+    );
 
     const bundle = normalizeDetail(detailEnvelope('detail-bundle.json'));
     assert.strictEqual(
@@ -213,6 +267,7 @@ function main() {
 
     const hidden = normalizeDetail(detailEnvelope('detail-hidden-price.json'));
     assert.deepStrictEqual(hidden.referencePrices, []);
+    assert.strictEqual(hidden.facts.market, null);
     assert.ok(hidden.diagnostics.includes('ZZCTEA_REFERENCE_PRICE_HIDDEN'));
     const malformed = normalizeDetail(detailEnvelope('detail-malformed-package.json'));
     assert.strictEqual(malformed.package.rawText, '357克/片 7片/提 6盒/件');

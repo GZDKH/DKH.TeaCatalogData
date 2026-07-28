@@ -220,9 +220,11 @@ function validateProductPatchCoverage(mappings, products) {
                     'oldPrice',
                     'catalogPrice',
                     'productCost',
+                    'callForPrice',
                     'enteredPrice',
                     'minEnteredPrice',
                     'maxEnteredPrice',
+                    'samplePrice',
                 ].some(field => Object.hasOwn(patch, field))) {
                 throw new Error('New ZZCTea product patch must be a price-free Draft.');
             }

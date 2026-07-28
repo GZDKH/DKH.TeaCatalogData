@@ -10,13 +10,20 @@ const {
     validateArguments,
 } = require('./update-zzctea-current');
 
-function fixtureArgs() {
+function fixtureArgs(root = '/canonical/tea-catalog-data') {
     return {
         _: [],
         'catalog-ref': 'sources/prod/catalog-reference/prod.json',
         concurrency: '3',
         'max-file-bytes': '1234',
         'minimum-request-interval-ms': '1000',
+        'previous-media-dir': path.join(
+            root,
+            'import',
+            'zzctea',
+            'current',
+            'media',
+        ),
         'product-ref': 'sources/prod/product-reference/products',
         resume: true,
         snapshot: 'zzctea-2026-07-28-weekly-v1',
@@ -24,7 +31,12 @@ function fixtureArgs() {
     };
 }
 
-function stageDoubles(root, calls, failAt = null) {
+function stageDoubles(
+    root,
+    calls,
+    failAt = null,
+    mediaProductionWrites = false,
+) {
     function stage(name, result) {
         return async (args, options) => {
             calls.push({ args, name, options });
@@ -50,6 +62,9 @@ function stageDoubles(root, calls, failAt = null) {
             manifest: { itemCount: 3151 },
         }),
         materializeMedia: stage('materializeMedia', {
+            manifest: {
+                productionWrites: mediaProductionWrites,
+            },
             outputDirectory: path.join(root, 'artifacts', 'media'),
         }),
         projectArtifact: stage('projectArtifact', {
@@ -71,7 +86,10 @@ function writeSentinel(root) {
 
 async function testHappyPath(root) {
     const calls = [];
-    const result = await updateZzcTeaCurrent(fixtureArgs(), {
+    const args = fixtureArgs(root);
+    writeSentinel(root);
+    fs.mkdirSync(args['previous-media-dir']);
+    const result = await updateZzcTeaCurrent(args, {
         repositoryRoot: root,
         stages: stageDoubles(root, calls),
     });
@@ -83,7 +101,7 @@ async function testHappyPath(root) {
         'materializeMedia',
         'buildBundle',
     ]);
-    assert.strictEqual(calls[0].args['product-ref'], fixtureArgs()['product-ref']);
+    assert.strictEqual(calls[0].args['product-ref'], args['product-ref']);
     assert.strictEqual(calls[0].args.resume, true);
     assert.deepStrictEqual(calls[1].args, {
         'artifact-dir': path.join(
@@ -95,8 +113,8 @@ async function testHappyPath(root) {
         ),
     });
     assert.deepStrictEqual(calls[2].args, {
-        'catalog-ref': fixtureArgs()['catalog-ref'],
-        'product-ref': fixtureArgs()['product-ref'],
+        'catalog-ref': args['catalog-ref'],
+        'product-ref': args['product-ref'],
         'projection-dir': path.join(root, 'artifacts', 'projection'),
     });
     assert.strictEqual(
@@ -105,6 +123,15 @@ async function testHappyPath(root) {
     );
     assert.strictEqual(calls[3].args['max-file-bytes'], '1234');
     assert.strictEqual(calls[3].args['timeout-ms'], '4321');
+    assert.strictEqual(
+        calls[3].options.previousMediaDirectory,
+        args['previous-media-dir'],
+    );
+    assert.strictEqual(
+        calls[3].args['previous-media-dir'],
+        undefined,
+        'The weekly CLI argument must become an explicit verified stage option.',
+    );
     assert.strictEqual(calls[4].args.out, undefined);
     assert.strictEqual(
         calls[4].args['media-dir'],
@@ -121,9 +148,11 @@ async function testFailClosed(root) {
         'buildBundle',
     ]) {
         const sentinel = writeSentinel(root);
+        const args = fixtureArgs(root);
+        fs.mkdirSync(args['previous-media-dir'], { recursive: true });
         const calls = [];
         await assert.rejects(
-            () => updateZzcTeaCurrent(fixtureArgs(), {
+            () => updateZzcTeaCurrent(args, {
                 repositoryRoot: root,
                 stages: stageDoubles(root, calls, failAt),
             }),
@@ -142,7 +171,45 @@ async function testFailClosed(root) {
     }
 }
 
+async function testProductionWriteProof(root) {
+    const args = fixtureArgs(root);
+    fs.mkdirSync(args['previous-media-dir'], { recursive: true });
+    const calls = [];
+    await assert.rejects(
+        () => updateZzcTeaCurrent(args, {
+            repositoryRoot: root,
+            stages: stageDoubles(root, calls, null, true),
+        }),
+        /must prove productionWrites=false/,
+    );
+    assert.ok(
+        !calls.some(call => call.name === 'buildBundle'),
+        'Unproven media write safety must block the current-bundle swap.',
+    );
+}
+
 async function main() {
+    assert.throws(
+        () => validateArguments({
+            ...fixtureArgs(),
+            'previous-media-dir': undefined,
+        }),
+        /--previous-media-dir=.*required/,
+    );
+    assert.throws(
+        () => validateArguments({
+            ...fixtureArgs(),
+            'previous-media-dir': 'import/zzctea/current/media',
+        }),
+        /absolute, normalized path/,
+    );
+    assert.throws(
+        () => validateArguments({
+            ...fixtureArgs(),
+            'previous-media-dir': '/canonical/tea-catalog-data/import/../media',
+        }),
+        /absolute, normalized path/,
+    );
     assert.throws(
         () => validateArguments({
             ...fixtureArgs(),
@@ -185,6 +252,33 @@ async function main() {
     try {
         await testHappyPath(root);
         await testFailClosed(root);
+        await testProductionWriteProof(path.join(root, 'write-proof'));
+        const symlinkRoot = path.join(root, 'symlink-gate');
+        const outside = fs.mkdtempSync(
+            path.join(os.tmpdir(), 'zzctea-prior-media-outside-'),
+        );
+        fs.mkdirSync(
+            path.join(symlinkRoot, 'import', 'zzctea', 'current'),
+            { recursive: true },
+        );
+        fs.symlinkSync(
+            outside,
+            path.join(
+                symlinkRoot,
+                'import',
+                'zzctea',
+                'current',
+                'media',
+            ),
+        );
+        await assert.rejects(
+            () => updateZzcTeaCurrent(fixtureArgs(symlinkRoot), {
+                repositoryRoot: symlinkRoot,
+                stages: stageDoubles(symlinkRoot, []),
+            }),
+            /must be an existing real directory/,
+        );
+        fs.rmSync(outside, { force: true, recursive: true });
     } finally {
         fs.rmSync(root, { force: true, recursive: true });
     }

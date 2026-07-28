@@ -8,7 +8,7 @@ const EXTERNAL_ID = /^[1-9]\d*$/;
 const PRODUCT_CODE = /^ZZC-([1-9]\d*)$/;
 const PRODUCT_ID =
     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const TARGET_LANGUAGES = Object.freeze(['en-US', 'zh-CN']);
+const TARGET_LANGUAGES = Object.freeze(['zh-CN']);
 const SOURCE_SPECIFICATION_GROUP = 'SPEC-TT-GROUP-ATOMIC';
 const TEA_TYPE_SPECIFICATION_GROUP =
     'SPEC-TT-GROUP-CLASSIFICATION-ORIGIN';
@@ -22,6 +22,7 @@ const SOURCE_SPECIFICATIONS = Object.freeze({
     referencePriceBasis: 'SPEC-PUERH-REFERENCE-PRICE-UNIT',
 });
 const SOURCE_SPECIFICATION_CODES = new Set(Object.values(SOURCE_SPECIFICATIONS));
+const BATCH_ATTRIBUTE_NAMES = new Set(['batch', '批次']);
 const FACT_CODE = /^[a-z0-9][a-z0-9._-]*$/;
 const DECIMAL_UNITS = /^(?:0|[1-9]\d*)$/;
 const PROCESSING_OPTIONS = Object.freeze({
@@ -204,6 +205,12 @@ function projectedContent(projectedItem) {
         }
         localized.set(text.languageCode, text);
     }
+    if (localized.size !== 1 || !localized.has('zh-CN')) {
+        fail(
+            'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+            `Projection item ${externalId} must contain only the zh-CN source language.`,
+        );
+    }
     const descriptions = Object.fromEntries(TARGET_LANGUAGES.map(languageCode => {
         const text = localized.get(languageCode);
         return [
@@ -222,7 +229,16 @@ function projectedContent(projectedItem) {
             ),
         ];
     }));
-    return { descriptions, observation, titles };
+    const sourceLinks = {
+        stableLookupUrl: observation.sourceDestination.lookupUri,
+        ...(observation.sourceDestination.canonicalUri
+            ? {
+                observedCanonicalUrl:
+                    observation.sourceDestination.canonicalUri,
+            }
+            : {}),
+    };
+    return { descriptions, observation, sourceLinks, titles };
 }
 
 function projectedDescriptions(projectedItem) {
@@ -438,9 +454,15 @@ function optionSpecification(
     };
 }
 
-function textSpecification(attribute, value, order, type = 'CustomText') {
+function textSpecification(
+    attribute,
+    value,
+    order,
+    type = 'CustomText',
+    group = SOURCE_SPECIFICATION_GROUP,
+) {
     return {
-        group: SOURCE_SPECIFICATION_GROUP,
+        group,
         attribute,
         type,
         value,
@@ -449,7 +471,69 @@ function textSpecification(attribute, value, order, type = 'CustomText') {
     };
 }
 
-function sourceSpecifications(observation, externalId) {
+function resolveBatchSpecification(options = {}) {
+    if (options === undefined) return null;
+    const reconciliationOptions = requireObject(
+        options,
+        'CATALOG_SOURCE_RECONCILIATION_REFERENCE_INVALID',
+        'Reconciliation options',
+    );
+    if (reconciliationOptions.catalogReference === undefined) return null;
+    const catalogReference = requireObject(
+        reconciliationOptions.catalogReference,
+        'CATALOG_SOURCE_RECONCILIATION_REFERENCE_INVALID',
+        'Catalog reference',
+    );
+    if (!Array.isArray(catalogReference.specificationGroups) ||
+        !Array.isArray(catalogReference.specificationAttributes)) {
+        fail(
+            'CATALOG_SOURCE_RECONCILIATION_REFERENCE_INVALID',
+            'Catalog reference specification groups and attributes must be arrays.',
+        );
+    }
+    const publishedGroups = new Set(catalogReference.specificationGroups
+        .filter(group =>
+            group?.published === true &&
+            typeof group.code === 'string' &&
+            group.code.trim() === group.code &&
+            group.code)
+        .map(group => group.code));
+    const candidates = catalogReference.specificationAttributes.flatMap(attribute => {
+        if (!attribute ||
+            attribute.published !== true ||
+            attribute.type !== 'CustomText' ||
+            typeof attribute.code !== 'string' ||
+            !attribute.code ||
+            attribute.code.trim() !== attribute.code ||
+            !Array.isArray(attribute.translations)) {
+            return [];
+        }
+        const names = attribute.translations.map(translation =>
+            typeof translation?.name === 'string'
+                ? translation.name.trim().toLocaleLowerCase('en-US')
+                : '',
+        );
+        if (!names.some(name => BATCH_ATTRIBUTE_NAMES.has(name))) return [];
+        const group = typeof attribute.group === 'string' && attribute.group
+            ? attribute.group
+            : SOURCE_SPECIFICATION_GROUP;
+        if (!publishedGroups.has(group)) return [];
+        return [{
+            attribute: attribute.code,
+            group,
+            type: attribute.type,
+        }];
+    });
+    if (candidates.length > 1) {
+        fail(
+            'CATALOG_SOURCE_RECONCILIATION_BATCH_DEFINITION_AMBIGUOUS',
+            'Catalog reference contains more than one published CustomText batch definition.',
+        );
+    }
+    return candidates[0] || null;
+}
+
+function sourceSpecifications(observation, externalId, batchSpecification = null) {
     const facts = projectedFacts(observation, externalId);
     const packageEvidence = projectedPackage(observation, externalId);
     const priceBases = projectedPriceBases(observation, externalId);
@@ -467,6 +551,16 @@ function sourceSpecifications(observation, externalId) {
             SOURCE_SPECIFICATIONS.year,
             `OPT-PUERH-VINTAGE-${canonicalYear}`,
             20,
+        ));
+    }
+    const batch = facts.get('batch');
+    if (batch && batchSpecification) {
+        specifications.push(textSpecification(
+            batchSpecification.attribute,
+            batch,
+            25,
+            batchSpecification.type,
+            batchSpecification.group,
         ));
     }
     const processing = PROCESSING_OPTIONS[facts.get('production-technology')];
@@ -513,7 +607,7 @@ function sourceSpecifications(observation, externalId) {
 function assertSafeOutputDescriptions(product) {
     for (const translation of product.translations) {
         if (!TARGET_LANGUAGES.includes(translation?.lang)) continue;
-        for (const field of ['description', 'metaDescription']) {
+        for (const field of ['description']) {
             const value = translation?.[field];
             if (value !== undefined && value !== null && value !== '' &&
                 (typeof value !== 'string' || SOURCE_DESCRIPTION_CONTENT.test(value))) {
@@ -526,34 +620,43 @@ function assertSafeOutputDescriptions(product) {
     }
 }
 
-function mergeSourceSpecifications(baseline, projected) {
+function mergeSourceSpecifications(baseline, projected, batchSpecification = null) {
+    const sourceSpecificationCodes = new Set(SOURCE_SPECIFICATION_CODES);
+    if (batchSpecification) {
+        sourceSpecificationCodes.add(batchSpecification.attribute);
+    }
     return [
         ...baseline.filter(specification =>
-            !SOURCE_SPECIFICATION_CODES.has(specification?.attribute)),
+            !sourceSpecificationCodes.has(specification?.attribute)),
         ...projected,
     ];
 }
 
-function patchMatchedProduct(product, content) {
+function patchMatchedProduct(product, content, batchSpecification = null) {
     const rollbackProduct = deepClone(product);
     const productPatch = deepClone(product);
     const targetCounts = Object.fromEntries(TARGET_LANGUAGES.map(languageCode => [
         languageCode,
         0,
     ]));
-    productPatch.translations = productPatch.translations.map(translation => {
+    productPatch.translations = productPatch.translations.flatMap(translation => {
         requireObject(
             translation,
             'CATALOG_SOURCE_RECONCILIATION_REFERENCE_INVALID',
             `${product.code} translation`,
         );
-        if (!TARGET_LANGUAGES.includes(translation.lang)) return translation;
+        if (!TARGET_LANGUAGES.includes(translation.lang)) return [];
         targetCounts[translation.lang] += 1;
-        return {
+        const sourceTranslation = {
             ...translation,
+            name: content.titles[translation.lang],
             description: content.descriptions[translation.lang],
-            metaDescription: content.descriptions[translation.lang],
         };
+        delete sourceTranslation.seo;
+        delete sourceTranslation.seoTitle;
+        delete sourceTranslation.metaTitle;
+        delete sourceTranslation.metaDescription;
+        return [sourceTranslation];
     });
     for (const languageCode of TARGET_LANGUAGES) {
         if (targetCounts[languageCode] !== 1) {
@@ -565,13 +668,18 @@ function patchMatchedProduct(product, content) {
     }
     productPatch.specifications = mergeSourceSpecifications(
         productPatch.specifications,
-        sourceSpecifications(content.observation, product.code.slice(4)),
+        sourceSpecifications(
+            content.observation,
+            product.code.slice(4),
+            batchSpecification,
+        ),
+        batchSpecification,
     );
     assertSafeOutputDescriptions(productPatch);
     return { productPatch, rollbackProduct };
 }
 
-function draftProduct(productCode, content, externalId) {
+function draftProduct(productCode, content, externalId, batchSpecification = null) {
     const facts = projectedFacts(content.observation, externalId);
     const categories = new Set(['CAT-PUER-TEA']);
     const processingCategory = {
@@ -597,10 +705,12 @@ function draftProduct(productCode, content, externalId) {
             lang: languageCode,
             name: content.titles[languageCode],
             description: content.descriptions[languageCode],
-            metaDescription: content.descriptions[languageCode],
-            metaTitle: content.titles[languageCode],
         })),
-        specifications: sourceSpecifications(content.observation, externalId),
+        specifications: sourceSpecifications(
+            content.observation,
+            externalId,
+            batchSpecification,
+        ),
         tags: [],
         tierPrices: [],
         catalogPrices: [],
@@ -733,9 +843,10 @@ function numericExternalIdOrder(left, right) {
     return leftId < rightId ? -1 : leftId > rightId ? 1 : 0;
 }
 
-function reconcileProjection(projection, products) {
+function reconcileProjection(projection, products, options = {}) {
     const projectedItems = validateProjection(projection);
     const productsByCode = validateProducts(products);
+    const batchSpecification = resolveBatchSpecification(options);
     const entries = projectedItems.map(projectedItem => {
         const externalId = requireExternalId(projectedItem.externalId);
         const productCode = exactProductCode(externalId);
@@ -745,17 +856,28 @@ function reconcileProjection(projection, products) {
             return {
                 externalId,
                 productCode,
+                sourceLinks: content.sourceLinks,
                 status: 'missing-create-draft',
                 published: false,
-                productPatch: draftProduct(productCode, content, externalId),
+                productPatch: draftProduct(
+                    productCode,
+                    content,
+                    externalId,
+                    batchSpecification,
+                ),
             };
         }
-        const { productPatch, rollbackProduct } = patchMatchedProduct(product, content);
+        const { productPatch, rollbackProduct } = patchMatchedProduct(
+            product,
+            content,
+            batchSpecification,
+        );
         const changed = stableJson(productPatch) !== stableJson(rollbackProduct);
         return {
             externalId,
             productId: product.id,
             productCode,
+            sourceLinks: content.sourceLinks,
             status: changed ? 'matched-update' : 'matched-noop',
             commerceSourceIncarnationId: null,
             commerceMappingStatus: 'blocked-authoritative-reference',
@@ -804,6 +926,7 @@ module.exports = {
     exactProductCode,
     patchMatchedProduct,
     projectedDescriptions,
+    resolveBatchSpecification,
     sourceSpecifications,
     reconcileProjection,
     validateDescription,

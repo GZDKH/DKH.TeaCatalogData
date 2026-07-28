@@ -34,6 +34,9 @@ function publicMapping(entry) {
     };
     if (entry.productId) mapping.productId = entry.productId;
     if (entry.published !== undefined) mapping.published = entry.published;
+    if (entry.sourceLinks !== undefined) {
+        mapping.sourceLinks = entry.sourceLinks;
+    }
     if (entry.commerceSourceIncarnationId !== undefined) {
         mapping.commerceSourceIncarnationId = entry.commerceSourceIncarnationId;
     }

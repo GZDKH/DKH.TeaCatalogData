@@ -21,12 +21,6 @@ function projectedItem(externalId, descriptions = {}) {
             semanticRevisionDigest: 'a'.repeat(64),
             localizedText: [
                 {
-                    languageCode: 'en-US',
-                    title: `Tea ${externalId}`,
-                    description: descriptions['en-US'] ||
-                        `Tea catalog facts — year: 2025; package: 357 g per cake.`,
-                },
-                {
                     languageCode: 'zh-CN',
                     title: `茶 ${externalId}`,
                     description: descriptions['zh-CN'] ||
@@ -34,6 +28,7 @@ function projectedItem(externalId, descriptions = {}) {
                 },
             ],
             factualAttributes: [
+                fact('batch', '春'),
                 fact('production-technology', '熟茶'),
                 fact('shape', '饼'),
                 fact('year', '2025'),
@@ -137,6 +132,10 @@ function product(code, id) {
                 description: '旧中文描述。',
                 metaDescription: '旧中文 meta。',
                 seoTitle: '保留中文 SEO',
+                metaTitle: '保留中文 meta title',
+                seo: {
+                    title: '保留嵌套 SEO',
+                },
             },
         ],
         specifications: [
@@ -181,12 +180,7 @@ function assertCode(action, code) {
 
 function withoutManagedEnrichment(productValue) {
     const value = clone(productValue);
-    for (const translation of value.translations) {
-        if (translation.lang === 'en-US' || translation.lang === 'zh-CN') {
-            delete translation.description;
-            delete translation.metaDescription;
-        }
-    }
+    delete value.translations;
     value.specifications = value.specifications.filter(specification =>
         !Object.values(SOURCE_SPECIFICATIONS).includes(specification.attribute));
     return value;
@@ -252,7 +246,12 @@ function main() {
     }
     assert.deepStrictEqual(
         missing.productPatch.translations.map(value => [value.lang, value.name]),
-        [['en-US', 'Tea 9'], ['zh-CN', '茶 9']],
+        [['zh-CN', '茶 9']],
+    );
+    assert.deepStrictEqual(
+        Object.keys(missing.productPatch.translations[0]).sort(),
+        ['description', 'lang', 'name'],
+        'Draft must let DKH.Platform.Seo generate all SEO metadata.',
     );
 
     const matched = result.entries[1];
@@ -270,27 +269,28 @@ function main() {
     assert.notStrictEqual(matched.productPatch, matched.rollbackProduct);
     assert.deepStrictEqual(matched.rollbackProduct, existing);
 
-    const en = matched.productPatch.translations.find(value => value.lang === 'en-US');
-    const zh = matched.productPatch.translations.find(value => value.lang === 'zh-CN');
-    const ru = matched.productPatch.translations.find(value => value.lang === 'ru-RU');
-    assert.strictEqual(
-        en.description,
-        'Tea catalog facts — year: 2025; package: 357 g per cake.',
+    assert.deepStrictEqual(
+        matched.productPatch.translations.map(value => value.lang),
+        ['zh-CN'],
+        'Source-owned bundle must contain only the source language.',
     );
-    assert.strictEqual(en.metaDescription, en.description);
+    const zh = matched.productPatch.translations.find(value => value.lang === 'zh-CN');
+    assert.strictEqual(zh.name, '茶 17641');
     assert.strictEqual(
         zh.description,
         '茶品资料：年份：2025年；包装：每饼357克。',
     );
-    assert.strictEqual(zh.metaDescription, zh.description);
-    assert.deepStrictEqual(
-        ru,
-        existing.translations.find(value => value.lang === 'ru-RU'),
-    );
+    for (const field of ['seo', 'seoTitle', 'metaTitle', 'metaDescription']) {
+        assert.strictEqual(
+            Object.hasOwn(zh, field),
+            false,
+            `Managed zh-CN translation must not override ${field}.`,
+        );
+    }
     assert.deepStrictEqual(
         withoutManagedEnrichment(matched.productPatch),
         withoutManagedEnrichment(existing),
-        'Only target descriptions and source-owned specifications may change.',
+        'Only the zh-CN source bundle and source-owned specifications may change.',
     );
     assert.deepStrictEqual(
         matched.productPatch.specifications[0],
@@ -340,9 +340,7 @@ function main() {
         assert.notStrictEqual(matched.rollbackProduct[field], existing[field]);
     }
     assert.deepStrictEqual([existing, unrelated], originalProducts, 'Inputs must not be mutated.');
-    assert.ok(matched.productPatch.translations.every(translation =>
-        !/zzctea(?:\.com)?|https?:\/\/|www\./iu.test(translation.description || '') &&
-        !/zzctea(?:\.com)?|https?:\/\/|www\./iu.test(translation.metaDescription || '')));
+    assert.ok(!/zzctea(?:\.com)?|https?:\/\/|www\./iu.test(zh.description));
 
     assert.deepStrictEqual(result.report, {
         matched: [{
@@ -459,7 +457,7 @@ function main() {
     );
 
     const unsafeDomain = projection([projectedItem('17641', {
-        'en-US': 'Facts copied from zzctea.com.',
+        'zh-CN': '产品资料来自 zzctea.com。',
     })]);
     assertCode(
         () => reconcileProjection(unsafeDomain, [existing, unrelated]),
@@ -473,11 +471,73 @@ function main() {
         'CATALOG_SOURCE_RECONCILIATION_DESCRIPTION_INVALID',
     );
     const unsafeMissing = projection([projectedItem('9', {
-        'en-US': 'Missing product copied from zzctea.com.',
+        'zh-CN': '产品资料来自 zzctea.com。',
     })]);
     assertCode(
         () => reconcileProjection(unsafeMissing, [existing, unrelated]),
         'CATALOG_SOURCE_RECONCILIATION_DESCRIPTION_INVALID',
+    );
+
+    const extraLocale = projectedItem('17641');
+    extraLocale.observation.localizedText.unshift({
+        languageCode: 'en-US',
+        title: 'English title',
+        description: 'English description.',
+    });
+    assertCode(
+        () => reconcileProjection(projection([extraLocale]), [existing, unrelated]),
+        'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+    );
+
+    assert.ok(
+        matched.productPatch.specifications.every(specification =>
+            specification.attribute !== 'SPEC-TEA-BATCH'),
+        'Batch must remain a factual attribute when the catalog has no valid definition.',
+    );
+    const batchCatalogReference = {
+        specificationGroups: [{
+            code: 'SPEC-TT-GROUP-ATOMIC',
+            published: true,
+        }],
+        specificationAttributes: [{
+            code: 'SPEC-TEA-BATCH',
+            group: null,
+            type: 'CustomText',
+            published: true,
+            translations: [
+                { lang: 'en-US', name: 'Batch' },
+                { lang: 'zh-CN', name: '批次' },
+            ],
+        }],
+    };
+    const withBatchDefinition = reconcileProjection(
+        projection([projectedItem('17641')]),
+        [existing, unrelated],
+        { catalogReference: batchCatalogReference },
+    ).entries[0].productPatch;
+    const batchSpecification = withBatchDefinition.specifications.find(
+        specification => specification.attribute === 'SPEC-TEA-BATCH',
+    );
+    assert.deepStrictEqual(batchSpecification, {
+        group: 'SPEC-TT-GROUP-ATOMIC',
+        attribute: 'SPEC-TEA-BATCH',
+        type: 'CustomText',
+        value: '春',
+        showOnPage: true,
+        order: 25,
+    });
+    const ambiguousBatchCatalog = clone(batchCatalogReference);
+    ambiguousBatchCatalog.specificationAttributes.push({
+        ...clone(ambiguousBatchCatalog.specificationAttributes[0]),
+        code: 'SPEC-TEA-BATCH-OTHER',
+    });
+    assertCode(
+        () => reconcileProjection(
+            projection([projectedItem('17641')]),
+            [existing, unrelated],
+            { catalogReference: ambiguousBatchCatalog },
+        ),
+        'CATALOG_SOURCE_RECONCILIATION_BATCH_DEFINITION_AMBIGUOUS',
     );
 
     const ambiguousTranslations = clone(existing);

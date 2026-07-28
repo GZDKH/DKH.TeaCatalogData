@@ -196,16 +196,31 @@ function main() {
     assert.strictEqual(observation.externalId, '17627');
     assert.deepStrictEqual(observation.localizedText, [
         {
-            languageCode: 'en-US',
-            title: 'Fixture Case Tea',
-            description: 'Tea catalog facts — Brand: Fixture Brand; year: 2025年; batch: 春; processing: 熟茶; shape: 饼; package: 357 g per cake, 7 cake per bundle, 6 bundle per case.',
-        },
-        {
             languageCode: 'zh-CN',
             title: 'Fixture Case Tea',
             description: '茶品资料：品牌：Fixture Brand；年份：2025年；批次：春；工艺：熟茶；形态：饼；包装：每饼357克，每提7饼，每件6提。',
         },
     ]);
+    const sourceLanguageOnly = fixtureItem({
+        localizedFields: {
+            'en-US': {
+                name: 'English title must not be projected',
+            },
+            'zh-CN': {
+                name: 'Source title stays exact',
+            },
+        },
+    });
+    assert.deepStrictEqual(
+        project([sourceLanguageOnly])[0].observation.localizedText.map(value => ({
+            languageCode: value.languageCode,
+            title: value.title,
+        })),
+        [{
+            languageCode: 'zh-CN',
+            title: 'Source title stays exact',
+        }],
+    );
     assert.ok(observation.localizedText.every(value =>
         !/zzctea(?:\.com)?/i.test(value.description)));
 
@@ -231,6 +246,15 @@ function main() {
     });
     assert.ok(project([sourceBoilerplateFact])[0].observation.localizedText.every(value =>
         !/(?:找找茶|最新报价)/u.test(value.description)));
+    const missingSourceLanguage = fixtureItem({
+        localizedFields: {
+            'en-US': { name: 'English only' },
+        },
+    });
+    assertCode(
+        () => project([missingSourceLanguage]),
+        'CATALOG_SOURCE_PROJECTION_LOCALIZED_TEXT_INVALID',
+    );
     assert.deepStrictEqual(
         observation.factualAttributes.map(value => value.attributeCode),
         [

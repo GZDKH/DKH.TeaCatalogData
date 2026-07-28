@@ -46,6 +46,7 @@ node scripts/catalog-sources/update-zzctea-current.js \
   --snapshot=zzctea-2026-07-28-weekly-v1 \
   --catalog-ref=sources/prod/catalog-reference/prod-2026-07-27.json \
   --product-ref=sources/prod/product-reference/prod-products-2026-07-28-post-import \
+  --previous-media-dir=/absolute/path/to/import/zzctea/current/media \
   --minimum-request-interval-ms=1000
 ```
 
@@ -56,7 +57,9 @@ brand-filtered `/teaList` views. This preserves detail refresh for the existing
 single-brand list as complete. The connector uses only robots-allowed public
 HTML list/detail routes and never calls `/api/` or `/official/`. It downloads
 reviewed source images into content-addressed local blobs, but writes no
-production data. Product-only PII-free envelopes and the resumable checkpoint
+production data. Source-generated product text contains only `zh-CN`, using the
+exact Chinese source title; SEO fields are omitted for later generation by
+`DKH.Platform.Seo`. Product-only PII-free envelopes and the resumable checkpoint
 are stored under ignored `sources/catalog-sources/`; immutable evidence remains
 under ignored `artifacts/`. See
 [`scripts/catalog-sources/README.md`](scripts/catalog-sources/README.md) for

@@ -20,6 +20,7 @@ const {
     sanitizeDetailHtml,
     sanitizeTerminalProbeHtml,
 } = require('./zzctea/nuxt');
+const { decodeSanitizedEnvelope } = require('./zzctea/sanitized-envelope');
 const { MAXIMUM_ROBOTS_BYTES } = require('./zzctea/robots');
 
 const FIXTURES = path.join(__dirname, 'zzctea', 'fixtures');
@@ -327,6 +328,13 @@ async function main() {
     const detailRaw = await connector.fetchDetail({ externalId: '17627' });
     const detail = connector.parseDetail(detailRaw);
     assert.strictEqual(detail.externalId, '17627');
+    assert.deepStrictEqual(detail.facts.market.aggregates, {
+        demandCount: 29,
+        supplyCount: 10,
+        followerCount: 1007,
+        commentCount: 7,
+        forumCount: 10,
+    });
     assert.strictEqual(
         await connector.resolveCanonicalUrl({ externalId: '17627' }),
         'https://www.zzctea.com/tea/fixture-case-tea.html',
@@ -473,7 +481,23 @@ async function main() {
                 priceChart: 'https://charts.example/' +
                     'asset_01012345678.png',
             },
+            buyCount: 29,
+            sellCount: 10,
+            interestedCount: 1007,
+            commentCount: 7,
+            forumCount: 10,
         },
+        halfYearPercent: '.12987012987012986',
+        monthPercent: '',
+        threeMonthPercent: '',
+        weekPercent: '',
+        yearPercent: '',
+        thisWeekMaxPrice: 8700,
+        thisWeekMinPrice: 8700,
+        thisYearMaxPrice: 8700,
+        thisYearMinPrice: 6300,
+        [['buy', 'PeopleCount'].join('')]: 29,
+        [['sell', 'PeopleCount'].join('')]: 10,
         [forbiddenSiblingKey]: [{
             [['ph', 'one'].join('')]: forbiddenValue,
         }],
@@ -485,12 +509,44 @@ async function main() {
     );
     assert.ok(!sanitized.includes(forbiddenValue));
     assert.ok(!sanitized.includes(forbiddenSiblingKey));
+    const safeMarketData = decodeSanitizedEnvelope(sanitized).data;
+    assert.strictEqual(safeMarketData.demandParticipantCount, '29');
+    assert.strictEqual(safeMarketData.supplyParticipantCount, '10');
+    assert.strictEqual(
+        safeMarketData.halfYearPercent,
+        '.12987012987012986',
+    );
+    assert.ok(!sanitized.includes('PeopleCount'));
     assert.strictEqual(
         Object.prototype.hasOwnProperty.call(
             JSON.parse(sanitized).data,
             'risePriceDisplay',
         ),
         false,
+    );
+    assert.throws(
+        () => sanitizeDetailHtml(nuxtHtml({
+            teaDetail: {
+                id: 17627,
+                name: 'Fixture Case Tea',
+                thisWeekMaxPrice: 8600,
+            },
+            thisWeekMaxPrice: 8700,
+        }), '17627'),
+        error =>
+            error.code === 'ZZCTEA_NUXT_DETAIL_MARKET_FIELD_MISMATCH',
+    );
+    assert.throws(
+        () => sanitizeDetailHtml(nuxtHtml({
+            teaDetail: {
+                id: 17627,
+                name: 'Fixture Case Tea',
+            },
+            [['buy', 'PeopleCount'].join('')]: [{
+                name: 'person data must never be copied',
+            }],
+        }), '17627'),
+        error => error.code === 'ZZCTEA_NUXT_PRODUCT_FIELD_INVALID',
     );
     assert.strictEqual(
         Object.prototype.hasOwnProperty.call(

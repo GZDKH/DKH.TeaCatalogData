@@ -16,6 +16,7 @@ node scripts/catalog-sources/update-zzctea-current.js \
   --snapshot=zzctea-2026-07-28-weekly-v1 \
   --catalog-ref=sources/prod/catalog-reference/prod-2026-07-27.json \
   --product-ref=sources/prod/product-reference/prod-products-2026-07-28-post-import \
+  --previous-media-dir=/absolute/path/to/import/zzctea/current/media \
   --minimum-request-interval-ms=1000
 ```
 
@@ -27,6 +28,19 @@ discovered IDs become unpublished, price-free ProductCatalog Drafts. The run is
 resumable at both detail and media stages. Every upstream result is immutable,
 and `import/zzctea/current` is swapped only after all bindings and hashes pass.
 No production write is performed.
+
+Source-generated product text is deliberately limited to one `zh-CN`
+translation. Its name is the exact source title; year, processing, shape,
+brand, package facts and safe aggregate market signals remain separate facts.
+SEO, meta title and meta description fields are omitted so
+`DKH.Platform.Seo` can generate them during a compatible ProductCatalog import.
+Current ProductCatalog validation still requires `en-US`, therefore the bundle
+remains `applyAllowed: false` until that import contract is updated; the
+collector does not invent an English mirror.
+
+Each source-product mapping carries both the stable lookup URL and the observed
+canonical product URL. Reference prices, ranges, trends and aggregate demand /
+supply counts are source observations, never ProductCatalog retail prices.
 
 Replay the exact stored responses without network access:
 
@@ -261,6 +275,11 @@ Optional limits:
 - `--max-total-bytes=<bytes>`
 - `--timeout-ms=<milliseconds>`
 - `--minimum-request-interval-ms=<1000..60000>`
+
+The weekly command also requires an absolute, normalized
+`--previous-media-dir`. It must point to a verified prior canonical media
+directory. Unchanged blobs are reused with copy-on-write cloning; new or
+changed source URLs are downloaded and verified before the atomic bundle swap.
 
 After the source, projection, reconciliation, and media outputs are complete,
 assemble one operator-facing version:

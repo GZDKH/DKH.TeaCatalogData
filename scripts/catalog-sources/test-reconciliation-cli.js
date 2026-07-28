@@ -125,6 +125,11 @@ function product(code, id) {
                 name: `中文 ${code}`,
                 description: '资料来源：找找茶（zzctea.com）。',
                 metaDescription: '资料来源：找找茶（zzctea.com）。',
+                metaTitle: '旧 meta title',
+                seoTitle: '旧 SEO title',
+                seo: {
+                    title: '旧嵌套 SEO',
+                },
             },
         ],
         specifications: [],
@@ -237,9 +242,33 @@ function main() {
             first.documents.manifest.nonReversibleCreateCodes,
             [],
         );
+        assert.deepStrictEqual(
+            first.documents.mappingsDocument.value[0].sourceLinks,
+            {
+                observedCanonicalUrl:
+                    'https://zzctea.com/tea/fixture-17641.html',
+                stableLookupUrl:
+                    'https://zzctea.com/teaDetail/17641.html',
+            },
+        );
         const patch = first.documents.patchesDocument.value[0];
-        assert.ok(patch.translations.every(translation =>
-            !/(?:zzctea|找找茶)/iu.test(translation.description)));
+        const sourceTranslation = patch.translations.find(
+            translation => translation.lang === 'zh-CN',
+        );
+        assert.deepStrictEqual(
+            patch.translations.map(translation => translation.lang),
+            ['zh-CN'],
+            'Source-owned bundle must contain only the source language.',
+        );
+        assert.strictEqual(sourceTranslation.name, 'Fixture Tea 17641');
+        assert.ok(!/(?:zzctea|找找茶)/iu.test(sourceTranslation.description));
+        for (const field of ['seo', 'seoTitle', 'metaTitle', 'metaDescription']) {
+            assert.strictEqual(Object.hasOwn(sourceTranslation, field), false);
+        }
+        assert.ok(patch.specifications.every(specification =>
+            Object.values(SOURCE_SPECIFICATIONS).includes(
+                specification.attribute,
+            )));
         assert.deepStrictEqual(
             patch.catalogPrices,
             first.documents.rollbackDocument.value[0].catalogPrices,
@@ -274,6 +303,17 @@ function main() {
         );
         assert.strictEqual(draftPatch.published, false);
         assert.strictEqual(draftPatch.sku, 'ZZC-9');
+        assert.deepStrictEqual(
+            draftPatch.translations.map(translation => [
+                translation.lang,
+                translation.name,
+            ]),
+            [['zh-CN', 'Fixture Tea 9']],
+        );
+        assert.deepStrictEqual(
+            Object.keys(draftPatch.translations[0]).sort(),
+            ['description', 'lang', 'name'],
+        );
         assert.deepStrictEqual(draftPatch.catalogPrices, []);
         assert.deepStrictEqual(draftPatch.tierPrices, []);
         assert.deepStrictEqual(draftPatch.storePriceOverrides, []);

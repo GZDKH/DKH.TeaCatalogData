@@ -150,6 +150,7 @@ function reconcileCatalogSource(args, options = {}) {
     const reconciliation = reconcileProjection(
         selectedProjection,
         references.products,
+        { catalogReference: references.catalogReference },
     );
     assertReconciliationReferences(reconciliation, references);
     const sourceId = safeSegment(reconciliation.sourceId, 'source ID');
