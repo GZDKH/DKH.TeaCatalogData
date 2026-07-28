@@ -53,8 +53,12 @@ function buildReconciliationDocuments(options) {
     const matchedEntries = reconciliation.entries.filter(
         entry => entry.status === 'matched-update',
     );
+    const patchEntries = reconciliation.entries.filter(entry =>
+        entry.status === 'matched-update' ||
+        entry.status === 'missing-create-draft',
+    );
     const mappings = reconciliation.entries.map(publicMapping);
-    const productPatches = matchedEntries.map(entry => entry.productPatch);
+    const productPatches = patchEntries.map(entry => entry.productPatch);
     const rollbackProducts = matchedEntries.map(entry => entry.rollbackProduct);
     const draftProposals = reconciliation.entries
         .filter(entry => entry.status === 'missing-create-draft')
@@ -107,6 +111,7 @@ function buildReconciliationDocuments(options) {
         mappingSha256: mappingsDocument.digest,
         productPatchesFile: patchesDocument.file,
         productPatchesSha256: patchesDocument.digest,
+        productPatchCount: productPatches.length,
         rollbackProductsFile: rollbackDocument.file,
         rollbackProductsSha256: rollbackDocument.digest,
         draftProposals,
@@ -188,6 +193,7 @@ function buildReconciliationDocuments(options) {
         mappingSha256: mappingsDocument.digest,
         productPatchesFile: patchesDocument.file,
         productPatchesSha256: patchesDocument.digest,
+        productPatchCount: productPatches.length,
         rollbackProductsFile: rollbackDocument.file,
         rollbackProductsSha256: rollbackDocument.digest,
         inputProjectionSha256: projectionBundle.manifest.projectionSha256,

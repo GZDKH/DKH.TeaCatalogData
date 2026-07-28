@@ -5,6 +5,7 @@ const {
     requestBuffer,
     validateAllowedUrl,
 } = require('../lib/http');
+const { sha256, stableJson } = require('../lib/artifacts');
 const { reject } = require('../lib/errors');
 const {
     PARSER_VERSION,
@@ -41,6 +42,38 @@ const LIST_PATH = '/teaList';
 const DETAIL_PATH_PATTERN = '/teaDetail/{externalId}.html';
 const DEFAULT_MINIMUM_REQUEST_INTERVAL_MS = 1_000;
 const MAXIMUM_CANONICAL_REDIRECTS = 4;
+const BRAND_MANIFEST_SCHEMA = 'zzctea-reviewed-brand-manifest-v1';
+const DISCOVERY_SCHEMA = 'zzctea-brand-list-discovery-v1';
+const REVIEWED_BRANDS = Object.freeze([
+    Object.freeze({ externalId: '2', name: '大益' }),
+    Object.freeze({ externalId: '835', name: '文源' }),
+    Object.freeze({ externalId: '6', name: '今大福' }),
+    Object.freeze({ externalId: '5', name: '中茶' }),
+    Object.freeze({ externalId: '32', name: '润元昌' }),
+    Object.freeze({ externalId: '55', name: '福今' }),
+    Object.freeze({ externalId: '15', name: '雨林' }),
+    Object.freeze({ externalId: '19', name: '陈升号' }),
+    Object.freeze({ externalId: '234', name: '佰年尚普' }),
+    Object.freeze({ externalId: '251', name: '杨聘号' }),
+    Object.freeze({ externalId: '117', name: '广隆' }),
+    Object.freeze({ externalId: '132', name: '番顺' }),
+    Object.freeze({ externalId: '840', name: '合智汇' }),
+]);
+const REVIEWED_BRAND_MANIFEST_SHA256 = sha256(stableJson(REVIEWED_BRANDS));
+
+function externalIdFromProductCode(code) {
+    if (typeof code !== 'string') return null;
+    const trimmed = code.trim();
+    if (!/^ZZC(?:-|$)/iu.test(trimmed)) return null;
+    if (code !== trimmed || !/^ZZC-[1-9]\d*$/u.test(code)) {
+        reject('ZZCTEA_PRODUCT_CODE_INVALID');
+    }
+    return code.slice('ZZC-'.length);
+}
+
+function compareNumericIds(left, right) {
+    return left.length - right.length || left.localeCompare(right, 'en');
+}
 
 function createZzcTeaConnector(options = {}) {
     const minimumRequestIntervalMs = options.minimumRequestIntervalMs ??
@@ -111,6 +144,131 @@ function createZzcTeaConnector(options = {}) {
             timeoutMs: 30_000,
         });
         return response.body;
+    }
+
+    async function fetchBrandListEnvelope({ brandId, page, pageSize }) {
+        if (!/^[1-9]\d*$/u.test(String(brandId)) ||
+            !Number.isSafeInteger(page) ||
+            page <= 0 ||
+            pageSize !== 36) {
+            reject('ZZCTEA_BRAND_DISCOVERY_ARGUMENT_INVALID');
+        }
+        const url = new URL(LIST_PATH, SOURCE_ORIGIN);
+        url.searchParams.set('page', String(page));
+        url.searchParams.set('brandIds', String(brandId));
+        await assertRouteAllowed(`${url.pathname}${url.search}`);
+        return {
+            raw: await fetchHtml(url),
+            target: `${url.pathname}${url.search}`,
+        };
+    }
+
+    function assertTerminalProbeEnvelope({
+        lastPageRaw,
+        pageSize,
+        raw,
+        requestedPage,
+        totalPages,
+    }) {
+        const probe = decodeSanitizedEnvelope(raw);
+        const lastPage = decodeSanitizedEnvelope(lastPageRaw);
+        if (probe.kind !== 'terminal-probe' ||
+            lastPage.kind !== 'list' ||
+            probe.requestedPage !== String(requestedPage) ||
+            probe.pageSize !== String(pageSize) ||
+            probe.totalPages !== String(totalPages) ||
+            !Array.isArray(probe.data) ||
+            !Array.isArray(lastPage.data)) {
+            reject('ZZCTEA_TERMINAL_PROBE_INVALID');
+        }
+        if (probe.data.length === 0) return;
+        if (probe.reportedPage !== String(totalPages) ||
+            JSON.stringify(probe.data) !== JSON.stringify(lastPage.data)) {
+            reject('ZZCTEA_TERMINAL_PROBE_NOT_TERMINAL');
+        }
+    }
+
+    async function discoverExternalIds() {
+        const externalIds = new Set();
+        const envelopes = [];
+        for (const brand of REVIEWED_BRANDS) {
+            let lastPageRaw;
+            let totalPages = null;
+            for (let page = 1; totalPages === null || page <= totalPages; page += 1) {
+                const response = await fetchBrandListEnvelope({
+                    brandId: brand.externalId,
+                    page,
+                    pageSize: 36,
+                });
+                const raw = sanitizeListHtml(response.raw, page, 36);
+                const parsed = normalizeListPage(raw, 36);
+                totalPages ??= parsed.totalPages;
+                if (parsed.totalPages !== totalPages) {
+                    reject('ZZCTEA_BRAND_DISCOVERY_PAGING_DRIFT');
+                }
+                for (const item of parsed.items) {
+                    if (item.facts?.brand?.externalId !== brand.externalId) {
+                        reject('ZZCTEA_BRAND_DISCOVERY_BRAND_MISMATCH');
+                    }
+                    externalIds.add(item.externalId);
+                }
+                envelopes.push({
+                    brandId: brand.externalId,
+                    kind: 'page',
+                    page,
+                    sha256: sha256(raw),
+                    target: response.target,
+                });
+                lastPageRaw = raw;
+            }
+            const requestedPage = totalPages + 1;
+            const terminalResponse = await fetchBrandListEnvelope({
+                brandId: brand.externalId,
+                page: requestedPage,
+                pageSize: 36,
+            });
+            const terminalRaw = sanitizeTerminalProbeHtml(
+                terminalResponse.raw,
+                requestedPage,
+                36,
+                totalPages,
+            );
+            assertTerminalProbeEnvelope({
+                lastPageRaw,
+                pageSize: 36,
+                raw: terminalRaw,
+                requestedPage,
+                totalPages,
+            });
+            envelopes.push({
+                brandId: brand.externalId,
+                kind: 'terminal-probe',
+                page: requestedPage,
+                sha256: sha256(terminalRaw),
+                target: terminalResponse.target,
+            });
+        }
+        const sortedExternalIds = [...externalIds].sort(compareNumericIds);
+        if (sortedExternalIds.length === 0) {
+            reject('ZZCTEA_BRAND_DISCOVERY_EMPTY');
+        }
+        return {
+            externalIds: sortedExternalIds,
+            requestParameters: {
+                brandManifest: {
+                    schemaVersion: BRAND_MANIFEST_SCHEMA,
+                    brands: REVIEWED_BRANDS,
+                    sha256: REVIEWED_BRAND_MANIFEST_SHA256,
+                },
+                discovery: {
+                    schemaVersion: DISCOVERY_SCHEMA,
+                    itemCount: sortedExternalIds.length,
+                    externalIdsSha256: sha256(stableJson(sortedExternalIds)),
+                    envelopeCount: envelopes.length,
+                    envelopesSha256: sha256(stableJson(envelopes)),
+                },
+            },
+        };
     }
 
     function validateCanonicalDestination(location, currentUrl) {
@@ -250,10 +408,12 @@ function createZzcTeaConnector(options = {}) {
 
     return Object.freeze({
         id: 'zzctea',
-        connectorVersion: 'zzctea-public-html-v5',
+        connectorVersion: 'zzctea-public-html-v7',
         parserVersion: PARSER_VERSION,
         defaultPageSize: 36,
         maximumPageSize: 36,
+        discoverExternalIds,
+        externalIdFromProductCode,
         requestParameters() {
             return {
                 listPagePattern: `${SOURCE_ORIGIN}${LIST_PATH}?page={page}`,
@@ -324,22 +484,13 @@ function createZzcTeaConnector(options = {}) {
             requestedPage,
             totalPages,
         }) {
-            const probe = decodeSanitizedEnvelope(raw);
-            const lastPage = decodeSanitizedEnvelope(lastPageRaw);
-            if (probe.kind !== 'terminal-probe' ||
-                lastPage.kind !== 'list' ||
-                probe.requestedPage !== String(requestedPage) ||
-                probe.pageSize !== String(pageSize) ||
-                probe.totalPages !== String(totalPages) ||
-                !Array.isArray(probe.data) ||
-                !Array.isArray(lastPage.data)) {
-                reject('ZZCTEA_TERMINAL_PROBE_INVALID');
-            }
-            if (probe.data.length === 0) return;
-            if (probe.reportedPage !== String(totalPages) ||
-                JSON.stringify(probe.data) !== JSON.stringify(lastPage.data)) {
-                reject('ZZCTEA_TERMINAL_PROBE_NOT_TERMINAL');
-            }
+            assertTerminalProbeEnvelope({
+                lastPageRaw,
+                pageSize,
+                raw,
+                requestedPage,
+                totalPages,
+            });
         },
         async fetchDetail({ externalId }) {
             return (await fetchDetailDocument(externalId)).raw;
@@ -354,11 +505,16 @@ function createZzcTeaConnector(options = {}) {
 module.exports = {
     CRAWLER_PRODUCT_TOKEN,
     CRAWLER_USER_AGENT,
+    BRAND_MANIFEST_SCHEMA,
     DEFAULT_MINIMUM_REQUEST_INTERVAL_MS,
     DETAIL_PATH_PATTERN,
+    DISCOVERY_SCHEMA,
     LIST_PATH,
+    REVIEWED_BRANDS,
+    REVIEWED_BRAND_MANIFEST_SHA256,
     ROBOTS_URL,
     SOURCE_HOSTS,
     SOURCE_ORIGIN,
     createZzcTeaConnector,
+    externalIdFromProductCode,
 };

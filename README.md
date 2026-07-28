@@ -18,6 +18,7 @@ DKH.TeaCatalogData/
 │   ├── catalog-sources/
 │   └── prod/{catalog-reference,product-reference}/
 ├── import/thetea/              # Ignored generated ProductCatalog JSON
+├── import/zzctea/current/      # Ignored atomic ZZCTea data + media import bundle
 ├── reports/thetea/             # Ignored generated validation/mapping reports
 └── AGENTS.md / CLAUDE.md       # Agent context
 ```
@@ -36,30 +37,36 @@ Product translations use BCP 47 locale codes from TheTea, with DKH aliases for e
 ## Workflow
 
 Public reference catalogs use the source-agnostic runtime under
-`scripts/catalog-sources/`. ZZCTea is the first reviewed connector:
+`scripts/catalog-sources/`. ZZCTea is the first reviewed connector. One command
+performs the resumable weekly refresh and atomically publishes the verified
+operator bundle:
 
 ```bash
-node scripts/catalog-sources/fetch-snapshot.js \
-  --source=zzctea \
-  --snapshot=zzctea-2026-07-27 \
-  --resume \
-  --concurrency=4
+node scripts/catalog-sources/update-zzctea-current.js \
+  --snapshot=zzctea-2026-07-28-weekly-v1 \
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-07-27.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-07-28-post-import \
+  --minimum-request-interval-ms=1000
 ```
 
-This command fetches only the allowlisted public HTML list/detail routes and a
-strict canonical-redirect `HEAD` for each stable detail URL. It writes no
-production data. `/teaList` is the public HTML hot-tea catalog, not the larger
-inventory behind the robots-disallowed `/api/` routes. Product-only PII-free
-envelopes and the resumable checkpoint are stored under the ignored
-`sources/catalog-sources/` tree; a complete, hashed, source-agnostic artifact is
-written under ignored `artifacts/catalog-sources/`. See
+The seed is the union of every exact `ZZC-<id>` in the complete, hash-verified
+ProductCatalog export and IDs discovered through all 13 reviewed public
+brand-filtered `/teaList` views. This preserves detail refresh for the existing
+3,151 products and discovers new public products without treating the default
+single-brand list as complete. The connector uses only robots-allowed public
+HTML list/detail routes and never calls `/api/` or `/official/`. It downloads
+reviewed source images into content-addressed local blobs, but writes no
+production data. Product-only PII-free envelopes and the resumable checkpoint
+are stored under ignored `sources/catalog-sources/`; immutable evidence remains
+under ignored `artifacts/`. See
 [`scripts/catalog-sources/README.md`](scripts/catalog-sources/README.md) for
 replay, drift, PII and reference-price rules.
 
-After explicit source/image-use approval, verified image references can be
-materialized as resumable, content-addressed local files with
-`scripts/catalog-sources/materialize-media.js`. The output includes a
-SetupTool-compatible manifest but performs no MediaService or product writes.
+The final stage atomically replaces ignored `import/zzctea/current/`. That
+directory is the single version to inspect and later import; `artifacts/`
+remains the immutable evidence input. The bundle carries
+`applyAllowed: false` until the verified SetupTool media gate and one-product
+canary are complete.
 
 Put secrets in `.env` using `scripts/env.prod.template`. The TheTea text API key is read from `THETEA_API_KEY` or `THE_TEA_API_KEY`. ProductCatalog export/validate/import also requires `PRODUCT_CATALOG_WORKSPACE_ID`.
 

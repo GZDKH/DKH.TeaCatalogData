@@ -13,6 +13,7 @@ const {
 } = require('./lib/media-materialization');
 const {
     sha256,
+    stableJson,
 } = require('./lib/artifacts');
 const {
     assertMediaOutputPath,
@@ -102,7 +103,7 @@ function fixture() {
                     externalId: '2',
                     productCode: 'ZZC-2',
                     productId: '22222222-2222-4222-8222-222222222222',
-                    status: 'matched-update',
+                    status: 'matched-noop',
                 },
             ],
         },
@@ -113,8 +114,54 @@ function temporaryDirectory() {
     return fs.mkdtempSync(path.join(os.tmpdir(), 'zzctea-media-test-'));
 }
 
+function clone(value) {
+    return JSON.parse(JSON.stringify(value));
+}
+
 async function expectReject(action, message) {
     await assert.rejects(action, error => error.message === message);
+}
+
+async function createPreviousImport(root) {
+    const bundleRoot = path.join(root, 'current');
+    const mediaRoot = path.join(bundleRoot, 'media');
+    fs.mkdirSync(mediaRoot, { recursive: true });
+    const data = fixture();
+    await materializeVerifiedMedia({
+        ...data,
+        beforeAttempt: NO_WAIT,
+        fetchImpl: async url => {
+            const body = url.pathname.endsWith('/a.jpg') ? JPEG_A : JPEG_B;
+            return response(200, body, {
+                'content-length': body.length,
+                'content-type': 'image/jpeg',
+            });
+        },
+        maxFileBytes: 100,
+        maxTotalBytes: 1000,
+        minimumRequestIntervalMs: 1000,
+        outputDirectory: mediaRoot,
+    });
+    const mediaManifestFile = path.join(mediaRoot, 'media-manifest.json');
+    const mediaManifestBytes = fs.readFileSync(mediaManifestFile);
+    fs.writeFileSync(path.join(bundleRoot, 'import-bundle-manifest.json'), stableJson({
+        schemaVersion: 'catalog-source-import-bundle-v1',
+        complete: true,
+        sourceId: 'zzctea',
+        snapshotId: data.artifactBundle.manifest.snapshotId,
+        productionWrites: false,
+        directories: {
+            media: 'media',
+        },
+        files: {
+            mediaManifest: {
+                bytes: mediaManifestBytes.length,
+                file: 'media/media-manifest.json',
+                sha256: sha256(mediaManifestBytes),
+            },
+        },
+    }));
+    return { data, mediaRoot };
 }
 
 async function testMagicValidation() {
@@ -145,12 +192,41 @@ async function testOriginalSelectionAndMappingGate() {
     assert.strictEqual(candidates.length, 2);
     assert.strictEqual(candidates[0].url, 'https://oss.yf-gz.cn/file/a.jpg');
     assert.strictEqual(candidates[0].aliases.length, 2);
+    const withDraft = fixture();
+    withDraft.artifactBundle.artifact.items.push({
+        externalId: '3',
+        localizedFields: { 'zh-CN': { name: 'Draft tea' } },
+        images: [{ url: 'https://oss.yf-gz.cn/file/c.jpg' }],
+    });
+    withDraft.mappingsBundle.mappings.push({
+        externalId: '3',
+        productCode: 'ZZC-3',
+        published: false,
+        status: 'missing-create-draft',
+    });
+    const draftCandidates = selectOriginalImageCandidates(
+        withDraft.artifactBundle.artifact,
+        withDraft.mappingsBundle.mappings,
+    );
+    assert.strictEqual(draftCandidates.length, 3);
+    assert.strictEqual(draftCandidates[2].productCode, 'ZZC-3');
+    assert.strictEqual(draftCandidates[2].productId, undefined);
+    assert.throws(
+        () => selectOriginalImageCandidates(
+            withDraft.artifactBundle.artifact,
+            withDraft.mappingsBundle.mappings.map(mapping =>
+                mapping.externalId === '3'
+                    ? { ...mapping, productId: '33333333-3333-4333-8333-333333333333' }
+                    : mapping),
+        ),
+        /exact, unique matched or Draft/,
+    );
     assert.throws(
         () => selectOriginalImageCandidates(
             data.artifactBundle.artifact,
             data.mappingsBundle.mappings.slice(1),
         ),
-        /No exact product mapping/,
+        /do not exactly cover/,
     );
 
     const large = fixture();
@@ -427,6 +503,145 @@ async function testInterruptedResume() {
     assert.strictEqual(resumed.manifest.uniqueBlobCount, 2);
 }
 
+async function testVerifiedPriorCacheReuse() {
+    const prior = await createPreviousImport(temporaryDirectory());
+    const outputRoot = temporaryDirectory();
+    let calls = 0;
+    const result = await materializeVerifiedMedia({
+        ...prior.data,
+        beforeAttempt: NO_WAIT,
+        fetchImpl: async () => {
+            calls += 1;
+            throw new Error('unchanged cached URL must not fetch');
+        },
+        maxFileBytes: 100,
+        maxTotalBytes: 1000,
+        minimumRequestIntervalMs: 1000,
+        outputDirectory: outputRoot,
+        previousMediaDirectory: prior.mediaRoot,
+    });
+    assert.strictEqual(calls, 0);
+    assert.strictEqual(result.manifest.originalImageCount, 2);
+    const checkpoint = JSON.parse(
+        fs.readFileSync(path.join(outputRoot, 'media-checkpoint.json'), 'utf8'),
+    );
+    assert.strictEqual(checkpoint.completedCount, 2);
+    for (const entry of Object.values(checkpoint.entries)) {
+        const cachedFile = path.join(prior.mediaRoot, entry.file);
+        const copiedFile = path.join(outputRoot, entry.file);
+        assert.strictEqual(fs.lstatSync(copiedFile).isFile(), true);
+        assert.strictEqual(fs.lstatSync(copiedFile).isSymbolicLink(), false);
+        assert.strictEqual(sha256(fs.readFileSync(copiedFile)), entry.sha256);
+        assert.notStrictEqual(
+            fs.statSync(copiedFile).ino,
+            fs.statSync(cachedFile).ino,
+            'Cache reuse must copy into the new artifact, not hard-link it.',
+        );
+    }
+}
+
+async function testChangedAndNewUrlsFetch() {
+    const prior = await createPreviousImport(temporaryDirectory());
+    const next = clone(prior.data);
+    next.artifactBundle.manifest.artifactSha256 = 'd'.repeat(64);
+    next.artifactBundle.manifest.snapshotId = 'snapshot-next';
+    next.artifactBundle.artifact.items[1].images[0].url =
+        'https://oss.yf-gz.cn/file/changed-b.jpg';
+    next.artifactBundle.artifact.items.push({
+        externalId: '3',
+        localizedFields: { 'zh-CN': { name: 'Tea three' } },
+        images: [{
+            role: 'source-reference',
+            url: 'https://oss.yf-gz.cn/file/new-c.jpg',
+        }],
+    });
+    next.mappingsBundle.mappings.push({
+        externalId: '3',
+        productCode: 'ZZC-3',
+        published: false,
+        status: 'missing-create-draft',
+    });
+    const fetched = [];
+    await materializeVerifiedMedia({
+        ...next,
+        beforeAttempt: NO_WAIT,
+        fetchImpl: async url => {
+            fetched.push(url.toString());
+            return response(200, JPEG_B, {
+                'content-type': 'image/jpeg',
+            });
+        },
+        maxFileBytes: 100,
+        maxTotalBytes: 1000,
+        minimumRequestIntervalMs: 1000,
+        outputDirectory: temporaryDirectory(),
+        previousMediaDirectory: prior.mediaRoot,
+    });
+    assert.deepStrictEqual(fetched.sort(), [
+        'https://oss.yf-gz.cn/file/changed-b.jpg',
+        'https://oss.yf-gz.cn/file/new-c.jpg',
+    ]);
+}
+
+async function testTamperedPriorCacheFailsClosed() {
+    const prior = await createPreviousImport(temporaryDirectory());
+    const receipt = JSON.parse(
+        fs.readFileSync(path.join(prior.mediaRoot, 'media-receipt.json'), 'utf8'),
+    );
+    fs.writeFileSync(path.join(prior.mediaRoot, receipt.sources[0].file), JPEG_B);
+    let calls = 0;
+    await expectReject(
+        () => materializeVerifiedMedia({
+            ...prior.data,
+            beforeAttempt: NO_WAIT,
+            fetchImpl: async () => {
+                calls += 1;
+                return response(200, JPEG_A, {
+                    'content-type': 'image/jpeg',
+                });
+            },
+            maxFileBytes: 100,
+            maxTotalBytes: 1000,
+            minimumRequestIntervalMs: 1000,
+            outputDirectory: temporaryDirectory(),
+            previousMediaDirectory: prior.mediaRoot,
+        }),
+        'MEDIA_RESUME_HASH_MISMATCH',
+    );
+    assert.strictEqual(calls, 0);
+
+    const symlinked = await createPreviousImport(temporaryDirectory());
+    const symlinkReceipt = JSON.parse(
+        fs.readFileSync(
+            path.join(symlinked.mediaRoot, 'media-receipt.json'),
+            'utf8',
+        ),
+    );
+    const blobFile = path.join(
+        symlinked.mediaRoot,
+        symlinkReceipt.sources[0].file,
+    );
+    const outsideFile = path.join(temporaryDirectory(), 'outside.jpg');
+    fs.copyFileSync(blobFile, outsideFile);
+    fs.rmSync(blobFile);
+    fs.symlinkSync(outsideFile, blobFile);
+    await assert.rejects(
+        () => materializeVerifiedMedia({
+            ...symlinked.data,
+            beforeAttempt: NO_WAIT,
+            fetchImpl: async () => {
+                throw new Error('symlinked cache must fail before fetch');
+            },
+            maxFileBytes: 100,
+            maxTotalBytes: 1000,
+            minimumRequestIntervalMs: 1000,
+            outputDirectory: temporaryDirectory(),
+            previousMediaDirectory: symlinked.mediaRoot,
+        }),
+        /must be a real file/,
+    );
+}
+
 async function main() {
     await testMagicValidation();
     await testOriginalSelectionAndMappingGate();
@@ -434,6 +649,9 @@ async function main() {
     await testRedirectAndLimits();
     await testMaterializationDedupeResumeAndMismatch();
     await testInterruptedResume();
+    await testVerifiedPriorCacheReuse();
+    await testChangedAndNewUrlsFetch();
+    await testTamperedPriorCacheFailsClosed();
     console.log('media materialization tests passed');
 }
 
@@ -446,9 +664,12 @@ if (require.main === module) {
 
 module.exports = {
     testInterruptedResume,
+    testChangedAndNewUrlsFetch,
     testMagicValidation,
     testMaterializationDedupeResumeAndMismatch,
     testOriginalSelectionAndMappingGate,
     testOutputSymlinkGate,
     testRedirectAndLimits,
+    testTamperedPriorCacheFailsClosed,
+    testVerifiedPriorCacheReuse,
 };

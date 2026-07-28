@@ -19,6 +19,8 @@ catalog-source-offline-tests:
     - node scripts/catalog-sources/test-runtime.js
     - node scripts/catalog-sources/test-projection.js
     - node scripts/catalog-sources/test-projection-cli.js
+    - node scripts/catalog-sources/test-update-zzctea-current.js
+    - node scripts/catalog-sources/test-import-bundle.js
     - node scripts/catalog-sources/test-media-materialization.js
     - node scripts/catalog-sources/test-reconciliation-references.js
     - node scripts/catalog-sources/test-reconciliation.js

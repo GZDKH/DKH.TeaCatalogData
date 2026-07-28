@@ -14,8 +14,12 @@ const {
     loadVerifiedProjectionBundle,
 } = require('./lib/reconciliation-bundle');
 const {
+    assertReconciliationReferences,
     reconcileCatalogSource,
 } = require('./reconcile-projection');
+const {
+    SOURCE_SPECIFICATIONS,
+} = require('./lib/reconciliation');
 const {
     writeProductReference,
 } = require('../thetea/lib/product-reference');
@@ -157,11 +161,32 @@ function writeReferences(root) {
         source: 'AdminGateway ProductCatalog',
         workspaceId: WORKSPACE_ID,
         fetchedAt: OBSERVED_AT,
-        catalogs: [{ code: 'CATALOG-TEA' }],
-        categories: [{ code: 'CATEGORY-TEA' }],
-        specificationGroups: [{ code: 'SPEC-GROUP-TEA' }],
-        specificationAttributes: [{ code: 'SPEC-ATTRIBUTE-TEA' }],
-        specificationAttributeOptions: [{ code: 'SPEC-OPTION-TEA' }],
+        catalogs: [{ code: 'CATALOG-TEA' }, { code: 'CATALOG-PUERH' }],
+        categories: [
+            { code: 'CATEGORY-TEA' },
+            { code: 'CAT-PUER-TEA' },
+            { code: 'CAT-PUER-SHU' },
+            { code: 'CAT-SHAPE-CAKE' },
+        ],
+        specificationGroups: [
+            { code: 'SPEC-GROUP-TEA' },
+            { code: 'SPEC-TT-GROUP-ATOMIC' },
+            { code: 'SPEC-TT-GROUP-CLASSIFICATION-ORIGIN' },
+        ],
+        specificationAttributes: [
+            { code: 'SPEC-ATTRIBUTE-TEA' },
+            ...Object.values(SOURCE_SPECIFICATIONS).map(code => ({ code })),
+        ],
+        specificationAttributeOptions: [
+            { code: 'SPEC-OPTION-TEA' },
+            {
+                code:
+                    'SPEC-TT-OPT-CLASSIFICATION-ORIGIN-TEA-TYPE-PUER',
+            },
+            { code: 'OPT-PUERH-VINTAGE-2025' },
+            { code: 'OPT-PUERH-PROCESSING-SHU' },
+            { code: 'OPT-D902FEC129A64389' },
+        ],
     }));
     return { catalogFile, productRoot };
 }
@@ -237,9 +262,38 @@ function main() {
         assert.strictEqual(full.documents.manifest.counts.missing, 1);
         assert.strictEqual(full.documents.manifest.selectionComplete, true);
         assert.strictEqual(full.documents.manifest.rollbackComplete, false);
+        assert.strictEqual(full.documents.report.productPatchCount, 2);
+        assert.strictEqual(full.documents.manifest.productPatchCount, 2);
+        assert.strictEqual(full.documents.report.rollbackProductCount, 1);
         assert.deepStrictEqual(
             full.documents.manifest.nonReversibleCreateCodes,
             ['ZZC-9'],
+        );
+        const draftPatch = full.documents.patchesDocument.value.find(
+            value => value.code === 'ZZC-9',
+        );
+        assert.strictEqual(draftPatch.published, false);
+        assert.strictEqual(draftPatch.sku, 'ZZC-9');
+        assert.deepStrictEqual(draftPatch.catalogPrices, []);
+        assert.deepStrictEqual(draftPatch.tierPrices, []);
+        assert.deepStrictEqual(draftPatch.storePriceOverrides, []);
+        for (const retailField of [
+            'price',
+            'oldPrice',
+            'catalogPrice',
+            'productCost',
+        ]) {
+            assert.strictEqual(Object.hasOwn(draftPatch, retailField), false);
+        }
+        assert.throws(
+            () => assertReconciliationReferences(full.reconciliation, {
+                catalogs: [{ code: 'CATALOG-PUERH' }],
+                categories: [{ code: 'CAT-PUER-TEA' }],
+                specificationGroups: [],
+                specificationAttributes: [],
+                specificationAttributeOptions: [],
+            }),
+            /unavailable specification definition/,
         );
 
         assert.throws(

@@ -75,6 +75,55 @@ function selectProjection(projection, onlyExternalId) {
     };
 }
 
+function referenceCode(value) {
+    const raw = value && typeof value === 'object' ? value.code : value;
+    return typeof raw === 'string' && raw.trim()
+        ? raw.trim().toUpperCase()
+        : null;
+}
+
+function assertReconciliationReferences(reconciliation, references) {
+    const available = {
+        catalogs: new Set(references.catalogs.map(entry =>
+            referenceCode(entry.code))),
+        categories: new Set(references.categories.map(entry =>
+            referenceCode(entry.code))),
+        groups: new Set(references.specificationGroups.map(entry =>
+            referenceCode(entry.code))),
+        attributes: new Set(references.specificationAttributes.map(entry =>
+            referenceCode(entry.code))),
+        options: new Set(references.specificationAttributeOptions.map(entry =>
+            referenceCode(entry.code))),
+    };
+    for (const entry of reconciliation.entries) {
+        const product = entry.productPatch;
+        if (!product) continue;
+        for (const specification of product.specifications || []) {
+            const attribute = referenceCode(specification.attribute);
+            const group = referenceCode(specification.group);
+            const option = referenceCode(specification.option);
+            if (!attribute || !available.attributes.has(attribute) ||
+                (group && !available.groups.has(group)) ||
+                (option && !available.options.has(option))) {
+                throw new Error(
+                    `ZZCTea product ${entry.productCode} references an unavailable specification definition.`,
+                );
+            }
+        }
+        for (const assignment of product.catalogs || []) {
+            const catalog = referenceCode(assignment.catalog);
+            const category = referenceCode(assignment.category);
+            if (!catalog || !category ||
+                !available.catalogs.has(catalog) ||
+                !available.categories.has(category)) {
+                throw new Error(
+                    `ZZCTea product ${entry.productCode} references an unavailable catalog definition.`,
+                );
+            }
+        }
+    }
+}
+
 function reconcileCatalogSource(args, options = {}) {
     const repositoryRoot = path.resolve(options.repositoryRoot || REPO_ROOT);
     const projectionBundle = loadVerifiedProjectionBundle(resolveInput(
@@ -102,6 +151,7 @@ function reconcileCatalogSource(args, options = {}) {
         selectedProjection,
         references.products,
     );
+    assertReconciliationReferences(reconciliation, references);
     const sourceId = safeSegment(reconciliation.sourceId, 'source ID');
     const snapshotId = safeSegment(
         projectionBundle.manifest.snapshotId,
@@ -187,6 +237,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+    assertReconciliationReferences,
     requireCanonicalChild,
     reconcileCatalogSource,
     selectProjection,

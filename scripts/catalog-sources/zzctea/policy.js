@@ -19,11 +19,12 @@ const PUBLIC_CANONICAL_POLICY = Object.freeze({
     sourcePolicyVersion: PUBLIC_CANONICAL_POLICY_VERSION,
 });
 const PUBLIC_IMAGE_HOST = 'oss.yf-gz.cn';
-const PUBLIC_IMAGE_POLICY_VERSION = 'zzctea-public-image-url-v1';
+const PUBLIC_IMAGE_POLICY_VERSION = 'zzctea-public-image-url-v2';
 const PUBLIC_IMAGE_POLICY = Object.freeze({
     schemaVersion: IMAGE_REFERENCE_POLICY_SCHEMA,
     allowedHosts: Object.freeze([PUBLIC_IMAGE_HOST]),
     pathPrefix: '/file/',
+    allowRootFile: true,
     queryRules: Object.freeze({
         'x-oss-process': 'style-name',
     }),

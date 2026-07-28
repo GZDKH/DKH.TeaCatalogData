@@ -23,13 +23,12 @@ Each connector instance first validates one bounded `text/plain` robots policy.
 The exact path plus query must be explicitly allowed for the connector's fixed
 product token using longest case-insensitive agent matching; `User-agent: *` is
 only the fallback. A failed policy remains a cached failure for that run.
-`/teaList` represents the public HTML hot-tea catalog; it is not evidence of
-the complete, larger inventory behind the robots-disallowed `/api/` routes.
-The runtime keeps those source scopes separate and never reports the HTML
-snapshot as the complete ZZCTea inventory.
-Robots allowance does not grant a content-reuse license. Multi-item live
-snapshotting and source-image reuse remain blocked until source permission or
-terms, image policy, and the request-rate limit are reviewed.
+The default `/teaList` view is only one brand. A weekly seed therefore unions
+every exact ID from the complete ProductCatalog `ZZC-*` export with discovery
+through the 13 reviewed public `brandIds` views. The existing set cannot
+silently disappear, while newly published public products become Draft
+proposals. This is complete for the reviewed seed and brand scope, not a claim
+about any inventory behind robots-disallowed `/api/` or `/official/` routes.
 The reviewed ZZCTea transport applies one monotonic start-time gate to all
 outbound attempts, including retries. Its default and minimum interval is one
 second, and that value is bound into the resumable checkpoint so a resumed run
@@ -51,11 +50,12 @@ artifact boundary. Phone-shaped digits are accepted only as opaque content of a
 fully validated `/tea/{slug}.html` path; labelled contact data, query strings,
 fragments, alternate hosts, and alternate schemes remain fail-closed.
 
-Image binaries are not copied. The product envelope may retain only versioned
-HTTPS references on `oss.yf-gz.cn` under `/file/`, with no credentials, port, or
-fragment and at most the exact `x-oss-process=style/...` transform. This narrow
-URL policy distinguishes opaque numeric asset IDs from contact numbers without
-weakening the PII checks for any other product text.
+Reviewed image binaries are downloaded into local content-addressed blobs.
+References must use HTTPS on `oss.yf-gz.cn`, either under `/file/` or as one
+opaque root-level image filename, with no credentials, port, or fragment and at
+most the exact `x-oss-process=style/...` transform. Nested paths such as
+`/profile/...` remain rejected. This narrow policy distinguishes opaque asset
+IDs from contact numbers without weakening PII checks for other product text.
 
 The verified offline projection emits provider-neutral CommerceNetwork
 observation DTOs plus a deterministic report and hash manifest. It performs no
@@ -66,11 +66,28 @@ one-product canary, and the later reviewed apply phase.
 The offline ProductCatalog reconciliation uses exact immutable
 `ZZC-<externalId>` product codes and a complete nested product export. It emits
 full baseline-preserving product patches, rollback aggregates, deterministic
-source mappings, and Draft-only reports for missing products. It does not
+source mappings, and price-free unpublished Draft product patches for missing
+products. Drafts are assigned to `CATALOG-PUERH` with conservative factual
+categories. It does not
 perform fuzzy matching or mutate any retail/catalog price. The current catalog
 reference snapshot is structurally verified and hashed but lacks its own
 completeness manifest, so reconciliation remains explicitly non-authoritative
 and publication-ineligible.
+
+## Operator import bundle
+
+Complete source, projection, reconciliation, and media outputs are assembled
+into one ignored `import/zzctea/current/` directory. `artifacts/` remains the
+immutable evidence layer; `import/zzctea/current/` is the stable
+operator-facing version. The builder validates all input bindings, clones real
+files without symlinks, writes a final hash manifest, and swaps the directory
+atomically.
+
+The bundle contains ProductCatalog product patches, immutable source-product
+mappings, provider-neutral CommerceNetwork observations with source links and
+reference-price/package evidence, source/projection/reconciliation evidence,
+and content-addressed media. It remains `applyAllowed: false` until SetupTool verifies the bundle and
+per-file hashes immediately before upload and a one-product canary passes.
 
 See [`../scripts/catalog-sources/README.md`](../scripts/catalog-sources/README.md)
 for commands, output layout and operator gates.

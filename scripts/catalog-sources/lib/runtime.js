@@ -23,6 +23,7 @@ const {
 const CHECKPOINT_SCHEMA = 'catalog-source-checkpoint-v1';
 const ARTIFACT_SCHEMA = 'catalog-source-artifact-v1';
 const MANIFEST_SCHEMA = 'catalog-source-artifact-manifest-v1';
+const EXTERNAL_ID_SEED_SCHEMA = 'catalog-source-external-id-seed-v1';
 const SHA256_HEX = /^[a-f0-9]{64}$/u;
 
 function mapLimit(items, limit, worker) {
@@ -49,6 +50,57 @@ function relativeRawFile(kind, value) {
     return `raw/details/${safeSegment(value, 'external ID')}.envelope.json`;
 }
 
+function compareExternalIds(left, right) {
+    if (/^\d+$/u.test(left) && /^\d+$/u.test(right)) {
+        return left.length - right.length || left.localeCompare(right, 'en');
+    }
+    return left.localeCompare(right, 'en');
+}
+
+function normalizeExternalIdSeed(seed) {
+    if (seed === undefined || seed === null) return null;
+    if (!seed || typeof seed !== 'object' || Array.isArray(seed) ||
+        !Array.isArray(seed.externalIds) ||
+        !seed.requestParameters ||
+        typeof seed.requestParameters !== 'object' ||
+        Array.isArray(seed.requestParameters)) {
+        reject('SOURCE_EXTERNAL_ID_SEED_INVALID');
+    }
+    if (seed.externalIds.length === 0 || seed.externalIds.length > 100_000) {
+        reject('SOURCE_EXTERNAL_ID_SEED_COUNT_INVALID');
+    }
+    const externalIds = seed.externalIds.map(value =>
+        safeSegment(value, 'seed external ID'));
+    if (new Set(externalIds).size !== externalIds.length) {
+        reject('SOURCE_EXTERNAL_ID_SEED_DUPLICATE');
+    }
+    externalIds.sort(compareExternalIds);
+    const externalIdsSha256 = sha256(stableJson(externalIds));
+    return {
+        checkpoint: {
+            schemaVersion: EXTERNAL_ID_SEED_SCHEMA,
+            mode: 'external-ids',
+            itemCount: externalIds.length,
+            externalIdsSha256,
+            externalIds,
+        },
+        requestParameters: {
+            ...seed.requestParameters,
+            schemaVersion: EXTERNAL_ID_SEED_SCHEMA,
+            mode: 'external-ids',
+            itemCount: externalIds.length,
+            externalIdsSha256,
+        },
+    };
+}
+
+function requestParametersForRun(connector, normalizedSeed) {
+    const parameters = connector.requestParameters();
+    return normalizedSeed
+        ? { ...parameters, seed: normalizedSeed.requestParameters }
+        : parameters;
+}
+
 function validateCheckpoint(checkpoint, expected) {
     if (checkpoint.schemaVersion !== CHECKPOINT_SCHEMA ||
         checkpoint.sourceId !== expected.sourceId ||
@@ -57,20 +109,28 @@ function validateCheckpoint(checkpoint, expected) {
         checkpoint.parserVersion !== expected.parserVersion ||
         checkpoint.artifactSchemaVersion !== ARTIFACT_SCHEMA ||
         checkpoint.pageSize !== expected.pageSize ||
-        stableJson(checkpoint.requestParameters) !== stableJson(expected.requestParameters)) {
+        stableJson(checkpoint.requestParameters) !== stableJson(expected.requestParameters) ||
+        stableJson(checkpoint.seed || null) !== stableJson(expected.seed || null)) {
         reject('SOURCE_CHECKPOINT_INCOMPATIBLE');
     }
 }
 
-function createCheckpoint({ connector, snapshotId, pageSize, observedAt }) {
-    return {
+function createCheckpoint({
+    connector,
+    snapshotId,
+    pageSize,
+    observedAt,
+    requestParameters,
+    seed,
+}) {
+    const checkpoint = {
         schemaVersion: CHECKPOINT_SCHEMA,
         sourceId: connector.id,
         snapshotId,
         connectorVersion: connector.connectorVersion,
         parserVersion: connector.parserVersion,
         artifactSchemaVersion: ARTIFACT_SCHEMA,
-        requestParameters: connector.requestParameters(),
+        requestParameters,
         observedAt,
         pageSize,
         status: 'partial',
@@ -81,6 +141,8 @@ function createCheckpoint({ connector, snapshotId, pageSize, observedAt }) {
         details: {},
         diagnostics: [],
     };
+    if (seed) checkpoint.seed = seed;
+    return checkpoint;
 }
 
 function pageEntryByNumber(checkpoint, page) {
@@ -294,6 +356,29 @@ async function collectPages(context) {
     return allItems;
 }
 
+function collectSeedItems(checkpoint) {
+    const seed = checkpoint.seed;
+    if (!seed ||
+        seed.schemaVersion !== EXTERNAL_ID_SEED_SCHEMA ||
+        seed.mode !== 'external-ids' ||
+        !Array.isArray(seed.externalIds) ||
+        seed.externalIds.length !== seed.itemCount ||
+        seed.externalIds.length === 0 ||
+        sha256(stableJson(seed.externalIds)) !== seed.externalIdsSha256 ||
+        checkpoint.pages.length !== 0 ||
+        checkpoint.terminalProbe !== null ||
+        checkpoint.totalPages !== null ||
+        (checkpoint.totalCount !== null &&
+            checkpoint.totalCount !== seed.itemCount)) {
+        reject('SOURCE_EXTERNAL_ID_SEED_CHECKPOINT_INVALID');
+    }
+    checkpoint.totalCount = seed.itemCount;
+    return seed.externalIds.map(externalId => ({
+        externalId,
+        listPayloadDigest: seed.externalIdsSha256,
+    }));
+}
+
 function parseStoredDetail(snapshotDirectory, entry, connector, expectedExternalId) {
     const raw = fs.readFileSync(path.join(snapshotDirectory, entry.file));
     if (sha256(raw) !== entry.sha256) {
@@ -477,7 +562,7 @@ function artifactSemanticDigest(artifact) {
 function buildArtifact(checkpoint, items) {
     const sortedItems = [...items].sort((left, right) =>
         String(left.externalId).localeCompare(String(right.externalId), 'en', { numeric: true }));
-    const rawPayloadDigest = sha256(stableJson({
+    const rawInputs = {
         pages: checkpoint.pages
             .map(page => ({ page: page.page, sha256: page.sha256 }))
             .sort((left, right) => left.page - right.page),
@@ -490,7 +575,16 @@ function buildArtifact(checkpoint, items) {
                 sha256: checkpoint.terminalProbe.sha256,
             }
             : null,
-    }));
+    };
+    if (checkpoint.seed) {
+        rawInputs.seed = {
+            schemaVersion: checkpoint.seed.schemaVersion,
+            mode: checkpoint.seed.mode,
+            itemCount: checkpoint.seed.itemCount,
+            externalIdsSha256: checkpoint.seed.externalIdsSha256,
+        };
+    }
+    const rawPayloadDigest = sha256(stableJson(rawInputs));
     const artifact = {
         schemaVersion: ARTIFACT_SCHEMA,
         source: {
@@ -607,6 +701,7 @@ async function ingestSourceSnapshot(options) {
         pageSize = connector.defaultPageSize,
         repositoryRoot,
         resume = false,
+        seed,
         snapshotId,
     } = options;
     if (!connector || !repositoryRoot || !snapshotId) {
@@ -626,6 +721,11 @@ async function ingestSourceSnapshot(options) {
         throw new Error('Count-drift ratios are invalid.');
     }
 
+    const normalizedSeed = normalizeExternalIdSeed(seed);
+    const requestParameters = requestParametersForRun(
+        connector,
+        normalizedSeed,
+    );
     const paths = resolvePaths({ repositoryRoot, snapshotId }, connector);
     const existingCheckpoint = readJsonIfExists(paths.checkpointFile);
     if (existingCheckpoint && !resume) {
@@ -636,6 +736,8 @@ async function ingestSourceSnapshot(options) {
         snapshotId: paths.snapshotId,
         pageSize,
         observedAt: now().toISOString(),
+        requestParameters,
+        seed: normalizedSeed?.checkpoint || null,
     });
     validateCheckpoint(checkpoint, {
         sourceId: connector.id,
@@ -643,7 +745,8 @@ async function ingestSourceSnapshot(options) {
         connectorVersion: connector.connectorVersion,
         parserVersion: connector.parserVersion,
         pageSize,
-        requestParameters: connector.requestParameters(),
+        requestParameters,
+        seed: normalizedSeed?.checkpoint || null,
     });
     const context = {
         ...paths,
@@ -655,12 +758,17 @@ async function ingestSourceSnapshot(options) {
     ensureDirectory(paths.snapshotDirectory);
     writeJsonAtomic(paths.checkpointFile, checkpoint);
 
-    const listItems = await collectPages(context);
-    assertCountDrift(
-        listItems.length,
-        readJsonIfExists(paths.lastGoodFile),
-        { maximumDropRatio, maximumGrowthRatio },
-    );
+    const listItems = normalizedSeed
+        ? collectSeedItems(checkpoint)
+        : await collectPages(context);
+    if (!normalizedSeed) {
+        assertCountDrift(
+            listItems.length,
+            readJsonIfExists(paths.lastGoodFile),
+            { maximumDropRatio, maximumGrowthRatio },
+        );
+    }
+    writeJsonAtomic(paths.checkpointFile, checkpoint);
     const items = await collectDetails(context, listItems);
     if (items.length !== listItems.length) {
         reject('SOURCE_DETAIL_COUNT_MISMATCH');
@@ -669,7 +777,12 @@ async function ingestSourceSnapshot(options) {
 }
 
 async function replaySourceSnapshot(options) {
-    const { connector, repositoryRoot, snapshotId } = options;
+    const { connector, repositoryRoot, seed, snapshotId } = options;
+    const normalizedSeed = normalizeExternalIdSeed(seed);
+    const requestParameters = requestParametersForRun(
+        connector,
+        normalizedSeed,
+    );
     const paths = resolvePaths({ repositoryRoot, snapshotId }, connector);
     const checkpoint = readJson(paths.checkpointFile);
     validateCheckpoint(checkpoint, {
@@ -678,17 +791,22 @@ async function replaySourceSnapshot(options) {
         connectorVersion: connector.connectorVersion,
         parserVersion: connector.parserVersion,
         pageSize: checkpoint.pageSize,
-        requestParameters: connector.requestParameters(),
+        requestParameters,
+        seed: normalizedSeed?.checkpoint || null,
     });
-    if (!checkpoint.totalCount || checkpoint.pages.length === 0) {
+    const seeded = checkpoint.seed !== undefined;
+    if (!checkpoint.totalCount ||
+        (!seeded && checkpoint.pages.length === 0)) {
         reject('SOURCE_REPLAY_SNAPSHOT_INCOMPLETE');
     }
-    const listItems = await collectPages({
-        ...paths,
-        checkpoint,
-        connector,
-        pageSize: checkpoint.pageSize,
-    });
+    const listItems = seeded
+        ? collectSeedItems(checkpoint)
+        : await collectPages({
+            ...paths,
+            checkpoint,
+            connector,
+            pageSize: checkpoint.pageSize,
+        });
     const items = listItems.map(listItem => {
         const entry = checkpoint.details[listItem.externalId];
         if (!entry) reject('SOURCE_REPLAY_SNAPSHOT_INCOMPLETE');
@@ -728,11 +846,13 @@ async function replaySourceSnapshot(options) {
 module.exports = {
     ARTIFACT_SCHEMA,
     CHECKPOINT_SCHEMA,
+    EXTERNAL_ID_SEED_SCHEMA,
     MANIFEST_SCHEMA,
     artifactSemanticDigest,
     assertArtifactSafe,
     buildArtifact,
     ingestSourceSnapshot,
     mapLimit,
+    normalizeExternalIdSeed,
     replaySourceSnapshot,
 };
