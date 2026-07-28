@@ -2,7 +2,7 @@
 
 const FORBIDDEN_PUBLIC_KEY =
     /(?:phone|mobile|customer|avatar|contact|wechat|weixin)|^(?:sell|buy)(?!Count$)|^(?:seller|buyer)|(?:UserId|CustomerId)$/i;
-const OPAQUE_IMAGE_NUMERIC_PATTERNS = Object.freeze([
+const OPAQUE_NUMERIC_PATTERNS = Object.freeze([
     /(?<!\d)1[3-9]\d{9}(?!\d)/u,
     /(?<!\d)1[3-9]\d[-\s]\d{4}[-\s]\d{4}(?!\d)/u,
     /(?<!\d)(?:(?:\+?86[-\s]?)?\(?0\d{2,3}\)?[-\s]?\d{7,8}|\+?86[-\s]?\(?\d{2,3}\)?[-\s]?\d{7,8})(?!\d)/u,
@@ -16,10 +16,10 @@ const FORBIDDEN_PUBLIC_TEXT_PATTERNS = Object.freeze([
     /\b(?:qq|telegram|whatsapp)\b(?:\s*[:：]\s*|\s+)[A-Za-z0-9][A-Za-z0-9_.+-]{4,31}/iu,
     /\bline\b\s*[:：]\s*[A-Za-z0-9][A-Za-z0-9_.+-]{4,31}/iu,
     /(?:\bcontact\b|联系(?:方式)?)\s*[:：]\s*[A-Za-z0-9][A-Za-z0-9_.+-]{4,31}/iu,
-    /(?:^|[/_.-])(?:tel(?:ephone)?|phone|mobile|contact)[/_.-]+[+\d][\d()-]{5,}\d(?=[/_.-]|$)/iu,
-    /(?:^|[/_.-])(?:wechat|weixin|wx)[/_.-]+[A-Za-z][A-Za-z0-9_+-]{4,31}(?=[/.]|$)/iu,
-    /(?:^|[/_.-])(?:qq|telegram|whatsapp)[/_.-]+[A-Za-z0-9][A-Za-z0-9_+-]{4,31}(?=[/.]|$)/iu,
-    /(?:^|[/_.-])(?:line|contact)[/_.-]+(?=[A-Za-z0-9_+-]{5,32}(?=[/.]|$))(?=[A-Za-z0-9_+-]*\d)[A-Za-z0-9][A-Za-z0-9_+-]{4,31}(?=[/.]|$)/iu,
+    /(?:^|[/_.-])(?:tel(?:ephone)?|phone|mobile|contact)[/_.-]*[+\d][\d()-]{5,}\d(?=[/_.-]|$)/iu,
+    /(?:^|[/_.-])(?:wechat|weixin|wx)[/_.-]*[A-Za-z][A-Za-z0-9_+-]{4,31}(?=[/.]|$)/iu,
+    /(?:^|[/_.-])(?:qq|telegram|whatsapp)[/_.-]*[A-Za-z0-9][A-Za-z0-9_+-]{4,31}(?=[/.]|$)/iu,
+    /(?:^|[/_.-])(?:line|contact)[/_.-]*(?=[A-Za-z0-9_+-]{5,32}(?=[/.]|$))(?=[A-Za-z0-9_+-]*\d)[A-Za-z0-9][A-Za-z0-9_+-]{4,31}(?=[/.]|$)/iu,
 ]);
 const IMAGE_REFERENCE_POLICY_SCHEMA =
     'catalog-source-image-reference-policy-v1';
@@ -33,11 +33,11 @@ function isForbiddenPublicKey(value) {
 
 function hasForbiddenPublicText(
     value,
-    { allowOpaqueImageNumericIdentifier = false } = {},
+    { allowOpaqueNumericIdentifier = false } = {},
 ) {
     return FORBIDDEN_PUBLIC_TEXT_PATTERNS.some(pattern => pattern.test(value)) ||
-        (!allowOpaqueImageNumericIdentifier &&
-            OPAQUE_IMAGE_NUMERIC_PATTERNS.some(pattern => pattern.test(value)));
+        (!allowOpaqueNumericIdentifier &&
+            OPAQUE_NUMERIC_PATTERNS.some(pattern => pattern.test(value)));
 }
 
 function isAllowedPublicImageReference(value, policy) {
@@ -90,7 +90,7 @@ function isAllowedPublicImageReference(value, policy) {
         !IMAGE_PATH.test(url.pathname) ||
         hasForbiddenPublicText(url.hostname) ||
         hasForbiddenPublicText(url.pathname, {
-            allowOpaqueImageNumericIdentifier: true,
+            allowOpaqueNumericIdentifier: true,
         })) {
         return false;
     }

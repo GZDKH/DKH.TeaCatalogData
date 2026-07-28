@@ -15,6 +15,7 @@ const { decodeSanitizedEnvelope } = require('./sanitized-envelope');
 const {
     PUBLIC_IMAGE_POLICY,
     PUBLIC_IMAGE_POLICY_VERSION,
+    assertPublicOpaquePath,
     assertPublicText,
 } = require('./policy');
 const {
@@ -123,7 +124,8 @@ function createZzcTeaConnector(options = {}) {
             destination.hash) {
             reject('ZZCTEA_CANONICAL_REDIRECT_INVALID');
         }
-        assertPublicText(destination.toString());
+        assertPublicText(destination.hostname);
+        assertPublicOpaquePath(destination.pathname);
         return destination;
     }
 
@@ -162,8 +164,10 @@ function createZzcTeaConnector(options = {}) {
                     if (currentUrl.href === stableUrl.href) {
                         reject('ZZCTEA_CANONICAL_REDIRECT_MISSING');
                     }
-                    const observedDestination = currentUrl.toString();
-                    assertPublicText(observedDestination);
+                    const observedDestination = validateCanonicalDestination(
+                        currentUrl.toString(),
+                        currentUrl,
+                    ).toString();
                     return observedDestination;
                 }
                 if (redirectCount === MAXIMUM_CANONICAL_REDIRECTS) {
@@ -209,8 +213,10 @@ function createZzcTeaConnector(options = {}) {
                     if (currentUrl.href === stableUrl.href) {
                         reject('ZZCTEA_CANONICAL_REDIRECT_MISSING');
                     }
-                    const observedCanonicalUrl = currentUrl.toString();
-                    assertPublicText(observedCanonicalUrl);
+                    const observedCanonicalUrl = validateCanonicalDestination(
+                        currentUrl.toString(),
+                        currentUrl,
+                    ).toString();
                     canonicalUrlPromises.set(
                         key,
                         Promise.resolve(observedCanonicalUrl),

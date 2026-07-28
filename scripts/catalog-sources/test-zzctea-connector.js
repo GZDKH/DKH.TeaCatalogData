@@ -545,7 +545,10 @@ async function main() {
         ['/tea/fixture-case-tea.html#details', 'ZZCTEA_CANONICAL_REDIRECT_INVALID'],
         ['/tea/fixture_case.html', 'ZZCTEA_CANONICAL_REDIRECT_INVALID'],
         ['/teaDetail/17627.html', 'ZZCTEA_CANONICAL_REDIRECT_INVALID'],
-        ['/tea/item-13800138000.html', 'ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED'],
+        ['/tea/phone-13800138000.html', 'ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED'],
+        ['/tea/phone13800138000.html', 'ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED'],
+        ['/tea/tel01012345678.html', 'ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED'],
+        ['/tea/contact8001234567.html', 'ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED'],
     ]) {
         const invalidRedirect = createZzcTeaConnector({
             testMode: true,
@@ -560,6 +563,33 @@ async function main() {
             error => error.code === code,
         );
     }
+
+    const opaqueNumericCanonical = createZzcTeaConnector({
+        testMode: true,
+        testRequest: requestWithRobots(async rawUrl => {
+            const url = new URL(rawUrl);
+            if (url.pathname === '/teaDetail/17627.html') {
+                return {
+                    status: 301,
+                    headers: new Headers({
+                        location: '/tea/item-13800138000.html',
+                    }),
+                    body: Buffer.alloc(0),
+                };
+            }
+            return {
+                status: 200,
+                headers: new Headers(),
+                body: Buffer.alloc(0),
+            };
+        }),
+    });
+    assert.strictEqual(
+        await opaqueNumericCanonical.resolveCanonicalUrl({
+            externalId: '17627',
+        }),
+        'https://zzctea.com/tea/item-13800138000.html',
+    );
 
     for (const [response, code] of [
         [

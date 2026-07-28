@@ -26,6 +26,14 @@ function assertPublicText(value) {
     }
 }
 
+function assertPublicOpaquePath(value) {
+    if (hasForbiddenPublicText(value, {
+        allowOpaqueNumericIdentifier: true,
+    })) {
+        reject('ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED');
+    }
+}
+
 function validatePublicImageUrl(value) {
     let url;
     try {
@@ -37,7 +45,7 @@ function validatePublicImageUrl(value) {
         reject('ZZCTEA_PUBLIC_IMAGE_URL_INVALID');
     }
     if (hasForbiddenPublicText(value, {
-        allowOpaqueImageNumericIdentifier: true,
+        allowOpaqueNumericIdentifier: true,
     })) {
         reject('ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED');
     }
@@ -74,6 +82,7 @@ module.exports = {
     PUBLIC_IMAGE_POLICY,
     PUBLIC_IMAGE_POLICY_VERSION,
     assertPublicCatalogPayload,
+    assertPublicOpaquePath,
     assertPublicText,
     validatePublicImageUrl,
 };

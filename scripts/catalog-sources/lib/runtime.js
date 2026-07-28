@@ -397,7 +397,7 @@ function assertArtifactSafe(artifact) {
                     current,
                     imageReferencePolicy,
                 ) || hasForbiddenPublicText(current, {
-                    allowOpaqueImageNumericIdentifier: true,
+                    allowOpaqueNumericIdentifier: true,
                 })) {
                     reject('SOURCE_ARTIFACT_PII_POLICY_VIOLATION');
                 }
