@@ -9,7 +9,7 @@ const {
 const { decodeSanitizedEnvelope } = require('./sanitized-envelope');
 const { normalizeDecimal, normalizeUnit, parsePackage } = require('./package-parser');
 
-const PARSER_VERSION = 'zzctea-public-html-nuxt-v5';
+const PARSER_VERSION = 'zzctea-public-html-nuxt-v6';
 const MAXIMUM_TOTAL_PAGES = 10_000;
 const MAXIMUM_SOURCE_DESCRIPTION_LENGTH = 4_000;
 const MAXIMUM_MARKET_DECIMAL_DIGITS = 48;

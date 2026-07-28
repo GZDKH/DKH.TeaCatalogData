@@ -180,6 +180,7 @@ function assertCode(action, code) {
 
 function withoutManagedEnrichment(productValue) {
     const value = clone(productValue);
+    delete value.nativeName;
     delete value.translations;
     value.specifications = value.specifications.filter(specification =>
         !Object.values(SOURCE_SPECIFICATIONS).includes(specification.attribute));
@@ -275,6 +276,7 @@ function main() {
         'Source-owned bundle must contain only the source language.',
     );
     const zh = matched.productPatch.translations.find(value => value.lang === 'zh-CN');
+    assert.strictEqual(matched.productPatch.nativeName, '茶 17641');
     assert.strictEqual(zh.name, '茶 17641');
     assert.strictEqual(
         zh.description,
@@ -376,6 +378,24 @@ function main() {
         'Applying the same factual descriptions to the patched baseline must be idempotent.',
     );
     assert.strictEqual(repeatedFromPatch.entries[1].status, 'matched-noop');
+
+    const importedReference = clone(matched.productPatch);
+    importedReference.translations[0].seo = 'platform-generated-seo';
+    importedReference.translations[0].metaTitle = '平台生成标题';
+    importedReference.translations[0].metaDescription = '平台生成描述';
+    importedReference.translations.push(
+        clone(existing.translations.find(value => value.lang === 'en-US')),
+        clone(existing.translations.find(value => value.lang === 'ru-RU')),
+    );
+    const repeatedFromImportedReference = reconcileProjection(
+        inputs,
+        [importedReference, unrelated],
+    );
+    assert.strictEqual(
+        repeatedFromImportedReference.entries[1].status,
+        'matched-noop',
+        'Generated SEO and preserved non-source locales must not force a weekly update.',
+    );
 
     const inexactItem = projectedItem('17641');
     inexactItem.observation.packageComponentsExact = false;

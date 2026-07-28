@@ -228,13 +228,13 @@ function main() {
         localizedFields: {
             'zh-CN': {
                 name: 'Fixture Case Tea',
-                description: 'Reviewed source prose that must remain artifact evidence only.',
+                description: '云南大叶种晒青毛茶制成，饼形端正。',
             },
         },
     });
     const sourceDescriptionProjection = project([sourceDescription])[0].observation;
     assert.ok(sourceDescriptionProjection.localizedText.every(value =>
-        !value.description.includes('Reviewed source prose')));
+        value.description.startsWith('云南大叶种晒青毛茶制成，饼形端正。\n\n')));
     const sourceBoilerplateFact = fixtureItem({
         facts: {
             ...fixtureItem().facts,

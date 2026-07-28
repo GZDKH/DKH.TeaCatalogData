@@ -328,6 +328,10 @@ async function main() {
     const detailRaw = await connector.fetchDetail({ externalId: '17627' });
     const detail = connector.parseDetail(detailRaw);
     assert.strictEqual(detail.externalId, '17627');
+    assert.strictEqual(
+        detail.localizedFields['zh-CN'].description,
+        '云南大叶种晒青毛茶制成，饼形端正。香气清晰，滋味醇厚。',
+    );
     assert.deepStrictEqual(detail.facts.market.aggregates, {
         demandCount: 29,
         supplyCount: 10,

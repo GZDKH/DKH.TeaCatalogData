@@ -45,6 +45,7 @@ const productFields = Object.freeze([
     'priceDisplayStatus',
     'arrivalTime',
     'date',
+    'description',
     'createdAt',
     'updatedAt',
     'unit',

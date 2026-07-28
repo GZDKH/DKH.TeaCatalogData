@@ -357,10 +357,28 @@ function projectLocalizedText(item) {
     );
     const title = fields.name === undefined ? fields.title : fields.name;
     requireBoundedString(title, 1000, 'Localized title zh-CN');
+    let sourceDescription = null;
+    if (fields.description !== undefined && fields.description !== null) {
+        requireBoundedString(
+            fields.description,
+            4000,
+            'Localized description zh-CN',
+        );
+        sourceDescription = safeDescriptionFragment(fields.description);
+        if (!sourceDescription) {
+            fail(
+                'CATALOG_SOURCE_PROJECTION_LOCALIZED_TEXT_INVALID',
+                'Localized description zh-CN is unsafe.',
+            );
+        }
+    }
+    const factualDescription = generatedDescriptions['zh-CN'];
     return [{
         languageCode: 'zh-CN',
         title: title.trim(),
-        description: generatedDescriptions['zh-CN'],
+        description: sourceDescription
+            ? `${sourceDescription}\n\n${factualDescription}`
+            : factualDescription,
     }];
 }
 

@@ -639,6 +639,7 @@ function patchMatchedProduct(product, content, batchSpecification = null) {
         languageCode,
         0,
     ]));
+    productPatch.nativeName = content.titles['zh-CN'];
     productPatch.translations = productPatch.translations.flatMap(translation => {
         requireObject(
             translation,
@@ -677,6 +678,32 @@ function patchMatchedProduct(product, content, batchSpecification = null) {
     );
     assertSafeOutputDescriptions(productPatch);
     return { productPatch, rollbackProduct };
+}
+
+function sourceOwnedProductState(product, batchSpecification = null) {
+    const sourceSpecificationCodes = new Set(SOURCE_SPECIFICATION_CODES);
+    if (batchSpecification) {
+        sourceSpecificationCodes.add(batchSpecification.attribute);
+    }
+    const translations = (product.translations || [])
+        .filter(translation => TARGET_LANGUAGES.includes(translation?.lang))
+        .map(translation => ({
+            lang: translation.lang,
+            name: translation.name,
+            description: translation.description,
+        }))
+        .sort((left, right) => left.lang.localeCompare(right.lang));
+    const specifications = (product.specifications || [])
+        .filter(specification =>
+            sourceSpecificationCodes.has(specification?.attribute))
+        .map(specification => deepClone(specification))
+        .sort((left, right) =>
+            stableJson(left).localeCompare(stableJson(right)));
+    return {
+        nativeName: product.nativeName,
+        translations,
+        specifications,
+    };
 }
 
 function draftProduct(productCode, content, externalId, batchSpecification = null) {
@@ -872,7 +899,15 @@ function reconcileProjection(projection, products, options = {}) {
             content,
             batchSpecification,
         );
-        const changed = stableJson(productPatch) !== stableJson(rollbackProduct);
+        const changed =
+            stableJson(sourceOwnedProductState(
+                productPatch,
+                batchSpecification,
+            )) !==
+            stableJson(sourceOwnedProductState(
+                rollbackProduct,
+                batchSpecification,
+            ));
         return {
             externalId,
             productId: product.id,
@@ -927,6 +962,7 @@ module.exports = {
     patchMatchedProduct,
     projectedDescriptions,
     resolveBatchSpecification,
+    sourceOwnedProductState,
     sourceSpecifications,
     reconcileProjection,
     validateDescription,
