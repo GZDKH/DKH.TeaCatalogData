@@ -8,6 +8,12 @@ administrator.
 
 ## ZZCTea
 
+Operational gate (2026-07-28): the source `robots.txt` disallows `/api/`.
+Do not execute or schedule a live fetch until source-access and legal review
+explicitly clear it. The commands below document the connector contract; offline
+`--replay`, projection, reconciliation, and Commerce dry-run remain safe. The
+Commerce publisher never fetches a source website.
+
 Run a full public-catalog snapshot:
 
 ```bash
@@ -41,6 +47,131 @@ content-addressed projection, a deterministic dry-run report, and a manifest
 binding both outputs to the input artifact and checkpoint hashes. The loader
 rejects incomplete, extra, symlinked, hash-mismatched, deletion-authoritative,
 or retail-price-marked input.
+
+Prepare an explicit one-item Commerce observation canary without making a
+network call:
+
+```bash
+node scripts/catalog-sources/publish-commerce-observations.js \
+  --projection-dir=artifacts/catalog-source-projections/<source>/<snapshot> \
+  --only=<external-id> \
+  --participant-id="$COMMERCE_CATALOG_SOURCE_PARTICIPANT_ID" \
+  --commerce-channel-id="$COMMERCE_CATALOG_SOURCE_CHANNEL_ID"
+```
+
+Dry-run is the default. It writes a content-addressed plan below
+`artifacts/catalog-source-commerce-canaries/`, fixes
+`expectedItemCount` to one, selects exactly one external ID, and explicitly
+records `authoritativeForDeletion: false`. Plan-generation fields state that
+no network call or remote mutation occurred while creating the plan. The
+registered source code is always the verified projection `source.id`; it cannot
+be redirected to another registration. Dry-run does not construct the gRPC
+client, read an admin token, or make a network call.
+
+After the registered source, participant grant, channel, version tuple, and
+one-item plan have been reviewed, the same plan can be applied only with both
+flags:
+
+```bash
+node scripts/catalog-sources/publish-commerce-observations.js \
+  --projection-dir=artifacts/catalog-source-projections/<source>/<snapshot> \
+  --only=<external-id> \
+  --participant-id="$COMMERCE_CATALOG_SOURCE_PARTICIPANT_ID" \
+  --commerce-channel-id="$COMMERCE_CATALOG_SOURCE_CHANNEL_ID" \
+  --grpc-url="$COMMERCE_NETWORK_GRPC_URL" \
+  --apply \
+  --yes
+```
+
+Apply reads `COMMERCE_NETWORK_ADMIN_TOKEN` only from the child-process
+environment. The token is expanded by `grpcurl`, never placed in its argument
+list, plan, receipt, or log output. It is trimmed, validated as bearer-token
+material, and passed to the child through a normalized environment. Failure
+output is fully redacted, including reflected Bearer values and token
+fragments, before the diagnostic size limit is applied. TLS is the default;
+`--plaintext` is an explicit loopback-only override. The publisher invokes
+`BeginCatalogSourceSnapshotImport`, `ImportCatalogSourceItem`, and
+`CommitCatalogSourceSnapshotImport` in order and stops immediately on any
+failure. Deterministic idempotency keys make a retry safe; a replayed already
+committed import is accepted without sending another item or commit. A
+successful process exit with malformed JSON produces a fixed error and never
+includes parser excerpts from the response. Count and state validation errors
+are also fixed and bounded; they never interpolate remote response values.
+
+Before the first RPC, apply atomically creates a durable receipt with
+`remoteMutationAttempted: false`, then atomically marks the attempt and updates
+the last acknowledged stage, safe IDs, and counts after each successful
+Begin/Import/Commit response. A failure leaves a redacted terminal attempt
+state, so a partial remote mutation can never be mistaken for the dry-run plan.
+The receipt contains neither the token nor raw requests or responses.
+Attempts are append-only below
+`apply/attempts/attempt-<number>-<deterministic-digest>/`; retry never replaces
+an earlier failed or partial receipt. An atomic `apply/latest.json` pointer
+contains the current receipt path and digest. Attempt identities bind the
+publication, monotonic attempt number, and previous receipt digest; they do not
+depend on timestamps. Begin is acknowledged only after its state/counts pass
+validation. Commit is recorded in one atomic update that simultaneously marks
+the commit and production state acknowledged, avoiding an intermediate
+contradictory receipt.
+
+Each audit root is permanently bound by `auditBindingSha256` to one
+publication/item/source, target endpoint and TLS mode, complete contract
+closure/service/method identity, and required semantic/reference-price
+read-back. Every retry verifies that binding, contiguous attempt numbers,
+deterministic attempt IDs, the previous-receipt hash chain, and the latest
+pointer before creating a new attempt. A custom `--out` therefore cannot mix
+two publications into one apply audit root, and tampered history fails before
+any new attempt or RPC.
+
+Apply also acquires the exclusive `apply/.apply.lock` before it constructs a
+transport, reads attempt history, creates a receipt, or invokes an RPC. The
+same owner holds that lock through the terminal receipt and latest-pointer
+updates. A concurrent invocation fails closed without changing the attempt
+chain. The publisher releases only the lock whose in-memory owner token and
+inode still match; it never removes or automatically breaks an existing lock.
+
+A hard process crash can therefore leave both `.apply.lock` and a `prepared` or
+`in-progress` receipt. Treat either as an incident requiring explicit operator
+recovery: first prove that no publisher still owns the audit root, then
+reconcile the receipt with the remote import state and preserve the audit
+evidence. Merely restarting the command is intentionally insufficient. Even
+after an operator has dealt with a crash lock, the publisher refuses to append
+a retry while the latest attempt is non-terminal. Only `failed` and
+`commit-acknowledged-read-back-pending` attempts are terminal for retry
+purposes; recovery must never rewrite a historical receipt.
+
+A commit-acknowledged apply receipt records whether the commit was new or
+replayed, the sanitized endpoint/TLS mode, gRPC service/method identities, and
+the SHA-256 of both the root proto and its deterministic transitive closure.
+The closure resolver accepts real files only inside the two allowlisted proto
+roots, rejects symlinks, path escapes, missing/ambiguous imports and cycles, and
+parses imports independently of line layout. It binds sorted logical paths to
+each file hash and is revalidated immediately before every RPC. The receipt
+stores only closure, file-list, and built-in-import digests/counts, never proto
+plaintext.
+It deliberately records `complete: false`, `readBackVerified: false`, and
+`readBackRequired: true`. The import-only actor has no authorized read RPC, so
+the canary is not complete until a later authorized read-back verifies the
+registered source, external ID, semantic revision, and reference-price set
+against the receipt.
+
+CLI configuration keys:
+
+- `COMMERCE_CATALOG_SOURCE_PARTICIPANT_ID` / `--participant-id`
+- `COMMERCE_CATALOG_SOURCE_CHANNEL_ID` / `--commerce-channel-id`
+- `COMMERCE_CATALOG_SOURCE_ARTIFACT_SCHEMA_VERSION` /
+  `--artifact-schema-version` (defaults to `catalog-source-artifact-v1`)
+- `COMMERCE_NETWORK_GRPC_URL` / `--grpc-url` for apply
+- `COMMERCE_NETWORK_ADMIN_TOKEN` for apply; environment only
+- `COMMERCE_NETWORK_GRPC_TIMEOUT_SECONDS` / `--timeout-seconds`
+- `COMMERCE_NETWORK_GRPC_CA_CERTIFICATE` / `--cacert`
+- `COMMERCE_NETWORK_PROTO_ROOT` / `--commerce-proto-root`
+- `DKH_PLATFORM_GRPC_PROTO_ROOT` / `--platform-proto-root`
+- `GRPCURL_BIN` / `--grpcurl`
+
+No secret or real participant/channel identifier belongs in the repository.
+The default proto roots resolve to the canonical CommerceNetwork and
+DKH.Platform checkouts in the GZDKH monorepo.
 
 Reconcile a verified projection against the complete ProductCatalog product
 baseline and the current catalog/definition reference:
@@ -153,12 +284,13 @@ The runtime fails closed on:
 - PII-like fields or phone patterns in accepted raw payloads or artifacts;
 - a total-count drop or growth outside the reviewed thresholds.
 
-No code in this directory writes ProductCatalog, CommerceNetwork, or any
-production database. The offline projection matches the approved
-CommerceNetwork observation contract but deliberately has no network client.
-ProductCatalog reconciliation, authoritative reference acquisition, source
-registration, one-product canary, and mass apply remain separate reviewed
-steps.
+No source connector, projector, or reconciler in this directory writes
+ProductCatalog, CommerceNetwork, or any production database. The separate
+Commerce publisher is dry-run by default and can write only the explicitly
+selected one-item observation canary after `--apply --yes`. ProductCatalog
+reconciliation, authoritative reference acquisition, source registration,
+authorized Commerce read-back, canary approval, and any later mass apply remain
+separate reviewed steps.
 
 Run the offline suite:
 
@@ -172,4 +304,5 @@ node scripts/catalog-sources/test-projection-cli.js
 node scripts/catalog-sources/test-reconciliation-references.js
 node scripts/catalog-sources/test-reconciliation.js
 node scripts/catalog-sources/test-reconciliation-cli.js
+node scripts/catalog-sources/test-commerce-publication.js
 ```
