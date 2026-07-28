@@ -10,6 +10,10 @@ const {
     sha256,
     stableJson,
 } = require('./lib/artifacts');
+const {
+    composeProductDescription,
+    truncateProductText,
+} = require('./lib/product-text-contract');
 
 const DIGESTS = Object.freeze({
     detail: sha256('fixture-detail'),
@@ -182,6 +186,24 @@ function assertCode(action, code) {
 }
 
 function main() {
+    const fittedFactualOnly = composeProductDescription(
+        null,
+        '事实'.repeat(1500),
+    );
+    assert.strictEqual(fittedFactualOnly.length, 2000);
+    assert.ok(fittedFactualOnly.endsWith('…'));
+    assert.strictEqual(
+        composeProductDescription('来源说明', '事'.repeat(1999)),
+        '事'.repeat(1999),
+        'Optional source prose must yield to a near-limit factual description.',
+    );
+    const surrogateSafe = truncateProductText(
+        `${'a'.repeat(1998)}😀x`,
+        2000,
+    );
+    assert.ok(!/[\uD800-\uDBFF]$/u.test(surrogateSafe.slice(0, -1)));
+    assert.ok(surrogateSafe.endsWith('…'));
+
     const projected = project();
     assert.strictEqual(projected.length, 1);
     assert.deepStrictEqual(Object.keys(projected[0]).sort(), [
