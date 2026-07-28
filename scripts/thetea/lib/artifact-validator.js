@@ -85,7 +85,11 @@ function validateArtifact(input = {}) {
 
         collectProductLanguageCoverage(product, languageCoverage);
         validateProductTranslations(product, productLabel, requiredLocales, errors);
-        validateCatalogAssignments(product, productLabel, errors);
+        validateCatalogAssignments(
+            product,
+            productLabel,
+            errors,
+            input.allowedCatalogCodes);
         validatePackages(product, productLabel, input.knownPackages || KNOWN_PACKAGES, warnings, errors);
         validateProductSpecifications({
             product,
@@ -134,7 +138,10 @@ function validateArtifact(input = {}) {
         lossEvents,
         errors);
     validateLossEvents(lossEvents, errors, warnings);
-    errors.push(...validateBaselinePreservation(products, input.baselineProducts || []));
+    errors.push(...validateBaselinePreservation(
+        products,
+        input.baselineProducts || [],
+        input.baselinePreservation));
     const productNaming = auditProductNaming(products);
     errors.push(...productNaming.errors);
     warnings.push(...productNaming.warnings);
@@ -465,25 +472,39 @@ function validateProductTranslations(product, productLabel, requiredLocales, err
     }
 }
 
-function validateCatalogAssignments(product, productLabel, errors) {
+function validateCatalogAssignments(product, productLabel, errors, allowedCatalogCodes) {
     if (!Array.isArray(product.catalogs) || product.catalogs.length === 0) {
         errors.push(`${productLabel}: no catalog/category assignments.`);
         return;
     }
 
     const seen = new Set();
+    const allowed = Array.isArray(allowedCatalogCodes)
+        ? new Set(allowedCatalogCodes.map(normalizeCode).filter(Boolean))
+        : null;
     for (const [index, assignment] of product.catalogs.entries()) {
         const prefix = `${productLabel}: catalogs[${index}]`;
         if (!isPlainObject(assignment)) {
             errors.push(`${prefix} must be an object.`);
             continue;
         }
-        const catalog = validateCode(assignment.catalog, `${prefix}.catalog`, errors);
-        const category = validateCode(assignment.category, `${prefix}.category`, errors);
+        const catalog = validateScalarCode(assignment.catalog, `${prefix}.catalog`, errors);
+        const category = validateScalarCode(assignment.category, `${prefix}.category`, errors);
+        if (allowed?.size && catalog && !allowed.has(catalog)) {
+            errors.push(`${prefix}.catalog ${catalog} is not an allowed import target.`);
+        }
         const key = `${catalog}|${category}`;
         if (seen.has(key)) errors.push(`${prefix}: duplicate catalog/category assignment.`);
         seen.add(key);
     }
+}
+
+function validateScalarCode(value, label, errors) {
+    if (typeof value !== 'string') {
+        errors.push(`${label} must be a scalar code string.`);
+        return normalizeCode(value) || null;
+    }
+    return validateCode(value, label, errors);
 }
 
 function validatePackages(product, productLabel, knownPackages, warnings, errors) {

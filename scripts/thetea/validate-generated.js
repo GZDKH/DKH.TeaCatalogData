@@ -32,6 +32,10 @@ function main() {
     const baselineProducts = baselineReference?.products || [];
     const integrityErrors = [...bundle.errors];
     const integrityWarnings = [];
+    const catalogAssignmentMode = manifest.targets?.catalogAssignmentMode || 'preserve';
+    const targetCatalog = manifest.targets?.catalogCodes?.[0]
+        || args.catalog
+        || 'CATALOG-CHINESE-TEA';
 
     if (manifest.catalogReferenceSha256) {
         if (!catalogReferencePath) {
@@ -73,13 +77,20 @@ function main() {
         lossEvents: manifest.lossEvents || [],
         routedContent: bundle.routedContent,
         catalogReference,
-        requiredCatalogCode: args.catalog || 'CATALOG-CHINESE-TEA',
+        requiredCatalogCode: targetCatalog,
         baselineProducts,
+        baselinePreservation: {
+            catalogAssignmentMode,
+            targetCatalog,
+        },
+        allowedCatalogCodes: catalogAssignmentMode === 'target-only'
+            ? [targetCatalog]
+            : undefined,
     });
     const catalogPlacement = summarizeCatalogPlacement(
         bundle.products,
         bundle.catalogBindings,
-        args.catalog || 'CATALOG-CHINESE-TEA');
+        targetCatalog);
     const summary = {
         ...semantic,
         valid: integrityErrors.length === 0 && semantic.valid,
@@ -87,6 +98,7 @@ function main() {
         artifactFileCount: manifest.files?.length || 0,
         productFileCount: bundle.productFiles.length,
         catalogPlacement,
+        importTargets: manifest.targets || null,
         sourceManifestSha256: manifest.sourceManifestSha256,
         sourceFilesSha256: manifest.sourceFilesSha256,
         catalogReferenceSha256: manifest.catalogReferenceSha256,

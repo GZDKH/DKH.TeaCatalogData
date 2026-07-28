@@ -1,4 +1,6 @@
 function normalizeProductForImport(product) {
+    normalizeReferenceCollections(product);
+
     assertTextLimit(product.code, 100, `${product.code || '<product>'}.code`);
     assertTextLimit(product.sku, 100, `${product.code}.sku`);
     assertTextLimit(product.mpn, 100, `${product.code}.mpn`);
@@ -48,6 +50,72 @@ function normalizeProductForImport(product) {
     return product;
 }
 
+function normalizeReferenceCollections(product) {
+    for (const [index, tag] of (product.tags || []).entries()) {
+        tag.code = referenceCode(tag.code, `${product.code}.tags[${index}].code`);
+    }
+    for (const [index, spec] of (product.specifications || []).entries()) {
+        spec.group = referenceCode(spec.group, `${product.code}.specifications[${index}].group`, true);
+        spec.attribute = referenceCode(spec.attribute, `${product.code}.specifications[${index}].attribute`);
+        spec.option = referenceCode(spec.option, `${product.code}.specifications[${index}].option`, true);
+        if (spec.unit && typeof spec.unit === 'object') {
+            spec.unit = referenceCode(spec.unit, `${product.code}.specifications[${index}].unit`);
+        }
+    }
+    for (const [index, item] of (product.packages || []).entries()) {
+        item.package = referenceCode(item.package, `${product.code}.packages[${index}].package`);
+    }
+    for (const [index, assignment] of (product.catalogs || []).entries()) {
+        const catalog = assignment.catalog;
+        assignment.catalog = referenceCode(catalog, `${product.code}.catalogs[${index}].catalog`);
+        assignment.category = referenceCode(
+            assignment.category,
+            `${product.code}.catalogs[${index}].category`);
+        const currency = assignment.catalogCurrency
+            ?? (catalog && typeof catalog === 'object' ? catalog.currency : undefined);
+        assignment.catalogCurrency = referenceCode(
+            currency,
+            `${product.code}.catalogs[${index}].catalogCurrency`,
+            true);
+    }
+    for (const [field, references] of Object.entries({
+        related: ['product', 'catalog'],
+        crossSells: ['product', 'catalog'],
+        catalogPrices: ['catalog'],
+        storePriceOverrides: ['store'],
+    })) {
+        for (const [index, item] of (product[field] || []).entries()) {
+            for (const reference of references) {
+                item[reference] = referenceCode(
+                    item[reference],
+                    `${product.code}.${field}[${index}].${reference}`,
+                    true);
+            }
+        }
+    }
+    for (const [index, origin] of (product.origins || []).entries()) {
+        for (const reference of ['country', 'state', 'city']) {
+            if (origin[reference] && typeof origin[reference] === 'object') {
+                origin[reference] = referenceCode(
+                    origin[reference],
+                    `${product.code}.origins[${index}].${reference}`);
+            }
+        }
+    }
+}
+
+function referenceCode(value, field, optional = false) {
+    if (value === undefined || value === null || value === '') {
+        if (optional) return undefined;
+        throw new Error(`${field} has no reference code.`);
+    }
+    const raw = value && typeof value === 'object' ? value.code : value;
+    if (typeof raw !== 'string' || !raw.trim()) {
+        throw new Error(`${field} has no reference code.`);
+    }
+    return raw.trim().toUpperCase();
+}
+
 function normalizeAltitudeValue(value, field = 'altitude') {
     if (value === null || value === undefined || value === '') return undefined;
     const numeric = typeof value === 'number'
@@ -72,4 +140,5 @@ function assertTextLimit(value, maxLength, field) {
 module.exports = {
     normalizeAltitudeValue,
     normalizeProductForImport,
+    normalizeReferenceCollections,
 };

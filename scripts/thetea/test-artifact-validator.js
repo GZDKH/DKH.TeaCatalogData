@@ -155,6 +155,22 @@ expectInvalid(artifact => {
 }, 'no catalog/category assignments');
 
 expectInvalid(artifact => {
+    artifact.products[0].catalogs[0].catalog = { code: 'CATALOG-CHINESE-TEA' };
+}, 'catalog must be a scalar code string');
+
+expectInvalid(artifact => {
+    artifact.products[0].catalogs[0].category = { code: 'CAT-GREEN' };
+}, 'category must be a scalar code string');
+
+expectInvalid(artifact => {
+    artifact.allowedCatalogCodes = ['CATALOG-CHINESE-TEA'];
+    artifact.products[0].catalogs.push({
+        catalog: 'CATALOG-OTHER',
+        category: 'CAT-GREEN',
+    });
+}, 'is not an allowed import target');
+
+expectInvalid(artifact => {
     artifact.products[1].code = artifact.products[0].code;
 }, 'duplicate product code');
 

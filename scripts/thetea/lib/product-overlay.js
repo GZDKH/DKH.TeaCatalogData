@@ -22,10 +22,10 @@ function overlayExistingProduct(generated, baseline, options = {}) {
                 .filter(spec => !isManagedSpecification(spec)),
             ...collection(generated.specifications, 'generated specifications'),
         ],
-        catalogs: mergeByKey(
+        catalogs: mergeCatalogAssignments(
             baseline.catalogs,
             generated.catalogs,
-            catalogAssignmentKey),
+            options),
         origins: collection(generated.origins, 'generated origins'),
         related: mergeRelations(generated.related, baseline.related),
         crossSells: collection(baseline.crossSells, 'baseline crossSells'),
@@ -39,7 +39,7 @@ function overlayExistingProduct(generated, baseline, options = {}) {
     return result;
 }
 
-function validateBaselinePreservation(products, baselineProducts) {
+function validateBaselinePreservation(products, baselineProducts, options = {}) {
     const errors = [];
     const generatedByCode = new Map((products || []).map(product => [normalizeCode(product.code), product]));
 
@@ -49,7 +49,14 @@ function validateBaselinePreservation(products, baselineProducts) {
 
         assertKeySubset(errors, baseline, generated, 'crossSells', crossSellKey);
         assertStructuralSubset(errors, baseline, generated, 'related');
-        assertKeySubset(errors, baseline, generated, 'catalogs', catalogAssignmentKey);
+        const expectedCatalogs = baselineCatalogAssignments(baseline.catalogs, options);
+        assertCollectionKeySubset(
+            errors,
+            baseline.code,
+            expectedCatalogs,
+            generated.catalogs,
+            'catalogs',
+            catalogAssignmentKey);
         assertKeySubset(errors, baseline, generated, 'tags', item => normalizeCode(item.code));
         assertKeySubset(errors, baseline, generated, 'packages', packageKey);
         assertStructuralSubset(errors, baseline, generated, 'tierPrices');
@@ -71,6 +78,28 @@ function validateBaselinePreservation(products, baselineProducts) {
     }
 
     return errors;
+}
+
+function mergeCatalogAssignments(baselineCatalogs, generatedCatalogs, options) {
+    return mergeByKey(
+        baselineCatalogAssignments(baselineCatalogs, options),
+        generatedCatalogs,
+        catalogAssignmentKey);
+}
+
+function baselineCatalogAssignments(value, options = {}) {
+    const assignments = collection(value, 'baseline catalogs');
+    const mode = options.catalogAssignmentMode || 'preserve';
+    if (mode === 'preserve') return assignments;
+    if (mode !== 'target-only') {
+        throw new Error(`Unsupported catalog assignment mode '${mode}'.`);
+    }
+
+    const targetCatalog = normalizeCode(options.targetCatalog);
+    if (!targetCatalog) {
+        throw new Error('targetCatalog is required for target-only catalog assignment mode.');
+    }
+    return assignments.filter(item => normalizeCode(item?.catalog) === targetCatalog);
 }
 
 function mergeRelations(generatedRelations, baselineRelations) {
@@ -109,11 +138,21 @@ function mergeByKey(baseItems, overridingItems, keyFn) {
 }
 
 function assertKeySubset(errors, baseline, generated, field, keyFn) {
-    const generatedKeys = new Set(collection(generated[field], `generated ${field}`).map(keyFn));
-    for (const item of collection(baseline[field], `baseline ${field}`)) {
+    assertCollectionKeySubset(
+        errors,
+        baseline.code,
+        collection(baseline[field], `baseline ${field}`),
+        generated[field],
+        field,
+        keyFn);
+}
+
+function assertCollectionKeySubset(errors, productCode, baselineItems, generatedItems, field, keyFn) {
+    const generatedKeys = new Set(collection(generatedItems, `generated ${field}`).map(keyFn));
+    for (const item of baselineItems) {
         const key = keyFn(item);
         if (!generatedKeys.has(key)) {
-            errors.push(`${baseline.code}: unrelated ${field} association ${key || '<missing>'} would be removed.`);
+            errors.push(`${productCode}: unrelated ${field} association ${key || '<missing>'} would be removed.`);
         }
     }
 }

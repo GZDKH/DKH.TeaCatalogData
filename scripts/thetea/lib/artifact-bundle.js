@@ -41,6 +41,7 @@ function createArtifactManifest(root, metadata = {}) {
         targets: {
             catalogCodes: sortedUnique(metadata.catalogTargets),
             storefrontCodes: sortedUnique(metadata.storefrontTargets),
+            catalogAssignmentMode: metadata.catalogAssignmentMode || 'preserve',
         },
         files,
     };
@@ -86,6 +87,15 @@ function verifyArtifactManifest(root) {
         }
         if (!Array.isArray(manifest.targets?.storefrontCodes)) {
             errors.push('Artifact manifest targets.storefrontCodes must be an array.');
+        }
+        if (!['preserve', 'target-only'].includes(manifest.targets?.catalogAssignmentMode)) {
+            errors.push(
+                "Artifact manifest targets.catalogAssignmentMode must be 'preserve' or 'target-only'.");
+        }
+        if (manifest.targets?.catalogAssignmentMode === 'target-only'
+            && manifest.targets?.catalogCodes?.length !== 1) {
+            errors.push(
+                'Target-only artifact manifest must declare exactly one target catalog code.');
         }
     }
 
