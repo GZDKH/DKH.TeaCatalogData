@@ -9,6 +9,7 @@ const {
     DEFAULT_MINIMUM_REQUEST_INTERVAL_MS,
     DETAIL_PATH_PATTERN,
     LIST_PATH,
+    MAXIMUM_DETAIL_VALIDATION_ATTEMPTS,
     REVIEWED_BRANDS,
     REVIEWED_BRAND_MANIFEST_SHA256,
     ROBOTS_URL,
@@ -427,6 +428,47 @@ async function main() {
     assert.ok([pageRaw, terminalRaw, detailRaw].every(raw =>
         !/(?:sellList|buyList|phone|mobile|customer|avatar)/iu.test(raw.toString('utf8')) &&
         !/(?<!\d)1[3-9]\d{9}(?!\d)/u.test(raw.toString('utf8'))));
+
+    let validationAttempt = 0;
+    const transientInvalidDetail = createZzcTeaConnector({
+        testMode: true,
+        testRequest: requestWithRobots(async rawUrl => {
+            const url = new URL(rawUrl);
+            if (url.pathname === '/teaDetail/17627.html') {
+                return {
+                    status: 301,
+                    headers: new Headers({
+                        location:
+                            'https://www.zzctea.com/tea/fixture-case-tea.html',
+                    }),
+                    body: Buffer.alloc(0),
+                };
+            }
+            validationAttempt += 1;
+            return {
+                status: 200,
+                headers: new Headers({
+                    'content-type': 'text/html; charset=utf-8',
+                }),
+                body: validationAttempt === 1
+                    ? nuxtHtml({
+                        teaDetail: {
+                            id: 0,
+                            name: 'Transient invalid detail',
+                        },
+                    })
+                    : fixture('detail-case.html'),
+            };
+        }),
+    });
+    const recoveredDetail = transientInvalidDetail.parseDetail(
+        await transientInvalidDetail.fetchDetail({
+            externalId: '17627',
+        }),
+    );
+    assert.strictEqual(recoveredDetail.externalId, '17627');
+    assert.strictEqual(validationAttempt, 2);
+    assert.strictEqual(MAXIMUM_DETAIL_VALIDATION_ATTEMPTS, 3);
 
     const chainedCalls = [];
     const chainedRedirect = createZzcTeaConnector({
