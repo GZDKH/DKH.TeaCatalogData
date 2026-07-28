@@ -5,6 +5,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const {
+    assertArtifactSafe,
     buildArtifact,
     ingestSourceSnapshot,
     replaySourceSnapshot,
@@ -51,6 +52,7 @@ function createFakeConnector(options = {}) {
     const state = {
         detailFetches: 0,
         listFetches: 0,
+        probeFetches: 0,
     };
     const connector = {
         id: options.id || 'fixture-source',
@@ -58,7 +60,7 @@ function createFakeConnector(options = {}) {
         parserVersion: 'fixture-parser-v1',
         defaultPageSize: options.pageSize || 2,
         maximumPageSize: 10,
-        requestParameters: () => ({
+        requestParameters: () => options.requestParameters || ({
             endpoint: 'https://source.example/catalog',
             filters: { publicOnly: true },
         }),
@@ -72,6 +74,15 @@ function createFakeConnector(options = {}) {
                 return Buffer.from(JSON.stringify({ totalCount: 4, ids: ['1', '2'] }));
             }
             const start = (page - 1) * pageSize;
+            if (options.paginationMode === 'totalPages') {
+                return Buffer.from(JSON.stringify({
+                    page,
+                    pageSize,
+                    totalPages: options.reportedTotalPages ??
+                        Math.ceil(ids.length / pageSize),
+                    ids: ids.slice(start, start + pageSize),
+                }));
+            }
             return Buffer.from(JSON.stringify({
                 totalCount: ids.length,
                 ids: ids.slice(start, start + pageSize),
@@ -79,10 +90,43 @@ function createFakeConnector(options = {}) {
         },
         parseListPage(raw) {
             const page = JSON.parse(raw);
+            if (options.paginationMode === 'totalPages') {
+                return {
+                    page: page.page,
+                    pageSize: page.pageSize,
+                    totalCount: null,
+                    totalPages: page.totalPages,
+                    items: page.ids.map(externalId => ({ externalId })),
+                };
+            }
             return {
                 totalCount: page.totalCount,
                 items: page.ids.map(externalId => ({ externalId })),
             };
+        },
+        async fetchTerminalProbe({ page, pageSize, totalPages }) {
+            state.probeFetches += 1;
+            const probeIds = options.repeatProbe
+                ? ids.slice((totalPages - 1) * pageSize, totalPages * pageSize)
+                : ids.slice((page - 1) * pageSize, page * pageSize);
+            return Buffer.from(JSON.stringify({
+                ids: probeIds,
+                page,
+                pageSize,
+                totalPages,
+            }));
+        },
+        assertTerminalProbe({ lastPageRaw, raw, requestedPage, totalPages }) {
+            const probe = JSON.parse(raw);
+            const lastPage = JSON.parse(lastPageRaw);
+            if (probe.page !== requestedPage ||
+                probe.totalPages !== totalPages ||
+                (probe.ids.length > 0 &&
+                    JSON.stringify(probe.ids) !== JSON.stringify(lastPage.ids))) {
+                const error = new Error('terminal probe found another page');
+                error.code = 'SOURCE_TERMINAL_PROBE_NOT_TERMINAL';
+                throw error;
+            }
         },
         async fetchDetail({ externalId }) {
             state.detailFetches += 1;
@@ -140,6 +184,83 @@ async function main() {
         assert.strictEqual(first.state.listFetches, 3);
         assert.strictEqual(first.state.detailFetches, 5);
         assert.ok(fs.existsSync(result.artifactFile));
+
+        const pagesRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'tea-source-pages-'));
+        try {
+            const paged = createFakeConnector({
+                id: 'fixture-pages',
+                paginationMode: 'totalPages',
+            });
+            const pagedResult = await ingestSourceSnapshot({
+                connector: paged.connector,
+                repositoryRoot: pagesRoot,
+                snapshotId: 'pages-1',
+                concurrency: 2,
+                pageSize: 2,
+            });
+            assert.strictEqual(pagedResult.manifest.itemCount, 5);
+            assert.strictEqual(paged.state.listFetches, 3);
+            assert.strictEqual(paged.state.probeFetches, 1);
+            assert.strictEqual(
+                readJson(path.join(
+                    pagesRoot,
+                    'sources/catalog-sources/fixture-pages/snapshots/pages-1/checkpoint.json',
+                )).totalPages,
+                3,
+            );
+            const pagedDrift = createFakeConnector({
+                id: 'fixture-pages',
+                ids: ['1'],
+                paginationMode: 'totalPages',
+            });
+            await assert.rejects(
+                ingestSourceSnapshot({
+                    connector: pagedDrift.connector,
+                    repositoryRoot: pagesRoot,
+                    snapshotId: 'pages-drift',
+                    pageSize: 2,
+                }),
+                error => error.code === 'SOURCE_TOTAL_COUNT_DRIFT',
+            );
+
+            for (const [id, repeatProbe] of [
+                ['fixture-full-terminal-empty', false],
+                ['fixture-full-terminal-repeat', true],
+            ]) {
+                const full = createFakeConnector({
+                    id,
+                    ids: ['1', '2', '3', '4'],
+                    paginationMode: 'totalPages',
+                    repeatProbe,
+                });
+                const fullResult = await ingestSourceSnapshot({
+                    connector: full.connector,
+                    repositoryRoot: pagesRoot,
+                    snapshotId: 'full',
+                    pageSize: 2,
+                });
+                assert.strictEqual(fullResult.manifest.itemCount, 4);
+                assert.strictEqual(full.state.probeFetches, 1);
+            }
+
+            const underreported = createFakeConnector({
+                id: 'fixture-underreported',
+                ids: ['1', '2', '3', '4', '5'],
+                paginationMode: 'totalPages',
+                reportedTotalPages: 2,
+            });
+            await assert.rejects(
+                ingestSourceSnapshot({
+                    connector: underreported.connector,
+                    repositoryRoot: pagesRoot,
+                    snapshotId: 'underreported',
+                    pageSize: 2,
+                }),
+                error => error.code === 'SOURCE_TERMINAL_PROBE_NOT_TERMINAL',
+            );
+        } finally {
+            fs.rmSync(pagesRoot, { recursive: true, force: true });
+        }
 
         const manifestPath = path.join(
             repositoryRoot,
@@ -237,6 +358,26 @@ async function main() {
                 ),
                 false,
             );
+            const changedRate = createFakeConnector({
+                requestParameters: {
+                    endpoint: 'https://source.example/catalog',
+                    filters: { publicOnly: true },
+                    requestPacing: { minimumIntervalMs: 2_000 },
+                },
+            });
+            await assert.rejects(
+                ingestSourceSnapshot({
+                    connector: changedRate.connector,
+                    repositoryRoot: resumeRoot,
+                    snapshotId: 'resume',
+                    pageSize: 2,
+                    concurrency: 2,
+                    resume: true,
+                }),
+                error => error.code === 'SOURCE_CHECKPOINT_INCOMPATIBLE',
+            );
+            assert.strictEqual(changedRate.state.listFetches, 0);
+            assert.strictEqual(changedRate.state.detailFetches, 0);
             const resumed = createFakeConnector();
             const resumedResult = await ingestSourceSnapshot({
                 connector: resumed.connector,
@@ -277,6 +418,66 @@ async function main() {
             ...normalizedItem('1'),
             provenance: { observedAt: '2026-07-27T02:00:00.000Z' },
         };
+        const phoneShapedSha256 =
+            `${'a'.repeat(53)}13800138000`;
+        assert.strictEqual(phoneShapedSha256.length, 64);
+        assert.doesNotThrow(() => assertArtifactSafe({
+            semanticDigest: phoneShapedSha256,
+            snapshot: {
+                rawPayloadDigest: phoneShapedSha256,
+            },
+            items: [{
+                provenance: {
+                    detailPayloadDigest: phoneShapedSha256,
+                    listPayloadDigest: phoneShapedSha256,
+                },
+            }],
+        }));
+        assert.strictEqual(
+            buildArtifact(
+                checkpoint('2026-07-27T01:00:00.000Z'),
+                [{
+                    ...itemAtOne,
+                    provenance: {
+                        ...itemAtOne.provenance,
+                        detailPayloadDigest: phoneShapedSha256,
+                        listPayloadDigest: phoneShapedSha256,
+                    },
+                }],
+            ).itemCount,
+            1,
+        );
+        assert.throws(
+            () => buildArtifact(
+                checkpoint('2026-07-27T01:00:00.000Z'),
+                [{
+                    ...itemAtOne,
+                    provenance: {
+                        ...itemAtOne.provenance,
+                        detailPayloadDigest: 'Call 13800138000',
+                    },
+                }],
+            ),
+            error => error.code ===
+                'SOURCE_ARTIFACT_PII_POLICY_VIOLATION',
+        );
+        assert.throws(
+            () => buildArtifact(
+                checkpoint('2026-07-27T01:00:00.000Z'),
+                [{
+                    ...itemAtOne,
+                    localizedFields: {
+                        ...itemAtOne.localizedFields,
+                        'zh-CN': {
+                            ...itemAtOne.localizedFields['zh-CN'],
+                            detailPayloadDigest: phoneShapedSha256,
+                        },
+                    },
+                }],
+            ),
+            error => error.code ===
+                'SOURCE_ARTIFACT_PII_POLICY_VIOLATION',
+        );
         assert.strictEqual(
             buildArtifact(checkpoint('2026-07-27T01:00:00.000Z'), [itemAtOne]).semanticDigest,
             buildArtifact(checkpoint('2026-07-27T02:00:00.000Z'), [itemAtTwo]).semanticDigest,
@@ -325,6 +526,165 @@ async function main() {
             ),
             error => error.code === 'SOURCE_ARTIFACT_PII_POLICY_VIOLATION',
         );
+        const itemWithOpaqueImageIdentifier = {
+            ...itemAtOne,
+            images: [{
+                role: 'source-reference',
+                url: 'https://oss.yf-gz.cn/file/asset_13800138000.jpg' +
+                    '?x-oss-process=style/square300',
+            }],
+        };
+        const checkpointWithPublicImagePolicy = {
+            ...checkpoint('2026-07-27T01:00:00.000Z'),
+            requestParameters: {
+                publicImagePolicy: {
+                    schemaVersion:
+                        'catalog-source-image-reference-policy-v1',
+                    allowedHosts: ['oss.yf-gz.cn'],
+                    pathPrefix: '/file/',
+                    queryRules: {
+                        'x-oss-process': 'style-name',
+                    },
+                    sourcePolicyVersion:
+                        'zzctea-public-image-url-v1',
+                },
+            },
+        };
+        const checkpointWithPublicCanonicalPolicy = {
+            ...checkpoint('2026-07-27T01:00:00.000Z'),
+            requestParameters: {
+                publicCanonicalPolicy: {
+                    schemaVersion:
+                        'catalog-source-canonical-reference-policy-v1',
+                    allowedHosts: ['zzctea.com', 'www.zzctea.com'],
+                    pathPrefix: '/tea/',
+                    pathRule: 'single-segment-html',
+                    sourcePolicyVersion:
+                        'zzctea-public-canonical-url-v1',
+                },
+            },
+        };
+        assert.strictEqual(
+            buildArtifact(
+                checkpointWithPublicCanonicalPolicy,
+                [{
+                    ...itemAtOne,
+                    sourceLinks: {
+                        ...itemAtOne.sourceLinks,
+                        observedCanonicalUrl:
+                            'https://zzctea.com/tea/' +
+                            'item-13800138000.html',
+                    },
+                }],
+            ).itemCount,
+            1,
+        );
+        for (const unsafeCanonicalReference of [
+            'https://evil.example/tea/item-13800138000.html',
+            'http://zzctea.com/tea/item-13800138000.html',
+            'https://zzctea.com/tea/phone13800138000.html',
+            'https://zzctea.com/tea/item-13800138000.html?tracking=1',
+            'https://zzctea.com/tea/item-13800138000.html?',
+            'https://zzctea.com/tea/item-13800138000.html#',
+        ]) {
+            assert.throws(
+                () => buildArtifact(
+                    checkpointWithPublicCanonicalPolicy,
+                    [{
+                        ...itemAtOne,
+                        sourceLinks: {
+                            ...itemAtOne.sourceLinks,
+                            observedCanonicalUrl:
+                                unsafeCanonicalReference,
+                        },
+                    }],
+                ),
+                error => error.code ===
+                    'SOURCE_ARTIFACT_PII_POLICY_VIOLATION',
+            );
+        }
+        assert.strictEqual(
+            buildArtifact(
+                checkpointWithPublicImagePolicy,
+                [
+                    itemWithOpaqueImageIdentifier,
+                    {
+                        ...itemAtOne,
+                        externalId: '2',
+                        images: [{
+                            role: 'source-reference',
+                            url: 'https://oss.yf-gz.cn/file/' +
+                                'asset_01012345678.jpg',
+                        }],
+                    },
+                    {
+                        ...itemAtOne,
+                        externalId: '3',
+                        images: [{
+                            role: 'source-reference',
+                            url: 'https://oss.yf-gz.cn/file/' +
+                                'line-artwork.jpg',
+                        }],
+                    },
+                    {
+                        ...itemAtOne,
+                        externalId: '4',
+                        images: [{
+                            role: 'source-reference',
+                            url: 'https://oss.yf-gz.cn/file/' +
+                                'contact-sheet.jpg',
+                        }],
+                    },
+                ],
+            ).itemCount,
+            4,
+        );
+        const itemWithImageContactHandle = {
+            ...itemAtOne,
+            images: [{
+                role: 'source-reference',
+                url: 'https://oss.yf-gz.cn/file/wxid_abcd1234.jpg',
+            }],
+        };
+        assert.throws(
+            () => buildArtifact(
+                checkpointWithPublicImagePolicy,
+                [itemWithImageContactHandle],
+            ),
+            error => error.code === 'SOURCE_ARTIFACT_PII_POLICY_VIOLATION',
+        );
+        for (const unsafeImageReference of [
+            '13800138000',
+            'https://evil.example/file/asset_13800138000.jpg',
+            'http://127.0.0.1/file/asset_13800138000.jpg',
+            'https://oss.yf-gz.cn/file/asset.jpg' +
+                '?x-oss-process=style/13800138000',
+            'https://evil.example/file/asset.jpg',
+            'http://127.0.0.1/file/asset.jpg',
+            'not-a-url',
+            'https://oss.yf-gz.cn/profile/asset.jpg',
+            'https://oss.yf-gz.cn/file/phone-01012345678.jpg',
+            'https://oss.yf-gz.cn/file/contact-8001234567.jpg',
+            'https://oss.yf-gz.cn/file/wechat-abcdef.jpg',
+            'https://oss.yf-gz.cn/file/qq-12345678.jpg',
+            'https://oss.yf-gz.cn/file/telegram-1234567.jpg',
+            'https://oss.yf-gz.cn/file/line-1234567.jpg',
+        ]) {
+            assert.throws(
+                () => buildArtifact(
+                    checkpointWithPublicImagePolicy,
+                    [{
+                        ...itemAtOne,
+                        images: [{
+                            role: 'source-reference',
+                            url: unsafeImageReference,
+                        }],
+                    }],
+                ),
+                error => error.code ===
+                    'SOURCE_ARTIFACT_PII_POLICY_VIOLATION',
+            );
+        }
 
         console.log('test-catalog-source-runtime: OK');
     } finally {

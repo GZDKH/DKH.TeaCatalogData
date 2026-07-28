@@ -46,13 +46,20 @@ node scripts/catalog-sources/fetch-snapshot.js \
   --concurrency=4
 ```
 
-This command fetches only the allowlisted public list/detail endpoints and
-canonical-link HEAD redirect. It writes no production data. Raw encrypted
-responses and the resumable checkpoint are stored under the ignored
+This command fetches only the allowlisted public HTML list/detail routes and a
+strict canonical-redirect `HEAD` for each stable detail URL. It writes no
+production data. `/teaList` is the public HTML hot-tea catalog, not the larger
+inventory behind the robots-disallowed `/api/` routes. Product-only PII-free
+envelopes and the resumable checkpoint are stored under the ignored
 `sources/catalog-sources/` tree; a complete, hashed, source-agnostic artifact is
 written under ignored `artifacts/catalog-sources/`. See
 [`scripts/catalog-sources/README.md`](scripts/catalog-sources/README.md) for
 replay, drift, PII and reference-price rules.
+
+After explicit source/image-use approval, verified image references can be
+materialized as resumable, content-addressed local files with
+`scripts/catalog-sources/materialize-media.js`. The output includes a
+SetupTool-compatible manifest but performs no MediaService or product writes.
 
 Put secrets in `.env` using `scripts/env.prod.template`. The TheTea text API key is read from `THETEA_API_KEY` or `THE_TEA_API_KEY`. ProductCatalog export/validate/import also requires `PRODUCT_CATALOG_WORKSPACE_ID`.
 

@@ -4,6 +4,7 @@ const { reject } = require('./errors');
 
 function parseLosslessJson(text) {
     let index = 0;
+    const numberPattern = /-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/y;
 
     function whitespace() {
         while (/\s/.test(text[index] || '')) index += 1;
@@ -105,7 +106,8 @@ function parseLosslessJson(text) {
     }
 
     function number() {
-        const match = text.slice(index).match(/^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?/);
+        numberPattern.lastIndex = index;
+        const match = numberPattern.exec(text);
         if (!match) reject('SOURCE_DECRYPTED_JSON_INVALID');
         index += match[0].length;
         return match[0];

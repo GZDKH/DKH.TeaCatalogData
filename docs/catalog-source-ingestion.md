@@ -6,22 +6,56 @@ source-agnostic artifact for later reviewed ProductCatalog projection.
 
 The shared runtime owns paging, bounded concurrency, retries, response limits,
 checkpoints, raw/normalized digests, replay and drift gates. A connector owns
-only its fixed public endpoints, response decoder and normalization rules.
+only its fixed public routes, safe extraction and normalization rules.
 Administrators can eventually configure deployed connector instances and
 schedules, but cannot upload or execute parser JavaScript.
 
 ZZCTea is a market/reference-price source. Its values never overwrite DKH retail
 or catalog prices. The normalized artifact distinguishes original observations
 from derived package-unit observations and records exact derivation provenance.
-The artifact retains only reviewed safe plain-text detail descriptions as source
-evidence. The offline projection creates `zh-CN` and `en-US` DKH factual
+The currently observed public detail shape exposes no product-description
+field. The offline projection creates `zh-CN` and `en-US` DKH factual
 descriptions from structured facts and exact package components; it neither
 copies source prose nor embeds `zzctea.com` boilerplate.
 
-The runtime fetches neither seller/buyer lists nor contact/profile data. Raw
-encrypted list/detail responses are stored only after the decrypted payload
-passes PII policy. A partial or drifted run preserves the last good artifact and
-cannot create tombstones or production mutations.
+The connector calls only the robots-allowed public HTML list/detail routes.
+Each connector instance first validates one bounded `text/plain` robots policy.
+The exact path plus query must be explicitly allowed for the connector's fixed
+product token using longest case-insensitive agent matching; `User-agent: *` is
+only the fallback. A failed policy remains a cached failure for that run.
+`/teaList` represents the public HTML hot-tea catalog; it is not evidence of
+the complete, larger inventory behind the robots-disallowed `/api/` routes.
+The runtime keeps those source scopes separate and never reports the HTML
+snapshot as the complete ZZCTea inventory.
+Robots allowance does not grant a content-reuse license. Multi-item live
+snapshotting and source-image reuse remain blocked until source permission or
+terms, image policy, and the request-rate limit are reviewed.
+The reviewed ZZCTea transport applies one monotonic start-time gate to all
+outbound attempts, including retries. Its default and minimum interval is one
+second, and that value is bound into the resumable checkpoint so a resumed run
+cannot silently increase the crawl rate.
+Full HTML and the complete embedded Nuxt state remain in memory and are never
+persisted. Only strict product-field allowlisted, PII-free list/detail envelopes
+are stored; seller/buyer/contact/profile sibling branches are discarded before
+serialization, as are known nonpersisted price-chart UI payloads. A standalone
+canonical check uses bounded strict `HEAD` requests.
+During ingestion the final canonical `/tea/{slug}.html` destination and detail
+body are obtained through a maximum of four manually validated GET redirect hops,
+with robots and host/path policy rechecked at every hop; automatic redirect
+following is disabled. A sanitized `totalPages + 1` probe must be empty or exactly repeat
+the last page before completion. A partial or drifted
+run preserves the last good artifact and cannot create tombstones or production
+mutations.
+The checkpoint-bound canonical-reference policy is revalidated again at the
+artifact boundary. Phone-shaped digits are accepted only as opaque content of a
+fully validated `/tea/{slug}.html` path; labelled contact data, query strings,
+fragments, alternate hosts, and alternate schemes remain fail-closed.
+
+Image binaries are not copied. The product envelope may retain only versioned
+HTTPS references on `oss.yf-gz.cn` under `/file/`, with no credentials, port, or
+fragment and at most the exact `x-oss-process=style/...` transform. This narrow
+URL policy distinguishes opaque numeric asset IDs from contact numbers without
+weakening the PII checks for any other product text.
 
 The verified offline projection emits provider-neutral CommerceNetwork
 observation DTOs plus a deterministic report and hash manifest. It performs no

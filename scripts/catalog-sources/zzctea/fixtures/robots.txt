@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /teaList
+Allow: /teaDetail/
+Allow: /tea/
+Disallow: /official/
+Disallow: /api/

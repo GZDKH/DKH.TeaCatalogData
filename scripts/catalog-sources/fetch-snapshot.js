@@ -20,7 +20,11 @@ async function main() {
     if (!connectorFactory) {
         throw new Error(`Unsupported source '${source}'. Available: ${Object.keys(CONNECTORS).join(', ')}`);
     }
-    const connector = connectorFactory();
+    const connector = connectorFactory({
+        minimumRequestIntervalMs: args['minimum-request-interval-ms'] === undefined
+            ? undefined
+            : Number(args['minimum-request-interval-ms']),
+    });
     const common = {
         connector,
         repositoryRoot: REPO_ROOT,
