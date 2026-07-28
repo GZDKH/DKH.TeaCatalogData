@@ -54,6 +54,10 @@ const productFields = Object.freeze([
     'distributionCount',
     'marketStatus',
 ]);
+const excludedStructuredProductFields = new Set([
+    'risePriceDisplay',
+    'teaPriceDetail',
+]);
 
 function fail(code = 'ZZCTEA_NUXT_SERIALIZATION_INVALID') {
     reject(code);
@@ -400,7 +404,13 @@ function sanitizeProduct(source) {
     if (!source || Array.isArray(source) || typeof source !== 'object') {
         fail('ZZCTEA_NUXT_PRODUCT_SHAPE_INVALID');
     }
-    assertPublicCatalogPayload(source);
+    const publicSafetyProjection = Object.create(null);
+    for (const [key, value] of Object.entries(source)) {
+        if (!excludedStructuredProductFields.has(key)) {
+            publicSafetyProjection[key] = value;
+        }
+    }
+    assertPublicCatalogPayload(publicSafetyProjection);
     const result = Object.create(null);
     for (const key of productFields) {
         const current = source[key];

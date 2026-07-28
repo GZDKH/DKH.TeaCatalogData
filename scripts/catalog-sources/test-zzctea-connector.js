@@ -394,6 +394,10 @@ async function main() {
                 status: 'flat',
                 text: '0.00',
             },
+            teaPriceDetail: {
+                priceChart: 'https://charts.example/' +
+                    'asset_01012345678.png',
+            },
         },
         [forbiddenSiblingKey]: [{
             [['ph', 'one'].join('')]: forbiddenValue,
@@ -410,6 +414,13 @@ async function main() {
         Object.prototype.hasOwnProperty.call(
             JSON.parse(sanitized).data,
             'risePriceDisplay',
+        ),
+        false,
+    );
+    assert.strictEqual(
+        Object.prototype.hasOwnProperty.call(
+            JSON.parse(sanitized).data,
+            'teaPriceDetail',
         ),
         false,
     );
