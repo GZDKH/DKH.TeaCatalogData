@@ -23,9 +23,13 @@ const FORBIDDEN_PUBLIC_TEXT_PATTERNS = Object.freeze([
 ]);
 const IMAGE_REFERENCE_POLICY_SCHEMA =
     'catalog-source-image-reference-policy-v1';
+const CANONICAL_REFERENCE_POLICY_SCHEMA =
+    'catalog-source-canonical-reference-policy-v1';
 const IMAGE_PATH =
     /^\/[A-Za-z0-9][A-Za-z0-9._/-]{0,511}\.(?:gif|jpe?g|png|webp)$/iu;
 const IMAGE_STYLE_NAME = /^style\/[A-Za-z0-9_-]{1,64}$/u;
+const SINGLE_SEGMENT_HTML_PATH =
+    /^[A-Za-z0-9][A-Za-z0-9-]*\.html$/u;
 
 function isForbiddenPublicKey(value) {
     return FORBIDDEN_PUBLIC_KEY.test(value);
@@ -111,9 +115,56 @@ function isAllowedPublicImageReference(value, policy) {
     return true;
 }
 
+function isAllowedPublicCanonicalReference(value, policy) {
+    if (typeof value !== 'string' ||
+        value.length > 2_048 ||
+        !policy ||
+        Array.isArray(policy) ||
+        typeof policy !== 'object' ||
+        policy.schemaVersion !== CANONICAL_REFERENCE_POLICY_SCHEMA ||
+        policy.pathRule !== 'single-segment-html' ||
+        typeof policy.pathPrefix !== 'string' ||
+        !/^\/[A-Za-z0-9._/-]*\/$/u.test(policy.pathPrefix) ||
+        !Array.isArray(policy.allowedHosts) ||
+        policy.allowedHosts.length === 0 ||
+        policy.allowedHosts.length > 16) {
+        return false;
+    }
+    const allowedHosts = new Set();
+    for (const host of policy.allowedHosts) {
+        if (typeof host !== 'string' ||
+            !/^[a-z0-9](?:[a-z0-9.-]{0,251}[a-z0-9])?$/u.test(host)) {
+            return false;
+        }
+        allowedHosts.add(host);
+    }
+    let url;
+    try {
+        url = new URL(value);
+    } catch {
+        return false;
+    }
+    return url.protocol === 'https:' &&
+        !url.username &&
+        !url.password &&
+        !url.port &&
+        url.href === `${url.origin}${url.pathname}` &&
+        allowedHosts.has(url.hostname.toLowerCase()) &&
+        url.pathname.startsWith(policy.pathPrefix) &&
+        SINGLE_SEGMENT_HTML_PATH.test(
+            url.pathname.slice(policy.pathPrefix.length),
+        ) &&
+        !hasForbiddenPublicText(url.hostname) &&
+        !hasForbiddenPublicText(url.pathname, {
+            allowOpaqueNumericIdentifier: true,
+        });
+}
+
 module.exports = {
+    CANONICAL_REFERENCE_POLICY_SCHEMA,
     IMAGE_REFERENCE_POLICY_SCHEMA,
     hasForbiddenPublicText,
+    isAllowedPublicCanonicalReference,
     isAllowedPublicImageReference,
     isForbiddenPublicKey,
 };

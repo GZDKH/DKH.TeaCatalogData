@@ -2,6 +2,7 @@
 
 const { reject } = require('../lib/errors');
 const {
+    CANONICAL_REFERENCE_POLICY_SCHEMA,
     IMAGE_REFERENCE_POLICY_SCHEMA,
     hasForbiddenPublicText,
     isAllowedPublicImageReference,
@@ -9,6 +10,14 @@ const {
 } = require('../lib/public-pii');
 
 const PUBLIC_IMAGE_KEYS = new Set(['img1', 'img2', 'imageUrl1', 'imgUrl']);
+const PUBLIC_CANONICAL_POLICY_VERSION = 'zzctea-public-canonical-url-v1';
+const PUBLIC_CANONICAL_POLICY = Object.freeze({
+    schemaVersion: CANONICAL_REFERENCE_POLICY_SCHEMA,
+    allowedHosts: Object.freeze(['zzctea.com', 'www.zzctea.com']),
+    pathPrefix: '/tea/',
+    pathRule: 'single-segment-html',
+    sourcePolicyVersion: PUBLIC_CANONICAL_POLICY_VERSION,
+});
 const PUBLIC_IMAGE_HOST = 'oss.yf-gz.cn';
 const PUBLIC_IMAGE_POLICY_VERSION = 'zzctea-public-image-url-v1';
 const PUBLIC_IMAGE_POLICY = Object.freeze({
@@ -79,6 +88,8 @@ function assertPublicCatalogPayload(value) {
 }
 
 module.exports = {
+    PUBLIC_CANONICAL_POLICY,
+    PUBLIC_CANONICAL_POLICY_VERSION,
     PUBLIC_IMAGE_POLICY,
     PUBLIC_IMAGE_POLICY_VERSION,
     assertPublicCatalogPayload,

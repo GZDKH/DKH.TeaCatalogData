@@ -489,6 +489,59 @@ async function main() {
                 },
             },
         };
+        const checkpointWithPublicCanonicalPolicy = {
+            ...checkpoint('2026-07-27T01:00:00.000Z'),
+            requestParameters: {
+                publicCanonicalPolicy: {
+                    schemaVersion:
+                        'catalog-source-canonical-reference-policy-v1',
+                    allowedHosts: ['zzctea.com', 'www.zzctea.com'],
+                    pathPrefix: '/tea/',
+                    pathRule: 'single-segment-html',
+                    sourcePolicyVersion:
+                        'zzctea-public-canonical-url-v1',
+                },
+            },
+        };
+        assert.strictEqual(
+            buildArtifact(
+                checkpointWithPublicCanonicalPolicy,
+                [{
+                    ...itemAtOne,
+                    sourceLinks: {
+                        ...itemAtOne.sourceLinks,
+                        observedCanonicalUrl:
+                            'https://zzctea.com/tea/' +
+                            'item-13800138000.html',
+                    },
+                }],
+            ).itemCount,
+            1,
+        );
+        for (const unsafeCanonicalReference of [
+            'https://evil.example/tea/item-13800138000.html',
+            'http://zzctea.com/tea/item-13800138000.html',
+            'https://zzctea.com/tea/phone13800138000.html',
+            'https://zzctea.com/tea/item-13800138000.html?tracking=1',
+            'https://zzctea.com/tea/item-13800138000.html?',
+            'https://zzctea.com/tea/item-13800138000.html#',
+        ]) {
+            assert.throws(
+                () => buildArtifact(
+                    checkpointWithPublicCanonicalPolicy,
+                    [{
+                        ...itemAtOne,
+                        sourceLinks: {
+                            ...itemAtOne.sourceLinks,
+                            observedCanonicalUrl:
+                                unsafeCanonicalReference,
+                        },
+                    }],
+                ),
+                error => error.code ===
+                    'SOURCE_ARTIFACT_PII_POLICY_VIOLATION',
+            );
+        }
         assert.strictEqual(
             buildArtifact(
                 checkpointWithPublicImagePolicy,

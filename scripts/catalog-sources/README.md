@@ -240,13 +240,19 @@ redirect following is never enabled. The final destination is preserved exactly
 as observed, including an allowlisted `www` hostname. A standalone canonical
 lookup uses the same validation with bounded `HEAD` requests; the normal detail
 flow reuses its already observed final URL and sends no duplicate request.
+The same versioned, checkpoint-bound canonical-reference policy is embedded in
+the artifact and revalidated by the source-neutral runtime. Phone-shaped digits
+are permitted only as opaque content of a fully validated canonical slug;
+labelled contacts, query/fragment delimiters, alternate schemes and alternate
+hosts are rejected.
 
 The HTML and complete `window.__NUXT__` state exist only transiently in memory.
 A bounded parser supports the site's serialized data form without `eval` or a
 JavaScript VM. It selects only `data[0].initialHotTea` or
 `data[0].teaDetail`, applies a strict product-field allowlist and PII gate, and
 serializes a minimal deterministic envelope. Seller/buyer/contact/profile
-siblings are never copied to disk. Parsing uses a linear cursor and is bounded
+siblings and known nonpersisted price-chart UI payloads are never copied to
+disk. Parsing uses a linear cursor and is bounded
 to 4 MiB HTML, depth 64, 100,000 nodes, 256 KiB strings, 10,000 array elements,
 2,000 object properties and 4,096 IIFE parameters/arguments.
 

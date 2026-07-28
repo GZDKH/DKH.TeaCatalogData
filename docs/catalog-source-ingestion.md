@@ -37,7 +37,8 @@ cannot silently increase the crawl rate.
 Full HTML and the complete embedded Nuxt state remain in memory and are never
 persisted. Only strict product-field allowlisted, PII-free list/detail envelopes
 are stored; seller/buyer/contact/profile sibling branches are discarded before
-serialization. A standalone canonical check uses bounded strict `HEAD` requests.
+serialization, as are known nonpersisted price-chart UI payloads. A standalone
+canonical check uses bounded strict `HEAD` requests.
 During ingestion the final canonical `/tea/{slug}.html` destination and detail
 body are obtained through a maximum of four manually validated GET redirect hops,
 with robots and host/path policy rechecked at every hop; automatic redirect
@@ -45,6 +46,10 @@ following is disabled. A sanitized `totalPages + 1` probe must be empty or exact
 the last page before completion. A partial or drifted
 run preserves the last good artifact and cannot create tombstones or production
 mutations.
+The checkpoint-bound canonical-reference policy is revalidated again at the
+artifact boundary. Phone-shaped digits are accepted only as opaque content of a
+fully validated `/tea/{slug}.html` path; labelled contact data, query strings,
+fragments, alternate hosts, and alternate schemes remain fail-closed.
 
 Image binaries are not copied. The product envelope may retain only versioned
 HTTPS references on `oss.yf-gz.cn` under `/file/`, with no credentials, port, or

@@ -15,6 +15,7 @@ const {
 const { reject } = require('./errors');
 const {
     hasForbiddenPublicText,
+    isAllowedPublicCanonicalReference,
     isAllowedPublicImageReference,
     isForbiddenPublicKey,
 } = require('./public-pii');
@@ -390,6 +391,20 @@ function assertArtifactSafe(artifact) {
         if (typeof current === 'string') {
             const isImageUrl =
                 path.at(-1) === 'url' && path.at(-3) === 'images';
+            const isObservedCanonicalUrl =
+                path.at(-1) === 'observedCanonicalUrl' &&
+                path.at(-2) === 'sourceLinks';
+            const canonicalReferencePolicy =
+                artifact.source?.canonicalReferencePolicy;
+            if (isObservedCanonicalUrl && canonicalReferencePolicy) {
+                if (!isAllowedPublicCanonicalReference(
+                    current,
+                    canonicalReferencePolicy,
+                )) {
+                    reject('SOURCE_ARTIFACT_PII_POLICY_VIOLATION');
+                }
+                return;
+            }
             const imageReferencePolicy =
                 artifact.source?.imageReferencePolicy;
             if (isImageUrl && imageReferencePolicy) {
@@ -460,6 +475,8 @@ function buildArtifact(checkpoint, items) {
         source: {
             id: checkpoint.sourceId,
             connectorVersion: checkpoint.connectorVersion,
+            canonicalReferencePolicy:
+                checkpoint.requestParameters?.publicCanonicalPolicy || null,
             imageReferencePolicy:
                 checkpoint.requestParameters?.publicImagePolicy || null,
             kind: 'public-reference-catalog',

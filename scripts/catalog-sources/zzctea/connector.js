@@ -13,6 +13,8 @@ const {
 } = require('./normalizer');
 const { decodeSanitizedEnvelope } = require('./sanitized-envelope');
 const {
+    PUBLIC_CANONICAL_POLICY,
+    PUBLIC_CANONICAL_POLICY_VERSION,
     PUBLIC_IMAGE_POLICY,
     PUBLIC_IMAGE_POLICY_VERSION,
     assertPublicOpaquePath,
@@ -30,7 +32,7 @@ const {
     createRobotsPolicy,
 } = require('./robots');
 
-const SOURCE_HOSTS = Object.freeze(['zzctea.com', 'www.zzctea.com']);
+const SOURCE_HOSTS = PUBLIC_CANONICAL_POLICY.allowedHosts;
 const SOURCE_ORIGIN = 'https://zzctea.com';
 const CRAWLER_PRODUCT_TOKEN = 'DKH.TeaCatalogData';
 const CRAWLER_USER_AGENT = 'DKH.TeaCatalogData catalog-source-ingestion/1';
@@ -260,6 +262,9 @@ function createZzcTeaConnector(options = {}) {
                 canonicalHeadPattern: `${SOURCE_ORIGIN}${DETAIL_PATH_PATTERN}`,
                 canonicalDestinationPathPattern: '/tea/{slug}.html',
                 maximumCanonicalRedirects: MAXIMUM_CANONICAL_REDIRECTS,
+                publicCanonicalPolicy: PUBLIC_CANONICAL_POLICY,
+                publicCanonicalPolicyVersion:
+                    PUBLIC_CANONICAL_POLICY_VERSION,
                 publicImagePolicy: PUBLIC_IMAGE_POLICY,
                 publicImagePolicyVersion: PUBLIC_IMAGE_POLICY_VERSION,
                 requestPacing: testRequest
