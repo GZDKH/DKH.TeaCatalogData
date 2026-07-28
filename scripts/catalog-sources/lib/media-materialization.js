@@ -83,6 +83,15 @@ function assertContainedRegularFile(root, relativeFile, label) {
     if (!file.startsWith(`${root}${path.sep}`)) {
         throw new Error(`${label} escapes the media artifact.`);
     }
+    let current = root;
+    const parentRelative = path.relative(root, path.dirname(file));
+    for (const segment of parentRelative.split(path.sep).filter(Boolean)) {
+        current = path.join(current, segment);
+        const parentStat = fs.lstatSync(current);
+        if (parentStat.isSymbolicLink() || !parentStat.isDirectory()) {
+            throw new Error(`${label} has a non-directory or symlink ancestor.`);
+        }
+    }
     const stat = fs.lstatSync(file);
     if (stat.isSymbolicLink() || !stat.isFile()) {
         throw new Error(`${label} must be a real file.`);
@@ -122,27 +131,66 @@ function canonicalImagePath(rawUrl) {
     return `${url.origin}${url.pathname}`;
 }
 
-function selectOriginalImageCandidates(artifact, mappings, onlyExternalId = null) {
+function validateMappingCoverage(artifact, mappings, expectedCounts = null) {
     if (!artifact ||
         artifact.source?.id !== 'zzctea' ||
         !Array.isArray(artifact.items)) {
         throw new Error('Only a verified ZZCTea artifact is supported.');
     }
+    if (!Array.isArray(mappings)) {
+        throw new Error('Reconciliation mappings must be an array.');
+    }
+    const artifactIds = new Set();
+    for (const item of artifact.items) {
+        const externalId = String(item?.externalId || '');
+        if (!/^[1-9]\d*$/.test(externalId) || artifactIds.has(externalId)) {
+            throw new Error('ZZCTea artifact external IDs must be exact and unique.');
+        }
+        artifactIds.add(externalId);
+    }
     const mappingByExternalId = new Map();
+    const productCodes = new Set();
+    const statusCounts = {
+        matched: 0,
+        missing: 0,
+    };
     for (const mapping of mappings) {
         const externalId = String(mapping?.externalId || '');
+        const matched = mapping.status === 'matched-update' ||
+            mapping.status === 'matched-noop';
+        const draft = mapping.status === 'missing-create-draft';
         if (!/^[1-9]\d*$/.test(externalId) ||
-            mapping.status !== 'matched-update' ||
+            (!matched && !draft) ||
             mapping.productCode !== `ZZC-${externalId}` ||
-            !UUID.test(String(mapping.productId || '')) ||
-            mappingByExternalId.has(externalId)) {
+            (matched && !UUID.test(String(mapping.productId || ''))) ||
+            (draft && (mapping.productId !== undefined ||
+                mapping.published !== false)) ||
+            mappingByExternalId.has(externalId) ||
+            productCodes.has(mapping.productCode) ||
+            !artifactIds.has(externalId)) {
             throw new Error(
-                'Reconciliation mappings must be exact, unique matched ZZCTea products.',
+                'Reconciliation mappings must be exact, unique matched or Draft ZZCTea products.',
             );
         }
         mappingByExternalId.set(externalId, mapping);
+        productCodes.add(mapping.productCode);
+        statusCounts[matched ? 'matched' : 'missing'] += 1;
     }
+    if (mappingByExternalId.size !== artifactIds.size ||
+        [...artifactIds].some(externalId => !mappingByExternalId.has(externalId))) {
+        throw new Error('Reconciliation mappings do not exactly cover the ZZCTea artifact.');
+    }
+    if (expectedCounts &&
+        (expectedCounts.ambiguous !== 0 ||
+            expectedCounts.matched !== statusCounts.matched ||
+            expectedCounts.missing !== statusCounts.missing)) {
+        throw new Error('Reconciliation mapping status counts differ from its manifest.');
+    }
+    return mappingByExternalId;
+}
 
+function selectOriginalImageCandidates(artifact, mappings, onlyExternalId = null) {
+    const mappingByExternalId = validateMappingCoverage(artifact, mappings);
     const selectedItems = onlyExternalId === null
         ? artifact.items
         : artifact.items.filter(item => String(item.externalId) === onlyExternalId);
@@ -180,7 +228,7 @@ function selectOriginalImageCandidates(artifact, mappings, onlyExternalId = null
                     item.localizedFields?.['zh-CN']?.name || mapping.productCode,
                 ),
                 productCode: mapping.productCode,
-                productId: mapping.productId,
+                ...(mapping.productId ? { productId: mapping.productId } : {}),
                 sourceOrder,
                 sourcePath,
                 url: originals[0].url,
@@ -469,7 +517,9 @@ function buildOutputDocuments(options) {
             finalUrl: entry.finalUrl,
             omittedDuplicateForProduct: duplicateForProduct,
             productCode: candidate.productCode,
-            productId: candidate.productId,
+            ...(candidate.productId
+                ? { productId: candidate.productId }
+                : {}),
             role: 'gallery',
             sha256: entry.sha256,
             sourceUrl: candidate.url,
@@ -516,7 +566,7 @@ function buildOutputDocuments(options) {
             scope: 'products',
             source: 'manifest',
             path: manifestFileName,
-            galleryStrategy: 'append',
+            galleryStrategy: 'reconcile-source-managed',
         },
         productionWrites: false,
     };
@@ -553,6 +603,173 @@ function verifyCompleteOutput(outputRoot, manifest) {
     }
 }
 
+function assertPriorMediaRoot(previousMediaDirectory) {
+    const outputRoot = path.resolve(previousMediaDirectory);
+    const bundleRoot = path.dirname(outputRoot);
+    for (const [directory, label] of [
+        [bundleRoot, 'Previous import bundle'],
+        [outputRoot, 'Previous media cache'],
+    ]) {
+        if (!fs.existsSync(directory)) {
+            throw new Error(`${label} does not exist.`);
+        }
+        const stat = fs.lstatSync(directory);
+        if (stat.isSymbolicLink() || !stat.isDirectory()) {
+            throw new Error(`${label} must be a real directory.`);
+        }
+    }
+    return { bundleRoot, outputRoot };
+}
+
+function loadVerifiedPriorMedia(previousMediaDirectory, sourceId) {
+    const { bundleRoot, outputRoot } =
+        assertPriorMediaRoot(previousMediaDirectory);
+    const bundleManifestFile = assertContainedRegularFile(
+        bundleRoot,
+        'import-bundle-manifest.json',
+        'Previous import bundle manifest',
+    );
+    const bundleManifest = readJson(bundleManifestFile);
+    const mediaInventory = bundleManifest.files?.mediaManifest;
+    if (bundleManifest.schemaVersion !== 'catalog-source-import-bundle-v1' ||
+        bundleManifest.complete !== true ||
+        bundleManifest.productionWrites !== false ||
+        bundleManifest.sourceId !== sourceId ||
+        bundleManifest.directories?.media !== 'media' ||
+        path.resolve(bundleRoot, bundleManifest.directories.media) !== outputRoot ||
+        mediaInventory?.file !== 'media/media-manifest.json' ||
+        !DIGEST.test(String(mediaInventory?.sha256 || '')) ||
+        !Number.isSafeInteger(mediaInventory?.bytes) ||
+        mediaInventory.bytes < 1) {
+        throw new Error('Previous import bundle media binding is invalid.');
+    }
+    const manifestFile = assertContainedRegularFile(
+        bundleRoot,
+        mediaInventory.file,
+        'Previous media manifest',
+    );
+    const manifestBytes = fs.readFileSync(manifestFile);
+    if (manifestBytes.length !== mediaInventory.bytes ||
+        sha256(manifestBytes) !== mediaInventory.sha256) {
+        throw new Error('Previous media manifest hash differs from its import bundle.');
+    }
+    const manifest = JSON.parse(manifestBytes.toString('utf8'));
+    if (manifest.sourceId !== sourceId ||
+        manifest.snapshotId !== bundleManifest.snapshotId ||
+        manifest.selection?.mode !== 'full-snapshot') {
+        throw new Error('Previous media manifest is not a full source snapshot.');
+    }
+    verifyCompleteOutput(outputRoot, manifest);
+    const receipt = readJson(path.join(outputRoot, manifest.receiptFile));
+    if (receipt.sourceId !== manifest.sourceId ||
+        receipt.snapshotId !== manifest.snapshotId ||
+        receipt.inputArtifactSha256 !== manifest.inputArtifactSha256 ||
+        receipt.inputMappingSha256 !== manifest.inputMappingSha256 ||
+        receipt.selectedOriginalCount !== manifest.originalImageCount ||
+        receipt.sources.length !== receipt.selectedOriginalCount ||
+        receipt.uniqueBlobCount !== manifest.uniqueBlobCount ||
+        receipt.totalBytes !== manifest.totalBytes) {
+        throw new Error('Previous media receipt does not match its manifest.');
+    }
+    const entries = new Map();
+    for (const source of receipt.sources) {
+        const sourceUrl = validatePublicImageUrl(source.sourceUrl).toString();
+        const finalUrl = validatePublicImageUrl(source.finalUrl).toString();
+        if (sourceUrl !== source.sourceUrl ||
+            finalUrl !== source.finalUrl ||
+            !DIGEST.test(String(source.sha256 || '')) ||
+            !Number.isSafeInteger(source.bytes) ||
+            source.bytes < 1 ||
+            !TYPES[source.contentType]) {
+            throw new Error('Previous media receipt source is invalid.');
+        }
+        const expectedFile =
+            `blobs/${source.sha256.slice(0, 2)}/${source.sha256}.` +
+            TYPES[source.contentType].extension;
+        if (source.file !== expectedFile) {
+            throw new Error('Previous media receipt blob path is not content-addressed.');
+        }
+        const cached = {
+            bytes: source.bytes,
+            contentType: source.contentType,
+            file: source.file,
+            finalUrl,
+            sha256: source.sha256,
+        };
+        const existing = entries.get(sourceUrl);
+        if (existing && stableJson(existing) !== stableJson(cached)) {
+            throw new Error('Previous media receipt has conflicting source URL entries.');
+        }
+        entries.set(sourceUrl, cached);
+    }
+    if (entries.size !== receipt.networkUrlCount ||
+        new Set([...entries.values()].map(entry => entry.sha256)).size !==
+            receipt.uniqueBlobCount ||
+        [...entries.values()].reduce((sum, entry) => sum + entry.bytes, 0) !==
+            receipt.totalBytes) {
+        throw new Error('Previous media receipt totals are inconsistent.');
+    }
+    return { entries, outputRoot };
+}
+
+function copyVerifiedPriorBlob(priorRoot, outputRoot, entry) {
+    const sourceFile = assertContainedRegularFile(
+        priorRoot,
+        entry.file,
+        'Previous media blob',
+    );
+    const blobsDirectory = path.join(outputRoot, 'blobs');
+    ensureRealDirectory(blobsDirectory, 'Media blobs directory');
+    const finalFile = path.join(outputRoot, entry.file);
+    ensureRealDirectory(path.dirname(finalFile), 'Media digest directory');
+    if (fs.existsSync(finalFile)) {
+        verifyCompletedEntry(outputRoot, entry);
+        return;
+    }
+    const temporaryDirectory = path.join(outputRoot, '.partial');
+    ensureRealDirectory(temporaryDirectory, 'Media partial directory');
+    const temporaryFile = path.join(
+        temporaryDirectory,
+        `${process.pid}-${crypto.randomBytes(8).toString('hex')}.cache`,
+    );
+    fs.copyFileSync(
+        sourceFile,
+        temporaryFile,
+        fs.constants.COPYFILE_FICLONE | fs.constants.COPYFILE_EXCL,
+    );
+    try {
+        const copied = fs.readFileSync(temporaryFile);
+        if (copied.length !== entry.bytes ||
+            sha256(copied) !== entry.sha256) {
+            throw new Error('MEDIA_PRIOR_CACHE_HASH_MISMATCH');
+        }
+        const detected = detectImageType(entry.contentType, copied.subarray(0, 16));
+        if (detected.contentType !== entry.contentType ||
+            detected.extension !== TYPES[entry.contentType].extension) {
+            throw new Error('MEDIA_PRIOR_CACHE_TYPE_MISMATCH');
+        }
+        fs.renameSync(temporaryFile, finalFile);
+    } catch (error) {
+        fs.rmSync(temporaryFile, { force: true });
+        throw error;
+    }
+}
+
+function prefillCheckpointFromPrior(checkpoint, networkUrls, prior, outputRoot, limits) {
+    for (const url of networkUrls) {
+        const entry = prior.entries.get(url);
+        if (!entry) continue;
+        if (entry.bytes > limits.maxFileBytes ||
+            checkpoint.totalBytes + entry.bytes > limits.maxTotalBytes) {
+            throw new Error('MEDIA_PRIOR_CACHE_EXCEEDS_LIMIT');
+        }
+        copyVerifiedPriorBlob(prior.outputRoot, outputRoot, entry);
+        checkpoint.entries[url] = { ...entry };
+        checkpoint.totalBytes += entry.bytes;
+        checkpoint.completedCount += 1;
+    }
+}
+
 async function materializeVerifiedMedia(options) {
     const {
         artifactBundle,
@@ -565,6 +782,7 @@ async function materializeVerifiedMedia(options) {
         minimumRequestIntervalMs = DEFAULT_MINIMUM_REQUEST_INTERVAL_MS,
         onlyExternalId = null,
         outputDirectory,
+        previousMediaDirectory = null,
         timeoutMs = 30_000,
     } = options;
     assertPositiveInteger(maxFileBytes, 'Maximum file bytes', 500 * 1024 * 1024);
@@ -625,10 +843,32 @@ async function materializeVerifiedMedia(options) {
         return { candidates, manifest, outputDirectory: outputRoot, resumedComplete: true };
     }
 
-    const checkpoint = fs.existsSync(checkpointFile)
+    const checkpointExists = fs.existsSync(checkpointFile);
+    const checkpoint = checkpointExists
         ? readJson(checkpointFile)
         : newCheckpoint(binding, networkUrls.length);
     assertCheckpoint(checkpoint, binding, networkUrls.length);
+    const previousMediaStat = previousMediaDirectory === null
+        ? undefined
+        : fs.lstatSync(path.resolve(previousMediaDirectory), {
+            throwIfNoEntry: false,
+        });
+    if (!checkpointExists && previousMediaStat !== undefined) {
+        const prior = loadVerifiedPriorMedia(
+            previousMediaDirectory,
+            binding.sourceId,
+        );
+        prefillCheckpointFromPrior(
+            checkpoint,
+            networkUrls,
+            prior,
+            outputRoot,
+            { maxFileBytes, maxTotalBytes },
+        );
+        if (checkpoint.completedCount > 0) {
+            writeJsonAtomic(checkpointFile, checkpoint);
+        }
+    }
     for (const entry of Object.values(checkpoint.entries)) {
         verifyCompletedEntry(outputRoot, entry);
     }
@@ -688,7 +928,10 @@ module.exports = {
     canonicalImagePath,
     detectImageType,
     downloadImage,
+    loadVerifiedPriorMedia,
     materializeVerifiedMedia,
+    prefillCheckpointFromPrior,
+    validateMappingCoverage,
     selectOriginalImageCandidates,
     verifyCompleteOutput,
 };

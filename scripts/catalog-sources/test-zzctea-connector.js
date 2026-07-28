@@ -9,6 +9,8 @@ const {
     DEFAULT_MINIMUM_REQUEST_INTERVAL_MS,
     DETAIL_PATH_PATTERN,
     LIST_PATH,
+    REVIEWED_BRANDS,
+    REVIEWED_BRAND_MANIFEST_SHA256,
     ROBOTS_URL,
     createZzcTeaConnector,
 } = require('./zzctea/connector');
@@ -111,6 +113,23 @@ async function main() {
         testMode: true,
         testRequest: mockRequest,
     });
+    assert.strictEqual(connector.externalIdFromProductCode('ZZC-2'), '2');
+    assert.strictEqual(connector.externalIdFromProductCode('OTHER-2'), null);
+    for (const invalidCode of [
+        'ZZC',
+        'ZZC-',
+        'ZZC-0',
+        'ZZC-01',
+        'ZZC-not-an-id',
+        'zzc-2',
+        ' ZZC-2',
+        'ZZC-2 ',
+    ]) {
+        assert.throws(
+            () => connector.externalIdFromProductCode(invalidCode),
+            error => error.code === 'ZZCTEA_PRODUCT_CODE_INVALID',
+        );
+    }
     assert.deepStrictEqual(connector.requestParameters().robotsPolicy, {
         cacheScope: 'connector-instance',
         crawlerProductToken: CRAWLER_PRODUCT_TOKEN,
@@ -130,6 +149,62 @@ async function main() {
             timer: 'monotonic',
         },
     );
+    const discoveryTargets = [];
+    const discoveryConnector = createZzcTeaConnector({
+        testMode: true,
+        testRequest: async rawUrl => {
+            if (rawUrl === ROBOTS_URL) return robotsResponse();
+            const url = new URL(rawUrl);
+            assert.strictEqual(url.pathname, LIST_PATH);
+            assert.ok(!url.pathname.includes('/api/'));
+            const brandId = url.searchParams.get('brandIds');
+            const page = Number(url.searchParams.get('page'));
+            const brand = REVIEWED_BRANDS.find(
+                candidate => candidate.externalId === brandId,
+            );
+            assert.ok(brand);
+            discoveryTargets.push(`${url.pathname}${url.search}`);
+            return {
+                status: 200,
+                headers: new Headers({
+                    'content-type': 'text/html; charset=utf-8',
+                }),
+                body: nuxtHtml({
+                    initialHotTea: page === 1
+                        ? [{
+                            id: Number(brandId) * 1000 + 1,
+                            name: `${brand.name} discovery tea`,
+                            brandId: Number(brandId),
+                            brand: brand.name,
+                        }]
+                        : [],
+                    initialSearch: {
+                        brandIds: [Number(brandId)],
+                        page,
+                        pageSize: 36,
+                    },
+                    totalPages: 1,
+                }),
+            };
+        },
+    });
+    const discovery = await discoveryConnector.discoverExternalIds();
+    assert.strictEqual(discovery.externalIds.length, REVIEWED_BRANDS.length);
+    assert.ok(discovery.externalIds.includes('835001'));
+    assert.deepStrictEqual(
+        [...new Set(discovery.externalIds)],
+        discovery.externalIds,
+    );
+    assert.strictEqual(
+        discovery.requestParameters.brandManifest.sha256,
+        REVIEWED_BRAND_MANIFEST_SHA256,
+    );
+    assert.strictEqual(
+        discovery.requestParameters.discovery.envelopeCount,
+        REVIEWED_BRANDS.length * 2,
+    );
+    assert.ok(discoveryTargets.includes('/teaList?page=1&brandIds=835'));
+    assert.ok(discoveryTargets.includes('/teaList?page=2&brandIds=835'));
     let productionClock = 0;
     let productionListAttempts = 0;
     const productionStarts = [];
@@ -433,6 +508,27 @@ async function main() {
         },
     }), '17627');
     assert.ok(opaqueImageIdentifier.includes('asset_13800138000.jpg'));
+    const opaqueRootImageIdentifier = sanitizeDetailHtml(nuxtHtml({
+        teaDetail: {
+            id: 17627,
+            img1: 'https://oss.yf-gz.cn/b0da0c107e4942f18935224290fe5633.jpg' +
+                '?x-oss-process=style/square300',
+            name: 'Fixture Case Tea',
+        },
+    }), '17627');
+    assert.ok(opaqueRootImageIdentifier.includes(
+        'b0da0c107e4942f18935224290fe5633.jpg',
+    ));
+    assert.throws(
+        () => sanitizeDetailHtml(nuxtHtml({
+            teaDetail: {
+                id: 17627,
+                img1: 'https://oss.yf-gz.cn/13800138000.jpg',
+                name: 'Fixture Case Tea',
+            },
+        }), '17627'),
+        error => error.code === 'ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED',
+    );
     for (const invalidButNonPiiImage of [
         'https://evil.example/file/asset.jpg',
         'https://oss.yf-gz.cn/profile/asset.jpg',

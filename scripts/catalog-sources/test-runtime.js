@@ -11,6 +11,17 @@ const {
     replaySourceSnapshot,
 } = require('./lib/runtime');
 const { readJson, sha256 } = require('./lib/artifacts');
+const {
+    createProductReferenceSeed,
+    createWeeklyProductReferenceSeed,
+} = require('./fetch-snapshot');
+const {
+    REPLACE_MODE_COLLECTIONS,
+    writeProductReference,
+} = require('../thetea/lib/product-reference');
+const {
+    externalIdFromProductCode,
+} = require('./zzctea/connector');
 
 function normalizedItem(externalId) {
     return {
@@ -44,6 +55,15 @@ function normalizedItem(externalId) {
         }],
         sourceUpdatedAt: '2026-07-20T00:00:00.000Z',
         diagnostics: [],
+    };
+}
+
+function productReferenceItem(code) {
+    return {
+        code,
+        ...Object.fromEntries(
+            REPLACE_MODE_COLLECTIONS.map(field => [field, []]),
+        ),
     };
 }
 
@@ -161,6 +181,234 @@ function checkpoint(observedAt) {
 async function main() {
     const repositoryRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'tea-source-runtime-'));
     try {
+        const productReferenceRoot = path.join(
+            repositoryRoot,
+            'sources/prod/product-reference/complete',
+        );
+        writeProductReference(
+            productReferenceRoot,
+            [
+                productReferenceItem('OTHER-1'),
+                productReferenceItem('ZZC-10'),
+                productReferenceItem('ZZC-2'),
+            ],
+            {
+                fetchedAt: '2026-07-28T10:00:00.000Z',
+                workspaceId: '11111111-1111-4111-8111-111111111111',
+            },
+        );
+        const productReferenceSeed = createProductReferenceSeed({
+            connector: {
+                id: 'zzctea',
+                externalIdFromProductCode,
+            },
+            inputPath: productReferenceRoot,
+            repositoryRoot,
+        });
+        assert.deepStrictEqual(productReferenceSeed.externalIds, ['2', '10']);
+        assert.strictEqual(
+            productReferenceSeed.requestParameters.productReferencePath,
+            'sources/prod/product-reference/complete',
+        );
+        assert.match(
+            productReferenceSeed.requestParameters
+                .productReferenceManifestSha256,
+            /^[a-f0-9]{64}$/u,
+        );
+        let discoveryCalls = 0;
+        const weeklySeed = await createWeeklyProductReferenceSeed({
+            baseSeed: productReferenceSeed,
+            connector: {
+                id: 'fixture-weekly-seed',
+                async discoverExternalIds() {
+                    discoveryCalls += 1;
+                    return {
+                        externalIds: ['2', '835001'],
+                        requestParameters: {
+                            brandManifest: {
+                                schemaVersion:
+                                    'fixture-brand-manifest-v1',
+                                sha256: 'b'.repeat(64),
+                            },
+                            discovery: {
+                                externalIdsSha256: 'c'.repeat(64),
+                                itemCount: 2,
+                                schemaVersion:
+                                    'fixture-discovery-v1',
+                            },
+                        },
+                    };
+                },
+            },
+            repositoryRoot,
+            snapshotId: 'weekly-seed',
+        });
+        assert.strictEqual(discoveryCalls, 1);
+        assert.deepStrictEqual(
+            weeklySeed.externalIds,
+            ['2', '10', '835001'],
+        );
+        assert.strictEqual(
+            new Set(weeklySeed.externalIds).size,
+            weeklySeed.externalIds.length,
+        );
+        assert.strictEqual(
+            weeklySeed.requestParameters.brandManifest.sha256,
+            'b'.repeat(64),
+        );
+        const weeklyRuntime = createFakeConnector({
+            id: 'fixture-weekly-seed',
+        });
+        await ingestSourceSnapshot({
+            connector: weeklyRuntime.connector,
+            repositoryRoot,
+            snapshotId: 'weekly-seed-checkpoint',
+            concurrency: 2,
+            pageSize: 2,
+            seed: weeklySeed,
+        });
+        let resumedDiscoveryCalls = 0;
+        const resumedWeeklySeed = await createWeeklyProductReferenceSeed({
+            baseSeed: productReferenceSeed,
+            connector: {
+                id: 'fixture-weekly-seed',
+                async discoverExternalIds() {
+                    resumedDiscoveryCalls += 1;
+                    throw new Error('discovery must not run on replay');
+                },
+            },
+            repositoryRoot,
+            replay: true,
+            snapshotId: 'weekly-seed-checkpoint',
+        });
+        assert.strictEqual(resumedDiscoveryCalls, 0);
+        assert.deepStrictEqual(
+            resumedWeeklySeed.externalIds,
+            weeklySeed.externalIds,
+        );
+        assert.strictEqual(
+            resumedWeeklySeed.requestParameters.discovery
+                .externalIdsSha256,
+            'c'.repeat(64),
+        );
+        const weeklyCheckpoint = readJson(path.join(
+            repositoryRoot,
+            'sources/catalog-sources/fixture-weekly-seed/' +
+                'snapshots/weekly-seed-checkpoint/checkpoint.json',
+        ));
+        assert.strictEqual(
+            weeklyCheckpoint.requestParameters.seed.brandManifest.sha256,
+            'b'.repeat(64),
+        );
+        assert.strictEqual(
+            weeklyCheckpoint.requestParameters.seed.discovery
+                .externalIdsSha256,
+            'c'.repeat(64),
+        );
+
+        const duplicateReferenceRoot = path.join(
+            repositoryRoot,
+            'sources/prod/product-reference/deduplicated',
+        );
+        writeProductReference(
+            duplicateReferenceRoot,
+            [
+                productReferenceItem('SRC-FIRST'),
+                productReferenceItem('SRC-SECOND'),
+            ],
+            {
+                fetchedAt: '2026-07-28T10:00:00.000Z',
+                workspaceId: '11111111-1111-4111-8111-111111111111',
+            },
+        );
+        assert.deepStrictEqual(
+            createProductReferenceSeed({
+                connector: {
+                    id: 'fixture',
+                    externalIdFromProductCode: () => '2',
+                },
+                inputPath: duplicateReferenceRoot,
+                repositoryRoot,
+            }).externalIds,
+            ['2'],
+        );
+
+        const invalidReferenceRoot = path.join(
+            repositoryRoot,
+            'sources/prod/product-reference/invalid-zzctea-code',
+        );
+        writeProductReference(
+            invalidReferenceRoot,
+            [productReferenceItem('ZZC-0')],
+            {
+                fetchedAt: '2026-07-28T10:00:00.000Z',
+                workspaceId: '11111111-1111-4111-8111-111111111111',
+            },
+        );
+        assert.throws(
+            () => createProductReferenceSeed({
+                connector: {
+                    id: 'zzctea',
+                    externalIdFromProductCode,
+                },
+                inputPath: invalidReferenceRoot,
+                repositoryRoot,
+            }),
+            error => error.code === 'ZZCTEA_PRODUCT_CODE_INVALID',
+        );
+
+        const missingReferenceRoot = path.join(
+            repositoryRoot,
+            'sources/prod/product-reference/missing-zzctea-code',
+        );
+        writeProductReference(
+            missingReferenceRoot,
+            [productReferenceItem('OTHER-1')],
+            {
+                fetchedAt: '2026-07-28T10:00:00.000Z',
+                workspaceId: '11111111-1111-4111-8111-111111111111',
+            },
+        );
+        assert.throws(
+            () => createProductReferenceSeed({
+                connector: {
+                    id: 'zzctea',
+                    externalIdFromProductCode,
+                },
+                inputPath: missingReferenceRoot,
+                repositoryRoot,
+            }),
+            /contains no zzctea product IDs/,
+        );
+
+        const tamperedReferenceRoot = path.join(
+            repositoryRoot,
+            'sources/prod/product-reference/tampered',
+        );
+        writeProductReference(
+            tamperedReferenceRoot,
+            [productReferenceItem('ZZC-2')],
+            {
+                fetchedAt: '2026-07-28T10:00:00.000Z',
+                workspaceId: '11111111-1111-4111-8111-111111111111',
+            },
+        );
+        fs.appendFileSync(
+            path.join(tamperedReferenceRoot, 'products.json'),
+            ' ',
+        );
+        assert.throws(
+            () => createProductReferenceSeed({
+                connector: {
+                    id: 'zzctea',
+                    externalIdFromProductCode,
+                },
+                inputPath: tamperedReferenceRoot,
+                repositoryRoot,
+            }),
+            /data hash differs from its manifest/,
+        );
+
         const first = createFakeConnector();
         const result = await ingestSourceSnapshot({
             connector: first.connector,
@@ -184,6 +432,154 @@ async function main() {
         assert.strictEqual(first.state.listFetches, 3);
         assert.strictEqual(first.state.detailFetches, 5);
         assert.ok(fs.existsSync(result.artifactFile));
+
+        const seededRoot = fs.mkdtempSync(
+            path.join(os.tmpdir(), 'tea-source-seeded-'),
+        );
+        try {
+            const seed = {
+                externalIds: ['10', '2', '1'],
+                requestParameters: {
+                    productReferencePath:
+                        'sources/prod/product-reference/complete',
+                    productsSha256: 'a'.repeat(64),
+                },
+            };
+            const seeded = createFakeConnector({
+                id: 'fixture-seeded',
+            });
+            const seededResult = await ingestSourceSnapshot({
+                connector: seeded.connector,
+                repositoryRoot: seededRoot,
+                snapshotId: 'seeded-1',
+                concurrency: 2,
+                pageSize: 2,
+                seed,
+                now: () => new Date('2026-07-28T10:00:00.000Z'),
+            });
+            assert.strictEqual(seededResult.manifest.itemCount, 3);
+            assert.strictEqual(seeded.state.listFetches, 0);
+            assert.strictEqual(seeded.state.probeFetches, 0);
+            assert.strictEqual(seeded.state.detailFetches, 3);
+            assert.deepStrictEqual(
+                seededResult.artifact.items.map(item => item.externalId),
+                ['1', '2', '10'],
+            );
+            const seededCheckpoint = readJson(path.join(
+                seededRoot,
+                'sources/catalog-sources/fixture-seeded/' +
+                    'snapshots/seeded-1/checkpoint.json',
+            ));
+            assert.deepStrictEqual(
+                seededCheckpoint.seed.externalIds,
+                ['1', '2', '10'],
+            );
+            assert.strictEqual(seededCheckpoint.pages.length, 0);
+            assert.strictEqual(
+                seededCheckpoint.requestParameters.seed
+                    .productReferencePath,
+                'sources/prod/product-reference/complete',
+            );
+            assert.match(
+                seededCheckpoint.requestParameters.seed.externalIdsSha256,
+                /^[a-f0-9]{64}$/u,
+            );
+            const seededReplay = await replaySourceSnapshot({
+                connector: seeded.connector,
+                repositoryRoot: seededRoot,
+                seed,
+                snapshotId: 'seeded-1',
+            });
+            assert.strictEqual(
+                seededReplay.manifest.artifactSha256,
+                seededResult.manifest.artifactSha256,
+            );
+            assert.strictEqual(seeded.state.listFetches, 0);
+            assert.strictEqual(seeded.state.detailFetches, 3);
+            await assert.rejects(
+                replaySourceSnapshot({
+                    connector: seeded.connector,
+                    repositoryRoot: seededRoot,
+                    snapshotId: 'seeded-1',
+                }),
+                error => error.code === 'SOURCE_CHECKPOINT_INCOMPATIBLE',
+            );
+        } finally {
+            fs.rmSync(seededRoot, { recursive: true, force: true });
+        }
+
+        const seededResumeRoot = fs.mkdtempSync(
+            path.join(os.tmpdir(), 'tea-source-seeded-resume-'),
+        );
+        try {
+            const seed = {
+                externalIds: ['1', '2', '3'],
+                requestParameters: {
+                    productReferencePath:
+                        'sources/prod/product-reference/complete',
+                    productsSha256: 'b'.repeat(64),
+                },
+            };
+            const interruptedSeed = createFakeConnector({
+                failDetail: '2',
+                id: 'fixture-seeded-resume',
+            });
+            await assert.rejects(
+                ingestSourceSnapshot({
+                    connector: interruptedSeed.connector,
+                    repositoryRoot: seededResumeRoot,
+                    snapshotId: 'seeded-resume',
+                    concurrency: 1,
+                    pageSize: 2,
+                    seed,
+                }),
+                /simulated detail failure/,
+            );
+            assert.strictEqual(interruptedSeed.state.listFetches, 0);
+            assert.strictEqual(interruptedSeed.state.detailFetches, 2);
+
+            const changedSeed = createFakeConnector({
+                id: 'fixture-seeded-resume',
+            });
+            await assert.rejects(
+                ingestSourceSnapshot({
+                    connector: changedSeed.connector,
+                    repositoryRoot: seededResumeRoot,
+                    snapshotId: 'seeded-resume',
+                    concurrency: 1,
+                    pageSize: 2,
+                    resume: true,
+                    seed: {
+                        ...seed,
+                        externalIds: ['1', '2', '4'],
+                    },
+                }),
+                error => error.code === 'SOURCE_CHECKPOINT_INCOMPATIBLE',
+            );
+            assert.strictEqual(changedSeed.state.listFetches, 0);
+            assert.strictEqual(changedSeed.state.detailFetches, 0);
+
+            const resumedSeed = createFakeConnector({
+                id: 'fixture-seeded-resume',
+            });
+            const resumedSeedResult = await ingestSourceSnapshot({
+                connector: resumedSeed.connector,
+                repositoryRoot: seededResumeRoot,
+                snapshotId: 'seeded-resume',
+                concurrency: 1,
+                pageSize: 2,
+                resume: true,
+                seed,
+            });
+            assert.strictEqual(resumedSeedResult.manifest.itemCount, 3);
+            assert.strictEqual(resumedSeed.state.listFetches, 0);
+            assert.strictEqual(resumedSeed.state.detailFetches, 2);
+        } finally {
+            fs.rmSync(seededResumeRoot, {
+                recursive: true,
+                force: true,
+            });
+        }
 
         const pagesRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'tea-source-pages-'));
         try {

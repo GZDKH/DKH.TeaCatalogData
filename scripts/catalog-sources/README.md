@@ -8,26 +8,25 @@ administrator.
 
 ## ZZCTea
 
-Run a complete snapshot of the public HTML hot-tea catalog exposed by
-`/teaList`:
+Run the complete weekly refresh from verified ProductCatalog references to the
+atomic operator bundle:
 
 ```bash
-node scripts/catalog-sources/fetch-snapshot.js \
-  --source=zzctea \
-  --snapshot=zzctea-2026-07-27 \
-  --resume \
-  --minimum-request-interval-ms=1000 \
-  --concurrency=1
+node scripts/catalog-sources/update-zzctea-current.js \
+  --snapshot=zzctea-2026-07-28-weekly-v1 \
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-07-27.json \
+  --product-ref=sources/prod/product-reference/prod-products-2026-07-28-post-import \
+  --minimum-request-interval-ms=1000
 ```
 
-This is not the larger inventory behind the robots-disallowed `/api/` routes.
-The runtime must not describe the HTML subset as the complete ZZCTea inventory
-or combine it with an older API snapshot.
-
-The HTML routes being robots-allowed is a transport constraint, not a content
-reuse license. Do not run a multi-item live snapshot or copy source images until
-source permission/terms, image reuse, and the request-rate limit have been
-reviewed. Offline fixtures and replay remain the default verification path.
+The source seed is a deterministic union of every exact `ZZC-<externalId>` in
+the complete, hash-verified ProductCatalog export and public discovery across
+the 13 reviewed `brandIds`. Details are refreshed by immutable external ID, so
+the existing 3,151 products stay covered even if a public list changes; newly
+discovered IDs become unpublished, price-free ProductCatalog Drafts. The run is
+resumable at both detail and media stages. Every upstream result is immutable,
+and `import/zzctea/current` is swapped only after all bindings and hashes pass.
+No production write is performed.
 
 Replay the exact stored responses without network access:
 
@@ -193,10 +192,11 @@ The optional `--only` accepts exactly one canonical positive ZZCTea external
 ID. Reconciliation uses only the immutable mapping
 `externalId -> ZZC-<externalId>`; it never fuzzy-matches names. Existing
 products are emitted as complete baseline-preserving patches and rollback
-records. Only `en-US`/`zh-CN` description and meta-description fields may
+records. Only managed factual descriptions and source-owned specifications may
 change. Retail/catalog/tier/store prices and every unrelated nested collection
-remain untouched. Missing products are reported as Draft-only proposals without
-inventing a ProductCatalog payload.
+remain untouched. Missing products receive a complete unpublished Draft payload
+with stable code/SKU and conservative `CATALOG-PUERH` memberships, but no retail
+price.
 
 Outputs live under a reference-bound ignored path below
 `artifacts/catalog-source-reconciliations/`. The content-addressed bundle
@@ -214,8 +214,8 @@ it does not upload to MediaService or change a product:
 
 ```bash
 node scripts/catalog-sources/materialize-media.js \
-  --artifact-dir=artifacts/catalog-sources/zzctea/zzctea-2026-07-28-public-html-v5 \
-  --reconciliation-dir=artifacts/catalog-source-reconciliations/zzctea/zzctea-2026-07-28-public-html-v5/<reference-binding>/full \
+  --artifact-dir=artifacts/catalog-sources/zzctea/zzctea-2026-07-28-full-catalog-v2 \
+  --reconciliation-dir=artifacts/catalog-source-reconciliations/zzctea/zzctea-2026-07-28-full-catalog-v2/<reference-binding>/full \
   --minimum-request-interval-ms=1000
 ```
 
@@ -242,7 +242,8 @@ limit, rate, or hash-mismatched local blob fails closed. The final
 
 For a later reviewed upload, configure a SetupTool media section with
 `scope: "products"`, `ownerKey: "productCode"`, `source: "manifest"`,
-`path: "media-items.json"` and `galleryStrategy: "append"`, with its `basePath`
+`path: "media-items.json"` and
+`galleryStrategy: "reconcile-source-managed"`, with its `basePath`
 pointing at the materialized output. The generated manifest keeps
 `setupTool.enabled: false`; enabling apply is a separate reviewed operation.
 The media items carry their expected `sha256` and `bytes`, but the current
@@ -250,8 +251,9 @@ SetupTool reader does not enforce those fields or path containment. Keep upload
 disabled until SetupTool verifies the final media manifest, every item hash and
 size, and rejects absolute, escaping or symlinked files. After that gate,
 SetupTool uses the authenticated AdminGateway upload-session flow to
-MediaService/S3. Do not point this downloader at S3 directly and do not use
-`galleryStrategy: "replace"` for a recurring source sync.
+MediaService/S3. Do not point this downloader at S3 directly. A recurring sync
+must replace only this source's managed attachment set and preserve unrelated
+or manually managed media.
 
 Optional limits:
 
@@ -260,8 +262,52 @@ Optional limits:
 - `--timeout-ms=<milliseconds>`
 - `--minimum-request-interval-ms=<1000..60000>`
 
+After the source, projection, reconciliation, and media outputs are complete,
+assemble one operator-facing version:
+
+```bash
+node scripts/catalog-sources/build-import-bundle.js \
+  --artifact-dir=artifacts/catalog-sources/zzctea/<snapshot> \
+  --projection-dir=artifacts/catalog-source-projections/zzctea/<snapshot> \
+  --reconciliation-dir=artifacts/catalog-source-reconciliations/zzctea/<snapshot>/<reference-binding>/full \
+  --media-dir=artifacts/catalog-source-media/zzctea/<snapshot>/<artifact-sha>/<mapping-sha>/full
+```
+
+The default output is ignored `import/zzctea/current/`. It contains:
+
+```text
+import/zzctea/current/
+├── import-bundle-manifest.json
+├── import-plan.json
+├── data/
+│   ├── products.json
+│   ├── source-product-mappings.json
+│   └── commerce-observations.json
+├── evidence/
+│   ├── source/
+│   ├── projection/
+│   └── reconciliation/
+└── media/
+    ├── media-manifest.json
+    ├── media-items.json
+    ├── media-receipt.json
+    ├── media-checkpoint.json
+    └── blobs/
+```
+
+Inputs are revalidated before packaging. Files are copied with filesystem
+copy-on-write cloning when available, never symlinked. A staged directory is
+verified and atomically replaces `current`, with the final bundle manifest
+written last. `artifacts/` remains the immutable evidence layer while
+`import/zzctea/current/` is the single operator-facing version.
+
+The generated `import-plan.json` deliberately has `applyAllowed: false` and
+media `enabled: false`. Do not edit those flags manually. Enable production
+apply only after SetupTool verifies the bundle manifest, every media hash and
+size immediately before upload, and a one-product canary passes.
+
 The connector is fixed to the robots-allowed public HTML routes
-`https://zzctea.com/teaList?page={page}` and
+`https://zzctea.com/teaList?page={page}&brandIds={reviewed-brand}` and
 `https://zzctea.com/teaDetail/{externalId}.html`. It never calls `/api/` or
 `/official/api/`. The transport enforces exact host/path boundaries, response
 size limits, timeouts and retry/backoff.
@@ -330,13 +376,14 @@ store. Preserve the successful artifact/checkpoint as a CI artifact or external
 object before relying on cross-run resume; if it is unavailable or incompatible,
 the runner fails closed.
 
-Source image binaries are not downloaded. Only references accepted by the
-versioned public-image policy are retained: HTTPS `oss.yf-gz.cn` `/file/...`
-image paths, with no credentials, port, or fragment and at most the exact
+Only references accepted by the versioned public-image policy are retained:
+HTTPS `oss.yf-gz.cn` `/file/...` paths or one opaque root-level image filename,
+with no credentials, port, or fragment and at most the exact
 `x-oss-process=style/...` transform. Opaque asset identifiers may contain long
 digit sequences; they bypass the phone-number heuristic only after the entire
 URL satisfies this narrow policy. Invalid non-PII image references remain
-diagnostic input and are excluded from the normalized artifact.
+diagnostic input and are excluded from the normalized artifact. The later
+media stage downloads accepted originals into local content-addressed blobs.
 
 Only a complete run publishes:
 

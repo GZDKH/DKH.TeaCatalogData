@@ -3,10 +3,16 @@
 const assert = require('assert');
 const {
     reconcileProjection,
+    SOURCE_SPECIFICATIONS,
 } = require('./lib/reconciliation');
 const { stableJson } = require('./lib/artifacts');
 
 function projectedItem(externalId, descriptions = {}) {
+    const fact = (attributeCode, normalizedValue) => ({
+        attributeCode,
+        normalizedValue,
+        sourceValueDigest: 'c'.repeat(64),
+    });
     return {
         externalId,
         idempotencyKey: `fixture-${externalId}`,
@@ -27,13 +33,45 @@ function projectedItem(externalId, descriptions = {}) {
                         `茶品资料：年份：2025年；包装：每饼357克。`,
                 },
             ],
-            factualAttributes: [],
+            factualAttributes: [
+                fact('production-technology', '熟茶'),
+                fact('shape', '饼'),
+                fact('year', '2025'),
+            ],
             sourceDestination: {
                 lookupUri: `https://zzctea.com/teaDetail/${externalId}.html`,
             },
-            packageComponents: [],
+            rawPackageText: '357克/片 7片/提',
+            packageComponents: [
+                {
+                    quantity: { units: '357', nanos: 0 },
+                    containedUnitCode: 'g',
+                    containerUnitCode: 'cake',
+                    ordinal: 0,
+                },
+                {
+                    quantity: { units: '7', nanos: 0 },
+                    containedUnitCode: 'cake',
+                    containerUnitCode: 'bundle',
+                    ordinal: 1,
+                },
+            ],
+            packageComponentsExact: true,
             imageUris: [],
-            referencePrices: [],
+            referencePrices: [
+                {
+                    basisUnitCode: 'bundle',
+                    amount: { units: '8700', nanos: 0 },
+                    currencyCode: 'CNY',
+                    derivationKind: 2,
+                },
+                {
+                    basisUnitCode: 'cake',
+                    amount: { units: '1242', nanos: 857142850 },
+                    currencyCode: 'CNY',
+                    derivationKind: 2,
+                },
+            ],
             diagnosticCodes: [],
         },
     };
@@ -101,12 +139,26 @@ function product(code, id) {
                 seoTitle: '保留中文 SEO',
             },
         ],
-        specifications: [{
-            group: 'SPEC-GROUP',
-            attribute: 'SPEC-ATTRIBUTE',
-            type: 'CustomText',
-            value: 'keep',
-        }],
+        specifications: [
+            {
+                group: 'SPEC-GROUP',
+                attribute: 'SPEC-ATTRIBUTE',
+                type: 'CustomText',
+                value: 'keep',
+            },
+            {
+                group: 'SPEC-TT-GROUP-ATOMIC',
+                attribute: SOURCE_SPECIFICATIONS.rawPackage,
+                type: 'CustomText',
+                value: 'stale package',
+            },
+            {
+                group: 'SPEC-TT-GROUP-ATOMIC',
+                attribute: SOURCE_SPECIFICATIONS.unitWeight,
+                type: 'Number',
+                value: '999.000000',
+            },
+        ],
         tags: [{ code: 'TAG-KEEP', name: 'Keep' }],
         tierPrices: [{ quantity: 10, price: 900 }],
         catalogPrices: [{ catalog: 'CATALOG-TEA', price: 950 }],
@@ -127,7 +179,7 @@ function assertCode(action, code) {
     assert.throws(action, error => error.code === code, `Expected ${code}`);
 }
 
-function withoutManagedDescriptions(productValue) {
+function withoutManagedEnrichment(productValue) {
     const value = clone(productValue);
     for (const translation of value.translations) {
         if (translation.lang === 'en-US' || translation.lang === 'zh-CN') {
@@ -135,6 +187,8 @@ function withoutManagedDescriptions(productValue) {
             delete translation.metaDescription;
         }
     }
+    value.specifications = value.specifications.filter(specification =>
+        !Object.values(SOURCE_SPECIFICATIONS).includes(specification.attribute));
     return value;
 }
 
@@ -160,12 +214,46 @@ function main() {
         ['9', '17641'],
         'Entries must be ordered by numeric external ID.',
     );
-    assert.deepStrictEqual(result.entries[0], {
-        externalId: '9',
-        productCode: 'ZZC-9',
-        status: 'missing-create-draft',
-        published: false,
-    });
+    const missing = result.entries[0];
+    assert.strictEqual(missing.externalId, '9');
+    assert.strictEqual(missing.productCode, 'ZZC-9');
+    assert.strictEqual(missing.status, 'missing-create-draft');
+    assert.strictEqual(missing.published, false);
+    assert.strictEqual(missing.productPatch.code, 'ZZC-9');
+    assert.strictEqual(missing.productPatch.sku, 'ZZC-9');
+    assert.strictEqual(missing.productPatch.published, false);
+    assert.strictEqual(missing.productPatch.nativeName, '茶 9');
+    assert.deepStrictEqual(
+        missing.productPatch.catalogs.map(value => value.category.code),
+        ['CAT-PUER-TEA', 'CAT-PUER-SHU', 'CAT-SHAPE-CAKE'],
+    );
+    assert.ok(missing.productPatch.catalogs.every(value =>
+        value.catalog.code === 'CATALOG-PUERH' &&
+        value.catalog.currency === 'CNY' &&
+        value.published === false));
+    assert.deepStrictEqual(missing.productPatch.catalogPrices, []);
+    assert.deepStrictEqual(missing.productPatch.tierPrices, []);
+    assert.deepStrictEqual(missing.productPatch.storePriceOverrides, []);
+    for (const retailField of [
+        'price',
+        'prices',
+        'oldPrice',
+        'catalogPrice',
+        'productCost',
+        'enteredPrice',
+        'minEnteredPrice',
+        'maxEnteredPrice',
+    ]) {
+        assert.strictEqual(
+            Object.hasOwn(missing.productPatch, retailField),
+            false,
+            `Draft must not contain retail field ${retailField}.`,
+        );
+    }
+    assert.deepStrictEqual(
+        missing.productPatch.translations.map(value => [value.lang, value.name]),
+        [['en-US', 'Tea 9'], ['zh-CN', '茶 9']],
+    );
 
     const matched = result.entries[1];
     assert.strictEqual(matched.externalId, '17641');
@@ -200,9 +288,45 @@ function main() {
         existing.translations.find(value => value.lang === 'ru-RU'),
     );
     assert.deepStrictEqual(
-        withoutManagedDescriptions(matched.productPatch),
-        withoutManagedDescriptions(existing),
-        'Only target-locale description and metaDescription may change.',
+        withoutManagedEnrichment(matched.productPatch),
+        withoutManagedEnrichment(existing),
+        'Only target descriptions and source-owned specifications may change.',
+    );
+    assert.deepStrictEqual(
+        matched.productPatch.specifications[0],
+        existing.specifications[0],
+        'Unrelated baseline specifications must be preserved.',
+    );
+    const specifications = Object.fromEntries(
+        matched.productPatch.specifications.map(value => [value.attribute, value]),
+    );
+    assert.strictEqual(
+        specifications[SOURCE_SPECIFICATIONS.teaType].option,
+        'SPEC-TT-OPT-CLASSIFICATION-ORIGIN-TEA-TYPE-PUER',
+    );
+    assert.strictEqual(
+        specifications[SOURCE_SPECIFICATIONS.year].option,
+        'OPT-PUERH-VINTAGE-2025',
+    );
+    assert.strictEqual(
+        specifications[SOURCE_SPECIFICATIONS.processing].option,
+        'OPT-PUERH-PROCESSING-SHU',
+    );
+    assert.strictEqual(
+        specifications[SOURCE_SPECIFICATIONS.shape].option,
+        'OPT-D902FEC129A64389',
+    );
+    assert.strictEqual(
+        specifications[SOURCE_SPECIFICATIONS.rawPackage].value,
+        '357克/片 7片/提',
+    );
+    assert.strictEqual(
+        specifications[SOURCE_SPECIFICATIONS.unitWeight].value,
+        '357.000000',
+    );
+    assert.strictEqual(
+        specifications[SOURCE_SPECIFICATIONS.referencePriceBasis].value,
+        'bundle,cake',
     );
     for (const field of [
         'prices',
@@ -254,6 +378,41 @@ function main() {
         'Applying the same factual descriptions to the patched baseline must be idempotent.',
     );
     assert.strictEqual(repeatedFromPatch.entries[1].status, 'matched-noop');
+
+    const inexactItem = projectedItem('17641');
+    inexactItem.observation.packageComponentsExact = false;
+    inexactItem.observation.packageComponents = [];
+    inexactItem.observation.rawPackageText = '约357克/片';
+    const inexact = reconcileProjection(
+        projection([inexactItem]),
+        [existing, unrelated],
+    ).entries[0].productPatch;
+    const inexactSpecs = Object.fromEntries(
+        inexact.specifications.map(value => [value.attribute, value]),
+    );
+    assert.strictEqual(
+        inexactSpecs[SOURCE_SPECIFICATIONS.rawPackage].value,
+        '约357克/片',
+    );
+    assert.strictEqual(inexactSpecs[SOURCE_SPECIFICATIONS.unitWeight], undefined);
+
+    const observedPrice = projectedItem('17641');
+    observedPrice.observation.referencePrices[0].amount = {
+        units: '999999999',
+        nanos: 999999999,
+    };
+    const priceSafe = reconcileProjection(
+        projection([observedPrice]),
+        [existing, unrelated],
+    ).entries[0].productPatch;
+    assert.strictEqual(priceSafe.price, existing.price);
+    assert.deepStrictEqual(priceSafe.prices, existing.prices);
+    assert.deepStrictEqual(priceSafe.catalogPrices, existing.catalogPrices);
+    assert.deepStrictEqual(priceSafe.tierPrices, existing.tierPrices);
+    assert.deepStrictEqual(
+        priceSafe.storePriceOverrides,
+        existing.storePriceOverrides,
+    );
 
     const duplicateCode = clone(unrelated);
     duplicateCode.id = '33333333-3333-4333-8333-333333333333';

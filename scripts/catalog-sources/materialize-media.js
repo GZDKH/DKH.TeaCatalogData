@@ -21,6 +21,7 @@ const {
     DEFAULT_MAX_TOTAL_BYTES,
     DEFAULT_MINIMUM_REQUEST_INTERVAL_MS,
     materializeVerifiedMedia,
+    validateMappingCoverage,
 } = require('./lib/media-materialization');
 const {
     loadVerifiedCatalogSourceBundle,
@@ -59,9 +60,9 @@ function loadVerifiedMappings(directory, artifactBundle) {
         manifest.snapshotId !== artifactBundle.manifest.snapshotId ||
         manifest.selection?.mode !== 'full-snapshot' ||
         manifest.selectionComplete !== true ||
-        manifest.counts?.missing !== 0 ||
         manifest.counts?.ambiguous !== 0 ||
-        manifest.counts?.matched !== artifactBundle.manifest.itemCount ||
+        manifest.counts?.matched + manifest.counts?.missing !==
+            artifactBundle.manifest.itemCount ||
         manifest.productionWrites !== false ||
         !/^[a-f0-9]{64}$/.test(String(manifest.mappingSha256 || '')) ||
         manifest.mappingFile !==
@@ -112,9 +113,11 @@ function loadVerifiedMappings(directory, artifactBundle) {
         throw new Error('Reconciliation mapping hash differs from its manifest.');
     }
     const mappings = JSON.parse(mappingBuffer.toString('utf8').replace(/^\uFEFF/, ''));
-    if (!Array.isArray(mappings) || mappings.length !== manifest.counts.matched) {
+    if (!Array.isArray(mappings) ||
+        mappings.length !== manifest.counts.matched + manifest.counts.missing) {
         throw new Error('Reconciliation mapping count is incomplete.');
     }
+    validateMappingCoverage(artifactBundle.artifact, mappings, manifest.counts);
     return { manifest, mappings, root };
 }
 
@@ -198,6 +201,14 @@ async function materializeMedia(args, options = {}) {
         allowedOutputRoot,
         outputDirectory,
     );
+    const previousMediaDirectory = options.previousMediaDirectory === null
+        ? null
+        : path.resolve(
+            repositoryRoot,
+            options.previousMediaDirectory ||
+                args['previous-media-dir'] ||
+                'import/zzctea/current/media',
+        );
     return materializeVerifiedMedia({
         artifactBundle,
         fetchImpl: options.fetchImpl,
@@ -219,6 +230,7 @@ async function materializeMedia(args, options = {}) {
         ),
         onlyExternalId,
         outputDirectory: canonicalOutput,
+        previousMediaDirectory,
         timeoutMs: parseInteger(args, 'timeout-ms', 30_000),
     });
 }

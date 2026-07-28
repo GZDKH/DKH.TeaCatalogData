@@ -9,6 +9,40 @@ const PRODUCT_CODE = /^ZZC-([1-9]\d*)$/;
 const PRODUCT_ID =
     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const TARGET_LANGUAGES = Object.freeze(['en-US', 'zh-CN']);
+const SOURCE_SPECIFICATION_GROUP = 'SPEC-TT-GROUP-ATOMIC';
+const TEA_TYPE_SPECIFICATION_GROUP =
+    'SPEC-TT-GROUP-CLASSIFICATION-ORIGIN';
+const SOURCE_SPECIFICATIONS = Object.freeze({
+    teaType: 'SPEC-TT-CLASSIFICATION-ORIGIN-TEA-TYPE',
+    year: 'SPEC-06609725785E48F',
+    processing: 'SPEC-PUERH-PROCESSING',
+    shape: 'SPEC-4304F36A0BF94F7',
+    rawPackage: 'SPEC-PUERH-PACKAGING-SPECIFICATION',
+    unitWeight: 'SPEC-PUERH-UNIT-WEIGHT-G',
+    referencePriceBasis: 'SPEC-PUERH-REFERENCE-PRICE-UNIT',
+});
+const SOURCE_SPECIFICATION_CODES = new Set(Object.values(SOURCE_SPECIFICATIONS));
+const FACT_CODE = /^[a-z0-9][a-z0-9._-]*$/;
+const DECIMAL_UNITS = /^(?:0|[1-9]\d*)$/;
+const PROCESSING_OPTIONS = Object.freeze({
+    '生茶': 'OPT-PUERH-PROCESSING-SHENG',
+    '熟茶': 'OPT-PUERH-PROCESSING-SHU',
+    '生熟套装': 'OPT-PUERH-PROCESSING-MIXED',
+    '红茶': 'OPT-PUERH-PROCESSING-RED',
+    '白茶': 'OPT-PUERH-PROCESSING-WHITE',
+});
+const SHAPE_OPTIONS = Object.freeze({
+    '饼': 'OPT-D902FEC129A64389',
+    '饼茶': 'OPT-D902FEC129A64389',
+    '茶饼': 'OPT-D902FEC129A64389',
+    '饼形': 'OPT-D902FEC129A64389',
+    '砖': 'OPT-3FDFAEB0AEB14D52',
+    '砖茶': 'OPT-3FDFAEB0AEB14D52',
+    '茶砖': 'OPT-3FDFAEB0AEB14D52',
+    '沱': 'OPT-E9939A4B758741B3',
+    '沱茶': 'OPT-E9939A4B758741B3',
+    '散茶': 'OPT-BF841D77083049E6',
+});
 const COMPLETE_PRODUCT_COLLECTIONS = Object.freeze([
     'translations',
     'specifications',
@@ -117,7 +151,27 @@ function validateDescription(value, languageCode) {
     return description;
 }
 
-function projectedDescriptions(projectedItem) {
+function validateFactualText(value, label, maximum = 1000) {
+    if (typeof value !== 'string' || !value.trim()) {
+        fail(
+            'CATALOG_SOURCE_RECONCILIATION_FACT_INVALID',
+            `${label} must be a non-empty string.`,
+        );
+    }
+    const text = value.trim();
+    if (text.length > maximum ||
+        /[\u0000-\u001F\u007F]/u.test(text) ||
+        /<(?:(?:\/?[A-Za-z])|!DOCTYPE|!--|\?xml)[^>]*>/i.test(text) ||
+        SOURCE_DESCRIPTION_CONTENT.test(text)) {
+        fail(
+            'CATALOG_SOURCE_RECONCILIATION_FACT_INVALID',
+            `${label} is unsafe or contains source boilerplate.`,
+        );
+    }
+    return text;
+}
+
+function projectedContent(projectedItem) {
     const item = requireObject(
         projectedItem,
         'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
@@ -150,13 +204,310 @@ function projectedDescriptions(projectedItem) {
         }
         localized.set(text.languageCode, text);
     }
-    return Object.fromEntries(TARGET_LANGUAGES.map(languageCode => {
+    const descriptions = Object.fromEntries(TARGET_LANGUAGES.map(languageCode => {
         const text = localized.get(languageCode);
         return [
             languageCode,
             validateDescription(text?.description, languageCode),
         ];
     }));
+    const titles = Object.fromEntries(TARGET_LANGUAGES.map(languageCode => {
+        const text = localized.get(languageCode);
+        return [
+            languageCode,
+            validateFactualText(
+                text?.title,
+                `Projected ${languageCode} factual title`,
+                256,
+            ),
+        ];
+    }));
+    return { descriptions, observation, titles };
+}
+
+function projectedDescriptions(projectedItem) {
+    return projectedContent(projectedItem).descriptions;
+}
+
+function projectedFacts(observation, externalId) {
+    if (!Array.isArray(observation.factualAttributes)) {
+        fail(
+            'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+            `Projection item ${externalId} factual attributes must be an array.`,
+        );
+    }
+    const facts = new Map();
+    for (const fact of observation.factualAttributes) {
+        requireObject(
+            fact,
+            'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+            `Projection item ${externalId} factual attribute`,
+        );
+        if (typeof fact.attributeCode !== 'string' ||
+            !FACT_CODE.test(fact.attributeCode) ||
+            facts.has(fact.attributeCode)) {
+            fail(
+                'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+                `Projection item ${externalId} has a duplicate or invalid factual attribute.`,
+            );
+        }
+        facts.set(
+            fact.attributeCode,
+            validateFactualText(
+                fact.normalizedValue,
+                `Projection item ${externalId} fact ${fact.attributeCode}`,
+            ),
+        );
+    }
+    return facts;
+}
+
+function decimalValueText(value, label) {
+    const decimal = requireObject(
+        value,
+        'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+        label,
+    );
+    if (typeof decimal.units !== 'string' ||
+        !DECIMAL_UNITS.test(decimal.units) ||
+        !Number.isInteger(decimal.nanos) ||
+        decimal.nanos < 0 ||
+        decimal.nanos > 999999999) {
+        fail(
+            'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+            `${label} is not a positive DecimalValue.`,
+        );
+    }
+    const fraction = String(decimal.nanos).padStart(9, '0').replace(/0+$/, '');
+    const text = `${decimal.units}${fraction ? `.${fraction}` : ''}`;
+    if (text === '0') {
+        fail(
+            'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+            `${label} must be positive.`,
+        );
+    }
+    return text;
+}
+
+function decimalAsFixedSix(value, multiplier = 1n) {
+    const [whole, fraction = ''] = value.split('.');
+    if (fraction.length > 6) {
+        fail(
+            'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+            'Exact unit weight exceeds the ProductCatalog six-decimal scale.',
+        );
+    }
+    const scaled =
+        (BigInt(whole) * 1000000n + BigInt(fraction.padEnd(6, '0') || '0')) *
+        multiplier;
+    const resultWhole = scaled / 1000000n;
+    const resultFraction = (scaled % 1000000n).toString().padStart(6, '0');
+    return `${resultWhole}.${resultFraction}`;
+}
+
+function projectedPackage(observation, externalId) {
+    if (typeof observation.packageComponentsExact !== 'boolean' ||
+        !Array.isArray(observation.packageComponents)) {
+        fail(
+            'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+            `Projection item ${externalId} package evidence is invalid.`,
+        );
+    }
+    const rawPackageText = observation.rawPackageText === undefined
+        ? null
+        : validateFactualText(
+            observation.rawPackageText,
+            `Projection item ${externalId} raw package text`,
+            4000,
+        );
+    if (!observation.packageComponentsExact) {
+        if (observation.packageComponents.length !== 0) {
+            fail(
+                'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+                `Projection item ${externalId} inexact package must not contain structured components.`,
+            );
+        }
+        return {
+            components: [],
+            exact: false,
+            rawPackageText,
+            unitWeight: null,
+        };
+    }
+    const pairs = new Set();
+    const ordinals = new Set();
+    const components = observation.packageComponents.map((component, index) => {
+        requireObject(
+            component,
+            'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+            `Projection item ${externalId} package component ${index}`,
+        );
+        if (!Number.isSafeInteger(component.ordinal) ||
+            component.ordinal < 0 ||
+            ordinals.has(component.ordinal) ||
+            typeof component.containedUnitCode !== 'string' ||
+            !FACT_CODE.test(component.containedUnitCode) ||
+            typeof component.containerUnitCode !== 'string' ||
+            !FACT_CODE.test(component.containerUnitCode)) {
+            fail(
+                'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+                `Projection item ${externalId} package component ${index} is invalid.`,
+            );
+        }
+        const pair =
+            `${component.containedUnitCode}\0${component.containerUnitCode}`;
+        if (pairs.has(pair)) {
+            fail(
+                'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+                `Projection item ${externalId} has duplicate package unit transitions.`,
+            );
+        }
+        pairs.add(pair);
+        ordinals.add(component.ordinal);
+        return {
+            ordinal: component.ordinal,
+            quantity: decimalValueText(
+                component.quantity,
+                `Projection item ${externalId} package component ${index} quantity`,
+            ),
+            containedUnitCode: component.containedUnitCode,
+            containerUnitCode: component.containerUnitCode,
+        };
+    }).sort((left, right) => left.ordinal - right.ordinal);
+    if (components.some((component, index) => component.ordinal !== index)) {
+        fail(
+            'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+            `Projection item ${externalId} package component ordinals must be contiguous.`,
+        );
+    }
+    const massComponent = components.find(component =>
+        component.containedUnitCode === 'g' ||
+        component.containedUnitCode === 'kg',
+    );
+    const unitWeight = massComponent
+        ? decimalAsFixedSix(
+            massComponent.quantity,
+            massComponent.containedUnitCode === 'kg' ? 1000n : 1n,
+        )
+        : null;
+    return {
+        components,
+        exact: true,
+        rawPackageText,
+        unitWeight,
+    };
+}
+
+function projectedPriceBases(observation, externalId) {
+    if (!Array.isArray(observation.referencePrices)) {
+        fail(
+            'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+            `Projection item ${externalId} reference prices must be an array.`,
+        );
+    }
+    return [...new Set(observation.referencePrices.map((price, index) => {
+        requireObject(
+            price,
+            'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+            `Projection item ${externalId} reference price ${index}`,
+        );
+        if (typeof price.basisUnitCode !== 'string' ||
+            !FACT_CODE.test(price.basisUnitCode)) {
+            fail(
+                'CATALOG_SOURCE_RECONCILIATION_PROJECTION_INVALID',
+                `Projection item ${externalId} reference price ${index} basis is invalid.`,
+            );
+        }
+        return price.basisUnitCode;
+    }))].sort();
+}
+
+function optionSpecification(
+    attribute,
+    option,
+    order,
+    group = SOURCE_SPECIFICATION_GROUP,
+) {
+    return {
+        group,
+        attribute,
+        option,
+        type: 'Option',
+        showOnPage: true,
+        order,
+    };
+}
+
+function textSpecification(attribute, value, order, type = 'CustomText') {
+    return {
+        group: SOURCE_SPECIFICATION_GROUP,
+        attribute,
+        type,
+        value,
+        showOnPage: true,
+        order,
+    };
+}
+
+function sourceSpecifications(observation, externalId) {
+    const facts = projectedFacts(observation, externalId);
+    const packageEvidence = projectedPackage(observation, externalId);
+    const priceBases = projectedPriceBases(observation, externalId);
+    const specifications = [optionSpecification(
+        SOURCE_SPECIFICATIONS.teaType,
+        'SPEC-TT-OPT-CLASSIFICATION-ORIGIN-TEA-TYPE-PUER',
+        10,
+        TEA_TYPE_SPECIFICATION_GROUP,
+    )];
+    const year = facts.get('year') || facts.get('year-label');
+    const canonicalYear = year?.match(/^(19|20)\d{2}(?:年)?$/u)?.[0]
+        ?.replace(/年$/u, '');
+    if (canonicalYear) {
+        specifications.push(optionSpecification(
+            SOURCE_SPECIFICATIONS.year,
+            `OPT-PUERH-VINTAGE-${canonicalYear}`,
+            20,
+        ));
+    }
+    const processing = PROCESSING_OPTIONS[facts.get('production-technology')];
+    if (processing) {
+        specifications.push(optionSpecification(
+            SOURCE_SPECIFICATIONS.processing,
+            processing,
+            30,
+        ));
+    }
+    const shape = SHAPE_OPTIONS[facts.get('shape')];
+    if (shape) {
+        specifications.push(optionSpecification(
+            SOURCE_SPECIFICATIONS.shape,
+            shape,
+            40,
+        ));
+    }
+    if (packageEvidence.rawPackageText) {
+        specifications.push(textSpecification(
+            SOURCE_SPECIFICATIONS.rawPackage,
+            packageEvidence.rawPackageText,
+            50,
+        ));
+    }
+    if (packageEvidence.unitWeight) {
+        specifications.push(textSpecification(
+            SOURCE_SPECIFICATIONS.unitWeight,
+            packageEvidence.unitWeight,
+            60,
+            'Number',
+        ));
+    }
+    if (priceBases.length) {
+        specifications.push(textSpecification(
+            SOURCE_SPECIFICATIONS.referencePriceBasis,
+            priceBases.join(','),
+            70,
+        ));
+    }
+    return specifications;
 }
 
 function assertSafeOutputDescriptions(product) {
@@ -175,7 +526,15 @@ function assertSafeOutputDescriptions(product) {
     }
 }
 
-function patchMatchedProduct(product, descriptions) {
+function mergeSourceSpecifications(baseline, projected) {
+    return [
+        ...baseline.filter(specification =>
+            !SOURCE_SPECIFICATION_CODES.has(specification?.attribute)),
+        ...projected,
+    ];
+}
+
+function patchMatchedProduct(product, content) {
     const rollbackProduct = deepClone(product);
     const productPatch = deepClone(product);
     const targetCounts = Object.fromEntries(TARGET_LANGUAGES.map(languageCode => [
@@ -192,8 +551,8 @@ function patchMatchedProduct(product, descriptions) {
         targetCounts[translation.lang] += 1;
         return {
             ...translation,
-            description: descriptions[translation.lang],
-            metaDescription: descriptions[translation.lang],
+            description: content.descriptions[translation.lang],
+            metaDescription: content.descriptions[translation.lang],
         };
     });
     for (const languageCode of TARGET_LANGUAGES) {
@@ -204,8 +563,69 @@ function patchMatchedProduct(product, descriptions) {
             );
         }
     }
+    productPatch.specifications = mergeSourceSpecifications(
+        productPatch.specifications,
+        sourceSpecifications(content.observation, product.code.slice(4)),
+    );
     assertSafeOutputDescriptions(productPatch);
     return { productPatch, rollbackProduct };
+}
+
+function draftProduct(productCode, content, externalId) {
+    const facts = projectedFacts(content.observation, externalId);
+    const categories = new Set(['CAT-PUER-TEA']);
+    const processingCategory = {
+        '生茶': 'CAT-PUER-SHENG',
+        '熟茶': 'CAT-PUER-SHU',
+    }[facts.get('production-technology')];
+    if (processingCategory) categories.add(processingCategory);
+    const shapeCategory = {
+        '饼': 'CAT-SHAPE-CAKE',
+        '饼茶': 'CAT-SHAPE-CAKE',
+        '砖': 'CAT-SHAPE-BRICK',
+        '砖茶': 'CAT-SHAPE-BRICK',
+        '沱': 'CAT-SHAPE-TUO',
+        '沱茶': 'CAT-SHAPE-TUO',
+    }[facts.get('shape')];
+    if (shapeCategory) categories.add(shapeCategory);
+    const productPatch = {
+        code: productCode,
+        sku: productCode,
+        nativeName: content.titles['zh-CN'],
+        published: false,
+        translations: TARGET_LANGUAGES.map(languageCode => ({
+            lang: languageCode,
+            name: content.titles[languageCode],
+            description: content.descriptions[languageCode],
+            metaDescription: content.descriptions[languageCode],
+            metaTitle: content.titles[languageCode],
+        })),
+        specifications: sourceSpecifications(content.observation, externalId),
+        tags: [],
+        tierPrices: [],
+        catalogPrices: [],
+        storePriceOverrides: [],
+        packages: [],
+        catalogs: [...categories].map(category => ({
+            catalog: {
+                code: 'CATALOG-PUERH',
+                currency: 'CNY',
+                translations: [],
+            },
+            category: {
+                code: category,
+                parent: null,
+                translations: [],
+            },
+            order: 0,
+            published: false,
+        })),
+        origins: [],
+        related: [],
+        crossSells: [],
+    };
+    assertSafeOutputDescriptions(productPatch);
+    return productPatch;
 }
 
 function validateProducts(products) {
@@ -319,7 +739,7 @@ function reconcileProjection(projection, products) {
     const entries = projectedItems.map(projectedItem => {
         const externalId = requireExternalId(projectedItem.externalId);
         const productCode = exactProductCode(externalId);
-        const descriptions = projectedDescriptions(projectedItem);
+        const content = projectedContent(projectedItem);
         const product = productsByCode.get(productCode);
         if (!product) {
             return {
@@ -327,9 +747,10 @@ function reconcileProjection(projection, products) {
                 productCode,
                 status: 'missing-create-draft',
                 published: false,
+                productPatch: draftProduct(productCode, content, externalId),
             };
         }
-        const { productPatch, rollbackProduct } = patchMatchedProduct(product, descriptions);
+        const { productPatch, rollbackProduct } = patchMatchedProduct(product, content);
         const changed = stableJson(productPatch) !== stableJson(rollbackProduct);
         return {
             externalId,
@@ -376,10 +797,14 @@ function reconcileProjection(projection, products) {
 
 module.exports = {
     SOURCE_ID,
+    SOURCE_SPECIFICATION_GROUP,
+    SOURCE_SPECIFICATIONS,
     deepClone,
+    draftProduct,
     exactProductCode,
     patchMatchedProduct,
     projectedDescriptions,
+    sourceSpecifications,
     reconcileProjection,
     validateDescription,
 };

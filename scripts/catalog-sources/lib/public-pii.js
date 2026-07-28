@@ -27,6 +27,8 @@ const CANONICAL_REFERENCE_POLICY_SCHEMA =
     'catalog-source-canonical-reference-policy-v1';
 const IMAGE_PATH =
     /^\/[A-Za-z0-9][A-Za-z0-9._/-]{0,511}\.(?:gif|jpe?g|png|webp)$/iu;
+const ROOT_IMAGE_PATH =
+    /^\/(?=[a-f0-9]{32,64}\.)(?=[a-f0-9]*[a-f])(?=[a-f0-9]*\d)[a-f0-9]{32,64}\.(?:gif|jpe?g|png|webp)$/iu;
 const IMAGE_STYLE_NAME = /^style\/[A-Za-z0-9_-]{1,64}$/u;
 const SINGLE_SEGMENT_HTML_PATH =
     /^[A-Za-z0-9][A-Za-z0-9-]*\.html$/u;
@@ -56,6 +58,8 @@ function isAllowedPublicImageReference(value, policy) {
         policy.allowedHosts.length > 16 ||
         typeof policy.pathPrefix !== 'string' ||
         !/^\/[A-Za-z0-9._/-]*\/$/u.test(policy.pathPrefix) ||
+        (policy.allowRootFile !== undefined &&
+            typeof policy.allowRootFile !== 'boolean') ||
         !policy.queryRules ||
         Array.isArray(policy.queryRules) ||
         typeof policy.queryRules !== 'object') {
@@ -84,13 +88,17 @@ function isAllowedPublicImageReference(value, policy) {
     } catch {
         return false;
     }
+    const rootFile =
+        !url.pathname.startsWith(policy.pathPrefix) &&
+        policy.allowRootFile === true &&
+        ROOT_IMAGE_PATH.test(url.pathname);
     if (url.protocol !== 'https:' ||
         url.username ||
         url.password ||
         url.port ||
         url.hash ||
         !allowedHosts.has(url.hostname.toLowerCase()) ||
-        !url.pathname.startsWith(policy.pathPrefix) ||
+        (!url.pathname.startsWith(policy.pathPrefix) && !rootFile) ||
         !IMAGE_PATH.test(url.pathname) ||
         hasForbiddenPublicText(url.hostname) ||
         hasForbiddenPublicText(url.pathname, {

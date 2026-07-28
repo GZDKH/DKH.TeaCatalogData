@@ -30,13 +30,12 @@ list/detail. Каждый экземпляр connector сначала прове
 для фиксированного product token с case-insensitive выбором самого длинного
 совпавшего agent; `User-agent: *` используется только как fallback. Для list
 проверяется path вместе с query. Ошибка политики кэшируется как отказ до конца запуска.
-`/teaList` представляет публичный HTML-каталог популярных чаёв, а
-не полный более крупный inventory за запрещёнными robots.txt маршрутами `/api/`.
-Runtime хранит эти области источника раздельно и не объявляет HTML snapshot
-полным inventory ZZCTea. Разрешение robots.txt не является лицензией на
-повторное использование контента. Многоэлементный live snapshot и использование
-исходных изображений заблокированы до проверки разрешения или условий источника,
-политики изображений и лимита частоты запросов. Проверенный транспорт ZZCTea
+Начальный `/teaList` показывает только один бренд. Поэтому еженедельный seed
+объединяет все точные ID из полного ProductCatalog export `ZZC-*` с discovery
+по 13 проверенным публичным `brandIds`. Существующие товары не могут молча
+исчезнуть, а новые публичные позиции становятся Draft-предложениями. Полнота
+относится к проверенному seed и брендовому scope, а не к inventory за
+запрещёнными `/api/` или `/official/`. Проверенный транспорт ZZCTea
 использует единый монотонный интервал между началами всех исходящих запросов,
 включая повторы. По умолчанию и минимум это одна секунда; значение входит в
 resumable checkpoint, поэтому продолженный запуск не может незаметно повысить
@@ -60,10 +59,11 @@ resumable checkpoint, поэтому продолженный запуск не 
 полностью проверенного path `/tea/{slug}.html`; подписанные контакты, query,
 fragment, другой host или scheme остаются fail-closed.
 
-Файлы изображений не копируются. Product envelope может сохранить только
-версионированные HTTPS-ссылки `oss.yf-gz.cn` под `/file/`, без credentials,
-port и fragment и максимум с точным transform
-`x-oss-process=style/...`. Эта узкая URL-политика отличает непрозрачные
+Проверенные изображения скачиваются в локальные content-addressed blobs.
+Ссылки разрешены только по HTTPS на `oss.yf-gz.cn`: под `/file/` либо как один
+непрозрачный image-файл в корне, без credentials, port и fragment и максимум с
+точным transform `x-oss-process=style/...`. Вложенные пути вроде
+`/profile/...` запрещены. Эта узкая URL-политика отличает непрозрачные
 числовые идентификаторы файлов от телефонов, не ослабляя PII-проверки остальных
 полей продукта.
 
@@ -76,11 +76,30 @@ canary одного продукта и отдельный проверяемы�
 Офлайн-reconciliation ProductCatalog использует только точный неизменяемый код
 `ZZC-<externalId>` и полный nested export продуктов. Результат содержит полные
 baseline-preserving product patches, rollback aggregates, детерминированные
-source mappings и Draft-only отчёт для отсутствующих продуктов. Fuzzy matching
+source mappings и неопубликованные Draft patches без цены для отсутствующих
+продуктов. Draft привязывается к `CATALOG-PUERH` и консервативным фактическим
+категориям. Fuzzy matching
 и изменение retail/catalog prices запрещены. Текущий catalog reference
 структурно проверяется и хешируется, но пока не имеет собственного completeness
 manifest, поэтому reconciliation явно остаётся non-authoritative и не готов к
 публикации.
+
+## Операторский import bundle
+
+Полные source, projection, reconciliation и media outputs собираются в один
+игнорируемый каталог `import/zzctea/current/`. `artifacts/` остаётся
+неизменяемым слоем доказательств, а `import/zzctea/current/` — стабильной
+версией для оператора. Сборщик проверяет связи всех входов, клонирует реальные
+файлы без symlink, записывает итоговый hash manifest и атомарно заменяет
+каталог.
+
+Bundle содержит ProductCatalog product patches, неизменяемые source-product
+mappings, provider-neutral CommerceNetwork observations со ссылками источника,
+справочными ценами и упаковкой, evidence source/projection/reconciliation и
+content-addressed media.
+Он остаётся с `applyAllowed: false`, пока SetupTool не начнёт проверять bundle и
+hash каждого файла непосредственно перед upload и не будет успешно пройден
+canary одного товара.
 
 Команды, структура output и operator gates описаны в
 [`scripts/catalog-sources/README.md`](../../scripts/catalog-sources/README.md).
