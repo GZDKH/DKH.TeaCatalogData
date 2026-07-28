@@ -5,16 +5,16 @@ const { requestBuffer, retryDelayMs, validateAllowedUrl } = require('./lib/http'
 
 async function main() {
     assert.strictEqual(
-        validateAllowedUrl('https://zzctea.com/official/api/web/tea/hot', ['zzctea.com']).hostname,
+        validateAllowedUrl('https://zzctea.com/teaList?page=1', ['zzctea.com']).hostname,
         'zzctea.com',
     );
     for (const url of [
-        'http://zzctea.com/official/api/web/tea/hot',
-        'https://user@zzctea.com/official/api/web/tea/hot',
-        'https://zzctea.com:444/official/api/web/tea/hot',
-        'https://127.0.0.1/official/api/web/tea/hot',
-        'https://localhost/official/api/web/tea/hot',
-        'https://evil.example/official/api/web/tea/hot',
+        'http://zzctea.com/teaList?page=1',
+        'https://user@zzctea.com/teaList?page=1',
+        'https://zzctea.com:444/teaList?page=1',
+        'https://127.0.0.1/teaList?page=1',
+        'https://localhost/teaList?page=1',
+        'https://evil.example/teaList?page=1',
     ]) {
         assert.throws(() => validateAllowedUrl(url, ['zzctea.com']));
     }

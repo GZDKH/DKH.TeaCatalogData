@@ -6,22 +6,39 @@ source-agnostic artifact for later reviewed ProductCatalog projection.
 
 The shared runtime owns paging, bounded concurrency, retries, response limits,
 checkpoints, raw/normalized digests, replay and drift gates. A connector owns
-only its fixed public endpoints, response decoder and normalization rules.
+only its fixed public routes, safe extraction and normalization rules.
 Administrators can eventually configure deployed connector instances and
 schedules, but cannot upload or execute parser JavaScript.
 
 ZZCTea is a market/reference-price source. Its values never overwrite DKH retail
 or catalog prices. The normalized artifact distinguishes original observations
 from derived package-unit observations and records exact derivation provenance.
-The artifact retains only reviewed safe plain-text detail descriptions as source
-evidence. The offline projection creates `zh-CN` and `en-US` DKH factual
+The currently observed public detail shape exposes no product-description
+field. The offline projection creates `zh-CN` and `en-US` DKH factual
 descriptions from structured facts and exact package components; it neither
 copies source prose nor embeds `zzctea.com` boilerplate.
 
-The runtime fetches neither seller/buyer lists nor contact/profile data. Raw
-encrypted list/detail responses are stored only after the decrypted payload
-passes PII policy. A partial or drifted run preserves the last good artifact and
-cannot create tombstones or production mutations.
+The connector calls only the robots-allowed public HTML list/detail routes.
+Each connector instance first validates one bounded `text/plain` robots policy.
+The exact path plus query must be explicitly allowed for the connector's fixed
+product token using longest case-insensitive agent matching; `User-agent: *` is
+only the fallback. A failed policy remains a cached failure for that run.
+`/teaList` represents the public HTML hot-tea catalog; it is not evidence of
+the complete, larger inventory behind the robots-disallowed `/api/` routes.
+The runtime keeps those source scopes separate and never reports the HTML
+snapshot as the complete ZZCTea inventory.
+Robots allowance does not grant a content-reuse license. Multi-item live
+snapshotting and source-image reuse remain blocked until source permission or
+terms, image policy, and the request-rate limit are reviewed.
+Full HTML and the complete embedded Nuxt state remain in memory and are never
+persisted. Only strict product-field allowlisted, PII-free list/detail envelopes
+are stored; seller/buyer/contact/profile sibling branches are discarded before
+serialization. A strict `HEAD` on each stable detail URL records the separately
+validated final canonical `/tea/{slug}.html` destination exactly as supplied by
+`Location`. A sanitized `totalPages + 1` probe must be empty or exactly repeat
+the last page before completion. A partial or drifted
+run preserves the last good artifact and cannot create tombstones or production
+mutations.
 
 The verified offline projection emits provider-neutral CommerceNetwork
 observation DTOs plus a deterministic report and hash manifest. It performs no

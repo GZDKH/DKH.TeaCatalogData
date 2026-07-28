@@ -2,16 +2,14 @@
 
 const { reject } = require('../lib/errors');
 const { divideDecimal, decimalParts, multiplyDecimal } = require('./decimal');
-const { decodeEnvelope } = require('./decoder');
+const { assertPublicCatalogPayload } = require('./policy');
+const { decodeSanitizedEnvelope } = require('./sanitized-envelope');
 const { normalizeDecimal, normalizeUnit, parsePackage } = require('./package-parser');
 
-const PARSER_VERSION = 'zzctea-public-catalog-js-v2';
-const MAXIMUM_TOTAL_COUNT = 100_000;
+const PARSER_VERSION = 'zzctea-public-html-nuxt-v3';
+const MAXIMUM_TOTAL_PAGES = 10_000;
 const MAXIMUM_SOURCE_DESCRIPTION_LENGTH = 4_000;
 const SAFE_IMAGE_HOSTS = new Set(['oss.yf-gz.cn']);
-const FORBIDDEN_KEYS =
-    /(?:phone|mobile|customer|avatar|contact|wechat|weixin)|^(?:sell|buy)(?!Count$)|^(?:seller|buyer)|(?:UserId|CustomerId)$/i;
-const PHONE = /(?<!\d)1[3-9]\d{9}(?!\d)/;
 const SOURCE_DESCRIPTION_CONTROL =
     /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]/;
 const SOURCE_DESCRIPTION_HTML = /<(?:(?:\/?[A-Za-z])|!DOCTYPE|!--|\?xml)[^>]*>/i;
@@ -19,22 +17,6 @@ const SOURCE_DESCRIPTION_URL = /\b(?:https?:\/\/|www\.)\S+/iu;
 const SOURCE_DESCRIPTION_DOMAIN = /\b(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,63}\b/iu;
 const SOURCE_DESCRIPTION_BOILERPLATE =
     /zzctea|找找茶|找茶.{0,16}出茶|(?:找茶|出茶)(?:\d+条|信息|线索|供需)|供需线索|茶友讨论|最新报价|价格走势|相关知识/iu;
-
-function assertPublicCatalogPayload(value) {
-    function visit(current) {
-        if (typeof current === 'string' && PHONE.test(current)) {
-            reject('ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED');
-        }
-        if (!current || typeof current !== 'object') return;
-        for (const [key, child] of Object.entries(current)) {
-            if (FORBIDDEN_KEYS.test(key)) {
-                reject('ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED');
-            }
-            visit(child);
-        }
-    }
-    visit(value);
-}
 
 function intValue(value) {
     if (typeof value !== 'string' || !/^-?\d+$/.test(value)) return null;
@@ -93,7 +75,7 @@ function sourceTimestamp(value, diagnostics) {
 
 function normalizeImages(source, diagnostics) {
     const images = [];
-    for (const propertyName of ['img1', 'img2', 'imageUrl1']) {
+    for (const propertyName of ['img1', 'img2', 'imageUrl1', 'imgUrl']) {
         const raw = optionalString(source, propertyName);
         if (!raw) continue;
         let url;
@@ -233,7 +215,10 @@ function normalizeProduct(source, options = {}) {
     const packageFact = parsedPackage.isExact
         ? parsedPackage
         : { ...parsedPackage, components: [] };
-    const sourceUpdatedAt = sourceTimestamp(source.date, diagnostics);
+    const sourceUpdatedAt = sourceTimestamp(
+        source.updatedAt ?? source.date,
+        diagnostics,
+    );
     const basisUnitCode = normalizeUnit(source.unit);
     const yearLabel = optionalString(source, 'year');
     let year = intValue(source.yearInt);
@@ -292,16 +277,9 @@ function normalizeProduct(source, options = {}) {
     };
 }
 
-function validateEnvelope(root) {
-    assertPublicCatalogPayload(root);
-    if (intValue(root.status) !== 1) {
-        reject('ZZCTEA_RESPONSE_STATUS_UNSUCCESSFUL');
-    }
-}
-
 function normalizeDetail(responseBody) {
-    const root = decodeEnvelope(responseBody);
-    validateEnvelope(root);
+    const root = decodeSanitizedEnvelope(responseBody);
+    if (root.kind !== 'detail') reject('ZZCTEA_DETAIL_ENVELOPE_KIND_INVALID');
     if (!root.data || Array.isArray(root.data) || typeof root.data !== 'object') {
         reject('ZZCTEA_DETAIL_DATA_MISSING');
     }
@@ -311,28 +289,39 @@ function normalizeDetail(responseBody) {
 function normalizeListPage(responseBody, requestedPageSize) {
     if (!Number.isSafeInteger(requestedPageSize) ||
         requestedPageSize <= 0 ||
-        requestedPageSize > 250) {
-        throw new Error('Requested page size must be between 1 and 250.');
+        requestedPageSize > 36) {
+        throw new Error('Requested page size must be between 1 and 36.');
     }
-    const root = decodeEnvelope(responseBody);
-    validateEnvelope(root);
+    const root = decodeSanitizedEnvelope(responseBody);
+    if (root.kind !== 'list') reject('ZZCTEA_LIST_ENVELOPE_KIND_INVALID');
     if (!Array.isArray(root.data)) reject('ZZCTEA_LIST_DATA_MISSING');
-    const totalCount = intValue(root.extra?.count);
-    if (!totalCount || totalCount > MAXIMUM_TOTAL_COUNT) {
-        reject('ZZCTEA_LIST_TOTAL_COUNT_IMPLAUSIBLE');
+    const page = intValue(root.page);
+    const pageSize = intValue(root.pageSize);
+    const totalPages = intValue(root.totalPages);
+    if (!page || pageSize !== requestedPageSize ||
+        !totalPages || totalPages > MAXIMUM_TOTAL_PAGES ||
+        page > totalPages) {
+        reject('ZZCTEA_LIST_PAGING_INVALID');
     }
     const items = root.data.map(normalizeProduct);
-    if (items.length > requestedPageSize || items.length > totalCount) {
+    if (items.length === 0 || items.length > requestedPageSize ||
+        (page < totalPages && items.length !== requestedPageSize)) {
         reject('ZZCTEA_LIST_PAGE_COUNT_INVALID');
     }
     if (new Set(items.map(item => item.externalId)).size !== items.length) {
         reject('ZZCTEA_LIST_DUPLICATE_PRODUCT_ID');
     }
-    return { totalCount, items };
+    return {
+        page,
+        pageSize,
+        totalCount: null,
+        totalPages,
+        items,
+    };
 }
 
 module.exports = {
-    MAXIMUM_TOTAL_COUNT,
+    MAXIMUM_TOTAL_PAGES,
     PARSER_VERSION,
     assertPublicCatalogPayload,
     normalizeDetail,

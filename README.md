@@ -46,9 +46,11 @@ node scripts/catalog-sources/fetch-snapshot.js \
   --concurrency=4
 ```
 
-This command fetches only the allowlisted public list/detail endpoints and
-canonical-link HEAD redirect. It writes no production data. Raw encrypted
-responses and the resumable checkpoint are stored under the ignored
+This command fetches only the allowlisted public HTML list/detail routes and a
+strict canonical-redirect `HEAD` for each stable detail URL. It writes no
+production data. `/teaList` is the public HTML hot-tea catalog, not the larger
+inventory behind the robots-disallowed `/api/` routes. Product-only PII-free
+envelopes and the resumable checkpoint are stored under the ignored
 `sources/catalog-sources/` tree; a complete, hashed, source-agnostic artifact is
 written under ignored `artifacts/catalog-sources/`. See
 [`scripts/catalog-sources/README.md`](scripts/catalog-sources/README.md) for

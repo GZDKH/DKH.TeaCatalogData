@@ -68,6 +68,8 @@ function createCheckpoint({ connector, snapshotId, pageSize, observedAt }) {
         pageSize,
         status: 'partial',
         totalCount: null,
+        totalPages: null,
+        terminalProbe: null,
         pages: [],
         details: {},
         diagnostics: [],
@@ -88,20 +90,96 @@ function parseStoredPage(snapshotDirectory, checkpointEntry, connector, pageSize
     return { raw, parsed: connector.parseListPage(raw, pageSize) };
 }
 
-function validatePage(parsed, pageSize, expectedTotalCount) {
-    if (!Number.isSafeInteger(parsed.totalCount) ||
-        parsed.totalCount <= 0 ||
-        parsed.totalCount > 100_000) {
-        reject('SOURCE_TOTAL_COUNT_IMPLAUSIBLE');
+async function verifyTerminalProbe(context, lastPageRaw, totalPages) {
+    const {
+        checkpoint,
+        checkpointFile,
+        connector,
+        pageSize,
+        snapshotDirectory,
+    } = context;
+    if (typeof connector.fetchTerminalProbe !== 'function' ||
+        typeof connector.assertTerminalProbe !== 'function') {
+        reject('SOURCE_TERMINAL_PROBE_UNSUPPORTED');
     }
-    if (expectedTotalCount !== null && parsed.totalCount !== expectedTotalCount) {
-        reject('SOURCE_TOTAL_COUNT_CHANGED_DURING_RUN');
+    const requestedPage = totalPages + 1;
+    let raw;
+    if (checkpoint.terminalProbe) {
+        raw = fs.readFileSync(path.join(
+            snapshotDirectory,
+            checkpoint.terminalProbe.file,
+        ));
+        if (sha256(raw) !== checkpoint.terminalProbe.sha256) {
+            reject('SOURCE_CHECKPOINT_RAW_DIGEST_MISMATCH');
+        }
+    } else {
+        raw = await connector.fetchTerminalProbe({
+            page: requestedPage,
+            pageSize,
+            totalPages,
+        });
+        connector.assertRawPayloadAllowed(raw);
+        const file = 'raw/list/terminal-probe.envelope.json';
+        atomicWrite(path.join(snapshotDirectory, file), raw);
+        checkpoint.terminalProbe = {
+            file,
+            requestedPage,
+            sha256: sha256(raw),
+        };
+        writeJsonAtomic(checkpointFile, checkpoint);
+    }
+    connector.assertRawPayloadAllowed(raw);
+    connector.assertTerminalProbe({
+        lastPageRaw,
+        pageSize,
+        raw,
+        requestedPage,
+        totalPages,
+    });
+}
+
+function validatePage(parsed, page, pageSize, expectedTotalCount, expectedTotalPages) {
+    const hasTotalCount = parsed.totalCount !== null &&
+        parsed.totalCount !== undefined;
+    const hasTotalPages = parsed.totalPages !== null &&
+        parsed.totalPages !== undefined;
+    if (hasTotalCount === hasTotalPages) {
+        reject('SOURCE_PAGINATION_METADATA_INVALID');
     }
     if (!Array.isArray(parsed.items) ||
         parsed.items.length === 0 ||
-        parsed.items.length > pageSize ||
-        parsed.items.length > parsed.totalCount) {
+        parsed.items.length > pageSize) {
         reject('SOURCE_PAGE_COUNT_INVALID');
+    }
+    if (hasTotalCount) {
+        if (!Number.isSafeInteger(parsed.totalCount) ||
+            parsed.totalCount <= 0 ||
+            parsed.totalCount > 100_000) {
+            reject('SOURCE_TOTAL_COUNT_IMPLAUSIBLE');
+        }
+        if (expectedTotalPages !== null ||
+            (expectedTotalCount !== null && parsed.totalCount !== expectedTotalCount)) {
+            reject('SOURCE_TOTAL_COUNT_CHANGED_DURING_RUN');
+        }
+        if (parsed.items.length > parsed.totalCount) {
+            reject('SOURCE_PAGE_COUNT_INVALID');
+        }
+    } else {
+        if (!Number.isSafeInteger(parsed.totalPages) ||
+            parsed.totalPages <= 0 ||
+            parsed.totalPages > 10_000 ||
+            parsed.page !== page ||
+            parsed.pageSize !== pageSize) {
+            reject('SOURCE_TOTAL_PAGES_IMPLAUSIBLE');
+        }
+        if (expectedTotalCount !== null ||
+            (expectedTotalPages !== null && parsed.totalPages !== expectedTotalPages)) {
+            reject('SOURCE_TOTAL_PAGES_CHANGED_DURING_RUN');
+        }
+        if (page > parsed.totalPages ||
+            (page < parsed.totalPages && parsed.items.length !== pageSize)) {
+            reject('SOURCE_INCOMPLETE_PAGINATION');
+        }
     }
     const ids = parsed.items.map(item => String(item.externalId));
     if (new Set(ids).size !== ids.length) {
@@ -135,7 +213,10 @@ async function collectPages(context) {
     const allIds = new Set();
     const pageDigests = new Set();
     let page = 1;
-    let totalCount = checkpoint.totalCount;
+    let totalPages = checkpoint.totalPages ?? null;
+    let totalCount = totalPages === null
+        ? checkpoint.totalCount
+        : null;
 
     while (true) {
         let raw;
@@ -159,9 +240,14 @@ async function collectPages(context) {
             writeJsonAtomic(checkpointFile, checkpoint);
         }
 
-        validatePage(parsed, pageSize, totalCount);
-        totalCount = parsed.totalCount;
-        checkpoint.totalCount = totalCount;
+        validatePage(parsed, page, pageSize, totalCount, totalPages);
+        if (parsed.totalCount !== null && parsed.totalCount !== undefined) {
+            totalCount = parsed.totalCount;
+            checkpoint.totalCount = totalCount;
+        } else {
+            totalPages = parsed.totalPages;
+            checkpoint.totalPages = totalPages;
+        }
 
         if (pageDigests.has(entry.sha256)) {
             reject('SOURCE_PAGINATION_LOOP');
@@ -179,11 +265,20 @@ async function collectPages(context) {
             });
         }
 
-        if (allItems.length === totalCount) break;
-        if (allItems.length > totalCount ||
-            parsed.items.length < pageSize ||
-            page >= Math.ceil(totalCount / pageSize) + 1) {
-            reject('SOURCE_INCOMPLETE_PAGINATION');
+        if (totalPages !== null) {
+            if (page === totalPages) {
+                await verifyTerminalProbe(context, raw, totalPages);
+                totalCount = allItems.length;
+                checkpoint.totalCount = totalCount;
+                break;
+            }
+        } else {
+            if (allItems.length === totalCount) break;
+            if (allItems.length > totalCount ||
+                parsed.items.length < pageSize ||
+                page >= Math.ceil(totalCount / pageSize) + 1) {
+                reject('SOURCE_INCOMPLETE_PAGINATION');
+            }
         }
         page += 1;
     }
@@ -326,6 +421,12 @@ function buildArtifact(checkpoint, items) {
         details: Object.entries(checkpoint.details)
             .map(([externalId, detail]) => ({ externalId, sha256: detail.sha256 }))
             .sort((left, right) => left.externalId.localeCompare(right.externalId, 'en', { numeric: true })),
+        terminalProbe: checkpoint.terminalProbe
+            ? {
+                requestedPage: checkpoint.terminalProbe.requestedPage,
+                sha256: checkpoint.terminalProbe.sha256,
+            }
+            : null,
     }));
     const artifact = {
         schemaVersion: ARTIFACT_SCHEMA,

@@ -51,6 +51,7 @@ function createFakeConnector(options = {}) {
     const state = {
         detailFetches: 0,
         listFetches: 0,
+        probeFetches: 0,
     };
     const connector = {
         id: options.id || 'fixture-source',
@@ -72,6 +73,15 @@ function createFakeConnector(options = {}) {
                 return Buffer.from(JSON.stringify({ totalCount: 4, ids: ['1', '2'] }));
             }
             const start = (page - 1) * pageSize;
+            if (options.paginationMode === 'totalPages') {
+                return Buffer.from(JSON.stringify({
+                    page,
+                    pageSize,
+                    totalPages: options.reportedTotalPages ??
+                        Math.ceil(ids.length / pageSize),
+                    ids: ids.slice(start, start + pageSize),
+                }));
+            }
             return Buffer.from(JSON.stringify({
                 totalCount: ids.length,
                 ids: ids.slice(start, start + pageSize),
@@ -79,10 +89,43 @@ function createFakeConnector(options = {}) {
         },
         parseListPage(raw) {
             const page = JSON.parse(raw);
+            if (options.paginationMode === 'totalPages') {
+                return {
+                    page: page.page,
+                    pageSize: page.pageSize,
+                    totalCount: null,
+                    totalPages: page.totalPages,
+                    items: page.ids.map(externalId => ({ externalId })),
+                };
+            }
             return {
                 totalCount: page.totalCount,
                 items: page.ids.map(externalId => ({ externalId })),
             };
+        },
+        async fetchTerminalProbe({ page, pageSize, totalPages }) {
+            state.probeFetches += 1;
+            const probeIds = options.repeatProbe
+                ? ids.slice((totalPages - 1) * pageSize, totalPages * pageSize)
+                : ids.slice((page - 1) * pageSize, page * pageSize);
+            return Buffer.from(JSON.stringify({
+                ids: probeIds,
+                page,
+                pageSize,
+                totalPages,
+            }));
+        },
+        assertTerminalProbe({ lastPageRaw, raw, requestedPage, totalPages }) {
+            const probe = JSON.parse(raw);
+            const lastPage = JSON.parse(lastPageRaw);
+            if (probe.page !== requestedPage ||
+                probe.totalPages !== totalPages ||
+                (probe.ids.length > 0 &&
+                    JSON.stringify(probe.ids) !== JSON.stringify(lastPage.ids))) {
+                const error = new Error('terminal probe found another page');
+                error.code = 'SOURCE_TERMINAL_PROBE_NOT_TERMINAL';
+                throw error;
+            }
         },
         async fetchDetail({ externalId }) {
             state.detailFetches += 1;
@@ -140,6 +183,83 @@ async function main() {
         assert.strictEqual(first.state.listFetches, 3);
         assert.strictEqual(first.state.detailFetches, 5);
         assert.ok(fs.existsSync(result.artifactFile));
+
+        const pagesRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'tea-source-pages-'));
+        try {
+            const paged = createFakeConnector({
+                id: 'fixture-pages',
+                paginationMode: 'totalPages',
+            });
+            const pagedResult = await ingestSourceSnapshot({
+                connector: paged.connector,
+                repositoryRoot: pagesRoot,
+                snapshotId: 'pages-1',
+                concurrency: 2,
+                pageSize: 2,
+            });
+            assert.strictEqual(pagedResult.manifest.itemCount, 5);
+            assert.strictEqual(paged.state.listFetches, 3);
+            assert.strictEqual(paged.state.probeFetches, 1);
+            assert.strictEqual(
+                readJson(path.join(
+                    pagesRoot,
+                    'sources/catalog-sources/fixture-pages/snapshots/pages-1/checkpoint.json',
+                )).totalPages,
+                3,
+            );
+            const pagedDrift = createFakeConnector({
+                id: 'fixture-pages',
+                ids: ['1'],
+                paginationMode: 'totalPages',
+            });
+            await assert.rejects(
+                ingestSourceSnapshot({
+                    connector: pagedDrift.connector,
+                    repositoryRoot: pagesRoot,
+                    snapshotId: 'pages-drift',
+                    pageSize: 2,
+                }),
+                error => error.code === 'SOURCE_TOTAL_COUNT_DRIFT',
+            );
+
+            for (const [id, repeatProbe] of [
+                ['fixture-full-terminal-empty', false],
+                ['fixture-full-terminal-repeat', true],
+            ]) {
+                const full = createFakeConnector({
+                    id,
+                    ids: ['1', '2', '3', '4'],
+                    paginationMode: 'totalPages',
+                    repeatProbe,
+                });
+                const fullResult = await ingestSourceSnapshot({
+                    connector: full.connector,
+                    repositoryRoot: pagesRoot,
+                    snapshotId: 'full',
+                    pageSize: 2,
+                });
+                assert.strictEqual(fullResult.manifest.itemCount, 4);
+                assert.strictEqual(full.state.probeFetches, 1);
+            }
+
+            const underreported = createFakeConnector({
+                id: 'fixture-underreported',
+                ids: ['1', '2', '3', '4', '5'],
+                paginationMode: 'totalPages',
+                reportedTotalPages: 2,
+            });
+            await assert.rejects(
+                ingestSourceSnapshot({
+                    connector: underreported.connector,
+                    repositoryRoot: pagesRoot,
+                    snapshotId: 'underreported',
+                    pageSize: 2,
+                }),
+                error => error.code === 'SOURCE_TERMINAL_PROBE_NOT_TERMINAL',
+            );
+        } finally {
+            fs.rmSync(pagesRoot, { recursive: true, force: true });
+        }
 
         const manifestPath = path.join(
             repositoryRoot,

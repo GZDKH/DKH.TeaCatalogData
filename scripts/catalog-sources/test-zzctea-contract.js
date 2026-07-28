@@ -1,14 +1,12 @@
 'use strict';
 
 const assert = require('assert');
-const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const {
-    PUBLIC_PROTOCOL_IV,
-    PUBLIC_PROTOCOL_KEY,
-    decodeEnvelope,
-} = require('./zzctea/decoder');
+    SANITIZED_ENVELOPE_SCHEMA,
+    decodeSanitizedEnvelope,
+} = require('./zzctea/sanitized-envelope');
 const { divideDecimal } = require('./zzctea/decimal');
 const {
     assertPublicCatalogPayload,
@@ -16,6 +14,7 @@ const {
     normalizeListPage,
 } = require('./zzctea/normalizer');
 const { parsePackage } = require('./zzctea/package-parser');
+const { PRODUCT_FIELDS } = require('./zzctea/nuxt');
 
 const FIXTURES = path.join(__dirname, 'zzctea', 'fixtures');
 
@@ -23,22 +22,35 @@ function readFixture(name) {
     return fs.readFileSync(path.join(FIXTURES, name));
 }
 
-function encryptFixture(plaintext) {
-    const cipher = crypto.createCipheriv('aes-128-cbc', PUBLIC_PROTOCOL_KEY, PUBLIC_PROTOCOL_IV);
-    const ciphertext = Buffer.concat([cipher.update(plaintext), cipher.final()]);
-    return Buffer.from(JSON.stringify(ciphertext.toString('hex')));
-}
-
-function encrypted(name) {
-    return encryptFixture(readFixture(name));
-}
-
 function readFixtureValue(name) {
     return JSON.parse(readFixture(name));
 }
 
-function encryptedValue(value) {
-    return encryptFixture(Buffer.from(JSON.stringify(value)));
+function detailEnvelopeValue(value) {
+    return Buffer.from(JSON.stringify({
+        schemaVersion: SANITIZED_ENVELOPE_SCHEMA,
+        kind: 'detail',
+        data: value.data,
+    }));
+}
+
+function detailEnvelope(name) {
+    return detailEnvelopeValue(readFixtureValue(name));
+}
+
+function listEnvelopeValue(value) {
+    return Buffer.from(JSON.stringify({
+        schemaVersion: SANITIZED_ENVELOPE_SCHEMA,
+        kind: 'list',
+        page: 1,
+        pageSize: 36,
+        totalPages: 1,
+        data: value.data,
+    }));
+}
+
+function listEnvelope(name) {
+    return listEnvelopeValue(readFixtureValue(name));
 }
 
 function assertRejectsCode(action, code) {
@@ -46,22 +58,27 @@ function assertRejectsCode(action, code) {
 }
 
 function main() {
-    const vector = Buffer.from(
-        JSON.stringify(
-            'dfbdf233a84209b7dc5a1a89fa14c5426d974d5eabeb4bda46d4a13cdc6c154' +
-            'a4934f6f31ea8f4c7f6976ee07e81d4a7',
-        ),
-    );
-    assert.deepStrictEqual(decodeEnvelope(vector), {
-        status: '1',
-        data: { id: '1', name: 'Fixture' },
+    const vector = detailEnvelopeValue({
+        data: { id: 1, name: 'Fixture' },
     });
-    for (const body of ['', '"not-hex"', '"abc"']) {
-        assert.throws(() => decodeEnvelope(Buffer.from(body)), error =>
-            /^ZZCTEA_/.test(error.code) && (!body || !error.message.includes(body)));
+    assert.deepStrictEqual(
+        JSON.parse(JSON.stringify(decodeSanitizedEnvelope(vector))),
+        {
+            schemaVersion: SANITIZED_ENVELOPE_SCHEMA,
+            kind: 'detail',
+            data: { id: '1', name: 'Fixture' },
+        },
+    );
+    for (const body of ['', '"not-an-envelope"', '{"kind":"detail"}']) {
+        assert.throws(() => decodeSanitizedEnvelope(Buffer.from(body)), error =>
+            /^ZZCTEA_|^SOURCE_/.test(error.code) &&
+            (!body || !error.message.includes(body)));
     }
     assertRejectsCode(
-        () => decodeEnvelope(encryptFixture(Buffer.from('{"status":1,"status":1}'))),
+        () => decodeSanitizedEnvelope(Buffer.from(
+            `{"schemaVersion":"${SANITIZED_ENVELOPE_SCHEMA}",` +
+            '"kind":"detail","kind":"detail","data":{}}',
+        )),
         'SOURCE_DECRYPTED_JSON_INVALID',
     );
 
@@ -86,7 +103,7 @@ function main() {
         'ZZCTEA_PACKAGE_CHAIN_CYCLIC',
     );
 
-    const caseItem = normalizeDetail(encrypted('detail-case.json'));
+    const caseItem = normalizeDetail(detailEnvelope('detail-case.json'));
     assert.strictEqual(caseItem.externalId, '17627');
     assert.strictEqual(caseItem.localizedFields['zh-CN'].name, 'Fixture Case Tea');
     assert.strictEqual(
@@ -118,7 +135,7 @@ function main() {
     assert.strictEqual(caseItem.facts.release.quantity, '1600');
     assert.ok(caseItem.referencePrices.every(price => price.retailPrice === false));
 
-    const bundle = normalizeDetail(encrypted('detail-bundle.json'));
+    const bundle = normalizeDetail(detailEnvelope('detail-bundle.json'));
     assert.strictEqual(
         Object.prototype.hasOwnProperty.call(bundle.localizedFields['zh-CN'], 'description'),
         false,
@@ -126,10 +143,12 @@ function main() {
     assert.ok(!bundle.diagnostics.includes('ZZCTEA_SOURCE_DESCRIPTION_UNSAFE'));
     assert.strictEqual(bundle.referencePrices.at(-1).basisUnitCode, 'cake');
     assert.strictEqual(bundle.referencePrices.at(-1).derivation.cumulativeDivisor, '7');
-    const box = normalizeDetail(encrypted('detail-box-case.json'));
+    const box = normalizeDetail(detailEnvelope('detail-box-case.json'));
     assert.strictEqual(box.referencePrices.at(-1).derivation.cumulativeDivisor, '42');
 
-    const unsafeDescription = normalizeDetail(encrypted('detail-description-unsafe.json'));
+    const unsafeDescription = normalizeDetail(
+        detailEnvelope('detail-description-unsafe.json'),
+    );
     assert.strictEqual(
         Object.prototype.hasOwnProperty.call(
             unsafeDescription.localizedFields['zh-CN'],
@@ -156,7 +175,7 @@ function main() {
                 description,
             },
         };
-        const normalized = normalizeDetail(encryptedValue(payload));
+        const normalized = normalizeDetail(detailEnvelopeValue(payload));
         assert.strictEqual(
             Object.prototype.hasOwnProperty.call(
                 normalized.localizedFields['zh-CN'],
@@ -175,7 +194,7 @@ function main() {
         },
     };
     assert.strictEqual(
-        normalizeDetail(encryptedValue(maximumDescriptionPayload))
+        normalizeDetail(detailEnvelopeValue(maximumDescriptionPayload))
             .localizedFields['zh-CN'].description.length,
         4_000,
     );
@@ -188,14 +207,14 @@ function main() {
         },
     };
     assertRejectsCode(
-        () => normalizeDetail(encryptedValue(piiDescriptionPayload)),
+        () => normalizeDetail(detailEnvelopeValue(piiDescriptionPayload)),
         'ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED',
     );
 
-    const hidden = normalizeDetail(encrypted('detail-hidden-price.json'));
+    const hidden = normalizeDetail(detailEnvelope('detail-hidden-price.json'));
     assert.deepStrictEqual(hidden.referencePrices, []);
     assert.ok(hidden.diagnostics.includes('ZZCTEA_REFERENCE_PRICE_HIDDEN'));
-    const malformed = normalizeDetail(encrypted('detail-malformed-package.json'));
+    const malformed = normalizeDetail(detailEnvelope('detail-malformed-package.json'));
     assert.strictEqual(malformed.package.rawText, '357克/片 7片/提 6盒/件');
     assert.strictEqual(malformed.package.isExact, false);
     assert.deepStrictEqual(malformed.package.components, []);
@@ -204,14 +223,15 @@ function main() {
     assert.ok(malformed.diagnostics.includes('ZZCTEA_IMAGE_URL_INVALID'));
     assert.ok(malformed.diagnostics.includes('ZZCTEA_SOURCE_TIMESTAMP_INVALID'));
 
-    const page = normalizeListPage(encrypted('list-page.json'), 36);
-    assert.strictEqual(page.totalCount, 5);
+    const page = normalizeListPage(listEnvelope('list-page.json'), 36);
+    assert.strictEqual(page.totalCount, null);
+    assert.strictEqual(page.totalPages, 1);
     assert.strictEqual(page.items.length, 5);
     assert.strictEqual(new Set(page.items.map(item => item.externalId)).size, 5);
     const listWithDescription = readFixtureValue('list-page.json');
     listWithDescription.data[0].description = 'List payload description must not be imported';
     const normalizedListWithDescription = normalizeListPage(
-        encryptedValue(listWithDescription),
+        listEnvelopeValue(listWithDescription),
         36,
     );
     assert.strictEqual(
@@ -230,6 +250,49 @@ function main() {
         () => assertPublicCatalogPayload({ data: { phone: 'redacted' } }),
         'ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED',
     );
+    for (const unsafeValue of [
+        'sales@example.cn',
+        '138 0013 8000',
+        '138-0013-8000',
+        '010-12345678',
+        '+86 020 12345678',
+        '+86 10 12345678',
+        '400-123-4567',
+        '电话：12345678',
+        'WeChat: tea_sales_2026',
+        '微信号 tea-seller',
+        'wxid_tea_seller_2026',
+        'QQ: 12345678',
+        'LINE: tea42',
+        'contact: tea.seller',
+    ]) {
+        for (const field of PRODUCT_FIELDS) {
+            assertRejectsCode(
+                () => assertPublicCatalogPayload({ [field]: unsafeValue }),
+                'ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED',
+            );
+        }
+    }
+    for (const safeValue of [
+        '357克/片 7片/提 6提/件',
+        '8700',
+        '207.14285714',
+        '2026-07-20',
+        '2501',
+        '云南大叶种晒青毛茶',
+        'linearity tested',
+        'baseline quality',
+        'onlinecatalog',
+        'airlineproduct',
+        'line shape round',
+        'production line value green',
+        'straight line process',
+    ]) {
+        for (const field of PRODUCT_FIELDS) {
+            assert.doesNotThrow(() =>
+                assertPublicCatalogPayload({ [field]: safeValue }));
+        }
+    }
     const forbiddenTokens = [
         /"phone"/i,
         /"customer/i,

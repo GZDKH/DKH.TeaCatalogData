@@ -8,13 +8,8 @@ administrator.
 
 ## ZZCTea
 
-Operational gate (2026-07-28): the source `robots.txt` disallows `/api/`.
-Do not execute or schedule a live fetch until source-access and legal review
-explicitly clear it. The commands below document the connector contract; offline
-`--replay`, projection, reconciliation, and Commerce dry-run remain safe. The
-Commerce publisher never fetches a source website.
-
-Run a full public-catalog snapshot:
+Run a complete snapshot of the public HTML hot-tea catalog exposed by
+`/teaList`:
 
 ```bash
 node scripts/catalog-sources/fetch-snapshot.js \
@@ -23,6 +18,15 @@ node scripts/catalog-sources/fetch-snapshot.js \
   --resume \
   --concurrency=4
 ```
+
+This is not the larger inventory behind the robots-disallowed `/api/` routes.
+The runtime must not describe the HTML subset as the complete ZZCTea inventory
+or combine it with an older API snapshot.
+
+The HTML routes being robots-allowed is a transport constraint, not a content
+reuse license. Do not run a multi-item live snapshot or copy source images until
+source permission/terms, image reuse, and the request-rate limit have been
+reviewed. Offline fixtures and replay remain the default verification path.
 
 Replay the exact stored responses without network access:
 
@@ -203,16 +207,38 @@ manifest, so the output explicitly sets
 `catalogReferenceCompletenessProven: false`,
 `productCatalogReconciliationComplete: false`, and `productionWrites: false`.
 
-The connector is fixed to the public HTTPS list and single-tea endpoints used by
-the website. It sends `HEAD` only to
-`https://zzctea.com/teaDetail/{externalId}.html` and accepts a validated
-`/tea/{slug}.html` redirect. It never requests public buy/sell lists, contacts,
-profiles or phone fields. Redirects are not followed automatically.
+The connector is fixed to the robots-allowed public HTML routes
+`https://zzctea.com/teaList?page={page}` and
+`https://zzctea.com/teaDetail/{externalId}.html`. It never calls `/api/` or
+`/official/api/`. The transport enforces exact host/path boundaries, response
+size limits, timeouts and retry/backoff.
 
-The browser's AES-CBC key, IV and request-signature suffix are public protocol
-material, not credentials. The transport enforces exact host/path boundaries,
-streaming response-size limits, timeouts and retry/backoff. Decryption uses
-strict fatal UTF-8 and lossless JSON number parsing.
+Before any list/detail request, each connector instance fetches
+`/robots.txt` once with a 64 KiB `text/plain` limit. The validated
+policy is evaluated for product token `DKH.TeaCatalogData` using
+case-insensitive longest-agent matching; equally specific groups are combined
+and `*` is only the fallback. It must explicitly allow the exact request target,
+including the `/teaList?page=N` query;
+malformed, redirected, oversized, non-200, non-text or disallowing policy fails
+closed. A rejected policy remains cached in that instance. Its URL, cache scope
+product token, full HTTP User-Agent and validation version are checkpoint-bound
+request parameters.
+
+For each product, the stable lookup URL remains
+`/teaDetail/{externalId}.html`. A separate bounded `HEAD` request observes its
+final canonical redirect: only 301/302/307/308 with a required `Location` on an
+allowlisted host and an exact `/tea/{slug}.html` path are accepted; query strings
+and fragments are rejected. The validated `Location` destination is preserved
+exactly as observed, including an allowlisted `www` hostname.
+
+The HTML and complete `window.__NUXT__` state exist only transiently in memory.
+A bounded parser supports the site's serialized data form without `eval` or a
+JavaScript VM. It selects only `data[0].initialHotTea` or
+`data[0].teaDetail`, applies a strict product-field allowlist and PII gate, and
+serializes a minimal deterministic envelope. Seller/buyer/contact/profile
+siblings are never copied to disk. Parsing uses a linear cursor and is bounded
+to 4 MiB HTML, depth 64, 100,000 nodes, 256 KiB strings, 10,000 array elements,
+2,000 object properties and 4,096 IIFE parameters/arguments.
 
 ## Output contract
 
@@ -223,11 +249,13 @@ sources/catalog-sources/<source>/snapshots/<snapshot>/
 ├── checkpoint.json
 └── raw/
     ├── list/
+    │   └── terminal-probe.envelope.json
     └── details/
 ```
 
-The raw encrypted response is retained only after its decrypted list/detail
-payload passes the connector's PII policy. The checkpoint binds source,
+Only the product-only sanitized list/detail envelope is retained after it
+passes the connector's PII policy. Full source HTML and the complete Nuxt state
+are never retained. The checkpoint binds source,
 connector/parser/artifact versions and static request parameters. It is
 portable evidence, but a local file or CI cache is not a durable authoritative
 store. Preserve the successful artifact/checkpoint as a CI artifact or external
@@ -261,11 +289,16 @@ The semantic digest uses deterministic item/key ordering and excludes
 observation time. Offline replay verifies and reproduces a stored snapshot but
 never promotes that snapshot over the current `last-good.json`.
 
-When a reviewed plain-text description is present in the public detail payload,
-the normalized artifact retains it as source evidence. List-page prose is never
-trusted as a description. HTML, control characters, URLs, domains, source-site
-branding, transaction boilerplate, and overlong text are omitted with a
-diagnostic; PII remains a hard rejection.
+For `totalPages` sources, completion always performs and hashes one terminal
+`page = totalPages + 1` probe. Only an empty sanitized page or an exact
+product-for-product repeat of the last page proves the end; new/different
+products or paging drift reject the run.
+
+The currently observed public `teaDetail` shape does not expose product
+description prose, so this connector does not invent or scrape a description
+from unrelated page content. If a reviewed product-only description field is
+added later, its shape and safety policy require a connector/parser version
+bump and fixture update.
 
 Customer-facing projection text is generated from structured facts such as
 brand, year, batch, process, shape, and exact package components. It does not
@@ -277,11 +310,12 @@ fallback when no reviewed English title exists.
 
 The runtime fails closed on:
 
-- endpoint, redirect, TLS, host, port, response-size or UTF-8 violations;
-- encrypted envelope, JSON root, required field or count drift;
+- endpoint, TLS, host, port, response-size or UTF-8 violations;
+- Nuxt assignment/shape drift, sanitized-envelope, required field or count drift;
 - repeated pages, duplicate IDs, early short pages or incomplete details;
 - incompatible checkpoint versions/request parameters;
-- PII-like fields or phone patterns in accepted raw payloads or artifacts;
+- PII-like fields, mobile/landline numbers, emails or contact handles in any
+  persisted string;
 - a total-count drop or growth outside the reviewed thresholds.
 
 No source connector, projector, or reconciler in this directory writes
