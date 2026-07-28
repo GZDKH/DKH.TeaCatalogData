@@ -9,6 +9,7 @@ const {
     writeJsonAtomic,
 } = require('./artifacts');
 const {
+    validateMediaOutputCoverage,
     validateMappingCoverage,
     verifyCompleteOutput,
 } = require('./media-materialization');
@@ -378,7 +379,12 @@ function assertBundleBindings(context) {
         mappingsBundle.mappings,
         reconciliationManifest.counts,
     );
-    verifyCompleteOutput(context.mediaRoot, mediaManifest);
+    const verifiedMedia = verifyCompleteOutput(context.mediaRoot, mediaManifest);
+    validateMediaOutputCoverage(
+        sourceBundle.artifact,
+        mappingsBundle.mappings,
+        verifiedMedia,
+    );
 }
 
 function buildImportPlan(context) {
@@ -812,7 +818,7 @@ function verifyImportBundle(outputDirectory) {
             reconciliationManifest.mappingSha256) {
         throw new Error('ZZCTea import bundle component hash bindings do not match.');
     }
-    verifyCompleteOutput(mediaRoot, mediaManifest);
+    const verifiedMedia = verifyCompleteOutput(mediaRoot, mediaManifest);
 
     for (const [relativeFile, digest, label] of [
         [
@@ -901,6 +907,7 @@ function verifyImportBundle(outputDirectory) {
         mappings,
         reconciliationManifest.counts,
     );
+    validateMediaOutputCoverage(sourceArtifact, mappings, verifiedMedia);
     assertSeededWeeklyCheckpoint({
         sourceBundle: {
             artifact: sourceArtifact,
@@ -940,9 +947,8 @@ function verifyImportBundle(outputDirectory) {
         throw new Error('Rollback products do not exactly cover matched updates.');
     }
     const mappingCodes = new Set(mappings.map(mapping => mapping.productCode));
-    const mediaItems = readJson(path.join(root, expectedFiles.mediaItems.file));
-    if (!Array.isArray(mediaItems) ||
-        mediaItems.some(item => !mappingCodes.has(item?.productCode))) {
+    const mediaItems = verifiedMedia.mediaItems;
+    if (mediaItems.some(item => !mappingCodes.has(item.productCode))) {
         throw new Error('Media owners are not covered by reconciliation mappings.');
     }
     const counts = {

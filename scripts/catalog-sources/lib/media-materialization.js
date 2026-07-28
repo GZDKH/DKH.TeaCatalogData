@@ -294,10 +294,17 @@ function verifyCompletedEntry(outputRoot, entry) {
         !TYPES[entry.contentType]) {
         throw new Error('Media checkpoint entry is invalid.');
     }
+    const type = TYPES[entry.contentType];
+    const expectedFile =
+        `blobs/${entry.sha256.slice(0, 2)}/${entry.sha256}.${type.extension}`;
+    if (entry.file !== expectedFile) {
+        throw new Error('Media blob path is not content-addressed.');
+    }
     const file = assertContainedRegularFile(outputRoot, entry.file, 'Checkpoint media file');
-    const stat = fs.statSync(file);
-    if (stat.size !== entry.bytes ||
-        sha256(fs.readFileSync(file)) !== entry.sha256) {
+    const bytes = fs.readFileSync(file);
+    if (bytes.length !== entry.bytes ||
+        sha256(bytes) !== entry.sha256 ||
+        !type.matches(bytes.subarray(0, 16))) {
         throw new Error('MEDIA_RESUME_HASH_MISMATCH');
     }
 }
@@ -573,11 +580,36 @@ function buildOutputDocuments(options) {
     return { manifest, mediaItems, mediaJson, receipt, receiptJson };
 }
 
+function assertNonNegativeInteger(value, label) {
+    if (!Number.isSafeInteger(value) || value < 0) {
+        throw new Error(`${label} must be a non-negative safe integer.`);
+    }
+}
+
+function normalizedMediaEntry(entry) {
+    return {
+        bytes: entry.bytes,
+        contentType: entry.contentType,
+        file: entry.file,
+        finalUrl: entry.finalUrl,
+        sha256: entry.sha256,
+    };
+}
+
 function verifyCompleteOutput(outputRoot, manifest) {
     if (manifest.schemaVersion !== MANIFEST_SCHEMA ||
         manifest.complete !== true ||
-        manifest.productionWrites !== false) {
+        manifest.productionWrites !== false ||
+        !['full-snapshot', 'one-product'].includes(manifest.selection?.mode)) {
         throw new Error('Existing media manifest is incomplete or unsupported.');
+    }
+    for (const [value, label] of [
+        [manifest.originalImageCount, 'Media original image count'],
+        [manifest.mediaItemCount, 'Media item count'],
+        [manifest.uniqueBlobCount, 'Media unique blob count'],
+        [manifest.totalBytes, 'Media total bytes'],
+    ]) {
+        assertNonNegativeInteger(value, label);
     }
     for (const [fileName, expectedDigest, label] of [
         [manifest.mediaItemsFile, manifest.mediaItemsSha256, 'Media items'],
@@ -589,17 +621,186 @@ function verifyCompleteOutput(outputRoot, manifest) {
             throw new Error(`${label} hash differs from the media manifest.`);
         }
     }
+    const mediaItems = readJson(path.join(outputRoot, manifest.mediaItemsFile));
     const receipt = readJson(path.join(outputRoot, manifest.receiptFile));
+    const checkpoint = readJson(path.join(outputRoot, 'media-checkpoint.json'));
     if (receipt.schemaVersion !== RECEIPT_SCHEMA ||
         receipt.productionWrites !== false ||
-        !Array.isArray(receipt.sources)) {
+        !Array.isArray(receipt.sources) ||
+        receipt.sourceId !== manifest.sourceId ||
+        receipt.snapshotId !== manifest.snapshotId ||
+        receipt.inputArtifactSha256 !== manifest.inputArtifactSha256 ||
+        receipt.inputMappingSha256 !== manifest.inputMappingSha256 ||
+        receipt.selectedOriginalCount !== manifest.originalImageCount ||
+        receipt.sources.length !== receipt.selectedOriginalCount ||
+        receipt.uniqueBlobCount !== manifest.uniqueBlobCount ||
+        receipt.totalBytes !== manifest.totalBytes) {
         throw new Error('Existing media receipt is incomplete or unsupported.');
     }
-    const verifiedFiles = new Set();
+    for (const [value, label] of [
+        [receipt.inputImageReferenceCount, 'Receipt image reference count'],
+        [receipt.selectedOriginalCount, 'Receipt selected original count'],
+        [receipt.networkUrlCount, 'Receipt network URL count'],
+        [receipt.uniqueBlobCount, 'Receipt unique blob count'],
+        [receipt.totalBytes, 'Receipt total bytes'],
+    ]) {
+        assertNonNegativeInteger(value, label);
+    }
+    const expectedOnlyExternalId = manifest.selection.mode === 'one-product'
+        ? String(manifest.selection.externalId || '')
+        : null;
+    if (checkpoint.schemaVersion !== CHECKPOINT_SCHEMA ||
+        checkpoint.status !== 'complete' ||
+        checkpoint.productionWrites !== false ||
+        checkpoint.binding?.sourceId !== manifest.sourceId ||
+        checkpoint.binding?.snapshotId !== manifest.snapshotId ||
+        checkpoint.binding?.artifactSha256 !== manifest.inputArtifactSha256 ||
+        checkpoint.binding?.mappingSha256 !== manifest.inputMappingSha256 ||
+        checkpoint.binding?.onlyExternalId !== expectedOnlyExternalId ||
+        checkpoint.networkUrlCount !== receipt.networkUrlCount ||
+        checkpoint.completedCount !== receipt.networkUrlCount ||
+        checkpoint.totalBytes !== receipt.totalBytes ||
+        !checkpoint.entries ||
+        typeof checkpoint.entries !== 'object' ||
+        Array.isArray(checkpoint.entries) ||
+        Object.keys(checkpoint.entries).length !== receipt.networkUrlCount) {
+        throw new Error('Existing media checkpoint does not match its manifest.');
+    }
+    const verifiedFiles = new Map();
+    const receiptEntries = new Map();
+    const expectedMediaItems = [];
+    const seenProductHashes = new Set();
+    const productOrders = new Map();
     for (const source of receipt.sources) {
-        if (verifiedFiles.has(source.file)) continue;
-        verifyCompletedEntry(outputRoot, source);
-        verifiedFiles.add(source.file);
+        const sourceUrl = validatePublicImageUrl(source?.sourceUrl).toString();
+        const finalUrl = validatePublicImageUrl(source?.finalUrl).toString();
+        const externalId = String(source?.externalId || '');
+        const productHash = `${source?.productCode}|${source?.sha256}`;
+        const omitted = seenProductHashes.has(productHash);
+        if (sourceUrl !== source.sourceUrl ||
+            finalUrl !== source.finalUrl ||
+            !/^[1-9]\d*$/.test(externalId) ||
+            source.productCode !== `ZZC-${externalId}` ||
+            source.role !== 'gallery' ||
+            source.omittedDuplicateForProduct !== omitted ||
+            !Array.isArray(source.aliases) ||
+            source.aliases.length < 1 ||
+            source.aliases.some(alias =>
+                validatePublicImageUrl(alias).toString() !== alias)) {
+            throw new Error('Existing media receipt source is invalid.');
+        }
+        const metadata = normalizedMediaEntry(source);
+        const existingUrl = receiptEntries.get(sourceUrl);
+        if (existingUrl && stableJson(existingUrl) !== stableJson(metadata)) {
+            throw new Error('Existing media receipt has conflicting source URLs.');
+        }
+        receiptEntries.set(sourceUrl, metadata);
+        const existingFile = verifiedFiles.get(source.file);
+        if (existingFile && stableJson(existingFile) !== stableJson({
+            bytes: source.bytes,
+            contentType: source.contentType,
+            sha256: source.sha256,
+        })) {
+            throw new Error('Existing media receipt has conflicting blob metadata.');
+        }
+        if (!existingFile) {
+            verifyCompletedEntry(outputRoot, source);
+            verifiedFiles.set(source.file, {
+                bytes: source.bytes,
+                contentType: source.contentType,
+                sha256: source.sha256,
+            });
+        }
+        if (!omitted) {
+            seenProductHashes.add(productHash);
+            const sortOrder = productOrders.get(source.productCode) || 0;
+            productOrders.set(source.productCode, sortOrder + 1);
+            expectedMediaItems.push({
+                bytes: source.bytes,
+                contentType: source.contentType,
+                file: source.file,
+                productCode: source.productCode,
+                role: 'gallery',
+                sha256: source.sha256,
+                sortOrder,
+            });
+        }
+    }
+    const checkpointEntries = new Map();
+    for (const [sourceUrl, entry] of Object.entries(checkpoint.entries)) {
+        const normalizedUrl = validatePublicImageUrl(sourceUrl).toString();
+        if (normalizedUrl !== sourceUrl) {
+            throw new Error('Existing media checkpoint source URL is invalid.');
+        }
+        verifyCompletedEntry(outputRoot, entry);
+        checkpointEntries.set(sourceUrl, normalizedMediaEntry(entry));
+    }
+    if (receiptEntries.size !== receipt.networkUrlCount ||
+        new Set([...receiptEntries.values()].map(entry => entry.sha256)).size !==
+            receipt.uniqueBlobCount ||
+        [...receiptEntries.values()].reduce((sum, entry) => sum + entry.bytes, 0) !==
+            receipt.totalBytes ||
+        stableJson([...receiptEntries].sort()) !==
+            stableJson([...checkpointEntries].sort()) ||
+        !Array.isArray(mediaItems) ||
+        mediaItems.length !== manifest.mediaItemCount ||
+        expectedMediaItems.length !== manifest.mediaItemCount) {
+        throw new Error('Existing media receipt, checkpoint, and manifest counts differ.');
+    }
+    for (let index = 0; index < mediaItems.length; index += 1) {
+        const item = mediaItems[index];
+        const expected = expectedMediaItems[index];
+        if (!item ||
+            typeof item.altText !== 'string' ||
+            item.altText.length < 1 ||
+            stableJson({
+                bytes: item.bytes,
+                contentType: item.contentType,
+                file: item.file,
+                productCode: item.productCode,
+                role: item.role,
+                sha256: item.sha256,
+                sortOrder: item.sortOrder,
+            }) !== stableJson(expected)) {
+            throw new Error('Media items do not exactly match the verified receipt.');
+        }
+    }
+    return { checkpoint, mediaItems, receipt };
+}
+
+function validateMediaOutputCoverage(artifact, mappings, verified) {
+    const candidates = selectOriginalImageCandidates(
+        artifact,
+        mappings,
+        verified.checkpoint.binding.onlyExternalId,
+    );
+    const inputImageReferenceCount = artifact.items
+        .reduce((sum, item) => sum + (item.images || []).length, 0);
+    if (verified.receipt.inputImageReferenceCount !== inputImageReferenceCount ||
+        verified.receipt.sources.length !== candidates.length) {
+        throw new Error('Media receipt does not cover the selected source images.');
+    }
+    let mediaItemIndex = 0;
+    for (let index = 0; index < candidates.length; index += 1) {
+        const candidate = candidates[index];
+        const source = verified.receipt.sources[index];
+        if (source.externalId !== candidate.externalId ||
+            source.productCode !== candidate.productCode ||
+            (source.productId || null) !== (candidate.productId || null) ||
+            source.sourceUrl !== candidate.url ||
+            stableJson(source.aliases) !== stableJson(candidate.aliases)) {
+            throw new Error('Media receipt source does not match source and mapping evidence.');
+        }
+        if (!source.omittedDuplicateForProduct) {
+            if (verified.mediaItems[mediaItemIndex]?.altText !==
+                candidate.localizedName) {
+                throw new Error('Media alt text does not match source evidence.');
+            }
+            mediaItemIndex += 1;
+        }
+    }
+    if (mediaItemIndex !== verified.mediaItems.length) {
+        throw new Error('Media items do not exactly cover source-managed images.');
     }
 }
 
@@ -659,55 +860,10 @@ function loadVerifiedPriorMedia(previousMediaDirectory, sourceId) {
         manifest.selection?.mode !== 'full-snapshot') {
         throw new Error('Previous media manifest is not a full source snapshot.');
     }
-    verifyCompleteOutput(outputRoot, manifest);
-    const receipt = readJson(path.join(outputRoot, manifest.receiptFile));
-    if (receipt.sourceId !== manifest.sourceId ||
-        receipt.snapshotId !== manifest.snapshotId ||
-        receipt.inputArtifactSha256 !== manifest.inputArtifactSha256 ||
-        receipt.inputMappingSha256 !== manifest.inputMappingSha256 ||
-        receipt.selectedOriginalCount !== manifest.originalImageCount ||
-        receipt.sources.length !== receipt.selectedOriginalCount ||
-        receipt.uniqueBlobCount !== manifest.uniqueBlobCount ||
-        receipt.totalBytes !== manifest.totalBytes) {
-        throw new Error('Previous media receipt does not match its manifest.');
-    }
+    const { receipt } = verifyCompleteOutput(outputRoot, manifest);
     const entries = new Map();
     for (const source of receipt.sources) {
-        const sourceUrl = validatePublicImageUrl(source.sourceUrl).toString();
-        const finalUrl = validatePublicImageUrl(source.finalUrl).toString();
-        if (sourceUrl !== source.sourceUrl ||
-            finalUrl !== source.finalUrl ||
-            !DIGEST.test(String(source.sha256 || '')) ||
-            !Number.isSafeInteger(source.bytes) ||
-            source.bytes < 1 ||
-            !TYPES[source.contentType]) {
-            throw new Error('Previous media receipt source is invalid.');
-        }
-        const expectedFile =
-            `blobs/${source.sha256.slice(0, 2)}/${source.sha256}.` +
-            TYPES[source.contentType].extension;
-        if (source.file !== expectedFile) {
-            throw new Error('Previous media receipt blob path is not content-addressed.');
-        }
-        const cached = {
-            bytes: source.bytes,
-            contentType: source.contentType,
-            file: source.file,
-            finalUrl,
-            sha256: source.sha256,
-        };
-        const existing = entries.get(sourceUrl);
-        if (existing && stableJson(existing) !== stableJson(cached)) {
-            throw new Error('Previous media receipt has conflicting source URL entries.');
-        }
-        entries.set(sourceUrl, cached);
-    }
-    if (entries.size !== receipt.networkUrlCount ||
-        new Set([...entries.values()].map(entry => entry.sha256)).size !==
-            receipt.uniqueBlobCount ||
-        [...entries.values()].reduce((sum, entry) => sum + entry.bytes, 0) !==
-            receipt.totalBytes) {
-        throw new Error('Previous media receipt totals are inconsistent.');
+        entries.set(source.sourceUrl, normalizedMediaEntry(source));
     }
     return { entries, outputRoot };
 }
@@ -932,6 +1088,7 @@ module.exports = {
     materializeVerifiedMedia,
     prefillCheckpointFromPrior,
     validateMappingCoverage,
+    validateMediaOutputCoverage,
     selectOriginalImageCandidates,
     verifyCompleteOutput,
 };
