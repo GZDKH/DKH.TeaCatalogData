@@ -16,7 +16,8 @@ node scripts/catalog-sources/fetch-snapshot.js \
   --source=zzctea \
   --snapshot=zzctea-2026-07-27 \
   --resume \
-  --concurrency=4
+  --minimum-request-interval-ms=1000 \
+  --concurrency=1
 ```
 
 This is not the larger inventory behind the robots-disallowed `/api/` routes.
@@ -212,6 +213,12 @@ The connector is fixed to the robots-allowed public HTML routes
 `https://zzctea.com/teaDetail/{externalId}.html`. It never calls `/api/` or
 `/official/api/`. The transport enforces exact host/path boundaries, response
 size limits, timeouts and retry/backoff.
+
+All outbound attempts, including retries, share one start-time gate. The
+default and minimum supported interval is 1,000 milliseconds; a reviewed slower
+rate can be selected with `--minimum-request-interval-ms`. The interval is part
+of the checkpoint-bound request parameters, so resume cannot silently switch to
+a different crawl rate.
 
 Before any list/detail request, each connector instance fetches
 `/robots.txt` once with a 64 KiB `text/plain` limit. The validated

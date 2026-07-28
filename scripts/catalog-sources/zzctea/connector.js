@@ -1,6 +1,10 @@
 'use strict';
 
-const { requestBuffer, validateAllowedUrl } = require('../lib/http');
+const {
+    createRequestStartGate,
+    requestBuffer,
+    validateAllowedUrl,
+} = require('../lib/http');
 const { reject } = require('../lib/errors');
 const {
     PARSER_VERSION,
@@ -28,9 +32,36 @@ const CRAWLER_USER_AGENT = 'DKH.TeaCatalogData catalog-source-ingestion/1';
 const ROBOTS_URL = `${SOURCE_ORIGIN}/robots.txt`;
 const LIST_PATH = '/teaList';
 const DETAIL_PATH_PATTERN = '/teaDetail/{externalId}.html';
+const DEFAULT_MINIMUM_REQUEST_INTERVAL_MS = 1_000;
 
 function createZzcTeaConnector(options = {}) {
-    const request = options.request || requestBuffer;
+    const minimumRequestIntervalMs = options.minimumRequestIntervalMs ??
+        DEFAULT_MINIMUM_REQUEST_INTERVAL_MS;
+    if (!Number.isSafeInteger(minimumRequestIntervalMs) ||
+        minimumRequestIntervalMs < DEFAULT_MINIMUM_REQUEST_INTERVAL_MS ||
+        minimumRequestIntervalMs > 60_000) {
+        throw new Error(
+            'ZZCTea minimum request interval must be between 1000 and 60000 milliseconds.',
+        );
+    }
+    const testRequest = options.testMode === true
+        ? options.testRequest
+        : null;
+    if ((options.testMode === true) !== (typeof options.testRequest === 'function')) {
+        throw new Error('ZZCTea test request requires explicit testMode.');
+    }
+    const beforeAttempt = createRequestStartGate({
+        minimumIntervalMs: minimumRequestIntervalMs,
+        now: options.now,
+        sleep: options.sleep,
+    });
+    const request = testRequest || ((rawUrl, requestOptions) =>
+        requestBuffer(rawUrl, {
+            ...requestOptions,
+            beforeAttempt,
+            fetchImpl: options.fetchImpl,
+            sleep: options.sleep,
+        }));
     let robotsPolicyPromise;
 
     async function loadRobotsPolicy() {
@@ -74,7 +105,7 @@ function createZzcTeaConnector(options = {}) {
 
     return Object.freeze({
         id: 'zzctea',
-        connectorVersion: 'zzctea-public-html-v3',
+        connectorVersion: 'zzctea-public-html-v4',
         parserVersion: PARSER_VERSION,
         defaultPageSize: 36,
         maximumPageSize: 36,
@@ -84,6 +115,13 @@ function createZzcTeaConnector(options = {}) {
                 detailPagePattern: `${SOURCE_ORIGIN}${DETAIL_PATH_PATTERN}`,
                 canonicalHeadPattern: `${SOURCE_ORIGIN}${DETAIL_PATH_PATTERN}`,
                 canonicalDestinationPathPattern: '/tea/{slug}.html',
+                requestPacing: testRequest
+                    ? { mode: 'offline-test-double' }
+                    : {
+                        minimumIntervalMs: minimumRequestIntervalMs,
+                        mode: 'minimum-start-interval',
+                        timer: 'monotonic',
+                    },
                 robotsPolicy: {
                     cacheScope: 'connector-instance',
                     crawlerProductToken: CRAWLER_PRODUCT_TOKEN,
@@ -206,6 +244,7 @@ function createZzcTeaConnector(options = {}) {
 module.exports = {
     CRAWLER_PRODUCT_TOKEN,
     CRAWLER_USER_AGENT,
+    DEFAULT_MINIMUM_REQUEST_INTERVAL_MS,
     DETAIL_PATH_PATTERN,
     LIST_PATH,
     ROBOTS_URL,

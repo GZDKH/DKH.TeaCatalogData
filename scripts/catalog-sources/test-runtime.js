@@ -59,7 +59,7 @@ function createFakeConnector(options = {}) {
         parserVersion: 'fixture-parser-v1',
         defaultPageSize: options.pageSize || 2,
         maximumPageSize: 10,
-        requestParameters: () => ({
+        requestParameters: () => options.requestParameters || ({
             endpoint: 'https://source.example/catalog',
             filters: { publicOnly: true },
         }),
@@ -357,6 +357,26 @@ async function main() {
                 ),
                 false,
             );
+            const changedRate = createFakeConnector({
+                requestParameters: {
+                    endpoint: 'https://source.example/catalog',
+                    filters: { publicOnly: true },
+                    requestPacing: { minimumIntervalMs: 2_000 },
+                },
+            });
+            await assert.rejects(
+                ingestSourceSnapshot({
+                    connector: changedRate.connector,
+                    repositoryRoot: resumeRoot,
+                    snapshotId: 'resume',
+                    pageSize: 2,
+                    concurrency: 2,
+                    resume: true,
+                }),
+                error => error.code === 'SOURCE_CHECKPOINT_INCOMPATIBLE',
+            );
+            assert.strictEqual(changedRate.state.listFetches, 0);
+            assert.strictEqual(changedRate.state.detailFetches, 0);
             const resumed = createFakeConnector();
             const resumedResult = await ingestSourceSnapshot({
                 connector: resumed.connector,

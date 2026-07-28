@@ -30,6 +30,10 @@ snapshot as the complete ZZCTea inventory.
 Robots allowance does not grant a content-reuse license. Multi-item live
 snapshotting and source-image reuse remain blocked until source permission or
 terms, image policy, and the request-rate limit are reviewed.
+The reviewed ZZCTea transport applies one monotonic start-time gate to all
+outbound attempts, including retries. Its default and minimum interval is one
+second, and that value is bound into the resumable checkpoint so a resumed run
+cannot silently increase the crawl rate.
 Full HTML and the complete embedded Nuxt state remain in memory and are never
 persisted. Only strict product-field allowlisted, PII-free list/detail envelopes
 are stored; seller/buyer/contact/profile sibling branches are discarded before

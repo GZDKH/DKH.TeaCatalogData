@@ -6,6 +6,7 @@ const path = require('path');
 const {
     CRAWLER_PRODUCT_TOKEN,
     CRAWLER_USER_AGENT,
+    DEFAULT_MINIMUM_REQUEST_INTERVAL_MS,
     DETAIL_PATH_PATTERN,
     LIST_PATH,
     ROBOTS_URL,
@@ -51,7 +52,8 @@ function requestWithRobots(handler) {
 
 function connectorWithRobotsPolicy(policy) {
     return createZzcTeaConnector({
-        request: async rawUrl => {
+        testMode: true,
+        testRequest: async rawUrl => {
             const url = new URL(rawUrl);
             if (rawUrl === ROBOTS_URL) {
                 return robotsResponse(Buffer.from(policy));
@@ -104,7 +106,10 @@ async function main() {
                 : fixture('detail-case.html'),
         };
     };
-    const connector = createZzcTeaConnector({ request: mockRequest });
+    const connector = createZzcTeaConnector({
+        testMode: true,
+        testRequest: mockRequest,
+    });
     assert.deepStrictEqual(connector.requestParameters().robotsPolicy, {
         cacheScope: 'connector-instance',
         crawlerProductToken: CRAWLER_PRODUCT_TOKEN,
@@ -112,6 +117,80 @@ async function main() {
         url: ROBOTS_URL,
         validationVersion: 'zzctea-robots-agent-query-v2',
     });
+    assert.deepStrictEqual(
+        connector.requestParameters().requestPacing,
+        { mode: 'offline-test-double' },
+    );
+    assert.deepStrictEqual(
+        createZzcTeaConnector().requestParameters().requestPacing,
+        {
+            minimumIntervalMs: DEFAULT_MINIMUM_REQUEST_INTERVAL_MS,
+            mode: 'minimum-start-interval',
+            timer: 'monotonic',
+        },
+    );
+    let productionClock = 0;
+    let productionListAttempts = 0;
+    const productionStarts = [];
+    const productionConnector = createZzcTeaConnector({
+        fetchImpl: async (rawUrl, options) => {
+            const url = new URL(rawUrl);
+            productionStarts.push({
+                clock: productionClock,
+                method: options.method,
+                target: `${url.pathname}${url.search}`,
+            });
+            if (url.pathname === '/robots.txt') {
+                return new Response(fixture('robots.txt'), {
+                    headers: { 'content-type': 'text/plain; charset=utf-8' },
+                    status: 200,
+                });
+            }
+            if (url.pathname === LIST_PATH) {
+                productionListAttempts += 1;
+                if (productionListAttempts === 1) {
+                    return new Response('', { status: 503 });
+                }
+                return new Response(fixture('list-page.html'), {
+                    headers: { 'content-type': 'text/html; charset=utf-8' },
+                    status: 200,
+                });
+            }
+            if (options.method === 'HEAD') {
+                return new Response(null, {
+                    headers: {
+                        location: 'https://www.zzctea.com/tea/fixture-case-tea.html',
+                    },
+                    status: 302,
+                });
+            }
+            return new Response(fixture('detail-case.html'), {
+                headers: { 'content-type': 'text/html; charset=utf-8' },
+                status: 200,
+            });
+        },
+        now: () => productionClock,
+        sleep: async delay => {
+            productionClock += delay;
+        },
+    });
+    await productionConnector.fetchListPage({ page: 1, pageSize: 36 });
+    await productionConnector.fetchDetail({ externalId: '17627' });
+    assert.strictEqual(
+        await productionConnector.resolveCanonicalUrl({ externalId: '17627' }),
+        'https://www.zzctea.com/tea/fixture-case-tea.html',
+    );
+    assert.deepStrictEqual(productionStarts, [
+        { clock: 0, method: 'GET', target: '/robots.txt' },
+        { clock: 1_000, method: 'GET', target: '/teaList?page=1' },
+        { clock: 2_000, method: 'GET', target: '/teaList?page=1' },
+        { clock: 3_000, method: 'GET', target: '/teaDetail/17627.html' },
+        { clock: 4_000, method: 'HEAD', target: '/teaDetail/17627.html' },
+    ]);
+    assert.throws(
+        () => createZzcTeaConnector({ minimumRequestIntervalMs: 999 }),
+        /minimum request interval/,
+    );
     const pageRaw = await connector.fetchListPage({ page: 1, pageSize: 36 });
     const page = connector.parseListPage(pageRaw, 36);
     assert.strictEqual(page.page, 1);
@@ -272,7 +351,8 @@ async function main() {
     }
 
     const missingRedirect = createZzcTeaConnector({
-        request: requestWithRobots(async () => ({
+        testMode: true,
+        testRequest: requestWithRobots(async () => ({
             status: 302,
             headers: new Headers(),
             body: Buffer.alloc(0),
@@ -292,7 +372,8 @@ async function main() {
         ['/tea/item-13800138000.html', 'ZZCTEA_PUBLIC_PAYLOAD_PII_DETECTED'],
     ]) {
         const invalidRedirect = createZzcTeaConnector({
-            request: requestWithRobots(async () => ({
+            testMode: true,
+            testRequest: requestWithRobots(async () => ({
                 status: 301,
                 headers: new Headers({ location }),
                 body: Buffer.alloc(0),
@@ -329,7 +410,8 @@ async function main() {
         ],
     ]) {
         const blocked = createZzcTeaConnector({
-            request: async rawUrl => {
+            testMode: true,
+            testRequest: async rawUrl => {
                 assert.strictEqual(rawUrl, ROBOTS_URL);
                 return response;
             },
@@ -413,7 +495,8 @@ async function main() {
     );
 
     const detailBlocked = createZzcTeaConnector({
-        request: async rawUrl => {
+        testMode: true,
+        testRequest: async rawUrl => {
             assert.strictEqual(rawUrl, ROBOTS_URL);
             return robotsResponse(Buffer.from(
                 'User-agent: *\nAllow: /teaList\nDisallow: /teaDetail/\n',
