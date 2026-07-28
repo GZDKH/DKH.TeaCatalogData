@@ -5,6 +5,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const {
+    assertArtifactSafe,
     buildArtifact,
     ingestSourceSnapshot,
     replaySourceSnapshot,
@@ -417,6 +418,66 @@ async function main() {
             ...normalizedItem('1'),
             provenance: { observedAt: '2026-07-27T02:00:00.000Z' },
         };
+        const phoneShapedSha256 =
+            `${'a'.repeat(53)}13800138000`;
+        assert.strictEqual(phoneShapedSha256.length, 64);
+        assert.doesNotThrow(() => assertArtifactSafe({
+            semanticDigest: phoneShapedSha256,
+            snapshot: {
+                rawPayloadDigest: phoneShapedSha256,
+            },
+            items: [{
+                provenance: {
+                    detailPayloadDigest: phoneShapedSha256,
+                    listPayloadDigest: phoneShapedSha256,
+                },
+            }],
+        }));
+        assert.strictEqual(
+            buildArtifact(
+                checkpoint('2026-07-27T01:00:00.000Z'),
+                [{
+                    ...itemAtOne,
+                    provenance: {
+                        ...itemAtOne.provenance,
+                        detailPayloadDigest: phoneShapedSha256,
+                        listPayloadDigest: phoneShapedSha256,
+                    },
+                }],
+            ).itemCount,
+            1,
+        );
+        assert.throws(
+            () => buildArtifact(
+                checkpoint('2026-07-27T01:00:00.000Z'),
+                [{
+                    ...itemAtOne,
+                    provenance: {
+                        ...itemAtOne.provenance,
+                        detailPayloadDigest: 'Call 13800138000',
+                    },
+                }],
+            ),
+            error => error.code ===
+                'SOURCE_ARTIFACT_PII_POLICY_VIOLATION',
+        );
+        assert.throws(
+            () => buildArtifact(
+                checkpoint('2026-07-27T01:00:00.000Z'),
+                [{
+                    ...itemAtOne,
+                    localizedFields: {
+                        ...itemAtOne.localizedFields,
+                        'zh-CN': {
+                            ...itemAtOne.localizedFields['zh-CN'],
+                            detailPayloadDigest: phoneShapedSha256,
+                        },
+                    },
+                }],
+            ),
+            error => error.code ===
+                'SOURCE_ARTIFACT_PII_POLICY_VIOLATION',
+        );
         assert.strictEqual(
             buildArtifact(checkpoint('2026-07-27T01:00:00.000Z'), [itemAtOne]).semanticDigest,
             buildArtifact(checkpoint('2026-07-27T02:00:00.000Z'), [itemAtTwo]).semanticDigest,

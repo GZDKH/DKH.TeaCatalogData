@@ -23,6 +23,7 @@ const {
 const CHECKPOINT_SCHEMA = 'catalog-source-checkpoint-v1';
 const ARTIFACT_SCHEMA = 'catalog-source-artifact-v1';
 const MANIFEST_SCHEMA = 'catalog-source-artifact-manifest-v1';
+const SHA256_HEX = /^[a-f0-9]{64}$/u;
 
 function mapLimit(items, limit, worker) {
     const results = new Array(items.length);
@@ -387,8 +388,28 @@ async function collectDetails(context, listItems) {
 }
 
 function assertArtifactSafe(artifact) {
+    function isArtifactSha256Digest(current, path) {
+        if (!SHA256_HEX.test(current)) return false;
+        if (path.length === 1 && path[0] === 'semanticDigest') {
+            return true;
+        }
+        if (path.length === 2 &&
+            path[0] === 'snapshot' &&
+            path[1] === 'rawPayloadDigest') {
+            return true;
+        }
+        return path.length === 4 &&
+            path[0] === 'items' &&
+            /^\d+$/u.test(path[1]) &&
+            path[2] === 'provenance' &&
+            ['detailPayloadDigest', 'listPayloadDigest'].includes(path[3]);
+    }
+
     function visit(current, path = []) {
         if (typeof current === 'string') {
+            if (isArtifactSha256Digest(current, path)) {
+                return;
+            }
             const isImageUrl =
                 path.at(-1) === 'url' && path.at(-3) === 'images';
             const isObservedCanonicalUrl =
