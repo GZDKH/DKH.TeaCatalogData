@@ -72,6 +72,7 @@ function main() {
     const semantic = validateArtifact({
         products: bundle.products,
         definitions: bundle.definitions,
+        catalogs: bundle.catalogs,
         catalogBindings: bundle.catalogBindings,
         requiredLocales: manifest.requiredLocales || [],
         lossEvents: manifest.lossEvents || [],

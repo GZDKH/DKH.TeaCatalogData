@@ -118,7 +118,15 @@ function validateArtifact(input = {}) {
         errors.push(...validateCatalogBindingCoverage(
             products,
             input.catalogBindings,
-            input.requiredCatalogCode || DEFAULT_CATALOG_CODE));
+            input.requiredCatalogCode || DEFAULT_CATALOG_CODE,
+            requiredLocales));
+    }
+    if (input.catalogs !== undefined) {
+        errors.push(...validateCatalogReferenceParity(
+            input.catalogs,
+            input.catalogBindings,
+            input.requiredCatalogCode || DEFAULT_CATALOG_CODE,
+            requiredLocales));
     }
 
     validateDefinitionParity({
@@ -180,7 +188,11 @@ function validateArtifact(input = {}) {
     };
 }
 
-function validateCatalogBindingCoverage(products, catalogBindings, requiredCatalogCode) {
+function validateCatalogBindingCoverage(
+    products,
+    catalogBindings,
+    requiredCatalogCode,
+    requiredLocales = []) {
     const errors = [];
     if (!Array.isArray(catalogBindings)) {
         return ['catalogBindings must be an array.'];
@@ -190,6 +202,11 @@ function validateCatalogBindingCoverage(products, catalogBindings, requiredCatal
     if (!binding) {
         return [`Catalog binding ${catalogCode} was not found.`];
     }
+    validateCatalogTranslations(
+        binding,
+        `Catalog binding ${catalogCode}`,
+        requiredLocales,
+        errors);
     if (!Array.isArray(binding.categories) || binding.categories.length === 0) {
         return [`Catalog binding ${catalogCode} has no categories.`];
     }
@@ -230,6 +247,75 @@ function validateCatalogBindingCoverage(products, catalogBindings, requiredCatal
         }
     }
     return errors;
+}
+
+function validateCatalogReferenceParity(
+    catalogs,
+    catalogBindings,
+    requiredCatalogCode,
+    requiredLocales = []) {
+    const errors = [];
+    if (!Array.isArray(catalogs)) return ['catalogs must be an array.'];
+    const catalogCode = normalizeCode(requiredCatalogCode);
+    const catalog = catalogs.find(item => normalizeCode(item?.code) === catalogCode);
+    if (!catalog) return [`Catalog reference ${catalogCode} was not found.`];
+
+    validateCatalogTranslations(
+        catalog,
+        `Catalog reference ${catalogCode}`,
+        requiredLocales,
+        errors);
+
+    if (Array.isArray(catalogBindings)) {
+        const binding = catalogBindings.find(item => normalizeCode(item?.code) === catalogCode);
+        if (binding
+            && JSON.stringify(catalog.translations) !== JSON.stringify(binding.translations)) {
+            errors.push(
+                `Catalog reference ${catalogCode} translations differ from its catalog binding.`);
+        }
+    }
+    return errors;
+}
+
+function validateCatalogTranslations(catalog, label, requiredLocales, errors) {
+    if (!Array.isArray(catalog.translations)) {
+        errors.push(`${label} translations must be an array.`);
+        return;
+    }
+
+    const locales = new Set();
+    for (const [index, translation] of catalog.translations.entries()) {
+        const prefix = `${label} translations[${index}]`;
+        if (!isPlainObject(translation)) {
+            errors.push(`${prefix} must be an object.`);
+            continue;
+        }
+        const locale = String(translation.lang || '').trim();
+        const localeKey = locale.toLowerCase();
+        if (!locale) {
+            errors.push(`${prefix} has no locale.`);
+            continue;
+        }
+        if (locales.has(localeKey)) {
+            errors.push(`${label} has duplicate ${locale} translation.`);
+        }
+        locales.add(localeKey);
+        if (!String(translation.name || '').trim()) {
+            errors.push(`${prefix} has no name.`);
+        }
+        if (!String(translation.description || '').trim()) {
+            errors.push(`${prefix} has no description.`);
+        }
+        if (!String(translation.seo || '').trim()) {
+            errors.push(`${prefix} has no seo handle.`);
+        }
+    }
+
+    for (const locale of requiredLocales || []) {
+        if (!locales.has(String(locale).toLowerCase())) {
+            errors.push(`${label} is missing required ${locale} translation.`);
+        }
+    }
 }
 
 function arrayInput(value, label, errors, optional = false) {
@@ -1227,5 +1313,6 @@ function isDuration(value) {
 module.exports = {
     KNOWN_PACKAGES,
     validateCatalogBindingCoverage,
+    validateCatalogReferenceParity,
     validateArtifact,
 };
