@@ -12,7 +12,9 @@ const {
 } = require('./lib/artifacts');
 const {
     assertBundleBindings,
+    buildBundleIdentity,
     cloneFile,
+    collectFileInventory,
     verifyImportBundle,
     writeImportBundle,
 } = require('./lib/import-bundle');
@@ -45,6 +47,54 @@ function writeText(file, value) {
     return sha256(fs.readFileSync(file));
 }
 
+function refreshTamperedBundleIdentity(output) {
+    const mediaRoot = path.join(output, 'media');
+    const mediaManifestFile = path.join(mediaRoot, 'media-manifest.json');
+    const mediaManifest = JSON.parse(fs.readFileSync(mediaManifestFile, 'utf8'));
+    mediaManifest.mediaItemsSha256 = sha256(
+        fs.readFileSync(path.join(mediaRoot, mediaManifest.mediaItemsFile)),
+    );
+    mediaManifest.receiptSha256 = sha256(
+        fs.readFileSync(path.join(mediaRoot, mediaManifest.receiptFile)),
+    );
+    writeJsonAtomic(mediaManifestFile, mediaManifest);
+
+    const manifestFile = path.join(output, 'import-bundle-manifest.json');
+    const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+    manifest.inventory = collectFileInventory(
+        output,
+        new Set(['import-bundle-manifest.json']),
+    );
+    const byFile = new Map(manifest.inventory.map(entry => [entry.file, entry]));
+    for (const [key, file] of [
+        ['importPlan', 'import-plan.json'],
+        ['products', 'data/products.json'],
+        ['sourceProductMappings', 'data/source-product-mappings.json'],
+        ['commerceObservations', 'data/commerce-observations.json'],
+        ['mediaManifest', 'media/media-manifest.json'],
+        ['mediaItems', 'media/media-items.json'],
+        ['mediaReceipt', 'media/media-receipt.json'],
+        ['mediaCheckpoint', 'media/media-checkpoint.json'],
+    ]) {
+        manifest.files[key] = byFile.get(file);
+    }
+    manifest.inputEvidence.mediaManifestSha256 =
+        manifest.files.mediaManifest.sha256;
+    manifest.inputEvidence.mediaItemsSha256 = mediaManifest.mediaItemsSha256;
+    manifest.inputEvidence.mediaReceiptSha256 = mediaManifest.receiptSha256;
+    manifest.bundleId = sha256(stableJson(buildBundleIdentity({
+        counts: manifest.counts,
+        directories: manifest.directories,
+        inputEvidence: manifest.inputEvidence,
+        inventory: manifest.inventory,
+        snapshotId: manifest.snapshotId,
+        sourceId: manifest.sourceId,
+    })));
+    manifest.version =
+        `${manifest.snapshotId}.${manifest.bundleId.slice(0, 12)}`;
+    writeJsonAtomic(manifestFile, manifest);
+}
+
 function createContext() {
     const inputRoot = temporaryDirectory();
     const sourceRoot = path.join(inputRoot, 'source');
@@ -66,7 +116,16 @@ function createContext() {
             referencePricesAreRetailPrices: false,
         },
         items: [
-            { externalId: '1', images: [] },
+            {
+                externalId: '1',
+                images: [{
+                    role: 'gallery',
+                    url: 'https://oss.yf-gz.cn/file/a.jpg',
+                }],
+                localizedFields: {
+                    'zh-CN': { name: 'Tea' },
+                },
+            },
             { externalId: '2', images: [] },
             { externalId: '3', images: [] },
         ],
@@ -276,10 +335,7 @@ function createContext() {
         productionWrites: false,
     };
     const mediaDocuments = buildOutputDocuments({
-        artifact: {
-            source: { id: 'zzctea' },
-            items: [{ images: [{ url: 'https://oss.yf-gz.cn/file/a.jpg' }] }],
-        },
+        artifact: sourceArtifact,
         binding: mediaBinding,
         candidates: [{
             aliases: ['https://oss.yf-gz.cn/file/a.jpg'],
@@ -487,10 +543,53 @@ function testSymlinkGates() {
     );
 }
 
+function testMediaDescriptorAndBindingGates() {
+    const descriptorOutput = temporaryDirectory();
+    writeImportBundle(descriptorOutput, createContext());
+    const mediaItemsFile = path.join(
+        descriptorOutput,
+        'media',
+        'media-items.json',
+    );
+    const mediaItems = JSON.parse(fs.readFileSync(mediaItemsFile, 'utf8'));
+    mediaItems[0] = {
+        ...mediaItems[0],
+        bytes: 999,
+        contentType: 'text/html',
+        file: '../../outside.jpg',
+        sha256: 'f'.repeat(64),
+    };
+    writeJsonAtomic(mediaItemsFile, mediaItems);
+    refreshTamperedBundleIdentity(descriptorOutput);
+    assert.throws(
+        () => verifyImportBundle(descriptorOutput),
+        /Media items do not exactly match the verified receipt/,
+    );
+
+    const receiptOutput = temporaryDirectory();
+    writeImportBundle(receiptOutput, createContext());
+    const receiptFile = path.join(
+        receiptOutput,
+        'media',
+        'media-receipt.json',
+    );
+    const receipt = JSON.parse(fs.readFileSync(receiptFile, 'utf8'));
+    receipt.snapshotId = 'foreign-snapshot';
+    receipt.inputArtifactSha256 = 'f'.repeat(64);
+    receipt.selectedOriginalCount += 1;
+    writeJsonAtomic(receiptFile, receipt);
+    refreshTamperedBundleIdentity(receiptOutput);
+    assert.throws(
+        () => verifyImportBundle(receiptOutput),
+        /media receipt is incomplete or unsupported/,
+    );
+}
+
 function main() {
     testDeterministicBundle();
     testBindingFailure();
     testInventoryAndIdentityGates();
+    testMediaDescriptorAndBindingGates();
     testSymlinkGates();
     console.log('import bundle tests passed');
 }
@@ -509,5 +608,6 @@ module.exports = {
     testBindingFailure,
     testDeterministicBundle,
     testInventoryAndIdentityGates,
+    testMediaDescriptorAndBindingGates,
     testSymlinkGates,
 };
