@@ -9,9 +9,11 @@ const {
 const { decodeSanitizedEnvelope } = require('./sanitized-envelope');
 const { normalizeDecimal, normalizeUnit, parsePackage } = require('./package-parser');
 
-const PARSER_VERSION = 'zzctea-public-html-nuxt-v4';
+const PARSER_VERSION = 'zzctea-public-html-nuxt-v6';
 const MAXIMUM_TOTAL_PAGES = 10_000;
 const MAXIMUM_SOURCE_DESCRIPTION_LENGTH = 4_000;
+const MAXIMUM_MARKET_DECIMAL_DIGITS = 48;
+const MAXIMUM_MARKET_DECIMAL_SCALE = 18;
 const SOURCE_DESCRIPTION_CONTROL =
     /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]/;
 const SOURCE_DESCRIPTION_HTML = /<(?:(?:\/?[A-Za-z])|!DOCTYPE|!--|\?xml)[^>]*>/i;
@@ -30,6 +32,66 @@ function positiveDecimal(value) {
     if (typeof value !== 'string' || !/^\d+(?:\.\d+)?$/.test(value)) return null;
     const normalized = normalizeDecimal(value);
     return decimalParts(normalized).integer > 0n ? normalized : null;
+}
+
+function marketDecimal(
+    value,
+    { allowNegative = true, allowZero = true } = {},
+) {
+    if (typeof value !== 'string' ||
+        !/^-?(?:(?:0|[1-9]\d*)(?:\.\d+)?|\.\d+)$/.test(value)) {
+        return null;
+    }
+    const negative = value.startsWith('-');
+    if (negative && !allowNegative) return null;
+    const unsigned = negative ? value.slice(1) : value;
+    const [rawWhole = '0', rawFraction = ''] = unsigned.split('.');
+    if (rawWhole.length + rawFraction.length > MAXIMUM_MARKET_DECIMAL_DIGITS ||
+        rawFraction.length > MAXIMUM_MARKET_DECIMAL_SCALE) {
+        return null;
+    }
+    const whole = rawWhole.replace(/^0+(?=\d)/, '') || '0';
+    const fraction = rawFraction.replace(/0+$/, '');
+    const zero = whole === '0' && !fraction;
+    if (zero && !allowZero) return null;
+    return `${negative && !zero ? '-' : ''}${whole}${fraction ? `.${fraction}` : ''}`;
+}
+
+function scaledMarketDecimal(value) {
+    const normalized = marketDecimal(value);
+    if (normalized === null) return null;
+    const negative = normalized.startsWith('-');
+    const unsigned = negative ? normalized.slice(1) : normalized;
+    const [whole, fraction = ''] = unsigned.split('.');
+    return {
+        integer: BigInt(`${whole}${fraction}`) * (negative ? -1n : 1n),
+        normalized,
+        scale: fraction.length,
+    };
+}
+
+function formatSignedScaled(integer, scale) {
+    const negative = integer < 0n;
+    let digits = (negative ? -integer : integer).toString();
+    if (scale > 0) {
+        digits = digits.padStart(scale + 1, '0');
+        const whole = digits.slice(0, -scale);
+        const fraction = digits.slice(-scale).replace(/0+$/, '');
+        digits = fraction ? `${whole}.${fraction}` : whole;
+    }
+    return `${negative && digits !== '0' ? '-' : ''}${digits}`;
+}
+
+function subtractMarketDecimal(left, right) {
+    const leftParts = scaledMarketDecimal(left);
+    const rightParts = scaledMarketDecimal(right);
+    if (!leftParts || !rightParts) return null;
+    const scale = Math.max(leftParts.scale, rightParts.scale);
+    const leftInteger =
+        leftParts.integer * (10n ** BigInt(scale - leftParts.scale));
+    const rightInteger =
+        rightParts.integer * (10n ** BigInt(scale - rightParts.scale));
+    return formatSignedScaled(leftInteger - rightInteger, scale);
 }
 
 function optionalString(source, key) {
@@ -191,6 +253,206 @@ function normalizeRelease(source, basisUnitCode, diagnostics) {
     };
 }
 
+function marketCount(source, key, diagnostics) {
+    if (source[key] === undefined || source[key] === null ||
+        source[key] === '') {
+        return null;
+    }
+    const value = intValue(source[key]);
+    if (value === null || value < 0) {
+        diagnostics.push('ZZCTEA_MARKET_COUNT_INVALID');
+        return null;
+    }
+    return value;
+}
+
+function marketDecimalField(source, key, diagnostics, options = {}) {
+    if (source[key] === undefined || source[key] === null ||
+        source[key] === '') {
+        return null;
+    }
+    const value = marketDecimal(source[key], options);
+    if (value === null) diagnostics.push('ZZCTEA_MARKET_DECIMAL_INVALID');
+    return value;
+}
+
+function marketRange(source, minimumKey, maximumKey, diagnostics) {
+    const minimum = marketDecimalField(source, minimumKey, diagnostics, {
+        allowNegative: false,
+        allowZero: false,
+    });
+    const maximum = marketDecimalField(source, maximumKey, diagnostics, {
+        allowNegative: false,
+        allowZero: false,
+    });
+    const minimumPresent = source[minimumKey] !== undefined &&
+        source[minimumKey] !== null &&
+        source[minimumKey] !== '';
+    const maximumPresent = source[maximumKey] !== undefined &&
+        source[maximumKey] !== null &&
+        source[maximumKey] !== '';
+    if (!minimumPresent && !maximumPresent) return null;
+    if (!minimum || !maximum) {
+        diagnostics.push('ZZCTEA_MARKET_PRICE_RANGE_INVALID');
+        return null;
+    }
+    const difference = subtractMarketDecimal(maximum, minimum);
+    if (difference === null || difference.startsWith('-')) {
+        diagnostics.push('ZZCTEA_MARKET_PRICE_RANGE_INVALID');
+        return null;
+    }
+    return {
+        minimumAmount: minimum,
+        maximumAmount: maximum,
+    };
+}
+
+function normalizeMarketFacts(
+    source,
+    basisUnitCode,
+    sourceUpdatedAt,
+    diagnostics,
+) {
+    const aggregates = Object.fromEntries(Object.entries({
+        demandCount: marketCount(source, 'buyCount', diagnostics),
+        supplyCount: marketCount(source, 'sellCount', diagnostics),
+        followerCount: marketCount(source, 'interestedCount', diagnostics),
+        commentCount: marketCount(source, 'commentCount', diagnostics),
+        forumCount: marketCount(source, 'forumCount', diagnostics),
+        demandParticipantCount:
+            marketCount(source, 'demandParticipantCount', diagnostics),
+        supplyParticipantCount:
+            marketCount(source, 'supplyParticipantCount', diagnostics),
+    }).filter(([, value]) => value !== null));
+
+    const displayStatus = intValue(source.priceDisplayStatus);
+    let pricing = null;
+    if (displayStatus === null || displayStatus === 1) {
+        const currentAmount = marketDecimalField(
+            source,
+            'price',
+            diagnostics,
+            {
+                allowNegative: false,
+                allowZero: false,
+            },
+        );
+        const absoluteChangeAmount = marketDecimalField(
+            source,
+            'rise',
+            diagnostics,
+        );
+        const directPreviousAmount = marketDecimalField(
+            source,
+            'lastWeekPrice',
+            diagnostics,
+            {
+                allowNegative: false,
+                allowZero: false,
+            },
+        );
+        let previousAmount = directPreviousAmount;
+        let previousAmountDerivation = directPreviousAmount
+            ? 'source-last-week-price'
+            : null;
+        const derivedPrevious = currentAmount && absoluteChangeAmount
+            ? subtractMarketDecimal(currentAmount, absoluteChangeAmount)
+            : null;
+        if (derivedPrevious && !derivedPrevious.startsWith('-') &&
+            derivedPrevious !== '0') {
+            if (!previousAmount) {
+                previousAmount = derivedPrevious;
+                previousAmountDerivation = 'current-minus-source-absolute-change';
+            } else if (previousAmount !== derivedPrevious) {
+                diagnostics.push('ZZCTEA_PREVIOUS_PRICE_MISMATCH');
+            }
+        }
+        const periodRatios = Object.fromEntries(Object.entries({
+            week: marketDecimalField(
+                source,
+                'weekPercent',
+                diagnostics,
+            ),
+            month: marketDecimalField(
+                source,
+                'monthPercent',
+                diagnostics,
+            ),
+            threeMonth: marketDecimalField(
+                source,
+                'threeMonthPercent',
+                diagnostics,
+            ),
+            halfYear: marketDecimalField(
+                source,
+                'halfYearPercent',
+                diagnostics,
+            ),
+            year: marketDecimalField(
+                source,
+                'yearPercent',
+                diagnostics,
+            ),
+        }).filter(([, value]) => value !== null));
+        const trends = Object.fromEntries(Object.entries({
+            absoluteChangeAmount,
+            displayPercentChange: marketDecimalField(
+                source,
+                'risePercent',
+                diagnostics,
+            ),
+            periodRatios: Object.keys(periodRatios).length > 0
+                ? periodRatios
+                : null,
+        }).filter(([, value]) => value !== null));
+        const ranges = Object.fromEntries(Object.entries({
+            source: marketRange(
+                source,
+                'minPrice',
+                'maxPrice',
+                diagnostics,
+            ),
+            week: marketRange(
+                source,
+                'thisWeekMinPrice',
+                'thisWeekMaxPrice',
+                diagnostics,
+            ),
+            year: marketRange(
+                source,
+                'thisYearMinPrice',
+                'thisYearMaxPrice',
+                diagnostics,
+            ),
+        }).filter(([, value]) => value !== null));
+        if ((currentAmount || previousAmount ||
+            Object.keys(trends).length > 0 ||
+            Object.keys(ranges).length > 0) &&
+            !basisUnitCode) {
+            diagnostics.push('ZZCTEA_MARKET_PRICE_BASIS_UNKNOWN');
+        } else if (basisUnitCode) {
+            pricing = {
+                currencyCode: 'CNY',
+                basisUnitCode,
+                ...(currentAmount ? { currentAmount } : {}),
+                ...(previousAmount ? {
+                    previousAmount,
+                    previousAmountDerivation,
+                } : {}),
+                ...(Object.keys(ranges).length > 0 ? { ranges } : {}),
+                ...(Object.keys(trends).length > 0 ? { trends } : {}),
+            };
+        }
+    }
+
+    if (!pricing && Object.keys(aggregates).length === 0) return null;
+    return {
+        ...(sourceUpdatedAt ? { sourceUpdatedAt } : {}),
+        ...(pricing ? { pricing } : {}),
+        ...(Object.keys(aggregates).length > 0 ? { aggregates } : {}),
+    };
+}
+
 function normalizeProduct(source, options = {}) {
     if (!source || Array.isArray(source) || typeof source !== 'object') {
         reject('ZZCTEA_PRODUCT_SHAPE_INVALID');
@@ -233,6 +495,12 @@ function normalizeProduct(source, options = {}) {
     const description = options.includeDescription
         ? normalizeSourceDescription(source, diagnostics)
         : null;
+    const market = normalizeMarketFacts(
+        source,
+        basisUnitCode,
+        sourceUpdatedAt,
+        diagnostics,
+    );
 
     return {
         schemaVersion: 'catalog-source-item-v1',
@@ -258,6 +526,7 @@ function normalizeProduct(source, options = {}) {
                 }
                 : null,
             release: normalizeRelease(source, basisUnitCode, diagnostics),
+            market,
         },
         images: normalizeImages(source, diagnostics),
         sourceLinks: {
@@ -316,9 +585,15 @@ function normalizeListPage(responseBody, requestedPageSize) {
 
 module.exports = {
     MAXIMUM_TOTAL_PAGES,
+    MAXIMUM_MARKET_DECIMAL_DIGITS,
+    MAXIMUM_MARKET_DECIMAL_SCALE,
     PARSER_VERSION,
     assertPublicCatalogPayload,
+    marketDecimal,
+    marketDecimalField,
     normalizeDetail,
     normalizeListPage,
+    normalizeMarketFacts,
     normalizeProduct,
+    subtractMarketDecimal,
 };

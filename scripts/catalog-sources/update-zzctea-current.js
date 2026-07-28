@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
+const fs = require('fs');
 const path = require('path');
 const {
     REPO_ROOT,
@@ -43,6 +44,7 @@ const ALLOWED_ARGUMENTS = new Set([
     'maximum-growth-ratio',
     'minimum-request-interval-ms',
     'page-size',
+    'previous-media-dir',
     'product-ref',
     'resume',
     'snapshot',
@@ -83,11 +85,34 @@ function validateArguments(args) {
     if (!snapshotId.startsWith('zzctea-')) {
         throw new Error('Snapshot ID must start with "zzctea-".');
     }
+    const previousMediaDirectory = String(
+        requireArg(args, 'previous-media-dir'),
+    );
+    if (!path.isAbsolute(previousMediaDirectory) ||
+        path.normalize(previousMediaDirectory) !== previousMediaDirectory) {
+        throw new Error(
+            '--previous-media-dir must be an absolute, normalized path.',
+        );
+    }
     return {
         catalogReference: requireArg(args, 'catalog-ref'),
+        previousMediaDirectory,
         productReference: requireArg(args, 'product-ref'),
         snapshotId,
     };
+}
+
+function assertPreviousMediaDirectory(directory) {
+    const bundleRoot = path.dirname(directory);
+    for (const [target, label] of [
+        [bundleRoot, 'Previous canonical import bundle'],
+        [directory, 'Previous canonical media directory'],
+    ]) {
+        const stat = fs.lstatSync(target, { throwIfNoEntry: false });
+        if (!stat || stat.isSymbolicLink() || !stat.isDirectory()) {
+            throw new Error(`${label} must be an existing real directory.`);
+        }
+    }
 }
 
 async function fetchWeeklySnapshot(args, options = {}) {
@@ -144,6 +169,7 @@ function passOptionalArguments(source, target, names) {
 async function updateZzcTeaCurrent(args, options = {}) {
     const repositoryRoot = path.resolve(options.repositoryRoot || REPO_ROOT);
     const validated = validateArguments(args);
+    assertPreviousMediaDirectory(validated.previousMediaDirectory);
     const stages = {
         buildBundle:
             options.stages?.buildBundle || buildZzcTeaImportBundle,
@@ -185,8 +211,14 @@ async function updateZzcTeaCurrent(args, options = {}) {
         'timeout-ms',
     ]);
     const media = await stages.materializeMedia(mediaArgs, {
+        previousMediaDirectory: validated.previousMediaDirectory,
         repositoryRoot,
     });
+    if (media?.manifest?.productionWrites !== false) {
+        throw new Error(
+            'Weekly media materialization must prove productionWrites=false.',
+        );
+    }
     const bundle = await stages.buildBundle({
         'artifact-dir': artifactDirectory,
         'media-dir': media.outputDirectory,
@@ -226,6 +258,7 @@ if (require.main === module) {
 
 module.exports = {
     ALLOWED_ARGUMENTS,
+    assertPreviousMediaDirectory,
     fetchWeeklySnapshot,
     numberArgument,
     passOptionalArguments,

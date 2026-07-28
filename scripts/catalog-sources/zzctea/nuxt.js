@@ -45,6 +45,7 @@ const productFields = Object.freeze([
     'priceDisplayStatus',
     'arrivalTime',
     'date',
+    'description',
     'createdAt',
     'updatedAt',
     'unit',
@@ -53,11 +54,33 @@ const productFields = Object.freeze([
     'distributionPrice',
     'distributionCount',
     'marketStatus',
+    'buyCount',
+    'sellCount',
+    'interestedCount',
+    'commentCount',
+    'forumCount',
+    'demandParticipantCount',
+    'supplyParticipantCount',
 ]);
 const excludedStructuredProductFields = new Set([
     'risePriceDisplay',
     'teaPriceDetail',
 ]);
+const detailTopLevelFields = Object.freeze([
+    'halfYearPercent',
+    'monthPercent',
+    'threeMonthPercent',
+    'weekPercent',
+    'yearPercent',
+    'thisWeekMaxPrice',
+    'thisWeekMinPrice',
+    'thisYearMaxPrice',
+    'thisYearMinPrice',
+]);
+const detailTopLevelAliases = Object.freeze({
+    buyPeopleCount: 'demandParticipantCount',
+    sellPeopleCount: 'supplyParticipantCount',
+});
 
 function fail(code = 'ZZCTEA_NUXT_SERIALIZATION_INVALID') {
     reject(code);
@@ -430,6 +453,35 @@ function sanitizeProduct(source) {
     return result;
 }
 
+function detailProduct(data) {
+    const source = data.teaDetail;
+    if (!source || Array.isArray(source) || typeof source !== 'object') {
+        fail('ZZCTEA_NUXT_PRODUCT_SHAPE_INVALID');
+    }
+    const merged = Object.assign(Object.create(null), source);
+    for (const sourceKey of detailTopLevelFields) {
+        const value = data[sourceKey];
+        if (value === undefined || value === null) continue;
+        if (merged[sourceKey] !== undefined &&
+            merged[sourceKey] !== null &&
+            String(merged[sourceKey]) !== String(value)) {
+            fail('ZZCTEA_NUXT_DETAIL_MARKET_FIELD_MISMATCH');
+        }
+        merged[sourceKey] = value;
+    }
+    for (const [sourceKey, targetKey] of Object.entries(detailTopLevelAliases)) {
+        const value = data[sourceKey];
+        if (value === undefined || value === null) continue;
+        if (merged[targetKey] !== undefined &&
+            merged[targetKey] !== null &&
+            String(merged[targetKey]) !== String(value)) {
+            fail('ZZCTEA_NUXT_DETAIL_MARKET_FIELD_MISMATCH');
+        }
+        merged[targetKey] = value;
+    }
+    return merged;
+}
+
 function serializeSanitizedEnvelope(envelope) {
     assertPublicCatalogPayload(envelope);
     const serialized = Buffer.from(JSON.stringify(envelope));
@@ -482,7 +534,7 @@ function sanitizeListHtml(responseBody, expectedPage, expectedPageSize) {
 
 function sanitizeDetailHtml(responseBody, expectedExternalId) {
     const data = firstDataEntry(extractNuxtState(responseBody));
-    const product = sanitizeProduct(data.teaDetail);
+    const product = sanitizeProduct(detailProduct(data));
     if (product.id !== String(expectedExternalId)) {
         fail('ZZCTEA_NUXT_DETAIL_ID_MISMATCH');
     }
@@ -542,6 +594,7 @@ function sanitizeTerminalProbeHtml(
 module.exports = {
     MAXIMUM_HTML_BYTES,
     PRODUCT_FIELDS: productFields,
+    detailProduct,
     extractNuxtState,
     sanitizeDetailHtml,
     sanitizeListHtml,

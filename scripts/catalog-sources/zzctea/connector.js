@@ -35,6 +35,11 @@ const {
 
 const SOURCE_HOSTS = PUBLIC_CANONICAL_POLICY.allowedHosts;
 const SOURCE_ORIGIN = 'https://zzctea.com';
+const MAXIMUM_DETAIL_VALIDATION_ATTEMPTS = 3;
+const RETRYABLE_DETAIL_VALIDATION_CODES = new Set([
+    'ZZCTEA_PRODUCT_ID_INVALID',
+    'ZZCTEA_NUXT_DETAIL_ID_MISMATCH',
+]);
 const CRAWLER_PRODUCT_TOKEN = 'DKH.TeaCatalogData';
 const CRAWLER_USER_AGENT = 'DKH.TeaCatalogData catalog-source-ingestion/1';
 const ROBOTS_URL = `${SOURCE_ORIGIN}/robots.txt`;
@@ -406,9 +411,25 @@ function createZzcTeaConnector(options = {}) {
         }
     }
 
+    async function fetchValidatedDetail(externalId) {
+        for (let attempt = 1;
+            attempt <= MAXIMUM_DETAIL_VALIDATION_ATTEMPTS;
+            attempt += 1) {
+            try {
+                return (await fetchDetailDocument(externalId)).raw;
+            } catch (error) {
+                if (attempt === MAXIMUM_DETAIL_VALIDATION_ATTEMPTS ||
+                    !RETRYABLE_DETAIL_VALIDATION_CODES.has(error?.code)) {
+                    throw error;
+                }
+            }
+        }
+        reject('ZZCTEA_DETAIL_VALIDATION_RETRY_EXHAUSTED');
+    }
+
     return Object.freeze({
         id: 'zzctea',
-        connectorVersion: 'zzctea-public-html-v7',
+        connectorVersion: 'zzctea-public-html-v8',
         parserVersion: PARSER_VERSION,
         defaultPageSize: 36,
         maximumPageSize: 36,
@@ -419,6 +440,11 @@ function createZzcTeaConnector(options = {}) {
                 listPagePattern: `${SOURCE_ORIGIN}${LIST_PATH}?page={page}`,
                 detailPagePattern: `${SOURCE_ORIGIN}${DETAIL_PATH_PATTERN}`,
                 detailRedirectMode: 'bounded-manual-get-chain',
+                detailValidationRetry: {
+                    maxAttempts: MAXIMUM_DETAIL_VALIDATION_ATTEMPTS,
+                    retryableCodes:
+                        [...RETRYABLE_DETAIL_VALIDATION_CODES].sort(),
+                },
                 canonicalHeadPattern: `${SOURCE_ORIGIN}${DETAIL_PATH_PATTERN}`,
                 canonicalDestinationPathPattern: '/tea/{slug}.html',
                 maximumCanonicalRedirects: MAXIMUM_CANONICAL_REDIRECTS,
@@ -493,7 +519,7 @@ function createZzcTeaConnector(options = {}) {
             });
         },
         async fetchDetail({ externalId }) {
-            return (await fetchDetailDocument(externalId)).raw;
+            return fetchValidatedDetail(externalId);
         },
         parseDetail: normalizeDetail,
         async resolveCanonicalUrl({ externalId }) {
@@ -510,6 +536,7 @@ module.exports = {
     DETAIL_PATH_PATTERN,
     DISCOVERY_SCHEMA,
     LIST_PATH,
+    MAXIMUM_DETAIL_VALIDATION_ATTEMPTS,
     REVIEWED_BRANDS,
     REVIEWED_BRAND_MANIFEST_SHA256,
     ROBOTS_URL,

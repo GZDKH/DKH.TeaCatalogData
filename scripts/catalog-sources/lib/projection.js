@@ -5,6 +5,9 @@ const {
     sha256,
     stableJson,
 } = require('./artifacts');
+const {
+    composeProductDescription,
+} = require('./product-text-contract');
 
 const ARTIFACT_SCHEMA = 'catalog-source-artifact-v1';
 const ITEM_SCHEMA = 'catalog-source-item-v1';
@@ -318,7 +321,6 @@ function generatedFactualDescriptions(item) {
     const technology = safeDescriptionFragment(facts.productionTechnology);
     const shape = safeDescriptionFragment(facts.shape);
     const packageZh = packageSummary(item.package, 'zh-CN');
-    const packageEn = packageSummary(item.package, 'en-US');
     const zhFacts = [
         brand && `品牌：${brand}`,
         year && `年份：${year}`,
@@ -327,18 +329,7 @@ function generatedFactualDescriptions(item) {
         shape && `形态：${shape}`,
         packageZh && `包装：${packageZh}`,
     ].filter(Boolean);
-    const enFacts = [
-        brand && `Brand: ${brand}`,
-        year && `year: ${year}`,
-        batch && `batch: ${batch}`,
-        technology && `processing: ${technology}`,
-        shape && `shape: ${shape}`,
-        packageEn && `package: ${packageEn}`,
-    ].filter(Boolean);
     const descriptions = {
-        'en-US': enFacts.length
-            ? `Tea catalog facts — ${enFacts.join('; ')}.`
-            : 'Tea catalog record with verified source identity.',
         'zh-CN': zhFacts.length
             ? `茶品资料：${zhFacts.join('；')}。`
             : '具有可验证来源标识的茶品资料。',
@@ -362,52 +353,37 @@ function projectLocalizedText(item) {
         'Item localized fields',
     );
     const generatedDescriptions = generatedFactualDescriptions(item);
-    const projected = Object.keys(localizedFields).sort().map(languageCode => {
-        if (!/^[A-Za-z0-9]{2,8}(?:-[A-Za-z0-9]{2,8})*$/.test(languageCode) ||
-            languageCode.length > 16) {
+    const fields = requireObject(
+        localizedFields['zh-CN'],
+        'CATALOG_SOURCE_PROJECTION_LOCALIZED_TEXT_INVALID',
+        'Localized fields zh-CN',
+    );
+    const title = fields.name === undefined ? fields.title : fields.name;
+    requireBoundedString(title, 1000, 'Localized title zh-CN');
+    let sourceDescription = null;
+    if (fields.description !== undefined && fields.description !== null) {
+        requireBoundedString(
+            fields.description,
+            4000,
+            'Localized description zh-CN',
+        );
+        sourceDescription = safeDescriptionFragment(fields.description);
+        if (!sourceDescription) {
             fail(
                 'CATALOG_SOURCE_PROJECTION_LOCALIZED_TEXT_INVALID',
-                `Language code '${languageCode}' is invalid.`,
+                'Localized description zh-CN is unsafe.',
             );
         }
-        const fields = requireObject(
-            localizedFields[languageCode],
-            'CATALOG_SOURCE_PROJECTION_LOCALIZED_TEXT_INVALID',
-            `Localized fields ${languageCode}`,
-        );
-        const title = fields.name === undefined ? fields.title : fields.name;
-        requireBoundedString(title, 1000, `Localized title ${languageCode}`);
-        const text = { languageCode, title: title.trim() };
-        if (generatedDescriptions[languageCode]) {
-            text.description = generatedDescriptions[languageCode];
-        }
-        return text;
-    });
-    if (projected.length === 0) {
-        fail(
-            'CATALOG_SOURCE_PROJECTION_LOCALIZED_TEXT_INVALID',
-            'Item must contain at least one localized text.',
-        );
     }
-    const fallbackTitle = projected.find(value => value.languageCode === 'zh-CN')?.title ||
-        projected[0]?.title;
-    for (const languageCode of ['en-US', 'zh-CN']) {
-        if (!projected.some(value => value.languageCode === languageCode)) {
-            projected.push({
-                languageCode,
-                title: fallbackTitle,
-                description: generatedDescriptions[languageCode],
-            });
-        }
-    }
-    projected.sort((left, right) => left.languageCode.localeCompare(right.languageCode));
-    if (projected.length > 32) {
-        fail(
-            'CATALOG_SOURCE_PROJECTION_LOCALIZED_TEXT_INVALID',
-            'Item must contain between 1 and 32 localized texts.',
-        );
-    }
-    return projected;
+    const factualDescription = generatedDescriptions['zh-CN'];
+    return [{
+        languageCode: 'zh-CN',
+        title: title.trim(),
+        description: composeProductDescription(
+            sourceDescription,
+            factualDescription,
+        ),
+    }];
 }
 
 function validatePublicHttpsUri(value, label) {

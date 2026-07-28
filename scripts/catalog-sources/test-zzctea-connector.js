@@ -9,6 +9,7 @@ const {
     DEFAULT_MINIMUM_REQUEST_INTERVAL_MS,
     DETAIL_PATH_PATTERN,
     LIST_PATH,
+    MAXIMUM_DETAIL_VALIDATION_ATTEMPTS,
     REVIEWED_BRANDS,
     REVIEWED_BRAND_MANIFEST_SHA256,
     ROBOTS_URL,
@@ -20,7 +21,10 @@ const {
     sanitizeDetailHtml,
     sanitizeTerminalProbeHtml,
 } = require('./zzctea/nuxt');
+const { decodeSanitizedEnvelope } = require('./zzctea/sanitized-envelope');
 const { MAXIMUM_ROBOTS_BYTES } = require('./zzctea/robots');
+const { projectArtifactItem } = require('./lib/projection');
+const { reconcileProjection } = require('./lib/reconciliation');
 
 const FIXTURES = path.join(__dirname, 'zzctea', 'fixtures');
 
@@ -137,6 +141,16 @@ async function main() {
         url: ROBOTS_URL,
         validationVersion: 'zzctea-robots-agent-query-v2',
     });
+    assert.deepStrictEqual(
+        connector.requestParameters().detailValidationRetry,
+        {
+            maxAttempts: 3,
+            retryableCodes: [
+                'ZZCTEA_NUXT_DETAIL_ID_MISMATCH',
+                'ZZCTEA_PRODUCT_ID_INVALID',
+            ],
+        },
+    );
     assert.deepStrictEqual(
         connector.requestParameters().requestPacing,
         { mode: 'offline-test-double' },
@@ -328,9 +342,73 @@ async function main() {
     const detail = connector.parseDetail(detailRaw);
     assert.strictEqual(detail.externalId, '17627');
     assert.strictEqual(
-        await connector.resolveCanonicalUrl({ externalId: '17627' }),
+        detail.localizedFields['zh-CN'].description,
+        '云南大叶种晒青毛茶制成，饼形端正。香气清晰，滋味醇厚。',
+    );
+    assert.deepStrictEqual(detail.facts.market.aggregates, {
+        demandCount: 29,
+        supplyCount: 10,
+        followerCount: 1007,
+        commentCount: 7,
+        forumCount: 10,
+    });
+    const observedCanonicalUrl = await connector.resolveCanonicalUrl({
+        externalId: '17627',
+    });
+    assert.strictEqual(
+        observedCanonicalUrl,
         'https://www.zzctea.com/tea/fixture-case-tea.html',
     );
+    const observedAt = '2026-07-29T00:00:00.000Z';
+    const projectedDetail = projectArtifactItem({
+        ...detail,
+        sourceLinks: {
+            ...detail.sourceLinks,
+            observedCanonicalUrl,
+        },
+        provenance: {
+            parserVersion: connector.parserVersion,
+            listPayloadDigest: 'a'.repeat(64),
+            detailPayloadDigest: 'b'.repeat(64),
+            observedAt,
+        },
+    }, {
+        artifactSha256: 'c'.repeat(64),
+        parserVersion: connector.parserVersion,
+        snapshotObservedAt: observedAt,
+        sourceId: connector.id,
+    });
+    const endToEnd = reconcileProjection({
+        schemaVersion: 'catalog-source-observation-projection-v1',
+        source: { id: connector.id },
+        itemCount: 1,
+        items: [projectedDetail],
+        deletions: [],
+        authoritativeReferencesIncluded: false,
+        reconciliationComplete: false,
+        productionWrites: false,
+    }, [{
+        id: '11111111-1111-4111-8111-111111111111',
+        code: 'MANUAL-TEA',
+        translations: [],
+        specifications: [],
+        tags: [],
+        tierPrices: [],
+        catalogPrices: [],
+        storePriceOverrides: [],
+        packages: [],
+        catalogs: [],
+        origins: [],
+        related: [],
+        crossSells: [],
+    }]);
+    const endToEndDescription =
+        endToEnd.entries[0].productPatch.translations[0].description;
+    assert.ok(endToEndDescription.startsWith(
+        '云南大叶种晒青毛茶制成，饼形端正。香气清晰，滋味醇厚。 茶品资料：',
+    ));
+    assert.ok(endToEndDescription.length <= 2000);
+    assert.ok(!/[\u0000-\u001F\u007F]/u.test(endToEndDescription));
 
     assert.deepStrictEqual(
         calls.map(call => `${call.url.pathname}${call.url.search}`),
@@ -360,6 +438,47 @@ async function main() {
     assert.ok([pageRaw, terminalRaw, detailRaw].every(raw =>
         !/(?:sellList|buyList|phone|mobile|customer|avatar)/iu.test(raw.toString('utf8')) &&
         !/(?<!\d)1[3-9]\d{9}(?!\d)/u.test(raw.toString('utf8'))));
+
+    let validationAttempt = 0;
+    const transientInvalidDetail = createZzcTeaConnector({
+        testMode: true,
+        testRequest: requestWithRobots(async rawUrl => {
+            const url = new URL(rawUrl);
+            if (url.pathname === '/teaDetail/17627.html') {
+                return {
+                    status: 301,
+                    headers: new Headers({
+                        location:
+                            'https://www.zzctea.com/tea/fixture-case-tea.html',
+                    }),
+                    body: Buffer.alloc(0),
+                };
+            }
+            validationAttempt += 1;
+            return {
+                status: 200,
+                headers: new Headers({
+                    'content-type': 'text/html; charset=utf-8',
+                }),
+                body: validationAttempt === 1
+                    ? nuxtHtml({
+                        teaDetail: {
+                            id: 0,
+                            name: 'Transient invalid detail',
+                        },
+                    })
+                    : fixture('detail-case.html'),
+            };
+        }),
+    });
+    const recoveredDetail = transientInvalidDetail.parseDetail(
+        await transientInvalidDetail.fetchDetail({
+            externalId: '17627',
+        }),
+    );
+    assert.strictEqual(recoveredDetail.externalId, '17627');
+    assert.strictEqual(validationAttempt, 2);
+    assert.strictEqual(MAXIMUM_DETAIL_VALIDATION_ATTEMPTS, 3);
 
     const chainedCalls = [];
     const chainedRedirect = createZzcTeaConnector({
@@ -473,7 +592,23 @@ async function main() {
                 priceChart: 'https://charts.example/' +
                     'asset_01012345678.png',
             },
+            buyCount: 29,
+            sellCount: 10,
+            interestedCount: 1007,
+            commentCount: 7,
+            forumCount: 10,
         },
+        halfYearPercent: '.12987012987012986',
+        monthPercent: '',
+        threeMonthPercent: '',
+        weekPercent: '',
+        yearPercent: '',
+        thisWeekMaxPrice: 8700,
+        thisWeekMinPrice: 8700,
+        thisYearMaxPrice: 8700,
+        thisYearMinPrice: 6300,
+        [['buy', 'PeopleCount'].join('')]: 29,
+        [['sell', 'PeopleCount'].join('')]: 10,
         [forbiddenSiblingKey]: [{
             [['ph', 'one'].join('')]: forbiddenValue,
         }],
@@ -485,12 +620,44 @@ async function main() {
     );
     assert.ok(!sanitized.includes(forbiddenValue));
     assert.ok(!sanitized.includes(forbiddenSiblingKey));
+    const safeMarketData = decodeSanitizedEnvelope(sanitized).data;
+    assert.strictEqual(safeMarketData.demandParticipantCount, '29');
+    assert.strictEqual(safeMarketData.supplyParticipantCount, '10');
+    assert.strictEqual(
+        safeMarketData.halfYearPercent,
+        '.12987012987012986',
+    );
+    assert.ok(!sanitized.includes('PeopleCount'));
     assert.strictEqual(
         Object.prototype.hasOwnProperty.call(
             JSON.parse(sanitized).data,
             'risePriceDisplay',
         ),
         false,
+    );
+    assert.throws(
+        () => sanitizeDetailHtml(nuxtHtml({
+            teaDetail: {
+                id: 17627,
+                name: 'Fixture Case Tea',
+                thisWeekMaxPrice: 8600,
+            },
+            thisWeekMaxPrice: 8700,
+        }), '17627'),
+        error =>
+            error.code === 'ZZCTEA_NUXT_DETAIL_MARKET_FIELD_MISMATCH',
+    );
+    assert.throws(
+        () => sanitizeDetailHtml(nuxtHtml({
+            teaDetail: {
+                id: 17627,
+                name: 'Fixture Case Tea',
+            },
+            [['buy', 'PeopleCount'].join('')]: [{
+                name: 'person data must never be copied',
+            }],
+        }), '17627'),
+        error => error.code === 'ZZCTEA_NUXT_PRODUCT_FIELD_INVALID',
     );
     assert.strictEqual(
         Object.prototype.hasOwnProperty.call(

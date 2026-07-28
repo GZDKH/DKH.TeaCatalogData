@@ -201,14 +201,26 @@ async function materializeMedia(args, options = {}) {
         allowedOutputRoot,
         outputDirectory,
     );
-    const previousMediaDirectory = options.previousMediaDirectory === null
-        ? null
-        : path.resolve(
-            repositoryRoot,
-            options.previousMediaDirectory ||
-                args['previous-media-dir'] ||
-                'import/zzctea/current/media',
+    const explicitPreviousMediaDirectory = Object.hasOwn(
+        options,
+        'previousMediaDirectory',
+    )
+        ? options.previousMediaDirectory
+        : args['previous-media-dir'];
+    if (explicitPreviousMediaDirectory !== undefined &&
+        explicitPreviousMediaDirectory !== null &&
+        (!path.isAbsolute(String(explicitPreviousMediaDirectory)) ||
+            path.normalize(String(explicitPreviousMediaDirectory)) !==
+                String(explicitPreviousMediaDirectory))) {
+        throw new Error(
+            'Explicit previous media directory must be an absolute, normalized path.',
         );
+    }
+    const previousMediaDirectory = explicitPreviousMediaDirectory === null
+        ? null
+        : explicitPreviousMediaDirectory === undefined
+            ? path.join(repositoryRoot, 'import', 'zzctea', 'current', 'media')
+            : String(explicitPreviousMediaDirectory);
     return materializeVerifiedMedia({
         artifactBundle,
         fetchImpl: options.fetchImpl,
