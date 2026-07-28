@@ -295,6 +295,7 @@ function writeGeneratedBundle(stagingRoot, artifact) {
         catalogPlacement: artifact.catalogPlacement,
         catalogTargets: artifact.catalogTargets,
         storefrontTargets: artifact.storefrontTargets,
+        catalogAssignmentMode: artifact.catalogAssignmentMode,
     });
     const reloaded = readArtifactBundle(stagingRoot);
     if (!reloaded.valid) {
@@ -394,6 +395,13 @@ function main() {
         args.out ? String(args.out) : path.join('import', 'thetea', snapshotId)));
     const catalogReferencePath = repoPath(args['catalog-ref'] || args['prod-ref']);
     const productReferencePath = repoPath(args['product-ref']);
+    const catalogAssignmentMode = String(args['catalog-assignment-mode'] || 'preserve')
+        .trim()
+        .toLowerCase();
+    if (!['preserve', 'target-only'].includes(catalogAssignmentMode)) {
+        throw new Error(
+            "--catalog-assignment-mode must be either 'preserve' or 'target-only'.");
+    }
     if (!catalogReferencePath && args['allow-missing-catalog-reference'] !== true) {
         throw new Error('Safe generation requires --catalog-ref=...; use --allow-missing-catalog-reference only for diagnostics.');
     }
@@ -525,6 +533,8 @@ function main() {
         const baseline = baselineByCode.get(normalizeCode(transformed.product.code));
         const product = overlayExistingProduct(transformed.product, baseline, {
             publishExisting: args.publish === true,
+            catalogAssignmentMode,
+            targetCatalog: catalogCode,
         });
         normalizeProductForImport(product);
         products.push(product);
@@ -581,6 +591,13 @@ function main() {
         catalogReference,
         requiredCatalogCode: catalogCode,
         baselineProducts,
+        baselinePreservation: {
+            catalogAssignmentMode,
+            targetCatalog: catalogCode,
+        },
+        allowedCatalogCodes: catalogAssignmentMode === 'target-only'
+            ? [catalogCode]
+            : undefined,
     });
     const generatedAt = new Date().toISOString();
     const sourceManifestSha256 = sha256(fs.readFileSync(manifestPath));
@@ -607,6 +624,7 @@ function main() {
         importTargets: {
             catalogCodes: [catalogCode],
             storefrontCodes: storefrontTargetCodes,
+            catalogAssignmentMode,
         },
         categoryCoverage: summarizeCategoryCoverage(products, taxonomyAudits, catalogCode),
         categoryDefinitionCount: categories.length,
@@ -652,6 +670,7 @@ function main() {
             catalogPlacement,
             catalogTargets: [catalogCode],
             storefrontTargets: storefrontTargetCodes,
+            catalogAssignmentMode,
             lossEvents,
             routedContent,
             productMedia,

@@ -130,4 +130,38 @@ assert(herbalAssignments.includes('CAT-HERBAL-TEA'));
 assert(herbalAssignments.includes('CAT-HERBAL-FLOWER'));
 assert(herbalAssignments.includes('CAT-HERBAL-ROSE'));
 
+const dancongSubtypeCases = [
+    ['dan-cong-mi-lan-xiang', 'Dān Cóng Mì Lán Xiāng', 'CAT-DANCONG-MILAN'],
+    ['dan-cong-ya-shi-xiang', 'Dān Cóng Yā Shǐ Xiāng', 'CAT-DANCONG-YASHI'],
+    ['zhi-lan-xiang-dancong', 'Zhī Lán Xiāng Dàn Cóng', 'CAT-DANCONG-ZHILAN'],
+    ['guihua-xiang-dancong', 'Guī Huā Xiāng Dāncóng', 'CAT-DANCONG-GUIHUA'],
+    ['dan-cong-xing-ren-xiang', 'Dān Cóng Xìng Rén Xiāng', 'CAT-DANCONG-XINGREN'],
+    ['huang-zhi-xiang-dancong', 'Huáng Zhī Xiāng Dàn Cóng', 'CAT-DANCONG-HUANGZHI'],
+    ['yulan-xiang-dancong', 'Yù Làn Xiāng Dāncóng', 'CAT-DANCONG-YULAN'],
+];
+for (const [slug, name, subtypeCategory] of dancongSubtypeCases) {
+    const subtypeAssignments = buildCategoryAssignments({
+        slug,
+        name,
+        meta: { tea_type: 'oolong' },
+    });
+    assert(subtypeAssignments.includes('CAT-OOLONG-DANCONG'), slug);
+    assert(subtypeAssignments.includes(subtypeCategory), slug);
+}
+
+const nonDancongMiLan = buildCategoryAssignments({
+    slug: 'mi-lan-xiang-hongcha',
+    name: 'Mi Lan Xiang Red Tea',
+    meta: { tea_type: 'red' },
+});
+assert(!nonDancongMiLan.includes('CAT-DANCONG-MILAN'));
+
+const genericDancong = buildCategoryAssignments({
+    slug: 'lingtou-dan-cong',
+    name: 'Lingtou Dan Cong',
+    meta: { tea_type: 'oolong' },
+});
+assert(genericDancong.includes('CAT-OOLONG-DANCONG'));
+assert(!genericDancong.some(code => code.startsWith('CAT-DANCONG-')));
+
 console.log('test-category-taxonomy: OK');

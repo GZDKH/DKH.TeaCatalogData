@@ -117,6 +117,16 @@ const NAMED_CATEGORY_RULES = [
     rule('CAT-CULT-ROUGUI', /\bniu[- ]?rou\b/u, /\bma[- ]?rou\b/u, /\bniurou\b/u),
 ];
 
+const DANCONG_SUBTYPE_RULES = [
+    rule('CAT-DANCONG-MILAN', /\bmi[- ]?lan[- ]?xiang\b/u, /\bm[iì] l[aá]n xi[aā]ng\b/u),
+    rule('CAT-DANCONG-YASHI', /\bya[- ]?shi[- ]?xiang\b/u, /\by[aā] sh[iǐ] xi[aā]ng\b/u),
+    rule('CAT-DANCONG-ZHILAN', /\bzhi[- ]?lan[- ]?xiang\b/u, /\bzh[iī] l[aá]n xi[aā]ng\b/u),
+    rule('CAT-DANCONG-GUIHUA', /\bguihua[- ]?xiang\b/u, /\bgu[iī] hu[aā] xi[aā]ng\b/u),
+    rule('CAT-DANCONG-XINGREN', /\bxing[- ]?ren[- ]?xiang\b/u, /\bx[iì]ng r[eé]n xi[aā]ng\b/u),
+    rule('CAT-DANCONG-HUANGZHI', /\bhuang[- ]?zhi[- ]?xiang\b/u, /\bhu[aá]ng zh[iī] xi[aā]ng\b/u),
+    rule('CAT-DANCONG-YULAN', /\byulan[- ]?xiang\b/u, /\by[uù] l[aá]n xi[aā]ng\b/u),
+];
+
 const HERBAL_BY_SLUG = {
     'bailan-hua-cha': ['CAT-HERBAL-TEA', 'CAT-HERBAL-FLOWER'],
     'daidai-hua-cha': ['CAT-HERBAL-TEA', 'CAT-HERBAL-FLOWER'],
@@ -163,6 +173,7 @@ function inferTaxonomy(card) {
     const province = String(meta.province || '').trim() || provinceResult.value;
     const categoryCodes = [
         ...namedCategories,
+        ...inferDancongSubtypeCategories(namedText),
         ...(HERBAL_BY_SLUG[slug] || []),
         ...inferPuerCategories(meta, namedText),
         ...inferBrewingCategories(card, teawareText),
@@ -179,6 +190,13 @@ function inferTaxonomy(card) {
         categoryCodes: unique(categoryCodes),
         warnings,
     };
+}
+
+function inferDancongSubtypeCategories(text) {
+    if (!/\bdan[- ]?cong\b/u.test(text) && !/\bd[aā]nc[oó]ng\b/u.test(text)) return [];
+    return DANCONG_SUBTYPE_RULES
+        .filter(item => item.patterns.some(pattern => pattern.test(text)))
+        .map(item => item.code);
 }
 
 function inferCrossFacetCategories(meta, province) {

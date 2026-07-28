@@ -7,6 +7,7 @@ const { REPO_ROOT, loadDotEnv, parseArgs, csv } = require('./lib/env');
 const { readArtifactBundle, sha256 } = require('./lib/artifact-bundle');
 const { validateArtifact } = require('./lib/artifact-validator');
 const { loadCatalogReference } = require('./lib/catalog-mapping');
+const { resolveArtifactCatalogPolicy } = require('./lib/import-targets');
 const {
     hashInputPath,
     hashSnapshotFiles,
@@ -156,6 +157,7 @@ function preflightArtifact(dir, args, dryRun) {
         : null;
     const baselineProducts = baselineReference?.products || [];
     const workspaceId = resolveCatalogWorkspaceId(args);
+    const catalogPolicy = resolveArtifactCatalogPolicy(manifest, args);
     if (baselineReference
         && String(baselineReference.manifest.workspaceId).toLowerCase() !== workspaceId) {
         errors.push('Product reference workspace differs from --workspace-id.');
@@ -201,8 +203,10 @@ function preflightArtifact(dir, args, dryRun) {
         lossEvents: manifest.lossEvents || [],
         routedContent: bundle.routedContent,
         catalogReference,
-        requiredCatalogCode: args.catalog || 'CATALOG-CHINESE-TEA',
+        requiredCatalogCode: catalogPolicy.targetCatalog,
         baselineProducts,
+        baselinePreservation: catalogPolicy.baselinePreservation,
+        allowedCatalogCodes: catalogPolicy.allowedCatalogCodes,
     });
     errors.push(...semantic.errors);
     if (errors.length) {

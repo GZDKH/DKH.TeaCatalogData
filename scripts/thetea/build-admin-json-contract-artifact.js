@@ -338,6 +338,7 @@ function rebuildManifest(root) {
         catalogPlacement: previous.catalogPlacement || null,
         catalogTargets: previous.targets?.catalogCodes || [],
         storefrontTargets: previous.targets?.storefrontCodes || [],
+        catalogAssignmentMode: previous.targets?.catalogAssignmentMode || 'preserve',
     });
     const bundle = readArtifactBundle(root);
     if (!bundle.valid) {

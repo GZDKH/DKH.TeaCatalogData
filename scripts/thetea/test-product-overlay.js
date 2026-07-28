@@ -89,4 +89,28 @@ assert(validateBaselinePreservation([reorderedManualRelation], [baseline])
 
 assert.throws(() => overlayExistingProduct({ ...generated, code: 'TEA-CN-TWO' }, baseline), /Cannot overlay/);
 
+const targetOnlyBaseline = {
+    ...baseline,
+    catalogs: [
+        { catalog: { code: 'CATALOG-OTHER' }, category: { code: 'CAT-MANUAL' } },
+        { catalog: { code: 'CATALOG-CHINESE-TEA' }, category: { code: 'CAT-KEEP' } },
+    ],
+};
+const targetOnly = overlayExistingProduct(generated, targetOnlyBaseline, {
+    catalogAssignmentMode: 'target-only',
+    targetCatalog: 'CATALOG-CHINESE-TEA',
+});
+assert(!targetOnly.catalogs.some(item => item.category?.code === 'CAT-MANUAL'));
+assert(targetOnly.catalogs.some(item => item.category?.code === 'CAT-KEEP'));
+assert.deepStrictEqual(validateBaselinePreservation(
+    [targetOnly],
+    [targetOnlyBaseline],
+    {
+        catalogAssignmentMode: 'target-only',
+        targetCatalog: 'CATALOG-CHINESE-TEA',
+    }), []);
+assert.throws(() => overlayExistingProduct(generated, baseline, {
+    catalogAssignmentMode: 'target-only',
+}), /targetCatalog is required/);
+
 console.log('test-product-overlay: OK');
