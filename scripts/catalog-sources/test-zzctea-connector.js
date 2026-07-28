@@ -22,6 +22,8 @@ const {
 } = require('./zzctea/nuxt');
 const { decodeSanitizedEnvelope } = require('./zzctea/sanitized-envelope');
 const { MAXIMUM_ROBOTS_BYTES } = require('./zzctea/robots');
+const { projectArtifactItem } = require('./lib/projection');
+const { reconcileProjection } = require('./lib/reconciliation');
 
 const FIXTURES = path.join(__dirname, 'zzctea', 'fixtures');
 
@@ -339,10 +341,63 @@ async function main() {
         commentCount: 7,
         forumCount: 10,
     });
+    const observedCanonicalUrl = await connector.resolveCanonicalUrl({
+        externalId: '17627',
+    });
     assert.strictEqual(
-        await connector.resolveCanonicalUrl({ externalId: '17627' }),
+        observedCanonicalUrl,
         'https://www.zzctea.com/tea/fixture-case-tea.html',
     );
+    const observedAt = '2026-07-29T00:00:00.000Z';
+    const projectedDetail = projectArtifactItem({
+        ...detail,
+        sourceLinks: {
+            ...detail.sourceLinks,
+            observedCanonicalUrl,
+        },
+        provenance: {
+            parserVersion: connector.parserVersion,
+            listPayloadDigest: 'a'.repeat(64),
+            detailPayloadDigest: 'b'.repeat(64),
+            observedAt,
+        },
+    }, {
+        artifactSha256: 'c'.repeat(64),
+        parserVersion: connector.parserVersion,
+        snapshotObservedAt: observedAt,
+        sourceId: connector.id,
+    });
+    const endToEnd = reconcileProjection({
+        schemaVersion: 'catalog-source-observation-projection-v1',
+        source: { id: connector.id },
+        itemCount: 1,
+        items: [projectedDetail],
+        deletions: [],
+        authoritativeReferencesIncluded: false,
+        reconciliationComplete: false,
+        productionWrites: false,
+    }, [{
+        id: '11111111-1111-4111-8111-111111111111',
+        code: 'MANUAL-TEA',
+        translations: [],
+        specifications: [],
+        tags: [],
+        tierPrices: [],
+        catalogPrices: [],
+        storePriceOverrides: [],
+        packages: [],
+        catalogs: [],
+        origins: [],
+        related: [],
+        crossSells: [],
+    }]);
+    const endToEndDescription =
+        endToEnd.entries[0].productPatch.translations[0].description;
+    assert.ok(endToEndDescription.startsWith(
+        '云南大叶种晒青毛茶制成，饼形端正。香气清晰，滋味醇厚。 茶品资料：',
+    ));
+    assert.ok(endToEndDescription.length <= 2000);
+    assert.ok(!/[\u0000-\u001F\u007F]/u.test(endToEndDescription));
 
     assert.deepStrictEqual(
         calls.map(call => `${call.url.pathname}${call.url.search}`),

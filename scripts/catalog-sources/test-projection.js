@@ -234,7 +234,19 @@ function main() {
     });
     const sourceDescriptionProjection = project([sourceDescription])[0].observation;
     assert.ok(sourceDescriptionProjection.localizedText.every(value =>
-        value.description.startsWith('云南大叶种晒青毛茶制成，饼形端正。\n\n')));
+        value.description.startsWith('云南大叶种晒青毛茶制成，饼形端正。 茶品资料：')));
+    const longSourceDescription = fixtureItem({
+        localizedFields: {
+            'zh-CN': {
+                name: 'Fixture Case Tea',
+                description: '茶'.repeat(4000),
+            },
+        },
+    });
+    const fittedDescription = project([longSourceDescription])[0]
+        .observation.localizedText[0].description;
+    assert.strictEqual(fittedDescription.length, 2000);
+    assert.ok(fittedDescription.includes('… 茶品资料：'));
     const sourceBoilerplateFact = fixtureItem({
         facts: {
             ...fixtureItem().facts,

@@ -1,6 +1,9 @@
 'use strict';
 
 const { stableJson } = require('./artifacts');
+const {
+    MAXIMUM_PRODUCT_DESCRIPTION_LENGTH,
+} = require('./product-text-contract');
 
 const PROJECTION_SCHEMA = 'catalog-source-observation-projection-v1';
 const SOURCE_ID = 'zzctea';
@@ -140,7 +143,7 @@ function validateDescription(value, languageCode) {
         );
     }
     const description = value.trim();
-    if (description.length > 1024 ||
+    if (description.length > MAXIMUM_PRODUCT_DESCRIPTION_LENGTH ||
         /[\u0000-\u001F\u007F]/u.test(description) ||
         /<(?:(?:\/?[A-Za-z])|!DOCTYPE|!--|\?xml)[^>]*>/i.test(description) ||
         SOURCE_DESCRIPTION_CONTENT.test(description)) {

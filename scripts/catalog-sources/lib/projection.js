@@ -5,6 +5,9 @@ const {
     sha256,
     stableJson,
 } = require('./artifacts');
+const {
+    composeProductDescription,
+} = require('./product-text-contract');
 
 const ARTIFACT_SCHEMA = 'catalog-source-artifact-v1';
 const ITEM_SCHEMA = 'catalog-source-item-v1';
@@ -376,9 +379,10 @@ function projectLocalizedText(item) {
     return [{
         languageCode: 'zh-CN',
         title: title.trim(),
-        description: sourceDescription
-            ? `${sourceDescription}\n\n${factualDescription}`
-            : factualDescription,
+        description: composeProductDescription(
+            sourceDescription,
+            factualDescription,
+        ),
     }];
 }
 
