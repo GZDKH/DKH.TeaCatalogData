@@ -56,6 +56,11 @@ written under ignored `artifacts/catalog-sources/`. See
 [`scripts/catalog-sources/README.md`](scripts/catalog-sources/README.md) for
 replay, drift, PII and reference-price rules.
 
+After explicit source/image-use approval, verified image references can be
+materialized as resumable, content-addressed local files with
+`scripts/catalog-sources/materialize-media.js`. The output includes a
+SetupTool-compatible manifest but performs no MediaService or product writes.
+
 Put secrets in `.env` using `scripts/env.prod.template`. The TheTea text API key is read from `THETEA_API_KEY` or `THE_TEA_API_KEY`. ProductCatalog export/validate/import also requires `PRODUCT_CATALOG_WORKSPACE_ID`.
 
 Fetch TheTea source snapshot:

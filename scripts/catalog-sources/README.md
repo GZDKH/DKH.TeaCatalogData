@@ -208,6 +208,58 @@ manifest, so the output explicitly sets
 `catalogReferenceCompletenessProven: false`,
 `productCatalogReconciliationComplete: false`, and `productionWrites: false`.
 
+Materialize the original source images only after the source/image-use review
+has been approved. This stage downloads files into an ignored local artifact;
+it does not upload to MediaService or change a product:
+
+```bash
+node scripts/catalog-sources/materialize-media.js \
+  --artifact-dir=artifacts/catalog-sources/zzctea/zzctea-2026-07-28-public-html-v5 \
+  --reconciliation-dir=artifacts/catalog-source-reconciliations/zzctea/zzctea-2026-07-28-public-html-v5/<reference-binding>/full \
+  --minimum-request-interval-ms=1000
+```
+
+Use `--only=<external-id>` for a one-product live canary. The downloader:
+
+- verifies the complete source artifact and exact `ZZC-<external-id>` product
+  reconciliation before making a request;
+- revalidates HTTPS, host, path, query and every manual redirect against the
+  reviewed ZZCTea image policy;
+- chooses the original unqueried image and records the omitted `square480`
+  derivative as an alias instead of downloading both;
+- accepts only JPEG, PNG and WebP after matching `Content-Type` to magic bytes;
+- defaults to a 20 MiB per-image streaming limit, a 10 GiB aggregate limit and
+  one request start per second;
+- writes content-addressed blobs, an atomic resume checkpoint, URL-to-SHA-256
+  receipt and a deterministic SetupTool media-item manifest;
+- marks every output `productionWrites: false`.
+
+The default ignored output is
+`artifacts/catalog-source-media/<source>/<snapshot>/<artifact-sha>/<mapping-sha>/<selection>/`.
+An interrupted run resumes from `media-checkpoint.json`; a changed input,
+limit, rate, or hash-mismatched local blob fails closed. The final
+`media-manifest.json` is written last.
+
+For a later reviewed upload, configure a SetupTool media section with
+`scope: "products"`, `ownerKey: "productCode"`, `source: "manifest"`,
+`path: "media-items.json"` and `galleryStrategy: "append"`, with its `basePath`
+pointing at the materialized output. The generated manifest keeps
+`setupTool.enabled: false`; enabling apply is a separate reviewed operation.
+The media items carry their expected `sha256` and `bytes`, but the current
+SetupTool reader does not enforce those fields or path containment. Keep upload
+disabled until SetupTool verifies the final media manifest, every item hash and
+size, and rejects absolute, escaping or symlinked files. After that gate,
+SetupTool uses the authenticated AdminGateway upload-session flow to
+MediaService/S3. Do not point this downloader at S3 directly and do not use
+`galleryStrategy: "replace"` for a recurring source sync.
+
+Optional limits:
+
+- `--max-file-bytes=<bytes>`
+- `--max-total-bytes=<bytes>`
+- `--timeout-ms=<milliseconds>`
+- `--minimum-request-interval-ms=<1000..60000>`
+
 The connector is fixed to the robots-allowed public HTML routes
 `https://zzctea.com/teaList?page={page}` and
 `https://zzctea.com/teaDetail/{externalId}.html`. It never calls `/api/` or
