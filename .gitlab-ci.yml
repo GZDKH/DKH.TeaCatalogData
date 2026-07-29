@@ -3,7 +3,7 @@ stages:
 
 catalog-source-offline-tests:
   stage: test
-  image: public.ecr.aws/docker/library/node:20.19.0
+  image: public.ecr.aws/docker/library/node:20.20.2
   needs: []
   interruptible: true
   timeout: 10m
