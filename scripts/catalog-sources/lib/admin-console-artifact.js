@@ -362,7 +362,14 @@ function writeAdminConsoleArtifact(outputDirectory, context) {
         const code = assertProductCode(product.code);
         const relativePath =
             `04-products/${productCategory(product)}/${code}.json`;
-        writeJson(path.join(outputRoot, ...relativePath.split('/')), [product]);
+        const importProduct = {
+            ...product,
+            replaceTranslations: true,
+        };
+        writeJson(
+            path.join(outputRoot, ...relativePath.split('/')),
+            [importProduct],
+        );
         const bytes = fs.statSync(path.join(
             outputRoot,
             ...relativePath.split('/'),
@@ -507,7 +514,8 @@ function verifyAdminConsoleArtifact(outputDirectory) {
     }
     for (const product of bundle.products) {
         const translations = product.translations || [];
-        if (translations.length !== 1 ||
+        if (product.replaceTranslations !== true ||
+            translations.length !== 1 ||
             translations[0].lang !== 'zh-CN' ||
             !String(translations[0].name || '').trim() ||
             'seo' in translations[0] ||
