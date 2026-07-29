@@ -119,6 +119,13 @@ function testConsoleLayout() {
         .filter(item => item.path.startsWith('04-products/'));
     assert.strictEqual(productFiles.length, 2);
     assert.ok(productFiles.every(item => item.bytes < DATA_IMPORT_BATCH_MAX_BYTES));
+    const product = JSON.parse(fs.readFileSync(path.join(
+        output,
+        '04-products',
+        'CAT-PUER-UNCLASSIFIED',
+        'ZZC-1.json',
+    )))[0];
+    assert.strictEqual(product.replaceTranslations, true);
     const media = JSON.parse(fs.readFileSync(path.join(
         output,
         '07-media',
@@ -129,6 +136,22 @@ function testConsoleLayout() {
     assert.strictEqual(media[0].product, 'ZZC-1');
     assert.strictEqual(media[0].replace, true);
     assert.strictEqual(media[0].items[0].isCover, true);
+}
+
+function testMissingTranslationReplacementFails() {
+    const output = temporaryDirectory();
+    writeAdminConsoleArtifact(output, fixture());
+    const relativePath =
+        '04-products/CAT-PUER-UNCLASSIFIED/ZZC-1.json';
+    const productFile = path.join(output, ...relativePath.split('/'));
+    const product = JSON.parse(fs.readFileSync(productFile, 'utf8'))[0];
+    delete product.replaceTranslations;
+    fs.writeFileSync(productFile, `${JSON.stringify([product])}\n`);
+    refreshFileEntry(output, relativePath);
+    assert.throws(
+        () => verifyAdminConsoleArtifact(output),
+        /violates the Chinese source text contract/,
+    );
 }
 
 function testUnsupportedDuplicateEvidenceFails() {
@@ -202,6 +225,7 @@ function testMediaSourceBindingAndArtifactIdentityFailClosed() {
 
 function main() {
     testConsoleLayout();
+    testMissingTranslationReplacementFails();
     testUnsupportedDuplicateEvidenceFails();
     testOversizedProductFailsEvenWithUpdatedOuterHash();
     testCatalogReferenceBindingFailsClosed();
