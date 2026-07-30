@@ -43,6 +43,9 @@ function createArtifactManifest(root, metadata = {}) {
             storefrontCodes: sortedUnique(metadata.storefrontTargets),
             catalogAssignmentMode: metadata.catalogAssignmentMode || 'preserve',
         },
+        publication: {
+            mode: metadata.publicationMode || 'draft',
+        },
         files,
     };
     writeJson(path.join(resolvedRoot, ARTIFACT_MANIFEST_FILE), manifest);
@@ -97,6 +100,10 @@ function verifyArtifactManifest(root) {
             errors.push(
                 'Target-only artifact manifest must declare exactly one target catalog code.');
         }
+    }
+    if (manifest.publication !== undefined
+        && !['draft', 'publish'].includes(manifest.publication?.mode)) {
+        errors.push("Artifact manifest publication.mode must be 'draft' or 'publish'.");
     }
 
     const expected = new Map();
@@ -186,6 +193,14 @@ function readArtifactBundle(root) {
         resolvedRoot,
         '01-reference/catalogs.json',
         errors);
+    const productMedia = {
+        records: readOptionalArray(
+            resolvedRoot,
+            '07-media/products/media.json',
+            errors),
+        files: listArtifactFiles(resolvedRoot)
+            .filter(relativePath => relativePath.startsWith('07-media/products/')),
+    };
 
     const actualCodes = sortedUnique(products.map(product => product?.code));
     const manifestCodes = sortedUnique(manifestValidation.manifest?.productCodes || []);
@@ -229,6 +244,7 @@ function readArtifactBundle(root) {
         catalogs,
         catalogBindings,
         routedContent,
+        productMedia,
         productFiles,
     };
 }

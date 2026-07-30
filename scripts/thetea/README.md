@@ -151,6 +151,22 @@ node scripts/thetea/validate-generated.js \
   --product-ref=sources/prod/product-reference/prod-products-2026-06-01
 ```
 
+Generation and validation also write `publication-quality.json`. The
+deterministic audit checks every required-locale title and description, managed
+numeric units and precision, product image coverage, target catalog/category
+bindings, origin mapping, and known unresolved or mixed-language interface
+fallbacks. Findings on an unpublished product are reported as Draft warnings
+and do not prevent generation, validation, or Draft import. A generated
+manifest records `publication.mode` as `draft` or `publish`. In `publish` mode,
+findings on a product with `published: true` are blocking errors. A real
+product validation/apply also treats the selected already-published records as
+publication candidates, so invalid live changes cannot bypass
+`import-generated.js` preflight. `--only` and `--limit` scope this gate to the
+same canary products sent to AdminGateway; an unfiltered bulk run checks all
+products.
+This is a publication gate, not a general language detector: native tea names
+and legitimate multilingual content are retained.
+
 Build the complete read-only field-level reconciliation before any server-side
 validation or apply. The report classifies every selected product as
 `create`/`update`/`noop`/`conflict`, lists changes by stable nested keys, rejects
@@ -302,6 +318,8 @@ ordered SetupTool workflow, including specification definitions before products.
 - Product writes go through AdminGateway/ProductCatalogService DataExchange. Do not write directly to the production database.
 - Product codes are deterministic: `TEA-<COUNTRY>-<THE_TEA_SLUG>`, uppercased and code-validator safe.
 - Products are generated unpublished by default. Use `--publish` only for an approved production load.
+- Draft artifacts may retain publication-quality findings, but every
+  `published: true` product must pass the pre-publication quality gate.
 - Production snapshots use `--langs=all --field-langs=all`, which expands TheTea `/api/v2/meta.locales` and fetches every advertised TeaCard locale plus every localized field detail endpoint.
 - Production snapshots fetch per-field details for every field code in every localized TeaCard and store them under `raw/fields/<lang>/<slug>/<section>/<field>.json`; partial field-locale snapshots must not be imported as complete data.
 - Production snapshots store localized Markdown under `raw/markdown/<lang>/<slug>.md`, similar endpoint payloads under `raw/similar/<lang>/<slug>.json`, and localized map payloads under `raw/map-<lang>.json`.

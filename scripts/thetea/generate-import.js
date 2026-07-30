@@ -20,6 +20,10 @@ const {
 const { assertCompleteFieldLocales } = require('./lib/snapshot-options');
 const { buildSpecificationDefinitions } = require('./lib/spec-definitions');
 const { validateArtifact } = require('./lib/artifact-validator');
+const {
+    auditPublicationQuality,
+    publicationQualitySummaryMessages,
+} = require('./lib/publication-quality');
 const { assertScopedPath, withStagedOutput } = require('./lib/generated-output');
 const {
     createArtifactManifest,
@@ -296,6 +300,7 @@ function writeGeneratedBundle(stagingRoot, artifact) {
         catalogTargets: artifact.catalogTargets,
         storefrontTargets: artifact.storefrontTargets,
         catalogAssignmentMode: artifact.catalogAssignmentMode,
+        publicationMode: artifact.publicationMode || 'draft',
     });
     const reloaded = readArtifactBundle(stagingRoot);
     if (!reloaded.valid) {
@@ -600,6 +605,16 @@ function main() {
             ? [catalogCode]
             : undefined,
     });
+    const publicationQuality = auditPublicationQuality({
+        products,
+        definitions,
+        requiredLocales,
+        productMedia,
+        catalogBindings: [catalogBinding],
+        targetCatalog: catalogCode,
+        publicationRequested: args.publish === true,
+    });
+    const qualityMessages = publicationQualitySummaryMessages(publicationQuality);
     const generatedAt = new Date().toISOString();
     const sourceManifestSha256 = sha256(fs.readFileSync(manifestPath));
     const sourceFilesSha256 = hashSnapshotFiles(snapshotRoot, manifest);
@@ -609,7 +624,7 @@ function main() {
         snapshotId,
         generatedAt,
         outputDir: outDir,
-        valid: validation.valid,
+        valid: validation.valid && publicationQuality.gatePassed,
         productCount: validation.productCount,
         languageCoverage: validation.languageCoverage,
         specTypes: validation.specTypes,
@@ -640,6 +655,7 @@ function main() {
         similarFiles: manifest.similarFiles?.length || 0,
         productMediaProductCount: productMedia.records.length,
         productMediaAssetCount: productMedia.assets.length,
+        publicationQuality,
         sourceManifestSha256,
         sourceFilesSha256,
         baselineReferenceSha256,
@@ -648,8 +664,12 @@ function main() {
         overlaidProductCount: products.filter(product => baselineByCode.has(normalizeCode(product.code))).length,
         newProductCount: newProductCodes.length,
         newProductCodes,
-        errors: validation.errors,
-        warnings: [...warnings, ...validation.warnings],
+        errors: [...validation.errors, ...qualityMessages.errors],
+        warnings: [
+            ...warnings,
+            ...validation.warnings,
+            ...qualityMessages.warnings,
+        ],
     };
 
     let artifactManifest = null;
@@ -672,6 +692,7 @@ function main() {
             catalogTargets: [catalogCode],
             storefrontTargets: storefrontTargetCodes,
             catalogAssignmentMode,
+            publicationMode: args.publish === true ? 'publish' : 'draft',
             lossEvents,
             routedContent,
             productMedia,

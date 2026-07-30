@@ -204,12 +204,28 @@ Product DataExchange заменяет dependent collections. Повторный 
 2. В snapshot есть `Source contract files: 4`.
 3. Есть текущий catalog/category reference и полный DataExchange JSON baseline профиля `products`.
 4. Generated report и `artifact-manifest.json` показывают `Valid: yes`, exact file parity и непустые source/catalog/baseline hashes.
-5. После применения категорий нужно получить новый catalog reference и полностью пересобрать artifact; новый reference с прежним artifact будет отклонён по hash.
-6. Финальный mapping показывает `Catalog found: yes` и `Missing categories: 0`.
-7. Definitions импортируются до products через SetupTool или другой approved ordered DataExchange workflow. `import-generated.js` поддерживает только `categories` и `products`; definitions, bindings, articles и FAQ sidecars он не загружает.
-8. Token проходит нужные `CatalogExport`/`CatalogImport` policies и workspace access.
-9. One-product canary проходит dry-run, применяется только после отдельного canary approval и сравнивается после read-back.
-10. Пользователь отдельно согласовал массовый `--apply --yes`.
+5. `publication-quality.json` показывает `Bulk publication eligible: yes`. Проверяются title/description каждой обязательной локали, units/precision managed numeric fields, наличие реального image file, target catalog/category binding, mapped origin и известные unresolved или mixed-language interface fallback markers.
+6. После применения категорий нужно получить новый catalog reference и полностью пересобрать artifact; новый reference с прежним artifact будет отклонён по hash.
+7. Финальный mapping показывает `Catalog found: yes` и `Missing categories: 0`.
+8. Definitions импортируются до products через SetupTool или другой approved ordered DataExchange workflow. `import-generated.js` поддерживает только `categories` и `products`; definitions, bindings, articles и FAQ sidecars он не загружает.
+9. Token проходит нужные `CatalogExport`/`CatalogImport` policies и workspace access.
+10. One-product canary проходит dry-run, применяется только после отдельного canary approval и сравнивается после read-back.
+11. Пользователь отдельно согласовал массовый `--apply --yes`.
+
+Publication-quality findings сохраняются в отчёте для Draft-продуктов, но не
+блокируют их генерацию, validation или import. В
+`artifact-manifest.json` записывается `publication.mode`: `draft` или
+`publish`. В режиме `publish` findings продукта с `published: true` становятся
+blocking errors. Product validation/apply также считает выбранные уже
+опубликованные записи publication candidates. `--only` и `--limit` ограничивают
+quality gate теми же canary-продуктами, которые отправляются в AdminGateway, а
+unfiltered bulk run проверяет все товары. Невалидное live-изменение нельзя
+провести в обход preflight, но Draft-подготовка и локальная read-only validation
+остаются доступными.
+Поэтому незавершённую редакторскую работу можно сохранить как Draft, а
+невалидные продукты нельзя массово опубликовать. Fallback-проверка ищет
+известные элементы interface scaffolding и unresolved localization markers,
+но не отклоняет нативное название чая только из-за другого алфавита.
 
 ## Команды первого импорта
 

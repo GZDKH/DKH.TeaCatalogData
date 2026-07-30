@@ -20,6 +20,13 @@ try {
     writeJson(path.join(root, '01-reference', 'catalogs.json'), []);
     writeJson(path.join(root, '05-catalog-bindings', 'catalogs.json'), []);
     writeJson(path.join(root, '04-products', 'GREEN', 'one.json'), [{ code: 'TEA-CN-ONE' }]);
+    writeJson(path.join(root, '07-media', 'products', 'media.json'), [{
+        product: 'TEA-CN-ONE',
+        path: '07-media/products/one',
+        replace: true,
+    }]);
+    fs.mkdirSync(path.join(root, '07-media', 'products', 'one'), { recursive: true });
+    fs.writeFileSync(path.join(root, '07-media', 'products', 'one', 'cover.webp'), 'fixture');
     createArtifactManifest(root, {
         snapshotId: 'snapshot-one',
         sourceManifestSha256: 'abc123',
@@ -39,6 +46,7 @@ try {
             unassignedProductCount: 0,
         },
         generatedAt: '2026-07-17T00:00:00.000Z',
+        publicationMode: 'publish',
     });
 
     const valid = verifyArtifactManifest(root);
@@ -50,10 +58,16 @@ try {
         catalogAssignmentMode: 'target-only',
     });
     assert.strictEqual(valid.manifest.catalogPlacement.unassignedProductCount, 0);
+    assert.deepStrictEqual(valid.manifest.publication, { mode: 'publish' });
     const bundle = readArtifactBundle(root);
     assert.strictEqual(bundle.valid, true, bundle.errors.join('\n'));
     assert.strictEqual(bundle.products.length, 1);
     assert.deepStrictEqual(bundle.catalogs, []);
+    assert.strictEqual(bundle.productMedia.records.length, 1);
+    assert.deepStrictEqual(bundle.productMedia.files, [
+        '07-media/products/media.json',
+        '07-media/products/one/cover.webp',
+    ]);
 
     fs.writeFileSync(path.join(root, '04-products', 'GREEN', 'one.json'), '[]\n');
     const changed = verifyArtifactManifest(root);
