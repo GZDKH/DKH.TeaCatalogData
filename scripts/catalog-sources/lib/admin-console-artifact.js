@@ -494,13 +494,48 @@ function verifyAdminConsoleArtifact(outputDirectory) {
         );
     }
     const manifest = bundle.manifest;
+    const requiredLocales = Array.isArray(manifest.requiredLocales)
+        ? manifest.requiredLocales.map(String)
+        : [];
+    const canonicalRequiredLocales =
+        [...new Set(requiredLocales)].sort();
+    const sourceGeneratedLocales =
+        manifest.localization?.sourceGeneratedLocales || [];
+    const humanTranslatedLocales =
+        manifest.localization?.humanTranslatedLocales || [];
+    const canonicalHumanTranslatedLocales =
+        [...new Set(humanTranslatedLocales.map(String))].sort();
+    const expectedLocales = [...new Set([
+        'zh-CN',
+        ...canonicalHumanTranslatedLocales,
+    ])].sort();
+    const translationBinding = manifest.translationInterchange;
     if (manifest.safety?.applyAllowed !== false ||
         manifest.safety?.productionWrites !== false ||
         manifest.safety?.canaryRequired !== true ||
         manifest.targets?.catalogCodes?.length !== 1 ||
         manifest.targets.catalogCodes[0] !== CATALOG_CODE ||
-        manifest.requiredLocales?.length !== 1 ||
-        manifest.requiredLocales[0] !== 'zh-CN') {
+        JSON.stringify(requiredLocales) !==
+            JSON.stringify(canonicalRequiredLocales) ||
+        JSON.stringify(requiredLocales) !== JSON.stringify(expectedLocales) ||
+        JSON.stringify(sourceGeneratedLocales) !==
+            JSON.stringify(['zh-CN']) ||
+        JSON.stringify(humanTranslatedLocales) !==
+            JSON.stringify(canonicalHumanTranslatedLocales) ||
+        canonicalHumanTranslatedLocales.includes('zh-CN') ||
+        (canonicalHumanTranslatedLocales.length === 0 &&
+            translationBinding !== undefined) ||
+        (canonicalHumanTranslatedLocales.length > 0 &&
+            (!translationBinding ||
+                !/^[a-f0-9]{64}$/.test(String(
+                    translationBinding.sourceArtifactId || '',
+                )) ||
+                !Array.isArray(translationBinding.packages) ||
+                translationBinding.packages.length === 0 ||
+                !Array.isArray(translationBinding.targetLocales) ||
+                translationBinding.targetLocales.length === 0 ||
+                translationBinding.targetLocales.some(locale =>
+                    !canonicalHumanTranslatedLocales.includes(locale))))) {
         throw new Error('Admin Console artifact safety or target metadata is invalid.');
     }
     const files = walkFiles(root);
@@ -514,14 +549,26 @@ function verifyAdminConsoleArtifact(outputDirectory) {
     }
     for (const product of bundle.products) {
         const translations = product.translations || [];
+        const translationLocales = translations
+            .map(translation => String(translation?.lang || ''))
+            .sort();
+        const sourceTranslation = translations
+            .find(translation => translation?.lang === 'zh-CN');
         if (product.replaceTranslations !== true ||
-            translations.length !== 1 ||
-            translations[0].lang !== 'zh-CN' ||
-            !String(translations[0].name || '').trim() ||
-            'seo' in translations[0] ||
-            'metaTitle' in translations[0] ||
-            'metaDescription' in translations[0] ||
-            /zzctea|找找茶/i.test(String(translations[0].description || ''))) {
+            translations.length !== requiredLocales.length ||
+            new Set(translationLocales).size !== translationLocales.length ||
+            JSON.stringify(translationLocales) !==
+                JSON.stringify(requiredLocales) ||
+            !sourceTranslation ||
+            translations.some(translation =>
+                String(translation.name || '').trim().length < 2 ||
+                String(translation.name || '').trim().length > 200 ||
+                String(translation.description || '').trim().length < 1 ||
+                String(translation.description || '').length > 4000 ||
+                'seo' in translation ||
+                'metaTitle' in translation ||
+                'metaDescription' in translation ||
+                /zzctea|找找茶/i.test(String(translation.description || '')))) {
             throw new Error(
                 `Product ${product.code} violates the Chinese source text contract.`,
             );
@@ -639,12 +686,16 @@ function verifyAdminConsoleArtifact(outputDirectory) {
     if (assignmentCount !== manifest.counts.catalogAssignments) {
         throw new Error('Admin Console catalog assignment count is inconsistent.');
     }
-    const artifactId = sha256(stableJson({
+    const artifactIdentity = {
         files: manifest.files,
         productCodes: manifest.productCodes,
         snapshotId: manifest.snapshotId,
         source: manifest.source,
-    }));
+    };
+    if (translationBinding) {
+        artifactIdentity.translationInterchange = translationBinding;
+    }
+    const artifactId = sha256(stableJson(artifactIdentity));
     if (manifest.artifactId !== artifactId ||
         manifest.version !==
         `${manifest.snapshotId}.${artifactId.slice(0, 12)}`) {
