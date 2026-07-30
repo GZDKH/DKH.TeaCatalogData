@@ -144,6 +144,12 @@ Generation also writes `category-coverage.json`. It records every used category 
 
 `artifact-manifest.json.targets` declares the intended import destinations. Production TheTea artifacts default to catalog `CATALOG-CHINESE-TEA` and storefronts `shop-thetea` plus `thetea-wiki`; override storefront codes only with the explicit `--storefronts=<codes>` option.
 
+The read-only product reconciliation resolves the same
+`targets.catalogAssignmentMode` as generation, validation, and import
+preflight. Its report records the mode and target catalog. `preserve` treats
+every unrelated catalog removal as a blocking loss; an approved `target-only`
+artifact treats only out-of-target placements as intentional migration scope.
+
 The generated `CATALOG-CHINESE-TEA` reference and catalog-binding records contain
 exactly one maintained translation for every required snapshot locale. Artifact
 validation rejects missing, empty, or duplicate catalog locales. The reference
