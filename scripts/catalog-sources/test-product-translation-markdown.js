@@ -296,7 +296,25 @@ function testIncompleteAndSourceDriftFailClosed() {
         /is not translated/,
     );
 
-    completePackage(packageRoot);
+    const completedManifest = completePackage(packageRoot);
+    const protectedFile = path.join(
+        packageRoot,
+        ...completedManifest.products[0].files[0].path.split('/'),
+    );
+    const protectedContents = fs.readFileSync(protectedFile, 'utf8');
+    fs.writeFileSync(
+        protectedFile,
+        protectedContents.replace('Chinese source — read only', 'Changed source'),
+    );
+    assert.throws(
+        () => verifyTranslationPackage(packageRoot, {
+            sourceRoot: source,
+            requireCompleted: true,
+        }),
+        /protected Markdown content changed/,
+    );
+    fs.writeFileSync(protectedFile, protectedContents);
+
     const sourceManifest = JSON.parse(fs.readFileSync(
         path.join(source, 'artifact-manifest.json'),
         'utf8',

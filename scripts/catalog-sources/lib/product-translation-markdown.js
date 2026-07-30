@@ -214,8 +214,19 @@ function assertRealDirectory(directory, label) {
 }
 
 function assertSeparateOutput(source, output) {
-    const resolvedSource = path.resolve(source);
-    const resolvedOutput = path.resolve(output);
+    const resolvedSource = fs.realpathSync(source);
+    const outputSuffix = [];
+    let existingOutputAncestor = path.resolve(output);
+    while (!fs.existsSync(existingOutputAncestor)) {
+        outputSuffix.unshift(path.basename(existingOutputAncestor));
+        const parent = path.dirname(existingOutputAncestor);
+        if (parent === existingOutputAncestor) break;
+        existingOutputAncestor = parent;
+    }
+    const resolvedOutput = path.join(
+        fs.realpathSync(existingOutputAncestor),
+        ...outputSuffix,
+    );
     const relative = path.relative(resolvedSource, resolvedOutput);
     const reverse = path.relative(resolvedOutput, resolvedSource);
     if (!relative || !reverse
@@ -265,13 +276,20 @@ function writeTranslationPackage(options) {
                     ...relativePath.split('/'),
                 );
                 fs.mkdirSync(path.dirname(file), { recursive: true });
-                fs.writeFileSync(file, markdownDocument({
+                const contents = markdownDocument({
                     definitions,
                     product,
                     sourceArtifactId: verified.manifest.artifactId,
                     targetLocale: locale,
-                }));
-                return { locale, path: relativePath };
+                });
+                fs.writeFileSync(file, contents);
+                return {
+                    locale,
+                    path: relativePath,
+                    templateStructureSha256: sha256(
+                        translationDocumentSkeleton(contents, file),
+                    ),
+                };
             });
             products.push({
                 code: item.code,
@@ -370,6 +388,38 @@ function markerValue(body, start, end, file) {
     return body.slice(first + start.length, last).trim().normalize('NFC');
 }
 
+function replaceMarkerBody(contents, start, end, placeholder, file) {
+    const first = contents.indexOf(start);
+    const last = contents.indexOf(end);
+    if (first < 0 || last < 0 || last <= first
+        || contents.indexOf(start, first + start.length) >= 0
+        || contents.indexOf(end, last + end.length) >= 0) {
+        throw new Error(`${file} has invalid translation markers.`);
+    }
+    return contents.slice(0, first + start.length)
+        + `\n${placeholder}\n`
+        + contents.slice(last);
+}
+
+function translationDocumentSkeleton(contents, file) {
+    const normalized = contents
+        .replace(/^\uFEFF/, '')
+        .replace(/\r\n?/g, '\n');
+    return replaceMarkerBody(
+        replaceMarkerBody(
+            normalized,
+            NAME_START,
+            NAME_END,
+            NAME_PLACEHOLDER,
+            file,
+        ),
+        DESCRIPTION_START,
+        DESCRIPTION_END,
+        DESCRIPTION_PLACEHOLDER,
+        file,
+    );
+}
+
 function assertTranslationText(translation, file) {
     if (translation.name === NAME_PLACEHOLDER
         || translation.description === DESCRIPTION_PLACEHOLDER) {
@@ -395,10 +445,8 @@ function assertTranslationText(translation, file) {
 }
 
 function parseTranslationMarkdown(file, expected, requireCompleted) {
-    const { body, values } = parseFrontMatter(
-        fs.readFileSync(file, 'utf8'),
-        file,
-    );
+    const contents = fs.readFileSync(file, 'utf8');
+    const { body, values } = parseFrontMatter(contents, file);
     const exact = {
         schema: MARKDOWN_SCHEMA,
         productCode: expected.code,
@@ -411,6 +459,10 @@ function parseTranslationMarkdown(file, expected, requireCompleted) {
         if (values[key] !== value) {
             throw new Error(`${file} front matter ${key} does not match source.`);
         }
+    }
+    if (sha256(translationDocumentSkeleton(contents, file))
+        !== expected.templateStructureSha256) {
+        throw new Error(`${file} protected Markdown content changed.`);
     }
     const translation = {
         lang: expected.locale,
@@ -457,12 +509,16 @@ function verifyTranslationPackage(directory, options = {}) {
     const sourceByCode = new Map(
         source.bundle.products.map(product => [product.code, product]),
     );
+    const sourcePathByCode = new Map(
+        source.manifest.products.map(item => [item.code, item.path]),
+    );
     const expectedFiles = new Set(['translation-manifest.json']);
     const translations = [];
     const seenProducts = new Set();
     for (const item of manifest.products) {
         const product = sourceByCode.get(item.code);
         if (!product || seenProducts.has(item.code)
+            || item.sourceProductPath !== sourcePathByCode.get(item.code)
             || item.sourceTranslationSha256 !==
                 sourceTranslationSha256(product)) {
             throw new Error(`Translation package source drift for ${item.code}.`);
@@ -477,7 +533,10 @@ function verifyTranslationPackage(directory, options = {}) {
             const relativePath = String(entry.path || '');
             if (!locales.includes(locale) || fileLocales.has(locale)
                 || !relativePath.startsWith(`translations/${locale}/`)
-                || !relativePath.endsWith(`/${item.code}.md`)) {
+                || !relativePath.endsWith(`/${item.code}.md`)
+                || !/^[a-f0-9]{64}$/.test(String(
+                    entry.templateStructureSha256 || '',
+                ))) {
                 throw new Error(`Translation package path is invalid for ${item.code}.`);
             }
             fileLocales.add(locale);
@@ -491,6 +550,8 @@ function verifyTranslationPackage(directory, options = {}) {
                         locale,
                         sourceArtifactId: source.manifest.artifactId,
                         sourceTranslationSha256: item.sourceTranslationSha256,
+                        templateStructureSha256:
+                            entry.templateStructureSha256,
                     },
                     options.requireCompleted === true,
                 ),
@@ -682,6 +743,7 @@ module.exports = {
     parseTranslationMarkdown,
     sourceTranslationSha256,
     targetLocales,
+    translationDocumentSkeleton,
     verifyTranslationPackage,
     writeTranslationPackage,
 };
