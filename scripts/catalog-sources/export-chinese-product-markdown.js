@@ -14,6 +14,7 @@ const {
 const ALLOWED_ARGUMENTS = new Set([
     '_',
     'artifact',
+    'context-bundle',
     'out',
     'source-archive',
 ]);
@@ -34,6 +35,10 @@ function validateArguments(args) {
         sourceDirectory: path.resolve(
             REPO_ROOT,
             requireArg(args, 'artifact'),
+        ),
+        contextBundleDirectory: path.resolve(
+            REPO_ROOT,
+            requireArg(args, 'context-bundle'),
         ),
         sourceArchiveDirectory: args['source-archive'] === undefined
             ? null

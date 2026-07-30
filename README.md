@@ -76,28 +76,41 @@ and run a one-product canary in Data Import Console before importing all files.
 ### Human translation round trip
 
 Export one neutral Chinese-source handoff package. Every product becomes one
-UTF-8 `.md` file whose entire visible content is the exact Chinese name followed
-by the exact Chinese description:
+UTF-8 `.md` file with the exact Chinese name and description plus the complete
+available source context: brand, year, batch, processing, shape, packaging,
+release facts, reference-price observations, market facts, source links, and
+source/local image mappings:
 
 ```markdown
 # 801 陈韵方砖
 
+## 产品描述
+
 茶品资料：品牌：大益；年份：2008年；批次：801；工艺：生茶；形态：饼茶；包装：每饼250克，每件60饼。
+
+## 产品资料
+
+- 品牌：大益
+- 年份：2008年
+- 批次：801
 ```
 
-There is no front matter, target locale, instruction, placeholder, SEO field,
-or product code inside the document. Product identity and source hashes remain
-in the separate `translation-manifest.json`.
+There is no front matter, target locale, instruction, placeholder, or SEO
+field inside the document. Product identity and source hashes remain in the
+separate `translation-manifest.json`.
 
 ```bash
 node scripts/catalog-sources/export-chinese-product-markdown.js \
   --artifact=/absolute/path/to/import/zzctea/current \
+  --context-bundle=/absolute/path/to/artifacts/catalog-source-import-bundles/zzctea/current \
   --source-archive=/absolute/path/to/artifacts/zzctea-translations/source-artifact \
   --out=/absolute/path/to/artifacts/zzctea-translations/zh-CN-source
 ```
 
-The translator replaces the first-line name and following description while
-keeping every filename, directory, and `translation-manifest.json` unchanged.
+The translator may translate the complete visible document. Reverse import
+reads the first-level title and the first product-description section, while
+year, package, price, source, and image facts remain source-bound context.
+Every filename, directory, and `translation-manifest.json` must stay unchanged.
 Returned packages are accepted only when every expected product changed and
 still matches the exact source artifact.
 `--source-archive` preserves that complete verified artifact, including local
