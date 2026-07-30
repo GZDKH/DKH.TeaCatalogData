@@ -34,9 +34,38 @@ translation. Its name is the exact source title; year, processing, shape,
 brand, package facts and safe aggregate market signals remain separate facts.
 SEO, meta title and meta description fields are omitted so
 `DKH.Platform.Seo` can generate them during a compatible ProductCatalog import.
-Current ProductCatalog validation still requires `en-US`, therefore the bundle
-remains `applyAllowed: false` until that import contract is updated; the
-collector does not invent an English mirror.
+The canonical source bundle remains `zh-CN`-only and `applyAllowed: false`; the
+collector does not invent an English mirror. Reviewed human translations are
+added only through the separate source-bound round trip below.
+
+Create human translation handoff packages without changing the verified
+Chinese source artifact:
+
+```bash
+node scripts/catalog-sources/export-product-translations.js \
+  --artifact=/absolute/path/to/import/zzctea/current \
+  --locales=en-US \
+  --out=/absolute/path/to/artifacts/zzctea-translations/en-US
+```
+
+Each package contains one Markdown file per product/locale plus a protected
+`translation-manifest.json`. The translator edits only the name and description
+marker bodies. Returned files are source-hash bound and cannot alter product
+codes, source text, specifications, catalog placement, prices, media, or SEO.
+
+After complete locale packages return, materialize a separate verified Admin
+Console artifact:
+
+```bash
+node scripts/catalog-sources/import-product-translations.js \
+  --artifact=/absolute/path/to/import/zzctea/current \
+  --translations=/absolute/path/to/artifacts/zzctea-translations/en-US,/absolute/path/to/artifacts/zzctea-translations/ru-RU \
+  --out=/absolute/path/to/import/zzctea/translated/en-US-ru-RU
+```
+
+The round trip is local and atomic. It preserves `applyAllowed: false`,
+`canaryRequired: true`, and `productionWrites: false`; a one-product translated
+canary and read-back are still mandatory before a full import.
 
 Each source-product mapping carries both the stable lookup URL and the observed
 canonical product URL. Reference prices, ranges, trends and aggregate demand /

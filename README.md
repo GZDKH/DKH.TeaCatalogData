@@ -73,6 +73,48 @@ content-addressed cache evidence remains outside the selected import tree under
 ignored `artifacts/`. The artifact carries `applyAllowed: false`; validate it
 and run a one-product canary in Data Import Console before importing all files.
 
+### Human translation round trip
+
+Export a separate Markdown handoff package for each translator or target
+locale. Every product becomes one UTF-8 `.md` file with protected product
+identity/source hashes, Chinese source text, factual specification context, and
+two editable marker sections. SEO fields are deliberately absent because
+ProductCatalog generates them through `DKH.Platform.Seo`.
+
+```bash
+node scripts/catalog-sources/export-product-translations.js \
+  --artifact=/absolute/path/to/import/zzctea/current \
+  --locales=en-US \
+  --out=/absolute/path/to/artifacts/zzctea-translations/en-US
+
+node scripts/catalog-sources/export-product-translations.js \
+  --artifact=/absolute/path/to/import/zzctea/current \
+  --locales=ru-RU \
+  --out=/absolute/path/to/artifacts/zzctea-translations/ru-RU
+```
+
+The translator changes only the text between
+`DKH:TARGET-NAME:*` and `DKH:TARGET-DESCRIPTION:*` markers. They must keep the
+front matter, markers, `translation-manifest.json`, Chinese source, and file
+paths unchanged. Returned packages are accepted only when every expected
+product is translated and still matches the exact source artifact.
+
+Combine one or more returned locale packages into a new, separate Admin
+Console artifact:
+
+```bash
+node scripts/catalog-sources/import-product-translations.js \
+  --artifact=/absolute/path/to/import/zzctea/current \
+  --translations=/absolute/path/to/artifacts/zzctea-translations/en-US,/absolute/path/to/artifacts/zzctea-translations/ru-RU \
+  --out=/absolute/path/to/import/zzctea/translated/en-US-ru-RU
+```
+
+The command never mutates `current`, never writes production, preserves all
+products/specifications/prices/catalog bindings/photos, recalculates every file
+hash and artifact identity, and keeps `applyAllowed: false` plus
+`canaryRequired: true`. Import one translated product and verify read-back
+before requesting a separate full apply.
+
 Put secrets in `.env` using `scripts/env.prod.template`. The TheTea text API key is read from `THETEA_API_KEY` or `THE_TEA_API_KEY`. ProductCatalog export/validate/import also requires `PRODUCT_CATALOG_WORKSPACE_ID`.
 
 Fetch TheTea source snapshot:
