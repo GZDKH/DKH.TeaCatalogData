@@ -159,8 +159,11 @@ fallbacks. Findings on an unpublished product are reported as Draft warnings
 and do not prevent generation, validation, or Draft import. A generated
 manifest records `publication.mode` as `draft` or `publish`. In `publish` mode,
 findings on a product with `published: true` are blocking errors. A real
-product apply also treats already-published records as publication candidates,
-so invalid live changes cannot bypass `import-generated.js` preflight.
+product validation/apply also treats the selected already-published records as
+publication candidates, so invalid live changes cannot bypass
+`import-generated.js` preflight. `--only` and `--limit` scope this gate to the
+same canary products sent to AdminGateway; an unfiltered bulk run checks all
+products.
 This is a publication gate, not a general language detector: native tea names
 and legitimate multilingual content are retained.
 

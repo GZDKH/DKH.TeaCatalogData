@@ -214,9 +214,12 @@ The first production import can proceed only when all gates pass:
 Publication-quality findings remain visible for Draft products without blocking
 their generation, validation, or import. `artifact-manifest.json` records
 `publication.mode` as `draft` or `publish`. In `publish` mode, findings on a
-product with `published: true` become blocking errors. A real product apply also
-treats already-published records as publication candidates, preventing invalid
-live updates while still allowing Draft preparation and read-only validation.
+product with `published: true` become blocking errors. Product validation/apply
+also treats the selected already-published records as publication candidates.
+`--only` and `--limit` scope the quality gate to the same canary products sent
+to AdminGateway, while an unfiltered bulk run checks every product. This
+prevents invalid live updates while still allowing Draft preparation and local
+read-only validation.
 Therefore incomplete editorial work can be saved as Draft while invalid
 products cannot enter a bulk publication.
 The fallback check targets known interface scaffolding and unresolved

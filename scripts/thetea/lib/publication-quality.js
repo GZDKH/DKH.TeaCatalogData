@@ -90,6 +90,7 @@ function auditPublicationQuality(input = {}) {
         .filter(finding => !finding.blocking)
         .map(finding => `Draft quality: ${formatFinding(finding)}`);
     const affectedProducts = sortedUnique(findings.map(finding => finding.product));
+    const publishedProductCount = products.filter(product => product?.published === true).length;
     const ruleCounts = {};
     for (const finding of findings) {
         ruleCounts[finding.rule] = (ruleCounts[finding.rule] || 0) + 1;
@@ -101,10 +102,8 @@ function auditPublicationQuality(input = {}) {
         draftEligible: true,
         publicationEligible: findings.length === 0,
         productCount: products.length,
-        publishedProductCount: products.filter(product => product?.published === true).length,
-        publicationCandidateCount: publicationRequested
-            ? products.filter(product => product?.published === true).length
-            : 0,
+        publishedProductCount,
+        publicationCandidateCount: publicationRequested ? publishedProductCount : 0,
         affectedProductCount: affectedProducts.length,
         findingCount: findings.length,
         blockerCount: errors.length,
@@ -114,6 +113,24 @@ function auditPublicationQuality(input = {}) {
         findings,
         errors,
         warnings,
+    };
+}
+
+function publicationQualitySummaryMessages(quality, errorLimit = 20) {
+    return {
+        errors: quality.errors.length
+            ? [
+                `Publication quality gate has ${quality.blockerCount} blocker(s); `
+                    + 'see publication-quality.json.',
+                ...quality.errors.slice(0, errorLimit),
+            ]
+            : [],
+        warnings: quality.warnings.length
+            ? [
+                `Publication quality has ${quality.warningCount} Draft finding(s); `
+                    + 'see publication-quality.json.',
+            ]
+            : [],
     };
 }
 
@@ -333,13 +350,7 @@ function buildMediaIndex(productMedia = {}) {
     for (const record of productMedia.records || []) {
         const productCode = normalizeCode(record?.product);
         const prefix = `${String(record?.path || '').replace(/\/+$/u, '')}/`;
-        const declaredItems = (record?.items || [])
-            .map(item => `${prefix}${String(item?.file || '')}`)
-            .filter(file => IMAGE_EXTENSIONS.has(path.extname(file).toLowerCase()));
-        const count = new Set([
-            ...files.filter(file => file.startsWith(prefix)),
-            ...declaredItems.filter(file => files.includes(file)),
-        ]).size;
+        const count = files.filter(file => file.startsWith(prefix)).length;
         result.set(productCode, (result.get(productCode) || 0) + count);
     }
     return result;
@@ -387,4 +398,5 @@ function sortedUnique(values) {
 
 module.exports = {
     auditPublicationQuality,
+    publicationQualitySummaryMessages,
 };

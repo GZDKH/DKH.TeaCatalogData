@@ -3,7 +3,10 @@ const assert = require('assert');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const { auditPublicationQuality } = require('./lib/publication-quality');
+const {
+    auditPublicationQuality,
+    publicationQualitySummaryMessages,
+} = require('./lib/publication-quality');
 const { writeReport } = require('./lib/report');
 
 function fixture() {
@@ -124,6 +127,12 @@ assert.strictEqual(invalidPublished.publicationCandidateCount, 1);
 assert.strictEqual(invalidPublished.blockerCount, invalidPublished.findingCount);
 assert.strictEqual(invalidPublished.warningCount, 0);
 assert(invalidPublished.errors.every(error => error.startsWith('Publication blocked:')));
+const blockingSummary = publicationQualitySummaryMessages(invalidPublished, 2);
+assert.strictEqual(blockingSummary.errors.length, 3);
+assert.strictEqual(blockingSummary.warnings.length, 0);
+const draftSummary = publicationQualitySummaryMessages(invalidDraft);
+assert.strictEqual(draftSummary.errors.length, 0);
+assert.strictEqual(draftSummary.warnings.length, 1);
 
 assert.deepStrictEqual(
     auditPublicationQuality({

@@ -216,9 +216,12 @@ Publication-quality findings сохраняются в отчёте для Draft
 блокируют их генерацию, validation или import. В
 `artifact-manifest.json` записывается `publication.mode`: `draft` или
 `publish`. В режиме `publish` findings продукта с `published: true` становятся
-blocking errors. Реальный product apply также считает уже опубликованные записи
-publication candidates: невалидное live-изменение нельзя провести в обход
-preflight, но Draft-подготовка и read-only validation остаются доступными.
+blocking errors. Product validation/apply также считает выбранные уже
+опубликованные записи publication candidates. `--only` и `--limit` ограничивают
+quality gate теми же canary-продуктами, которые отправляются в AdminGateway, а
+unfiltered bulk run проверяет все товары. Невалидное live-изменение нельзя
+провести в обход preflight, но Draft-подготовка и локальная read-only validation
+остаются доступными.
 Поэтому незавершённую редакторскую работу можно сохранить как Draft, а
 невалидные продукты нельзя массово опубликовать. Fallback-проверка ищет
 известные элементы interface scaffolding и unresolved localization markers,

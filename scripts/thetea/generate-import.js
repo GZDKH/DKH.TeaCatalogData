@@ -20,7 +20,10 @@ const {
 const { assertCompleteFieldLocales } = require('./lib/snapshot-options');
 const { buildSpecificationDefinitions } = require('./lib/spec-definitions');
 const { validateArtifact } = require('./lib/artifact-validator');
-const { auditPublicationQuality } = require('./lib/publication-quality');
+const {
+    auditPublicationQuality,
+    publicationQualitySummaryMessages,
+} = require('./lib/publication-quality');
 const { assertScopedPath, withStagedOutput } = require('./lib/generated-output');
 const {
     createArtifactManifest,
@@ -611,19 +614,7 @@ function main() {
         targetCatalog: catalogCode,
         publicationRequested: args.publish === true,
     });
-    const qualityErrors = publicationQuality.errors.length
-        ? [
-            `Publication quality gate has ${publicationQuality.blockerCount} blocker(s); `
-                + 'see publication-quality.json.',
-            ...publicationQuality.errors.slice(0, 20),
-        ]
-        : [];
-    const qualityWarnings = publicationQuality.warnings.length
-        ? [
-            `Publication quality has ${publicationQuality.warningCount} Draft finding(s); `
-                + 'see publication-quality.json.',
-        ]
-        : [];
+    const qualityMessages = publicationQualitySummaryMessages(publicationQuality);
     const generatedAt = new Date().toISOString();
     const sourceManifestSha256 = sha256(fs.readFileSync(manifestPath));
     const sourceFilesSha256 = hashSnapshotFiles(snapshotRoot, manifest);
@@ -673,11 +664,11 @@ function main() {
         overlaidProductCount: products.filter(product => baselineByCode.has(normalizeCode(product.code))).length,
         newProductCount: newProductCodes.length,
         newProductCodes,
-        errors: [...validation.errors, ...qualityErrors],
+        errors: [...validation.errors, ...qualityMessages.errors],
         warnings: [
             ...warnings,
             ...validation.warnings,
-            ...qualityWarnings,
+            ...qualityMessages.warnings,
         ],
     };
 

@@ -146,7 +146,12 @@ function repoPath(value) {
     return path.isAbsolute(String(value)) ? String(value) : path.join(REPO_ROOT, String(value));
 }
 
-function preflightArtifact(dir, args, dryRun) {
+function normalizeCode(value) {
+    const code = value && typeof value === 'object' ? value.code : value;
+    return String(code || '').trim().toUpperCase();
+}
+
+function preflightArtifact(dir, args, dryRun, selectedProductCodes = []) {
     const bundle = readArtifactBundle(dir);
     const manifest = bundle.manifest || {};
     const errors = [...bundle.errors];
@@ -213,8 +218,13 @@ function preflightArtifact(dir, args, dryRun) {
     });
     errors.push(...semantic.errors);
     const productProfile = String(args.profile || 'products').toLowerCase() === 'products';
+    const selectedCodes = new Set(selectedProductCodes.map(normalizeCode).filter(Boolean));
+    const qualityProducts = productProfile
+        ? bundle.products.filter(product =>
+            selectedCodes.size === 0 || selectedCodes.has(normalizeCode(product?.code)))
+        : [];
     const publicationQuality = auditPublicationQuality({
-        products: bundle.products,
+        products: qualityProducts,
         definitions: bundle.definitions,
         requiredLocales: manifest.requiredLocales || [],
         productMedia: bundle.productMedia,
@@ -222,8 +232,7 @@ function preflightArtifact(dir, args, dryRun) {
         targetCatalog: catalogPolicy.targetCatalog,
         publicationRequested: productProfile
             && (manifest.publication?.mode === 'publish'
-                || (!dryRun
-                    && bundle.products.some(product => product?.published === true))),
+                || qualityProducts.some(product => product?.published === true)),
     });
     errors.push(...publicationQuality.errors);
     if (errors.length) {
@@ -257,7 +266,6 @@ async function main() {
     }
 
     const dir = outputDir(args);
-    const preflight = preflightArtifact(dir, args, dryRun);
     const profile = String(args.profile || 'products').toLowerCase();
     const inputRoot = profileRoot(dir, profile);
     if (!fs.existsSync(inputRoot)) throw new Error(`Generated ${profile} directory not found: ${inputRoot}`);
@@ -274,6 +282,14 @@ async function main() {
     }
 
     if (!selected.length) throw new Error('No generated product files selected.');
+    const selectedProductCodes = profile === 'products'
+        ? selected.flatMap(item => item.records.map(record => record?.code))
+        : [];
+    const preflight = preflightArtifact(
+        dir,
+        args,
+        dryRun,
+        selectedProductCodes);
 
     const { GATEWAY_URL, getToken } = require('../lib/config');
     const token = await getToken();

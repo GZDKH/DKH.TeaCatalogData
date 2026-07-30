@@ -7,7 +7,10 @@ const { loadCatalogReference } = require('./lib/catalog-mapping');
 const { summarizeCatalogPlacement } = require('./lib/catalog-bindings');
 const { readArtifactBundle, sha256 } = require('./lib/artifact-bundle');
 const { validateArtifact } = require('./lib/artifact-validator');
-const { auditPublicationQuality } = require('./lib/publication-quality');
+const {
+    auditPublicationQuality,
+    publicationQualitySummaryMessages,
+} = require('./lib/publication-quality');
 const {
     hashInputPath,
     hashSnapshotFiles,
@@ -102,19 +105,7 @@ function main() {
         targetCatalog,
         publicationRequested: manifest.publication?.mode === 'publish',
     });
-    const qualityErrors = publicationQuality.errors.length
-        ? [
-            `Publication quality gate has ${publicationQuality.blockerCount} blocker(s); `
-                + 'see publication-quality.json.',
-            ...publicationQuality.errors.slice(0, 20),
-        ]
-        : [];
-    const qualityWarnings = publicationQuality.warnings.length
-        ? [
-            `Publication quality has ${publicationQuality.warningCount} Draft finding(s); `
-                + 'see publication-quality.json.',
-        ]
-        : [];
+    const qualityMessages = publicationQualitySummaryMessages(publicationQuality);
     const summary = {
         ...semantic,
         valid: integrityErrors.length === 0
@@ -136,12 +127,12 @@ function main() {
         errors: [
             ...integrityErrors,
             ...semantic.errors,
-            ...qualityErrors,
+            ...qualityMessages.errors,
         ],
         warnings: [
             ...integrityWarnings,
             ...semantic.warnings,
-            ...qualityWarnings,
+            ...qualityMessages.warnings,
         ],
     };
 
