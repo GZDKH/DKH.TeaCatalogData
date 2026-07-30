@@ -75,44 +75,45 @@ and run a one-product canary in Data Import Console before importing all files.
 
 ### Human translation round trip
 
-Export a separate Markdown handoff package for each translator or target
-locale. Every product becomes one UTF-8 `.md` file with protected product
-identity/source hashes, Chinese source text, factual specification context, and
-two editable marker sections. SEO fields are deliberately absent because
-ProductCatalog generates them through `DKH.Platform.Seo`.
+Export one neutral Chinese-source handoff package. Every product becomes one
+UTF-8 `.md` file whose entire visible content is the exact Chinese name followed
+by the exact Chinese description:
 
-```bash
-node scripts/catalog-sources/export-product-translations.js \
-  --artifact=/absolute/path/to/import/zzctea/current \
-  --source-archive=/absolute/path/to/artifacts/zzctea-translations/source-artifact \
-  --locales=en-US \
-  --out=/absolute/path/to/artifacts/zzctea-translations/en-US
+```markdown
+# 801 陈韵方砖
 
-node scripts/catalog-sources/export-product-translations.js \
-  --artifact=/absolute/path/to/import/zzctea/current \
-  --source-archive=/absolute/path/to/artifacts/zzctea-translations/source-artifact \
-  --locales=ru-RU \
-  --out=/absolute/path/to/artifacts/zzctea-translations/ru-RU
+茶品资料：品牌：大益；年份：2008年；批次：801；工艺：生茶；形态：饼茶；包装：每饼250克，每件60饼。
 ```
 
-The translator changes only the text between
-`DKH:TARGET-NAME:*` and `DKH:TARGET-DESCRIPTION:*` markers. They must keep the
-front matter, markers, `translation-manifest.json`, Chinese source, and file
-paths unchanged. Returned packages are accepted only when every expected
-product is translated and still matches the exact source artifact.
+There is no front matter, target locale, instruction, placeholder, SEO field,
+or product code inside the document. Product identity and source hashes remain
+in the separate `translation-manifest.json`.
+
+```bash
+node scripts/catalog-sources/export-chinese-product-markdown.js \
+  --artifact=/absolute/path/to/import/zzctea/current \
+  --source-archive=/absolute/path/to/artifacts/zzctea-translations/source-artifact \
+  --out=/absolute/path/to/artifacts/zzctea-translations/zh-CN-source
+```
+
+The translator replaces the first-line name and following description while
+keeping every filename, directory, and `translation-manifest.json` unchanged.
+Returned packages are accepted only when every expected product changed and
+still matches the exact source artifact.
 `--source-archive` preserves that complete verified artifact, including local
 photos, so a later weekly refresh of `current` cannot invalidate the returned
 translation package. A second export reuses the archive only when its artifact
 identity matches exactly.
 
-Combine one or more returned locale packages into a new, separate Admin
-Console artifact:
+Specify the target BCP 47 locale only after the translated directory returns,
+then build a new, separate Admin Console artifact:
 
 ```bash
-node scripts/catalog-sources/import-product-translations.js \
+node scripts/catalog-sources/import-translated-product-markdown.js \
   --artifact=/absolute/path/to/artifacts/zzctea-translations/source-artifact \
-  --translations=/absolute/path/to/artifacts/zzctea-translations/en-US,/absolute/path/to/artifacts/zzctea-translations/ru-RU \
-  --out=/absolute/path/to/import/zzctea/translated/en-US-ru-RU
+  --translations=/absolute/path/to/artifacts/zzctea-translations/returned \
+  --locale=en-US \
+  --out=/absolute/path/to/import/zzctea/translated/en-US
 ```
 
 The command never mutates `current`, never writes production, preserves all

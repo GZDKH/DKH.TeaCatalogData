@@ -23,6 +23,7 @@ catalog-source-offline-tests:
     - node scripts/catalog-sources/test-import-bundle.js
     - node scripts/catalog-sources/test-admin-console-artifact.js
     - node scripts/catalog-sources/test-product-translation-markdown.js
+    - node scripts/catalog-sources/test-chinese-product-markdown.js
     - node scripts/catalog-sources/test-media-materialization.js
     - node scripts/catalog-sources/test-reconciliation-references.js
     - node scripts/catalog-sources/test-reconciliation.js
