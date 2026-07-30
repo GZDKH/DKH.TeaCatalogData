@@ -13,6 +13,8 @@ const {
 } = require('./lib/admin-console-artifact');
 const {
     importTranslatedChineseMarkdown,
+    normalizeContext,
+    normalizeSpecifications,
     verifyChineseMarkdownPackage,
     writeChineseMarkdownPackage,
 } = require('./lib/chinese-product-markdown');
@@ -29,22 +31,155 @@ function markdownFiles(root) {
     return allFiles(root).filter(file => file.endsWith('.md'));
 }
 
+function translationContext(sourceRoot) {
+    const source = verifyAdminConsoleArtifact(sourceRoot);
+    const mediaRecords = JSON.parse(fs.readFileSync(path.join(
+        sourceRoot,
+        '07-media',
+        'products',
+        'media.json',
+    ), 'utf8'));
+    const mediaByProduct = new Map(
+        mediaRecords.map(record => [record.product, record]),
+    );
+    const products = new Map();
+    for (const product of source.bundle.products) {
+        const translation = product.translations.find(
+            item => item.lang === 'zh-CN',
+        );
+        const externalId = product.code.slice('ZZC-'.length);
+        const productContext = normalizeContext({
+            externalId,
+            productCode: product.code,
+            sourceLinks: {
+                observedCanonicalUrl:
+                    `https://zzctea.com/tea/t${externalId}-tea.html`,
+                stableLookupUrl:
+                    `https://zzctea.com/teaDetail/${externalId}.html`,
+            },
+        }, {
+            diagnosticCodes: [],
+            factualAttributes: [
+                ['brand.name', '大益'],
+                ['year-label', '2008年'],
+                ['batch', '801'],
+                ['production-technology', '生茶'],
+                ['shape', '饼茶'],
+                ['release.kind', 'factory-release-fact'],
+                ['release.quantity', '10000'],
+                ['release.basis-unit-code', 'cake'],
+                ['release.currency-code', 'CNY'],
+                ['market.pricing.current-amount', '8500'],
+                ['market.pricing.basis-unit-code', 'case'],
+                ['market.pricing.currency-code', 'CNY'],
+                ['market.aggregates.follower-count', '980'],
+                ['market.source-updated-at', '2025-02-08T00:00:00.000Z'],
+            ].map(([attributeCode, normalizedValue]) => ({
+                attributeCode,
+                normalizedValue,
+            })),
+            imageUris: [
+                `https://images.example.test/${externalId}.jpg`,
+            ],
+            localizedText: [{
+                description: translation.description,
+                languageCode: 'zh-CN',
+                title: translation.name,
+            }],
+            packageComponents: [{
+                containedUnitCode: 'g',
+                containerUnitCode: 'cake',
+                ordinal: 0,
+                quantity: { nanos: 0, units: '250' },
+            }, {
+                containedUnitCode: 'cake',
+                containerUnitCode: 'case',
+                ordinal: 1,
+                quantity: { nanos: 0, units: '60' },
+            }],
+            packageComponentsExact: true,
+            rawPackageText: '250克/片 60片/件',
+            referencePrices: [{
+                amount: { nanos: 0, units: '8500' },
+                basisUnitCode: 'case',
+                derivationKind: 1,
+                observedAt: '2026-07-30T00:00:00.000Z',
+                roundingMode: 'none',
+                sourceUpdatedAt: '2025-02-08T00:00:00.000Z',
+                state: 1,
+            }, {
+                amount: { nanos: 666666670, units: '141' },
+                basisUnitCode: 'cake',
+                derivationDivisor: { nanos: 0, units: '60' },
+                derivationKind: 2,
+                exactFractionDenominator: '3',
+                exactFractionNumerator: '425',
+                observedAt: '2026-07-30T00:00:00.000Z',
+                roundingMode: 'half-up',
+                roundingScale: 8,
+                sourceUpdatedAt: '2025-02-08T00:00:00.000Z',
+                state: 1,
+            }],
+            sourceDestination: {
+                canonicalUri:
+                    `https://zzctea.com/tea/t${externalId}-tea.html`,
+                lookupUri:
+                    `https://zzctea.com/teaDetail/${externalId}.html`,
+                observedAt: '2026-07-30T00:00:00.000Z',
+            },
+            sourceUpdatedAt: '2025-02-08T00:00:00.000Z',
+        }, mediaByProduct.get(product.code));
+        productContext.specifications = normalizeSpecifications(
+            product,
+            source.bundle,
+        );
+        products.set(product.code, productContext);
+    }
+    const binding = source.manifest.source;
+    return {
+        manifest: {
+            applyAllowed: false,
+            bundleId: 'b'.repeat(64),
+            inputEvidence: {
+                mappingSha256: binding.mappingsSha256,
+                mediaItemsSha256: binding.mediaItemsSha256,
+                mediaReceiptSha256: binding.mediaReceiptSha256,
+                productPatchesSha256: binding.productPatchesSha256,
+                projectionSha256: binding.projectionSha256,
+                reconciliationSha256: binding.reconciliationSha256,
+                sourceArtifactSha256: binding.sourceArtifactSha256,
+            },
+            productionWrites: false,
+            snapshotId: source.manifest.snapshotId,
+            sourceId: 'zzctea',
+            version: `${source.manifest.snapshotId}.${'b'.repeat(12)}`,
+        },
+        products,
+    };
+}
+
 function translatePackage(packageRoot) {
     const manifest = JSON.parse(fs.readFileSync(
         path.join(packageRoot, 'translation-manifest.json'),
         'utf8',
     ));
     for (const item of manifest.products) {
-        fs.writeFileSync(
-            path.join(packageRoot, ...item.file.split('/')),
-            `# Translated ${item.code}\n\nTranslated description for ${item.code}.\n`,
-        );
+        const file = path.join(packageRoot, ...item.file.split('/'));
+        const contents = fs.readFileSync(file, 'utf8')
+            .replace(/^# [^\n]+/, `# Translated ${item.code}`)
+            .replace(
+                /## 产品描述\n\n[\s\S]*?\n\n## /,
+                `## Product description\n\n` +
+                `Translated description for ${item.code}.\n\n## `,
+            );
+        fs.writeFileSync(file, contents);
     }
     return manifest;
 }
 
 function testChineseOnlyDeterministicExport() {
     const source = sourceArtifact();
+    const context = translationContext(source);
     const parent = temporaryDirectory('zzctea-chinese-markdown-');
     const sourceArchive = path.join(parent, 'source-artifact');
     const firstRoot = path.join(parent, 'first');
@@ -53,11 +188,13 @@ function testChineseOnlyDeterministicExport() {
         sourceDirectory: source,
         sourceArchiveDirectory: sourceArchive,
         outputDirectory: firstRoot,
+        context,
     });
     const second = writeChineseMarkdownPackage({
         sourceDirectory: source,
         sourceArchiveDirectory: sourceArchive,
         outputDirectory: secondRoot,
+        context,
     });
     assert.strictEqual(first.sourceArchive.reused, false);
     assert.strictEqual(second.sourceArchive.reused, true);
@@ -77,11 +214,25 @@ function testChineseOnlyDeterministicExport() {
         path.join(firstRoot, ...first.manifest.products[0].file.split('/')),
         'utf8',
     );
-    assert.strictEqual(
+    assert.match(
         markdown,
-        `# 茶 ${first.manifest.products[0].code}\n\n` +
-        `产品资料 ${first.manifest.products[0].code}\n`,
+        new RegExp(`^# 茶 ${first.manifest.products[0].code}`),
     );
+    assert.match(markdown, /## 产品资料/);
+    assert.match(markdown, /- 年份：2008年/);
+    assert.match(markdown, /- 品牌：大益/);
+    assert.match(markdown, /## 商品规格/);
+    assert.match(markdown, /- 包装规格：1饼\/件|包装规格：/);
+    assert.match(markdown, /- 原始包装规格：250克\/片 60片\/件/);
+    assert.match(markdown, /## 参考价格（非零售价）/);
+    assert.match(markdown, /- 金额：8500 人民币/);
+    assert.match(markdown, /- 金额：141\.66666667 人民币/);
+    assert.match(markdown, /## 市场数据/);
+    assert.match(markdown, /- 关注人数：980/);
+    assert.match(markdown, /## 来源信息/);
+    assert.match(markdown, /https:\/\/zzctea\.com\/tea\//);
+    assert.match(markdown, /## 图片/);
+    assert.match(markdown, /来源图片 1/);
     assert.doesNotMatch(
         markdown,
         /Translate|targetLocale|sourceLocale|productCode|schema|placeholder/i,
@@ -90,17 +241,20 @@ function testChineseOnlyDeterministicExport() {
     verifyChineseMarkdownPackage(firstRoot, {
         sourceRoot: sourceArchive,
         requireTranslated: false,
+        context,
     });
 }
 
 function testReturnedTranslationRoundTripPreservesArtifact() {
     const source = sourceArtifact();
+    const context = translationContext(source);
     const parent = temporaryDirectory('zzctea-chinese-roundtrip-');
     const packageRoot = path.join(parent, 'package');
     const outputRoot = path.join(parent, 'artifact');
     const exported = writeChineseMarkdownPackage({
         sourceDirectory: source,
         outputDirectory: packageRoot,
+        context,
     });
     translatePackage(packageRoot);
     const imported = importTranslatedChineseMarkdown({
@@ -163,11 +317,13 @@ function testReturnedTranslationRoundTripPreservesArtifact() {
 
 function testReturnedPackageFailsClosed() {
     const source = sourceArtifact();
+    const context = translationContext(source);
     const parent = temporaryDirectory('zzctea-chinese-fail-');
     const packageRoot = path.join(parent, 'package');
     const exported = writeChineseMarkdownPackage({
         sourceDirectory: source,
         outputDirectory: packageRoot,
+        context,
     });
     assert.throws(
         () => importTranslatedChineseMarkdown({
@@ -178,6 +334,26 @@ function testReturnedPackageFailsClosed() {
         }),
         /was not translated/,
     );
+
+    const contextOnlyFile = path.join(
+        packageRoot,
+        ...exported.manifest.products[0].file.split('/'),
+    );
+    const sourceContents = fs.readFileSync(contextOnlyFile, 'utf8');
+    fs.writeFileSync(
+        contextOnlyFile,
+        sourceContents.replace('## 产品资料', '## 商品资料'),
+    );
+    assert.throws(
+        () => importTranslatedChineseMarkdown({
+            sourceDirectory: source,
+            packageDirectory: packageRoot,
+            targetLocale: 'ru-RU',
+            outputDirectory: path.join(parent, 'context-only'),
+        }),
+        /was not translated/,
+    );
+    fs.writeFileSync(contextOnlyFile, sourceContents);
 
     translatePackage(packageRoot);
     const missingFile = path.join(
@@ -213,7 +389,7 @@ function testReturnedPackageFailsClosed() {
             sourceRoot: source,
             requireTranslated: true,
         }),
-        /must contain only/,
+        /complete section structure/,
     );
 }
 

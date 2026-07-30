@@ -44,17 +44,21 @@ Chinese source artifact:
 ```bash
 node scripts/catalog-sources/export-chinese-product-markdown.js \
   --artifact=/absolute/path/to/import/zzctea/current \
+  --context-bundle=/absolute/path/to/artifacts/catalog-source-import-bundles/zzctea/current \
   --source-archive=/absolute/path/to/artifacts/zzctea-translations/source-artifact \
   --out=/absolute/path/to/artifacts/zzctea-translations/zh-CN-source
 ```
 
-Each Markdown file visibly contains only `# <Chinese name>`, one blank line,
-and the Chinese description. It has no English instructions, locale fields,
-front matter, placeholders, or product metadata. The protected
-`translation-manifest.json` binds filenames to source product codes and hashes.
-The source archive retains the exact full artifact and local photos while
-translations are in progress, even when a weekly refresh later replaces
-`current`.
+Each Markdown file contains the Chinese name and description plus every
+available business fact needed for translation context: brand, year, batch,
+processing, shape, package hierarchy, release data, complete reference-price
+observations, market aggregates and trends, source links, and source/local
+image mappings. It has no English instructions, locale fields, front matter,
+placeholders, or SEO fields. The protected `translation-manifest.json` binds
+filenames to the exact verified import bundle, source product codes, context
+hashes, and Markdown hashes. The source archive retains the exact full Admin
+Console artifact and local photos while translations are in progress, even
+when a weekly refresh later replaces `current`.
 
 After the complete translated directory returns, supply its target BCP 47
 locale and materialize a separate verified Admin Console artifact:
