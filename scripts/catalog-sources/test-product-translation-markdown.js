@@ -170,16 +170,25 @@ function testDeterministicExport() {
     const second = temporaryDirectory('zzctea-translation-parent-b-');
     const firstOutput = path.join(first, 'package');
     const secondOutput = path.join(second, 'package');
+    const sourceArchive = path.join(first, 'source-artifact');
     const firstResult = writeTranslationPackage({
         sourceDirectory: source,
+        sourceArchiveDirectory: sourceArchive,
         outputDirectory: firstOutput,
         targetLocales: ['ru-ru', 'en-us'],
     });
     const secondResult = writeTranslationPackage({
         sourceDirectory: source,
+        sourceArchiveDirectory: sourceArchive,
         outputDirectory: secondOutput,
         targetLocales: ['en-US', 'ru-RU'],
     });
+    assert.strictEqual(firstResult.sourceArchive.reused, false);
+    assert.strictEqual(secondResult.sourceArchive.reused, true);
+    assert.strictEqual(
+        verifyAdminConsoleArtifact(sourceArchive).manifest.artifactId,
+        verifyAdminConsoleArtifact(source).manifest.artifactId,
+    );
     assert.strictEqual(
         stableJson(firstResult.manifest),
         stableJson(secondResult.manifest),
