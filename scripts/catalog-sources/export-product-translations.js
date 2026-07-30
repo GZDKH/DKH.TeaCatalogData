@@ -17,6 +17,7 @@ const ALLOWED_ARGUMENTS = new Set([
     'artifact',
     'locales',
     'out',
+    'source-archive',
 ]);
 
 function validateArguments(args) {
@@ -31,8 +32,12 @@ function validateArguments(args) {
     if (Array.isArray(args._) && args._.length > 0) {
         throw new Error('Positional arguments are not supported.');
     }
+    const sourceArchive = args['source-archive'] === undefined
+        ? null
+        : path.resolve(REPO_ROOT, requireArg(args, 'source-archive'));
     return {
         outputDirectory: path.resolve(REPO_ROOT, requireArg(args, 'out')),
+        sourceArchiveDirectory: sourceArchive,
         sourceDirectory: path.resolve(REPO_ROOT, requireArg(args, 'artifact')),
         targetLocales: csv(requireArg(args, 'locales')),
     };
@@ -44,6 +49,12 @@ function main() {
     console.log(`Products: ${result.manifest.productCount}`);
     console.log(`Locales: ${result.manifest.targetLocales.join(', ')}`);
     console.log(`Output: ${result.outputDirectory}`);
+    if (result.sourceArchive) {
+        console.log(
+            `Source archive: ${result.sourceArchive.outputDirectory}` +
+            `${result.sourceArchive.reused ? ' (reused)' : ''}`,
+        );
+    }
     console.log('Production writes: none');
 }
 

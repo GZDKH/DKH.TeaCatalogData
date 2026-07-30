@@ -44,6 +44,7 @@ Chinese source artifact:
 ```bash
 node scripts/catalog-sources/export-product-translations.js \
   --artifact=/absolute/path/to/import/zzctea/current \
+  --source-archive=/absolute/path/to/artifacts/zzctea-translations/source-artifact \
   --locales=en-US \
   --out=/absolute/path/to/artifacts/zzctea-translations/en-US
 ```
@@ -52,13 +53,15 @@ Each package contains one Markdown file per product/locale plus a protected
 `translation-manifest.json`. The translator edits only the name and description
 marker bodies. Returned files are source-hash bound and cannot alter product
 codes, source text, specifications, catalog placement, prices, media, or SEO.
+The source archive retains the exact full artifact while translations are in
+progress, even when a weekly refresh later replaces `current`.
 
 After complete locale packages return, materialize a separate verified Admin
 Console artifact:
 
 ```bash
 node scripts/catalog-sources/import-product-translations.js \
-  --artifact=/absolute/path/to/import/zzctea/current \
+  --artifact=/absolute/path/to/artifacts/zzctea-translations/source-artifact \
   --translations=/absolute/path/to/artifacts/zzctea-translations/en-US,/absolute/path/to/artifacts/zzctea-translations/ru-RU \
   --out=/absolute/path/to/import/zzctea/translated/en-US-ru-RU
 ```

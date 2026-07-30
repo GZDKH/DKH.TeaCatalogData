@@ -247,11 +247,57 @@ function packageIdentity(manifest) {
     }));
 }
 
-function writeTranslationPackage(options) {
+function archiveTranslationSource(options) {
     const sourceRoot = assertRealDirectory(
         options.sourceDirectory,
         'Source Admin Console artifact',
     );
+    const outputRoot = assertSeparateOutput(
+        sourceRoot,
+        options.outputDirectory,
+    );
+    const source = verifyAdminConsoleArtifact(sourceRoot);
+    if (fs.existsSync(outputRoot)) {
+        const archived = verifyAdminConsoleArtifact(outputRoot);
+        if (archived.manifest.artifactId !== source.manifest.artifactId) {
+            throw new Error(
+                'Translation source archive is already bound to another artifact.',
+            );
+        }
+        return {
+            manifest: archived.manifest,
+            outputDirectory: outputRoot,
+            reused: true,
+        };
+    }
+    withStagedOutput(outputRoot, stagingDirectory => {
+        copyTree(sourceRoot, stagingDirectory);
+        const archived = verifyAdminConsoleArtifact(stagingDirectory);
+        if (archived.manifest.artifactId !== source.manifest.artifactId) {
+            throw new Error('Translation source archive identity changed.');
+        }
+        return archived.manifest;
+    });
+    return {
+        manifest: source.manifest,
+        outputDirectory: outputRoot,
+        reused: false,
+    };
+}
+
+function writeTranslationPackage(options) {
+    let sourceRoot = assertRealDirectory(
+        options.sourceDirectory,
+        'Source Admin Console artifact',
+    );
+    let sourceArchive = null;
+    if (options.sourceArchiveDirectory) {
+        sourceArchive = archiveTranslationSource({
+            sourceDirectory: sourceRoot,
+            outputDirectory: options.sourceArchiveDirectory,
+        });
+        sourceRoot = sourceArchive.outputDirectory;
+    }
     const outputRoot = assertSeparateOutput(sourceRoot, options.outputDirectory);
     const verified = verifyAdminConsoleArtifact(sourceRoot);
     const locales = targetLocales(options.targetLocales || []);
@@ -329,6 +375,7 @@ function writeTranslationPackage(options) {
     return {
         manifest,
         outputDirectory: outputRoot,
+        sourceArchive,
     };
 }
 
@@ -737,6 +784,7 @@ module.exports = {
     PACKAGE_KIND,
     PACKAGE_SCHEMA_VERSION,
     SOURCE_LOCALE,
+    archiveTranslationSource,
     artifactIdentity,
     canonicalLocale,
     importTranslationPackages,

@@ -84,11 +84,13 @@ ProductCatalog generates them through `DKH.Platform.Seo`.
 ```bash
 node scripts/catalog-sources/export-product-translations.js \
   --artifact=/absolute/path/to/import/zzctea/current \
+  --source-archive=/absolute/path/to/artifacts/zzctea-translations/source-artifact \
   --locales=en-US \
   --out=/absolute/path/to/artifacts/zzctea-translations/en-US
 
 node scripts/catalog-sources/export-product-translations.js \
   --artifact=/absolute/path/to/import/zzctea/current \
+  --source-archive=/absolute/path/to/artifacts/zzctea-translations/source-artifact \
   --locales=ru-RU \
   --out=/absolute/path/to/artifacts/zzctea-translations/ru-RU
 ```
@@ -98,13 +100,17 @@ The translator changes only the text between
 front matter, markers, `translation-manifest.json`, Chinese source, and file
 paths unchanged. Returned packages are accepted only when every expected
 product is translated and still matches the exact source artifact.
+`--source-archive` preserves that complete verified artifact, including local
+photos, so a later weekly refresh of `current` cannot invalidate the returned
+translation package. A second export reuses the archive only when its artifact
+identity matches exactly.
 
 Combine one or more returned locale packages into a new, separate Admin
 Console artifact:
 
 ```bash
 node scripts/catalog-sources/import-product-translations.js \
-  --artifact=/absolute/path/to/import/zzctea/current \
+  --artifact=/absolute/path/to/artifacts/zzctea-translations/source-artifact \
   --translations=/absolute/path/to/artifacts/zzctea-translations/en-US,/absolute/path/to/artifacts/zzctea-translations/ru-RU \
   --out=/absolute/path/to/import/zzctea/translated/en-US-ru-RU
 ```
