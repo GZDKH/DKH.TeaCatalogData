@@ -38,32 +38,33 @@ The canonical source bundle remains `zh-CN`-only and `applyAllowed: false`; the
 collector does not invent an English mirror. Reviewed human translations are
 added only through the separate source-bound round trip below.
 
-Create human translation handoff packages without changing the verified
+Create one human translation handoff package without changing the verified
 Chinese source artifact:
 
 ```bash
-node scripts/catalog-sources/export-product-translations.js \
+node scripts/catalog-sources/export-chinese-product-markdown.js \
   --artifact=/absolute/path/to/import/zzctea/current \
   --source-archive=/absolute/path/to/artifacts/zzctea-translations/source-artifact \
-  --locales=en-US \
-  --out=/absolute/path/to/artifacts/zzctea-translations/en-US
+  --out=/absolute/path/to/artifacts/zzctea-translations/zh-CN-source
 ```
 
-Each package contains one Markdown file per product/locale plus a protected
-`translation-manifest.json`. The translator edits only the name and description
-marker bodies. Returned files are source-hash bound and cannot alter product
-codes, source text, specifications, catalog placement, prices, media, or SEO.
-The source archive retains the exact full artifact while translations are in
-progress, even when a weekly refresh later replaces `current`.
+Each Markdown file visibly contains only `# <Chinese name>`, one blank line,
+and the Chinese description. It has no English instructions, locale fields,
+front matter, placeholders, or product metadata. The protected
+`translation-manifest.json` binds filenames to source product codes and hashes.
+The source archive retains the exact full artifact and local photos while
+translations are in progress, even when a weekly refresh later replaces
+`current`.
 
-After complete locale packages return, materialize a separate verified Admin
-Console artifact:
+After the complete translated directory returns, supply its target BCP 47
+locale and materialize a separate verified Admin Console artifact:
 
 ```bash
-node scripts/catalog-sources/import-product-translations.js \
+node scripts/catalog-sources/import-translated-product-markdown.js \
   --artifact=/absolute/path/to/artifacts/zzctea-translations/source-artifact \
-  --translations=/absolute/path/to/artifacts/zzctea-translations/en-US,/absolute/path/to/artifacts/zzctea-translations/ru-RU \
-  --out=/absolute/path/to/import/zzctea/translated/en-US-ru-RU
+  --translations=/absolute/path/to/artifacts/zzctea-translations/returned \
+  --locale=en-US \
+  --out=/absolute/path/to/import/zzctea/translated/en-US
 ```
 
 The round trip is local and atomic. It preserves `applyAllowed: false`,
