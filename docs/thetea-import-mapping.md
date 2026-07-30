@@ -203,12 +203,25 @@ The first production import can proceed only when all gates pass:
 2. `Source contract files: 4` are present in the snapshot.
 3. Current catalog/category reference and complete `products` DataExchange JSON baseline exist.
 4. Generated report and `artifact-manifest.json` have `Valid: yes`, exact file parity, and non-empty source/catalog/baseline hashes.
-5. If categories are applied, fetch a new catalog reference and regenerate the entire artifact. Passing a new reference to an old artifact is rejected by hash validation.
-6. Final mapping has `Catalog found: yes` and `Missing categories: 0`.
-7. Definitions are imported before products through SetupTool or another approved ordered DataExchange workflow. `import-generated.js` supports only `categories` and `products`; it does not import definitions, catalog bindings, articles, or FAQ sidecars.
-8. AdminGateway token passes the required `CatalogExport`/`CatalogImport` policies and workspace access.
-9. A one-product canary is dry-run validated, applied only after canary approval, and read back for structural comparison.
-10. User explicitly approves the separate mass `--apply --yes` step.
+5. `publication-quality.json` has `Bulk publication eligible: yes`. It checks required-locale title/description, managed numeric units/precision, real image-file coverage, target catalog/category binding, mapped origin, and known unresolved or mixed-language interface fallback markers.
+6. If categories are applied, fetch a new catalog reference and regenerate the entire artifact. Passing a new reference to an old artifact is rejected by hash validation.
+7. Final mapping has `Catalog found: yes` and `Missing categories: 0`.
+8. Definitions are imported before products through SetupTool or another approved ordered DataExchange workflow. `import-generated.js` supports only `categories` and `products`; it does not import definitions, catalog bindings, articles, or FAQ sidecars.
+9. AdminGateway token passes the required `CatalogExport`/`CatalogImport` policies and workspace access.
+10. A one-product canary is dry-run validated, applied only after canary approval, and read back for structural comparison.
+11. User explicitly approves the separate mass `--apply --yes` step.
+
+Publication-quality findings remain visible for Draft products without blocking
+their generation, validation, or import. `artifact-manifest.json` records
+`publication.mode` as `draft` or `publish`. In `publish` mode, findings on a
+product with `published: true` become blocking errors. A real product apply also
+treats already-published records as publication candidates, preventing invalid
+live updates while still allowing Draft preparation and read-only validation.
+Therefore incomplete editorial work can be saved as Draft while invalid
+products cannot enter a bulk publication.
+The fallback check targets known interface scaffolding and unresolved
+localization markers; it does not reject native tea names merely because they
+contain another script.
 
 ## First Import Commands
 

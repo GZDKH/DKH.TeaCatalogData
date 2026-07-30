@@ -7,6 +7,7 @@ const { loadCatalogReference } = require('./lib/catalog-mapping');
 const { summarizeCatalogPlacement } = require('./lib/catalog-bindings');
 const { readArtifactBundle, sha256 } = require('./lib/artifact-bundle');
 const { validateArtifact } = require('./lib/artifact-validator');
+const { auditPublicationQuality } = require('./lib/publication-quality');
 const {
     hashInputPath,
     hashSnapshotFiles,
@@ -92,9 +93,33 @@ function main() {
         bundle.products,
         bundle.catalogBindings,
         targetCatalog);
+    const publicationQuality = auditPublicationQuality({
+        products: bundle.products,
+        definitions: bundle.definitions,
+        requiredLocales: manifest.requiredLocales || [],
+        productMedia: bundle.productMedia,
+        catalogBindings: bundle.catalogBindings,
+        targetCatalog,
+        publicationRequested: manifest.publication?.mode === 'publish',
+    });
+    const qualityErrors = publicationQuality.errors.length
+        ? [
+            `Publication quality gate has ${publicationQuality.blockerCount} blocker(s); `
+                + 'see publication-quality.json.',
+            ...publicationQuality.errors.slice(0, 20),
+        ]
+        : [];
+    const qualityWarnings = publicationQuality.warnings.length
+        ? [
+            `Publication quality has ${publicationQuality.warningCount} Draft finding(s); `
+                + 'see publication-quality.json.',
+        ]
+        : [];
     const summary = {
         ...semantic,
-        valid: integrityErrors.length === 0 && semantic.valid,
+        valid: integrityErrors.length === 0
+            && semantic.valid
+            && publicationQuality.gatePassed,
         artifactDirectory: dir,
         artifactFileCount: manifest.files?.length || 0,
         productFileCount: bundle.productFiles.length,
@@ -106,9 +131,18 @@ function main() {
         baselineReferenceSha256: manifest.baselineReferenceSha256,
         specificationDefinitionCounts: semantic.definitionCounts,
         specificationLocalization: manifest.localization,
+        publicationQuality,
         relations: semantic.relationCounts,
-        errors: [...integrityErrors, ...semantic.errors],
-        warnings: [...integrityWarnings, ...semantic.warnings],
+        errors: [
+            ...integrityErrors,
+            ...semantic.errors,
+            ...qualityErrors,
+        ],
+        warnings: [
+            ...integrityWarnings,
+            ...semantic.warnings,
+            ...qualityWarnings,
+        ],
     };
 
     const reportDir = path.join(REPO_ROOT, 'reports', 'thetea', args.report || 'validation');

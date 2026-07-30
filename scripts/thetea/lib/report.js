@@ -23,6 +23,11 @@ function writeReport(reportDir, summary) {
             path.join(reportDir, 'category-coverage.json'),
             JSON.stringify(summary.categoryCoverage, null, 2));
     }
+    if (summary.publicationQuality) {
+        fs.writeFileSync(
+            path.join(reportDir, 'publication-quality.json'),
+            JSON.stringify(summary.publicationQuality, null, 2));
+    }
 }
 
 function toMarkdown(summary) {
@@ -205,6 +210,47 @@ function toMarkdown(summary) {
             lines.push('', '### Unresolved Taxonomy', '');
             for (const item of coverage.unresolved) {
                 lines.push(`- ${item.product} (${item.slug}): ${item.warnings.join(' ')}`);
+            }
+        }
+    }
+
+    if (summary.publicationQuality) {
+        const quality = summary.publicationQuality;
+        lines.push(
+            '',
+            '## Publication Quality Gate',
+            '',
+            `- Gate passed for the current artifact: ${quality.gatePassed ? 'yes' : 'no'}`,
+            `- Draft save eligible: ${quality.draftEligible ? 'yes' : 'no'}`,
+            `- Bulk publication eligible: ${quality.publicationEligible ? 'yes' : 'no'}`,
+            `- Already-published products: ${quality.publishedProductCount ?? 0}`,
+            `- Publication candidates: ${quality.publicationCandidateCount ?? 0}`,
+            `- Affected products: ${quality.affectedProductCount ?? 0}`,
+            `- Findings: ${quality.findingCount ?? 0}`,
+            `- Blocking findings: ${quality.blockerCount ?? 0}`,
+            `- Draft warnings: ${quality.warningCount ?? 0}`);
+
+        if (Object.keys(quality.ruleCounts || {}).length) {
+            lines.push('', '### Findings by Rule', '');
+            for (const [rule, count] of Object.entries(quality.ruleCounts)) {
+                lines.push(`- ${rule}: ${count}`);
+            }
+        }
+
+        if (quality.findings?.length) {
+            const visibleFindings = quality.findings.slice(0, 50);
+            lines.push('', '### First Findings', '');
+            for (const finding of visibleFindings) {
+                const locale = finding.locale ? ` ${finding.locale}` : '';
+                const severity = finding.blocking ? 'BLOCK' : 'DRAFT';
+                lines.push(
+                    `- ${severity} ${finding.product} [${finding.rule}]${locale} `
+                    + `${finding.field}: ${finding.message}`);
+            }
+            if (quality.findings.length > visibleFindings.length) {
+                lines.push(
+                    `- ${quality.findings.length - visibleFindings.length} additional finding(s); `
+                    + 'see publication-quality.json.');
             }
         }
     }

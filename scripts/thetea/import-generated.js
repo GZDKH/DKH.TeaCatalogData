@@ -8,6 +8,7 @@ const { readArtifactBundle, sha256 } = require('./lib/artifact-bundle');
 const { validateArtifact } = require('./lib/artifact-validator');
 const { loadCatalogReference } = require('./lib/catalog-mapping');
 const { resolveArtifactCatalogPolicy } = require('./lib/import-targets');
+const { auditPublicationQuality } = require('./lib/publication-quality');
 const {
     hashInputPath,
     hashSnapshotFiles,
@@ -211,10 +212,24 @@ function preflightArtifact(dir, args, dryRun) {
         allowedCatalogCodes: catalogPolicy.allowedCatalogCodes,
     });
     errors.push(...semantic.errors);
+    const productProfile = String(args.profile || 'products').toLowerCase() === 'products';
+    const publicationQuality = auditPublicationQuality({
+        products: bundle.products,
+        definitions: bundle.definitions,
+        requiredLocales: manifest.requiredLocales || [],
+        productMedia: bundle.productMedia,
+        catalogBindings: bundle.catalogBindings,
+        targetCatalog: catalogPolicy.targetCatalog,
+        publicationRequested: productProfile
+            && (manifest.publication?.mode === 'publish'
+                || (!dryRun
+                    && bundle.products.some(product => product?.published === true))),
+    });
+    errors.push(...publicationQuality.errors);
     if (errors.length) {
         throw new Error(`Generated artifact preflight failed:\n${errors.slice(0, 20).join('\n')}`);
     }
-    return { bundle, semantic, workspaceId };
+    return { bundle, semantic, publicationQuality, workspaceId };
 }
 
 function profileRoot(dir, profile) {
@@ -269,6 +284,9 @@ async function main() {
     console.log(`Gateway: ${GATEWAY_URL}`);
     console.log(`Input: ${inputRoot}`);
     console.log(`Artifact products: ${preflight.semantic.productCount}`);
+    console.log(
+        `Publication quality: ${preflight.publicationQuality.findingCount} finding(s), `
+        + `${preflight.publicationQuality.blockerCount} blocker(s)`);
 
     for (const item of selected) {
         try {
@@ -325,7 +343,14 @@ async function main() {
     process.exit(failed ? 1 : 0);
 }
 
-main().catch(error => {
-    console.error(`FATAL: ${error.message}`);
-    process.exit(1);
-});
+if (require.main === module) {
+    main().catch(error => {
+        console.error(`FATAL: ${error.message}`);
+        process.exit(1);
+    });
+}
+
+module.exports = {
+    main,
+    preflightArtifact,
+};
