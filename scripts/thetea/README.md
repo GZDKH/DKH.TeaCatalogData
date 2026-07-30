@@ -180,6 +180,12 @@ node scripts/thetea/reconcile-generated.js \
   --report=thetea-2026-06-01-reconciliation
 ```
 
+Reconciliation uses the same catalog-assignment policy recorded in the artifact
+manifest as generation, validation, and import preflight. `preserve` continues
+to reject removal of any unrelated catalog placement. An approved
+`target-only` artifact reports its single target catalog and does not
+misclassify removal of out-of-target placements as unexpected loss.
+
 Reconcile the shared `SPEC-TT-*` definition registry separately. This produces
 ordered upserts/deletes and exact rollback payloads. A stale definition is never
 eligible for deletion when the complete product baseline shows use outside the

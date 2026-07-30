@@ -7,6 +7,7 @@ const { readArtifactBundle } = require('./lib/artifact-bundle');
 const { assertScopedPath, withStagedOutput } = require('./lib/generated-output');
 const { loadVerifiedProductReference } = require('./lib/product-reference');
 const { validateBaselinePreservation } = require('./lib/product-overlay');
+const { resolveArtifactCatalogPolicy } = require('./lib/import-targets');
 const { hashInputPath } = require('./generate-import');
 
 const COLLECTION_KEYS = {
@@ -220,7 +221,7 @@ function diffProduct(before, after) {
     return fields;
 }
 
-function buildReconciliation(desiredProducts, baselineProducts) {
+function buildReconciliation(desiredProducts, baselineProducts, options = {}) {
     const baselineByCode = new Map();
     for (const product of baselineProducts) {
         const code = normalizeCode(product.code);
@@ -276,7 +277,10 @@ function buildReconciliation(desiredProducts, baselineProducts) {
             fieldChangeCounts[field] = (fieldChangeCounts[field] || 0) + 1;
         }
     }
-    const preservationErrors = validateBaselinePreservation(desiredProducts, baselineProducts);
+    const preservationErrors = validateBaselinePreservation(
+        desiredProducts,
+        baselineProducts,
+        options.baselinePreservation);
     return {
         counts,
         fieldChangeCounts,
@@ -325,9 +329,13 @@ function main() {
         throw new Error('Product reference hash differs from artifact manifest.');
     }
 
+    const catalogPolicy = resolveArtifactCatalogPolicy(bundle.manifest, args);
     const selected = selectProducts(bundle.products, args);
     if (!selected.length) throw new Error('No products selected.');
-    const reconciliation = buildReconciliation(selected, reference.products);
+    const reconciliation = buildReconciliation(
+        selected,
+        reference.products,
+        { baselinePreservation: catalogPolicy.baselinePreservation });
     const report = {
         generatedAt: new Date().toISOString(),
         mode: 'read-only-reconciliation',
@@ -337,6 +345,10 @@ function main() {
         productReferenceSha256: hashInputPath(productReferencePath),
         productReferencePath,
         workspaceId: reference.manifest.workspaceId,
+        catalogAssignmentPolicy: {
+            mode: catalogPolicy.catalogAssignmentMode,
+            targetCatalog: catalogPolicy.targetCatalog,
+        },
         selectedProductCount: selected.length,
         counts: reconciliation.counts,
         fieldChangeCounts: reconciliation.fieldChangeCounts,

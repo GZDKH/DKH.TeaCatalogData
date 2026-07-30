@@ -144,6 +144,12 @@ Missing categories: 0
 
 `artifact-manifest.json.targets` объявляет назначения импорта. Production TheTea artifact по умолчанию содержит catalog `CATALOG-CHINESE-TEA` и storefront codes `shop-thetea`, `thetea-wiki`; менять их можно только явным `--storefronts=<codes>`.
 
+Read-only reconciliation продуктов использует тот же
+`targets.catalogAssignmentMode`, что generation, validation и import
+preflight. В отчёте фиксируются mode и target catalog. `preserve` считает
+блокирующей потерей удаление любой unrelated catalog placement; для
+согласованного `target-only` намеренными считаются только placements вне target.
+
 Сгенерированные записи reference и catalog binding для
 `CATALOG-CHINESE-TEA` содержат ровно один поддерживаемый перевод для каждой
 обязательной локали snapshot. Валидация артефакта отклоняет отсутствующие,

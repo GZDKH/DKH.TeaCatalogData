@@ -94,6 +94,28 @@ const removal = buildReconciliation([
 assert.strictEqual(removal.eligible, false);
 assert(removal.preservationErrors.some(error => error.includes('LEGACY-KEEP')));
 
+const catalogBaseline = [product('TEA-CATALOG', {
+    catalogs: [
+        { catalog: 'CATALOG-TARGET', category: 'CAT-TARGET' },
+        { catalog: 'CATALOG-OTHER', category: 'CAT-OTHER' },
+    ],
+})];
+const catalogDesired = [product('TEA-CATALOG', {
+    catalogs: [{ catalog: 'CATALOG-TARGET', category: 'CAT-TARGET' }],
+})];
+const preserveCatalogs = buildReconciliation(catalogDesired, catalogBaseline);
+assert.strictEqual(preserveCatalogs.eligible, false);
+assert(preserveCatalogs.preservationErrors.some(error =>
+    error.includes('CATALOG-OTHER|CAT-OTHER')));
+const targetOnlyCatalogs = buildReconciliation(catalogDesired, catalogBaseline, {
+    baselinePreservation: {
+        catalogAssignmentMode: 'target-only',
+        targetCatalog: 'CATALOG-TARGET',
+    },
+});
+assert.strictEqual(targetOnlyCatalogs.eligible, true);
+assert.deepStrictEqual(targetOnlyCatalogs.preservationErrors, []);
+
 assert.deepStrictEqual(
     collectionDiff([{ code: 'A', value: 1 }], [{ code: 'A', value: 2 }, { code: 'B' }], item => item.code),
     { added: ['B'], removed: [], changed: ['A'] });
