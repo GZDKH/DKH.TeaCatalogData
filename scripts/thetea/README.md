@@ -361,6 +361,29 @@ single `07-media/products/media.json` manifest:
 Admin import reads every image in the declared folder in filename order. The first image becomes the
 product cover unless the manifest later declares explicit `items` or `cover`.
 
+For photographer deliveries whose folders use
+`<family>-<index>.<Russian name> (<Chinese name>, <transcription>)`, prepare a
+fail-closed media root before generation:
+
+```bash
+node scripts/thetea/prepare-photo-media.js \
+  --artifact-dir=import/thetea/current \
+  --photo-root=import/thetea/foto \
+  --out=import/thetea/photo-media-source
+```
+
+The command requires an exact normalized transcription (pinyin) match against
+the canonical product translations. When multiple products have the same
+pinyin, exact Russian and then exact Chinese names are used only to disambiguate
+that pinyin candidate set. It refuses missing or ambiguous matches and orphan
+galleries, verifies JPEG signatures and content hashes, and writes
+`photo-mapping.json`. A matching top-level `готовые/jpg` folder becomes a full
+gallery; otherwise the JPEG in `1 photo ready` becomes the only image. The
+selected image is always named `00-cover.jpg`, so it remains the cover after
+`generate-import.js --media-root=import/thetea/photo-media-source`. PNG copies,
+ZIP files, duplicate JPEG content, and all other non-JPEG files are
+intentionally excluded. The output directory must not already exist.
+
 ## Specification Policy
 
 Every managed specification has exactly one group and one attribute. A product has at most one row per managed attribute; conflicting type, unit, parent, option, or translation metadata is fatal.
