@@ -21,9 +21,11 @@ function product(code, russian, native, transcription) {
     };
 }
 
-function jpeg(file, marker = 0) {
+function png(file, marker = 0) {
     fs.mkdirSync(path.dirname(file), { recursive: true });
-    fs.writeFileSync(file, Buffer.from([0xff, 0xd8, 0xff, marker]));
+    fs.writeFileSync(
+        file,
+        Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, marker]));
 }
 
 function writeProduct(artifactDir, record) {
@@ -80,11 +82,11 @@ try {
     const outputDir = path.join(tempRoot, 'prepared');
     const folderName = '绿茶-12.Билочунь (碧螺春, bìluóchūn)';
     const selectedDir = path.join(photoRoot, '1 photo ready', folderName);
-    const galleryDir = path.join(photoRoot, folderName, 'готовые', 'jpg');
-    jpeg(path.join(selectedDir, 'DSC0002.jpg'), 2);
-    fs.writeFileSync(path.join(selectedDir, 'DSC0002.png'), 'ignored');
-    jpeg(path.join(galleryDir, 'DSC0001.jpg'), 1);
-    jpeg(path.join(galleryDir, 'DSC0002.jpg'), 2);
+    const galleryDir = path.join(photoRoot, folderName, 'готовые', 'png');
+    png(path.join(selectedDir, 'DSC0002.png'), 2);
+    fs.writeFileSync(path.join(selectedDir, 'DSC0002.jpg'), 'ignored');
+    png(path.join(galleryDir, 'DSC0001.png'), 1);
+    png(path.join(galleryDir, 'DSC0002.png'), 2);
     fs.writeFileSync(path.join(photoRoot, 'archive.zip'), 'ignored');
     writeProduct(artifactDir, products[1]);
     writeProduct(artifactDir, product('TEA-OTHER', 'Другой чай', '其他茶', 'qítā chá'));
@@ -93,7 +95,7 @@ try {
     assert.strictEqual(selected.kind, 'gallery');
     assert.deepStrictEqual(
         selected.assets.map(item => item.outputName),
-        ['00-cover.jpg', '01-DSC0001.jpg']);
+        ['00-cover.png', '01-DSC0001.png']);
 
     const mapping = buildPhotoMapping({ artifactDir, photoRoot });
     assert.deepStrictEqual(mapping.summary, {
@@ -104,7 +106,7 @@ try {
         coverOnly: 0,
         imageCount: 2,
         uniqueContentHashes: 2,
-        bytes: 8,
+        bytes: 18,
     });
     assert.deepStrictEqual(mapping.unmatchedProductCodes, ['TEA-OTHER']);
 
@@ -115,16 +117,16 @@ try {
     assert.ok(fs.existsSync(path.join(
         outputDir,
         'TEA-CN-BILUOCHUN',
-        '00-cover.jpg')));
+        '00-cover.png')));
     assert.ok(fs.existsSync(path.join(outputDir, 'photo-mapping.json')));
     assert.throws(
         () => materializePhotoMedia(mapping, { outputDir, artifactDir, photoRoot }),
         /refusing to replace/);
 
-    fs.writeFileSync(path.join(selectedDir, 'DSC0002.jpg'), 'not-a-jpeg');
+    fs.writeFileSync(path.join(selectedDir, 'DSC0002.png'), 'not-a-png');
     assert.throws(
         () => selectPhotoAssets(photoRoot, folderName),
-        /Invalid JPEG signature/);
+        /Invalid PNG signature/);
 } finally {
     fs.rmSync(tempRoot, { recursive: true, force: true });
 }

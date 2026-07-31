@@ -3,7 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 const SELECTED_FOLDER = '1 photo ready';
-const GALLERY_FOLDER = path.join('готовые', 'jpg');
+const GALLERY_FOLDER = path.join('готовые', 'png');
+const PNG_SIGNATURE = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
 
 function sortStrings(values) {
     return [...values].sort((left, right) => {
@@ -130,22 +131,24 @@ function directFiles(dir, predicate) {
     return sortStrings(files);
 }
 
-function isJpeg(file) {
-    return ['.jpg', '.jpeg'].includes(path.extname(file).toLowerCase());
+function isPng(file) {
+    return path.extname(file).toLowerCase() === '.png';
 }
 
-function assertJpeg(file) {
+function assertPng(file) {
     const stat = fs.statSync(file);
-    if (!stat.isFile() || stat.size < 3) throw new Error(`Invalid JPEG file: ${file}`);
-    const header = Buffer.alloc(3);
+    if (!stat.isFile() || stat.size < PNG_SIGNATURE.length) {
+        throw new Error(`Invalid PNG file: ${file}`);
+    }
+    const header = Buffer.alloc(PNG_SIGNATURE.length);
     const descriptor = fs.openSync(file, 'r');
     try {
         fs.readSync(descriptor, header, 0, header.length, 0);
     } finally {
         fs.closeSync(descriptor);
     }
-    if (header[0] !== 0xff || header[1] !== 0xd8 || header[2] !== 0xff) {
-        throw new Error(`Invalid JPEG signature: ${file}`);
+    if (!header.equals(PNG_SIGNATURE)) {
+        throw new Error(`Invalid PNG signature: ${file}`);
     }
     return {
         bytes: stat.size,
@@ -155,17 +158,17 @@ function assertJpeg(file) {
 
 function selectPhotoAssets(photoRoot, folderName) {
     const selectedDir = path.join(photoRoot, SELECTED_FOLDER, folderName);
-    const selected = directFiles(selectedDir, isJpeg);
+    const selected = directFiles(selectedDir, isPng);
     if (selected.length !== 1) {
         throw new Error(
-            `Expected exactly one selected JPEG in '${folderName}', found ${selected.length}.`);
+            `Expected exactly one selected PNG in '${folderName}', found ${selected.length}.`);
     }
 
     const galleryDir = path.join(photoRoot, folderName, GALLERY_FOLDER);
     const galleryExists = fs.existsSync(galleryDir);
-    const gallery = galleryExists ? directFiles(galleryDir, isJpeg) : [];
+    const gallery = galleryExists ? directFiles(galleryDir, isPng) : [];
     if (galleryExists && !gallery.length) {
-        throw new Error(`Gallery has no JPEG files: ${galleryDir}`);
+        throw new Error(`Gallery has no PNG files: ${galleryDir}`);
     }
     let assets;
     let kind;
@@ -187,15 +190,15 @@ function selectPhotoAssets(photoRoot, folderName) {
     const seen = new Set();
     const records = assets.map((sourcePath, index) => {
         const realPath = fs.realpathSync(sourcePath);
-        if (seen.has(realPath)) throw new Error(`Duplicate JPEG source: ${sourcePath}`);
+        if (seen.has(realPath)) throw new Error(`Duplicate PNG source: ${sourcePath}`);
         seen.add(realPath);
-        const verified = assertJpeg(realPath);
+        const verified = assertPng(realPath);
         const sourceName = path.basename(sourcePath);
         return {
             sourcePath: realPath,
             sourceName,
             outputName: index === 0
-                ? '00-cover.jpg'
+                ? '00-cover.png'
                 : `${String(index).padStart(2, '0')}-${sourceName}`,
             bytes: verified.bytes,
             sha256: verified.sha256,
@@ -289,7 +292,7 @@ function buildPhotoMapping({ artifactDir, photoRoot }) {
             const existing = contentHashes.get(asset.sha256);
             if (existing) {
                 throw new Error(
-                    `Duplicate JPEG content: ${existing} and ${code}/${asset.sourceName}.`);
+                    `Duplicate PNG content: ${existing} and ${code}/${asset.sourceName}.`);
             }
             contentHashes.set(asset.sha256, `${code}/${asset.sourceName}`);
         }
