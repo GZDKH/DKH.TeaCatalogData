@@ -17,8 +17,11 @@ const {
 const {
     DESCRIPTION_PLACEHOLDER,
     NAME_PLACEHOLDER,
+    artifactFiles,
     artifactIdentity,
     importTranslationPackages,
+    normalizeProductTranslationLocales,
+    productLocale,
     verifyTranslationPackage,
     writeTranslationPackage,
 } = require('./lib/product-translation-markdown');
@@ -287,6 +290,106 @@ function testSuccessfulRoundTripAndPreservation() {
     );
 }
 
+function testProductLocalesUseSpecificBcp47Cultures() {
+    assert.strictEqual(productLocale('de'), 'de-DE');
+    assert.strictEqual(productLocale('no'), 'nb-NO');
+    assert.strictEqual(productLocale('pt'), 'pt-BR');
+    assert.strictEqual(productLocale('bho'), 'bho-IN');
+    assert.strictEqual(productLocale('zh-CN'), 'zh-CN');
+
+    const source = sourceArtifact();
+    const packageParent = temporaryDirectory('zzctea-specific-locale-package-');
+    const packageRoot = path.join(packageParent, 'package');
+    const output = path.join(packageParent, 'artifact');
+    writeTranslationPackage({
+        sourceDirectory: source,
+        outputDirectory: packageRoot,
+        targetLocales: ['de'],
+    });
+    completePackage(packageRoot);
+    importTranslationPackages({
+        sourceDirectory: source,
+        outputDirectory: output,
+        packageDirectories: [packageRoot],
+    });
+    const verified = verifyAdminConsoleArtifact(output);
+    assert.deepStrictEqual(
+        verified.manifest.requiredLocales,
+        ['de-DE', 'zh-CN'],
+    );
+    assert.deepStrictEqual(
+        verified.manifest.translationInterchange.targetLocales,
+        ['de-DE'],
+    );
+    assert.deepStrictEqual(
+        verified.manifest.translationInterchange.packages[0].targetLocales,
+        ['de-DE'],
+    );
+    for (const product of verified.bundle.products) {
+        assert(product.translations.some(item => item.lang === 'de-DE'));
+        assert(!product.translations.some(item => item.lang === 'de'));
+    }
+}
+
+function testLegacyArtifactLocaleNormalization() {
+    const source = sourceArtifact();
+    const legacyParent = temporaryDirectory('zzctea-legacy-locales-');
+    const legacy = path.join(legacyParent, 'legacy');
+    const output = path.join(legacyParent, 'normalized');
+    fs.cpSync(source, legacy, { recursive: true });
+    const manifestFile = path.join(legacy, 'artifact-manifest.json');
+    const manifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+    const translationContent = [];
+    for (const item of manifest.products) {
+        const productFile = path.join(legacy, ...item.path.split('/'));
+        const records = JSON.parse(fs.readFileSync(productFile, 'utf8'));
+        const translation = {
+            lang: 'de',
+            name: `Deutscher Tee ${item.code}`,
+            description: `Deutsche Beschreibung ${item.code}.`,
+        };
+        records[0].translations.push(translation);
+        records[0].translations.sort((left, right) =>
+            left.lang.localeCompare(right.lang));
+        fs.writeFileSync(productFile, `${JSON.stringify(records, null, 2)}\n`);
+        translationContent.push({ code: item.code, translation });
+    }
+    manifest.requiredLocales = ['de', 'zh-CN'];
+    manifest.localization = {
+        ...(manifest.localization || {}),
+        humanTranslatedLocales: ['de'],
+    };
+    manifest.translationInterchange = {
+        packages: [{
+            packageId: 'a'.repeat(64),
+            targetLocales: ['de'],
+            translationContentSha256: sha256(stableJson(translationContent)),
+        }],
+        sourceArtifactId: manifest.artifactId,
+        targetLocales: ['de'],
+    };
+    manifest.files = artifactFiles(legacy);
+    manifest.artifactId = artifactIdentity(manifest);
+    manifest.version =
+        `${manifest.snapshotId}.${manifest.artifactId.slice(0, 12)}`;
+    writeJsonAtomic(manifestFile, manifest);
+    verifyAdminConsoleArtifact(legacy);
+
+    normalizeProductTranslationLocales({
+        sourceDirectory: legacy,
+        outputDirectory: output,
+    });
+    const verified = verifyAdminConsoleArtifact(output);
+    assert.deepStrictEqual(
+        verified.manifest.requiredLocales,
+        ['de-DE', 'zh-CN'],
+    );
+    for (const product of verified.bundle.products) {
+        assert(product.translations.some(item => item.lang === 'de-DE'));
+        assert(!product.translations.some(item => item.lang === 'de'));
+    }
+}
+
 function testIncompleteAndSourceDriftFailClosed() {
     const source = sourceArtifact();
     const packageParent = temporaryDirectory('zzctea-translation-incomplete-');
@@ -347,6 +450,8 @@ function testIncompleteAndSourceDriftFailClosed() {
 function main() {
     testDeterministicExport();
     testSuccessfulRoundTripAndPreservation();
+    testProductLocalesUseSpecificBcp47Cultures();
+    testLegacyArtifactLocaleNormalization();
     testIncompleteAndSourceDriftFailClosed();
     console.log('product translation Markdown tests passed');
 }
