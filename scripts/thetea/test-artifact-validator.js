@@ -8,6 +8,17 @@ const {
 const { ATTRIBUTE_TYPES } = require('./lib/spec-contract');
 
 const REQUIRED_LOCALES = ['en-US', 'ru-RU'];
+const MANAGED_PACKAGES = [
+    { package: 'PKG-25G', packageName: '25g', packageUnit: 'g', quantity: 25, default: false },
+    { package: 'PKG-50G', packageName: '50g', packageUnit: 'g', quantity: 50, default: true },
+    { package: 'PKG-100G', packageName: '100g', packageUnit: 'g', quantity: 100, default: false },
+    { package: 'PKG-250G', packageName: '250g', packageUnit: 'g', quantity: 250, default: false },
+    { package: 'PKG-500G', packageName: '500g', packageUnit: 'g', quantity: 500, default: false },
+];
+
+function managedPackage(code) {
+    return clone(MANAGED_PACKAGES.find(item => item.package === code));
+}
 
 function translation(lang, name) {
     return { lang, name: `${name} ${lang}` };
@@ -62,7 +73,7 @@ function fixture() {
             translations: translations('Tea One'),
             specifications,
             catalogs: [{ catalog: 'CATALOG-CHINESE-TEA', category: 'CAT-GREEN' }],
-            packages: [{ package: 'PKG-50G' }],
+            packages: [managedPackage('PKG-50G')],
             origins: [{
                 country: 'CN',
                 altitude: { min: 0, max: 0, unit: 'm' },
@@ -80,7 +91,7 @@ function fixture() {
             translations: translations('Tea Two'),
             specifications: [],
             catalogs: [{ catalog: 'CATALOG-CHINESE-TEA', category: 'CAT-GREEN' }],
-            packages: [{ package: 'PKG-50G' }],
+            packages: [managedPackage('PKG-50G')],
         },
     ];
     const catalogReference = {
@@ -150,6 +161,62 @@ expectInvalid(artifact => {
 expectInvalid(artifact => {
     artifact.products[0].packages = undefined;
 }, 'packages must be an array');
+
+for (const expectedPackage of MANAGED_PACKAGES) {
+    for (const [field, driftedValue] of [
+        ['quantity', String(expectedPackage.quantity)],
+        ['packageUnit', 'kg'],
+        ['packageName', `${expectedPackage.packageName}-drifted`],
+        ['default', !expectedPackage.default],
+    ]) {
+        expectInvalid(artifact => {
+            artifact.products[0].packages = clone(MANAGED_PACKAGES);
+            const item = artifact.products[0].packages
+                .find(candidate => candidate.package === expectedPackage.package);
+            item[field] = driftedValue;
+        }, `.${field} must be exactly`);
+    }
+}
+
+expectInvalid(artifact => {
+    artifact.products[0].packages.push(managedPackage('PKG-50G'));
+}, 'duplicate package PKG-50G');
+
+expectInvalid(artifact => {
+    artifact.products[0].packages[0].default = false;
+}, 'managed packages must contain exactly one default; found 0');
+
+expectInvalid(artifact => {
+    artifact.products[0].packages.push({
+        ...managedPackage('PKG-25G'),
+        default: true,
+    });
+}, 'managed packages must contain exactly one default; found 2');
+
+const manualPackageArtifact = fixture();
+manualPackageArtifact.products[0].packages.push({
+    package: 'PKG-MANUAL-GAIWAN',
+    packageName: 'Hand-filled gaiwan',
+    packageUnit: 'vessel',
+    quantity: 'manual',
+    default: false,
+});
+const manualPackageResult = validateArtifact(manualPackageArtifact);
+assert.strictEqual(manualPackageResult.valid, true, manualPackageResult.errors.join('\n'));
+assert(
+    manualPackageResult.warnings.some(warning =>
+        warning.includes('package PKG-MANUAL-GAIWAN is not in known package set')),
+    manualPackageResult.warnings.join('\n'));
+
+expectInvalid(artifact => {
+    artifact.products[0].packages.push({
+        package: 'PKG-MANUAL-DEFAULT',
+        packageName: 'Manual default',
+        packageUnit: 'vessel',
+        quantity: 1,
+        default: true,
+    });
+}, 'packages must contain exactly one default when managed packages are present; found 2');
 
 expectInvalid(artifact => {
     artifact.products[0].catalogs = [];

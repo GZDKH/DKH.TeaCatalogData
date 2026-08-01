@@ -1,6 +1,7 @@
 # TheTea to DKH ProductCatalog Import Mapping
 
-Status: typed-detail synchronization contract for `GZDKH/DKH.TeaCatalogData#15`.
+Status: typed-detail synchronization contract for `GZDKH/DKH.TeaCatalogData#15`
+and standard-package correction contract for `GZDKH/DKH.TeaCatalogData#42`.
 
 This document defines what TheTea API data is stored as source material and how generated import JSON maps into the DKH ProductCatalog DataExchange structure. No production import should be applied until this mapping, the generated validation report, the exact production catalog and full-product baseline hashes, and the canary result are approved.
 
@@ -73,12 +74,31 @@ With `--catalog-ref=...`, `03-categories/categories.json` contains only definiti
 | `transcription` | TeaCard `name` | Romanized pronunciation only. Native-script aliases are never stored as transcription. |
 | `translations[]` | Localized TeaCards | One translation per TheTea locale from the snapshot manifest. `name` contains only the localized display name. When a source `name` is an editorial headline, the complete headline is retained as `metaTitle`. Compact product descriptions contain enrichment and recipe summaries; full Markdown and narratives are routed separately. |
 | `catalogs[]` | TeaCard `meta.tea_type`, `meta.province`, `meta.shape`, `meta.processing`, `meta.roast_level`, `meta.family_id`, TeaCard `tags` | Always assigned to `CATALOG-CHINESE-TEA`; stable TheTea taxonomy fields are mapped to type, region, shape, processing, roast, family, and specialty categories. Nested baseline references are reduced to scalar codes. An approved migration may use `--catalog-assignment-mode=target-only` to remove placements outside the target catalog. |
-| `packages[]` | Import option | Default package `PKG-50G`; `--packages=standard` adds 25g, 100g, 250g, 500g. |
+| `packages[]` | Import option | Default package `PKG-50G`; `--packages=standard` emits the exact managed 25/50/100/250/500 g set defined below. |
 | `tags[]` | TeaCard `tags`, `enrichment.flavor_tags` | Deterministic `TAG-TT-*` and `TAG-FLAVOR-*` codes. |
 | `specifications[]` | TeaCard `meta`, `sections`, `recipe`, `harvest`, `sensory`, `enrichment`, field endpoints | See Specification Mapping. |
 | `origins[]` | TeaCard `meta`, localized origin/terroir sections | Country, state/province, city/county, altitude, coordinates, and localized notes. |
 | `related[]` | `enrichment.similar_teas`, localized `/similar` payloads, production baseline | Resolve slugs to deterministic product codes in a two-pass transform, reject self/duplicates, cap generated links at 12, and preserve existing manual links. |
 | `crossSells[]` | Production full-product baseline | TheTea does not derive cross-sells; existing values are preserved unchanged. |
+
+## Standard Package Contract
+
+Package `quantity` is the package content expressed in `packageUnit`, not a
+count of packages. The canonical managed mapping is:
+
+| Package code | `quantity` | `packageUnit` | `default` |
+|---|---:|---|---|
+| `PKG-25G` | 25 | `g` | `false` |
+| `PKG-50G` | 50 | `g` | `true` |
+| `PKG-100G` | 100 | `g` | `false` |
+| `PKG-250G` | 250 | `g` | `false` |
+| `PKG-500G` | 500 | `g` | `false` |
+
+The default generation mode emits only `PKG-50G`. `--packages=standard` emits
+all five rows exactly once, with `PKG-50G` as the sole product default. A generated
+artifact is invalid if a managed code has a different quantity or unit, if a
+managed row is duplicated, or if the default is missing or assigned to another
+managed or manual package.
 
 ## Locale Mapping
 
@@ -185,7 +205,19 @@ The transformer does not create parallel raw and derived attributes for the same
 
 Product DataExchange replaces dependent collections. Re-running an upsert is safe only after overlaying the generated TheTea data onto a complete current production product export.
 
-For an existing product, the ETL replaces managed `SPEC-TT-*` specifications and generated TheTea origins while preserving unrelated specifications, unknown-locale translations, manual tags, catalog assignments, packages, prices, store overrides, cross-sells, existing related links, and other baseline fields. Generated related links are merged with existing ones. Baseline-preservation validation fails if any unrelated collection entry would disappear or change.
+For an existing product, the ETL replaces managed `SPEC-TT-*` specifications,
+generated TheTea origins, and only the managed standard package codes listed in
+the Standard Package Contract. Each managed code emitted by the selected package
+mode replaces the matching baseline definition; an emitted code missing from the
+baseline is appended. Package entries with any other code are manual/unmanaged
+baseline data and are preserved. Normal full synchronization may also refresh
+managed specifications, generated origins, translations, taxonomy, and related
+links. The issue #42 correction instead requires `--packages=standard
+--update-scope=packages`: it clones the exact baseline product and replaces only
+the managed package definitions. This scope requires catalog-assignment
+preservation and rejects publication changes, new products, or a missing full
+baseline. Reconciliation fails if any semantic field other than `packages`, any
+unrelated package entry, or the Product ID would change.
 
 For a new product, TheTea does not invent live prices, inventory, media attachment IDs, or cross-sells. Without a full product baseline hash, apply is forbidden.
 
@@ -226,10 +258,19 @@ The first production import can proceed only when all gates pass:
 5. `publication-quality.json` has `Bulk publication eligible: yes`. It checks required-locale title/description, managed numeric units/precision, real image-file coverage, target catalog/category binding, mapped origin, and known unresolved or mixed-language interface fallback markers.
 6. If categories are applied, fetch a new catalog reference and regenerate the entire artifact. Passing a new reference to an old artifact is rejected by hash validation.
 7. Final mapping has `Catalog found: yes` and `Missing categories: 0`.
-8. Definitions are imported before products through SetupTool or another approved ordered DataExchange workflow. `import-generated.js` supports only `categories` and `products`; it does not import definitions, catalog bindings, articles, or FAQ sidecars.
-9. AdminGateway token passes the required `CatalogExport`/`CatalogImport` policies and workspace access.
-10. A one-product canary is dry-run validated, applied only after canary approval, and read back for structural comparison.
-11. User explicitly approves the separate mass `--apply --yes` step.
+8. Managed package validation accepts only the exact 25/50/100/250/500 g mapping, with `PKG-50G` as the sole product default. The manifest and reconciliation plan must both declare `updateScope: packages`. For the reviewed TheTea cohort, reconciliation must report 526 selected products, `create: 0`, `conflict: 0`, no preservation or scope errors, unchanged Product IDs, and `fieldChangeCounts: { packages: 526 }` with no other fields.
+9. Definitions are imported before products through SetupTool or another approved ordered DataExchange workflow. `import-generated.js` supports only `categories` and `products`; it does not import definitions, catalog bindings, articles, or FAQ sidecars.
+10. AdminGateway token passes the required `CatalogExport`/`CatalogImport` policies and workspace access.
+11. A one-product canary is dry-run validated, applied only after canary approval, and read back for structural comparison.
+12. User explicitly approves the separate mass `--apply --yes` step.
+
+Issue #42 is an offline artifact-correction and verification phase. Passing the
+validation and reconciliation gates does not authorize a production write. Do
+not run `import-generated.js --apply --yes`, `run-product-sync.js --apply --yes`,
+or any other production apply command in this phase. Generic import rejects a
+package-scoped apply; a separately approved write must use the reconciliation
+runner, which re-verifies the package-only scope against the desired and rollback
+payloads.
 
 Publication-quality findings remain visible for Draft products without blocking
 their generation, validation, or import. `artifact-manifest.json` records

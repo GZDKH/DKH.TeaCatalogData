@@ -133,6 +133,50 @@ The resync workflow fails if a generated product code is absent from the marked 
 The default `--catalog-assignment-mode=preserve` keeps unrelated baseline catalog placements. Use `target-only` only for an approved catalog migration: it preserves baseline assignments inside the selected `--catalog` while removing assignments to other catalogs. All nested production reference objects are canonicalized to scalar import codes before validation.
 The artifact manifest records exact catalog/storefront target codes. Category normalization falls back from empty structured meta fields to conservative canonical origin/type/name evidence and writes the complete coverage/unresolved audit to `reports/thetea/<snapshot>/category-coverage.json`.
 
+### Standard package contract
+
+Package `quantity` is content in `packageUnit`. It is not a count of packages:
+
+| Package code | `quantity` | `packageUnit` | `default` |
+|---|---:|---|---|
+| `PKG-25G` | 25 | `g` | `false` |
+| `PKG-50G` | 50 | `g` | `true` |
+| `PKG-100G` | 100 | `g` | `false` |
+| `PKG-250G` | 250 | `g` | `false` |
+| `PKG-500G` | 500 | `g` | `false` |
+
+Default generation emits only `PKG-50G`; `--packages=standard` emits all five
+managed rows and keeps `PKG-50G` as the sole product default. For existing
+products, each emitted managed code replaces the matching baseline definition;
+an emitted code missing from the baseline is appended. Issue #42 regeneration
+uses both `--packages=standard` and `--update-scope=packages`, so all five
+managed definitions are refreshed while every other product field is taken from
+the exact baseline. The package scope requires `catalog-assignment-mode=preserve`
+and rejects publication changes, new products, or a missing baseline. The overlay
+preserves every manual/unmanaged package and the baseline Product ID.
+
+```bash
+node scripts/thetea/generate-import.js \
+  --snapshot=<snapshot-id> \
+  --out=import/thetea/<package-correction-id> \
+  --packages=standard \
+  --update-scope=packages \
+  --catalog-ref=sources/prod/catalog-reference/<catalog-reference>.json \
+  --product-ref=sources/prod/product-reference/<product-reference> \
+  --catalog-assignment-mode=preserve \
+  --storefronts=shop-thetea,thetea-wiki
+```
+
+Before this correction can proceed beyond offline review, artifact validation
+must accept the exact mapping and read-only reconciliation of the reviewed
+cohort must report 526 selected products, `create: 0`, `conflict: 0`, no
+preservation errors, unchanged Product IDs, and only package-field changes.
+Issue #42 does not authorize production apply even when those gates pass. Do not
+run any `--apply --yes` command during this phase. Generic
+`import-generated.js --apply --yes` also rejects package-scoped artifacts; after
+separate approval, only a verified reconciliation plan may be passed to the
+checkpointed product sync runner.
+
 Validate generated files locally:
 
 ```bash
@@ -234,10 +278,15 @@ still show an empty product/category surface.
 
 The required catalog defaults to `CATALOG-CHINESE-TEA`. If prod uses another catalog code for this load, pass `--catalog=<CODE>` to `generate-import.js` and `validate-generated.js`.
 
-Run fixture tests:
+Run the package mapping and safety fixture tests. These commands are offline;
+do not add fetch, network, or apply commands to this gate:
 
 ```bash
 node scripts/thetea/test-transform.js
+node scripts/thetea/test-product-overlay.js
+node scripts/thetea/test-artifact-validator.js
+node scripts/thetea/test-generate-safety.js
+node scripts/thetea/test-reconcile-generated.js
 ```
 
 Validate through AdminGateway without writing:

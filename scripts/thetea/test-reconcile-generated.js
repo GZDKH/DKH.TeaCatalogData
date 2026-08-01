@@ -55,6 +55,8 @@ const desired = [
 ];
 
 const result = buildReconciliation(desired, baseline);
+assert.strictEqual(result.updateScope, 'full');
+assert.deepStrictEqual(result.scopeErrors, []);
 assert.deepStrictEqual(result.counts, { create: 0, update: 1, noop: 1, conflict: 0 });
 assert.strictEqual(result.eligible, true);
 assert.strictEqual(result.desiredPayload.length, 1);
@@ -84,6 +86,44 @@ assert.strictEqual(create.eligible, false);
 const conflict = buildReconciliation([{ ...product('TEA-A'), id: 'different' }], baseline);
 assert.deepStrictEqual(conflict.counts, { create: 0, update: 0, noop: 0, conflict: 1 });
 assert.strictEqual(conflict.eligible, false);
+
+const packageBaseline = [product('TEA-PACKAGE', {
+    packages: [{ package: 'PKG-50G', quantity: 1, packageUnit: 'g', default: true }],
+})];
+const packageDesired = [product('TEA-PACKAGE', {
+    packages: [{ package: 'PKG-50G', quantity: 50, packageUnit: 'g', default: true }],
+})];
+const packageOnly = buildReconciliation(packageDesired, packageBaseline, {
+    updateScope: 'packages',
+});
+assert.strictEqual(packageOnly.updateScope, 'packages');
+assert.strictEqual(packageOnly.eligible, true);
+assert.deepStrictEqual(packageOnly.scopeErrors, []);
+assert.deepStrictEqual(packageOnly.fieldChangeCounts, { packages: 1 });
+assert.deepStrictEqual(packageOnly.operations[0].changedFields, ['packages']);
+
+const packageScopeDrift = buildReconciliation([{
+    ...packageDesired[0],
+    nativeName: 'Changed outside package scope',
+}], packageBaseline, { updateScope: 'packages' });
+assert.strictEqual(packageScopeDrift.eligible, false);
+assert(packageScopeDrift.scopeErrors.some(error => error.includes('nativeName')));
+
+const packageScopeCreate = buildReconciliation([product('TEA-PACKAGE-NEW')], packageBaseline, {
+    updateScope: 'packages',
+});
+assert.strictEqual(packageScopeCreate.eligible, false);
+assert(packageScopeCreate.scopeErrors.some(error => error.includes('cannot create')));
+
+const packageScopeConflict = buildReconciliation([{
+    ...packageDesired[0],
+    id: 'different-id',
+}], packageBaseline, { updateScope: 'packages' });
+assert.strictEqual(packageScopeConflict.eligible, false);
+assert(packageScopeConflict.scopeErrors.some(error => error.includes('cannot conflict')));
+assert.throws(
+    () => buildReconciliation(packageDesired, packageBaseline, { updateScope: 'catalogs' }),
+    /Unsupported reconciliation update scope/);
 
 const removal = buildReconciliation([
     product('TEA-A', {

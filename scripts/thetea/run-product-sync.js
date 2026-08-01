@@ -6,8 +6,17 @@ const path = require('path');
 const { REPO_ROOT, loadDotEnv, parseArgs, requireArg } = require('./lib/env');
 const { catalogWorkspaceHeader, resolveCatalogWorkspaceId } = require('./lib/catalog-workspace');
 const { requestDataExchangeExport } = require('./fetch-prod-products');
-const { buildReconciliation, sha256 } = require('./reconcile-generated');
+const {
+    buildReconciliation,
+    canonicalCollectionItem,
+    sha256,
+} = require('./reconcile-generated');
 const { hashInputPath } = require('./generate-import');
+const {
+    MANAGED_PACKAGE_CONTENT,
+    STANDARD_PACKAGE_CODES,
+    isManagedPackageCode,
+} = require('./lib/package-content');
 
 loadDotEnv();
 
@@ -71,6 +80,10 @@ function loadSyncPlan(planDirectory) {
     }
     const desiredByCode = indexByCode(desired, 'Desired payload');
     const rollbackByCode = indexByCode(rollback, 'Rollback payload');
+    const updateScope = String(plan.updateScope || 'full').trim().toLowerCase();
+    if (!['full', 'packages'].includes(updateScope)) {
+        throw new Error(`Unsupported reconciliation update scope '${updateScope}'.`);
+    }
     const expectedCodes = (plan.operations || [])
         .filter(operation => operation.action === 'update')
         .map(operation => normalizeCode(operation.code))
@@ -79,14 +92,169 @@ function loadSyncPlan(planDirectory) {
         || JSON.stringify([...rollbackByCode.keys()].sort()) !== JSON.stringify(expectedCodes)) {
         throw new Error('Desired/rollback code sets differ from reconciliation update operations.');
     }
-    if (hashInputPath(path.join(plan.artifactRoot, 'artifact-manifest.json')) !== plan.artifactManifestSha256) {
+    const artifactManifestPath = path.join(plan.artifactRoot, 'artifact-manifest.json');
+    if (hashInputPath(artifactManifestPath) !== plan.artifactManifestSha256) {
         throw new Error('Artifact manifest differs from reconciliation plan.');
+    }
+    const artifactManifest = readJson(artifactManifestPath);
+    const artifactUpdateScope = String(
+        artifactManifest?.targets?.updateScope || 'full').trim().toLowerCase();
+    if (artifactUpdateScope !== updateScope) {
+        throw new Error(
+            `Artifact update scope '${artifactUpdateScope}' differs from reconciliation plan '${updateScope}'.`);
+    }
+    if (updateScope === 'packages'
+        && artifactManifest?.targets?.catalogAssignmentMode !== 'preserve') {
+        throw new Error(
+            "Package-scoped artifact requires catalogAssignmentMode 'preserve'.");
+    }
+    if (updateScope === 'packages'
+        && plan.catalogAssignmentPolicy?.mode !== 'preserve') {
+        throw new Error(
+            "Package-scoped reconciliation plan requires catalogAssignmentPolicy.mode 'preserve'.");
     }
     if (plan.productReferencePath
         && hashInputPath(plan.productReferencePath) !== plan.productReferenceSha256) {
         throw new Error('Product reference differs from reconciliation plan.');
     }
-    return { root, plan, desired, rollback, desiredByCode, rollbackByCode, expectedCodes };
+    if (updateScope === 'packages') {
+        validatePackageScopedSyncPlan(
+            plan,
+            desired,
+            rollback,
+            desiredByCode,
+            rollbackByCode,
+            expectedCodes);
+    }
+    return {
+        root,
+        plan,
+        desired,
+        rollback,
+        desiredByCode,
+        rollbackByCode,
+        expectedCodes,
+        updateScope,
+    };
+}
+
+function validatePackageScopedSyncPlan(
+    plan,
+    desired,
+    rollback,
+    desiredByCode,
+    rollbackByCode,
+    expectedCodes) {
+    if (!Array.isArray(plan.scopeErrors) || plan.scopeErrors.length !== 0) {
+        throw new Error('Package-scoped reconciliation plan must contain an empty scopeErrors array.');
+    }
+
+    const operationByCode = new Map((plan.operations || [])
+        .map(operation => [normalizeCode(operation?.code), operation]));
+    for (const code of expectedCodes) {
+        const operation = operationByCode.get(code);
+        if (!operation
+            || operation.action !== 'update'
+            || JSON.stringify(operation.changedFields) !== JSON.stringify(['packages'])) {
+            throw new Error(
+                `${code}: package-scoped plan operation must update only packages.`);
+        }
+        if (sha256(desiredByCode.get(code)) !== operation.desiredSha256
+            || sha256(rollbackByCode.get(code)) !== operation.beforeSha256) {
+            throw new Error(
+                `${code}: desired or rollback payload hash differs from reconciliation operation.`);
+        }
+    }
+
+    const recomputed = buildReconciliation(desired, rollback, { updateScope: 'packages' });
+    const packageContractErrors = validateStandardPackageCorrection(
+        desired,
+        rollbackByCode);
+    if (!recomputed.eligible
+        || recomputed.scopeErrors.length !== 0
+        || recomputed.counts.create !== 0
+        || recomputed.counts.conflict !== 0
+        || recomputed.counts.update !== expectedCodes.length
+        || recomputed.counts.noop !== 0) {
+        throw new Error(
+            `Package-scoped desired/rollback payloads do not form an eligible packages-only update: `
+            + `${recomputed.scopeErrors.join('; ') || 'counts or preservation differ'}.`);
+    }
+    if (packageContractErrors.length) {
+        throw new Error(
+            `Package-scoped desired payload violates the standard package contract: `
+            + `${packageContractErrors.slice(0, 5).join('; ')}.`);
+    }
+    if (plan.counts?.create !== 0
+        || plan.counts?.conflict !== 0
+        || plan.counts?.update !== expectedCodes.length
+        || !Number.isInteger(plan.counts?.noop)
+        || plan.counts.noop < 0
+        || JSON.stringify(recomputed.fieldChangeCounts) !== JSON.stringify(plan.fieldChangeCounts)) {
+        throw new Error('Package-scoped plan counts differ from recomputed desired/rollback changes.');
+    }
+}
+
+function validateStandardPackageCorrection(desiredProducts, rollbackByCode) {
+    const errors = [];
+    for (const product of desiredProducts) {
+        const code = normalizeCode(product?.code);
+        const packages = Array.isArray(product?.packages) ? product.packages : [];
+        const seenManaged = new Set();
+        let totalDefaultCount = 0;
+
+        for (const item of packages) {
+            if (item?.default === true) totalDefaultCount += 1;
+            const managedCode = packageCode(item?.package);
+            const expected = MANAGED_PACKAGE_CONTENT[managedCode];
+            if (!expected) continue;
+            if (seenManaged.has(managedCode)) {
+                errors.push(`${code}: duplicate managed package ${managedCode}`);
+                continue;
+            }
+            seenManaged.add(managedCode);
+            for (const field of ['packageName', 'packageUnit', 'quantity', 'default']) {
+                if (item[field] !== expected[field]) {
+                    errors.push(
+                        `${code}: ${managedCode}.${field} must be exactly `
+                        + `${JSON.stringify(expected[field])}; got ${JSON.stringify(item[field])}`);
+                }
+            }
+        }
+
+        const missing = STANDARD_PACKAGE_CODES.filter(packageCodeValue =>
+            !seenManaged.has(packageCodeValue));
+        if (missing.length) {
+            errors.push(`${code}: missing managed packages ${missing.join(', ')}`);
+        }
+        if (totalDefaultCount !== 1) {
+            errors.push(`${code}: product must contain exactly one default package; found ${totalDefaultCount}`);
+        }
+
+        const rollback = rollbackByCode.get(code);
+        if (!rollback) {
+            errors.push(`${code}: rollback product is missing`);
+            continue;
+        }
+        const desiredManual = manualPackageSignatures(packages);
+        const rollbackManual = manualPackageSignatures(rollback.packages);
+        if (JSON.stringify(desiredManual) !== JSON.stringify(rollbackManual)) {
+            errors.push(`${code}: manual package entries differ from rollback`);
+        }
+    }
+    return errors;
+}
+
+function manualPackageSignatures(packages) {
+    return (Array.isArray(packages) ? packages : [])
+        .filter(item => !isManagedPackageCode(packageCode(item?.package)))
+        .map(item => sha256(canonicalCollectionItem('packages', item)))
+        .sort();
+}
+
+function packageCode(value) {
+    const code = value && typeof value === 'object' ? value.code : value;
+    return normalizeCode(code);
 }
 
 function classifyLiveStates(syncPlan, liveProducts) {
@@ -331,4 +499,6 @@ module.exports = {
     classifyLiveStates,
     loadSyncPlan,
     requestProducts,
+    validateStandardPackageCorrection,
+    validatePackageScopedSyncPlan,
 };

@@ -43,6 +43,7 @@ function createArtifactManifest(root, metadata = {}) {
             catalogCodes: sortedUnique(metadata.catalogTargets),
             storefrontCodes: sortedUnique(metadata.storefrontTargets),
             catalogAssignmentMode: metadata.catalogAssignmentMode || 'preserve',
+            updateScope: metadata.updateScope || 'full',
         },
         publication: {
             mode: metadata.publicationMode || 'draft',
@@ -86,6 +87,9 @@ function verifyArtifactManifest(root) {
     if (!Array.isArray(manifest.products)) errors.push('Artifact manifest products must be an array.');
     if (!Array.isArray(manifest.lossEvents)) errors.push('Artifact manifest lossEvents must be an array.');
     if (manifest.targets !== undefined) {
+        if (manifest.targets?.updateScope === undefined) {
+            manifest.targets.updateScope = 'full';
+        }
         if (!Array.isArray(manifest.targets?.catalogCodes)) {
             errors.push('Artifact manifest targets.catalogCodes must be an array.');
         }
@@ -100,6 +104,15 @@ function verifyArtifactManifest(root) {
             && manifest.targets?.catalogCodes?.length !== 1) {
             errors.push(
                 'Target-only artifact manifest must declare exactly one target catalog code.');
+        }
+        if (!['full', 'packages'].includes(manifest.targets?.updateScope)) {
+            errors.push(
+                "Artifact manifest targets.updateScope must be 'full' or 'packages'.");
+        }
+        if (manifest.targets?.updateScope === 'packages'
+            && manifest.targets?.catalogAssignmentMode !== 'preserve') {
+            errors.push(
+                "Package-scoped artifact manifest requires targets.catalogAssignmentMode 'preserve'.");
         }
     }
     if (manifest.publication !== undefined

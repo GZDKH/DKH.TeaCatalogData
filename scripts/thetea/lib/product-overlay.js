@@ -1,3 +1,5 @@
+const { isManagedPackageCode } = require('./package-content');
+
 const MANAGED_SPEC_PREFIX = 'SPEC-TT-';
 
 function overlayExistingProduct(generated, baseline, options = {}) {
@@ -29,9 +31,7 @@ function overlayExistingProduct(generated, baseline, options = {}) {
         origins: collection(generated.origins, 'generated origins'),
         related: mergeRelations(generated.related, baseline.related),
         crossSells: collection(baseline.crossSells, 'baseline crossSells'),
-        packages: collection(baseline.packages, 'baseline packages').length
-            ? baseline.packages
-            : generated.packages,
+        packages: mergeManagedPackages(generated.packages, baseline.packages),
     };
 
     if (options.publishExisting === true) result.published = generated.published;
@@ -58,7 +58,7 @@ function validateBaselinePreservation(products, baselineProducts, options = {}) 
             'catalogs',
             catalogAssignmentKey);
         assertKeySubset(errors, baseline, generated, 'tags', item => normalizeCode(item.code));
-        assertKeySubset(errors, baseline, generated, 'packages', packageKey);
+        assertUnmanagedPackagesPreserved(errors, baseline, generated);
         assertStructuralSubset(errors, baseline, generated, 'tierPrices');
         assertStructuralSubset(errors, baseline, generated, 'catalogPrices');
         assertStructuralSubset(errors, baseline, generated, 'storePriceOverrides');
@@ -120,6 +120,59 @@ function mergeRelations(generatedRelations, baselineRelations) {
         result.push({ ...relation, order: nextOrder });
     }
     return result;
+}
+
+function mergeManagedPackages(generatedPackages, baselinePackages) {
+    const generated = collection(generatedPackages, 'generated packages');
+    const baseline = collection(baselinePackages, 'baseline packages');
+    if (!baseline.length) return generated;
+
+    const generatedManagedByCode = new Map();
+    for (const item of generated) {
+        const code = packageKey(item);
+        if (!isManagedPackageCode(code)) continue;
+        if (generatedManagedByCode.has(code)) {
+            throw new Error(`Generated packages contain duplicate managed package ${code}.`);
+        }
+        generatedManagedByCode.set(code, item);
+    }
+
+    const replaced = new Set();
+    const result = baseline.map(item => {
+        const code = packageKey(item);
+        const replacement = generatedManagedByCode.get(code);
+        if (!replacement) return item;
+        replaced.add(code);
+        return replacement;
+    });
+
+    for (const item of generated) {
+        const code = packageKey(item);
+        if (!isManagedPackageCode(code) || replaced.has(code)) continue;
+        result.push(item);
+        replaced.add(code);
+    }
+    return result;
+}
+
+function assertUnmanagedPackagesPreserved(errors, baseline, generated) {
+    const baselinePackages = collection(baseline.packages, 'baseline packages')
+        .filter(item => !isManagedPackageCode(packageKey(item)));
+    const generatedCounts = multiset(collection(generated.packages, 'generated packages')
+        .filter(item => !isManagedPackageCode(packageKey(item)))
+        .map(stableStringify));
+
+    for (const item of baselinePackages) {
+        const signature = stableStringify(item);
+        const remaining = generatedCounts.get(signature) || 0;
+        if (!remaining) {
+            errors.push(
+                `${baseline.code}: unrelated packages entry ${packageKey(item) || '<missing>'}`
+                + ' would be removed or changed.');
+            continue;
+        }
+        generatedCounts.set(signature, remaining - 1);
+    }
 }
 
 function mergeByKey(baseItems, overridingItems, keyFn) {
@@ -235,6 +288,7 @@ function stableStringify(value) {
 
 module.exports = {
     isManagedSpecification,
+    mergeManagedPackages,
     overlayExistingProduct,
     validateBaselinePreservation,
 };

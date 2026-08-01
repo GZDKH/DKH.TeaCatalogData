@@ -12,20 +12,9 @@ const { buildCategoryAssignments, PROVINCE_CATEGORY, TEA_TYPE_CATEGORY } = requi
 const { resolveOriginLocation } = require('./origin-reference');
 const { decomposeTeaName } = require('./product-naming');
 const { inferTaxonomy } = require('./taxonomy-inference');
+const { packageDefinitionsFor } = require('./package-content');
 
 const FALLBACK_SOURCE_LOCALES = ['en', 'ru', 'zh'];
-
-const DEFAULT_PACKAGES = [
-    { package: 'PKG-50G', packageName: '50g', packageUnit: 'g', quantity: 1, default: true },
-];
-
-const STANDARD_PACKAGES = [
-    { package: 'PKG-25G', packageName: '25g', packageUnit: 'g', quantity: 1, default: false },
-    ...DEFAULT_PACKAGES,
-    { package: 'PKG-100G', packageName: '100g', packageUnit: 'g', quantity: 1, default: false },
-    { package: 'PKG-250G', packageName: '250g', packageUnit: 'g', quantity: 1, default: false },
-    { package: 'PKG-500G', packageName: '500g', packageUnit: 'g', quantity: 1, default: false },
-];
 
 function transformCardSet(cardSet, options = {}) {
     const primary = cardSet.en || cardSet['en-US'] || cardSet['en-us'] || Object.values(cardSet)[0];
@@ -82,7 +71,7 @@ function transformCardSet(cardSet, options = {}) {
             warnings,
             options.catalog,
             catalogTaxonomy),
-        packages: options.packages === 'standard' ? STANDARD_PACKAGES : DEFAULT_PACKAGES,
+        packages: packageDefinitionsFor(options.packages),
         tags: buildTags(primary),
         specifications: selectedSpecifications.specifications.map(stripDefinitionMetadata),
         origins: buildOrigins(cardSet, primary, warnings, options.geographyReference, taxonomy),
@@ -689,8 +678,6 @@ function productCodeForCardSet(cardSet) {
 module.exports = {
     TEA_TYPE_CATEGORY,
     PROVINCE_CATEGORY,
-    DEFAULT_PACKAGES,
-    STANDARD_PACKAGES,
     transformCardSet,
     buildDescription,
     cleanDisplayName,

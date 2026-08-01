@@ -43,3 +43,23 @@ thetea-media-offline-tests:
     # Content-media validation is fully offline and uses generated temp fixtures.
     - node scripts/thetea/test-content-media.js
     - node scripts/thetea/test-artifact-bundle.js
+
+thetea-package-offline-tests:
+  stage: test
+  image: public.ecr.aws/docker/library/node:20.20.2
+  needs: []
+  interruptible: true
+  timeout: 5m
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  script:
+    # Package mapping, managed overlay, validation, generation safety, and
+    # reconciliation run only against checked-in or generated temp fixtures.
+    # Do not add network fetches, production references, or apply commands.
+    - node scripts/thetea/test-transform.js
+    - node scripts/thetea/test-product-overlay.js
+    - node scripts/thetea/test-artifact-validator.js
+    - node scripts/thetea/test-generate-safety.js
+    - node scripts/thetea/test-reconcile-generated.js
+    - node scripts/thetea/test-run-product-sync.js
