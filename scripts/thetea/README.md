@@ -386,6 +386,57 @@ excluded. PNG is preserved byte-for-byte for object-storage import; no
 conversion or recompression is performed. The output directory must not already
 exist.
 
+## Content Media Artifact
+
+Article covers and inline article images use the same generated-artifact flow as product media. Do not edit the
+hashed `import/thetea/current` bundle by hand. Photographers prepare a source fragment under
+`sources/thetea/snapshots/<snapshot>/content-media/` (or a directory passed with
+`--content-media-root=<path>`):
+
+```text
+content-media/
+├── media.json
+└── articles/
+    └── xihu-longjing/
+        ├── cover.png
+        └── dry-leaf-closeup.png
+```
+
+`media.json` contains stable routed-article codes and canonical pinyin slugs:
+
+```json
+[
+  {
+    "article": "ARTICLE-TT-TEA-CN-XIHU-LONGJING-DETAIL",
+    "slug": "xihu-longjing",
+    "path": "07-media/content/articles/xihu-longjing",
+    "replace": true,
+    "cover": "cover.png",
+    "inline": [
+      {
+        "token": "{{media:dry-leaf-closeup}}",
+        "file": "dry-leaf-closeup.png",
+        "alt": {
+          "en-US": "Dry Xihu Longjing leaves",
+          "ru-RU": "Сухой лист Сиху Лунцзин"
+        }
+      }
+    ]
+  }
+]
+```
+
+Place every inline token literally in at least one localized routed-article narrative. Generation copies the
+validated fragment to `import/thetea/current/07-media/content/` and updates `artifact-manifest.json`. Re-run the
+same generation command whenever a photographer replaces or adds a file; keep the article code, slug, token, and
+filename stable when the semantic image has not changed.
+
+Validation is fail-closed: article code/slug and folder must agree with routed content; records, slugs, tokens, and
+file references must be unambiguous; every file must be referenced; and only signature-verified PNG, JPEG, or WebP
+files are accepted. Filenames and tokens use lowercase ASCII slugs. The default limits are 20 MiB per file and
+10 GiB for the content-media package. `replace: true` tells the Admin import to replace the article's previously
+managed media after the new attachments are safely uploaded.
+
 ## Specification Policy
 
 Every managed specification has exactly one group and one attribute. A product has at most one row per managed attribute; conflicting type, unit, parent, option, or translation metadata is fatal.

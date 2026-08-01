@@ -15,7 +15,13 @@ try {
     writeJson(path.join(root, '02-specifications', 'specification_groups.json'), []);
     writeJson(path.join(root, '02-specifications', 'specification_attributes.json'), []);
     writeJson(path.join(root, '02-specifications', 'specification_attribute_options.json'), []);
-    writeJson(path.join(root, '06-routed-content', 'articles', 'index.json'), []);
+    writeJson(path.join(root, '06-routed-content', 'articles', 'index.json'), [{
+        code: 'ARTICLE-ONE',
+        path: '06-routed-content/articles/records/ARTICLE-ONE.json',
+    }]);
+    writeJson(
+        path.join(root, '06-routed-content', 'articles', 'records', 'ARTICLE-ONE.json'),
+        [{ code: 'ARTICLE-ONE', slug: 'one', translations: [] }]);
     writeJson(path.join(root, '06-routed-content', 'metaobjects', 'index.json'), []);
     writeJson(path.join(root, '01-reference', 'catalogs.json'), []);
     writeJson(path.join(root, '05-catalog-bindings', 'catalogs.json'), []);
@@ -27,6 +33,17 @@ try {
     }]);
     fs.mkdirSync(path.join(root, '07-media', 'products', 'one'), { recursive: true });
     fs.writeFileSync(path.join(root, '07-media', 'products', 'one', 'cover.webp'), 'fixture');
+    writeJson(path.join(root, '07-media', 'content', 'media.json'), [{
+        article: 'ARTICLE-ONE',
+        slug: 'one',
+        path: '07-media/content/articles/one',
+        replace: true,
+        cover: 'cover.png',
+    }]);
+    fs.mkdirSync(path.join(root, '07-media', 'content', 'articles', 'one'), { recursive: true });
+    fs.writeFileSync(
+        path.join(root, '07-media', 'content', 'articles', 'one', 'cover.png'),
+        Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]));
     createArtifactManifest(root, {
         snapshotId: 'snapshot-one',
         sourceManifestSha256: 'abc123',
@@ -67,6 +84,11 @@ try {
     assert.deepStrictEqual(bundle.productMedia.files, [
         '07-media/products/media.json',
         '07-media/products/one/cover.webp',
+    ]);
+    assert.strictEqual(bundle.contentMedia.records.length, 1);
+    assert.deepStrictEqual(bundle.contentMedia.files, [
+        '07-media/content/articles/one/cover.png',
+        '07-media/content/media.json',
     ]);
 
     fs.writeFileSync(path.join(root, '04-products', 'GREEN', 'one.json'), '[]\n');
