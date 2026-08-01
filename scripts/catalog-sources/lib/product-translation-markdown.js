@@ -34,6 +34,76 @@ const FRONT_MATTER_KEYS = [
     'sourceTranslationSha256',
 ];
 
+const PLATFORM_PRODUCT_LOCALE_ALIASES = new Map(Object.entries({
+    af: 'af-ZA',
+    am: 'am-ET',
+    ar: 'ar-SA',
+    az: 'az-AZ',
+    be: 'be-BY',
+    bg: 'bg-BG',
+    bho: 'bho-IN',
+    bn: 'bn-BD',
+    bo: 'bo-CN',
+    ca: 'ca-ES',
+    cs: 'cs-CZ',
+    da: 'da-DK',
+    de: 'de-DE',
+    el: 'el-GR',
+    es: 'es-ES',
+    et: 'et-EE',
+    fa: 'fa-IR',
+    fi: 'fi-FI',
+    fil: 'fil-PH',
+    fr: 'fr-FR',
+    gu: 'gu-IN',
+    he: 'he-IL',
+    hi: 'hi-IN',
+    hr: 'hr-HR',
+    hu: 'hu-HU',
+    id: 'id-ID',
+    is: 'is-IS',
+    it: 'it-IT',
+    ja: 'ja-JP',
+    ka: 'ka-GE',
+    kk: 'kk-KZ',
+    km: 'km-KH',
+    kn: 'kn-IN',
+    ko: 'ko-KR',
+    lo: 'lo-LA',
+    lt: 'lt-LT',
+    lv: 'lv-LV',
+    mg: 'mg-MG',
+    ml: 'ml-IN',
+    mn: 'mn-MN',
+    mr: 'mr-IN',
+    ms: 'ms-MY',
+    my: 'my-MM',
+    ne: 'ne-NP',
+    nl: 'nl-NL',
+    no: 'nb-NO',
+    ny: 'ny-MW',
+    or: 'or-IN',
+    pa: 'pa-IN',
+    pl: 'pl-PL',
+    pt: 'pt-BR',
+    ro: 'ro-RO',
+    si: 'si-LK',
+    sk: 'sk-SK',
+    sl: 'sl-SI',
+    sr: 'sr-RS',
+    sv: 'sv-SE',
+    sw: 'sw-KE',
+    ta: 'ta-IN',
+    te: 'te-IN',
+    th: 'th-TH',
+    tr: 'tr-TR',
+    uk: 'uk-UA',
+    ur: 'ur-PK',
+    uz: 'uz-UZ',
+    vi: 'vi-VN',
+    zu: 'zu-ZA',
+}));
+
 function canonicalLocale(value) {
     const raw = String(value || '').trim();
     let locale;
@@ -48,6 +118,20 @@ function canonicalLocale(value) {
         );
     }
     return locale;
+}
+
+function productLocale(value) {
+    const locale = canonicalLocale(value);
+    return PLATFORM_PRODUCT_LOCALE_ALIASES.get(locale) || locale;
+}
+
+function mappedLocales(values, label) {
+    const mapped = values.map(productLocale);
+    const unique = new Set(mapped);
+    if (unique.size !== mapped.length) {
+        throw new Error(`${label} contains colliding ProductCatalog locales.`);
+    }
+    return [...unique].sort();
 }
 
 function targetLocales(values) {
@@ -686,24 +770,34 @@ function importTranslationPackages(options) {
     const targetLocaleSet = new Set();
     const packageBindings = [];
     for (const item of packages) {
-        for (const locale of item.manifest.targetLocales) {
+        const productLocales = item.manifest.targetLocales.map(productLocale);
+        for (const locale of productLocales) {
             if (targetLocaleSet.has(locale)) {
                 throw new Error(`Target locale ${locale} appears in multiple packages.`);
             }
             targetLocaleSet.add(locale);
         }
         const content = item.translations
-            .map(entry => ({ code: entry.code, translation: entry.translation }));
+            .map(entry => ({
+                code: entry.code,
+                translation: {
+                    ...entry.translation,
+                    lang: productLocale(entry.translation.lang),
+                },
+            }));
         packageBindings.push({
             packageId: item.manifest.packageId,
-            targetLocales: item.manifest.targetLocales,
+            targetLocales: productLocales,
             translationContentSha256: sha256(stableJson(content)),
         });
         for (const entry of item.translations) {
             if (!translationsByCode.has(entry.code)) {
                 translationsByCode.set(entry.code, []);
             }
-            translationsByCode.get(entry.code).push(entry.translation);
+            translationsByCode.get(entry.code).push({
+                ...entry.translation,
+                lang: productLocale(entry.translation.lang),
+            });
         }
     }
     const source = verifyAdminConsoleArtifact(sourceRoot);
@@ -773,6 +867,106 @@ function importTranslationPackages(options) {
     };
 }
 
+function normalizeProductTranslationLocales(options) {
+    const sourceRoot = assertRealDirectory(
+        options.sourceDirectory,
+        'Source Admin Console artifact',
+    );
+    const outputRoot = assertSeparateOutput(sourceRoot, options.outputDirectory);
+    const source = verifyAdminConsoleArtifact(sourceRoot);
+    let manifest;
+    withStagedOutput(outputRoot, stagingDirectory => {
+        copyTree(sourceRoot, stagingDirectory);
+        const productByCode = new Map();
+        for (const item of source.manifest.products) {
+            const productFile = path.join(
+                stagingDirectory,
+                ...item.path.split('/'),
+            );
+            const records = readJson(productFile);
+            if (!Array.isArray(records) || records.length !== 1) {
+                throw new Error(`${item.path} must contain exactly one product.`);
+            }
+            const product = records[0];
+            const translations = (product.translations || []).map(entry => ({
+                ...entry,
+                lang: productLocale(entry.lang),
+            }));
+            const locales = translations.map(entry => entry.lang);
+            if (new Set(locales).size !== locales.length) {
+                throw new Error(
+                    `Product ${item.code} has colliding ProductCatalog locales.`,
+                );
+            }
+            product.translations = translations.sort((left, right) =>
+                left.lang.localeCompare(right.lang));
+            productByCode.set(item.code, product);
+            fs.writeFileSync(
+                productFile,
+                `${JSON.stringify(records, null, 2)}\n`,
+            );
+        }
+        manifest = readJson(path.join(stagingDirectory, 'artifact-manifest.json'));
+        manifest.requiredLocales = mappedLocales(
+            manifest.requiredLocales || [],
+            'Artifact requiredLocales',
+        );
+        manifest.localization = {
+            ...(manifest.localization || {}),
+            humanTranslatedLocales: mappedLocales(
+                manifest.localization?.humanTranslatedLocales || [],
+                'Artifact humanTranslatedLocales',
+            ),
+        };
+        if (manifest.translationInterchange) {
+            const packages = manifest.translationInterchange.packages.map(binding => {
+                const locales = mappedLocales(
+                    binding.targetLocales || [],
+                    `Translation package ${binding.packageId}`,
+                );
+                const content = [];
+                for (const item of source.manifest.products) {
+                    const product = productByCode.get(item.code);
+                    for (const locale of locales) {
+                        const translation = product.translations.find(entry =>
+                            entry.lang === locale);
+                        if (!translation) {
+                            throw new Error(
+                                `Translation ${locale} is missing for ${item.code}.`,
+                            );
+                        }
+                        content.push({ code: item.code, translation });
+                    }
+                }
+                return {
+                    ...binding,
+                    targetLocales: locales,
+                    translationContentSha256: sha256(stableJson(content)),
+                };
+            });
+            manifest.translationInterchange = {
+                ...manifest.translationInterchange,
+                packages,
+                targetLocales: mappedLocales(
+                    manifest.translationInterchange.targetLocales || [],
+                    'Artifact translationInterchange.targetLocales',
+                ),
+            };
+        }
+        manifest.files = artifactFiles(stagingDirectory);
+        manifest.artifactId = artifactIdentity(manifest);
+        manifest.version =
+            `${manifest.snapshotId}.${manifest.artifactId.slice(0, 12)}`;
+        writeJsonAtomic(
+            path.join(stagingDirectory, 'artifact-manifest.json'),
+            manifest,
+        );
+        verifyAdminConsoleArtifact(stagingDirectory);
+        return manifest;
+    });
+    return { manifest, outputDirectory: outputRoot };
+}
+
 module.exports = {
     DESCRIPTION_END,
     DESCRIPTION_PLACEHOLDER,
@@ -792,7 +986,9 @@ module.exports = {
     canonicalLocale,
     copyTree,
     importTranslationPackages,
+    normalizeProductTranslationLocales,
     parseTranslationMarkdown,
+    productLocale,
     sourceTranslation,
     sourceTranslationSha256,
     targetLocales,

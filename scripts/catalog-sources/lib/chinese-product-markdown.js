@@ -21,8 +21,8 @@ const {
     artifactIdentity,
     assertRealDirectory,
     assertSeparateOutput,
-    canonicalLocale,
     copyTree,
+    productLocale,
     sourceTranslation,
     sourceTranslationSha256,
     walkFiles,
@@ -884,7 +884,7 @@ function importTranslatedChineseMarkdown(options) {
         'Source Admin Console artifact',
     );
     const outputRoot = assertSeparateOutput(sourceRoot, options.outputDirectory);
-    const targetLocale = canonicalLocale(options.targetLocale);
+    const targetLocale = productLocale(options.targetLocale);
     if (targetLocale === SOURCE_LOCALE) {
         throw new Error(`${SOURCE_LOCALE} is the protected source locale.`);
     }

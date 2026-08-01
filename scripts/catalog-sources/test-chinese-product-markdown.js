@@ -260,18 +260,18 @@ function testReturnedTranslationRoundTripPreservesArtifact() {
     const imported = importTranslatedChineseMarkdown({
         sourceDirectory: source,
         packageDirectory: packageRoot,
-        targetLocale: 'en-us',
+        targetLocale: 'de',
         outputDirectory: outputRoot,
     });
     const verified = verifyAdminConsoleArtifact(outputRoot);
-    assert.strictEqual(imported.targetLocale, 'en-US');
+    assert.strictEqual(imported.targetLocale, 'de-DE');
     assert.deepStrictEqual(
         verified.manifest.requiredLocales,
-        ['en-US', 'zh-CN'],
+        ['de-DE', 'zh-CN'],
     );
     assert.deepStrictEqual(
         verified.manifest.localization.humanTranslatedLocales,
-        ['en-US'],
+        ['de-DE'],
     );
     assert.strictEqual(
         verified.manifest.translationInterchange.packages[0].packageId,
@@ -308,7 +308,7 @@ function testReturnedTranslationRoundTripPreservesArtifact() {
         );
         assert.strictEqual(
             translatedProduct.translations.find(
-                translation => translation.lang === 'en-US',
+                translation => translation.lang === 'de-DE',
             ).name,
             `Translated ${item.code}`,
         );
