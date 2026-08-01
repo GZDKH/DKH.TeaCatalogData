@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 const assert = require('assert');
 const { cleanDisplayName, transformCardSet } = require('./lib/transform');
+const {
+    MANAGED_PACKAGE_CONTENT,
+    packageDefinitionsFor,
+} = require('./lib/package-content');
 
 const xihu = {
     slug: 'xihu-longjing',
@@ -159,7 +163,24 @@ assert(product.catalogs.some(c => c.category === 'CAT-SHAPE-FLAT'));
 assert(product.catalogs.some(c => c.category === 'CAT-PROC-CHAOQING'));
 assert(product.catalogs.some(c => c.category === 'CAT-ROAST-NONE'));
 assert(product.catalogs.some(c => c.category === 'CAT-SPEC-GI'));
-assert(product.packages.some(p => p.package === 'PKG-50G' && p.default === true));
+assert.deepStrictEqual(product.packages, [
+    { package: 'PKG-25G', packageName: '25g', packageUnit: 'g', quantity: 25, default: false },
+    { package: 'PKG-50G', packageName: '50g', packageUnit: 'g', quantity: 50, default: true },
+    { package: 'PKG-100G', packageName: '100g', packageUnit: 'g', quantity: 100, default: false },
+    { package: 'PKG-250G', packageName: '250g', packageUnit: 'g', quantity: 250, default: false },
+    { package: 'PKG-500G', packageName: '500g', packageUnit: 'g', quantity: 500, default: false },
+]);
+assert(Object.isFrozen(MANAGED_PACKAGE_CONTENT));
+assert(Object.values(MANAGED_PACKAGE_CONTENT).every(Object.isFrozen));
+const defaultPackages = packageDefinitionsFor();
+assert.deepStrictEqual(defaultPackages, [
+    { package: 'PKG-50G', packageName: '50g', packageUnit: 'g', quantity: 50, default: true },
+]);
+defaultPackages[0].quantity = 999;
+assert.strictEqual(MANAGED_PACKAGE_CONTENT['PKG-50G'].quantity, 50);
+assert.throws(
+    () => transformCardSet({ en: xihu }, { packages: 'typo' }),
+    /Unsupported TheTea package profile/);
 assert(product.tags.some(t => t.code === 'TAG-TT-GI'));
 assert(product.tags.some(t => t.code === 'TAG-FLAVOR-CHESTNUT'));
 assert(product.origins[0].coordinates.lat === 30.22);

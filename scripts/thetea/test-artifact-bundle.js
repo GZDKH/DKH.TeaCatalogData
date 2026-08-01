@@ -9,6 +9,7 @@ const {
     verifyArtifactManifest,
     writeJson,
 } = require('./lib/artifact-bundle');
+const { assertArtifactApplyAllowed } = require('./import-generated');
 
 const root = fs.mkdtempSync(path.join(os.tmpdir(), 'thetea-artifact-bundle-'));
 try {
@@ -68,11 +69,13 @@ try {
 
     const valid = verifyArtifactManifest(root);
     assert.strictEqual(valid.valid, true, valid.errors.join('\n'));
+    assert.doesNotThrow(() => assertArtifactApplyAllowed(valid.manifest, false));
     assert.deepStrictEqual(valid.manifest.requiredLocales, ['en-US', 'ru-RU']);
     assert.deepStrictEqual(valid.manifest.targets, {
         catalogCodes: ['CATALOG-CHINESE-TEA'],
         storefrontCodes: ['shop-thetea', 'thetea-wiki'],
         catalogAssignmentMode: 'target-only',
+        updateScope: 'full',
     });
     assert.strictEqual(valid.manifest.catalogPlacement.unassignedProductCount, 0);
     assert.deepStrictEqual(valid.manifest.publication, { mode: 'publish' });
@@ -90,6 +93,55 @@ try {
         '07-media/content/articles/one/cover.png',
         '07-media/content/media.json',
     ]);
+
+    const manifestFile = path.join(root, 'artifact-manifest.json');
+    const legacyManifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+    delete legacyManifest.targets.updateScope;
+    writeJson(manifestFile, legacyManifest);
+    const legacy = verifyArtifactManifest(root);
+    assert.strictEqual(legacy.valid, true, legacy.errors.join('\n'));
+    assert.strictEqual(legacy.manifest.targets.updateScope, 'full');
+
+    const invalidScopeManifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+    invalidScopeManifest.targets.updateScope = 'prices';
+    writeJson(manifestFile, invalidScopeManifest);
+    const invalidScope = verifyArtifactManifest(root);
+    assert.strictEqual(invalidScope.valid, false);
+    assert(invalidScope.errors.some(error => error.includes('targets.updateScope')));
+
+    const packageTargetOnlyManifest = JSON.parse(fs.readFileSync(manifestFile, 'utf8'));
+    packageTargetOnlyManifest.targets.updateScope = 'packages';
+    writeJson(manifestFile, packageTargetOnlyManifest);
+    const packageTargetOnly = verifyArtifactManifest(root);
+    assert.strictEqual(packageTargetOnly.valid, false);
+    assert(packageTargetOnly.errors.some(error => error.includes("requires targets.catalogAssignmentMode 'preserve'")));
+
+    packageTargetOnlyManifest.targets.catalogAssignmentMode = 'preserve';
+    writeJson(manifestFile, packageTargetOnlyManifest);
+    const packagePreserve = verifyArtifactManifest(root);
+    assert.strictEqual(packagePreserve.valid, true, packagePreserve.errors.join('\n'));
+    assert.doesNotThrow(() => assertArtifactApplyAllowed(packagePreserve.manifest, true));
+    assert.throws(
+        () => assertArtifactApplyAllowed(packagePreserve.manifest, false),
+        /cannot be applied through import-generated/);
+
+    const createdPackageManifest = createArtifactManifest(root, {
+        snapshotId: 'snapshot-package-scope',
+        sourceManifestSha256: 'abc123',
+        requiredLocales: ['en-US'],
+        productCodes: ['TEA-CN-ONE'],
+        products: [{ code: 'TEA-CN-ONE', path: '04-products/GREEN/one.json' }],
+        lossEvents: [],
+        catalogTargets: ['CATALOG-CHINESE-TEA'],
+        catalogAssignmentMode: 'preserve',
+        updateScope: 'packages',
+    });
+    assert.strictEqual(createdPackageManifest.targets.updateScope, 'packages');
+    const createdPackageValidation = verifyArtifactManifest(root);
+    assert.strictEqual(
+        createdPackageValidation.valid,
+        true,
+        createdPackageValidation.errors.join('\n'));
 
     fs.writeFileSync(path.join(root, '04-products', 'GREEN', 'one.json'), '[]\n');
     const changed = verifyArtifactManifest(root);

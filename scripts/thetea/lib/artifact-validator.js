@@ -2,6 +2,7 @@ const { analyzeCatalogMapping, DEFAULT_CATALOG_CODE } = require('./catalog-mappi
 const { ATTRIBUTE_TYPES } = require('./spec-contract');
 const { isManagedSpecification, validateBaselinePreservation } = require('./product-overlay');
 const { auditProductNaming } = require('./product-naming');
+const { MANAGED_PACKAGE_CONTENT } = require('./package-content');
 
 const CODE_RE = /^[A-Z0-9][A-Z0-9_-]{1,99}$/;
 const ATTRIBUTE_TYPE_SET = new Set(ATTRIBUTE_TYPES);
@@ -599,17 +600,50 @@ function validatePackages(product, productLabel, knownPackages, warnings, errors
         return;
     }
     const seen = new Set();
+    let managedPackageCount = 0;
+    let managedDefaultCount = 0;
+    let totalDefaultCount = 0;
     for (const [index, item] of product.packages.entries()) {
+        const prefix = `${productLabel}: packages[${index}]`;
         if (!isPlainObject(item)) {
-            errors.push(`${productLabel}: packages[${index}] must be an object.`);
+            errors.push(`${prefix} must be an object.`);
             continue;
         }
-        const code = validateCode(item.package, `${productLabel}: packages[${index}].package`, errors);
+        const code = validateCode(item.package, `${prefix}.package`, errors);
         if (seen.has(code)) errors.push(`${productLabel}: duplicate package ${code}.`);
         seen.add(code);
         if (code && !knownPackages.has(code)) {
             warnings.push(`${productLabel}: package ${code} is not in known package set.`);
         }
+        if (item.default === true) totalDefaultCount += 1;
+
+        const managedContent = code ? MANAGED_PACKAGE_CONTENT[code] : null;
+        if (!managedContent) continue;
+
+        managedPackageCount += 1;
+        if (item.default === true) managedDefaultCount += 1;
+        validateExactPackageField(item, managedContent, 'quantity', prefix, errors);
+        validateExactPackageField(item, managedContent, 'packageUnit', prefix, errors);
+        validateExactPackageField(item, managedContent, 'packageName', prefix, errors);
+        validateExactPackageField(item, managedContent, 'default', prefix, errors);
+    }
+
+    if (managedPackageCount > 0 && managedDefaultCount !== 1) {
+        errors.push(
+            `${productLabel}: managed packages must contain exactly one default; found ${managedDefaultCount}.`);
+    }
+    if (managedPackageCount > 0 && totalDefaultCount !== 1) {
+        errors.push(
+            `${productLabel}: packages must contain exactly one default when managed packages are present;`
+            + ` found ${totalDefaultCount}.`);
+    }
+}
+
+function validateExactPackageField(item, managedContent, field, prefix, errors) {
+    if (item[field] !== managedContent[field]) {
+        errors.push(
+            `${prefix}.${field} must be exactly ${JSON.stringify(managedContent[field])}`
+            + ` for ${managedContent.package}; got ${JSON.stringify(item[field])}.`);
     }
 }
 

@@ -222,6 +222,10 @@ function diffProduct(before, after) {
 }
 
 function buildReconciliation(desiredProducts, baselineProducts, options = {}) {
+    const updateScope = String(options.updateScope || 'full').trim().toLowerCase();
+    if (!['full', 'packages'].includes(updateScope)) {
+        throw new Error(`Unsupported reconciliation update scope '${updateScope}'.`);
+    }
     const baselineByCode = new Map();
     for (const product of baselineProducts) {
         const code = normalizeCode(product.code);
@@ -281,15 +285,42 @@ function buildReconciliation(desiredProducts, baselineProducts, options = {}) {
         desiredProducts,
         baselineProducts,
         options.baselinePreservation);
+    const scopeErrors = validateUpdateScope(operations, updateScope);
     return {
+        updateScope,
         counts,
         fieldChangeCounts,
         operations,
         desiredPayload,
         rollbackPayload,
         preservationErrors,
-        eligible: counts.create === 0 && counts.conflict === 0 && preservationErrors.length === 0,
+        scopeErrors,
+        eligible: counts.create === 0
+            && counts.conflict === 0
+            && preservationErrors.length === 0
+            && scopeErrors.length === 0,
     };
+}
+
+function validateUpdateScope(operations, updateScope) {
+    if (updateScope !== 'packages') return [];
+
+    const errors = [];
+    for (const operation of operations) {
+        if (operation.action === 'create' || operation.action === 'conflict') {
+            errors.push(
+                `${operation.code}: package-scoped reconciliation cannot ${operation.action} products.`);
+            continue;
+        }
+        const unexpectedFields = (operation.changedFields || [])
+            .filter(field => field !== 'packages');
+        if (unexpectedFields.length) {
+            errors.push(
+                `${operation.code}: package-scoped reconciliation changes non-package fields: `
+                + `${unexpectedFields.join(', ')}.`);
+        }
+    }
+    return errors;
 }
 
 function selectProducts(products, args) {
@@ -330,15 +361,20 @@ function main() {
     }
 
     const catalogPolicy = resolveArtifactCatalogPolicy(bundle.manifest, args);
+    const updateScope = bundle.manifest.targets?.updateScope || 'full';
     const selected = selectProducts(bundle.products, args);
     if (!selected.length) throw new Error('No products selected.');
     const reconciliation = buildReconciliation(
         selected,
         reference.products,
-        { baselinePreservation: catalogPolicy.baselinePreservation });
+        {
+            baselinePreservation: catalogPolicy.baselinePreservation,
+            updateScope,
+        });
     const report = {
         generatedAt: new Date().toISOString(),
         mode: 'read-only-reconciliation',
+        updateScope: reconciliation.updateScope,
         eligible: reconciliation.eligible,
         artifactRoot,
         artifactManifestSha256: hashInputPath(path.join(artifactRoot, 'artifact-manifest.json')),
@@ -353,6 +389,7 @@ function main() {
         counts: reconciliation.counts,
         fieldChangeCounts: reconciliation.fieldChangeCounts,
         preservationErrors: reconciliation.preservationErrors,
+        scopeErrors: reconciliation.scopeErrors,
         operations: reconciliation.operations,
         desiredPayload: 'desired-products.json',
         rollbackPayload: 'rollback-products.json',
@@ -373,6 +410,7 @@ function main() {
     console.log(`Noop: ${report.counts.noop}`);
     console.log(`Conflict: ${report.counts.conflict}`);
     console.log(`Preservation errors: ${report.preservationErrors.length}`);
+    console.log(`Scope errors: ${report.scopeErrors.length}`);
     console.log(`Report: ${output}`);
     if (!report.eligible) process.exitCode = 1;
     return report;
@@ -394,4 +432,5 @@ module.exports = {
     collectionDiff,
     diffProduct,
     sha256,
+    validateUpdateScope,
 };

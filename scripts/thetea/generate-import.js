@@ -32,7 +32,11 @@ const {
     writeJson,
 } = require('./lib/artifact-bundle');
 const { normalizeProductForImport } = require('./lib/import-contract');
-const { overlayExistingProduct } = require('./lib/product-overlay');
+const {
+    isManagedSpecification,
+    mergeManagedPackages,
+    overlayExistingProduct,
+} = require('./lib/product-overlay');
 const { loadVerifiedProductReference } = require('./lib/product-reference');
 const { collectContentMedia } = require('./lib/content-media');
 
@@ -302,6 +306,7 @@ function writeGeneratedBundle(stagingRoot, artifact) {
         catalogTargets: artifact.catalogTargets,
         storefrontTargets: artifact.storefrontTargets,
         catalogAssignmentMode: artifact.catalogAssignmentMode,
+        updateScope: artifact.updateScope || 'full',
         publicationMode: artifact.publicationMode || 'draft',
     });
     const reloaded = readArtifactBundle(stagingRoot);
@@ -397,8 +402,82 @@ function findNewProductCodes(records, baselineProducts) {
         .filter(code => code && !baselineCodes.has(code));
 }
 
+function resolveUpdateScope(args = {}) {
+    if (args['update-scope'] === undefined) return null;
+
+    const updateScope = String(args['update-scope'] || '').trim().toLowerCase();
+    if (updateScope !== 'packages') {
+        throw new Error("--update-scope currently supports only 'packages'.");
+    }
+    if (!args['product-ref'] || args['product-ref'] === true) {
+        throw new Error('--update-scope=packages requires a complete --product-ref=... baseline.');
+    }
+    if (String(args.packages || '').trim().toLowerCase() !== 'standard') {
+        throw new Error('--update-scope=packages requires --packages=standard.');
+    }
+    if (args['allow-missing-product-reference'] !== undefined) {
+        throw new Error('--update-scope=packages cannot allow a missing product reference.');
+    }
+    if (args['allow-new-products'] !== undefined) {
+        throw new Error('--update-scope=packages is update-only and cannot allow new products.');
+    }
+    if (args.publish !== undefined) {
+        throw new Error('--update-scope=packages cannot change publication state.');
+    }
+    const catalogAssignmentMode = String(args['catalog-assignment-mode'] || 'preserve')
+        .trim()
+        .toLowerCase();
+    if (catalogAssignmentMode !== 'preserve') {
+        throw new Error('--update-scope=packages requires --catalog-assignment-mode=preserve.');
+    }
+    return updateScope;
+}
+
+function buildPackageOnlyProduct(transformedProduct, baselineProduct) {
+    if (!baselineProduct) {
+        throw new Error(
+            `Package-only update cannot create ${transformedProduct?.code || '<unknown product>'}.`);
+    }
+    if (normalizeCode(transformedProduct?.code) !== normalizeCode(baselineProduct.code)) {
+        throw new Error(
+            `Package-only update cannot merge ${transformedProduct?.code || '<unknown product>'}`
+            + ` into baseline product ${baselineProduct.code}.`);
+    }
+    const product = cloneJson(baselineProduct);
+    product.packages = cloneJson(mergeManagedPackages(
+        transformedProduct.packages,
+        baselineProduct.packages));
+    return product;
+}
+
+function cloneJson(value) {
+    return JSON.parse(JSON.stringify(value));
+}
+
+function normalizeGeneratedProduct(product, updateScope) {
+    if (updateScope === 'packages') {
+        for (const specification of product.specifications || []) {
+            if (!isManagedSpecification(specification)
+                || String(specification.type || '').toLowerCase() !== 'boolean') continue;
+            const normalizedBoolean = normalizeBooleanSpecificationValue(specification.value);
+            if (normalizedBoolean !== null) specification.value = normalizedBoolean;
+        }
+    }
+    normalizeProductForImport(product);
+    return updateScope === 'packages' ? cloneJson(product) : product;
+}
+
+function normalizeBooleanSpecificationValue(value) {
+    if (value === true || value === 1 || value === '1'
+        || String(value).trim().toLowerCase() === 'true') return 'true';
+    if (value === false || value === 0 || value === '0'
+        || String(value).trim().toLowerCase() === 'false') return 'false';
+    return null;
+}
+
 function main() {
     const args = parseArgs();
+    const updateScope = resolveUpdateScope(args);
     const snapshotId = requireArg(args, 'snapshot');
     const snapshotRoot = args['snapshot-root']
         ? path.resolve(REPO_ROOT, String(args['snapshot-root']))
@@ -492,6 +571,10 @@ function main() {
     const newProductCodes = baselineReference
         ? findNewProductCodes(records, baselineProducts)
         : [];
+    if (updateScope === 'packages' && newProductCodes.length) {
+        throw new Error(
+            `Package-only update cannot create ${newProductCodes.length} product(s): ${newProductCodes.slice(0, 10).join(', ')}.`);
+    }
     if (newProductCodes.length && args['allow-new-products'] !== true) {
         throw new Error(
             `Full production baseline does not contain ${newProductCodes.length} product(s): ${newProductCodes.slice(0, 10).join(', ')}. Re-run with --allow-new-products only after the complete production baseline and target catalog mappings have been verified.`);
@@ -553,17 +636,19 @@ function main() {
         routedContent.metaobjects.push(...transformed.routedContent.metaobjects);
 
         const baseline = baselineByCode.get(normalizeCode(transformed.product.code));
-        const product = overlayExistingProduct(transformed.product, baseline, {
-            publishExisting: args.publish === true,
-            catalogAssignmentMode,
-            targetCatalog: catalogCode,
-        });
-        normalizeProductForImport(product);
-        products.push(product);
+        const product = updateScope === 'packages'
+            ? buildPackageOnlyProduct(transformed.product, baseline)
+            : overlayExistingProduct(transformed.product, baseline, {
+                publishExisting: args.publish === true,
+                catalogAssignmentMode,
+                targetCatalog: catalogCode,
+            });
+        const normalizedProduct = normalizeGeneratedProduct(product, updateScope);
+        products.push(normalizedProduct);
         primaryCards.push(record.primary);
         productRecords.push({
-            product,
-            relativePath: productRelativePath(product, record.primary),
+            product: normalizedProduct,
+            relativePath: productRelativePath(normalizedProduct, record.primary),
         });
     }
 
@@ -572,7 +657,9 @@ function main() {
         : null;
     const categories = buildTheTeaCategories(primaryCards, { family, existingCategoryCodes });
     const definitions = buildSpecificationDefinitions(products, {
-        observations: [...definitionObservationMap.values()],
+        observations: updateScope === 'packages'
+            ? []
+            : [...definitionObservationMap.values()],
         locales: requiredLocales,
     });
     const catalogCurrency = args.currency || 'CNY';
@@ -640,6 +727,7 @@ function main() {
     const catalogReferenceSha256 = hashInputPath(catalogReferencePath);
     const summary = {
         snapshotId,
+        updateScope: updateScope || 'full',
         generatedAt,
         outputDir: outDir,
         valid: validation.valid && publicationQuality.gatePassed,
@@ -659,6 +747,7 @@ function main() {
             catalogCodes: [catalogCode],
             storefrontCodes: storefrontTargetCodes,
             catalogAssignmentMode,
+            updateScope: updateScope || 'full',
         },
         categoryCoverage: summarizeCategoryCoverage(products, taxonomyAudits, catalogCode),
         categoryDefinitionCount: categories.length,
@@ -714,6 +803,7 @@ function main() {
             storefrontTargets: storefrontTargetCodes,
             catalogAssignmentMode,
             publicationMode: args.publish === true ? 'publish' : 'draft',
+            updateScope,
             lossEvents,
             routedContent,
             productMedia,
@@ -829,10 +919,14 @@ if (require.main === module) {
 module.exports = {
     assertGeneratorOutputPath,
     assertSafeSlug,
+    buildPackageOnlyProduct,
     hashSnapshotFiles,
     hashInputPath,
     main,
     findNewProductCodes,
+    normalizeBooleanSpecificationValue,
+    normalizeGeneratedProduct,
     productRelativePath,
+    resolveUpdateScope,
     writeGeneratedBundle,
 };

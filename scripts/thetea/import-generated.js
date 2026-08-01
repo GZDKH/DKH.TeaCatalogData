@@ -151,9 +151,19 @@ function normalizeCode(value) {
     return String(code || '').trim().toUpperCase();
 }
 
+function assertArtifactApplyAllowed(manifest, dryRun) {
+    const updateScope = manifest?.targets?.updateScope || 'full';
+    if (!dryRun && updateScope === 'packages') {
+        throw new Error(
+            'Package-scoped artifacts cannot be applied through import-generated; '
+            + 'use the approved reconciliation plan and product sync runner.');
+    }
+}
+
 function preflightArtifact(dir, args, dryRun, selectedProductCodes = []) {
     const bundle = readArtifactBundle(dir);
     const manifest = bundle.manifest || {};
+    assertArtifactApplyAllowed(manifest, dryRun);
     const errors = [...bundle.errors];
     const catalogReferencePath = repoPath(args['catalog-ref'] || args['prod-ref']);
     const productReferencePath = repoPath(args['product-ref']);
@@ -367,6 +377,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+    assertArtifactApplyAllowed,
     main,
     preflightArtifact,
 };

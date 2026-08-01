@@ -1,6 +1,8 @@
 # Маппинг импорта TheTea в DKH ProductCatalog
 
-Статус: контракт синхронизации типизированной детализации для `GZDKH/DKH.TeaCatalogData#15`.
+Статус: контракт синхронизации типизированной детализации для
+`GZDKH/DKH.TeaCatalogData#15` и контракт исправления стандартных упаковок для
+`GZDKH/DKH.TeaCatalogData#42`.
 
 Этот документ фиксирует, какие данные TheTea API сохраняются как первоисточник и как сгенерированный import JSON попадает в структуру DKH ProductCatalog DataExchange. Продовый импорт нельзя применять, пока не согласованы этот маппинг, validation report, точные hashes prod catalog и полного product baseline, а также результат canary.
 
@@ -73,12 +75,31 @@ Output сначала собирается в соседней временно�
 | `transcription` | TeaCard `name` | Только романизированное произношение. Алиасы в нативном написании никогда не сохраняются как транскрипция. |
 | `translations[]` | Локализованные TeaCards | По одной translation на каждую локаль из snapshot manifest. В `name` хранится только локализованное отображаемое имя. Если исходный `name` является редакционным заголовком, полный заголовок сохраняется в `metaTitle`. Короткий description содержит enrichment и recipe summary; полный Markdown и narratives маршрутизируются отдельно. |
 | `catalogs[]` | TeaCard `meta.tea_type`, `meta.province`, `meta.shape`, `meta.processing`, `meta.roast_level`, `meta.family_id`, TeaCard `tags` | Всегда `CATALOG-CHINESE-TEA`; устойчивые taxonomy-поля TheTea мапятся в категории типа, региона, формы листа, обработки, прожарки, семейства и особенностей. Вложенные ссылки baseline преобразуются в скалярные коды. Для подтверждённой миграции `--catalog-assignment-mode=target-only` удаляет привязки вне целевого каталога. |
-| `packages[]` | Import option | По умолчанию `PKG-50G`; `--packages=standard` добавляет 25g, 100g, 250g, 500g. |
+| `packages[]` | Import option | По умолчанию `PKG-50G`; `--packages=standard` создаёт точный managed-набор 25/50/100/250/500 g, описанный ниже. |
 | `tags[]` | TeaCard `tags`, `enrichment.flavor_tags` | Детерминированные коды `TAG-TT-*` и `TAG-FLAVOR-*`. |
 | `specifications[]` | TeaCard `meta`, `sections`, `recipe`, `harvest`, `sensory`, `enrichment`, field endpoints | См. раздел "Маппинг спецификаций". |
 | `origins[]` | TeaCard `meta`, локализованные origin/terroir sections | Country, state/province, city/county, altitude, coordinates и локализованные notes. |
 | `related[]` | `enrichment.similar_teas`, локализованный `/similar`, production baseline | Slug преобразуется в deterministic product code в two-pass transform; self/duplicates отбрасываются, generated links ограничены 12, существующие ручные связи сохраняются. |
 | `crossSells[]` | Полный production product baseline | TheTea не выводит cross-sells; существующие значения сохраняются без изменений. |
+
+## Контракт стандартных упаковок
+
+Поле package `quantity` означает содержимое упаковки в единицах
+`packageUnit`, а не количество упаковок. Канонический managed-маппинг:
+
+| Package code | `quantity` | `packageUnit` | `default` |
+|---|---:|---|---|
+| `PKG-25G` | 25 | `g` | `false` |
+| `PKG-50G` | 50 | `g` | `true` |
+| `PKG-100G` | 100 | `g` | `false` |
+| `PKG-250G` | 250 | `g` | `false` |
+| `PKG-500G` | 500 | `g` | `false` |
+
+В режиме по умолчанию генератор создаёт только `PKG-50G`.
+`--packages=standard` создаёт все пять строк ровно по одному разу, причём
+`PKG-50G` остаётся единственным default товара. Generated artifact
+невалиден, если у managed-кода другая quantity или unit, managed-строка
+дублируется, default отсутствует либо назначен другой managed- или ручной упаковке.
 
 ## Маппинг локалей
 
@@ -186,7 +207,19 @@ Transformer не создаёт параллельные raw и derived attribut
 
 Product DataExchange заменяет dependent collections. Повторный upsert безопасен только после overlay generated TheTea data на полный текущий production product export.
 
-Для существующего продукта ETL заменяет managed `SPEC-TT-*` и generated TheTea origins, но сохраняет unrelated specifications, translations неизвестных локалей, manual tags, catalog assignments, packages, prices, store overrides, cross-sells, существующие related links и остальные baseline fields. Generated related объединяются с существующими. Baseline-preservation validation падает, если unrelated entry исчезает или меняется.
+Для существующего продукта ETL заменяет managed `SPEC-TT-*`, generated TheTea
+origins и только managed-коды стандартных упаковок из раздела «Контракт
+стандартных упаковок». Каждый managed-код, созданный выбранным package mode,
+заменяет соответствующее baseline-определение; созданный код, отсутствующий в
+baseline, добавляется. Package entries с любыми другими кодами являются
+manual/unmanaged baseline data и сохраняются. Обычная полная синхронизация может
+также обновлять managed specifications, generated origins, translations,
+taxonomy и related links. Для исправления issue #42 обязателен отдельный режим
+`--packages=standard --update-scope=packages`: он клонирует точный baseline
+product и заменяет только managed package definitions. Этот scope требует
+сохранения catalog assignments и отклоняет изменение publication state, новые
+products или отсутствие полного baseline. Reconciliation падает, если меняется
+любой semantic field кроме `packages`, unrelated package entry или Product ID.
 
 Для нового продукта TheTea не выдумывает live prices, inventory, media IDs или cross-sells. Без полного product baseline hash apply запрещён.
 
@@ -227,10 +260,19 @@ article slug и применяет cover/token references ко всем выбр
 5. `publication-quality.json` показывает `Bulk publication eligible: yes`. Проверяются title/description каждой обязательной локали, units/precision managed numeric fields, наличие реального image file, target catalog/category binding, mapped origin и известные unresolved или mixed-language interface fallback markers.
 6. После применения категорий нужно получить новый catalog reference и полностью пересобрать artifact; новый reference с прежним artifact будет отклонён по hash.
 7. Финальный mapping показывает `Catalog found: yes` и `Missing categories: 0`.
-8. Definitions импортируются до products через SetupTool или другой approved ordered DataExchange workflow. `import-generated.js` поддерживает только `categories` и `products`; definitions, bindings, articles и FAQ sidecars он не загружает.
-9. Token проходит нужные `CatalogExport`/`CatalogImport` policies и workspace access.
-10. One-product canary проходит dry-run, применяется только после отдельного canary approval и сравнивается после read-back.
-11. Пользователь отдельно согласовал массовый `--apply --yes`.
+8. Валидация managed packages принимает только точный маппинг 25/50/100/250/500 g с `PKG-50G` как единственным default товара. Manifest и reconciliation plan должны содержать `updateScope: packages`. Для проверенной TheTea-выборки reconciliation должен показать 526 selected products, `create: 0`, `conflict: 0`, отсутствие preservation и scope errors, неизменные Product IDs и `fieldChangeCounts: { packages: 526 }` без других fields.
+9. Definitions импортируются до products через SetupTool или другой approved ordered DataExchange workflow. `import-generated.js` поддерживает только `categories` и `products`; definitions, bindings, articles и FAQ sidecars он не загружает.
+10. Token проходит нужные `CatalogExport`/`CatalogImport` policies и workspace access.
+11. One-product canary проходит dry-run, применяется только после отдельного canary approval и сравнивается после read-back.
+12. Пользователь отдельно согласовал массовый `--apply --yes`.
+
+Issue #42 — это offline-фаза исправления и проверки artifacts. Успешные
+validation и reconciliation gates не разрешают запись в production. В этой
+фазе запрещено запускать `import-generated.js --apply --yes`,
+`run-product-sync.js --apply --yes` и любые другие production apply commands.
+Generic import отклоняет package-scoped apply; отдельно согласованная запись
+должна идти через reconciliation runner, который повторно проверяет package-only
+scope по desired и rollback payloads.
 
 Publication-quality findings сохраняются в отчёте для Draft-продуктов, но не
 блокируют их генерацию, validation или import. В
