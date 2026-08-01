@@ -34,6 +34,7 @@ const {
 const { normalizeProductForImport } = require('./lib/import-contract');
 const { overlayExistingProduct } = require('./lib/product-overlay');
 const { loadVerifiedProductReference } = require('./lib/product-reference');
+const { collectContentMedia } = require('./lib/content-media');
 
 loadDotEnv();
 
@@ -276,6 +277,7 @@ function writeGeneratedBundle(stagingRoot, artifact) {
     writeRoutedRecords(stagingRoot, 'articles', artifact.routedContent.articles);
     writeRoutedRecords(stagingRoot, 'metaobjects', artifact.routedContent.metaobjects);
     writeProductMedia(stagingRoot, artifact.productMedia);
+    writeContentMedia(stagingRoot, artifact.contentMedia);
 
     for (const record of artifact.productRecords) {
         writeJson(path.join(stagingRoot, ...record.relativePath.split('/')), [record.product]);
@@ -336,6 +338,18 @@ function writeProductMedia(stagingRoot, productMedia) {
         productMedia.records);
 }
 
+function writeContentMedia(stagingRoot, contentMedia) {
+    if (!contentMedia?.records?.length) return;
+    for (const asset of contentMedia.assets) {
+        const destination = path.join(stagingRoot, ...asset.relativePath.split('/'));
+        fs.mkdirSync(path.dirname(destination), { recursive: true });
+        fs.copyFileSync(asset.sourcePath, destination);
+    }
+    writeJson(
+        path.join(stagingRoot, '07-media', 'content', 'media.json'),
+        contentMedia.records);
+}
+
 function collectProductMedia(records, { mediaRoot }) {
     const result = { records: [], assets: [] };
     if (!mediaRoot || !fs.existsSync(mediaRoot)) return result;
@@ -392,6 +406,9 @@ function main() {
     const mediaRoot = args['media-root']
         ? path.resolve(REPO_ROOT, String(args['media-root']))
         : path.join(snapshotRoot, 'media');
+    const contentMediaRoot = args['content-media-root']
+        ? path.resolve(REPO_ROOT, String(args['content-media-root']))
+        : path.join(snapshotRoot, 'content-media');
     const manifestPath = path.join(snapshotRoot, 'manifest.json');
     if (!fs.existsSync(manifestPath)) throw new Error(`Snapshot manifest not found: ${manifestPath}`);
 
@@ -581,6 +598,7 @@ function main() {
         products,
     });
     const productMedia = collectProductMedia(records, { mediaRoot });
+    const contentMedia = collectContentMedia(contentMediaRoot, routedContent.articles);
     const catalogPlacement = summarizeCatalogPlacement(
         products,
         [catalogBinding],
@@ -655,6 +673,9 @@ function main() {
         similarFiles: manifest.similarFiles?.length || 0,
         productMediaProductCount: productMedia.records.length,
         productMediaAssetCount: productMedia.assets.length,
+        contentMediaArticleCount: contentMedia.records.length,
+        contentMediaAssetCount: contentMedia.assets.length,
+        contentMediaBytes: contentMedia.totalBytes,
         publicationQuality,
         sourceManifestSha256,
         sourceFilesSha256,
@@ -696,6 +717,7 @@ function main() {
             lossEvents,
             routedContent,
             productMedia,
+            contentMedia,
         }));
         summary.artifactFileCount = artifactManifest.files.length;
     }

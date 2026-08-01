@@ -29,3 +29,17 @@ catalog-source-offline-tests:
     - node scripts/catalog-sources/test-reconciliation.js
     - node scripts/catalog-sources/test-reconciliation-cli.js
     - node scripts/catalog-sources/test-commerce-publication.js
+
+thetea-media-offline-tests:
+  stage: test
+  image: public.ecr.aws/docker/library/node:20.20.2
+  needs: []
+  interruptible: true
+  timeout: 5m
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  script:
+    # Content-media validation is fully offline and uses generated temp fixtures.
+    - node scripts/thetea/test-content-media.js
+    - node scripts/thetea/test-artifact-bundle.js

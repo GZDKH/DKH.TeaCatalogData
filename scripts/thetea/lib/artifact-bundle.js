@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+const { readContentMediaDirectory } = require('./content-media');
 
 const ARTIFACT_MANIFEST_FILE = 'artifact-manifest.json';
 const ARTIFACT_SCHEMA_VERSION = 1;
@@ -201,6 +202,10 @@ function readArtifactBundle(root) {
         files: listArtifactFiles(resolvedRoot)
             .filter(relativePath => relativePath.startsWith('07-media/products/')),
     };
+    const contentMedia = readContentMediaDirectory(
+        path.join(resolvedRoot, '07-media', 'content'),
+        routedContent.articles);
+    errors.push(...contentMedia.errors);
 
     const actualCodes = sortedUnique(products.map(product => product?.code));
     const manifestCodes = sortedUnique(manifestValidation.manifest?.productCodes || []);
@@ -245,6 +250,7 @@ function readArtifactBundle(root) {
         catalogBindings,
         routedContent,
         productMedia,
+        contentMedia,
         productFiles,
     };
 }

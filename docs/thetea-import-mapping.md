@@ -201,6 +201,20 @@ These are not derived from TheTea for new products:
 
 Existing product values in the supported DataExchange baseline are preserved. The source contract for runtime methods remains in `raw/source/openapi.yaml`.
 
+## Content Media Mapping
+
+Article covers and inline images are generated from an optional `content-media/` source fragment into
+`07-media/content/media.json` and `07-media/content/articles/<article-slug>/`. Each manifest record uses the stable
+routed-article code and its canonical lowercase pinyin slug. Inline images use literal
+`{{media:<token-slug>}}` placeholders inside localized article narratives; the manifest maps each token to one
+relative PNG, JPEG, or WebP filename and optional localized alt/caption text.
+
+The generator rejects unknown or duplicate articles, mismatched or unsafe slugs and paths, duplicate inline tokens,
+missing and orphan files, unsupported extensions or signatures, files over 20 MiB, and packages over 10 GiB. The
+generated `current` directory is a hashed artifact: update the photographer source fragment and regenerate it instead
+of changing `current` directly. The Admin import later uploads the files through MediaService under the same article
+slug and applies cover/token references to every selected storefront.
+
 ## Pre-Import Gates
 
 The first production import can proceed only when all gates pass:

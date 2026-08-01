@@ -202,6 +202,20 @@ Product DataExchange заменяет dependent collections. Повторный 
 
 Значения существующих продуктов, доступные в baseline DataExchange, сохраняются. Контракт runtime-методов остается в `raw/source/openapi.yaml`.
 
+## Сопоставление медиа контента
+
+Обложки и inline-изображения статей генерируются из необязательного source fragment `content-media/` в
+`07-media/content/media.json` и `07-media/content/articles/<article-slug>/`. Каждая запись manifest использует
+стабильный код routed article и его канонический lowercase pinyin slug. Inline-изображения обозначаются буквальными
+токенами `{{media:<token-slug>}}` внутри локализованных narratives статьи; manifest сопоставляет токен с одним
+относительным PNG, JPEG или WebP файлом и необязательными локализованными alt/caption.
+
+Генератор отклоняет неизвестные или повторяющиеся статьи, несовпадающие или небезопасные slug/path, дубли inline
+tokens, отсутствующие и лишние файлы, неподдерживаемое расширение или сигнатуру, файлы более 20 MiB и пакет более
+10 GiB. Каталог `current` является хешированным artifact: нужно обновлять исходный fragment фотографа и заново
+генерировать bundle, а не править `current` вручную. Затем Admin import загружает файлы через MediaService под тем же
+article slug и применяет cover/token references ко всем выбранным витринам.
+
 ## Gates перед импортом
 
 Первый production import можно делать только если:
