@@ -20,6 +20,7 @@ const {
     artifactFiles,
     artifactIdentity,
     importTranslationPackages,
+    localizedProductName,
     normalizeProductTranslationLocales,
     productLocale,
     verifyTranslationPackage,
@@ -331,6 +332,96 @@ function testProductLocalesUseSpecificBcp47Cultures() {
     }
 }
 
+function testLocalizedProductNamesExcludeNativePrefix() {
+    assert.strictEqual(
+        localizedProductName(
+            '2501 玫瑰大益 (2501 Rose Dayi)',
+            '2501 玫瑰大益',
+            'en-US',
+        ),
+        '2501 Rose Dayi',
+    );
+    assert.strictEqual(
+        localizedProductName(
+            '1301 高山韵象（1301 高山韻象）',
+            '1301 高山韵象',
+            'ja-JP',
+        ),
+        '1301 高山韻象',
+    );
+    assert.strictEqual(
+        localizedProductName(
+            '101 大益之戀生茶禮盒',
+            '101 大益之恋生茶礼盒',
+            'zh-HK',
+        ),
+        '101 大益之戀生茶禮盒',
+    );
+    assert.strictEqual(
+        localizedProductName('901 7542', '901 7542', 'en-US'),
+        '901 7542',
+    );
+    assert.strictEqual(
+        localizedProductName(
+            '2017 中茶金琥珀 熟茶',
+            '2017 中茶金琥珀 熟',
+            'ja-JP',
+        ),
+        '2017 中茶金琥珀 熟茶',
+    );
+    assert.strictEqual(
+        localizedProductName('2501 玫瑰大益', '2501 玫瑰大益', 'zh-CN'),
+        '2501 玫瑰大益',
+    );
+    assert.throws(
+        () => localizedProductName(
+            '2501 玫瑰大益 (2501 Rose Dayi',
+            '2501 玫瑰大益',
+            'en-US',
+        ),
+        /unterminated native wrapper/,
+    );
+}
+
+function testImportedCompositeNamesAreLocalizedOnly() {
+    const source = sourceArtifact();
+    const packageParent = temporaryDirectory('zzctea-localized-name-package-');
+    const packageRoot = path.join(packageParent, 'package');
+    const output = path.join(packageParent, 'artifact');
+    const manifest = writeTranslationPackage({
+        sourceDirectory: source,
+        outputDirectory: packageRoot,
+        targetLocales: ['en-US'],
+    }).manifest;
+    completePackage(packageRoot);
+    for (const product of manifest.products) {
+        const file = path.join(
+            packageRoot,
+            ...product.files[0].path.split('/'),
+        );
+        const contents = fs.readFileSync(file, 'utf8');
+        fs.writeFileSync(
+            file,
+            contents.replace(
+                `Translated ${product.code}`,
+                `茶 ${product.code} (Translated ${product.code})`,
+            ),
+        );
+    }
+    importTranslationPackages({
+        sourceDirectory: source,
+        outputDirectory: output,
+        packageDirectories: [packageRoot],
+    });
+    const verified = verifyAdminConsoleArtifact(output);
+    for (const product of verified.bundle.products) {
+        assert.strictEqual(
+            product.translations.find(item => item.lang === 'en-US').name,
+            `Translated ${product.code}`,
+        );
+    }
+}
+
 function testLegacyArtifactLocaleNormalization() {
     const source = sourceArtifact();
     const legacyParent = temporaryDirectory('zzctea-legacy-locales-');
@@ -345,7 +436,7 @@ function testLegacyArtifactLocaleNormalization() {
         const records = JSON.parse(fs.readFileSync(productFile, 'utf8'));
         const translation = {
             lang: 'de',
-            name: `Deutscher Tee ${item.code}`,
+            name: `茶 ${item.code} (Deutscher Tee ${item.code})`,
             description: `Deutsche Beschreibung ${item.code}.`,
         };
         records[0].translations.push(translation);
@@ -385,7 +476,10 @@ function testLegacyArtifactLocaleNormalization() {
         ['de-DE', 'zh-CN'],
     );
     for (const product of verified.bundle.products) {
-        assert(product.translations.some(item => item.lang === 'de-DE'));
+        assert.strictEqual(
+            product.translations.find(item => item.lang === 'de-DE').name,
+            `Deutscher Tee ${product.code}`,
+        );
         assert(!product.translations.some(item => item.lang === 'de'));
     }
 }
@@ -451,6 +545,8 @@ function main() {
     testDeterministicExport();
     testSuccessfulRoundTripAndPreservation();
     testProductLocalesUseSpecificBcp47Cultures();
+    testLocalizedProductNamesExcludeNativePrefix();
+    testImportedCompositeNamesAreLocalizedOnly();
     testLegacyArtifactLocaleNormalization();
     testIncompleteAndSourceDriftFailClosed();
     console.log('product translation Markdown tests passed');
