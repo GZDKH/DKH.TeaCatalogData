@@ -75,6 +75,19 @@ The round trip is local and atomic. It preserves `applyAllowed: false`,
 `canaryRequired: true`, and `productionWrites: false`; a one-product translated
 canary and read-back are still mandatory before a full import.
 
+The exact Chinese source title is retained in `nativeName` and `zh-CN` only.
+Every other locale stores its localized product title without a repeated native
+prefix. Reverse import safely unwraps the exact
+`<nativeName> (<localized title>)` form, preserves titles that are already
+localized or are exact fallbacks, and rejects an unterminated native wrapper.
+Existing complete artifacts can be normalized atomically with:
+
+```bash
+node scripts/catalog-sources/normalize-product-translation-locales.js \
+  --artifact=/absolute/path/to/import/zzctea/current \
+  --out=/absolute/path/to/import/zzctea/normalized
+```
+
 Each source-product mapping carries both the stable lookup URL and the observed
 canonical product URL. Reference prices, ranges, trends and aggregate demand /
 supply counts are source observations, never ProductCatalog retail prices.

@@ -125,6 +125,34 @@ function productLocale(value) {
     return PLATFORM_PRODUCT_LOCALE_ALIASES.get(locale) || locale;
 }
 
+function localizedProductName(value, nativeName, locale) {
+    const name = String(value || '').trim();
+    const sourceName = String(nativeName || '').trim();
+    const productCulture = productLocale(locale);
+    if (productCulture === SOURCE_LOCALE || !sourceName || name === sourceName) {
+        return name;
+    }
+    if (!name.startsWith(sourceName)) {
+        return name;
+    }
+    const suffix = name.slice(sourceName.length).trim();
+    const opening = suffix[0];
+    const closing = suffix[suffix.length - 1];
+    if (!['(', '（'].includes(opening)) {
+        return name;
+    }
+    if (![')', '）'].includes(closing)) {
+        throw new Error(
+            `Localized ${productCulture} name has an unterminated native wrapper.`,
+        );
+    }
+    const localized = suffix.slice(1, -1).trim();
+    if (!localized) {
+        throw new Error(`Localized ${productCulture} name wrapper is empty.`);
+    }
+    return localized;
+}
+
 function mappedLocales(values, label) {
     const mapped = values.map(productLocale);
     const unique = new Set(mapped);
@@ -761,6 +789,10 @@ function importTranslationPackages(options) {
     if (packageRoots.length === 0) {
         throw new Error('At least one translation package is required.');
     }
+    const source = verifyAdminConsoleArtifact(sourceRoot);
+    const sourceProductsByCode = new Map(
+        source.bundle.products.map(product => [product.code, product]),
+    );
     const packages = packageRoots.map(directory =>
         verifyTranslationPackage(directory, {
             sourceRoot,
@@ -777,30 +809,38 @@ function importTranslationPackages(options) {
             }
             targetLocaleSet.add(locale);
         }
-        const content = item.translations
-            .map(entry => ({
+        const normalizedEntries = item.translations.map(entry => {
+            const product = sourceProductsByCode.get(entry.code);
+            if (!product) {
+                throw new Error(`Translation references unknown product ${entry.code}.`);
+            }
+            const lang = productLocale(entry.translation.lang);
+            return {
                 code: entry.code,
                 translation: {
                     ...entry.translation,
-                    lang: productLocale(entry.translation.lang),
+                    lang,
+                    name: localizedProductName(
+                        entry.translation.name,
+                        product.nativeName,
+                        lang,
+                    ),
                 },
-            }));
+            };
+        });
+        const content = normalizedEntries;
         packageBindings.push({
             packageId: item.manifest.packageId,
             targetLocales: productLocales,
             translationContentSha256: sha256(stableJson(content)),
         });
-        for (const entry of item.translations) {
+        for (const entry of normalizedEntries) {
             if (!translationsByCode.has(entry.code)) {
                 translationsByCode.set(entry.code, []);
             }
-            translationsByCode.get(entry.code).push({
-                ...entry.translation,
-                lang: productLocale(entry.translation.lang),
-            });
+            translationsByCode.get(entry.code).push(entry.translation);
         }
     }
-    const source = verifyAdminConsoleArtifact(sourceRoot);
     let manifest;
     withStagedOutput(outputRoot, stagingDirectory => {
         copyTree(sourceRoot, stagingDirectory);
@@ -888,10 +928,18 @@ function normalizeProductTranslationLocales(options) {
                 throw new Error(`${item.path} must contain exactly one product.`);
             }
             const product = records[0];
-            const translations = (product.translations || []).map(entry => ({
-                ...entry,
-                lang: productLocale(entry.lang),
-            }));
+            const translations = (product.translations || []).map(entry => {
+                const lang = productLocale(entry.lang);
+                return {
+                    ...entry,
+                    lang,
+                    name: localizedProductName(
+                        entry.name,
+                        product.nativeName,
+                        lang,
+                    ),
+                };
+            });
             const locales = translations.map(entry => entry.lang);
             if (new Set(locales).size !== locales.length) {
                 throw new Error(
@@ -986,6 +1034,7 @@ module.exports = {
     canonicalLocale,
     copyTree,
     importTranslationPackages,
+    localizedProductName,
     normalizeProductTranslationLocales,
     parseTranslationMarkdown,
     productLocale,

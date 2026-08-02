@@ -135,6 +135,20 @@ hash and artifact identity, and keeps `applyAllowed: false` plus
 `canaryRequired: true`. Import one translated product and verify read-back
 before requesting a separate full apply.
 
+Product names follow a strict locale contract: the exact Chinese source title
+belongs to `nativeName` and `zh-CN`; every other locale stores only its
+localized title. If a returned title uses the review-friendly form
+`<nativeName> (<localized title>)`, reverse import removes that exact outer
+source wrapper. Already-localized titles and exact fallback names are preserved,
+while an unterminated native wrapper fails closed. Normalize an
+older complete artifact with the same rule before importing it:
+
+```bash
+node scripts/catalog-sources/normalize-product-translation-locales.js \
+  --artifact=/absolute/path/to/import/zzctea/current \
+  --out=/absolute/path/to/import/zzctea/normalized
+```
+
 Put secrets in `.env` using `scripts/env.prod.template`. The TheTea text API key is read from `THETEA_API_KEY` or `THE_TEA_API_KEY`. ProductCatalog export/validate/import also requires `PRODUCT_CATALOG_WORKSPACE_ID`.
 
 Fetch TheTea source snapshot:
