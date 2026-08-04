@@ -3,7 +3,7 @@ stages:
 
 catalog-source-offline-tests:
   stage: test
-  image: public.ecr.aws/docker/library/node:20.20.2
+  image: public.ecr.aws/docker/library/node:24.19.0
   needs: []
   interruptible: true
   timeout: 10m
@@ -32,7 +32,7 @@ catalog-source-offline-tests:
 
 thetea-media-offline-tests:
   stage: test
-  image: public.ecr.aws/docker/library/node:20.20.2
+  image: public.ecr.aws/docker/library/node:24.19.0
   needs: []
   interruptible: true
   timeout: 5m
@@ -46,7 +46,7 @@ thetea-media-offline-tests:
 
 thetea-package-offline-tests:
   stage: test
-  image: public.ecr.aws/docker/library/node:20.20.2
+  image: public.ecr.aws/docker/library/node:24.19.0
   needs: []
   interruptible: true
   timeout: 5m
