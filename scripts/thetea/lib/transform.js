@@ -56,7 +56,13 @@ function transformCardSet(cardSet, options = {}) {
         .flatMap(item => item.specifications);
     const selectedSpecifications = selectCanonicalSpecifications(localizedSpecificationSets, code);
     const relationCandidates = collectRelationCandidates(cardSet, primary, warnings);
-    const routed = buildRoutedContent(cardSet, code, fieldRouting.routedContentKeys, primary.slug);
+    const productTranslations = buildTranslations(cardSet, primary, warnings);
+    const routed = buildRoutedContent(
+        cardSet,
+        code,
+        fieldRouting.routedContentKeys,
+        primary.slug,
+        productTranslations);
     const product = {
         code,
         sku: `${normalizeCodePart(primary.slug)}-${normalizeCodePart(meta.origin_country || 'CN')}`,
@@ -64,7 +70,7 @@ function transformCardSet(cardSet, options = {}) {
         published: options.publish === true,
         nativeName: extractNativeName(primary),
         transcription: extractTranscription(primary.name),
-        translations: buildTranslations(cardSet, primary, warnings),
+        translations: productTranslations,
         catalogs: buildCatalogAssignments(
             primary,
             options.knownCategories || new Set(),
@@ -177,8 +183,16 @@ function collectFieldRouting(cardSet) {
     return { routedContentKeys, suppressedSpecificationKeys };
 }
 
-function buildRoutedContent(cardSet, productCode, routedFieldKeys = new Set(), productSlug = '') {
+function buildRoutedContent(
+    cardSet,
+    productCode,
+    routedFieldKeys = new Set(),
+    productSlug = '',
+    productTranslations = [],
+) {
     const articleTranslations = [];
+    const titleByLocale = new Map(productTranslations
+        .map(translation => [String(translation.lang || '').toLowerCase(), translation.name]));
     const faqByLocale = new Map();
     const productLocales = [];
     let markdownCount = 0;
@@ -212,7 +226,12 @@ function buildRoutedContent(cardSet, productCode, routedFieldKeys = new Set(), p
             : undefined;
         if (markdown) markdownCount += 1;
         if (markdown || Object.keys(narratives).length) {
-            articleTranslations.push(stripUndefined({ lang, markdown, narratives }));
+            articleTranslations.push(stripUndefined({
+                lang,
+                title: titleByLocale.get(lang.toLowerCase()),
+                markdown,
+                narratives,
+            }));
         }
 
         const faq = Array.isArray(card.enrichment?.faq) ? card.enrichment.faq : [];
