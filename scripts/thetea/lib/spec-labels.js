@@ -1,7 +1,44 @@
 const { toProductLocale } = require('./locales');
 
 const CANONICAL_LOCALE = 'en-US';
-const CURATED_LOCALES = ['ru-RU', 'zh-CN'];
+const CURATED_LOCALES = ['ru-RU', 'zh-CN', 'zh-TW'];
+
+// The source registry stores Simplified Chinese once. These curated phrase and
+// character substitutions keep Traditional Chinese labels deterministic without
+// duplicating the full semantic registry.
+function traditionalChineseLabel(value) {
+    const phrases = [
+        ['来源元数据', '來源中繼資料'],
+        ['补充信息', '補充資訊'],
+        ['基本信息', '基本資訊'],
+        ['健康信息', '健康資訊'],
+        ['分类与产地', '分類與產地'],
+        ['茶叶核心信息', '茶葉核心資訊'],
+    ];
+    let result = String(value || '');
+    for (const [simplified, traditional] of phrases) {
+        result = result.replaceAll(simplified, traditional);
+    }
+    const characters = {
+        与: '與', 业: '業', 产: '產', 价: '價', 优: '優', 传: '傳', 体: '體',
+        储: '儲', 冲: '沖', 凤: '鳳', 别: '別', 刘: '劉', 务: '務', 华: '華',
+        单: '單', 发: '發', 叶: '葉', 后: '後', 含: '含', 园: '園', 国: '國',
+        图: '圖', 场: '場', 块: '塊', 复: '複', 实: '實', 对: '對', 层: '層',
+        干: '乾', 广: '廣', 应: '應', 开: '開', 强: '強', 录: '錄', 径: '徑',
+        总: '總', 标: '標', 树: '樹', 档: '檔', 检: '檢', 气: '氣', 汤: '湯',
+        浓: '濃', 点: '點', 焙: '焙', 现: '現', 环: '環', 级: '級', 绿: '綠',
+        编: '編', 罗: '羅', 翻: '翻', 者: '者', 联: '聯', 茶: '茶', 获: '獲',
+        规: '規', 记: '記', 证: '證', 评: '評', 识: '識', 质: '質', 轻: '輕',
+        较: '較', 过: '過', 进: '進', 适: '適', 采: '採', 销: '銷', 门: '門',
+        间: '間', 阶: '階', 难: '難', 风: '風', 饮: '飲', 验: '驗', 龙: '龍',
+        类: '類', 学: '學', 历: '歷', 真: '真', 伪: '偽', 补: '補', 资: '資',
+        讯: '訊', 据: '據', 来: '來', 源: '源', 颜: '顏', 术: '術', 数: '數',
+        经: '經', 纬: '緯', 挥: '揮', 矿: '礦', 维: '維', 称: '稱', 湿: '濕',
+        状: '狀', 态: '態', 说: '說', 审: '審', 处: '處', 鉴: '鑑', 条: '條',
+        饼: '餅', 砖: '磚', 预: '預', 专: '專', 无: '無', 晒: '曬', 护: '護', 艺: '藝',
+    };
+    return [...result].map(character => characters[character] || character).join('');
+}
 
 // English is the canonical identity of a label. Russian and Chinese are
 // deliberately curated here; unsupported locales must keep the supplied
@@ -38,6 +75,10 @@ const LABEL_ENTRIES = [
     ['attribute', 'classification_origin.province', 'Province', 'Провинция', '省份'],
     ['attribute', 'classification_origin.city', 'City', 'Город', '城市'],
     ['attribute', 'classification_origin.county', 'County', 'Уезд', '县区'],
+    ['attribute', 'classification_origin.category', 'Category', 'Категория', '分类'],
+    ['attribute', 'classification_origin.coordinates', 'Coordinates', 'Координаты', '经纬度'],
+    ['attribute', 'classification_origin.alt_names', 'Alt Names', 'Альтернативные названия', '别名'],
+    ['attribute', 'classification_origin.grade', 'Grade', 'Категория качества', '等级'],
     ['attribute', 'classification_origin.gi_status', 'Geographical Indication Status', 'Статус географического указания', '地理标志状态'],
     ['attribute', 'classification_origin.gi_standard', 'Geographical Indication Standard', 'Стандарт географического указания', '地理标志标准'],
     ['attribute', 'source.category_code', 'TheTea Category', 'Категория TheTea', 'TheTea 分类'],
@@ -67,6 +108,27 @@ const LABEL_ENTRIES = [
     ['attribute', 'brewing.water_temp', 'Water Temperature', 'Температура воды', '水温'],
     ['attribute', 'brewing.tea_amount', 'Tea Amount', 'Количество чая', '投茶量'],
     ['attribute', 'brewing.teaware', 'Teaware', 'Посуда для заваривания', '茶具'],
+    ['attribute', 'brewing.process', 'Process', 'Процесс заваривания', '冲泡过程'],
+    ['attribute', 'chemistry.polyphenols', 'Polyphenols', 'Полифенолы', '茶多酚'],
+    ['attribute', 'chemistry.amino_acids', 'Amino Acids', 'Аминокислоты', '氨基酸'],
+    ['attribute', 'chemistry.vitamins', 'Vitamins', 'Витамины', '维生素'],
+    ['attribute', 'chemistry.minerals', 'Minerals', 'Минералы', '矿物质'],
+    ['attribute', 'chemistry.alkaloids', 'Alkaloids', 'Алкалоиды', '生物碱'],
+    ['attribute', 'chemistry.essential_oils', 'Essential Oils', 'Эфирные масла', '挥发性油'],
+    ['attribute', 'history_culture.history', 'History', 'История', '历史'],
+    ['attribute', 'history_culture.cultural_significance', 'Cultural Significance', 'Культурное значение', '文化意义'],
+    ['attribute', 'history_culture.name_breakdown', 'Name Breakdown', 'Происхождение названия', '名称解析'],
+    ['attribute', 'storage.container', 'Container', 'Ёмкость для хранения', '储存容器'],
+    ['attribute', 'storage.enemies', 'Enemies', 'Чего следует избегать', '储存禁忌'],
+    ['attribute', 'storage.shelf_life', 'Shelf Life', 'Срок хранения', '保质期'],
+    ['attribute', 'storage.temperature', 'Temperature', 'Температура хранения', '储存温度'],
+    ['attribute', 'storage.humidity', 'Humidity', 'Влажность', '湿度'],
+    ['attribute', 'storage.light', 'Light', 'Воздействие света', '光照'],
+    ['attribute', 'terroir.topography', 'Topography', 'Рельеф', '地形'],
+    ['attribute', 'terroir.water', 'Water', 'Источник воды', '水源'],
+    ['attribute', 'price_counterfeit.price_category', 'Price Category', 'Ценовая категория', '价格类别'],
+    ['attribute', 'price_counterfeit.price_factors', 'Price Factors', 'Факторы цены', '价格因素'],
+    ['attribute', 'price_counterfeit.anti_counterfeit', 'Anti Counterfeit', 'Защита подлинности', '防伪'],
 
     // Enrichment attributes
     ['attribute', 'enrichment.caffeine_level', 'Caffeine Level', 'Уровень кофеина', '咖啡因含量'],
@@ -263,6 +325,7 @@ function compileRegistry(entries) {
             [CANONICAL_LOCALE]: normalizeFallbackName(english),
             'ru-RU': normalizeFallbackName(russian),
             'zh-CN': normalizeFallbackName(chinese),
+            'zh-TW': normalizeFallbackName(traditionalChineseLabel(chinese)),
         };
         const key = registryKey(kind, semanticKey);
         const existing = registry.get(key);
@@ -325,7 +388,25 @@ function dynamicLabels(kind, semanticKey) {
         [CANONICAL_LOCALE]: `Sensory Source Descriptor ${code} Intensity`,
         'ru-RU': `Интенсивность исходного сенсорного дескриптора ${code}`,
         'zh-CN': `源感官描述符 ${code} 强度`,
+        'zh-TW': `源感官描述符 ${code} 強度`,
     };
+}
+
+function lookupSpecLabel(kind, semanticKey, locale) {
+    const normalizedKind = normalizeKind(kind);
+    const normalizedKey = resolveSemanticKey(normalizedKind, semanticKey);
+    const normalizedLocale = normalizeLocale(locale);
+    const curated = LABEL_REGISTRY.get(registryKey(normalizedKind, normalizedKey))
+        || dynamicLabels(normalizedKind, normalizedKey);
+
+    if (!curated) return null;
+    if (normalizedLocale === CANONICAL_LOCALE) {
+        return { name: curated[CANONICAL_LOCALE], source: 'canonical' };
+    }
+    if (CURATED_LOCALES.includes(normalizedLocale)) {
+        return { name: curated[normalizedLocale], source: 'curated' };
+    }
+    return { name: curated[CANONICAL_LOCALE], source: 'fallback' };
 }
 
 function localizeSpecLabel(kind, semanticKey, locale, fallbackName) {
@@ -360,9 +441,10 @@ function compareLocales(left, right) {
         'en-US': 0,
         'ru-RU': 1,
         'zh-CN': 2,
+        'zh-TW': 3,
     };
-    const leftPriority = priority[left] ?? 3;
-    const rightPriority = priority[right] ?? 3;
+    const leftPriority = priority[left] ?? 4;
+    const rightPriority = priority[right] ?? 4;
     if (leftPriority !== rightPriority) return leftPriority - rightPriority;
     return left < right ? -1 : left > right ? 1 : 0;
 }
@@ -398,5 +480,6 @@ function buildLocalizedTranslations({ kind, semanticKey, fallbackName, locales }
 
 module.exports = {
     localizeSpecLabel,
+    lookupSpecLabel,
     buildLocalizedTranslations,
 };

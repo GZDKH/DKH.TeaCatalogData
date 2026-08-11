@@ -18,6 +18,36 @@ const article = {
         narratives: {},
     }],
 };
+const narrativeArticle = {
+    code: 'ARTICLE-TT-TEA-CN-DA-HONG-PAO-DETAIL',
+    product: 'TEA-CN-DA-HONG-PAO',
+    slug: 'da-hong-pao',
+    translations: [
+        {
+            lang: 'ru-RU',
+            title: 'Да Хун Пао',
+            narratives: {
+                brewing: {
+                    water_temp: 'Используйте воду температурой 95 °C.',
+                },
+                facts: {
+                    facts_x0: 'Большой красный халат — знаменитый утёсный улун.',
+                },
+                classification_origin: {
+                    origin: 'Уишань, провинция Фуцзянь, Китай.',
+                },
+            },
+        },
+        {
+            lang: 'zh-TW',
+            title: '大紅袍',
+            narratives: {
+                classification_origin: { origin: '中國福建武夷山。' },
+                organoleptic: { liquor_color: '橙紅明亮。' },
+            },
+        },
+    ],
+};
 const faq = {
     code: 'METAOBJECT-TT-TEA-CN-XIHU-LONGJING-FAQ',
     type: 'product_faq',
@@ -34,6 +64,21 @@ assert(dto.translations[0].contentHtml.includes('&lt;script&gt;'));
 assert(!dto.translations[0].contentHtml.includes('<script>'));
 assert(markdownToSafeHtml('[bad](javascript:alert(1))', 'x').includes('javascript:alert'));
 assert(!markdownToSafeHtml('[bad](javascript:alert(1))', 'x').includes('href='));
+
+const narrativeDto = articleDto(narrativeArticle);
+const narrativeRu = narrativeDto.translations.find(item => item.languageCode === 'ru-RU');
+assert.strictEqual(narrativeRu.title, 'Да Хун Пао');
+assert(narrativeRu.contentHtml.indexOf('Классификация и происхождение')
+    < narrativeRu.contentHtml.indexOf('Факты'));
+assert(narrativeRu.contentHtml.indexOf('Факты')
+    < narrativeRu.contentHtml.indexOf('Заваривание'));
+assert(narrativeRu.contentHtml.includes('<strong>Происхождение:</strong>'));
+assert(narrativeRu.contentHtml.includes('<strong>Температура воды:</strong>'));
+assert(!narrativeRu.contentHtml.includes('facts_x0'));
+const narrativeZhTw = narrativeDto.translations.find(item => item.languageCode === 'zh-TW');
+assert.strictEqual(narrativeZhTw.title, '大紅袍');
+assert(narrativeZhTw.contentHtml.includes('分類與產地'));
+assert(narrativeZhTw.contentHtml.includes('茶湯顏色'));
 
 const faqDto = faqEntryDto(faq);
 assert.strictEqual(faqDto.handle, 'xihu-longjing');

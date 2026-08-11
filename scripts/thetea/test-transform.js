@@ -226,6 +226,10 @@ assert.deepStrictEqual(product.related, [{
     order: 1,
 }]);
 assert.strictEqual(routedContent.articles.length, 1);
+assert.strictEqual(routedContent.articles[0].translations
+    .find(translation => translation.lang === 'en-US').title, 'Xī Hú Lóngjǐng');
+assert.strictEqual(routedContent.articles[0].translations
+    .find(translation => translation.lang === 'zh-CN').title, '西湖龙井');
 assert(routedContent.articles[0].translations[0].narratives.terroir.terroir_x7
     .includes('Unknown but retained field.'));
 assert(routedContent.articles[0].translations[0].narratives.brewing.water_temp

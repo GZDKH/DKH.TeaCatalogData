@@ -2,6 +2,7 @@
 const assert = require('assert');
 const {
     localizeSpecLabel,
+    lookupSpecLabel,
     buildLocalizedTranslations,
 } = require('./lib/spec-labels');
 
@@ -17,6 +18,19 @@ assert.deepStrictEqual(
 assert.deepStrictEqual(
     localizeSpecLabel('option', 'classification_origin.tea_type.green', 'zh_CN', 'Green'),
     { name: '绿茶', source: 'curated' });
+assert.deepStrictEqual(
+    localizeSpecLabel('group', 'classification_origin', 'zh-TW', 'Classification and Origin'),
+    { name: '分類與產地', source: 'curated' });
+assert.deepStrictEqual(
+    lookupSpecLabel('attribute', 'organoleptic.liquor_color', 'ru'),
+    { name: 'Цвет настоя', source: 'curated' });
+assert.deepStrictEqual(
+    lookupSpecLabel('attribute', 'chemistry.polyphenols', 'ru'),
+    { name: 'Полифенолы', source: 'curated' });
+assert.deepStrictEqual(
+    lookupSpecLabel('attribute', 'storage.shelf_life', 'zh-TW'),
+    { name: '保質期', source: 'curated' });
+assert.strictEqual(lookupSpecLabel('attribute', 'production.unmapped_process', 'ru'), null);
 
 // Short aliases resolve to the same curated semantic identity.
 assert.deepStrictEqual(
@@ -52,7 +66,7 @@ const localized = buildLocalizedTranslations({
     kind: 'attribute',
     semanticKey: 'atomic.processing',
     fallbackName: 'Processing',
-    locales: ['zh', 'en', 'RU', 'fr-fr', 'zh-CN', 'EN_us', 'ru-RU'],
+    locales: ['zh', 'en', 'RU', 'fr-fr', 'zh-CN', 'zh-TW', 'EN_us', 'ru-RU'],
 });
 
 assert.deepStrictEqual(localized, {
@@ -60,6 +74,7 @@ assert.deepStrictEqual(localized, {
         { lang: 'en-US', name: 'Processing' },
         { lang: 'ru-RU', name: 'Обработка' },
         { lang: 'zh-CN', name: '加工工艺' },
+        { lang: 'zh-TW', name: '加工工藝' },
         { lang: 'fr-FR', name: 'Processing' },
     ],
     fallbackLocales: ['fr-FR'],

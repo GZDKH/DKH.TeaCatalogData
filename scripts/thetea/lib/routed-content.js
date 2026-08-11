@@ -1,4 +1,23 @@
 const crypto = require('crypto');
+const { lookupSpecLabel } = require('./spec-labels');
+
+const NARRATIVE_SECTION_ORDER = Object.freeze([
+    'classification_origin',
+    'facts',
+    'history_culture',
+    'botany_material',
+    'terroir',
+    'production',
+    'organoleptic',
+    'chemistry',
+    'health',
+    'contraindications',
+    'brewing',
+    'storage',
+    'comparison',
+    'price_counterfeit',
+    'conclusion',
+]);
 
 const FAQ_DEFINITION = Object.freeze({
     key: 'product_faq',
@@ -139,12 +158,48 @@ function extractExcerpt(markdown) {
     return text.length > 500 ? `${text.slice(0, 497).trimEnd()}...` : text || null;
 }
 
-function renderNarratives(narratives) {
+function naturalCompare(left, right) {
+    return String(left).localeCompare(String(right), 'en', { numeric: true });
+}
+
+function humanizeSemanticKey(value) {
+    const words = String(value || '').replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim();
+    return words ? words[0].toUpperCase() + words.slice(1) : '';
+}
+
+function isSyntheticNarrativeField(section, field) {
+    return /^ext_\d+$/i.test(String(section || '')) || /(?:^|_)x\d+$/i.test(String(field || ''));
+}
+
+function compareNarrativeSections(left, right) {
+    const leftIndex = NARRATIVE_SECTION_ORDER.indexOf(left);
+    const rightIndex = NARRATIVE_SECTION_ORDER.indexOf(right);
+    const leftOrder = leftIndex < 0 ? NARRATIVE_SECTION_ORDER.length : leftIndex;
+    const rightOrder = rightIndex < 0 ? NARRATIVE_SECTION_ORDER.length : rightIndex;
+    return leftOrder - rightOrder || naturalCompare(left, right);
+}
+
+function localizedNarrativeLabel(kind, semanticKey, locale, fallbackKey) {
+    return lookupSpecLabel(kind, semanticKey, locale)?.name || humanizeSemanticKey(fallbackKey);
+}
+
+function renderNarratives(narratives, locale) {
     const parts = [];
-    for (const section of Object.keys(narratives || {}).sort()) {
-        parts.push(`## ${section.replace(/_/g, ' ')}`);
-        for (const field of Object.keys(narratives[section] || {}).sort()) {
-            parts.push(`**${field.replace(/_/g, ' ')}:** ${narratives[section][field]}`);
+    for (const section of Object.keys(narratives || {}).sort(compareNarrativeSections)) {
+        const sectionLabel = localizedNarrativeLabel('group', section, locale, section);
+        parts.push(`## ${sectionLabel}`);
+        for (const field of Object.keys(narratives[section] || {}).sort(naturalCompare)) {
+            const value = narratives[section][field];
+            if (isSyntheticNarrativeField(section, field)) {
+                parts.push(String(value));
+                continue;
+            }
+            const fieldLabel = localizedNarrativeLabel(
+                'attribute',
+                `${section}.${field}`,
+                locale,
+                field);
+            parts.push(`**${fieldLabel}:** ${value}`);
         }
     }
     return parts.join('\n\n');
@@ -154,9 +209,13 @@ function articleDto(article) {
     const slug = articleSlug(article);
     const translations = [...(article.translations || [])]
         .map(translation => {
-            const markdown = String(translation.markdown || renderNarratives(translation.narratives)).trim();
+            const markdown = String(
+                translation.markdown || renderNarratives(translation.narratives, translation.lang),
+            ).trim();
             if (!markdown) throw new Error(`${article.code}/${translation.lang}: article content is empty.`);
-            const title = extractTitle(markdown, slug.replace(/-/g, ' '));
+            const title = stripMarkdown(
+                translation.title || extractTitle(markdown, slug.replace(/-/g, ' ')),
+            );
             return {
                 languageCode: translation.lang,
                 title,
