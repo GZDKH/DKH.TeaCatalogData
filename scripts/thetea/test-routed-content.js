@@ -10,6 +10,7 @@ const {
     normalizeJson,
 } = require('./lib/routed-content');
 const {
+    applyPlanAndRelease,
     buildPlan,
     definitionCompatible,
     operationEvidence,
@@ -147,6 +148,18 @@ const emptyClient = {
 };
 
 (async () => {
+    const releaseOperations = [{
+        kind: 'article',
+        action: 'create',
+        desired: articleDto(article),
+    }];
+    const applied = [];
+    await applyPlanAndRelease({
+        createArticle: async value => applied.push(value.slug),
+    }, releaseOperations);
+    assert.deepStrictEqual(applied, ['xihu-longjing']);
+    assert.strictEqual(releaseOperations.length, 0);
+
     const createPlan = await buildPlan(emptyClient, records);
     assert.deepStrictEqual(summarize(createPlan), { create: 3, update: 0, noop: 0, conflict: 0 });
 
