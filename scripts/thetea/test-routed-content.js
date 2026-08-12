@@ -6,7 +6,13 @@ const {
     markdownToSafeHtml,
     normalizeJson,
 } = require('./lib/routed-content');
-const { buildPlan, definitionCompatible, summarize, verifyApplyInputs } = require('./import-routed-content');
+const {
+    buildPlan,
+    definitionCompatible,
+    operationEvidence,
+    summarize,
+    verifyApplyInputs,
+} = require('./import-routed-content');
 
 const article = {
     code: 'ARTICLE-TT-TEA-CN-XIHU-LONGJING-DETAIL',
@@ -91,6 +97,21 @@ assert(!definitionCompatible({ schemaJson: '{"fields":[]}' }));
 assert.throws(
     () => verifyApplyInputs({ manifest: {} }, {}),
     /apply is forbidden for a diagnostic artifact/i);
+
+const largePayload = 'x'.repeat(2 * 1024 * 1024);
+const boundedEvidence = operationEvidence({
+    kind: 'article',
+    key: 'large-article',
+    action: 'noop',
+    remoteId: 'article-id',
+    before: { translations: [{ contentHtml: largePayload }] },
+    desired: { translations: [{ contentHtml: largePayload }] },
+    desiredSha256: 'desired-hash',
+});
+assert(!Object.hasOwn(boundedEvidence, 'before'));
+assert(!Object.hasOwn(boundedEvidence, 'desired'));
+assert.strictEqual(typeof boundedEvidence.beforeSha256, 'string');
+assert(JSON.stringify(boundedEvidence).length < 1024);
 
 const records = { articles: [article], metaobjects: [faq] };
 const emptyClient = {
