@@ -58,6 +58,9 @@ thetea-package-offline-tests:
     # reconciliation run only against checked-in or generated temp fixtures.
     # Do not add network fetches, production references, or apply commands.
     - node scripts/thetea/test-transform.js
+    - node scripts/thetea/test-category-taxonomy.js
+    - node scripts/thetea/test-materialize-d1-snapshot.js
+    - node scripts/thetea/test-validate-d1-snapshot.js
     - node scripts/thetea/test-product-overlay.js
     - node scripts/thetea/test-artifact-validator.js
     - node scripts/thetea/test-generate-safety.js

@@ -201,6 +201,8 @@ Origin country/place, coordinates и altitude живут только в `origin
 
 Весь локализованный section prose сохраняется в article sidecar, поэтому значения non-canonical локалей не схлопываются. Короткое stable canonical значение может дополнительно остаться typed text specification. Synthetic `*_xN` и `ext_*`, полный Markdown, FAQ и длинные narratives никогда не становятся техническими product attributes и существуют только в `06-routed-content/`. Текущий ProductCatalog importer эти sidecars не импортирует; для них нужен отдельный article/metaobject шаг canary workflow.
 
+Полные TheTea artifacts объявляют `targets.articleCoverage: exact-product-slug`. В этом режиме validation требует ровно одну routed article для каждого сгенерированного product, совпадение article slug с SEO handle product translation и наличие каждой локали snapshot. Если D1 field pack частично отсутствует для локали, transformer фиксирует неполное покрытие и копирует article content по детерминированной цепочке fallback: `en-US`, `en`, `ru-RU`, `ru`, затем первая доступная локаль. Если article body отсутствует во всех локалях, generation всё равно завершается ошибкой. Package-only artifacts объявляют `articleCoverage: none`, потому что routed content ими намеренно не обновляется.
+
 Transformer не создаёт параллельные raw и derived attributes одной семантики. Canonical typed value хранится один раз; дополнительный prose — отдельная detail semantic либо routed content.
 
 ## Baseline overlay при replace-mode

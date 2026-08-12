@@ -220,12 +220,14 @@ try {
         catalogAssignmentMode: 'preserve',
         publicationMode: 'draft',
         updateScope: 'packages',
+        articleCoverage: 'none',
         lossEvents: [],
         routedContent: { articles: [], metaobjects: [] },
         productMedia: { records: [], assets: [] },
         contentMedia: { records: [], assets: [] },
     });
     assert.strictEqual(bundleManifest.targets.updateScope, 'packages');
+    assert.strictEqual(bundleManifest.targets.articleCoverage, 'none');
     assert.strictEqual(
         JSON.parse(fs.readFileSync(path.join(bundleRoot, 'artifact-manifest.json'), 'utf8'))
             .targets.updateScope,

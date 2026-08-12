@@ -130,6 +130,21 @@ assert(herbalAssignments.includes('CAT-HERBAL-TEA'));
 assert(herbalAssignments.includes('CAT-HERBAL-FLOWER'));
 assert(herbalAssignments.includes('CAT-HERBAL-ROSE'));
 
+for (const [slug, subtype] of [
+    ['damai-cha', 'CAT-HERBAL-GRAIN'],
+    ['hong-qiao-mei', 'CAT-HERBAL-FLOWER'],
+    ['lan-hudie', 'CAT-HERBAL-FLOWER'],
+    ['luoshen-hua', 'CAT-HERBAL-FLOWER'],
+    ['shanzha-gan', null],
+]) {
+    const assignments = buildCategoryAssignments({
+        slug,
+        meta: { category_code: 'FLOWERS AND DRY' },
+    });
+    assert(assignments.includes('CAT-HERBAL-TEA'), slug);
+    if (subtype) assert(assignments.includes(subtype), slug);
+}
+
 const dancongSubtypeCases = [
     ['dan-cong-mi-lan-xiang', 'Dān Cóng Mì Lán Xiāng', 'CAT-DANCONG-MILAN'],
     ['dan-cong-ya-shi-xiang', 'Dān Cóng Yā Shǐ Xiāng', 'CAT-DANCONG-YASHI'],

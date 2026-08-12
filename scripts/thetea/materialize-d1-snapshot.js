@@ -21,7 +21,8 @@ const CARD_TABLES = [
 function usage() {
     console.log(`Usage:
   node scripts/thetea/materialize-d1-snapshot.js \\
-    --snapshot=thetea-content-d1-2026-07-27
+    --snapshot=thetea-content-d1-2026-07-27 \\
+    [--snapshot-root=/absolute/path/to/snapshot]
 
 Builds compact TeaCard shells for every D1 tea and locale. The complete
 localized section payload remains in raw/d1/field-packs/*.json.gz and is
@@ -225,7 +226,9 @@ async function main() {
     }
     const snapshotId = requireArg(args, 'snapshot');
     const snapshotRoot = assertScopedPath(
-        path.join(REPO_ROOT, 'sources', 'thetea', 'snapshots', snapshotId),
+        args['snapshot-root']
+            ? path.resolve(String(args['snapshot-root']))
+            : path.join(REPO_ROOT, 'sources', 'thetea', 'snapshots', snapshotId),
         {
             repoRoot: REPO_ROOT,
             allowedRoot: path.join(REPO_ROOT, 'sources', 'thetea', 'snapshots'),
@@ -260,13 +263,22 @@ async function main() {
         (fieldPackManifest.files || []).map(item => [String(item.slug), item]));
     const cardFiles = [];
     const noFieldDataSlugs = [];
+    const partialFieldDataSlugs = [];
     let reusedCards = 0;
     let materializedCards = 0;
 
     for (const tea of teas) {
         const slug = String(tea.slug || '').trim();
         if (!SAFE_SLUG.test(slug)) throw new Error(`Unsafe or invalid D1 tea slug '${slug}'.`);
-        if (!fieldPacksBySlug.has(slug)) noFieldDataSlugs.push(slug);
+        const fieldPack = fieldPacksBySlug.get(slug);
+        if (!fieldPack) noFieldDataSlugs.push(slug);
+        else if (Number(fieldPack.localeCount || 0) < locales.length) {
+            partialFieldDataSlugs.push({
+                slug,
+                localeCount: Number(fieldPack.localeCount || 0),
+                expectedLocaleCount: locales.length,
+            });
+        }
         const names = buildNames(namesBySlug.get(slug));
         if (!Object.keys(names).length) throw new Error(`${slug}: no localized names.`);
         for (const lang of locales) {
@@ -329,7 +341,11 @@ async function main() {
         type: 'missing-d1-field-pack',
         slug,
         message: `No tea_field rows exist for ${slug}; D1 metadata and related rows are preserved.`,
-    }));
+    })).concat(partialFieldDataSlugs.map(item => ({
+        type: 'partial-d1-field-locales',
+        ...item,
+        message: `${item.slug} has field rows for ${item.localeCount}/${item.expectedLocaleCount} locales; routed article generation must use an explicit locale fallback.`,
+    })));
     const manifest = {
         schemaVersion: 2,
         snapshotId,
@@ -355,6 +371,8 @@ async function main() {
         fieldPackFiles,
         d1Files,
         noFieldDataSlugs: noFieldDataSlugs.sort(),
+        partialFieldDataSlugs: partialFieldDataSlugs
+            .sort((left, right) => left.slug.localeCompare(right.slug)),
         missingFieldDetailFiles: [],
         markdownFiles: [],
         mapFiles: source.mapFiles.sort(),
@@ -385,6 +403,7 @@ async function main() {
     console.log(`Cards: ${cardFiles.length} (${materializedCards} local, ${reusedCards} reused)`);
     console.log(`D1 field rows: ${fieldPackManifest.rowCount}`);
     console.log(`Tea slugs without field rows: ${noFieldDataSlugs.length}`);
+    console.log(`Tea slugs with partial field locales: ${partialFieldDataSlugs.length}`);
     console.log(`Manifest: ${path.join(snapshotRoot, 'manifest.json')}`);
 }
 

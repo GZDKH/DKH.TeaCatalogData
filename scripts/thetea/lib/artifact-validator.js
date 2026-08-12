@@ -145,7 +145,8 @@ function validateArtifact(input = {}) {
         productIndex,
         requiredLocales,
         lossEvents,
-        errors);
+        errors,
+        input.requireArticleParity === true);
     validateLossEvents(lossEvents, errors, warnings);
     errors.push(...validateBaselinePreservation(
         products,
@@ -1101,7 +1102,13 @@ function validateLossEvents(lossEvents, errors, warnings) {
     }
 }
 
-function validateRoutedContent(value, productIndex, requiredLocales, lossEvents, errors) {
+function validateRoutedContent(
+    value,
+    productIndex,
+    requiredLocales,
+    lossEvents,
+    errors,
+    requireArticleParity = false) {
     const routed = value === undefined ? { articles: [], metaobjects: [] } : value;
     if (!isPlainObject(routed)) {
         errors.push('routedContent must be an object.');
@@ -1114,6 +1121,7 @@ function validateRoutedContent(value, productIndex, requiredLocales, lossEvents,
     counts.metaobjects = metaobjects.length;
     const sourceCounts = new Map();
     const articleCodes = new Set();
+    const articlesByProduct = new Map();
     const metaobjectCodes = new Set();
 
     for (const [index, article] of articles.entries()) {
@@ -1127,6 +1135,16 @@ function validateRoutedContent(value, productIndex, requiredLocales, lossEvents,
         articleCodes.add(code);
         const product = validateCode(article.product, `${prefix}.product`, errors);
         if (product && !productIndex.has(product)) errors.push(`${prefix}: unknown product ${product}.`);
+        const slug = article.slug !== undefined || requireArticleParity
+            ? validateRoutedArticleSlug(article.slug, `${prefix}.slug`, errors)
+            : '';
+        if (product) {
+            if (articlesByProduct.has(product)) {
+                errors.push(`${prefix}: duplicate routed article for product ${product}.`);
+            } else {
+                articlesByProduct.set(product, { slug, prefix });
+            }
+        }
         if (!Array.isArray(article.translations)) {
             errors.push(`${prefix}.translations must be an array.`);
             continue;
@@ -1159,6 +1177,21 @@ function validateRoutedContent(value, productIndex, requiredLocales, lossEvents,
         for (const locale of requiredLocales) {
             if (!locales.has(locale.toLowerCase())) {
                 errors.push(`${prefix}: missing required ${locale} article translation.`);
+            }
+        }
+    }
+
+    if (requireArticleParity) {
+        for (const [productCode, product] of productIndex) {
+            const article = articlesByProduct.get(productCode);
+            if (!article) {
+                errors.push(`${productCode}: missing routed article for exact product/article parity.`);
+                continue;
+            }
+            const productSlug = exactProductSlug(product, productCode, errors);
+            if (productSlug && article.slug && article.slug !== productSlug) {
+                errors.push(
+                    `${article.prefix}.slug '${article.slug}' does not match product SEO slug '${productSlug}'.`);
             }
         }
     }
@@ -1222,6 +1255,32 @@ function validateRoutedContent(value, productIndex, requiredLocales, lossEvents,
         }
     }
     return counts;
+}
+
+function validateRoutedArticleSlug(value, label, errors) {
+    const slug = String(value || '').trim().toLowerCase();
+    if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) {
+        errors.push(`${label} must be a canonical lower-case product slug.`);
+        return slug;
+    }
+    return slug;
+}
+
+function exactProductSlug(product, productCode, errors) {
+    const slugs = new Set((Array.isArray(product?.translations) ? product.translations : [])
+        .map(translation => String(translation?.seo || '').trim().toLowerCase())
+        .filter(Boolean));
+    if (slugs.size === 0) {
+        errors.push(`${productCode}: no product SEO slug for exact product/article parity.`);
+        return '';
+    }
+    if (slugs.size > 1) {
+        errors.push(
+            `${productCode}: product translations disagree on the canonical SEO slug: ${[...slugs].sort().join(', ')}.`);
+        return '';
+    }
+    const slug = [...slugs][0];
+    return validateRoutedArticleSlug(slug, `${productCode}: product SEO slug`, errors);
 }
 
 function countNarratives(value, prefix, errors) {

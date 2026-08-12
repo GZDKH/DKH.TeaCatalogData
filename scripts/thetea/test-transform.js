@@ -282,6 +282,18 @@ assert(faqFallbackResult.lossEvents.some(event =>
     event.source === 'enrichment.faq-fallback'
     && event.locales.some(locale => locale.lang === 'zh-CN' && locale.from === 'en-US')));
 
+const partialArticleCard = JSON.parse(JSON.stringify(zhCnXihu));
+partialArticleCard.sections = {};
+const articleFallbackResult = transformCardSet({ en: xihu, 'zh-CN': partialArticleCard });
+const fallbackArticle = articleFallbackResult.routedContent.articles[0];
+assert.strictEqual(fallbackArticle.translations.length, 2);
+assert.deepStrictEqual(
+    fallbackArticle.translations.find(translation => translation.lang === 'zh-CN').narratives,
+    fallbackArticle.translations.find(translation => translation.lang === 'en-US').narratives);
+assert(articleFallbackResult.lossEvents.some(event =>
+    event.source === 'localized-article-fallback'
+    && event.locales.some(locale => locale.lang === 'zh-CN' && locale.from === 'en-US')));
+
 const pointRangeCard = JSON.parse(JSON.stringify(xihu));
 pointRangeCard.meta.brew_temp_max = null;
 const pointRange = transformCardSet({ en: pointRangeCard }).product.specifications

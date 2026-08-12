@@ -199,6 +199,8 @@ Origin country/place, coordinates, and altitude live only in `origins[]`; altitu
 
 All localized section prose is preserved in the article sidecar so non-canonical locale values are not collapsed. Short stable canonical values may also remain typed text specifications. Synthetic `*_xN` and `ext_*` fields, full Markdown, FAQ, and long narrative sections never become technical product attributes; they exist only in `06-routed-content/`. The current ProductCatalog importer does not ingest those sidecars, so they require a dedicated article/metaobject downstream step in the canary workflow.
 
+Full TheTea artifacts declare `targets.articleCoverage: exact-product-slug`. Validation then requires exactly one routed article for every generated product, requires the article slug to equal the product translation SEO handle, and requires every snapshot locale. If D1 has a partial field pack for a locale, the transformer records the partial coverage and copies article content from the deterministic `en-US`, `en`, `ru-RU`, `ru`, then first-available fallback chain. A product with no article body in any locale still fails generation. Package-only artifacts declare `articleCoverage: none` because they intentionally do not update routed content.
+
 The transformer does not create parallel raw and derived attributes for the same semantic. The canonical typed value is stored once; additional prose is either a distinct detail semantic or routed content.
 
 ## Replace-Mode Baseline Overlay
