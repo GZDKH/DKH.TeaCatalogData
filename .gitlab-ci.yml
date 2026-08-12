@@ -62,4 +62,5 @@ thetea-package-offline-tests:
     - node scripts/thetea/test-artifact-validator.js
     - node scripts/thetea/test-generate-safety.js
     - node scripts/thetea/test-reconcile-generated.js
+    - node scripts/thetea/test-routed-content.js
     - node scripts/thetea/test-run-product-sync.js

@@ -268,6 +268,14 @@ function summarize(operations) {
     }, { create: 0, update: 0, noop: 0, conflict: 0 });
 }
 
+function operationEvidence(operation) {
+    const { before, desired, ...evidence } = operation;
+    return {
+        ...evidence,
+        beforeSha256: before == null ? null : hash(before),
+    };
+}
+
 function writeArtifact(prefix, payload) {
     const dir = path.join(REPO_ROOT, 'logs');
     fs.mkdirSync(dir, { recursive: true });
@@ -311,7 +319,14 @@ async function main() {
     const client = apiClient(GATEWAY_URL, token, id);
     const operations = await buildPlan(client, records);
     const summary = summarize(operations);
-    const report = { generatedAt: new Date().toISOString(), mode: apply ? 'apply' : 'dry-run', storefrontId: id, artifactRoot: root, summary, operations };
+    const report = {
+        generatedAt: new Date().toISOString(),
+        mode: apply ? 'apply' : 'dry-run',
+        storefrontId: id,
+        artifactRoot: root,
+        summary,
+        operations: operations.map(operationEvidence),
+    };
     const reportFile = writeArtifact('thetea-routed-diff', report);
 
     console.log(`TheTea routed content ${apply ? '[APPLY]' : '[DRY-RUN]'}`);
@@ -335,7 +350,10 @@ async function main() {
     const verification = await buildPlan(client, records);
     const verificationSummary = summarize(verification);
     const verificationFile = writeArtifact('thetea-routed-verification', {
-        verifiedAt: new Date().toISOString(), storefrontId: id, summary: verificationSummary, operations: verification,
+        verifiedAt: new Date().toISOString(),
+        storefrontId: id,
+        summary: verificationSummary,
+        operations: verification.map(operationEvidence),
     });
     console.log(`Verification: ${verificationFile}`);
     if (verificationSummary.create || verificationSummary.update || verificationSummary.conflict) {
@@ -353,5 +371,5 @@ if (require.main === module) {
 
 module.exports = {
     apiClient, applyPlan, buildPlan, definitionCompatible, desiredDefinition,
-    selectRecords, summarize, verifyApplyInputs,
+    operationEvidence, selectRecords, summarize, verifyApplyInputs,
 };
