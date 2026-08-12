@@ -44,6 +44,7 @@ function createArtifactManifest(root, metadata = {}) {
             storefrontCodes: sortedUnique(metadata.storefrontTargets),
             catalogAssignmentMode: metadata.catalogAssignmentMode || 'preserve',
             updateScope: metadata.updateScope || 'full',
+            articleCoverage: metadata.articleCoverage || 'none',
         },
         publication: {
             mode: metadata.publicationMode || 'draft',
@@ -109,10 +110,22 @@ function verifyArtifactManifest(root) {
             errors.push(
                 "Artifact manifest targets.updateScope must be 'full' or 'packages'.");
         }
+        if (manifest.targets?.articleCoverage === undefined) {
+            manifest.targets.articleCoverage = 'none';
+        }
+        if (!['none', 'exact-product-slug'].includes(manifest.targets?.articleCoverage)) {
+            errors.push(
+                "Artifact manifest targets.articleCoverage must be 'none' or 'exact-product-slug'.");
+        }
         if (manifest.targets?.updateScope === 'packages'
             && manifest.targets?.catalogAssignmentMode !== 'preserve') {
             errors.push(
                 "Package-scoped artifact manifest requires targets.catalogAssignmentMode 'preserve'.");
+        }
+        if (manifest.targets?.updateScope === 'packages'
+            && manifest.targets?.articleCoverage !== 'none') {
+            errors.push(
+                "Package-scoped artifact manifest requires targets.articleCoverage 'none'.");
         }
     }
     if (manifest.publication !== undefined

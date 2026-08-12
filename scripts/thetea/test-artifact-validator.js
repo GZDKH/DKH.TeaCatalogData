@@ -21,7 +21,11 @@ function managedPackage(code) {
 }
 
 function translation(lang, name) {
-    return { lang, name: `${name} ${lang}` };
+    return {
+        lang,
+        name: `${name} ${lang}`,
+        seo: name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+    };
 }
 
 function translations(name) {
@@ -441,6 +445,45 @@ assert.deepStrictEqual(routedResult.routedContentCounts, {
     metaobjects: 1,
     faqItems: 2,
 });
+
+const exactParityArtifact = clone(routedArtifact);
+exactParityArtifact.requireArticleParity = true;
+exactParityArtifact.routedContent.articles[0].slug = 'tea-one';
+exactParityArtifact.routedContent.articles.push({
+    code: 'ARTICLE-TT-TEA-CN-TWO-DETAIL',
+    product: 'TEA-CN-TWO',
+    slug: 'tea-two',
+    translations: [
+        { lang: 'en-US', markdown: '# Tea Two' },
+        { lang: 'ru-RU', markdown: '# Чай Два' },
+    ],
+});
+const exactParityResult = validateArtifact(exactParityArtifact);
+assert.strictEqual(exactParityResult.valid, true, exactParityResult.errors.join('\n'));
+
+const missingArticleArtifact = clone(exactParityArtifact);
+missingArticleArtifact.routedContent.articles = missingArticleArtifact.routedContent.articles
+    .filter(article => article.product !== 'TEA-CN-TWO');
+const missingArticleResult = validateArtifact(missingArticleArtifact);
+assert.strictEqual(missingArticleResult.valid, false);
+assert(missingArticleResult.errors.some(error => error.includes(
+    'TEA-CN-TWO: missing routed article for exact product/article parity.')));
+
+const mismatchedArticleArtifact = clone(exactParityArtifact);
+mismatchedArticleArtifact.routedContent.articles[0].slug = 'wrong-product';
+const mismatchedArticleResult = validateArtifact(mismatchedArticleArtifact);
+assert.strictEqual(mismatchedArticleResult.valid, false);
+assert(mismatchedArticleResult.errors.some(error => error.includes(
+    "does not match product SEO slug 'tea-one'")));
+
+const duplicateArticleArtifact = clone(exactParityArtifact);
+duplicateArticleArtifact.routedContent.articles.push(
+    clone(duplicateArticleArtifact.routedContent.articles[0]));
+duplicateArticleArtifact.routedContent.articles[2].code = 'ARTICLE-TT-TEA-CN-ONE-ALT';
+const duplicateArticleResult = validateArtifact(duplicateArticleArtifact);
+assert.strictEqual(duplicateArticleResult.valid, false);
+assert(duplicateArticleResult.errors.some(error => error.includes(
+    'duplicate routed article for product TEA-CN-ONE')));
 
 expectInvalid(artifact => {
     artifact.routedContent = clone(routedArtifact.routedContent);

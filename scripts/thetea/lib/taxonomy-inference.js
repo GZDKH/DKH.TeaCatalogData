@@ -130,9 +130,14 @@ const DANCONG_SUBTYPE_RULES = [
 const HERBAL_BY_SLUG = {
     'bailan-hua-cha': ['CAT-HERBAL-TEA', 'CAT-HERBAL-FLOWER'],
     'daidai-hua-cha': ['CAT-HERBAL-TEA', 'CAT-HERBAL-FLOWER'],
+    'damai-cha': ['CAT-HERBAL-TEA', 'CAT-HERBAL-GRAIN'],
+    'hong-qiao-mei': ['CAT-HERBAL-TEA', 'CAT-HERBAL-FLOWER'],
     'kugua-cha': ['CAT-HERBAL-TEA', 'CAT-HERBAL-BITTER'],
     kuqiaomai: ['CAT-HERBAL-TEA', 'CAT-HERBAL-GRAIN'],
+    'lan-hudie': ['CAT-HERBAL-TEA', 'CAT-HERBAL-FLOWER'],
+    'luoshen-hua': ['CAT-HERBAL-TEA', 'CAT-HERBAL-FLOWER'],
     'meigui-hua-cha': ['CAT-HERBAL-TEA', 'CAT-HERBAL-FLOWER', 'CAT-HERBAL-ROSE'],
+    'shanzha-gan': ['CAT-HERBAL-TEA'],
     'xinhui-chenpi': ['CAT-HERBAL-TEA'],
     'zhu-lan-hua-cha': ['CAT-HERBAL-TEA', 'CAT-HERBAL-FLOWER'],
 };

@@ -307,6 +307,7 @@ function writeGeneratedBundle(stagingRoot, artifact) {
         storefrontTargets: artifact.storefrontTargets,
         catalogAssignmentMode: artifact.catalogAssignmentMode,
         updateScope: artifact.updateScope || 'full',
+        articleCoverage: artifact.articleCoverage || 'none',
         publicationMode: artifact.publicationMode || 'draft',
     });
     const reloaded = readArtifactBundle(stagingRoot);
@@ -709,6 +710,7 @@ function main() {
         allowedCatalogCodes: catalogAssignmentMode === 'target-only'
             ? [catalogCode]
             : undefined,
+        requireArticleParity: updateScope !== 'packages',
     });
     const publicationQuality = auditPublicationQuality({
         products,
@@ -804,6 +806,7 @@ function main() {
             catalogAssignmentMode,
             publicationMode: args.publish === true ? 'publish' : 'draft',
             updateScope,
+            articleCoverage: updateScope === 'packages' ? 'none' : 'exact-product-slug',
             lossEvents,
             routedContent,
             productMedia,

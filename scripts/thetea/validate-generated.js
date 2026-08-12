@@ -91,6 +91,7 @@ function main() {
         allowedCatalogCodes: catalogAssignmentMode === 'target-only'
             ? [targetCatalog]
             : undefined,
+        requireArticleParity: manifest.targets?.articleCoverage === 'exact-product-slug',
     });
     const catalogPlacement = summarizeCatalogPlacement(
         bundle.products,

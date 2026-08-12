@@ -241,6 +241,32 @@ function buildRoutedContent(
         }
     }
 
+    const articleFallbackLocales = [];
+    const articleByLocale = new Map(articleTranslations
+        .map(translation => [translation.lang.toLowerCase(), translation]));
+    const articleFallback = articleByLocale.get('en-us')
+        || articleByLocale.get('en')
+        || articleByLocale.get('ru-ru')
+        || articleByLocale.get('ru')
+        || articleTranslations[0];
+    if (articleFallback) {
+        for (const lang of productLocales) {
+            if (articleByLocale.has(lang.toLowerCase())) continue;
+            articleFallbackLocales.push({ lang, from: articleFallback.lang });
+            const fallbackTranslation = stripUndefined({
+                ...JSON.parse(JSON.stringify(articleFallback)),
+                lang,
+                title: titleByLocale.get(lang.toLowerCase()) || articleFallback.title,
+            });
+            if (fallbackTranslation.markdown) markdownCount += 1;
+            narrativeCount += Object.values(fallbackTranslation.narratives || {})
+                .reduce((sum, fields) => sum + Object.keys(fields || {}).length, 0);
+            articleTranslations.push(fallbackTranslation);
+            articleByLocale.set(lang.toLowerCase(), fallbackTranslation);
+        }
+    }
+    articleTranslations.sort((left, right) => left.lang.localeCompare(right.lang));
+
     const faqLocales = [];
     const faqFallbackLocales = [];
     const faqFallback = faqByLocale.values().next().value;
@@ -300,6 +326,17 @@ function buildRoutedContent(
             count: markdownCount,
             routed: true,
             message: 'Full localized Markdown is routed to article content.',
+        });
+    }
+    if (articleFallbackLocales.length) {
+        events.push({
+            severity: 'warning',
+            source: 'localized-article-fallback',
+            target: 'localized-article',
+            count: articleFallbackLocales.length,
+            routed: true,
+            locales: articleFallbackLocales,
+            message: 'Missing localized article bodies use an explicit deterministic content fallback.',
         });
     }
 

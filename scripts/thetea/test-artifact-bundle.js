@@ -76,6 +76,7 @@ try {
         storefrontCodes: ['shop-thetea', 'thetea-wiki'],
         catalogAssignmentMode: 'target-only',
         updateScope: 'full',
+        articleCoverage: 'none',
     });
     assert.strictEqual(valid.manifest.catalogPlacement.unassignedProductCount, 0);
     assert.deepStrictEqual(valid.manifest.publication, { mode: 'publish' });

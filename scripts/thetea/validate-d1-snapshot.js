@@ -131,8 +131,10 @@ async function validateFieldPacks(d1Directory, fieldManifest, slugs, locales) {
         }
         if (packLocales.size !== locales.size
             || [...locales].some(lang => !packLocales.has(lang))) {
-            throw new Error(
-                `${slug}: field pack covers ${packLocales.size}/${locales.size} locales.`);
+            record.partialLocaleCoverage = {
+                localeCount: packLocales.size,
+                expectedLocaleCount: locales.size,
+            };
         }
         rowCount += packRows;
     }
@@ -156,6 +158,9 @@ async function validateFieldPacks(d1Directory, fieldManifest, slugs, locales) {
         rowCount,
         localeCount: localeCounts.size,
         packSlugs,
+        partialPacks: (fieldManifest.files || [])
+            .filter(record => record.partialLocaleCoverage)
+            .map(record => ({ slug: record.slug, ...record.partialLocaleCoverage })),
     };
 }
 
@@ -163,7 +168,9 @@ async function main() {
     const args = parseArgs();
     const snapshotId = requireArg(args, 'snapshot');
     const snapshotRoot = assertScopedPath(
-        path.join(REPO_ROOT, 'sources', 'thetea', 'snapshots', snapshotId),
+        args['snapshot-root']
+            ? path.resolve(String(args['snapshot-root']))
+            : path.join(REPO_ROOT, 'sources', 'thetea', 'snapshots', snapshotId),
         {
             repoRoot: REPO_ROOT,
             allowedRoot: path.join(REPO_ROOT, 'sources', 'thetea', 'snapshots'),
@@ -276,6 +283,8 @@ async function main() {
             productFieldPacks: fieldResult?.productPackCount || 0,
             fieldRows: fieldResult?.rowCount || 0,
             slugsWithoutFieldRows: expectedNoField.size,
+            slugsWithPartialFieldLocales: fieldResult?.partialPacks
+                .filter(item => (manifest.slugs || []).includes(item.slug)).length || 0,
             maps: manifest.mapFiles?.length || 0,
             sourceContracts: manifest.sourceContractFiles?.length || 0,
         },

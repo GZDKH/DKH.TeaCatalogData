@@ -496,6 +496,7 @@ Every managed specification has exactly one group and one attribute. A product h
 - Known numeric values and sensory scores become `Number`; recipe time becomes `Duration` in seconds; flags become `Boolean`.
 - Repeated objects are flattened by stable discriminator: recipe `style`, harvest `phase`, sensory descriptor.
 - All localized section prose is copied to the article sidecar so non-canonical locale values are preserved. Short stable canonical text may also remain a typed text spec; synthetic `*_xN`/`ext_*`, full Markdown, long narratives, and FAQ never become technical attributes and live only under `06-routed-content/`.
+- Full artifacts are fail-closed on exact product/article slug parity. Every generated product must have one article with the same canonical SEO handle and every required locale. Partial D1 locale packs use the explicit English/Russian/first-available article fallback recorded in the snapshot and loss-event reports; zero-body products still fail generation. Package-only artifacts opt out because they do not carry routed content.
 - A raw field and a derived field never coexist under different codes for the same semantic. Canonical typed data is stored once; extra prose is a distinct detail semantic or routed content.
 
 Stable code format:

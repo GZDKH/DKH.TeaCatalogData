@@ -225,6 +225,7 @@ function preflightArtifact(dir, args, dryRun, selectedProductCodes = []) {
         baselineProducts,
         baselinePreservation: catalogPolicy.baselinePreservation,
         allowedCatalogCodes: catalogPolicy.allowedCatalogCodes,
+        requireArticleParity: manifest.targets?.articleCoverage === 'exact-product-slug',
     });
     errors.push(...semantic.errors);
     const productProfile = String(args.profile || 'products').toLowerCase() === 'products';
