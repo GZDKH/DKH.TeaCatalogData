@@ -1,4 +1,7 @@
 const assert = require('assert');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
 const {
     FAQ_DEFINITION,
     articleDto,
@@ -12,6 +15,7 @@ const {
     operationEvidence,
     summarize,
     verifyApplyInputs,
+    writeOperationsArtifact,
 } = require('./import-routed-content');
 
 const article = {
@@ -112,6 +116,28 @@ assert(!Object.hasOwn(boundedEvidence, 'before'));
 assert(!Object.hasOwn(boundedEvidence, 'desired'));
 assert.strictEqual(typeof boundedEvidence.beforeSha256, 'string');
 assert(JSON.stringify(boundedEvidence).length < 1024);
+
+const rollbackFixtureDir = fs.mkdtempSync(path.join(os.tmpdir(), 'thetea-rollback-'));
+try {
+    const rollbackFile = path.join(rollbackFixtureDir, 'rollback.json');
+    writeOperationsArtifact(
+        rollbackFile,
+        { generatedAt: '2026-08-12T00:00:00.000Z', storefrontId: 'storefront-id' },
+        [{ kind: 'article', key: 'large-article', before: { contentHtml: largePayload } }],
+        item => ({ kind: item.kind, key: item.key, before: item.before }),
+    );
+    const rollback = JSON.parse(fs.readFileSync(rollbackFile, 'utf8'));
+    assert.strictEqual(rollback.operations[0].before.contentHtml, largePayload);
+
+    const failedFile = path.join(rollbackFixtureDir, 'failed.json');
+    assert.throws(
+        () => writeOperationsArtifact(failedFile, {}, [{}], () => { throw new Error('projection failed'); }),
+        /projection failed/,
+    );
+    assert(!fs.existsSync(failedFile));
+} finally {
+    fs.rmSync(rollbackFixtureDir, { force: true, recursive: true });
+}
 
 const records = { articles: [article], metaobjects: [faq] };
 const emptyClient = {

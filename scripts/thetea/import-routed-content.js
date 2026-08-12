@@ -276,13 +276,59 @@ function operationEvidence(operation) {
     };
 }
 
-function writeArtifact(prefix, payload) {
+function artifactFile(prefix) {
     const dir = path.join(REPO_ROOT, 'logs');
     fs.mkdirSync(dir, { recursive: true });
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const file = path.join(dir, `${prefix}-${timestamp}.json`);
+    return path.join(dir, `${prefix}-${timestamp}.json`);
+}
+
+function writeArtifact(prefix, payload) {
+    const file = artifactFile(prefix);
     fs.writeFileSync(file, `${JSON.stringify(payload, null, 2)}\n`);
     return file;
+}
+
+function writeOperationsArtifact(file, metadata, operations, projectOperation = operation => operation) {
+    const handle = fs.openSync(file, 'wx');
+    let complete = false;
+    try {
+        fs.writeSync(handle, '{\n');
+        for (const [key, value] of Object.entries(metadata)) {
+            fs.writeSync(handle, `  ${JSON.stringify(key)}: ${JSON.stringify(value)},\n`);
+        }
+        fs.writeSync(handle, '  "operations": [\n');
+        for (let index = 0; index < operations.length; index += 1) {
+            if (index) fs.writeSync(handle, ',\n');
+            fs.writeSync(handle, `    ${JSON.stringify(projectOperation(operations[index]))}`);
+        }
+        fs.writeSync(handle, '\n  ]\n}\n');
+        complete = true;
+    } finally {
+        try {
+            fs.closeSync(handle);
+        } finally {
+            if (!complete) fs.rmSync(file, { force: true });
+        }
+    }
+    return file;
+}
+
+function writeRollbackArtifact(storefrontIdValue, operations) {
+    const file = artifactFile('thetea-routed-rollback');
+    const changed = operations.filter(item => item.action !== 'noop');
+    return writeOperationsArtifact(
+        file,
+        { generatedAt: new Date().toISOString(), storefrontId: storefrontIdValue },
+        changed,
+        item => ({
+            kind: item.kind,
+            key: item.key,
+            action: item.action === 'create' ? 'delete-created' : 'restore',
+            remoteId: item.remoteId,
+            before: item.before,
+        }),
+    );
 }
 
 async function applyPlan(client, operations) {
@@ -338,12 +384,7 @@ async function main() {
     if (summary.conflict) throw new Error('Conflicts found; no changes were applied.');
     if (!apply) return;
 
-    const rollbackFile = writeArtifact('thetea-routed-rollback', {
-        generatedAt: new Date().toISOString(), storefrontId: id,
-        operations: operations.filter(item => item.action !== 'noop').map(item => ({
-            kind: item.kind, key: item.key, action: item.action === 'create' ? 'delete-created' : 'restore', remoteId: item.remoteId, before: item.before,
-        })),
-    });
+    const rollbackFile = writeRollbackArtifact(id, operations);
     console.log(`Rollback: ${rollbackFile}`);
     await applyPlan(client, operations);
 
@@ -372,4 +413,5 @@ if (require.main === module) {
 module.exports = {
     apiClient, applyPlan, buildPlan, definitionCompatible, desiredDefinition,
     operationEvidence, selectRecords, summarize, verifyApplyInputs,
+    writeOperationsArtifact, writeRollbackArtifact,
 };
