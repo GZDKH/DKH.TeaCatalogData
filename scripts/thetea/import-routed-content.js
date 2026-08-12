@@ -349,6 +349,14 @@ async function applyPlan(client, operations) {
     }
 }
 
+async function applyPlanAndRelease(client, operations) {
+    await applyPlan(client, operations);
+    // A full routed-content plan retains both the remote and desired payload for
+    // every locale. Release it before building the independent verification plan
+    // so production-sized imports do not hold both multi-gigabyte plans at once.
+    operations.length = 0;
+}
+
 async function main() {
     const args = parseArgs();
     if (args.help || args.h) return usage();
@@ -386,7 +394,7 @@ async function main() {
 
     const rollbackFile = writeRollbackArtifact(id, operations);
     console.log(`Rollback: ${rollbackFile}`);
-    await applyPlan(client, operations);
+    await applyPlanAndRelease(client, operations);
 
     const verification = await buildPlan(client, records);
     const verificationSummary = summarize(verification);
@@ -411,7 +419,7 @@ if (require.main === module) {
 }
 
 module.exports = {
-    apiClient, applyPlan, buildPlan, definitionCompatible, desiredDefinition,
+    apiClient, applyPlan, applyPlanAndRelease, buildPlan, definitionCompatible, desiredDefinition,
     operationEvidence, selectRecords, summarize, verifyApplyInputs,
     writeOperationsArtifact, writeRollbackArtifact,
 };
