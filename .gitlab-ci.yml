@@ -13,6 +13,7 @@ catalog-source-offline-tests:
   script:
     # This job uses only checked-in fixtures. Do not add source fetches,
     # production references, credentials, schedules, or --apply here.
+    - node scripts/catalog-sources/test-thetea-shop-tieguanyin.js
     - node scripts/catalog-sources/test-zzctea-contract.js
     - node scripts/catalog-sources/test-zzctea-connector.js
     - node scripts/catalog-sources/test-http.js
