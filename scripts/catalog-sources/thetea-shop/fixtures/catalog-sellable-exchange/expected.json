@@ -1,0 +1,73 @@
+{
+  "blockedCases": {
+    "expectedDisposition": {
+      "blocked": 3
+    },
+    "reasonCode": "ROW_CONTRACT_INVALID",
+    "rowCount": 3
+  },
+  "canonicalRoundTrip": {
+    "containsUnicodeLabels": true,
+    "expectedDispositionAfterReadBack": {
+      "noOp": 25
+    },
+    "publicationMode": "request_only",
+    "rowCount": 25
+  },
+  "conflictCases": {
+    "expectedDisposition": {
+      "conflict": 4
+    },
+    "reasonCodes": [
+      "DUPLICATE_ROW_KEY",
+      "DUPLICATE_TARGET_IDENTITY"
+    ],
+    "rowCount": 4
+  },
+  "files": {
+    "tieguanyin-blocked.csv": {
+      "bytes": 497,
+      "sha256": "149ee2cd64ca46bd52582e7a09fbc5f477010393c8b631f8f84b6780a58b5801"
+    },
+    "tieguanyin-blocked.xlsx": {
+      "bytes": 2509,
+      "sha256": "84dbe73ba27d8bb27e1788686379a20e44401ff587399d21e71c8513eb3ed336"
+    },
+    "tieguanyin-conflicts.csv": {
+      "bytes": 599,
+      "sha256": "2853ad1f52ca5df1f02d191e24be67e3f73449a54e11896561eeaf67e694b38f"
+    },
+    "tieguanyin-conflicts.xlsx": {
+      "bytes": 2512,
+      "sha256": "0db0ee7c665b87af414f08e2f9d7c8f673a2d53df6abc77a0ca2fc91d9b54cf8"
+    },
+    "tieguanyin-exact-25.csv": {
+      "bytes": 3443,
+      "sha256": "b24d83e5c04857d6adc3424bca073eabb68dc77af0c28b158e3c04fc3363bc6c"
+    },
+    "tieguanyin-exact-25.xlsx": {
+      "bytes": 3940,
+      "sha256": "6624c99972e410efa6da7d4379a23852ab70dd7802dcfa2ecb6861dc8e79a5b7"
+    }
+  },
+  "forbiddenColumns": [
+    "SupplierId",
+    "SellerId",
+    "OfferId",
+    "RetailPrice",
+    "Stock",
+    "CurrencyCode",
+    "ShippingRegion",
+    "MediaLicense"
+  ],
+  "profile": "catalog_sellable_variants",
+  "projectionSha256": "a07f621a2bd86f80ff229d646fe3f94836b03349496d29012e0312aafb98599c",
+  "reviewedSource": {
+    "blockedWeightOnlyCount": 7,
+    "duplicateOfferGroupCount": 4,
+    "exactCandidateCount": 25,
+    "rowCount": 36
+  },
+  "schemaVersion": "catalog-sellable-variants-fixtures-v1",
+  "sourceManifestSha256": "3d6c7362972ac3db89d6e3e69a3482afbcb1bf93ead18b4d7994252ecc736d1c"
+}

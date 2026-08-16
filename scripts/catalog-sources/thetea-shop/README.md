@@ -25,6 +25,36 @@ node scripts/catalog-sources/test-thetea-shop-tieguanyin.js
 When the page changes, add a new dated fixture and review the normalized diff.
 Do not edit an existing dated fixture or silently replace its `rowsSha256`.
 
+## Canonical exact-sellable exchange fixtures
+
+`catalog-sellable-exchange.js` projects the reviewed manifest into the public
+ProductCatalog `catalog_sellable_variants` profile. The output contains only
+stable business codes, the exact Unicode grade label, package/unit facts,
+display order and `request_only` publication mode. It never copies source
+price observations or infers a seller, offer, stock, currency, delivery area
+or media right.
+
+The checked-in `fixtures/catalog-sellable-exchange/` directory contains the
+same deterministic rows as both UTF-8 CSV and real `.xlsx` workbooks:
+
+- `tieguanyin-exact-25.*` is the 25-row desired list and becomes 25 `no-op`
+  rows after an exact read-back;
+- `tieguanyin-conflicts.*` covers duplicate row keys and duplicate exact target
+  identities;
+- `tieguanyin-blocked.*` covers missing package, quantity and unit authority;
+- `expected.json` binds every fixture to the reviewed manifest and its hash.
+
+Regenerate or verify the files offline:
+
+```bash
+node scripts/catalog-sources/generate-catalog-sellable-exchange-fixtures.js
+node scripts/catalog-sources/generate-catalog-sellable-exchange-fixtures.js --check
+node scripts/catalog-sources/test-catalog-sellable-exchange.js
+```
+
+Do not edit the generated CSV/XLSX files by hand. A changed source manifest,
+row identity, ordering or workbook byte changes the checked evidence hashes.
+
 ## Exact-grade importer
 
 `reconcile-thetea-shop-tieguanyin.js` is a purpose-limited production operator
