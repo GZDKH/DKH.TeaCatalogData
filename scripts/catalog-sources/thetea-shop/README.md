@@ -24,3 +24,64 @@ node scripts/catalog-sources/test-thetea-shop-tieguanyin.js
 
 When the page changes, add a new dated fixture and review the normalized diff.
 Do not edit an existing dated fixture or silently replace its `rowsSha256`.
+
+## Exact-grade importer
+
+`reconcile-thetea-shop-tieguanyin.js` is a purpose-limited production operator
+for the existing `TEA-CN-TIE-GUANYIN` Product and
+`CATALOG-CHINESE-TEA-SHOP` Catalog. It cannot target another Product or
+Catalog. It uses AdminGateway for Product variant values/combinations and the
+released ProductCatalog v5 exact-sellable contracts for combination read-back,
+SellableUnit lifecycle and catalog placement.
+
+The default command is a read-only dry-run. It prints and writes only counts,
+stable codes and hashes; production GUIDs and bearer material are kept out of
+the plan and receipt. Generated operator artifacts live under the gitignored
+`artifacts/tieguanyin-grade-imports/` directory.
+
+Required injected environment (never commit these values):
+
+- `ADMIN_GATEWAY_URL`
+- `ADMIN_GATEWAY_ACCESS_TOKEN`
+- `PRODUCT_CATALOG_GRPC_ENDPOINT`
+- `PRODUCT_CATALOG_ADMIN_TOKEN`
+- `DKH_WORKSPACE_ID`
+- `PRODUCT_CATALOG_PROTO_ROOT`
+- `PLATFORM_PROTO_ROOT`
+
+Dry-run:
+
+```bash
+node scripts/catalog-sources/reconcile-thetea-shop-tieguanyin.js \
+  --run-id=tieguanyin-production-dry-run
+```
+
+Apply requires both switches:
+
+```bash
+node scripts/catalog-sources/reconcile-thetea-shop-tieguanyin.js \
+  --run-id=tieguanyin-production-apply \
+  --apply --yes
+```
+
+The apply sequence retains existing `Everyday`/50 g state, appends the 25
+unique exact 500 g grade values, generates exact combinations, creates
+request-only SellableUnits, activates them, enables exact publication, and
+groups them under the existing Product card. It copies the already approved
+baseline placement's source policy and never creates retail prices, stock
+claims, sellers, offers, shipping promises or media rights.
+
+Rollback requires the private manifest from that exact apply run:
+
+```bash
+node scripts/catalog-sources/reconcile-thetea-shop-tieguanyin.js \
+  --rollback=artifacts/tieguanyin-grade-imports/<run-id>/rollback.json \
+  --yes
+```
+
+Rollback removes only placements created by that run and disables publication
+only for SellableUnits enabled by that run. The exact identities remain safely
+reusable instead of being irreversibly retired. Variant values/combinations
+remain as inert Product metadata because the released contracts intentionally
+do not provide an unsafe physical-delete rollback for referenced variant
+history.
