@@ -13,6 +13,7 @@ const {
     projectTieguanyinManifest,
 } = require('./thetea-shop/catalog-sellable-exchange');
 const { readZipEntries } = require('./thetea-shop/deterministic-xlsx');
+const { parseCsv } = require('./lib/csv-records');
 
 const ROOT = path.resolve(__dirname, '../..');
 const SOURCE = path.join(
@@ -23,42 +24,6 @@ const FIXTURE_ROOT = path.join(
     ROOT,
     'scripts/catalog-sources/thetea-shop/fixtures/catalog-sellable-exchange',
 );
-
-function parseCsv(text) {
-    const records = [];
-    let record = [];
-    let field = '';
-    let quoted = false;
-    for (let index = 0; index < text.length; index++) {
-        const character = text[index];
-        if (quoted) {
-            if (character === '"' && text[index + 1] === '"') {
-                field += '"';
-                index++;
-            } else if (character === '"') {
-                quoted = false;
-            } else {
-                field += character;
-            }
-        } else if (character === '"') {
-            quoted = true;
-        } else if (character === ',') {
-            record.push(field);
-            field = '';
-        } else if (character === '\n') {
-            record.push(field);
-            records.push(record);
-            record = [];
-            field = '';
-        } else {
-            field += character;
-        }
-    }
-    assert.equal(quoted, false, 'CSV quote must be closed');
-    assert.equal(field, '', 'CSV must end with LF');
-    assert.deepEqual(record, [], 'CSV must end after a complete record');
-    return records;
-}
 
 function countWorksheetRows(sheet) {
     return [...sheet.matchAll(/<row r="\d+">/gu)].length;
