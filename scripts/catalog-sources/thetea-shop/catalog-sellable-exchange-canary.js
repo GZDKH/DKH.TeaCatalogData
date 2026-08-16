@@ -1,7 +1,7 @@
 'use strict';
 
-const crypto = require('crypto');
 const { HEADERS, PROFILE } = require('./catalog-sellable-exchange');
+const { sha256 } = require('../lib/artifacts');
 const { parseCsv } = require('../lib/csv-records');
 
 const MAX_RESPONSE_BYTES = 16 * 1024 * 1024;
@@ -33,10 +33,6 @@ function safeBaseUrl(value, code) {
         fail(`${code}_PLAINTEXT_FORBIDDEN`);
     }
     return url;
-}
-
-function sha256(value) {
-    return crypto.createHash('sha256').update(value).digest('hex');
 }
 
 async function readLimited(response) {
