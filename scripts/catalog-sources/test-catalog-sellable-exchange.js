@@ -4,7 +4,7 @@
 const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
-const { sha256 } = require('./lib/artifacts');
+const { sha256, stableJson } = require('./lib/artifacts');
 const { normalizeTieguanyinSnapshot } = require('./thetea-shop/tieguanyin-normalizer');
 const {
     HEADERS,
@@ -88,8 +88,10 @@ function main() {
         row.RowKey === deriveRowKey(row)));
     assert.ok(projection.rows.every(row => row.VariantLabel === row.VariantLabel.normalize('NFC')));
     assert.ok(projection.rows.some(row => row.VariantLabel === '高山正味铁观音（花香）'));
-    const formulaManifest = structuredClone(manifest);
-    formulaManifest.exactCandidates[0].gradeLabel = '=HYPERLINK("https://example.invalid")';
+    const formulaSource = structuredClone(source);
+    formulaSource.rows[0].gradeLabel = '=HYPERLINK("https://example.invalid")';
+    formulaSource.rowsSha256 = sha256(stableJson(formulaSource.rows));
+    const formulaManifest = normalizeTieguanyinSnapshot(formulaSource);
     assert.throws(
         () => projectTieguanyinManifest(formulaManifest),
         error => error.code === 'CATALOG_SELLABLE_EXCHANGE_FORMULA_LABEL_BLOCKED',

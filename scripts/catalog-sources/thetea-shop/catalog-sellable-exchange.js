@@ -60,6 +60,16 @@ function projectTieguanyinManifest(manifest) {
     if (!manifest || manifest.schemaVersion !== NORMALIZED_SCHEMA) {
         fail('CATALOG_SELLABLE_EXCHANGE_MANIFEST_INVALID');
     }
+    const manifestBinding = {
+        source: manifest.source,
+        summary: manifest.summary,
+        exactCandidates: manifest.exactCandidates,
+        duplicateOfferCandidates: manifest.duplicateOfferCandidates,
+        blockedObservations: manifest.blockedObservations,
+    };
+    if (manifest.manifestSha256 !== sha256(stableJson(manifestBinding))) {
+        fail('CATALOG_SELLABLE_EXCHANGE_MANIFEST_HASH_MISMATCH');
+    }
     const expectedSummary = {
         rowCount: 36,
         uniqueGradeLabelCount: 31,
