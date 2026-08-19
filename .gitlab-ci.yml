@@ -1,3 +1,7 @@
+include:
+  - project: 'gzdkh/infra/DKH.Infrastructure'
+    file: '/ci-cd/gitlab/openspec-validation.gitlab-ci.yml'
+
 stages:
   - test
 

@@ -1,0 +1,36 @@
+schema: spec-driven
+
+context: |
+  English documentation is canonical in GZDKH.
+  OpenSpec describes externally observable behavior and change deltas.
+  Beads is execution truth; GitLab owns merge requests and pipelines;
+  DKH.Architecture owns cross-repository architecture and generated catalogs.
+  Every non-trivial change requires existing-implementation evidence before
+  proposal, planning, or code. Absence from documentation is not evidence that
+  a capability is absent from code.
+
+rules:
+  proposal:
+    - 'Include the discovery decision: new, extend, fix, integrate, or no-op.'
+    - 'Reference exact code, contract, tracker, branch, and worktree evidence.'
+    - 'Include explicit non-goals and affected repositories.'
+  specs:
+    - 'Specify externally observable behavior, not class or file inventories.'
+    - 'Give every requirement at least one verifiable scenario.'
+    - 'Preserve backward compatibility unless the proposal explicitly changes it.'
+  design:
+    - 'Record cross-repository contract, package, event, migration, and consumer impact.'
+    - 'Reuse DKH.Platform capabilities instead of duplicating shared infrastructure.'
+  tasks:
+    - 'Keep tasks compatible with Plan to Beads registration and WIP equals one.'
+    - 'Name the required test or runtime evidence for each behavioral change.'
+
+operations:
+  apply:
+    guidance:
+      - 'Re-check the linked issue, Beads readiness, leased worktree, and discovery evidence before editing code.'
+      - 'Do not mark a task complete until its named verification evidence passes.'
+  archive:
+    guidance:
+      - 'Archive only after the GitLab MR is merged and the authoritative post-main pipeline is clean.'
+      - 'Reconcile OpenSpec tasks, Beads, the plan file, and issue state before declaring completion.'
