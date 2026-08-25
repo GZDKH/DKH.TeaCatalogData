@@ -36,6 +36,35 @@ function requireGuid(value, label) {
     return guid.toLowerCase();
 }
 
+function resolveTargetScope(options) {
+    const hasCommerceScope =
+        options.participantId !== undefined ||
+        options.commerceChannelId !== undefined;
+    const hasStorefrontScope =
+        options.storefrontId !== undefined ||
+        options.catalogId !== undefined;
+    if (hasCommerceScope && hasStorefrontScope) {
+        throw new Error(
+            'Commerce participant/channel scope cannot be mixed with storefront/catalog scope.',
+        );
+    }
+    if (hasStorefrontScope) {
+        return {
+            kind: 'storefront-catalog',
+            storefrontId: requireGuid(options.storefrontId, 'Storefront ID'),
+            catalogId: requireGuid(options.catalogId, 'Catalog ID'),
+        };
+    }
+    return {
+        kind: 'commerce-network',
+        participantId: requireGuid(options.participantId, 'Participant ID'),
+        commerceChannelId: requireGuid(
+            options.commerceChannelId,
+            'Commerce channel ID',
+        ),
+    };
+}
+
 function requireDigest(value, label) {
     if (typeof value !== 'string' || !DIGEST.test(value)) {
         throw new Error(`${label} must be a lowercase SHA-256 digest.`);
@@ -97,11 +126,7 @@ function buildCanaryEnvelope(bundle, options) {
         );
     }
 
-    const participantId = requireGuid(options.participantId, 'Participant ID');
-    const commerceChannelId = requireGuid(
-        options.commerceChannelId,
-        'Commerce channel ID',
-    );
+    const targetScope = resolveTargetScope(options);
     const registeredSourceCode = requireCode(
         projection.source?.id,
         'Registered source code',
@@ -148,8 +173,7 @@ function buildCanaryEnvelope(bundle, options) {
     );
 
     const inputBinding = {
-        participantId,
-        commerceChannelId,
+        targetScope,
         registeredSourceCode,
         connectorVersion,
         parserVersion,
@@ -212,8 +236,14 @@ function buildCanaryEnvelope(bundle, options) {
         canarySemanticDigest,
         requests: {
             begin: {
-                participantId: { value: participantId },
-                commerceChannelId: { value: commerceChannelId },
+                ...(targetScope.kind === 'commerce-network'
+                    ? {
+                        participantId: { value: targetScope.participantId },
+                        commerceChannelId: {
+                            value: targetScope.commerceChannelId,
+                        },
+                    }
+                    : {}),
                 registeredSourceCode,
                 connectorVersion,
                 parserVersion,
@@ -251,6 +281,7 @@ function stateIs(response, name, number) {
     const state = responseState(response);
     return state === number ||
         state === String(number) ||
+        state === name.toLowerCase() ||
         state === `CATALOG_SOURCE_SNAPSHOT_IMPORT_STATE_${name}`;
 }
 

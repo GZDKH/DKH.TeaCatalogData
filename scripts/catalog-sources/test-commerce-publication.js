@@ -11,6 +11,10 @@ const {
     writeJsonAtomic,
 } = require('./lib/artifacts');
 const {
+    CommerceAdminRestClient,
+    TOKEN_ENVIRONMENT_VARIABLE: ADMIN_REST_TOKEN_ENVIRONMENT_VARIABLE,
+} = require('./lib/commerce-admin-rest-client');
+const {
     CommerceGrpcurlClient,
 } = require('./lib/commerce-grpcurl-client');
 const {
@@ -30,6 +34,8 @@ const {
 
 const PARTICIPANT_ID = '11111111-2222-4333-8444-555555555555';
 const CHANNEL_ID = 'aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee';
+const STOREFRONT_ID = '22222222-3333-4444-8555-666666666666';
+const CATALOG_ID = '77777777-8888-4999-aaaa-bbbbbbbbbbbb';
 const IMPORT_ID = '99999999-8888-4777-8666-555555555555';
 const OBSERVED_AT = '2026-07-28T03:00:00.000Z';
 
@@ -114,6 +120,15 @@ function envelope() {
         externalId: '42',
         participantId: PARTICIPANT_ID,
         commerceChannelId: CHANNEL_ID,
+        artifactSchemaVersion: 'catalog-source-artifact-v1',
+    });
+}
+
+function storefrontEnvelope() {
+    return buildCanaryEnvelope(bundle(), {
+        externalId: '42',
+        storefrontId: STOREFRONT_ID,
+        catalogId: CATALOG_ID,
         artifactSchemaVersion: 'catalog-source-artifact-v1',
     });
 }
@@ -670,6 +685,100 @@ function testGrpcurlClient(root) {
     );
 }
 
+async function testAdminRestClient() {
+    const calls = [];
+    const client = new CommerceAdminRestClient({
+        baseUrl: 'https://admin.example',
+        storefrontId: STOREFRONT_ID,
+        catalogId: CATALOG_ID,
+        timeoutSeconds: 15,
+        environment: {
+            [ADMIN_REST_TOKEN_ENVIRONMENT_VARIABLE]: ' fixture-admin-token ',
+        },
+        fetchImpl: async (url, options) => {
+            calls.push({
+                url: url.toString(),
+                headers: options.headers,
+                body: JSON.parse(options.body),
+            });
+            if (calls.length === 1) {
+                return {
+                    ok: true,
+                    status: 200,
+                    text: async () => JSON.stringify(response(
+                        'open',
+                    ), (_, value) => value?.value || value),
+                };
+            }
+            if (calls.length === 2) {
+                return {
+                    ok: true,
+                    status: 200,
+                    text: async () => JSON.stringify({ replayed: false }),
+                };
+            }
+            return {
+                ok: true,
+                status: 200,
+                text: async () => JSON.stringify(response(
+                    'committed',
+                    '1',
+                ), (_, value) => value?.value || value),
+            };
+        },
+    });
+    assert.deepStrictEqual(client.getReceiptMetadata(), {
+        kind: 'admin-rest',
+        sanitizedTargetEndpoint: 'admin.example:443',
+        tlsMode: 'tls-system-ca',
+        routeTemplate:
+            '/api/v1.0/admin/commerce-network/storefronts/{storefrontId}' +
+            '/catalogs/{catalogId}/catalog-source-imports',
+        apiVersion: '1.0',
+    });
+
+    const result = await publishCanary(storefrontEnvelope(), client);
+    assert.strictEqual(result.importId, IMPORT_ID);
+    assert.deepStrictEqual(calls.map(call => call.url), [
+        `https://admin.example/api/v1.0/admin/commerce-network/storefronts/${STOREFRONT_ID}` +
+            `/catalogs/${CATALOG_ID}/catalog-source-imports`,
+        `https://admin.example/api/v1.0/admin/commerce-network/storefronts/${STOREFRONT_ID}` +
+            `/catalogs/${CATALOG_ID}/catalog-source-imports/${IMPORT_ID}/items`,
+        `https://admin.example/api/v1.0/admin/commerce-network/storefronts/${STOREFRONT_ID}` +
+            `/catalogs/${CATALOG_ID}/catalog-source-imports/${IMPORT_ID}/commit`,
+    ]);
+    assert.strictEqual(
+        calls[0].headers.Authorization,
+        'Bearer fixture-admin-token',
+    );
+    assert.ok(calls[0].headers['Idempotency-Key']);
+    for (const call of calls) {
+        assert.doesNotMatch(
+            stableJson(call.body),
+            /participantId|commerceChannelId|command/,
+        );
+    }
+    assert.strictEqual(calls[0].body.registeredSourceCode, 'fixture-source');
+    assert.strictEqual(calls[0].body.expectedItemCount, 1);
+    assert.strictEqual(calls[1].body.externalId, '42');
+    assert.strictEqual(calls[1].body.localizedTexts[0].title, 'Fixture 42');
+    assert.strictEqual(
+        Object.prototype.hasOwnProperty.call(calls[1].body, 'item'),
+        false,
+    );
+    assert.deepStrictEqual(calls[2].body, {
+        semanticDigest: storefrontEnvelope().canarySemanticDigest,
+    });
+    assert.throws(
+        () => new CommerceAdminRestClient({
+            baseUrl: 'http://admin.example',
+            storefrontId: STOREFRONT_ID,
+            catalogId: CATALOG_ID,
+        }),
+        /restricted to loopback/,
+    );
+}
+
 function writeProjectionBundle(root) {
     const value = projection();
     const projectionJson = stableJson(value);
@@ -1181,6 +1290,61 @@ async function testDryRunCli(root) {
         false,
     );
 
+    const restOutput = path.join(
+        root,
+        'artifacts',
+        'catalog-source-commerce-canaries',
+        'rest-apply-success',
+        'plan',
+    );
+    const restApply = await runCommercePublisher({
+        'projection-dir': projectionDirectory,
+        only: '42',
+        'storefront-id': STOREFRONT_ID,
+        'catalog-id': CATALOG_ID,
+        apply: true,
+        yes: true,
+        'admin-url': 'https://admin.example',
+        out: restOutput,
+    }, {
+        repositoryRoot: root,
+        environment: {},
+        createTransport(options) {
+            assert.strictEqual(options.transportKind, 'admin-rest');
+            assert.strictEqual(options.baseUrl, 'https://admin.example');
+            assert.strictEqual(options.storefrontId, STOREFRONT_ID);
+            assert.strictEqual(options.catalogId, CATALOG_ID);
+            const fake = transport([
+                response('open'),
+                { replayed: false },
+                response('committed', '1'),
+            ]);
+            fake.getReceiptMetadata = () => ({
+                kind: 'admin-rest',
+                sanitizedTargetEndpoint: 'admin.example:443',
+                tlsMode: 'tls-system-ca',
+                routeTemplate:
+                    '/api/v1.0/admin/commerce-network/storefronts/{storefrontId}' +
+                    '/catalogs/{catalogId}/catalog-source-imports',
+                apiVersion: '1.0',
+            });
+            return fake;
+        },
+    });
+    assert.strictEqual(restApply.applyReceipt.contract.transport, 'admin-rest');
+    assert.deepStrictEqual(restApply.applyReceipt.target, {
+        endpoint: 'admin.example:443',
+        tlsMode: 'tls-system-ca',
+    });
+    assert.doesNotMatch(
+        stableJson(restApply.envelope),
+        /participantId|commerceChannelId/,
+    );
+    assert.doesNotMatch(
+        stableJson(restApply.applyReceipt),
+        /participantId|commerceChannelId|requests/,
+    );
+
     await testApplyLocking(root, common, dryRun.envelope);
 
     const commitFaultOutput = path.join(
@@ -1518,6 +1682,7 @@ async function main() {
         await testEnvelopeAndSequence();
         await testFailureStops();
         testGrpcurlClient(root);
+        await testAdminRestClient();
         await testDryRunCli(root);
     } finally {
         fs.rmSync(root, { recursive: true, force: true });

@@ -35,6 +35,7 @@ catalog-source-offline-tests:
     - node scripts/catalog-sources/test-reconciliation.js
     - node scripts/catalog-sources/test-reconciliation-cli.js
     - node scripts/catalog-sources/test-commerce-publication.js
+    - node scripts/catalog-sources/test-admin-rest-import-bundle.js
 
 thetea-media-offline-tests:
   stage: test

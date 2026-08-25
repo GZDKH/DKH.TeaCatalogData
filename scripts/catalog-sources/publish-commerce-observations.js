@@ -21,6 +21,9 @@ const {
     writeJsonAtomic,
 } = require('./lib/artifacts');
 const {
+    CommerceAdminRestClient,
+} = require('./lib/commerce-admin-rest-client');
+const {
     CommerceGrpcurlClient,
 } = require('./lib/commerce-grpcurl-client');
 const {
@@ -84,6 +87,14 @@ function requireConfigured(value, argumentName, environmentName) {
         );
     }
     return value;
+}
+
+function requireGuid(value, label) {
+    const guid = requireConfigured(value, label, label.toUpperCase());
+    if (!GUID.test(guid) || /^0{8}-0{4}-0{4}-0{4}-0{12}$/i.test(guid)) {
+        throw new Error(`${label} must be a non-empty UUID.`);
+    }
+    return guid.toLowerCase();
 }
 
 function requireOutputChild(allowedRoot, outputDirectory) {
@@ -163,7 +174,27 @@ function requireReceiptMetadata(transport) {
     if (!metadata ||
         typeof metadata.sanitizedTargetEndpoint !== 'string' ||
         !ENDPOINT.test(metadata.sanitizedTargetEndpoint) ||
-        !TLS_MODES.has(metadata.tlsMode) ||
+        !TLS_MODES.has(metadata.tlsMode)) {
+        throw new Error('Apply transport receipt metadata is incomplete or invalid.');
+    }
+    if (metadata.kind === 'admin-rest') {
+        if (metadata.apiVersion !== '1.0' ||
+            typeof metadata.routeTemplate !== 'string' ||
+            !metadata.routeTemplate.includes('/storefronts/{storefrontId}/') ||
+            !metadata.routeTemplate.includes('/catalogs/{catalogId}/')) {
+            throw new Error(
+                'Apply transport receipt metadata is incomplete or invalid.',
+            );
+        }
+        return {
+            kind: 'admin-rest',
+            sanitizedTargetEndpoint: metadata.sanitizedTargetEndpoint,
+            tlsMode: metadata.tlsMode,
+            routeTemplate: metadata.routeTemplate,
+            apiVersion: metadata.apiVersion,
+        };
+    }
+    if (
         typeof metadata.protoFile !== 'string' ||
         !metadata.protoFile.endsWith('.proto') ||
         !DIGEST.test(metadata.protoSha256) ||
@@ -183,6 +214,7 @@ function requireReceiptMetadata(transport) {
         throw new Error('Plaintext receipt metadata must identify a loopback target.');
     }
     return {
+        kind: 'grpc',
         sanitizedTargetEndpoint: metadata.sanitizedTargetEndpoint,
         tlsMode: metadata.tlsMode,
         protoFile: metadata.protoFile,
@@ -198,17 +230,19 @@ function requireReceiptMetadata(transport) {
 
 function buildAuditBinding(envelope, transportMetadata) {
     const referencePrices = envelope.requests.importItem.item.referencePrices || [];
-    return {
-        publicationDigest: envelope.publicationDigest,
-        selectedExternalId: envelope.selection.externalId,
-        registeredSourceCode: envelope.source.registeredSourceCode,
-        expectedItemCount: 1,
-        authoritativeForDeletion: false,
-        target: {
-            endpoint: transportMetadata.sanitizedTargetEndpoint,
-            tlsMode: transportMetadata.tlsMode,
-        },
-        contract: {
+    const contract = transportMetadata.kind === 'admin-rest'
+        ? {
+            transport: 'admin-rest',
+            apiVersion: transportMetadata.apiVersion,
+            routeTemplate: transportMetadata.routeTemplate,
+            methods: [
+                'POST begin',
+                'POST item',
+                'POST commit',
+            ],
+        }
+        : {
+            transport: 'grpc',
             service: SERVICE,
             methods: [
                 METHODS.begin,
@@ -226,7 +260,18 @@ function buildAuditBinding(envelope, transportMetadata) {
                 transportMetadata.contractBuiltInImportCount,
             builtInImportListSha256:
                 transportMetadata.contractBuiltInImportListSha256,
+        };
+    return {
+        publicationDigest: envelope.publicationDigest,
+        selectedExternalId: envelope.selection.externalId,
+        registeredSourceCode: envelope.source.registeredSourceCode,
+        expectedItemCount: 1,
+        authoritativeForDeletion: false,
+        target: {
+            endpoint: transportMetadata.sanitizedTargetEndpoint,
+            tlsMode: transportMetadata.tlsMode,
         },
+        contract,
         requiredReadBack: {
             registeredSourceCode: envelope.source.registeredSourceCode,
             externalId: envelope.selection.externalId,
@@ -672,6 +717,150 @@ function defaultProtoRoots(repositoryRoot) {
     };
 }
 
+function resolvePublicationScope(args, environment) {
+    const storefrontId = valueFrom(
+        args,
+        'storefront-id',
+        environment,
+        'ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID',
+        null,
+    );
+    const catalogId = valueFrom(
+        args,
+        'catalog-id',
+        environment,
+        'ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID',
+        null,
+    );
+    const participantId = valueFrom(
+        args,
+        'participant-id',
+        environment,
+        'COMMERCE_CATALOG_SOURCE_PARTICIPANT_ID',
+        null,
+    );
+    const commerceChannelId = valueFrom(
+        args,
+        'commerce-channel-id',
+        environment,
+        'COMMERCE_CATALOG_SOURCE_CHANNEL_ID',
+        null,
+    );
+    const hasStorefrontScope = storefrontId !== null || catalogId !== null;
+    const hasCommerceScope = participantId !== null || commerceChannelId !== null;
+    if (hasStorefrontScope && hasCommerceScope) {
+        throw new Error(
+            'Use either storefront/catalog scope or legacy participant/channel scope, not both.',
+        );
+    }
+    if (hasStorefrontScope) {
+        return {
+            kind: 'admin-rest',
+            storefrontId: requireGuid(storefrontId, 'storefront-id'),
+            catalogId: requireGuid(catalogId, 'catalog-id'),
+        };
+    }
+    return {
+        kind: 'grpc',
+        participantId: requireGuid(participantId, 'participant-id'),
+        commerceChannelId: requireGuid(commerceChannelId, 'commerce-channel-id'),
+    };
+}
+
+function createTransportOptions(args, environment, repositoryRoot, scope) {
+    const timeoutText = valueFrom(
+        args,
+        'timeout-seconds',
+        environment,
+        scope.kind === 'admin-rest'
+            ? 'ADMIN_GATEWAY_REST_TIMEOUT_SECONDS'
+            : 'COMMERCE_NETWORK_GRPC_TIMEOUT_SECONDS',
+        '30',
+    );
+    if (!/^\d+$/.test(timeoutText)) {
+        throw new Error('Commerce publication timeout must be a whole number of seconds.');
+    }
+    if (scope.kind === 'admin-rest') {
+        return {
+            transportKind: 'admin-rest',
+            baseUrl: requireConfigured(
+                valueFrom(
+                    args,
+                    'admin-url',
+                    environment,
+                    'ADMIN_GATEWAY_REST_BASE_URL',
+                ),
+                'admin-url',
+                'ADMIN_GATEWAY_REST_BASE_URL',
+            ),
+            storefrontId: scope.storefrontId,
+            catalogId: scope.catalogId,
+            timeoutSeconds: Number(timeoutText),
+            tokenEnvironmentVariable: valueFrom(
+                args,
+                'admin-token-env',
+                environment,
+                'ADMIN_GATEWAY_REST_TOKEN_ENV',
+                undefined,
+            ),
+            environment,
+        };
+    }
+
+    const defaults = defaultProtoRoots(repositoryRoot);
+    return {
+        transportKind: 'grpc',
+        endpoint: requireConfigured(
+            valueFrom(
+                args,
+                'grpc-url',
+                environment,
+                'COMMERCE_NETWORK_GRPC_URL',
+            ),
+            'grpc-url',
+            'COMMERCE_NETWORK_GRPC_URL',
+        ),
+        timeoutSeconds: Number(timeoutText),
+        plaintext: args.plaintext === true,
+        caCertificate: valueFrom(
+            args,
+            'cacert',
+            environment,
+            'COMMERCE_NETWORK_GRPC_CA_CERTIFICATE',
+            null,
+        ),
+        grpcurl: valueFrom(
+            args,
+            'grpcurl',
+            environment,
+            'GRPCURL_BIN',
+            'grpcurl',
+        ),
+        commerceProtoRoot: valueFrom(
+            args,
+            'commerce-proto-root',
+            environment,
+            'COMMERCE_NETWORK_PROTO_ROOT',
+            defaults.commerceProtoRoot,
+        ),
+        platformProtoRoot: valueFrom(
+            args,
+            'platform-proto-root',
+            environment,
+            'DKH_PLATFORM_GRPC_PROTO_ROOT',
+            defaults.platformProtoRoot,
+        ),
+        environment,
+    };
+}
+
+function createDefaultTransport(clientOptions) {
+    if (clientOptions.transportKind === 'admin-rest') {
+        return new CommerceAdminRestClient(clientOptions);
+    }
+    return new CommerceGrpcurlClient(clientOptions);
+}
+
 async function runCommercePublisher(args, options = {}) {
     const environment = options.environment || process.env;
     const repositoryRoot = path.resolve(options.repositoryRoot || REPO_ROOT);
@@ -684,26 +873,7 @@ async function runCommercePublisher(args, options = {}) {
     );
     const externalId = requireArg(args, 'only');
     const bundle = loadVerifiedProjectionBundle(projectionDirectory);
-    const participantId = requireConfigured(
-        valueFrom(
-            args,
-            'participant-id',
-            environment,
-            'COMMERCE_CATALOG_SOURCE_PARTICIPANT_ID',
-        ),
-        'participant-id',
-        'COMMERCE_CATALOG_SOURCE_PARTICIPANT_ID',
-    );
-    const commerceChannelId = requireConfigured(
-        valueFrom(
-            args,
-            'commerce-channel-id',
-            environment,
-            'COMMERCE_CATALOG_SOURCE_CHANNEL_ID',
-        ),
-        'commerce-channel-id',
-        'COMMERCE_CATALOG_SOURCE_CHANNEL_ID',
-    );
+    const scope = resolvePublicationScope(args, environment);
     const configuredSourceCode = valueFrom(
         args,
         'registered-source-code',
@@ -719,8 +889,15 @@ async function runCommercePublisher(args, options = {}) {
     }
     const envelope = buildCanaryEnvelope(bundle, {
         externalId,
-        participantId,
-        commerceChannelId,
+        ...(scope.kind === 'admin-rest'
+            ? {
+                storefrontId: scope.storefrontId,
+                catalogId: scope.catalogId,
+            }
+            : {
+                participantId: scope.participantId,
+                commerceChannelId: scope.commerceChannelId,
+            }),
         registeredSourceCode: configuredSourceCode === null
             ? undefined
             : configuredSourceCode,
@@ -766,68 +943,20 @@ async function runCommercePublisher(args, options = {}) {
         };
     }
 
-    const defaults = defaultProtoRoots(repositoryRoot);
-    const timeoutText = valueFrom(
-        args,
-        'timeout-seconds',
-        environment,
-        'COMMERCE_NETWORK_GRPC_TIMEOUT_SECONDS',
-        '30',
-    );
-    if (!/^\d+$/.test(timeoutText)) {
-        throw new Error('Commerce gRPC timeout must be a whole number of seconds.');
-    }
-    const clientOptions = {
-        endpoint: requireConfigured(
-            valueFrom(
-                args,
-                'grpc-url',
-                environment,
-                'COMMERCE_NETWORK_GRPC_URL',
-            ),
-            'grpc-url',
-            'COMMERCE_NETWORK_GRPC_URL',
-        ),
-        timeoutSeconds: Number(timeoutText),
-        plaintext: args.plaintext === true,
-        caCertificate: valueFrom(
-            args,
-            'cacert',
-            environment,
-            'COMMERCE_NETWORK_GRPC_CA_CERTIFICATE',
-            null,
-        ),
-        grpcurl: valueFrom(
-            args,
-            'grpcurl',
-            environment,
-            'GRPCURL_BIN',
-            'grpcurl',
-        ),
-        commerceProtoRoot: valueFrom(
-            args,
-            'commerce-proto-root',
-            environment,
-            'COMMERCE_NETWORK_PROTO_ROOT',
-            defaults.commerceProtoRoot,
-        ),
-        platformProtoRoot: valueFrom(
-            args,
-            'platform-proto-root',
-            environment,
-            'DKH_PLATFORM_GRPC_PROTO_ROOT',
-            defaults.platformProtoRoot,
-        ),
-        environment,
-    };
     const applyDirectory = path.join(path.dirname(outputDirectory), 'apply');
     requireOutputChild(allowedOutputRoot, applyDirectory);
     const applyLock = acquireApplyLock(applyDirectory);
     let applyError = null;
     try {
+        const clientOptions = createTransportOptions(
+            args,
+            environment,
+            repositoryRoot,
+            scope,
+        );
         const transport = options.createTransport
             ? options.createTransport(clientOptions)
-            : new CommerceGrpcurlClient(clientOptions);
+            : createDefaultTransport(clientOptions);
         const transportMetadata = requireReceiptMetadata(transport);
         const applyAttempt = initializeApplyReceipt(
             applyDirectory,
