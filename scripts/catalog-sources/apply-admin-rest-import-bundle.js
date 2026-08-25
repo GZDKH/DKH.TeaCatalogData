@@ -12,6 +12,7 @@ const {
 } = require('./lib/artifacts');
 const {
     CommerceAdminRestClient,
+    resolveAdminRestCatalogTarget,
 } = require('./lib/commerce-admin-rest-client');
 const { METHODS } = require('./lib/commerce-publication');
 
@@ -193,48 +194,93 @@ async function applyBundle(args, options = {}) {
         throw new Error('Selected bundle item set is empty.');
     }
     const begin = beginBody(bundle.begin, mode, items);
-    const clientOptions = {
-        baseUrl: requireConfigured(
-            valueFrom(
-                args,
-                'admin-url',
-                environment,
-                'ADMIN_GATEWAY_REST_BASE_URL',
-            ),
+    const baseUrl = requireConfigured(
+        valueFrom(
+            args,
             'admin-url',
+            environment,
             'ADMIN_GATEWAY_REST_BASE_URL',
         ),
-        storefrontId: requireConfigured(
-            valueFrom(
-                args,
+        'admin-url',
+        'ADMIN_GATEWAY_REST_BASE_URL',
+    );
+    const timeoutSeconds = requireSafeInteger(
+        valueFrom(
+            args,
+            'timeout-seconds',
+            environment,
+            'ADMIN_GATEWAY_REST_TIMEOUT_SECONDS',
+            '30',
+        ),
+        'AdminGateway REST timeout',
+    );
+    const configuredStorefrontId = valueFrom(
+        args,
+        'storefront-id',
+        environment,
+        'ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID',
+    );
+    const configuredCatalogId = valueFrom(
+        args,
+        'catalog-id',
+        environment,
+        'ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID',
+    );
+    const configuredStorefrontCode = valueFrom(
+        args,
+        'storefront-code',
+        environment,
+        'ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_CODE',
+    );
+    const configuredCatalogCode = valueFrom(
+        args,
+        'catalog-code',
+        environment,
+        'ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_CODE',
+    );
+    const hasIdScope = Boolean(configuredStorefrontId || configuredCatalogId);
+    const hasCodeScope = Boolean(configuredStorefrontCode || configuredCatalogCode);
+    if (hasIdScope && hasCodeScope) {
+        throw new Error(
+            'Use either storefront/catalog codes or storefront/catalog IDs, not both.',
+        );
+    }
+    const target = hasIdScope
+        ? {
+            storefrontId: requireConfigured(
+                configuredStorefrontId,
                 'storefront-id',
-                environment,
                 'ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID',
             ),
-            'storefront-id',
-            'ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID',
-        ),
-        catalogId: requireConfigured(
-            valueFrom(
-                args,
+            catalogId: requireConfigured(
+                configuredCatalogId,
                 'catalog-id',
-                environment,
                 'ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID',
             ),
-            'catalog-id',
-            'ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID',
-        ),
-        timeoutSeconds: requireSafeInteger(
-            valueFrom(
-                args,
-                'timeout-seconds',
-                environment,
-                'ADMIN_GATEWAY_REST_TIMEOUT_SECONDS',
-                '30',
+        }
+        : await (options.resolveTarget || resolveAdminRestCatalogTarget)({
+            baseUrl,
+            timeoutSeconds,
+            environment,
+            fetchImpl: options.fetchImpl,
+            storefrontCode: requireConfigured(
+                configuredStorefrontCode,
+                'storefront-code',
+                'ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_CODE',
             ),
-            'AdminGateway REST timeout',
-        ),
+            catalogCode: requireConfigured(
+                configuredCatalogCode,
+                'catalog-code',
+                'ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_CODE',
+            ),
+        });
+    const clientOptions = {
+        baseUrl,
+        storefrontId: target.storefrontId,
+        catalogId: target.catalogId,
+        timeoutSeconds,
         environment,
+        fetchImpl: options.fetchImpl,
     };
     const client = options.createClient
         ? options.createClient(clientOptions)

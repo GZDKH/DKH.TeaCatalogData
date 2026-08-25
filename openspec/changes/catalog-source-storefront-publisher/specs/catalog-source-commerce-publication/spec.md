@@ -8,10 +8,21 @@ The catalog-source publication CLI SHALL support an AdminGateway REST transport
 that targets a selected storefront catalog and does not require raw
 CommerceNetwork participant or channel identifiers.
 
+#### Scenario: REST scope resolves from business codes
+
+- **WHEN** the operator runs the publisher or prepared bundle importer with
+  `--storefront-code`, `--catalog-code`, and `--admin-url`
+- **THEN** the tooling SHALL resolve the storefront and catalog GUIDs through
+  AdminGateway before opening an import
+- **AND** it SHALL fail closed unless each code matches exactly one record
+- **AND** the normal code-based path SHALL NOT require the operator to provide
+  raw CommerceNetwork participant/channel IDs or internal storefront/catalog
+  GUIDs.
+
 #### Scenario: REST dry-run binds storefront catalog scope
 
-- **WHEN** the operator runs the publisher with `--storefront-id` and
-  `--catalog-id`
+- **WHEN** the operator runs the publisher with resolved storefront/catalog
+  scope from business codes or reviewed fallback GUIDs
 - **THEN** the generated publication envelope SHALL contain storefront/catalog
   target scope
 - **AND** the envelope SHALL NOT contain `participantId` or

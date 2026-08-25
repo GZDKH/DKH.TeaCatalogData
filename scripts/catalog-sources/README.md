@@ -116,25 +116,27 @@ binding both outputs to the input artifact and checkpoint hashes. The loader
 rejects incomplete, extra, symlinked, hash-mismatched, deletion-authoritative,
 or retail-price-marked input.
 
-Prepare an explicit one-item Commerce observation canary without making a
-network call:
+Prepare an explicit one-item Commerce observation canary without making an
+import mutation:
 
 ```bash
 node scripts/catalog-sources/publish-commerce-observations.js \
   --projection-dir=artifacts/catalog-source-projections/<source>/<snapshot> \
   --only=<external-id> \
-  --storefront-id="$ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID" \
-  --catalog-id="$ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID"
+  --storefront-code=<storefront-code> \
+  --catalog-code=<catalog-code> \
+  --admin-url="$ADMIN_GATEWAY_REST_BASE_URL"
 ```
 
-Dry-run is the default. It writes a content-addressed plan below
+Dry-run is the default. When code-based scope is used, it first performs
+read-only AdminGateway target resolution. It then writes a content-addressed
+plan below
 `artifacts/catalog-source-commerce-canaries/`, fixes
 `expectedItemCount` to one, selects exactly one external ID, and explicitly
 records `authoritativeForDeletion: false`. Plan-generation fields state that
-no network call or remote mutation occurred while creating the plan. The
-registered source code is always the verified projection `source.id`; it cannot
-be redirected to another registration. Dry-run does not construct a remote
-transport, read an admin token, or make a network call.
+no import mutation occurred while creating the plan. The registered source code
+is always the verified projection `source.id`; it cannot be redirected to
+another registration. Dry-run does not construct a mutation transport.
 
 After the registered source, storefront catalog link, and one-item plan have
 been reviewed, the same plan can be applied through AdminGateway only with both
@@ -144,8 +146,8 @@ flags:
 node scripts/catalog-sources/publish-commerce-observations.js \
   --projection-dir=artifacts/catalog-source-projections/<source>/<snapshot> \
   --only=<external-id> \
-  --storefront-id="$ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID" \
-  --catalog-id="$ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID" \
+  --storefront-code=<storefront-code> \
+  --catalog-code=<catalog-code> \
   --admin-url="$ADMIN_GATEWAY_REST_BASE_URL" \
   --apply \
   --yes
@@ -154,6 +156,10 @@ node scripts/catalog-sources/publish-commerce-observations.js \
 Apply reads `ADMIN_GATEWAY_ADMIN_TOKEN` only from the environment. The token is
 never placed in the plan, receipt, or log output. It is trimmed, validated as
 bearer-token material, and passed as an `Authorization` header to AdminGateway.
+When the normal code-based scope is used, the publisher resolves the selected
+storefront/catalog GUIDs through AdminGateway before planning or applying the
+publication. `--storefront-id` and `--catalog-id` remain accepted only as an
+explicit low-level fallback when a diagnostic run already has reviewed GUIDs.
 Failure output is fully redacted, including reflected Bearer values and token
 fragments, before the diagnostic size limit is applied. HTTPS is the default;
 plain HTTP is restricted to loopback. The publisher invokes the scoped
@@ -172,18 +178,26 @@ through the same storefront/catalog scope:
 ```bash
 node scripts/catalog-sources/apply-admin-rest-import-bundle.js \
   --bundle-dir=/absolute/path/to/owner-tea-source-import-2026-08-01 \
-  --storefront-id="$ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID" \
-  --catalog-id="$ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID" \
+  --storefront-code=shop-thetea \
+  --catalog-code=CATALOG-CHINESE-TEA-SHOP \
   --admin-url="$ADMIN_GATEWAY_REST_BASE_URL" \
   --canary \
   --yes
 ```
 
-After the canary receipt and read-back are reviewed, use `--full --yes` on the
-same command to import every item in the bundle. The full importer verifies the
-manifest chunk hashes before any remote call, stores a receipt under
-`apply/admin-rest-attempts/`, and never writes token material or raw internal
-CommerceNetwork scope IDs.
+For the normal business path, the bundle importer resolves
+`--storefront-code` and `--catalog-code` through AdminGateway before it opens
+the import. It uses the selected storefront's workspace to query catalogs, so
+operators do not choose internal storefront/catalog GUIDs and do not provide
+raw CommerceNetwork participant/channel IDs. `--storefront-id` and
+`--catalog-id` remain accepted only as an explicit low-level fallback when a
+diagnostic run already has reviewed GUIDs.
+
+After the canary receipt and read-back are reviewed, use `--full --yes` with
+the same `--storefront-code` and `--catalog-code` to import every item in the
+bundle. The full importer verifies the manifest chunk hashes before any remote
+call, stores a receipt under `apply/admin-rest-attempts/`, and never writes
+token material or raw internal CommerceNetwork scope IDs.
 
 Before the first RPC, apply atomically creates a durable receipt with
 `remoteMutationAttempted: false`, then atomically marks the attempt and updates
@@ -236,13 +250,18 @@ semantic revision, and reference-price set against the receipt.
 
 CLI configuration keys:
 
-- `ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID` / `--storefront-id`
-- `ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID` / `--catalog-id`
 - `ADMIN_GATEWAY_REST_BASE_URL` / `--admin-url` for apply
 - `ADMIN_GATEWAY_ADMIN_TOKEN` for apply; environment only
+- `ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_CODE` / `--storefront-code`
+- `ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_CODE` / `--catalog-code`
 - `ADMIN_GATEWAY_REST_TIMEOUT_SECONDS` / `--timeout-seconds`
 - `COMMERCE_CATALOG_SOURCE_ARTIFACT_SCHEMA_VERSION` /
   `--artifact-schema-version` (defaults to `catalog-source-artifact-v1`)
+
+Low-level fallback keys for the AdminGateway REST importer:
+
+- `ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID` / `--storefront-id`
+- `ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID` / `--catalog-id`
 
 Legacy low-level gRPC diagnostics still accept these explicit CommerceNetwork
 scope and transport keys. They are not the normal operator path:

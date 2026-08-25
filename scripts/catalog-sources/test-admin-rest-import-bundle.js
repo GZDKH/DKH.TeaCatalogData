@@ -12,6 +12,9 @@ const {
 } = require('./lib/artifacts');
 const { METHODS } = require('./lib/commerce-publication');
 const {
+    resolveAdminRestCatalogTarget,
+} = require('./lib/commerce-admin-rest-client');
+const {
     applyBundle,
     beginBody,
     loadBundle,
@@ -20,6 +23,7 @@ const {
 const STOREFRONT_ID = '22222222-3333-4444-8555-666666666666';
 const CATALOG_ID = '77777777-8888-4999-aaaa-bbbbbbbbbbbb';
 const IMPORT_ID = '99999999-8888-4777-8666-555555555555';
+const WORKSPACE_ID = 'aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee';
 
 function item(externalId) {
     return {
@@ -113,6 +117,82 @@ function fakeClient(calls) {
     };
 }
 
+function jsonResponse(body, status = 200) {
+    return {
+        ok: status >= 200 && status < 300,
+        status,
+        async text() {
+            return JSON.stringify(body);
+        },
+    };
+}
+
+function resolvingFetch(calls) {
+    return async function fetchImpl(url, init) {
+        const requestUrl = new URL(String(url));
+        calls.push({
+            method: init?.method,
+            path: requestUrl.pathname,
+            search: requestUrl.search,
+            workspaceId: init?.headers?.['X-Workspace-Id'],
+            authorizationSet: /^Bearer\s+\S+/.test(init?.headers?.Authorization || ''),
+        });
+        if (requestUrl.pathname === '/api/v1.0/storefronts') {
+            return jsonResponse({
+                items: [{
+                    id: STOREFRONT_ID,
+                    code: 'shop-thetea',
+                    workspaceId: WORKSPACE_ID,
+                }],
+                page: 1,
+                pageSize: 200,
+                totalPages: 1,
+            });
+        }
+        if (requestUrl.pathname === '/api/v1.0/catalogs') {
+            return jsonResponse({
+                items: [{
+                    id: CATALOG_ID,
+                    code: 'CATALOG-CHINESE-TEA-SHOP',
+                }],
+                page: 1,
+                pageSize: 200,
+                totalPages: 1,
+            });
+        }
+        throw new Error(`unexpected URL ${requestUrl.pathname}`);
+    };
+}
+
+async function testTargetResolution() {
+    const calls = [];
+    const result = await resolveAdminRestCatalogTarget({
+        baseUrl: 'https://admin.example',
+        environment: {
+            ADMIN_GATEWAY_ADMIN_TOKEN: 'fixture-admin-token-value',
+        },
+        fetchImpl: resolvingFetch(calls),
+        storefrontCode: 'shop-thetea',
+        catalogCode: 'CATALOG-CHINESE-TEA-SHOP',
+        timeoutSeconds: 5,
+    });
+    assert.deepStrictEqual(result, {
+        storefrontId: STOREFRONT_ID,
+        catalogId: CATALOG_ID,
+        storefrontCode: 'shop-thetea',
+        catalogCode: 'CATALOG-CHINESE-TEA-SHOP',
+        workspaceId: WORKSPACE_ID,
+    });
+    assert.deepStrictEqual(
+        calls.map(call => [call.method, call.path, call.authorizationSet]),
+        [
+            ['GET', '/api/v1.0/storefronts', true],
+            ['GET', '/api/v1.0/catalogs', true],
+        ],
+    );
+    assert.strictEqual(calls[1].workspaceId, WORKSPACE_ID);
+}
+
 async function testBundleApply(root) {
     const { directory, items } = writeBundle(root);
     const loaded = loadBundle(directory);
@@ -121,6 +201,20 @@ async function testBundleApply(root) {
         beginBody(loaded.begin, 'canary', [items[0]]).expectedItemCount,
         1,
     );
+    await assert.rejects(
+        () => applyBundle({
+            'bundle-dir': directory,
+            canary: true,
+            yes: true,
+            'admin-url': 'https://admin.example',
+            'storefront-id': STOREFRONT_ID,
+            'catalog-code': 'CATALOG-CHINESE-TEA-SHOP',
+        }, {
+            repositoryRoot: root,
+            environment: {},
+        }),
+        /Use either storefront\/catalog codes or storefront\/catalog IDs/,
+    );
 
     const canaryCalls = [];
     const canary = await applyBundle({
@@ -128,11 +222,16 @@ async function testBundleApply(root) {
         canary: true,
         yes: true,
         'admin-url': 'https://admin.example',
-        'storefront-id': STOREFRONT_ID,
-        'catalog-id': CATALOG_ID,
+        'storefront-code': 'shop-thetea',
+        'catalog-code': 'CATALOG-CHINESE-TEA-SHOP',
     }, {
         repositoryRoot: root,
         environment: {},
+        resolveTarget(options) {
+            assert.strictEqual(options.storefrontCode, 'shop-thetea');
+            assert.strictEqual(options.catalogCode, 'CATALOG-CHINESE-TEA-SHOP');
+            return { storefrontId: STOREFRONT_ID, catalogId: CATALOG_ID };
+        },
         createClient(options) {
             assert.strictEqual(options.baseUrl, 'https://admin.example');
             assert.strictEqual(options.storefrontId, STOREFRONT_ID);
@@ -186,6 +285,7 @@ async function testBundleApply(root) {
 async function main() {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'admin-rest-bundle-'));
     try {
+        await testTargetResolution();
         await testBundleApply(root);
     } finally {
         fs.rmSync(root, { recursive: true, force: true });
