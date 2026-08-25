@@ -9,9 +9,16 @@ behind the same `publishCanary` flow.
 The REST transport accepts:
 
 - AdminGateway origin (`--admin-url` / `ADMIN_GATEWAY_REST_BASE_URL`)
-- selected storefront ID (`--storefront-id`)
-- selected catalog ID (`--catalog-id`)
+- selected storefront code (`--storefront-code`)
+- selected catalog code (`--catalog-code`)
 - bearer token from `ADMIN_GATEWAY_ADMIN_TOKEN`
+
+Before the transport is created, the tooling resolves the selected codes via
+AdminGateway `GET /api/v1.0/storefronts` and `GET /api/v1.0/catalogs`. The
+catalog lookup uses the matched storefront's workspace header when available.
+Resolution fails unless each code has exactly one match. Direct
+`--storefront-id` and `--catalog-id` inputs remain available only as a reviewed
+diagnostic fallback.
 
 It sends `command.idempotencyKey` as the `Idempotency-Key` header because the
 AdminGateway facade creates mutation control from HTTP headers. The JSON body

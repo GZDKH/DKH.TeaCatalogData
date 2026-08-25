@@ -8,6 +8,7 @@ const {
 } = require('./commerce-grpcurl-client');
 
 const TOKEN_ENVIRONMENT_VARIABLE = 'ADMIN_GATEWAY_ADMIN_TOKEN';
+const DEFAULT_PAGE_SIZE = 200;
 const GUID =
     /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const ROUTE_TEMPLATE =
@@ -85,6 +86,160 @@ function bearerFrom(environment, variableName) {
         environment[variableName],
         variableName,
     );
+}
+
+async function requestAdminJson(options, route, headers = {}) {
+    const baseUrl = normalizeBaseUrl(options.baseUrl);
+    const timeoutSeconds = requireCount(
+        options.timeoutSeconds ?? 30,
+        'AdminGateway REST timeout',
+    );
+    const fetchImpl = options.fetchImpl || globalThis.fetch;
+    if (typeof fetchImpl !== 'function') {
+        throw new Error('AdminGateway REST transport requires fetch.');
+    }
+    const token = bearerFrom(
+        options.environment || process.env,
+        options.tokenEnvironmentVariable || TOKEN_ENVIRONMENT_VARIABLE,
+    );
+    const controller = new AbortController();
+    const timeout = setTimeout(
+        () => controller.abort(),
+        timeoutSeconds * 1000,
+    );
+    try {
+        const response = await fetchImpl(new URL(route, baseUrl), {
+            method: 'GET',
+            redirect: 'manual',
+            signal: controller.signal,
+            headers: {
+                Accept: 'application/json',
+                Authorization: `Bearer ${token}`,
+                'User-Agent': 'DKH.TeaCatalogData catalog-source-ingestion/1',
+                ...headers,
+            },
+        });
+        const text = await response.text();
+        if (!response.ok) {
+            const detail = redactSensitiveText(text, token).trim();
+            throw new Error(
+                `AdminGateway REST target resolution failed with HTTP ${response.status}` +
+                `${detail ? `: ${detail}` : '.'}`,
+            );
+        }
+        try {
+            return text ? JSON.parse(text) : {};
+        } catch {
+            throw new Error('AdminGateway REST target resolution returned invalid JSON.');
+        }
+    } catch (error) {
+        if (error.message.startsWith('AdminGateway REST target resolution')) {
+            throw error;
+        }
+        throw new Error(
+            'AdminGateway REST target resolution failed: ' +
+            redactSensitiveText(error.message, token).slice(
+                0,
+                MAX_DIAGNOSTIC_LENGTH,
+            ),
+        );
+    } finally {
+        clearTimeout(timeout);
+    }
+}
+
+function responseItems(response) {
+    const container = response?.data && typeof response.data === 'object'
+        ? response.data
+        : response;
+    if (Array.isArray(container)) return container;
+    if (Array.isArray(container?.items)) return container.items;
+    if (Array.isArray(container?.data?.items)) return container.data.items;
+    return [];
+}
+
+function hasNextPage(response) {
+    const container = response?.data && typeof response.data === 'object'
+        ? response.data
+        : response;
+    if (container?.hasNextPage === true) return true;
+    const page = Number(container?.page);
+    const totalPages = Number(container?.totalPages);
+    return Number.isSafeInteger(page) &&
+        Number.isSafeInteger(totalPages) &&
+        page < totalPages;
+}
+
+async function listPaged(options, path, headers = {}) {
+    const items = [];
+    for (let page = 1; page <= 100; page += 1) {
+        const separator = path.includes('?') ? '&' : '?';
+        const response = await requestAdminJson(
+            options,
+            `${path}${separator}page=${page}&pageSize=${DEFAULT_PAGE_SIZE}`,
+            headers,
+        );
+        items.push(...responseItems(response));
+        if (!hasNextPage(response)) break;
+    }
+    return items;
+}
+
+function requireBusinessCode(value, label) {
+    if (typeof value !== 'string' ||
+        !value.trim() ||
+        value.trim().length > 128) {
+        throw new Error(`${label} must be a non-empty string of at most 128 characters.`);
+    }
+    return value.trim();
+}
+
+function idOf(item, label) {
+    const id = item?.id?.value || item?.id;
+    return requireGuid(id, label);
+}
+
+function uniqueByCode(items, code, label) {
+    const normalized = requireBusinessCode(code, label).toLowerCase();
+    const matches = items.filter(item =>
+        String(item?.code || '').trim().toLowerCase() === normalized);
+    if (matches.length !== 1) {
+        throw new Error(
+            `${label} ${code} matched ${matches.length} records; expected exactly one.`,
+        );
+    }
+    return matches[0];
+}
+
+async function resolveAdminRestCatalogTarget(options = {}) {
+    const storefrontCode = requireBusinessCode(
+        options.storefrontCode,
+        'Storefront code',
+    );
+    const catalogCode = requireBusinessCode(
+        options.catalogCode,
+        'Catalog code',
+    );
+    const storefronts = await listPaged(options, '/api/v1.0/storefronts');
+    const storefront = uniqueByCode(
+        storefronts,
+        storefrontCode,
+        'Storefront code',
+    );
+    const storefrontId = idOf(storefront, 'Storefront ID');
+    const workspaceId = storefront.workspaceId || storefront.workspace?.id;
+    const headers = workspaceId
+        ? { 'X-Workspace-Id': String(workspaceId) }
+        : {};
+    const catalogs = await listPaged(options, '/api/v1.0/catalogs', headers);
+    const catalog = uniqueByCode(catalogs, catalogCode, 'Catalog code');
+    return {
+        storefrontId,
+        catalogId: idOf(catalog, 'Catalog ID'),
+        storefrontCode,
+        catalogCode,
+        workspaceId: workspaceId ? String(workspaceId) : undefined,
+    };
 }
 
 function beginBody(request) {
@@ -266,4 +421,5 @@ module.exports = {
     CommerceAdminRestClient,
     ROUTE_TEMPLATE,
     TOKEN_ENVIRONMENT_VARIABLE,
+    resolveAdminRestCatalogTarget,
 };

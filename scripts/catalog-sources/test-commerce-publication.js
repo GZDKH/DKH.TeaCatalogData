@@ -1300,8 +1300,8 @@ async function testDryRunCli(root) {
     const restApply = await runCommercePublisher({
         'projection-dir': projectionDirectory,
         only: '42',
-        'storefront-id': STOREFRONT_ID,
-        'catalog-id': CATALOG_ID,
+        'storefront-code': 'shop-thetea',
+        'catalog-code': 'CATALOG-CHINESE-TEA-SHOP',
         apply: true,
         yes: true,
         'admin-url': 'https://admin.example',
@@ -1309,6 +1309,15 @@ async function testDryRunCli(root) {
     }, {
         repositoryRoot: root,
         environment: {},
+        resolveTarget(options) {
+            assert.strictEqual(options.storefrontCode, 'shop-thetea');
+            assert.strictEqual(options.catalogCode, 'CATALOG-CHINESE-TEA-SHOP');
+            assert.strictEqual(options.baseUrl, 'https://admin.example');
+            return {
+                storefrontId: STOREFRONT_ID,
+                catalogId: CATALOG_ID,
+            };
+        },
         createTransport(options) {
             assert.strictEqual(options.transportKind, 'admin-rest');
             assert.strictEqual(options.baseUrl, 'https://admin.example');

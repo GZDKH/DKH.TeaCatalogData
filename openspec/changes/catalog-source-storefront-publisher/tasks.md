@@ -7,4 +7,5 @@
 - [x] Update operator documentation away from raw participant/channel IDs.
 - [x] Add focused tests for REST headers, body shape, receipt metadata, and leakage guard.
 - [x] Add supported full prepared-bundle importer for AdminGateway REST scope.
+- [x] Resolve normal AdminGateway REST targets from storefront/catalog business codes.
 - [ ] Merge through GitLab MR and verify post-main pipeline.

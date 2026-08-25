@@ -22,6 +22,7 @@ const {
 } = require('./lib/artifacts');
 const {
     CommerceAdminRestClient,
+    resolveAdminRestCatalogTarget,
 } = require('./lib/commerce-admin-rest-client');
 const {
     CommerceGrpcurlClient,
@@ -717,7 +718,7 @@ function defaultProtoRoots(repositoryRoot) {
     };
 }
 
-function resolvePublicationScope(args, environment) {
+async function resolvePublicationScope(args, environment, transportOptions = {}) {
     const storefrontId = valueFrom(
         args,
         'storefront-id',
@@ -730,6 +731,20 @@ function resolvePublicationScope(args, environment) {
         'catalog-id',
         environment,
         'ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID',
+        null,
+    );
+    const storefrontCode = valueFrom(
+        args,
+        'storefront-code',
+        environment,
+        'ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_CODE',
+        null,
+    );
+    const catalogCode = valueFrom(
+        args,
+        'catalog-code',
+        environment,
+        'ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_CODE',
         null,
     );
     const participantId = valueFrom(
@@ -746,14 +761,65 @@ function resolvePublicationScope(args, environment) {
         'COMMERCE_CATALOG_SOURCE_CHANNEL_ID',
         null,
     );
-    const hasStorefrontScope = storefrontId !== null || catalogId !== null;
+    const hasStorefrontIdScope = storefrontId !== null || catalogId !== null;
+    const hasStorefrontCodeScope = storefrontCode !== null || catalogCode !== null;
     const hasCommerceScope = participantId !== null || commerceChannelId !== null;
-    if (hasStorefrontScope && hasCommerceScope) {
+    if ((hasStorefrontIdScope || hasStorefrontCodeScope) && hasCommerceScope) {
         throw new Error(
             'Use either storefront/catalog scope or legacy participant/channel scope, not both.',
         );
     }
-    if (hasStorefrontScope) {
+    if (hasStorefrontIdScope && hasStorefrontCodeScope) {
+        throw new Error(
+            'Use either storefront/catalog codes or storefront/catalog IDs, not both.',
+        );
+    }
+    if (hasStorefrontCodeScope) {
+        const adminUrl = requireConfigured(
+            valueFrom(
+                args,
+                'admin-url',
+                environment,
+                'ADMIN_GATEWAY_REST_BASE_URL',
+            ),
+            'admin-url',
+            'ADMIN_GATEWAY_REST_BASE_URL',
+        );
+        const timeoutText = valueFrom(
+            args,
+            'timeout-seconds',
+            environment,
+            'ADMIN_GATEWAY_REST_TIMEOUT_SECONDS',
+            '30',
+        );
+        if (!/^\d+$/.test(timeoutText)) {
+            throw new Error('Commerce publication timeout must be a whole number of seconds.');
+        }
+        const target = await (transportOptions.resolveTarget || resolveAdminRestCatalogTarget)({
+            baseUrl: adminUrl,
+            timeoutSeconds: Number(timeoutText),
+            environment,
+            fetchImpl: transportOptions.fetchImpl,
+            storefrontCode: requireConfigured(
+                storefrontCode,
+                'storefront-code',
+                'ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_CODE',
+            ),
+            catalogCode: requireConfigured(
+                catalogCode,
+                'catalog-code',
+                'ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_CODE',
+            ),
+        });
+        return {
+            kind: 'admin-rest',
+            storefrontId: requireGuid(target.storefrontId, 'storefront-id'),
+            catalogId: requireGuid(target.catalogId, 'catalog-id'),
+            storefrontCode,
+            catalogCode,
+        };
+    }
+    if (hasStorefrontIdScope) {
         return {
             kind: 'admin-rest',
             storefrontId: requireGuid(storefrontId, 'storefront-id'),
@@ -873,7 +939,10 @@ async function runCommercePublisher(args, options = {}) {
     );
     const externalId = requireArg(args, 'only');
     const bundle = loadVerifiedProjectionBundle(projectionDirectory);
-    const scope = resolvePublicationScope(args, environment);
+    const scope = await resolvePublicationScope(args, environment, {
+        fetchImpl: options.fetchImpl,
+        resolveTarget: options.resolveTarget,
+    });
     const configuredSourceCode = valueFrom(
         args,
         'registered-source-code',
@@ -954,6 +1023,9 @@ async function runCommercePublisher(args, options = {}) {
             repositoryRoot,
             scope,
         );
+        if (options.fetchImpl) {
+            clientOptions.fetchImpl = options.fetchImpl;
+        }
         const transport = options.createTransport
             ? options.createTransport(clientOptions)
             : createDefaultTransport(clientOptions);
