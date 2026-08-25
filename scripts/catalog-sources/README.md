@@ -123,8 +123,8 @@ network call:
 node scripts/catalog-sources/publish-commerce-observations.js \
   --projection-dir=artifacts/catalog-source-projections/<source>/<snapshot> \
   --only=<external-id> \
-  --participant-id="$COMMERCE_CATALOG_SOURCE_PARTICIPANT_ID" \
-  --commerce-channel-id="$COMMERCE_CATALOG_SOURCE_CHANNEL_ID"
+  --storefront-id="$ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID" \
+  --catalog-id="$ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID"
 ```
 
 Dry-run is the default. It writes a content-addressed plan below
@@ -133,38 +133,57 @@ Dry-run is the default. It writes a content-addressed plan below
 records `authoritativeForDeletion: false`. Plan-generation fields state that
 no network call or remote mutation occurred while creating the plan. The
 registered source code is always the verified projection `source.id`; it cannot
-be redirected to another registration. Dry-run does not construct the gRPC
-client, read an admin token, or make a network call.
+be redirected to another registration. Dry-run does not construct a remote
+transport, read an admin token, or make a network call.
 
-After the registered source, participant grant, channel, version tuple, and
-one-item plan have been reviewed, the same plan can be applied only with both
+After the registered source, storefront catalog link, and one-item plan have
+been reviewed, the same plan can be applied through AdminGateway only with both
 flags:
 
 ```bash
 node scripts/catalog-sources/publish-commerce-observations.js \
   --projection-dir=artifacts/catalog-source-projections/<source>/<snapshot> \
   --only=<external-id> \
-  --participant-id="$COMMERCE_CATALOG_SOURCE_PARTICIPANT_ID" \
-  --commerce-channel-id="$COMMERCE_CATALOG_SOURCE_CHANNEL_ID" \
-  --grpc-url="$COMMERCE_NETWORK_GRPC_URL" \
+  --storefront-id="$ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID" \
+  --catalog-id="$ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID" \
+  --admin-url="$ADMIN_GATEWAY_REST_BASE_URL" \
   --apply \
   --yes
 ```
 
-Apply reads `COMMERCE_NETWORK_ADMIN_TOKEN` only from the child-process
-environment. The token is expanded by `grpcurl`, never placed in its argument
-list, plan, receipt, or log output. It is trimmed, validated as bearer-token
-material, and passed to the child through a normalized environment. Failure
-output is fully redacted, including reflected Bearer values and token
-fragments, before the diagnostic size limit is applied. TLS is the default;
-`--plaintext` is an explicit loopback-only override. The publisher invokes
-`BeginCatalogSourceSnapshotImport`, `ImportCatalogSourceItem`, and
-`CommitCatalogSourceSnapshotImport` in order and stops immediately on any
-failure. Deterministic idempotency keys make a retry safe; a replayed already
-committed import is accepted without sending another item or commit. A
-successful process exit with malformed JSON produces a fixed error and never
-includes parser excerpts from the response. Count and state validation errors
-are also fixed and bounded; they never interpolate remote response values.
+Apply reads `ADMIN_GATEWAY_ADMIN_TOKEN` only from the environment. The token is
+never placed in the plan, receipt, or log output. It is trimmed, validated as
+bearer-token material, and passed as an `Authorization` header to AdminGateway.
+Failure output is fully redacted, including reflected Bearer values and token
+fragments, before the diagnostic size limit is applied. HTTPS is the default;
+plain HTTP is restricted to loopback. The publisher invokes the scoped
+AdminGateway begin, item, and commit endpoints in order and stops immediately
+on any failure. Deterministic idempotency keys are sent as `Idempotency-Key`
+headers, making a retry safe; a replayed already committed import is accepted
+without sending another item or commit. A successful process exit with
+malformed JSON produces a fixed error and never includes parser excerpts from
+the response. Count and state validation errors are also fixed and bounded;
+they never interpolate remote response values.
+
+Apply a complete prepared AdminGateway import bundle, such as the owner tea
+pricing bundle with `begin.json`, `manifest.json`, and `chunks/items-*.json`,
+through the same storefront/catalog scope:
+
+```bash
+node scripts/catalog-sources/apply-admin-rest-import-bundle.js \
+  --bundle-dir=/absolute/path/to/owner-tea-source-import-2026-08-01 \
+  --storefront-id="$ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID" \
+  --catalog-id="$ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID" \
+  --admin-url="$ADMIN_GATEWAY_REST_BASE_URL" \
+  --canary \
+  --yes
+```
+
+After the canary receipt and read-back are reviewed, use `--full --yes` on the
+same command to import every item in the bundle. The full importer verifies the
+manifest chunk hashes before any remote call, stores a receipt under
+`apply/admin-rest-attempts/`, and never writes token material or raw internal
+CommerceNetwork scope IDs.
 
 Before the first RPC, apply atomically creates a durable receipt with
 `remoteMutationAttempted: false`, then atomically marks the attempt and updates
@@ -183,13 +202,12 @@ the commit and production state acknowledged, avoiding an intermediate
 contradictory receipt.
 
 Each audit root is permanently bound by `auditBindingSha256` to one
-publication/item/source, target endpoint and TLS mode, complete contract
-closure/service/method identity, and required semantic/reference-price
-read-back. Every retry verifies that binding, contiguous attempt numbers,
-deterministic attempt IDs, the previous-receipt hash chain, and the latest
-pointer before creating a new attempt. A custom `--out` therefore cannot mix
-two publications into one apply audit root, and tampered history fails before
-any new attempt or RPC.
+publication/item/source, target endpoint and TLS mode, AdminGateway route
+identity, and required semantic/reference-price read-back. Every retry verifies
+that binding, contiguous attempt numbers, deterministic attempt IDs, the
+previous-receipt hash chain, and the latest pointer before creating a new
+attempt. A custom `--out` therefore cannot mix two publications into one apply
+audit root, and tampered history fails before any new attempt or remote call.
 
 Apply also acquires the exclusive `apply/.apply.lock` before it constructs a
 transport, reads attempt history, creates a receipt, or invokes an RPC. The
@@ -209,28 +227,30 @@ a retry while the latest attempt is non-terminal. Only `failed` and
 purposes; recovery must never rewrite a historical receipt.
 
 A commit-acknowledged apply receipt records whether the commit was new or
-replayed, the sanitized endpoint/TLS mode, gRPC service/method identities, and
-the SHA-256 of both the root proto and its deterministic transitive closure.
-The closure resolver accepts real files only inside the two allowlisted proto
-roots, rejects symlinks, path escapes, missing/ambiguous imports and cycles, and
-parses imports independently of line layout. It binds sorted logical paths to
-each file hash and is revalidated immediately before every RPC. The receipt
-stores only closure, file-list, and built-in-import digests/counts, never proto
-plaintext.
-It deliberately records `complete: false`, `readBackVerified: false`, and
-`readBackRequired: true`. The import-only actor has no authorized read RPC, so
-the canary is not complete until a later authorized read-back verifies the
-registered source, external ID, semantic revision, and reference-price set
-against the receipt.
+replayed, the sanitized endpoint/TLS mode, and the AdminGateway route/method
+identity. It deliberately records `complete: false`,
+`readBackVerified: false`, and `readBackRequired: true`. The import-only actor
+has no authorized read endpoint in this tool, so the canary is not complete
+until a later authorized read-back verifies the registered source, external ID,
+semantic revision, and reference-price set against the receipt.
 
 CLI configuration keys:
 
-- `COMMERCE_CATALOG_SOURCE_PARTICIPANT_ID` / `--participant-id`
-- `COMMERCE_CATALOG_SOURCE_CHANNEL_ID` / `--commerce-channel-id`
+- `ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID` / `--storefront-id`
+- `ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID` / `--catalog-id`
+- `ADMIN_GATEWAY_REST_BASE_URL` / `--admin-url` for apply
+- `ADMIN_GATEWAY_ADMIN_TOKEN` for apply; environment only
+- `ADMIN_GATEWAY_REST_TIMEOUT_SECONDS` / `--timeout-seconds`
 - `COMMERCE_CATALOG_SOURCE_ARTIFACT_SCHEMA_VERSION` /
   `--artifact-schema-version` (defaults to `catalog-source-artifact-v1`)
-- `COMMERCE_NETWORK_GRPC_URL` / `--grpc-url` for apply
-- `COMMERCE_NETWORK_ADMIN_TOKEN` for apply; environment only
+
+Legacy low-level gRPC diagnostics still accept these explicit CommerceNetwork
+scope and transport keys. They are not the normal operator path:
+
+- `COMMERCE_CATALOG_SOURCE_PARTICIPANT_ID` / `--participant-id`
+- `COMMERCE_CATALOG_SOURCE_CHANNEL_ID` / `--commerce-channel-id`
+- `COMMERCE_NETWORK_GRPC_URL` / `--grpc-url`
+- `COMMERCE_NETWORK_ADMIN_TOKEN`
 - `COMMERCE_NETWORK_GRPC_TIMEOUT_SECONDS` / `--timeout-seconds`
 - `COMMERCE_NETWORK_GRPC_CA_CERTIFICATE` / `--cacert`
 - `COMMERCE_NETWORK_PROTO_ROOT` / `--commerce-proto-root`

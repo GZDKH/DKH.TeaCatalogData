@@ -35,16 +35,19 @@ function requireDirectory(value, label) {
     return resolved;
 }
 
-function normalizeBearerToken(value) {
+function normalizeBearerToken(
+    value,
+    label = TOKEN_ENVIRONMENT_VARIABLE,
+) {
     if (typeof value !== 'string') {
-        throw new Error(`${TOKEN_ENVIRONMENT_VARIABLE} is required for --apply.`);
+        throw new Error(`${label} is required for --apply.`);
     }
     const token = value.trim();
     if (token.length < MIN_TOKEN_LENGTH ||
         token.length > MAX_TOKEN_LENGTH ||
         !BEARER_TOKEN.test(token)) {
         throw new Error(
-            `${TOKEN_ENVIRONMENT_VARIABLE} must be valid bearer token material between ` +
+            `${label} must be valid bearer token material between ` +
             `${MIN_TOKEN_LENGTH} and ${MAX_TOKEN_LENGTH} characters.`,
         );
     }

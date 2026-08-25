@@ -48,7 +48,7 @@ node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01 --catalog-r
 node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --resume --concurrency=4
 node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --replay
 node scripts/catalog-sources/project-artifact.js --artifact-dir=artifacts/catalog-sources/zzctea/zzctea-2026-07-27
-node scripts/catalog-sources/publish-commerce-observations.js --projection-dir=artifacts/catalog-source-projections/<source>/<snapshot> --only=<external-id> --participant-id="$COMMERCE_CATALOG_SOURCE_PARTICIPANT_ID" --commerce-channel-id="$COMMERCE_CATALOG_SOURCE_CHANNEL_ID"
+node scripts/catalog-sources/publish-commerce-observations.js --projection-dir=artifacts/catalog-source-projections/<source>/<snapshot> --only=<external-id> --storefront-id="$ADMIN_GATEWAY_CATALOG_SOURCE_STOREFRONT_ID" --catalog-id="$ADMIN_GATEWAY_CATALOG_SOURCE_CATALOG_ID"
 node scripts/catalog-sources/reconcile-projection.js --projection-dir=artifacts/catalog-source-projections/zzctea/zzctea-2026-07-27 --catalog-ref=sources/prod/catalog-reference/prod-2026-07-27.json --product-ref=sources/prod/product-reference/prod-products-2026-07-27 --only=17641
 # After source-access/legal clearance, run the complete resumable weekly refresh; it performs no production write
 node scripts/catalog-sources/update-zzctea-current.js --snapshot=<id> --catalog-ref=<catalog-ref.json> --product-ref=<product-reference-dir> --previous-media-dir=<verified-prior-media-dir> --minimum-request-interval-ms=1000
