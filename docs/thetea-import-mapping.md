@@ -197,7 +197,7 @@ When the source returns a sensory `descriptor_id` and intensity but leaves `desc
 
 Origin country/place, coordinates, and altitude live only in `origins[]`; altitude is not duplicated as a specification. Plausible fractional-thousand altitude defects are normalized only when contextual evidence supports it and are always reported.
 
-All localized section prose is preserved in the article sidecar so non-canonical locale values are not collapsed. Short stable canonical values may also remain typed text specifications. Synthetic `*_xN` and `ext_*` fields, full Markdown, FAQ, and long narrative sections never become technical product attributes; they exist only in `06-routed-content/`. The current ProductCatalog importer does not ingest those sidecars, so they require a dedicated article/metaobject downstream step in the canary workflow.
+All localized section prose is preserved in the article sidecar so non-canonical locale values are not collapsed. Short stable canonical values may also remain typed text specifications. Synthetic `*_xN` and `ext_*` fields, full Markdown, FAQ, and long narrative sections never become technical product attributes; they exist only in `06-routed-content/`. The ProductCatalog payload does not ingest those sidecars; full product canaries must orchestrate the matching Storefront article/metaobject step through `import-generated.js` or the standalone routed-content importer.
 
 Full TheTea artifacts declare `targets.articleCoverage: exact-product-slug`. Validation then requires exactly one routed article for every generated product, requires the article slug to equal the product translation SEO handle, and requires every snapshot locale. If D1 has a partial field pack for a locale, the transformer records the partial coverage and copies article content from the deterministic `en-US`, `en`, `ru-RU`, `ru`, then first-available fallback chain. A product with no article body in any locale still fails generation. Package-only artifacts declare `articleCoverage: none` because they intentionally do not update routed content.
 
@@ -261,7 +261,7 @@ The first production import can proceed only when all gates pass:
 6. If categories are applied, fetch a new catalog reference and regenerate the entire artifact. Passing a new reference to an old artifact is rejected by hash validation.
 7. Final mapping has `Catalog found: yes` and `Missing categories: 0`.
 8. Managed package validation accepts only the exact 25/50/100/250/500 g mapping, with `PKG-50G` as the sole product default. The manifest and reconciliation plan must both declare `updateScope: packages`. For the reviewed TheTea cohort, reconciliation must report 526 selected products, `create: 0`, `conflict: 0`, no preservation or scope errors, unchanged Product IDs, and `fieldChangeCounts: { packages: 526 }` with no other fields.
-9. Definitions are imported before products through SetupTool or another approved ordered DataExchange workflow. `import-generated.js` supports only `categories` and `products`; it does not import definitions, catalog bindings, articles, or FAQ sidecars.
+9. Definitions are imported before products through SetupTool or another approved ordered DataExchange workflow. `import-generated.js` supports only ProductCatalog `categories` and `products`; it does not import definitions or catalog bindings. For full product artifacts with `targets.articleCoverage: exact-product-slug`, an apply must also pass `--storefront-id=<storefront-uuid>` or `THETEA_STOREFRONT_ID`; the importer plans and applies the matching routed article/FAQ sidecars through Storefront APIs.
 10. AdminGateway token passes the required `CatalogExport`/`CatalogImport` policies and workspace access.
 11. A one-product canary is dry-run validated, applied only after canary approval, and read back for structural comparison.
 12. User explicitly approves the separate mass `--apply --yes` step.
@@ -297,13 +297,13 @@ node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-02
 node scripts/thetea/fetch-prod-products.js --snapshot=prod-products-2026-06-02
 node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-02 --out=import/thetea/thetea-2026-06-02 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --storefronts=shop-thetea,thetea-wiki
 node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-06-02 --report=thetea-2026-06-02-prod-map --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --only=TEA-CN-XIHU-LONGJING --limit=1
+node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --storefront-id=<storefront-uuid> --only=TEA-CN-XIHU-LONGJING --limit=1
 ```
 
 Canary apply, only after explicit canary approval:
 
 ```bash
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --only=TEA-CN-XIHU-LONGJING --limit=1 --apply --yes
+node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --storefront-id=<storefront-uuid> --only=TEA-CN-XIHU-LONGJING --limit=1 --apply --yes
 ```
 
-The mass product apply is a separate command and approval after canary read-back. Routed article/FAQ content is not applied by `import-generated.js`.
+The mass product apply is a separate command and approval after canary read-back. Routed article/FAQ content is fail-closed for exact product/article coverage: production apply cannot skip it, and a routed diff/verification log is written alongside the ProductCatalog import log.

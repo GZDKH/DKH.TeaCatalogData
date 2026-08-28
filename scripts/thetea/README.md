@@ -516,9 +516,16 @@ by code instead of relying on product import auto-creation.
 
 Definitions include every required locale. Known structural labels have curated `en-US`, `ru-RU`, and `zh-CN` names; other locales receive an explicitly reported English fallback.
 
-`import-generated.js` imports only `categories` or `products`. It does not import definition files or catalog bindings. Use SetupTool or another approved ordered workflow for definitions before products.
+`import-generated.js` imports only ProductCatalog `categories` or `products`.
+It does not import definition files or catalog bindings. Use SetupTool or
+another approved ordered workflow for definitions before products. For full
+product artifacts with `targets.articleCoverage: exact-product-slug`, product
+apply also plans and applies the matching routed article/FAQ records through
+Storefront APIs; pass `--storefront-id=<storefront-uuid>` or set
+`THETEA_STOREFRONT_ID`.
 
-Import routed articles and localized product FAQ metaobjects through the supported Storefront APIs:
+You can still diff or apply routed articles and localized product FAQ
+metaobjects directly through the supported Storefront APIs:
 
 ```bash
 # Read-only diff (default)
