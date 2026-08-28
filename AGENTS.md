@@ -44,7 +44,7 @@ node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-01
 node scripts/thetea/fetch-prod-products.js --snapshot=prod-products-2026-06-01
 node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-01 --out=import/thetea/thetea-2026-06-01 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json --product-ref=sources/prod/product-reference/prod-products-2026-06-01
 node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-06-01 --report=thetea-2026-06-01-prod-map --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json --product-ref=sources/prod/product-reference/prod-products-2026-06-01
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json --product-ref=sources/prod/product-reference/prod-products-2026-06-01 --only=<product-code> --limit=1
+node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json --product-ref=sources/prod/product-reference/prod-products-2026-06-01 --storefront-id=<storefront-uuid> --only=<product-code> --limit=1
 node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --resume --concurrency=4
 node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --replay
 node scripts/catalog-sources/project-artifact.js --artifact-dir=artifacts/catalog-sources/zzctea/zzctea-2026-07-27
@@ -66,8 +66,8 @@ separate `--apply --yes` confirmation for its one-item canary.
 - Full baseline overlay must preserve every unrelated replace-mode collection entry.
 - ProductCatalog must preserve catalog-scoped tier-price catalog codes across product export/import before canary.
 - TheTea resync is update-only: every generated product code must already exist in the marked-complete baseline. New-product creation is a separate workflow.
-- Prefer `DKH.SetupTool` manifest mode for a full production load; `import-generated.js` is the explicit canary path and imports only categories/products.
-- Definitions and routed article/FAQ content need their ordered downstream paths before the product canary is considered complete.
+- Prefer `DKH.SetupTool` manifest mode for a full production load; `import-generated.js` is the explicit canary path for categories/products.
+- Definitions still need their ordered downstream path before products. For full product artifacts with `targets.articleCoverage: exact-product-slug`, `import-generated.js --apply --yes` must also receive `--storefront-id`/`THETEA_STOREFRONT_ID` and applies the matching routed article/FAQ step before the product canary is considered complete.
 - TheTea commercial/licensing approval must be confirmed before loading production.
 - Current ZZCTea `robots.txt` disallows `/api/`; do not execute or schedule a
   live fetch until source-access and legal review explicitly clear it.

@@ -18,6 +18,14 @@ const {
     resolveCatalogWorkspaceId,
 } = require('./lib/catalog-workspace');
 const { loadVerifiedProductReference } = require('./lib/product-reference');
+const {
+    apiClient: routedContentApiClient,
+    applyPlanAndRelease: applyRoutedContentPlanAndRelease,
+    buildPlan: buildRoutedContentPlan,
+    operationEvidence: routedContentOperationEvidence,
+    summarize: summarizeRoutedContent,
+    writeRollbackArtifact: writeRoutedContentRollbackArtifact,
+} = require('./import-routed-content');
 
 loadDotEnv();
 
@@ -36,9 +44,14 @@ Options:
   --catalog-ref=<path>  Exact catalog reference recorded in the artifact manifest
   --product-ref=<path>  Exact full-product baseline recorded in the artifact manifest
   --workspace-id=<uuid> ProductCatalog workspace; or PRODUCT_CATALOG_WORKSPACE_ID
+  --storefront-id=<uuid> Storefront that receives routed product articles/FAQ
+  --routed-content       Validate/import routed content even when coverage is not exact
+  --skip-routed-content  Validate/import only ProductCatalog records
   --apply --yes         Write to AdminGateway import endpoint
 
-Default mode calls /api/v1/data-exchange/validate and does not write.`);
+Default mode calls /api/v1/data-exchange/validate and does not write.
+Full artifacts with targets.articleCoverage=exact-product-slug require the
+routed-content step on apply so product pages and article dossiers stay in sync.`);
 }
 
 function walkJson(dir) {
@@ -149,6 +162,135 @@ function repoPath(value) {
 function normalizeCode(value) {
     const code = value && typeof value === 'object' ? value.code : value;
     return String(code || '').trim().toUpperCase();
+}
+
+function isExactArticleCoverage(manifest) {
+    return manifest?.targets?.articleCoverage === 'exact-product-slug';
+}
+
+function hasRoutedContent(records) {
+    return Boolean(records.articles.length || records.metaobjects.length);
+}
+
+function shouldRunRoutedContentStep(manifest, args, profile) {
+    if (String(profile || '').toLowerCase() !== 'products') return false;
+    return isExactArticleCoverage(manifest) || args['routed-content'] === true;
+}
+
+function resolveStorefrontId(args, required) {
+    const value = String(args['storefront-id'] || process.env.THETEA_STOREFRONT_ID || '').trim();
+    if (!value) {
+        if (required) {
+            throw new Error(
+                '--storefront-id=<uuid> or THETEA_STOREFRONT_ID is required '
+                + 'to apply routed product articles/FAQ.');
+        }
+        return null;
+    }
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value)) {
+        throw new Error('--storefront-id must be a UUID.');
+    }
+    return value;
+}
+
+function selectRoutedContentRecords(bundle, selectedProductCodes) {
+    const wanted = new Set(selectedProductCodes.map(normalizeCode).filter(Boolean));
+    const include = record => {
+        if (wanted.size === 0) return true;
+        return wanted.has(normalizeCode(record?.product));
+    };
+    return {
+        articles: bundle.routedContent.articles.filter(include),
+        metaobjects: bundle.routedContent.metaobjects.filter(include),
+    };
+}
+
+function assertRoutedContentStepAllowed(manifest, args, dryRun, profile) {
+    if (!shouldRunRoutedContentStep(manifest, args, profile)) return;
+    if (dryRun || !isExactArticleCoverage(manifest)) return;
+    if (args['skip-routed-content'] === true) {
+        throw new Error(
+            'This artifact declares exact product/article slug coverage; '
+            + '--skip-routed-content is not allowed on apply.');
+    }
+    resolveStorefrontId(args, true);
+}
+
+function writeJsonLog(prefix, payload) {
+    const logDir = path.join(REPO_ROOT, 'logs');
+    fs.mkdirSync(logDir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const file = path.join(logDir, `${prefix}-${ts}.json`);
+    fs.writeFileSync(file, JSON.stringify(payload, null, 2));
+    return file;
+}
+
+async function prepareRoutedContentStep({
+    args,
+    dryRun,
+    gatewayUrl,
+    token,
+    manifest,
+    records,
+    selectedProductCodes,
+}) {
+    if (!shouldRunRoutedContentStep(manifest, args, 'products')) return null;
+
+    const applyRequiresStep = !dryRun && isExactArticleCoverage(manifest);
+    assertRoutedContentStepAllowed(manifest, args, dryRun, 'products');
+    if (args['skip-routed-content'] === true) {
+        return {
+            skipped: true,
+            reason: 'skipped by --skip-routed-content',
+        };
+    }
+
+    const storefrontId = resolveStorefrontId(args, applyRequiresStep);
+    if (!storefrontId) {
+        return {
+            skipped: true,
+            reason: 'pass --storefront-id=... to validate routed product articles/FAQ',
+        };
+    }
+
+    if (!hasRoutedContent(records)) {
+        throw new Error(
+            'No routed article/FAQ records matched the selected product import. '
+            + `Selected products: ${selectedProductCodes.map(normalizeCode).filter(Boolean).join(', ') || '<all>'}`);
+    }
+
+    const client = routedContentApiClient(gatewayUrl, token, storefrontId);
+    const operations = await buildRoutedContentPlan(client, records);
+    const summary = summarizeRoutedContent(operations);
+    const reportFile = writeJsonLog('thetea-import-routed-diff', {
+        timestamp: new Date().toISOString(),
+        dryRun,
+        storefrontId,
+        selectedProductCodes: selectedProductCodes.map(normalizeCode).filter(Boolean),
+        summary,
+        operations: operations.map(routedContentOperationEvidence),
+    });
+
+    if (summary.conflict) {
+        throw new Error(`Routed content conflicts found; no ProductCatalog import will run. Diff: ${reportFile}`);
+    }
+
+    return { client, operations, records, storefrontId, summary, reportFile };
+}
+
+async function verifyRoutedContentStep(step) {
+    const verification = await buildRoutedContentPlan(step.client, step.records);
+    const summary = summarizeRoutedContent(verification);
+    const verificationFile = writeJsonLog('thetea-import-routed-verification', {
+        timestamp: new Date().toISOString(),
+        storefrontId: step.storefrontId,
+        summary,
+        operations: verification.map(routedContentOperationEvidence),
+    });
+    if (summary.create || summary.update || summary.conflict) {
+        throw new Error(`Routed content post-apply verification failed: ${JSON.stringify(summary)}. ${verificationFile}`);
+    }
+    return { summary, verificationFile };
 }
 
 function assertArtifactApplyAllowed(manifest, dryRun) {
@@ -301,9 +443,20 @@ async function main() {
         args,
         dryRun,
         selectedProductCodes);
+    assertRoutedContentStepAllowed(preflight.bundle.manifest || {}, args, dryRun, profile);
 
     const { GATEWAY_URL, getToken } = require('../lib/config');
     const token = await getToken();
+    const routedContentRecords = selectRoutedContentRecords(preflight.bundle, selectedProductCodes);
+    const routedContentStep = await prepareRoutedContentStep({
+        args,
+        dryRun,
+        gatewayUrl: GATEWAY_URL,
+        token,
+        manifest: preflight.bundle.manifest || {},
+        records: routedContentRecords,
+        selectedProductCodes,
+    });
     const results = [];
 
     console.log(`TheTea generated import: ${selected.length} file(s) ${dryRun ? '[VALIDATE]' : '[APPLY]'}`);
@@ -314,6 +467,16 @@ async function main() {
     console.log(
         `Publication quality: ${preflight.publicationQuality.findingCount} finding(s), `
         + `${preflight.publicationQuality.blockerCount} blocker(s)`);
+    if (routedContentStep?.skipped) {
+        console.log(`Routed content: SKIPPED (${routedContentStep.reason})`);
+    } else if (routedContentStep) {
+        console.log(
+            `Routed content: CREATE ${routedContentStep.summary.create}; `
+            + `UPDATE ${routedContentStep.summary.update}; `
+            + `NOOP ${routedContentStep.summary.noop}; `
+            + `CONFLICT ${routedContentStep.summary.conflict}`);
+        console.log(`Routed diff: ${routedContentStep.reportFile}`);
+    }
 
     for (const item of selected) {
         try {
@@ -367,6 +530,17 @@ async function main() {
     console.log(`OK: ${ok}`);
     console.log(`FAILED: ${failed}`);
     console.log(`Log: ${logFile}`);
+    if (!dryRun && failed === 0 && routedContentStep && !routedContentStep.skipped) {
+        const rollbackFile = writeRoutedContentRollbackArtifact(
+            routedContentStep.storefrontId,
+            routedContentStep.operations);
+        console.log(`Routed rollback: ${rollbackFile}`);
+        await applyRoutedContentPlanAndRelease(routedContentStep.client, routedContentStep.operations);
+        const verification = await verifyRoutedContentStep(routedContentStep);
+        console.log(
+            `Routed content verified: ${verification.summary.noop} remote resource(s) match. `
+            + `Verification: ${verification.verificationFile}`);
+    }
     process.exit(failed ? 1 : 0);
 }
 
@@ -378,7 +552,10 @@ if (require.main === module) {
 }
 
 module.exports = {
+    assertRoutedContentStepAllowed,
     assertArtifactApplyAllowed,
     main,
     preflightArtifact,
+    selectRoutedContentRecords,
+    shouldRunRoutedContentStep,
 };

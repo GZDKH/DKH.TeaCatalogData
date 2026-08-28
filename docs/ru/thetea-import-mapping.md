@@ -199,7 +199,7 @@ Repeated objects разворачиваются по стабильному disc
 
 Origin country/place, coordinates и altitude живут только в `origins[]`; altitude не дублируется specification. Исправление дробных тысяч применяется только при подтверждающем контексте и всегда отражается в warnings.
 
-Весь локализованный section prose сохраняется в article sidecar, поэтому значения non-canonical локалей не схлопываются. Короткое stable canonical значение может дополнительно остаться typed text specification. Synthetic `*_xN` и `ext_*`, полный Markdown, FAQ и длинные narratives никогда не становятся техническими product attributes и существуют только в `06-routed-content/`. Текущий ProductCatalog importer эти sidecars не импортирует; для них нужен отдельный article/metaobject шаг canary workflow.
+Весь локализованный section prose сохраняется в article sidecar, поэтому значения non-canonical локалей не схлопываются. Короткое stable canonical значение может дополнительно остаться typed text specification. Synthetic `*_xN` и `ext_*`, полный Markdown, FAQ и длинные narratives никогда не становятся техническими product attributes и существуют только в `06-routed-content/`. ProductCatalog payload эти sidecars не импортирует; full product canary должен оркестрировать соответствующий Storefront article/metaobject step через `import-generated.js` или standalone routed-content importer.
 
 Полные TheTea artifacts объявляют `targets.articleCoverage: exact-product-slug`. В этом режиме validation требует ровно одну routed article для каждого сгенерированного product, совпадение article slug с SEO handle product translation и наличие каждой локали snapshot. Если D1 field pack частично отсутствует для локали, transformer фиксирует неполное покрытие и копирует article content по детерминированной цепочке fallback: `en-US`, `en`, `ru-RU`, `ru`, затем первая доступная локаль. Если article body отсутствует во всех локалях, generation всё равно завершается ошибкой. Package-only artifacts объявляют `articleCoverage: none`, потому что routed content ими намеренно не обновляется.
 
@@ -263,7 +263,7 @@ article slug и применяет cover/token references ко всем выбр
 6. После применения категорий нужно получить новый catalog reference и полностью пересобрать artifact; новый reference с прежним artifact будет отклонён по hash.
 7. Финальный mapping показывает `Catalog found: yes` и `Missing categories: 0`.
 8. Валидация managed packages принимает только точный маппинг 25/50/100/250/500 g с `PKG-50G` как единственным default товара. Manifest и reconciliation plan должны содержать `updateScope: packages`. Для проверенной TheTea-выборки reconciliation должен показать 526 selected products, `create: 0`, `conflict: 0`, отсутствие preservation и scope errors, неизменные Product IDs и `fieldChangeCounts: { packages: 526 }` без других fields.
-9. Definitions импортируются до products через SetupTool или другой approved ordered DataExchange workflow. `import-generated.js` поддерживает только `categories` и `products`; definitions, bindings, articles и FAQ sidecars он не загружает.
+9. Definitions импортируются до products через SetupTool или другой approved ordered DataExchange workflow. `import-generated.js` поддерживает только ProductCatalog `categories` и `products`; definitions и catalog bindings он не загружает. Для full product artifacts с `targets.articleCoverage: exact-product-slug` apply также должен получить `--storefront-id=<storefront-uuid>` или `THETEA_STOREFRONT_ID`; importer планирует и применяет соответствующие routed article/FAQ sidecars через Storefront APIs.
 10. Token проходит нужные `CatalogExport`/`CatalogImport` policies и workspace access.
 11. One-product canary проходит dry-run, применяется только после отдельного canary approval и сравнивается после read-back.
 12. Пользователь отдельно согласовал массовый `--apply --yes`.
@@ -299,13 +299,13 @@ node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-02
 node scripts/thetea/fetch-prod-products.js --snapshot=prod-products-2026-06-02
 node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-02 --out=import/thetea/thetea-2026-06-02 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --storefronts=shop-thetea,thetea-wiki
 node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-06-02 --report=thetea-2026-06-02-prod-map --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --only=TEA-CN-XIHU-LONGJING --limit=1
+node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --storefront-id=<storefront-uuid> --only=TEA-CN-XIHU-LONGJING --limit=1
 ```
 
 Canary apply, только после отдельного явного согласования:
 
 ```bash
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --only=TEA-CN-XIHU-LONGJING --limit=1 --apply --yes
+node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --storefront-id=<storefront-uuid> --only=TEA-CN-XIHU-LONGJING --limit=1 --apply --yes
 ```
 
-Массовый product apply — отдельная команда и отдельное согласование после canary read-back. Routed article/FAQ content через `import-generated.js` не применяется.
+Массовый product apply — отдельная команда и отдельное согласование после canary read-back. Routed article/FAQ content теперь fail-closed для exact product/article coverage: production apply не может его пропустить, а routed diff/verification log пишется рядом с ProductCatalog import log.

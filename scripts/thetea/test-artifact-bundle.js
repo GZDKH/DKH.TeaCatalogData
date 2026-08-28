@@ -9,7 +9,12 @@ const {
     verifyArtifactManifest,
     writeJson,
 } = require('./lib/artifact-bundle');
-const { assertArtifactApplyAllowed } = require('./import-generated');
+const {
+    assertArtifactApplyAllowed,
+    assertRoutedContentStepAllowed,
+    selectRoutedContentRecords,
+    shouldRunRoutedContentStep,
+} = require('./import-generated');
 
 const root = fs.mkdtempSync(path.join(os.tmpdir(), 'thetea-artifact-bundle-'));
 try {
@@ -125,6 +130,37 @@ try {
     assert.throws(
         () => assertArtifactApplyAllowed(packagePreserve.manifest, false),
         /cannot be applied through import-generated/);
+
+    const exactArticleManifest = { targets: { articleCoverage: 'exact-product-slug' } };
+    assert(shouldRunRoutedContentStep(exactArticleManifest, {}, 'products'));
+    assert(!shouldRunRoutedContentStep(exactArticleManifest, {}, 'categories'));
+    assert.doesNotThrow(() => assertRoutedContentStepAllowed(exactArticleManifest, {}, true, 'products'));
+    assert.throws(
+        () => assertRoutedContentStepAllowed(exactArticleManifest, { 'skip-routed-content': true }, false, 'products'),
+        /skip-routed-content is not allowed/);
+    assert.throws(
+        () => assertRoutedContentStepAllowed(exactArticleManifest, {}, false, 'products'),
+        /storefront-id=.*required/);
+    assert.doesNotThrow(() => assertRoutedContentStepAllowed(
+        exactArticleManifest,
+        { 'storefront-id': 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa' },
+        false,
+        'products'));
+    assert.deepStrictEqual(selectRoutedContentRecords({
+        routedContent: {
+            articles: [
+                { product: 'TEA-CN-XIHU-LONGJING', slug: 'xihu-longjing' },
+                { product: 'TEA-CN-DA-HONG-PAO', slug: 'da-hong-pao' },
+            ],
+            metaobjects: [
+                { product: 'TEA-CN-XIHU-LONGJING', slug: 'xihu-longjing' },
+                { product: 'TEA-CN-DA-HONG-PAO', slug: 'da-hong-pao' },
+            ],
+        },
+    }, ['TEA-CN-XIHU-LONGJING']), {
+        articles: [{ product: 'TEA-CN-XIHU-LONGJING', slug: 'xihu-longjing' }],
+        metaobjects: [{ product: 'TEA-CN-XIHU-LONGJING', slug: 'xihu-longjing' }],
+    });
 
     const createdPackageManifest = createArtifactManifest(root, {
         snapshotId: 'snapshot-package-scope',
