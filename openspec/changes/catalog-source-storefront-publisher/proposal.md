@@ -57,6 +57,8 @@ storefront catalog and its seller counterparty.
 - Add an AdminGateway REST transport for the existing publication sequence.
 - Bind REST apply receipts to the scoped route identity and sanitized target.
 - Keep the existing gRPC transport as an explicit legacy diagnostics path.
+- Add an explicit retail-price publication step for selected storefront catalog
+  rows that already passed source-row review and exact sellable curation.
 - Update operator documentation and tests.
 
 ## Non-Goals
@@ -65,3 +67,5 @@ storefront catalog and its seller counterparty.
 - No new deployment configuration keys.
 - No ProductCatalog or StorefrontService contract changes in this repository.
 - No Admin UI implementation in this slice.
+- No attempt to represent duplicate source rows as multiple sell-side prices on
+  one ProductCatalog catalog sellable.

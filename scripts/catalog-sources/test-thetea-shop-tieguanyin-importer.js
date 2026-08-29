@@ -11,9 +11,11 @@ const {
 const {
     buildPlan,
     buildReceipt,
+    buildRetailPricePlan,
 } = require('./thetea-shop/tieguanyin-importer');
 const {
     applyImport,
+    applyRetailPrices,
     rollbackImport,
 } = require('./thetea-shop/tieguanyin-operator');
 const {
@@ -27,6 +29,11 @@ const fixture = JSON.parse(fs.readFileSync(path.join(
     'scripts/catalog-sources/thetea-shop/fixtures/tieguanyin-price-base-2026-08-01.json',
 ), 'utf8'));
 const manifest = normalizeTieguanyinSnapshot(fixture);
+const cny = {
+    id: id(70),
+    code: 'CNY',
+    authorityVersion: 2,
+};
 
 function id(number) {
     return `00000000-0000-4000-8000-${String(number).padStart(12, '0')}`;
@@ -153,7 +160,22 @@ const receipt = buildReceipt(plan, readBack, {
 assert.equal(receipt.complete, true);
 assert.equal(receipt.readBackVerified, true);
 assert.equal(receipt.noRetailPricePublished, true);
-    assert.equal(receipt.rollbackMode, 'remove-placement-and-disable-publication');
+assert.equal(receipt.rollbackMode, 'remove-placement-and-disable-publication');
+
+const retailPlan = buildRetailPricePlan(manifest, state({ complete: true }), cny);
+assert.equal(retailPlan.schemaVersion, 'thetea-shop-tieguanyin-retail-price-plan-v1');
+assert.equal(retailPlan.mode, 'dry-run');
+assert.equal(retailPlan.rowCount, 25);
+assert.equal(retailPlan.counts.setRetailPriceCount, 25);
+assert.equal(retailPlan.counts.updateRetailPriceCount, 0);
+assert.equal(retailPlan.counts.derivedPackagePriceCount, 1);
+assert.equal(retailPlan.counts.duplicateObservationCount, 4);
+assert.equal(retailPlan.rows[0].retailPriceAmount, '44');
+assert.equal(
+    retailPlan.rows.find(row => row.gradeLabel === '高山正味铁观音（花香）').retailPriceAmount,
+    '400',
+);
+assert.equal(JSON.stringify(retailPlan).includes(id(1)), false, 'retail plan must not print production ids');
 
 assert.throws(
     () => buildPlan({ ...manifest, target: { ...manifest.target, productCode: 'WRONG' } }, state()),
@@ -179,6 +201,11 @@ class FakeClient {
 
     nextId() { return id(this.sequence++); }
     async fetchState() { return structuredClone(this.data); }
+
+    async fetchCurrency(currencyCode) {
+        assert.equal(currencyCode, 'CNY');
+        return structuredClone(cny);
+    }
 
     async updateGradeValues(_attributeId, values) {
         const current = this.data.variantAttributes[0].values;
@@ -291,6 +318,39 @@ class FakeClient {
         this.data.placements.splice(index, 1);
     }
 
+    async setRetailPrice(catalogSellableId, retailPrice, expected) {
+        const placement = this.data.placements.find(
+            item => item.catalogSellableId === catalogSellableId,
+        );
+        assert.ok(placement);
+        assert.equal(placement.authorityVersion, expected);
+        const revision = {
+            retailPriceRevisionId: this.nextId(),
+            catalogSellableId,
+            revisionNumber: Number(placement.retailPriceRevisionNumber || 0) + 1,
+            price: retailPrice.price,
+            priceBasis: retailPrice.priceBasis,
+            taxDisclosureMode: retailPrice.taxDisclosureMode,
+            validFrom: retailPrice.validFrom,
+            validTo: retailPrice.validTo,
+            authorityVersion: 1,
+            priceDigest: 'a'.repeat(64),
+            tierPrices: [],
+        };
+        placement.retailPriceRevisionId = revision.retailPriceRevisionId;
+        placement.retailPriceRevisionNumber = revision.revisionNumber;
+        placement.authorityVersion++;
+        const detail = this.data.placementDetails.find(
+            item => item.placement.catalogSellableId === catalogSellableId,
+        );
+        detail.placement = placement;
+        detail.retailPriceRevisions = [
+            ...(detail.retailPriceRevisions || []),
+            revision,
+        ];
+        return structuredClone(placement);
+    }
+
 }
 
 (async () => {
@@ -339,6 +399,22 @@ class FakeClient {
     const replay = buildPlan(manifest, await client.fetchState());
     assert.equal(replay.counts.createSellableCount, 0);
     assert.equal(replay.counts.curatePlacementCount, 0);
+
+    const priced = await applyRetailPrices(
+        client,
+        manifest,
+        await client.fetchState(),
+        cny,
+        { rollbackFile },
+    );
+    assert.equal(priced.receipt.complete, true);
+    assert.equal(priced.receipt.retailPricesPublished, true);
+    assert.equal(priced.receipt.mutationCounts.retailPricesPublished, 25);
+    assert.equal(priced.receipt.rollbackMode, 'not-supported-by-released-contracts');
+    const pricedReplay = buildRetailPricePlan(manifest, await client.fetchState(), cny);
+    assert.equal(pricedReplay.counts.setRetailPriceCount, 0);
+    assert.equal(pricedReplay.counts.updateRetailPriceCount, 0);
+    assert.equal(pricedReplay.counts.presentRetailPriceCount, 25);
 
     const rollback = JSON.parse(fs.readFileSync(rollbackFile, 'utf8'));
     const rolledBack = await rollbackImport(client, rollback);

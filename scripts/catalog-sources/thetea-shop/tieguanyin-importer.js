@@ -4,6 +4,8 @@ const { sha256, stableJson } = require('../lib/artifacts');
 
 const PLAN_SCHEMA = 'thetea-shop-tieguanyin-import-plan-v1';
 const RECEIPT_SCHEMA = 'thetea-shop-tieguanyin-import-receipt-v1';
+const RETAIL_PRICE_PLAN_SCHEMA = 'thetea-shop-tieguanyin-retail-price-plan-v1';
+const RETAIL_PRICE_RECEIPT_SCHEMA = 'thetea-shop-tieguanyin-retail-price-receipt-v1';
 const EXPECTED_PRODUCT_CODE = 'TEA-CN-TIE-GUANYIN';
 const EXPECTED_CATALOG_CODE = 'CATALOG-CHINESE-TEA-SHOP';
 const GRADE_PROMPTS = new Set(['grade', 'tier', '等级', '等级/级别']);
@@ -33,6 +35,25 @@ function decimalNumber(value) {
     const units = Number(value.units || 0);
     const nanos = Number(value.nanos || 0);
     return units + nanos / 1_000_000_000;
+}
+
+function decimalString(value) {
+    const number = decimalNumber(value);
+    if (number === null || !Number.isFinite(number)) return null;
+    return String(number).replace(/\.0+$/u, '');
+}
+
+function decimalValue(value) {
+    const textValue = String(value);
+    if (!/^(?:0|[1-9]\d*)(?:\.\d+)?$/u.test(textValue)) {
+        fail('TGY_RETAIL_PRICE_AMOUNT_INVALID');
+    }
+    const [units, fraction = ''] = textValue.split('.');
+    const nanosText = `${fraction}000000000`.slice(0, 9);
+    return {
+        units,
+        nanos: Number(nanosText),
+    };
 }
 
 function exactOne(items, predicate, code) {
@@ -274,14 +295,210 @@ function buildReceipt(plan, readBackPlan, mutationCounts) {
     };
 }
 
+function requireCurrency(currency) {
+    const id = itemId(currency, 'id', 'currencyId');
+    const code = text(currency?.code || currency?.currencyCode).toUpperCase();
+    const authorityVersion = Number(currency?.authorityVersion || currency?.currencyAuthorityVersion);
+    if (!id || code !== 'CNY' || !Number.isSafeInteger(authorityVersion) || authorityVersion <= 0) {
+        fail('TGY_RETAIL_PRICE_CURRENCY_INVALID');
+    }
+    return {
+        id,
+        code,
+        authorityVersion,
+    };
+}
+
+function derivedPackageAmount(candidate, observation) {
+    if (observation.packageAmount !== null) return {
+        amount: observation.packageAmount,
+        source: 'source-package-price',
+    };
+    if (candidate.package?.kind !== 'exact-weight' ||
+        candidate.package?.unitCode !== 'g' ||
+        !observation.perKgAmount) {
+        return null;
+    }
+    const grams = Number(candidate.package.quantity);
+    const perKg = Number(observation.perKgAmount);
+    if (!Number.isFinite(grams) || !Number.isFinite(perKg) || grams <= 0 || perKg <= 0) {
+        return null;
+    }
+    const value = perKg * grams / 1000;
+    return {
+        amount: Number.isInteger(value) ? String(value) : value.toFixed(2).replace(/0+$/u, '').replace(/\.$/u, ''),
+        source: 'derived-from-per-kg',
+    };
+}
+
+function selectedRetailPrice(candidate) {
+    const observations = asArray(candidate.sourcePriceObservations)
+        .filter(item => item && item.currencyCode === 'CNY');
+    for (const observation of observations) {
+        const amount = derivedPackageAmount(candidate, observation);
+        if (amount) {
+            return {
+                ...amount,
+                selectedSourceOrder: observation.sourceOrder,
+                duplicateObservationCount: Math.max(0, observations.length - 1),
+            };
+        }
+    }
+    return null;
+}
+
+function currentRetailPriceRevision(detail) {
+    const placement = detail?.placement;
+    const currentId = itemId(placement, 'retailPriceRevisionId');
+    if (!currentId) return null;
+    const currentNumber = Number(placement?.retailPriceRevisionNumber);
+    return asArray(detail?.retailPriceRevisions).find(revision =>
+        itemId(revision, 'retailPriceRevisionId', 'id') === currentId &&
+        (!Number.isSafeInteger(currentNumber) ||
+            Number(revision.revisionNumber) === currentNumber)) || null;
+}
+
+function retailPriceMatches(revision, currency, state, amount) {
+    if (!revision?.price || !revision?.priceBasis) return false;
+    const priceBasis = revision.priceBasis;
+    return decimalString(revision.price.amount) === amount &&
+        text(revision.price.currencyCode).toUpperCase() === currency.code &&
+        itemId(revision.price, 'currencyId') === currency.id &&
+        Number(revision.price.currencyAuthorityVersion) === currency.authorityVersion &&
+        decimalNumber(priceBasis.quantity) === 500 &&
+        itemId(priceBasis, 'unitId') === itemId(state.baselineSellable, 'unitId') &&
+        Number(priceBasis.unitAuthorityVersion) === Number(state.baselineSellable.unitAuthorityVersion) &&
+        text(priceBasis.referenceUnitKind) === text(state.baselineSellable.referenceUnitKind) &&
+        text(revision.taxDisclosureMode).toLowerCase() === 'included';
+}
+
+function buildRetailPricePlan(manifest, rawState, currencyInput, options = {}) {
+    const state = normalizeState(manifest, rawState);
+    const currency = requireCurrency(currencyInput);
+    const validFrom = options.validFrom || `${manifest.source.priceBaseDate}T00:00:00Z`;
+    const validTo = options.validTo || `${Number(manifest.source.priceBaseDate.slice(0, 4)) + 1}${manifest.source.priceBaseDate.slice(4)}T00:00:00Z`;
+    const placementBySellableId = new Map(
+        state.placements.map(item => [itemId(item, 'sellableUnitId'), item]),
+    );
+    const placementDetailById = new Map(
+        asArray(rawState.placementDetails).map(item => [
+            itemId(item?.placement, 'catalogSellableId'),
+            item,
+        ]),
+    );
+    const sellablesByCode = new Map(
+        state.sellables
+            .filter(item => text(item.internalCode))
+            .map(item => [text(item.internalCode), item]),
+    );
+    const rows = asArray(manifest.exactCandidates).map((candidate, index) => {
+        const price = selectedRetailPrice(candidate);
+        if (!price) fail('TGY_RETAIL_PRICE_SOURCE_PRICE_MISSING', candidate.gradeLabel);
+        const sellable = sellablesByCode.get(candidate.sellableInternalCode);
+        if (!sellable) fail('TGY_RETAIL_PRICE_SELLABLE_MISSING', candidate.sellableInternalCode);
+        const placement = placementBySellableId.get(itemId(sellable, 'sellableUnitId', 'id'));
+        if (!placement) fail('TGY_RETAIL_PRICE_PLACEMENT_MISSING', candidate.sellableInternalCode);
+        if (placement.isVisible !== true) {
+            fail('TGY_RETAIL_PRICE_PLACEMENT_NOT_VISIBLE', candidate.sellableInternalCode);
+        }
+        const detail = placementDetailById.get(itemId(placement, 'catalogSellableId'));
+        const current = currentRetailPriceRevision(detail);
+        const status = retailPriceMatches(current, currency, state, price.amount)
+            ? 'present'
+            : current
+                ? 'update'
+                : 'set';
+        return {
+            sourceOrder: index + 1,
+            gradeLabel: candidate.gradeLabel,
+            sellableInternalCode: candidate.sellableInternalCode,
+            retailPriceAmount: price.amount,
+            currencyCode: currency.code,
+            priceBasis: {
+                quantity: '500',
+                unitCode: candidate.package.unitCode,
+            },
+            taxDisclosureMode: 'included',
+            validFrom,
+            validTo,
+            priceSource: price.source,
+            selectedSourceOrder: price.selectedSourceOrder,
+            duplicateObservationCount: price.duplicateObservationCount,
+            retailPriceStatus: status,
+        };
+    });
+    const binding = {
+        manifestSha256: manifest.manifestSha256,
+        productCode: EXPECTED_PRODUCT_CODE,
+        catalogCode: EXPECTED_CATALOG_CODE,
+        currencyCode: currency.code,
+        validFrom,
+        validTo,
+        rowCount: rows.length,
+        rows,
+        counts: {
+            candidateCount: rows.length,
+            presentRetailPriceCount: rows.filter(row => row.retailPriceStatus === 'present').length,
+            setRetailPriceCount: rows.filter(row => row.retailPriceStatus === 'set').length,
+            updateRetailPriceCount: rows.filter(row => row.retailPriceStatus === 'update').length,
+            derivedPackagePriceCount: rows.filter(row => row.priceSource === 'derived-from-per-kg').length,
+            duplicateObservationCount: rows.reduce(
+                (total, row) => total + row.duplicateObservationCount,
+                0,
+            ),
+        },
+    };
+    return {
+        schemaVersion: RETAIL_PRICE_PLAN_SCHEMA,
+        mode: 'dry-run',
+        complete: true,
+        networkReadsPerformed: true,
+        remoteMutationAttempted: false,
+        ...binding,
+        planSha256: sha256(stableJson(binding)),
+    };
+}
+
+function buildRetailPriceReceipt(plan, readBackPlan, mutationCounts) {
+    if (readBackPlan.counts.setRetailPriceCount !== 0 ||
+        readBackPlan.counts.updateRetailPriceCount !== 0) {
+        fail('TGY_RETAIL_PRICE_READ_BACK_INCOMPLETE');
+    }
+    const binding = {
+        planSha256: plan.planSha256,
+        manifestSha256: plan.manifestSha256,
+        productCode: plan.productCode,
+        catalogCode: plan.catalogCode,
+        currencyCode: plan.currencyCode,
+        rowCount: plan.rowCount,
+        mutationCounts,
+        readBackPlanSha256: readBackPlan.planSha256,
+        rollbackMode: 'not-supported-by-released-contracts',
+    };
+    return {
+        schemaVersion: RETAIL_PRICE_RECEIPT_SCHEMA,
+        complete: true,
+        readBackVerified: true,
+        retailPricesPublished: true,
+        ...binding,
+        receiptSha256: sha256(stableJson(binding)),
+    };
+}
+
 module.exports = {
     EXPECTED_CATALOG_CODE,
     EXPECTED_PRODUCT_CODE,
     PLAN_SCHEMA,
     RECEIPT_SCHEMA,
+    RETAIL_PRICE_PLAN_SCHEMA,
+    RETAIL_PRICE_RECEIPT_SCHEMA,
     buildPlan,
     buildReceipt,
+    buildRetailPricePlan,
+    buildRetailPriceReceipt,
     decimalNumber,
+    decimalValue,
     guidValue,
     normalizeState,
+    requireCurrency,
 };

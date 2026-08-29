@@ -8,4 +8,7 @@
 - [x] Add focused tests for REST headers, body shape, receipt metadata, and leakage guard.
 - [x] Add supported full prepared-bundle importer for AdminGateway REST scope.
 - [x] Resolve normal AdminGateway REST targets from storefront/catalog business codes.
+- [x] Add explicit ProductCatalog retail-price publication for selected exact
+  source rows.
+- [x] Add plan/receipt/read-back coverage for retail-price publication.
 - [ ] Merge through GitLab MR and verify post-main pipeline.

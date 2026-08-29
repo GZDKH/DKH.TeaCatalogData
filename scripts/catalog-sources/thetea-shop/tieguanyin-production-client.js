@@ -268,6 +268,19 @@ class TieguanyinProductionClient {
         );
     }
 
+    async fetchCurrency(currencyCode) {
+        const response = await this.rest.get(
+            `/api/v1/currencies?search=${encodeURIComponent(currencyCode)}&page=1&pageSize=100`,
+        );
+        const matches = (response?.items || []).filter(item =>
+            String(item?.code || item?.currencyCode || '').trim().toUpperCase() ===
+            String(currencyCode || '').trim().toUpperCase());
+        if (matches.length !== 1) {
+            throw new Error(`TGY_RETAIL_PRICE_CURRENCY_NOT_EXACT: ${currencyCode}`);
+        }
+        return matches[0];
+    }
+
     generateCombinations(productId, productAttributeId) {
         return this.rest.post(
             `/api/v1/variant-templates/products/${productId}/generate-combinations`,
@@ -306,6 +319,18 @@ class TieguanyinProductionClient {
             catalogSellableId: guid(catalogSellableId),
             expectedAuthorityVersion,
         });
+    }
+
+    setRetailPrice(catalogSellableId, retailPrice, expectedAuthorityVersion) {
+        return this.grpc.invoke(
+            PROTOS.curation,
+            method('curation', 'SetCatalogSellableRetailPrice'),
+            {
+                catalogSellableId: guid(catalogSellableId),
+                retailPrice,
+                expectedAuthorityVersion,
+            },
+        );
     }
 
 }

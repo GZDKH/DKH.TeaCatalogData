@@ -57,6 +57,36 @@ CommerceNetwork participant or channel identifiers.
 - **AND** its receipt SHALL NOT contain bearer token material or raw
   CommerceNetwork participant/channel identifiers.
 
+### Requirement: Selected Source Rows Can Publish Retail Price Authority
+
+The catalog-source storefront operator SHALL provide an explicit, audited step
+that publishes ProductCatalog retail-price authority for reviewed source rows
+after exact catalog sellables exist.
+
+#### Scenario: retail price dry-run requires curated catalog sellables
+
+- **WHEN** the operator runs with `--publish-retail-prices`
+- **THEN** it SHALL resolve CNY currency authority through AdminGateway
+- **AND** it SHALL fail closed if any selected source row lacks a visible
+  catalog sellable in the target catalog
+- **AND** it SHALL write a retail-price plan without bearer token material or
+  production GUIDs.
+
+#### Scenario: retail price apply uses ProductCatalog authority
+
+- **WHEN** the operator runs with `--publish-retail-prices --apply --yes`
+- **THEN** it SHALL call ProductCatalog `SetCatalogSellableRetailPrice` for each
+  selected row whose current retail price is missing or stale
+- **AND** it SHALL use the exact 500 g sellable unit as the price basis
+- **AND** it SHALL verify read-back before writing the receipt.
+
+#### Scenario: duplicate source prices remain auditable
+
+- **WHEN** multiple source rows map to the same exact grade/package sellable
+- **THEN** the retail-price plan SHALL expose the duplicate observation count
+- **AND** it SHALL publish at most one current retail price for that
+  ProductCatalog catalog sellable.
+
 ### Requirement: Legacy gRPC Publication Compatibility
 
 The catalog-source publication CLI SHALL keep the existing gRPC transport for
