@@ -39,3 +39,31 @@ Receipts now support two contract identities:
 Both modes continue to bind target endpoint/TLS mode, source, selected item,
 semantic digest, reference price digest, attempt chain, and latest pointer
 before any remote mutation.
+
+The TheTea Shop Tieguanyin operator now has a separate retail-price publication
+phase behind `--publish-retail-prices`. The existing placement import remains
+request-only by default. When the flag is present, the operator resolves the
+current CNY currency authority through AdminGateway, builds a dry-run
+retail-price plan from the reviewed source fixture, and applies prices through
+ProductCatalog's released `SetCatalogSellableRetailPrice` gRPC method only after
+`--apply --yes`.
+
+The plan is intentionally catalog-sellable scoped:
+
+- Every row must already have a visible `CatalogSellable` in
+  `CATALOG-CHINESE-TEA-SHOP`.
+- The retail price basis is the exact 500 g sellable unit.
+- One current retail price is published per unique exact sellable.
+- Duplicate source price observations for the same grade/package stay visible
+  in the plan as duplicate observation counts; they are not silently converted
+  into multiple sell-side prices because the ProductCatalog authority model has
+  one current retail price per catalog sellable.
+- Exact 500 g rows with only a per-kg source amount derive their package amount
+  from the source per-kg price and mark that provenance in the plan.
+
+Apply writes a dedicated `retail-price-receipt.json` with read-back evidence and
+never stores bearer material or production GUIDs in the public plan. If the same
+run created placements, the private rollback manifest is refreshed with the new
+placement authority versions after each price revision so placement rollback
+does not fail only because retail price publication advanced the placement
+version.

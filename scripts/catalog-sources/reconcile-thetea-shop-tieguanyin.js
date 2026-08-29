@@ -6,8 +6,15 @@ const path = require('path');
 const { parseArgs, REPO_ROOT } = require('../thetea/lib/env');
 const { readJson, safeSegment, writeJsonAtomic } = require('./lib/artifacts');
 const { normalizeTieguanyinSnapshot } = require('./thetea-shop/tieguanyin-normalizer');
-const { buildPlan } = require('./thetea-shop/tieguanyin-importer');
-const { applyImport, rollbackImport } = require('./thetea-shop/tieguanyin-operator');
+const {
+    buildPlan,
+    buildRetailPricePlan,
+} = require('./thetea-shop/tieguanyin-importer');
+const {
+    applyImport,
+    applyRetailPrices,
+    rollbackImport,
+} = require('./thetea-shop/tieguanyin-operator');
 const {
     AdminGatewayClient,
     ProductCatalogGrpcClient,
@@ -56,6 +63,18 @@ function createClient(args) {
     return new TieguanyinProductionClient(rest, grpc);
 }
 
+function oneYearAfter(date) {
+    const year = Number(date.slice(0, 4));
+    return `${year + 1}${date.slice(4)}T00:00:00Z`;
+}
+
+function retailPriceOptions(args, manifest) {
+    return {
+        validFrom: String(args['retail-valid-from'] || `${manifest.source.priceBaseDate}T00:00:00Z`),
+        validTo: String(args['retail-valid-to'] || oneYearAfter(manifest.source.priceBaseDate)),
+    };
+}
+
 async function main(argv = process.argv.slice(2)) {
     const args = parseArgs(argv);
     const client = createClient(args);
@@ -77,8 +96,22 @@ async function main(argv = process.argv.slice(2)) {
     );
     const plan = buildPlan(manifest, rawState);
     writeJsonAtomic(path.join(directory, 'plan.json'), plan);
-    if (!bool(args.apply)) {
-        process.stdout.write(JSON.stringify(plan) + '\n');
+    const publishRetailPrices = bool(args['publish-retail-prices']);
+    const apply = bool(args.apply);
+    let currency = null;
+    let retailPricePlan = null;
+    if (publishRetailPrices && !apply) {
+        currency = await client.fetchCurrency('CNY');
+        retailPricePlan = buildRetailPricePlan(
+            manifest,
+            rawState,
+            currency,
+            retailPriceOptions(args, manifest),
+        );
+        writeJsonAtomic(path.join(directory, 'retail-price-plan.json'), retailPricePlan);
+    }
+    if (!apply) {
+        process.stdout.write(JSON.stringify(retailPricePlan ? { plan, retailPricePlan } : plan) + '\n');
         return;
     }
     if (!bool(args.yes)) throw new Error('TGY_IMPORT_APPLY_REQUIRES_YES');
@@ -101,7 +134,26 @@ async function main(argv = process.argv.slice(2)) {
         throw error;
     }
     writeJsonAtomic(path.join(directory, 'receipt.json'), result.receipt);
-    process.stdout.write(JSON.stringify(result.receipt) + '\n');
+    let retailPriceReceipt = null;
+    if (publishRetailPrices) {
+        currency = currency || await client.fetchCurrency('CNY');
+        const retailResult = await applyRetailPrices(
+            client,
+            manifest,
+            await client.fetchState(manifest.target.productCode, manifest.target.catalogCode),
+            currency,
+            {
+                ...retailPriceOptions(args, manifest),
+                rollbackFile,
+            },
+        );
+        writeJsonAtomic(path.join(directory, 'retail-price-plan.json'), retailResult.plan);
+        retailPriceReceipt = retailResult.receipt;
+        writeJsonAtomic(path.join(directory, 'retail-price-receipt.json'), retailPriceReceipt);
+    }
+    process.stdout.write(JSON.stringify(retailPriceReceipt
+        ? { receipt: result.receipt, retailPriceReceipt }
+        : result.receipt) + '\n');
 }
 
 if (require.main === module) {

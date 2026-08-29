@@ -71,6 +71,35 @@ groups them under the existing Product card. It copies the already approved
 baseline placement's source policy and never creates retail prices, stock
 claims, sellers, offers, shipping promises or media rights.
 
+After commercial approval for the selected storefront catalog, the same
+operator can publish ProductCatalog retail-price authority for the 25 unique
+exact 500 g rows:
+
+```bash
+node scripts/catalog-sources/reconcile-thetea-shop-tieguanyin.js \
+  --run-id=tieguanyin-production-retail-prices \
+  --publish-retail-prices
+```
+
+Dry-run writes `retail-price-plan.json` next to the placement plan. Apply still
+requires both explicit switches:
+
+```bash
+node scripts/catalog-sources/reconcile-thetea-shop-tieguanyin.js \
+  --run-id=tieguanyin-production-retail-prices-apply \
+  --publish-retail-prices \
+  --apply --yes
+```
+
+The retail-price step uses the existing generic ProductCatalog
+`SetCatalogSellableRetailPrice` contract. It publishes one current CNY price per
+unique catalog sellable, with a 500 g price basis and included tax disclosure,
+then performs read-back verification. Duplicate source rows for the same
+grade/package are retained as source observations in the plan because one
+CatalogSellable has only one current retail price. Rows that expose only a
+per-kg amount but an exact 500 g package are marked as derived package prices in
+the plan.
+
 Rollback requires the private manifest from that exact apply run:
 
 ```bash
@@ -85,3 +114,8 @@ reusable instead of being irreversibly retired. Variant values/combinations
 remain as inert Product metadata because the released contracts intentionally
 do not provide an unsafe physical-delete rollback for referenced variant
 history.
+
+Retail-price apply uses immutable price revisions. The released contracts do
+not provide a clear-current-price rollback; if the same run also created
+placements, the private rollback manifest is updated with the latest placement
+authority versions so placement rollback still works.

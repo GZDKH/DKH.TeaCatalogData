@@ -5,10 +5,14 @@ const path = require('path');
 const {
     EXPECTED_CATALOG_CODE,
     EXPECTED_PRODUCT_CODE,
+    buildRetailPricePlan,
+    buildRetailPriceReceipt,
     buildPlan,
     buildReceipt,
+    decimalValue,
     guidValue,
     normalizeState,
+    requireCurrency,
 } = require('./tieguanyin-importer');
 const { writeJsonAtomic } = require('../lib/artifacts');
 
@@ -110,6 +114,91 @@ function writePrivate(file, value) {
     } finally {
         process.umask(previous);
     }
+}
+
+function selectedPlanRow(plan, sellableInternalCode) {
+    const row = (plan.rows || []).find(item => item.sellableInternalCode === sellableInternalCode);
+    if (!row) throw new Error(`TGY_RETAIL_PRICE_PLAN_ROW_MISSING: ${sellableInternalCode}`);
+    return row;
+}
+
+function retailPriceInput(row, state, currency) {
+    return {
+        price: {
+            amount: decimalValue(row.retailPriceAmount),
+            currencyId: { value: currency.id },
+            currencyCode: currency.code,
+            currencyAuthorityVersion: currency.authorityVersion,
+        },
+        priceBasis: {
+            quantity: { units: '500', nanos: 0 },
+            unitId: { value: id(state.baselineSellable, 'unitId') },
+            unitAuthorityVersion: Number(state.baselineSellable.unitAuthorityVersion),
+            referenceUnitKind: String(state.baselineSellable.referenceUnitKind),
+        },
+        taxDisclosureMode: row.taxDisclosureMode,
+        validFrom: row.validFrom,
+        validTo: row.validTo,
+    };
+}
+
+function refreshRollbackPlacementAuthority(rollbackFile, catalogSellableId, authorityVersion) {
+    if (!rollbackFile || !fs.existsSync(rollbackFile)) return;
+    const rollback = JSON.parse(fs.readFileSync(rollbackFile, 'utf8'));
+    if (rollback?.schemaVersion !== ROLLBACK_SCHEMA ||
+        !Array.isArray(rollback.createdPlacements)) {
+        return;
+    }
+    let changed = false;
+    rollback.createdPlacements = rollback.createdPlacements.map(item => {
+        if (item.catalogSellableId !== catalogSellableId) return item;
+        changed = true;
+        return {
+            ...item,
+            authorityVersion: Number(authorityVersion),
+        };
+    });
+    if (changed) writePrivate(rollbackFile, rollback);
+}
+
+async function applyRetailPrices(client, manifest, initialRawState, currencyInput, options = {}) {
+    const currency = requireCurrency(currencyInput);
+    const initialPlan = buildRetailPricePlan(manifest, initialRawState, currency, options);
+    let rawState = initialRawState;
+    let pricesPublished = 0;
+
+    for (const row of initialPlan.rows.filter(item => item.retailPriceStatus !== 'present')) {
+        const state = normalizeState(manifest, rawState);
+        const sellable = state.sellables.find(
+            item => String(item.internalCode || '') === row.sellableInternalCode,
+        );
+        if (!sellable) throw new Error(`TGY_RETAIL_PRICE_SELLABLE_MISSING: ${row.sellableInternalCode}`);
+        const placement = state.placements.find(
+            item => id(item, 'sellableUnitId') === id(sellable, 'sellableUnitId', 'id'),
+        );
+        if (!placement) throw new Error(`TGY_RETAIL_PRICE_PLACEMENT_MISSING: ${row.sellableInternalCode}`);
+        const catalogSellableId = id(placement, 'catalogSellableId');
+        const updated = await client.setRetailPrice(
+            catalogSellableId,
+            retailPriceInput(selectedPlanRow(initialPlan, row.sellableInternalCode), state, currency),
+            Number(placement.authorityVersion),
+        );
+        refreshRollbackPlacementAuthority(
+            options.rollbackFile,
+            catalogSellableId,
+            Number(updated?.authorityVersion || Number(placement.authorityVersion) + 1),
+        );
+        pricesPublished++;
+        rawState = await client.fetchState(EXPECTED_PRODUCT_CODE, EXPECTED_CATALOG_CODE);
+    }
+
+    const readBackPlan = buildRetailPricePlan(manifest, rawState, currency, options);
+    return {
+        plan: initialPlan,
+        receipt: buildRetailPriceReceipt(initialPlan, readBackPlan, {
+            retailPricesPublished: pricesPublished,
+        }),
+    };
 }
 
 async function applyImport(client, manifest, initialRawState, rollbackFile) {
@@ -336,6 +425,7 @@ async function rollbackImport(client, rollback) {
 module.exports = {
     ROLLBACK_SCHEMA,
     applyImport,
+    applyRetailPrices,
     rollbackImport,
     sourcePolicyInput,
     valuePayload,
