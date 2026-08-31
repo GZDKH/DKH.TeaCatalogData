@@ -6,6 +6,7 @@ const SNAPSHOT_SCHEMA = 'thetea-shop-tieguanyin-price-base-v1';
 const NORMALIZED_SCHEMA = 'thetea-shop-tieguanyin-grade-manifest-v1';
 const PRODUCT_CODE = 'TEA-CN-TIE-GUANYIN';
 const CATALOG_CODE = 'CATALOG-CHINESE-TEA-SHOP';
+const SOURCE_SLUG = 'thetea-shop-tie-guanyin';
 
 function reject(code) {
     const error = new Error(code);
@@ -23,6 +24,10 @@ function assertPositiveDecimal(value, optional = false) {
 
 function stableCode(prefix, value) {
     return `${prefix}-${sha256(Buffer.from(value, 'utf8')).slice(0, 12).toUpperCase()}`;
+}
+
+function sourceOfferClientReference(sourceOrder) {
+    return `${SOURCE_SLUG}-row-${String(sourceOrder).padStart(3, '0')}`;
 }
 
 function normalizeRow(row, index, source) {
@@ -70,6 +75,64 @@ function assertExpected(actual, expected) {
     }
 }
 
+function fixedPackageKey(row) {
+    if (row.package.kind !== 'exact-weight') return null;
+    return `${row.gradeLabel}\u0000${row.package.quantity}\u0000${row.package.unitCode}`;
+}
+
+function sourceOfferRow(row, duplicateKeyCounts) {
+    const gradeValueCode = stableCode('TGY-GRADE', row.gradeLabel);
+    const key = fixedPackageKey(row);
+    const diagnostics = [];
+    if (row.package.kind === 'weight-only') {
+        diagnostics.push('exact-sale-quantity-missing');
+    }
+    if (row.package.kind === 'exact-weight' && row.sourcePriceObservation.packageAmount === null) {
+        diagnostics.push('source-package-price-missing');
+    }
+    if (key && duplicateKeyCounts.get(key) > 1) {
+        diagnostics.push('duplicate-fixed-package-source-price');
+    }
+
+    const priceObservation = row.sourcePriceObservation;
+    return {
+        sourceOrder: row.sourceOrder,
+        clientReference: sourceOfferClientReference(row.sourceOrder),
+        productCode: PRODUCT_CODE,
+        catalogCode: CATALOG_CODE,
+        gradeLabel: row.gradeLabel,
+        gradeValueCode,
+        package: { ...row.package },
+        sellableInternalCode: row.package.kind === 'exact-weight'
+            ? stableCode(`${PRODUCT_CODE}-500G`, `${row.gradeLabel}|500|g`)
+            : null,
+        offerPublicationMode: diagnostics.includes('exact-sale-quantity-missing') ||
+            diagnostics.includes('source-package-price-missing')
+            ? 'request-only'
+            : 'source-reference',
+        sourcePriceObservation: {
+            ...priceObservation,
+            referencePrices: [
+                ...(priceObservation.packageAmount === null
+                    ? []
+                    : [{
+                        observationKey: `${sourceOfferClientReference(row.sourceOrder)}.price-pack`,
+                        amount: priceObservation.packageAmount,
+                        basisUnitCode: 'package',
+                        derivationKind: 'source',
+                    }]),
+                {
+                    observationKey: `${sourceOfferClientReference(row.sourceOrder)}.price-kg`,
+                    amount: priceObservation.perKgAmount,
+                    basisUnitCode: 'kg',
+                    derivationKind: 'source',
+                },
+            ],
+        },
+        diagnostics,
+    };
+}
+
 function normalizeTieguanyinSnapshot(snapshot) {
     if (!snapshot || snapshot.schemaVersion !== SNAPSHOT_SCHEMA || !Array.isArray(snapshot.rows)) {
         reject('THETEA_SHOP_SNAPSHOT_INVALID');
@@ -93,7 +156,13 @@ function normalizeTieguanyinSnapshot(snapshot) {
     const rows = snapshot.rows.map((row, index) => normalizeRow(row, index, source));
     const gradeLabels = new Set(rows.map(row => row.gradeLabel));
     const exactGroups = new Map();
+    const fixedPackageCounts = new Map();
     const blockedObservations = [];
+
+    for (const row of rows) {
+        const key = fixedPackageKey(row);
+        if (key) fixedPackageCounts.set(key, (fixedPackageCounts.get(key) || 0) + 1);
+    }
 
     for (const row of rows) {
         const gradeValueCode = stableCode('TGY-GRADE', row.gradeLabel);
@@ -144,6 +213,7 @@ function normalizeTieguanyinSnapshot(snapshot) {
             sourcePriceObservations: candidate.sourcePriceObservations,
             blockedReason: 'seller-and-commercial-authority-missing',
         }));
+    const sourceOfferRows = rows.map(row => sourceOfferRow(row, fixedPackageCounts));
     const summary = {
         rowCount: rows.length,
         uniqueGradeLabelCount: gradeLabels.size,
@@ -151,8 +221,19 @@ function normalizeTieguanyinSnapshot(snapshot) {
         uniqueFixedPackageCandidateCount: exactCandidates.length,
         duplicateFixedPackageKeyCount: duplicateOfferCandidates.length,
         weightOnlyRowCount: blockedObservations.length,
+        sourceOfferRowCount: sourceOfferRows.length,
     };
-    assertExpected(summary, snapshot.expected);
+    assertExpected(
+        {
+            rowCount: summary.rowCount,
+            uniqueGradeLabelCount: summary.uniqueGradeLabelCount,
+            fixedPackageRowCount: summary.fixedPackageRowCount,
+            uniqueFixedPackageCandidateCount: summary.uniqueFixedPackageCandidateCount,
+            duplicateFixedPackageKeyCount: summary.duplicateFixedPackageKeyCount,
+            weightOnlyRowCount: summary.weightOnlyRowCount,
+        },
+        snapshot.expected,
+    );
 
     return {
         schemaVersion: NORMALIZED_SCHEMA,
@@ -164,12 +245,14 @@ function normalizeTieguanyinSnapshot(snapshot) {
         },
         summary,
         exactCandidates,
+        sourceOfferRows,
         duplicateOfferCandidates,
         blockedObservations,
         manifestSha256: sha256(stableJson({
             source: { ...source, rowsSha256: rowsHash },
             summary,
             exactCandidates,
+            sourceOfferRows,
             duplicateOfferCandidates,
             blockedObservations,
         })),
@@ -182,5 +265,6 @@ module.exports = {
     PRODUCT_CODE,
     SNAPSHOT_SCHEMA,
     normalizeTieguanyinSnapshot,
+    sourceOfferClientReference,
     stableCode,
 };

@@ -8,6 +8,7 @@ retail-price, stock, seller, fulfilment or media-licensing authority.
 Tieguanyin price base into:
 
 - exact fixed-package physical candidates;
+- source-offer rows preserved one-for-one from the supplier price list;
 - repeated price observations for one exact physical identity;
 - rows blocked because the source provides no exact sale quantity.
 
@@ -15,6 +16,21 @@ The normalized source price observations always have `retailPrice: false` and
 `publicationAllowed: false`. A later authenticated operator may use only the
 physical identity candidates; publishing a seller offer or direct-order price
 requires separately verified internal commercial authority.
+
+The ProductCatalog preparation and Commerce source-offer export are intentionally
+separate projections:
+
+- `exactCandidates` contains 25 unique exact 500 g physical identities for
+  variant/sellable/placement preparation.
+- `sourceOfferRows` contains all 36 supplier price-list rows for admin
+  source-offer import/export, including duplicate grade/package rows with
+  different prices.
+
+`tieguanyin-source-offer-bundle.js` builds an AdminGateway-compatible
+`commerce-source-offer-bundle` from `sourceOfferRows`. The bundle preserves row
+numbers, stable client references, CNY source reference prices, grade/package
+offer terms, mapping hints and diagnostics. It does not publish seller cost,
+margin, stock, fulfilment or direct-order authority.
 
 Run the offline contract test with:
 
