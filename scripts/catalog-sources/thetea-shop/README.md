@@ -20,7 +20,8 @@ requires separately verified internal commercial authority.
 The ProductCatalog preparation and Commerce source-offer export are intentionally
 separate projections:
 
-- `exactCandidates` contains 25 unique exact 500 g physical identities for
+- `exactCandidates` contains the 31 unique supplier grade identities projected
+  across the standard 50 g, 100 g, 250 g, 500 g and 1000 g packages for
   variant/sellable/placement preparation.
 - `sourceOfferRows` contains all 36 supplier price-list rows for admin
   source-offer import/export, including duplicate grade/package rows with
@@ -80,12 +81,12 @@ node scripts/catalog-sources/reconcile-thetea-shop-tieguanyin.js \
   --apply --yes
 ```
 
-The apply sequence retains existing `Everyday`/50 g state, appends the 25
-unique exact 500 g grade values, generates exact combinations, creates
-request-only SellableUnits, activates them, enables exact publication, and
-groups them under the existing Product card. It copies the already approved
-baseline placement's source policy and never creates retail prices, stock
-claims, sellers, offers, shipping promises or media rights.
+The apply sequence retains existing baseline state, appends the missing
+supplier grade values, generates exact combinations, creates SellableUnits for
+the standard 50 g, 100 g, 250 g, 500 g and 1000 g packages, activates them,
+enables exact publication, and groups them under the existing Product card. It
+copies the already approved baseline placement's source policy and never
+creates stock claims, sellers, fulfilment promises or media rights.
 
 After commercial approval for the selected storefront catalog, the same
 operator can publish ProductCatalog retail-price authority for the 25 unique
@@ -109,12 +110,12 @@ node scripts/catalog-sources/reconcile-thetea-shop-tieguanyin.js \
 
 The retail-price step uses the existing generic ProductCatalog
 `SetCatalogSellableRetailPrice` contract. It publishes one current CNY price per
-unique catalog sellable, with a 500 g price basis and included tax disclosure,
-then performs read-back verification. Duplicate source rows for the same
-grade/package are retained as source observations in the plan because one
-CatalogSellable has only one current retail price. Rows that expose only a
-per-kg amount but an exact 500 g package are marked as derived package prices in
-the plan.
+unique catalog sellable, with the sellable's exact package quantity as the price
+basis and included tax disclosure, then performs read-back verification.
+Duplicate source rows for the same grade/package are retained as source
+observations in the plan because one CatalogSellable has only one current retail
+price. Rows that expose only a per-kg amount are marked as derived package
+prices in the plan.
 
 Rollback requires the private manifest from that exact apply run:
 
