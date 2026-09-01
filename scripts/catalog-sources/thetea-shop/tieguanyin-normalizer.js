@@ -7,6 +7,7 @@ const NORMALIZED_SCHEMA = 'thetea-shop-tieguanyin-grade-manifest-v1';
 const PRODUCT_CODE = 'TEA-CN-TIE-GUANYIN';
 const CATALOG_CODE = 'CATALOG-CHINESE-TEA-SHOP';
 const SOURCE_SLUG = 'thetea-shop-tie-guanyin';
+const STANDARD_PACK_SIZES_GRAMS = [50, 100, 250, 500, 1000];
 
 function reject(code) {
     const error = new Error(code);
@@ -28,6 +29,18 @@ function stableCode(prefix, value) {
 
 function sourceOfferClientReference(sourceOrder) {
     return `${SOURCE_SLUG}-row-${String(sourceOrder).padStart(3, '0')}`;
+}
+
+function derivedPackAmount(perKgAmount, grams) {
+    const perKg = Number(perKgAmount);
+    const quantity = Number(grams);
+    if (!Number.isFinite(perKg) || !Number.isFinite(quantity) || perKg <= 0 || quantity <= 0) {
+        reject('THETEA_SHOP_PRICE_INVALID');
+    }
+    const value = perKg * quantity / 1000;
+    return Number.isInteger(value)
+        ? String(value)
+        : value.toFixed(2).replace(/0+$/u, '').replace(/\.$/u, '');
 }
 
 function normalizeRow(row, index, source) {
@@ -155,9 +168,8 @@ function normalizeTieguanyinSnapshot(snapshot) {
 
     const rows = snapshot.rows.map((row, index) => normalizeRow(row, index, source));
     const gradeLabels = new Set(rows.map(row => row.gradeLabel));
-    const exactGroups = new Map();
+    const gradeGroups = new Map();
     const fixedPackageCounts = new Map();
-    const blockedObservations = [];
 
     for (const row of rows) {
         const key = fixedPackageKey(row);
@@ -166,44 +178,53 @@ function normalizeTieguanyinSnapshot(snapshot) {
 
     for (const row of rows) {
         const gradeValueCode = stableCode('TGY-GRADE', row.gradeLabel);
-        if (row.package.kind === 'weight-only') {
-            blockedObservations.push({
-                sourceOrder: row.sourceOrder,
-                gradeLabel: row.gradeLabel,
-                gradeValueCode,
-                sourcePriceObservation: row.sourcePriceObservation,
-                blockedReason: 'exact-sale-quantity-missing',
-            });
-            continue;
-        }
-        const key = `${row.gradeLabel}\u0000${row.package.quantity}\u0000${row.package.unitCode}`;
-        const group = exactGroups.get(key) || {
-            key,
+        const group = gradeGroups.get(row.gradeLabel) || {
+            key: row.gradeLabel,
             gradeLabel: row.gradeLabel,
             gradeValueCode,
-            package: row.package,
             observations: [],
         };
         group.observations.push({
             sourceOrder: row.sourceOrder,
+            sourcePackage: { ...row.package },
             ...row.sourcePriceObservation,
         });
-        exactGroups.set(key, group);
+        gradeGroups.set(row.gradeLabel, group);
     }
 
-    const exactCandidates = [...exactGroups.values()].map(group => ({
-        productCode: PRODUCT_CODE,
-        catalogCode: CATALOG_CODE,
-        gradeLabel: group.gradeLabel,
-        gradeValueCode: group.gradeValueCode,
-        package: group.package,
-        sellableInternalCode: stableCode(
-            `${PRODUCT_CODE}-500G`,
-            `${group.gradeLabel}|500|g`,
-        ),
-        publicationMode: 'request-only',
-        sourcePriceObservations: group.observations,
-    }));
+    const exactCandidates = [...gradeGroups.values()].flatMap(group =>
+        STANDARD_PACK_SIZES_GRAMS.map(grams => ({
+            productCode: PRODUCT_CODE,
+            catalogCode: CATALOG_CODE,
+            gradeLabel: group.gradeLabel,
+            gradeValueCode: group.gradeValueCode,
+            package: {
+                kind: 'exact-weight',
+                quantity: String(grams),
+                unitCode: 'g',
+            },
+            sellableInternalCode: stableCode(
+                `${PRODUCT_CODE}-${grams}G`,
+                `${group.gradeLabel}|${grams}|g`,
+            ),
+            publicationMode: 'public-retail',
+            sourcePriceObservations: group.observations.map(observation => {
+                const exactSourcePackage = observation.sourcePackage.kind === 'exact-weight' &&
+                    observation.sourcePackage.quantity === String(grams) &&
+                    observation.packageAmount !== null;
+                return {
+                    ...observation,
+                    packageAmount: exactSourcePackage
+                        ? observation.packageAmount
+                        : derivedPackAmount(observation.perKgAmount, grams),
+                    packageAmountSource: exactSourcePackage
+                        ? 'source-package-price'
+                        : 'derived-from-per-kg',
+                    retailPrice: true,
+                    publicationAllowed: true,
+                };
+            }),
+        })));
     const duplicateOfferCandidates = exactCandidates
         .filter(candidate => candidate.sourcePriceObservations.length > 1)
         .map(candidate => ({
@@ -211,16 +232,22 @@ function normalizeTieguanyinSnapshot(snapshot) {
             gradeValueCode: candidate.gradeValueCode,
             package: candidate.package,
             sourcePriceObservations: candidate.sourcePriceObservations,
-            blockedReason: 'seller-and-commercial-authority-missing',
+            diagnostic: 'duplicate-grade-source-price',
         }));
     const sourceOfferRows = rows.map(row => sourceOfferRow(row, fixedPackageCounts));
     const summary = {
         rowCount: rows.length,
         uniqueGradeLabelCount: gradeLabels.size,
         fixedPackageRowCount: rows.filter(row => row.package.kind === 'exact-weight').length,
-        uniqueFixedPackageCandidateCount: exactCandidates.length,
-        duplicateFixedPackageKeyCount: duplicateOfferCandidates.length,
-        weightOnlyRowCount: blockedObservations.length,
+        uniqueFixedPackageCandidateCount: new Set(
+            rows.filter(row => row.package.kind === 'exact-weight').map(fixedPackageKey),
+        ).size,
+        standardPackSizeCount: STANDARD_PACK_SIZES_GRAMS.length,
+        exactCandidateCount: exactCandidates.length,
+        duplicateFixedPackageKeyCount: [...fixedPackageCounts.values()]
+            .filter(count => count > 1).length,
+        duplicateGradePackCandidateCount: duplicateOfferCandidates.length,
+        weightOnlyRowCount: rows.filter(row => row.package.kind === 'weight-only').length,
         sourceOfferRowCount: sourceOfferRows.length,
     };
     assertExpected(
@@ -247,14 +274,14 @@ function normalizeTieguanyinSnapshot(snapshot) {
         exactCandidates,
         sourceOfferRows,
         duplicateOfferCandidates,
-        blockedObservations,
+        blockedObservations: [],
         manifestSha256: sha256(stableJson({
             source: { ...source, rowsSha256: rowsHash },
             summary,
             exactCandidates,
             sourceOfferRows,
             duplicateOfferCandidates,
-            blockedObservations,
+            blockedObservations: [],
         })),
     };
 }
@@ -264,6 +291,7 @@ module.exports = {
     NORMALIZED_SCHEMA,
     PRODUCT_CODE,
     SNAPSHOT_SCHEMA,
+    STANDARD_PACK_SIZES_GRAMS,
     normalizeTieguanyinSnapshot,
     sourceOfferClientReference,
     stableCode,

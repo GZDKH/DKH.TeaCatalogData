@@ -121,9 +121,15 @@ function normalizeState(manifest, raw) {
     const sellables = asArray(raw.sellables).filter(
         item => itemId(item, 'productId') === productId,
     );
+    const manifestSellableCodes = new Set(
+        asArray(manifest.exactCandidates)
+            .map(item => text(item.sellableInternalCode))
+            .filter(Boolean),
+    );
     const baselineSellable = exactOne(
         sellables,
         item => text(item.lifecycleState).toLowerCase() === 'active' &&
+            !manifestSellableCodes.has(text(item.internalCode)) &&
             decimalNumber(item.unitQuantity) === 50 &&
             Boolean(itemId(item, 'packageId')) &&
             Boolean(itemId(item, 'unitId')) &&
@@ -161,12 +167,11 @@ function normalizeState(manifest, raw) {
 function buildPlan(manifest, rawState) {
     const state = normalizeState(manifest, rawState);
     const candidates = asArray(manifest.exactCandidates);
-    if (candidates.length !== 25 ||
+    if (candidates.length !== 155 ||
         candidates.some(item => item.productCode !== EXPECTED_PRODUCT_CODE ||
             item.catalogCode !== EXPECTED_CATALOG_CODE ||
-            item.package?.quantity !== '500' ||
             item.package?.unitCode !== 'g' ||
-            item.publicationMode !== 'request-only')) {
+            item.publicationMode !== 'public-retail')) {
         fail('TGY_IMPORT_MANIFEST_SCOPE_INVALID');
     }
 
@@ -222,6 +227,8 @@ function buildPlan(manifest, rawState) {
             sourceOrder: index + 1,
             gradeLabel: candidate.gradeLabel,
             gradeValueCode: candidate.gradeValueCode,
+            packageQuantity: candidate.package.quantity,
+            packageUnitCode: candidate.package.unitCode,
             sellableInternalCode: candidate.sellableInternalCode,
             gradeValueStatus: value ? 'present' : 'create',
             combinationStatus: combination ? 'present' : 'generate',
@@ -234,10 +241,16 @@ function buildPlan(manifest, rawState) {
         };
     });
 
+    const missingGradeLabels = new Set(
+        rows.filter(row => row.gradeValueStatus === 'create').map(row => row.gradeLabel),
+    );
+    const missingCombinationLabels = new Set(
+        rows.filter(row => row.combinationStatus === 'generate').map(row => row.gradeLabel),
+    );
     const counts = {
         candidateCount: rows.length,
-        createGradeValueCount: rows.filter(row => row.gradeValueStatus === 'create').length,
-        generateCombinationCount: rows.filter(row => row.combinationStatus === 'generate').length,
+        createGradeValueCount: missingGradeLabels.size,
+        generateCombinationCount: missingCombinationLabels.size,
         createSellableCount: rows.filter(row => row.sellableStatus === 'create').length,
         activateSellableCount: rows.filter(row => row.activationStatus === 'activate').length,
         enablePublicationCount: rows.filter(row => row.publicationStatus === 'enable').length,
@@ -250,7 +263,7 @@ function buildPlan(manifest, rawState) {
         sourcePolicyKind: text(state.sourcePolicy.policyKind),
         baselineReferenceUnitKind: text(state.baselineSellable.referenceUnitKind),
         baselineUnitQuantity: decimalNumber(state.baselineSellable.unitQuantity),
-        targetUnitQuantity: 500,
+        standardPackSizeCount: manifest.summary.standardPackSizeCount,
         rows,
         counts,
     };
@@ -288,7 +301,7 @@ function buildReceipt(plan, readBackPlan, mutationCounts) {
         schemaVersion: RECEIPT_SCHEMA,
         complete: true,
         readBackVerified: true,
-        noRetailPricePublished: true,
+        noRetailPricePublished: false,
         noStockClaimPublished: true,
         ...binding,
         receiptSha256: sha256(stableJson(binding)),
@@ -312,7 +325,7 @@ function requireCurrency(currency) {
 function derivedPackageAmount(candidate, observation) {
     if (observation.packageAmount !== null) return {
         amount: observation.packageAmount,
-        source: 'source-package-price',
+        source: text(observation.packageAmountSource) || 'source-package-price',
     };
     if (candidate.package?.kind !== 'exact-weight' ||
         candidate.package?.unitCode !== 'g' ||
@@ -358,14 +371,14 @@ function currentRetailPriceRevision(detail) {
             Number(revision.revisionNumber) === currentNumber)) || null;
 }
 
-function retailPriceMatches(revision, currency, state, amount) {
+function retailPriceMatches(revision, currency, state, amount, quantity) {
     if (!revision?.price || !revision?.priceBasis) return false;
     const priceBasis = revision.priceBasis;
     return decimalString(revision.price.amount) === amount &&
         text(revision.price.currencyCode).toUpperCase() === currency.code &&
         itemId(revision.price, 'currencyId') === currency.id &&
         Number(revision.price.currencyAuthorityVersion) === currency.authorityVersion &&
-        decimalNumber(priceBasis.quantity) === 500 &&
+        decimalNumber(priceBasis.quantity) === Number(quantity) &&
         itemId(priceBasis, 'unitId') === itemId(state.baselineSellable, 'unitId') &&
         Number(priceBasis.unitAuthorityVersion) === Number(state.baselineSellable.unitAuthorityVersion) &&
         text(priceBasis.referenceUnitKind) === text(state.baselineSellable.referenceUnitKind) &&
@@ -403,7 +416,7 @@ function buildRetailPricePlan(manifest, rawState, currencyInput, options = {}) {
         }
         const detail = placementDetailById.get(itemId(placement, 'catalogSellableId'));
         const current = currentRetailPriceRevision(detail);
-        const status = retailPriceMatches(current, currency, state, price.amount)
+        const status = retailPriceMatches(current, currency, state, price.amount, candidate.package.quantity)
             ? 'present'
             : current
                 ? 'update'
@@ -415,7 +428,7 @@ function buildRetailPricePlan(manifest, rawState, currencyInput, options = {}) {
             retailPriceAmount: price.amount,
             currencyCode: currency.code,
             priceBasis: {
-                quantity: '500',
+                quantity: candidate.package.quantity,
                 unitCode: candidate.package.unitCode,
             },
             taxDisclosureMode: 'included',

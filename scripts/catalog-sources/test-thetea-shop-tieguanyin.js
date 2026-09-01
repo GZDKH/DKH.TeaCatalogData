@@ -43,42 +43,55 @@ function main() {
         uniqueGradeLabelCount: 31,
         fixedPackageRowCount: 29,
         uniqueFixedPackageCandidateCount: 25,
+        standardPackSizeCount: 5,
+        exactCandidateCount: 155,
         duplicateFixedPackageKeyCount: 4,
+        duplicateGradePackCandidateCount: 25,
         weightOnlyRowCount: 7,
         sourceOfferRowCount: 36,
     });
     assert.strictEqual(manifest.target.productCode, PRODUCT_CODE);
     assert.strictEqual(manifest.target.catalogCode, CATALOG_CODE);
-    assert.strictEqual(manifest.exactCandidates.length, 25);
+    assert.strictEqual(manifest.exactCandidates.length, 155);
     assert.strictEqual(manifest.sourceOfferRows.length, 36);
-    assert.strictEqual(manifest.blockedObservations.length, 7);
-    assert.strictEqual(manifest.duplicateOfferCandidates.length, 4);
+    assert.strictEqual(manifest.blockedObservations.length, 0);
+    assert.strictEqual(manifest.duplicateOfferCandidates.length, 25);
     assert.deepStrictEqual(
-        manifest.duplicateOfferCandidates.map(item => item.gradeLabel),
-        ['铁观音果香', '花香铁观音', '2026春花香铁观音', '铁观音茶王'],
+        [...new Set(manifest.duplicateOfferCandidates.map(item => item.gradeLabel))],
+        ['铁观音果香', '安溪铁观音果香', '花香铁观音', '2026春花香铁观音', '铁观音茶王'],
     );
     assert.ok(manifest.exactCandidates.every(candidate =>
-        candidate.package.quantity === '500' &&
+        ['50', '100', '250', '500', '1000'].includes(candidate.package.quantity) &&
         candidate.package.unitCode === 'g' &&
-        candidate.publicationMode === 'request-only' &&
+        candidate.publicationMode === 'public-retail' &&
         candidate.sourcePriceObservations.every(observation =>
-            observation.retailPrice === false &&
-            observation.publicationAllowed === false)));
-    assert.ok(manifest.blockedObservations.every(item =>
-        item.blockedReason === 'exact-sale-quantity-missing'));
+            observation.retailPrice === true &&
+            observation.publicationAllowed === true)));
     assert.ok(manifest.duplicateOfferCandidates.every(item =>
-        item.blockedReason === 'seller-and-commercial-authority-missing'));
+        item.diagnostic === 'duplicate-grade-source-price'));
     assert.ok(manifest.exactCandidates.some(candidate =>
         candidate.gradeLabel === '高山正味铁观音（花香）' &&
-        candidate.sourcePriceObservations[0].packageAmount === null));
+        candidate.package.quantity === '500' &&
+        candidate.sourcePriceObservations[0].packageAmount === '400' &&
+        candidate.sourcePriceObservations[0].packageAmountSource === 'derived-from-per-kg'));
     assert.strictEqual(
         manifest.exactCandidates.filter(candidate => candidate.gradeLabel === '铁观音果香').length,
-        1,
+        5,
     );
-    assert.strictEqual(
-        manifest.exactCandidates.find(candidate => candidate.gradeLabel === '铁观音果香')
-            .sourcePriceObservations.length,
-        2,
+    assert.deepStrictEqual(
+        manifest.exactCandidates
+            .filter(candidate => candidate.gradeLabel === '铁观音果香')
+            .map(candidate => ({
+                quantity: candidate.package.quantity,
+                amount: candidate.sourcePriceObservations[0].packageAmount,
+            })),
+        [
+            { quantity: '50', amount: '8.2' },
+            { quantity: '100', amount: '16.4' },
+            { quantity: '250', amount: '41' },
+            { quantity: '500', amount: '82' },
+            { quantity: '1000', amount: '164' },
+        ],
     );
     assert.deepStrictEqual(
         manifest.sourceOfferRows
@@ -136,9 +149,9 @@ function main() {
     );
     assert.strictEqual(
         manifest.blockedObservations.filter(item => item.gradeLabel === '安溪铁观音果香').length,
-        1,
+        0,
     );
-    assert.ok(!JSON.stringify(manifest).includes('retailPrice":true'));
+    assert.ok(JSON.stringify(manifest.exactCandidates).includes('retailPrice":true'));
     assert.ok(!Object.hasOwn(manifest, 'sellerId'));
     assert.strictEqual(manifest.source.stockPublished, false);
     assert.strictEqual(manifest.source.sellerIdentityVerified, false);
