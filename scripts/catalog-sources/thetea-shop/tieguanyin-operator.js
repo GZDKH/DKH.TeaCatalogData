@@ -86,7 +86,7 @@ function assertExistingCandidateSafe(candidate, sellable, combination, state) {
         variantCombinationId: id(combination, 'id'),
         packageId: id(state.baselineSellable, 'packageId'),
         unitId: id(state.baselineSellable, 'unitId'),
-        unitQuantity: 500,
+        unitQuantity: Number(candidate.package.quantity),
         referenceUnitKind: String(state.baselineSellable.referenceUnitKind),
     };
     const actual = {
@@ -131,7 +131,7 @@ function retailPriceInput(row, state, currency) {
             currencyAuthorityVersion: currency.authorityVersion,
         },
         priceBasis: {
-            quantity: { units: '500', nanos: 0 },
+            quantity: { units: row.priceBasis.quantity, nanos: 0 },
             unitId: { value: id(state.baselineSellable, 'unitId') },
             unitAuthorityVersion: Number(state.baselineSellable.unitAuthorityVersion),
             referenceUnitKind: String(state.baselineSellable.referenceUnitKind),
@@ -215,9 +215,11 @@ async function applyImport(client, manifest, initialRawState, rollbackFile) {
     };
     writePrivate(rollbackFile, rollback);
 
-    const missingLabels = initialPlan.rows
-        .filter(row => row.gradeValueStatus === 'create')
-        .map(row => row.gradeLabel);
+    const missingLabels = [
+        ...new Set(initialPlan.rows
+            .filter(row => row.gradeValueStatus === 'create')
+            .map(row => row.gradeLabel)),
+    ];
     if (missingLabels.length > 0) {
         const values = [
             ...initial.gradeValues.map(valuePayload),
@@ -255,7 +257,7 @@ async function applyImport(client, manifest, initialRawState, rollbackFile) {
                 productId: { value: state.productId },
                 variantCombinationId: { value: id(combination, 'id') },
                 packageId: { value: id(state.baselineSellable, 'packageId') },
-                unitQuantity: { units: '500', nanos: 0 },
+                unitQuantity: { units: candidate.package.quantity, nanos: 0 },
                 unitId: { value: id(state.baselineSellable, 'unitId') },
                 unitAuthorityVersion: Number(state.baselineSellable.unitAuthorityVersion),
                 internalCode: candidate.sellableInternalCode,

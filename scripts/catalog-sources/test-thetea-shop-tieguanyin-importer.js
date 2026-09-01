@@ -67,18 +67,28 @@ function state({ complete = false } = {}) {
     }];
 
     if (complete) {
+        const valueIdsByLabel = new Map();
+        const combinationIdsByLabel = new Map();
         manifest.exactCandidates.forEach((candidate, index) => {
-            const valueId = id(100 + index);
-            const combinationId = id(200 + index);
+            let valueId = valueIdsByLabel.get(candidate.gradeLabel);
+            if (!valueId) {
+                valueId = id(100 + valueIdsByLabel.size);
+                valueIdsByLabel.set(candidate.gradeLabel, valueId);
+                gradeValues.push({ id: valueId, customValue: candidate.gradeLabel, isDeleted: false });
+            }
+            let combinationId = combinationIdsByLabel.get(candidate.gradeLabel);
+            if (!combinationId) {
+                combinationId = id(200 + combinationIdsByLabel.size);
+                combinationIdsByLabel.set(candidate.gradeLabel, combinationId);
+                combinations.push({ id: combinationId, attributeValueIds: [valueId] });
+            }
             const sellableId = id(300 + index);
-            gradeValues.push({ id: valueId, customValue: candidate.gradeLabel, isDeleted: false });
-            combinations.push({ id: combinationId, attributeValueIds: [valueId] });
             sellables.push({
                 sellableUnitId: sellableId,
                 productId: id(1),
                 variantCombinationId: combinationId,
                 packageId: id(40),
-                unitQuantity: { units: '500', nanos: 0 },
+                unitQuantity: { units: candidate.package.quantity, nanos: 0 },
                 unitId: id(50),
                 unitAuthorityVersion: 3,
                 authorityVersion: 2,
@@ -129,19 +139,19 @@ function state({ complete = false } = {}) {
 const plan = buildPlan(manifest, state());
 assert.equal(plan.schemaVersion, 'thetea-shop-tieguanyin-import-plan-v1');
 assert.equal(plan.mode, 'dry-run');
-assert.equal(plan.counts.candidateCount, 25);
-assert.equal(plan.counts.createGradeValueCount, 25);
-assert.equal(plan.counts.generateCombinationCount, 25);
-assert.equal(plan.counts.createSellableCount, 25);
-assert.equal(plan.counts.curatePlacementCount, 25);
-assert.equal(plan.targetUnitQuantity, 500);
+assert.equal(plan.counts.candidateCount, 155);
+assert.equal(plan.counts.createGradeValueCount, 31);
+assert.equal(plan.counts.generateCombinationCount, 31);
+assert.equal(plan.counts.createSellableCount, 155);
+assert.equal(plan.counts.curatePlacementCount, 155);
+assert.equal(plan.standardPackSizeCount, 5);
 assert.equal(plan.sourcePolicyKind, 'PlatformStock');
 assert.match(plan.planSha256, /^[a-f0-9]{64}$/);
 assert.equal(JSON.stringify(plan).includes(id(1)), false, 'plan must not print production ids');
 
 const readBack = buildPlan(manifest, state({ complete: true }));
 assert.deepEqual(readBack.counts, {
-    candidateCount: 25,
+    candidateCount: 155,
     createGradeValueCount: 0,
     generateCombinationCount: 0,
     createSellableCount: 0,
@@ -150,30 +160,38 @@ assert.deepEqual(readBack.counts, {
     curatePlacementCount: 0,
 });
 const receipt = buildReceipt(plan, readBack, {
-    gradeValuesCreated: 25,
-    combinationsCreated: 25,
-    sellablesCreated: 25,
-    sellablesActivated: 25,
-    publicationEligibilityEnabled: 25,
-    placementsCurated: 25,
+    gradeValuesCreated: 31,
+    combinationsCreated: 31,
+    sellablesCreated: 155,
+    sellablesActivated: 155,
+    publicationEligibilityEnabled: 155,
+    placementsCurated: 155,
 });
 assert.equal(receipt.complete, true);
 assert.equal(receipt.readBackVerified, true);
-assert.equal(receipt.noRetailPricePublished, true);
+assert.equal(receipt.noRetailPricePublished, false);
 assert.equal(receipt.rollbackMode, 'remove-placement-and-disable-publication');
 
 const retailPlan = buildRetailPricePlan(manifest, state({ complete: true }), cny);
 assert.equal(retailPlan.schemaVersion, 'thetea-shop-tieguanyin-retail-price-plan-v1');
 assert.equal(retailPlan.mode, 'dry-run');
-assert.equal(retailPlan.rowCount, 25);
-assert.equal(retailPlan.counts.setRetailPriceCount, 25);
+assert.equal(retailPlan.rowCount, 155);
+assert.equal(retailPlan.counts.setRetailPriceCount, 155);
 assert.equal(retailPlan.counts.updateRetailPriceCount, 0);
-assert.equal(retailPlan.counts.derivedPackagePriceCount, 1);
-assert.equal(retailPlan.counts.duplicateObservationCount, 4);
-assert.equal(retailPlan.rows[0].retailPriceAmount, '44');
+assert.equal(retailPlan.counts.derivedPackagePriceCount, 131);
+assert.equal(retailPlan.counts.duplicateObservationCount, 25);
+assert.equal(retailPlan.rows[0].retailPriceAmount, '4.4');
 assert.equal(
-    retailPlan.rows.find(row => row.gradeLabel === '高山正味铁观音（花香）').retailPriceAmount,
+    retailPlan.rows.find(row =>
+        row.gradeLabel === '高山正味铁观音（花香）' &&
+        row.priceBasis.quantity === '500').retailPriceAmount,
     '400',
+);
+assert.deepEqual(
+    retailPlan.rows
+        .filter(row => row.gradeLabel === '铁观音果香')
+        .map(row => [row.priceBasis.quantity, row.retailPriceAmount]),
+    [['50', '8.2'], ['100', '16.4'], ['250', '41'], ['500', '82'], ['1000', '164']],
 );
 assert.equal(JSON.stringify(retailPlan).includes(id(1)), false, 'retail plan must not print production ids');
 
@@ -210,7 +228,13 @@ class FakeClient {
     async updateGradeValues(_attributeId, values) {
         const current = this.data.variantAttributes[0].values;
         const currentByLabel = new Map(current.map(value => [value.customValue, value]));
-        this.data.variantAttributes[0].values = values.map(value => {
+        const nextByLabel = new Map();
+        for (const value of values) {
+            const label = value.customValue;
+            if (nextByLabel.has(label)) continue;
+            nextByLabel.set(label, value);
+        }
+        this.data.variantAttributes[0].values = [...nextByLabel.values()].map(value => {
             const label = value.customValue;
             return currentByLabel.get(label) || {
                 id: this.nextId(),
@@ -391,9 +415,9 @@ class FakeClient {
     const client = new FakeClient();
     const applied = await applyImport(client, manifest, await client.fetchState(), rollbackFile);
     assert.equal(applied.receipt.complete, true);
-    assert.equal(applied.receipt.mutationCounts.gradeValuesCreated, 25);
-    assert.equal(applied.receipt.mutationCounts.sellablesCreated, 25);
-    assert.equal(applied.receipt.mutationCounts.placementsCurated, 25);
+    assert.equal(applied.receipt.mutationCounts.gradeValuesCreated, 31);
+    assert.equal(applied.receipt.mutationCounts.sellablesCreated, 155);
+    assert.equal(applied.receipt.mutationCounts.placementsCurated, 155);
     assert.equal(fs.statSync(rollbackFile).mode & 0o777, 0o600);
 
     const replay = buildPlan(manifest, await client.fetchState());
@@ -409,19 +433,19 @@ class FakeClient {
     );
     assert.equal(priced.receipt.complete, true);
     assert.equal(priced.receipt.retailPricesPublished, true);
-    assert.equal(priced.receipt.mutationCounts.retailPricesPublished, 25);
+    assert.equal(priced.receipt.mutationCounts.retailPricesPublished, 155);
     assert.equal(priced.receipt.rollbackMode, 'not-supported-by-released-contracts');
     const pricedReplay = buildRetailPricePlan(manifest, await client.fetchState(), cny);
     assert.equal(pricedReplay.counts.setRetailPriceCount, 0);
     assert.equal(pricedReplay.counts.updateRetailPriceCount, 0);
-    assert.equal(pricedReplay.counts.presentRetailPriceCount, 25);
+    assert.equal(pricedReplay.counts.presentRetailPriceCount, 155);
 
     const rollback = JSON.parse(fs.readFileSync(rollbackFile, 'utf8'));
     const rolledBack = await rollbackImport(client, rollback);
-    assert.equal(rolledBack.placementCount, 25);
-    assert.equal(rolledBack.sellableCount, 25);
+    assert.equal(rolledBack.placementCount, 155);
+    assert.equal(rolledBack.sellableCount, 155);
     assert.equal(client.data.placements.length, 1);
-    assert.equal(client.data.sellables.filter(item => item.publicationEligible === false).length, 25);
+    assert.equal(client.data.sellables.filter(item => item.publicationEligible === false).length, 155);
     fs.rmSync(directory, { recursive: true, force: true });
     console.log('Tieguanyin importer plan/apply/read-back/rollback tests passed.');
 })().catch(error => {
