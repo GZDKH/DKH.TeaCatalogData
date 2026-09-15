@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const assert = require('assert');
-const { cleanDisplayName, transformCardSet } = require('./lib/transform');
+const { buildTags, cleanDisplayName, transformCardSet } = require('./lib/transform');
 const {
     MANAGED_PACKAGE_CONTENT,
     packageDefinitionsFor,
@@ -183,6 +183,16 @@ assert.throws(
     /Unsupported TheTea package profile/);
 assert(product.tags.some(t => t.code === 'TAG-TT-GI'));
 assert(product.tags.some(t => t.code === 'TAG-FLAVOR-CHESTNUT'));
+const namespacedTags = buildTags({
+    tags: ['gi'],
+    enrichment: { flavor_tags: ['gi', { value: 'citrus', labels: { 'ru-RU': 'Цитрусовый' } }] },
+});
+assert.deepStrictEqual(namespacedTags.map(tag => tag.code), [
+    'TAG-TT-GI',
+    'TAG-FLAVOR-GI',
+    'TAG-FLAVOR-CITRUS',
+]);
+assert(namespacedTags.every(tag => !/^(?:SPEC|TAG)(?:[-_]|$)/i.test(tag.name)));
 assert(product.origins[0].coordinates.lat === 30.22);
 assert.strictEqual(product.origins[0].state, 'ZJ');
 assert.strictEqual(product.origins[0].city, 'Hangzhou');

@@ -13,6 +13,7 @@ const products = [
                 groupName: 'Classification and Origin',
                 attribute: 'SPEC-TT-CLASSIFICATION-ORIGIN-TEA-TYPE',
                 attributeName: 'Tea Type',
+                attributeKey: 'classification_origin.tea_type',
                 type: 'Option',
                 option: 'SPEC-TT-OPT-CLASSIFICATION-ORIGIN-TEA-TYPE-GREEN',
                 optionName: 'Green',
@@ -116,6 +117,53 @@ const teaTypeAttribute = definitions.attributes.find(a => a.code === 'SPEC-TT-CL
 assert.strictEqual(teaTypeAttribute.group, 'SPEC-TT-GROUP-CLASSIFICATION-ORIGIN');
 assert.strictEqual(teaTypeAttribute.filterable, true);
 assert.strictEqual(teaTypeAttribute.comparable, true);
+
+const technicalRecipe = buildSpecificationDefinitions([{
+    code: 'TEA-RECIPE',
+    specifications: [{
+        lang: 'en-US',
+        group: 'SPEC-TT-GROUP-RECIPE',
+        groupName: 'Brewing Recipe',
+        groupKey: 'recipe',
+        attribute: 'SPEC-TT-RECIPE-GONGFU-RINSE',
+        attributeName: 'Gongfu Rinse Required',
+        attributeKey: 'recipe.gongfu_rinse',
+        type: 'Boolean',
+        value: 'false',
+        order: 1,
+    }, {
+        lang: 'en-US',
+        group: 'SPEC-TT-GROUP-RECIPE',
+        groupName: 'Brewing Recipe',
+        groupKey: 'recipe',
+        attribute: 'SPEC-TT-RECIPE-GONGFU-WATER-TEMP',
+        attributeName: 'Gongfu Water Temperature',
+        attributeKey: 'recipe.gongfu_water_temp',
+        type: 'Number',
+        order: 2,
+    }],
+}]);
+assert.strictEqual(technicalRecipe.attributes.find(a => a.code.endsWith('RINSE')).filterable, false);
+assert.strictEqual(technicalRecipe.attributes.find(a => a.code.endsWith('WATER-TEMP')).filterable, false);
+
+const curatedOptions = buildSpecificationDefinitions([{
+    code: 'TEA-ENRICHED',
+    specifications: [{
+        lang: 'en-US',
+        group: 'SPEC-TT-GROUP-ENRICHMENT',
+        groupName: 'Enrichment',
+        groupKey: 'enrichment',
+        attribute: 'SPEC-TT-ENRICHMENT-DIFFICULTY',
+        attributeName: 'Brewing Difficulty',
+        attributeKey: 'enrichment.difficulty',
+        type: 'Option',
+        option: 'SPEC-TT-OPT-ENRICHMENT-DIFFICULTY-BEGINNER',
+        optionName: 'Beginner',
+        optionKey: 'enrichment.difficulty.beginner',
+        order: 1,
+    }],
+}]);
+assert.strictEqual(curatedOptions.attributes[0].filterable, true);
 
 const historyAttribute = definitions.attributes.find(a => a.code === 'SPEC-TT-FIELD-HISTORY-CULTURE-HISTORY');
 assert.strictEqual(historyAttribute.filterable, false);
