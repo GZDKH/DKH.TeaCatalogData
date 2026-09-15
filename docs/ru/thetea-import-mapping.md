@@ -116,6 +116,18 @@ Output сначала собирается в соседней временно�
 
 Definitions групп, атрибутов и опций получают translation row для каждой required locale. Для известных структурных labels есть curated названия `en-US`, `ru-RU`, `zh-CN`. Для остальных локалей используется явно отражённый в отчёте и manifest English fallback; он не выдаётся за перевод из источника.
 
+Политика фильтров задаётся семантикой, а не типом поля целиком. По умолчанию фильтруемыми остаются только проверенные категориальные ключи `classification_origin.tea_type`, `atomic.shape`, `atomic.processing`, `atomic.roast_level`, `enrichment.caffeine_level`, `enrichment.difficulty` и `enrichment.price_tier`. Параметры рецепта, rinse-флаги, сенсорные интенсивности, source metadata, списки, duration, даты, ranges и неизвестные ключи сохраняются как типизированные данные товара, но не становятся shopper-фильтрами. Общие taxonomy tags используют `TAG-TT-*`, вкусовые — `TAG-FLAVOR-*`; namespaces не смешиваются.
+
+Для проверки существующих definitions без изменения production выполните:
+
+```bash
+node scripts/thetea/repair-filter-definitions.js \
+  --dir=import/thetea/<snapshot> \
+  --catalog-ref=sources/prod/catalog-reference/<snapshot>.json
+```
+
+Команда создаёт scoped diff, desired updates и точные rollback-записи в `reports/thetea/`. ID и операторские поля сохраняются; в AdminGateway обращаются только `--remote-validate` или отдельно согласованный `--apply --yes`.
+
 ## Каталог и категории
 
 Все продукты идут в:

@@ -115,6 +115,18 @@ If a diagnostic snapshot does not contain a localized card, the generator may cr
 
 Specification group, attribute, and option definitions contain a translation row for every required product locale. Known structural labels have curated `en-US`, `ru-RU`, and `zh-CN` names. Other locales receive an explicit English fallback, recorded in the report and artifact manifest; a fallback is not represented as a source-native translation.
 
+The producer filter policy is semantic, not type-wide. Only the reviewed categorical keys `classification_origin.tea_type`, `atomic.shape`, `atomic.processing`, `atomic.roast_level`, `enrichment.caffeine_level`, `enrichment.difficulty`, and `enrichment.price_tier` are filterable by default. Recipe measurements, rinse flags, sensory intensities, source metadata, lists, durations, dates, ranges, and unknown keys remain typed product data but are not default shopper filters. General taxonomy tags use `TAG-TT-*`; flavor tags use `TAG-FLAVOR-*` and are never interchangeable.
+
+To review existing definitions without changing production, run:
+
+```bash
+node scripts/thetea/repair-filter-definitions.js \
+  --dir=import/thetea/<snapshot> \
+  --catalog-ref=sources/prod/catalog-reference/<snapshot>.json
+```
+
+The command writes a scoped diff, desired updates, and exact rollback records under `reports/thetea/`. It preserves IDs and operator-owned fields, and only `--remote-validate` or the separately approved `--apply --yes` path contacts AdminGateway.
+
 ## Catalog and Category Mapping
 
 All products go into:

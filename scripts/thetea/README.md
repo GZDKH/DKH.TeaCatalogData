@@ -230,6 +230,16 @@ to reject removal of any unrelated catalog placement. An approved
 `target-only` artifact reports its single target catalog and does not
 misclassify removal of out-of-target placements as unexpected loss.
 
+The generated filter policy is intentionally narrower than the catalog type capability matrix: only reviewed shopper categorical keys are filterable by default. Recipe numbers and Boolean rinse flags remain available for product details and are not exposed as storefront facets. General and flavor tags retain separate `TAG-TT-*` and `TAG-FLAVOR-*` namespaces.
+
+For a scoped, read-only repair preview of existing filter definitions, use `repair-filter-definitions.js`. It preserves IDs, custom ordering/publication, and non-target translations, then writes desired and exact rollback payloads. Production writes are never performed by the default command:
+
+```bash
+node scripts/thetea/repair-filter-definitions.js \
+  --dir=import/thetea/<snapshot> \
+  --catalog-ref=sources/prod/catalog-reference/<snapshot>.json
+```
+
 Reconcile the shared `SPEC-TT-*` definition registry separately. This produces
 ordered upserts/deletes and exact rollback payloads. A stale definition is never
 eligible for deletion when the complete product baseline shows use outside the

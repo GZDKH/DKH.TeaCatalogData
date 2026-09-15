@@ -546,23 +546,49 @@ function buildCatalogAssignments(
 function buildTags(card) {
     const tags = [];
     for (const tag of card.tags || []) {
+        const normalized = normalizeTagInput(tag);
+        if (!normalized.value) continue;
         tags.push({
-            code: makeCode('TAG-TT', tag),
-            name: titleize(tag),
+            code: makeCode('TAG-TT', normalized.value),
+            name: tagDisplayName(normalized),
             lang: 'en-US',
         });
     }
 
     for (const tag of card.enrichment?.flavor_tags || []) {
+        const normalized = normalizeTagInput(tag);
+        if (!normalized.value) continue;
         tags.push({
-            code: makeCode('TAG-FLAVOR', tag),
-            name: titleize(tag),
+            code: makeCode('TAG-FLAVOR', normalized.value),
+            name: tagDisplayName(normalized),
             lang: 'en-US',
         });
     }
 
     return dedupeBy(tags, t => t.code);
 }
+
+function normalizeTagInput(input) {
+    if (input && typeof input === 'object') {
+        const value = input.value ?? input.code ?? input.slug ?? input.name;
+        const labels = input.translations || input.labels || {};
+        const english = labels['en-US'] || labels.en || labels.english;
+        return { value: String(value || '').trim(), name: String(input.name || english || '').trim() };
+    }
+    return { value: String(input || '').trim(), name: '' };
+}
+
+function tagDisplayName(tag) {
+    const supplied = String(tag.name || '').trim();
+    if (supplied && !/^(?:SPEC|TAG)(?:[-_]|$)/i.test(supplied)) return supplied;
+    const value = String(tag.value || '').replace(/^(?:TAG[-_](?:TT|FLAVOR)[-_])/i, '');
+    const display = titleize(value);
+    if (!display || /^(?:SPEC|TAG)(?:[-_]|$)/i.test(display)) {
+        throw new Error(`Tag '${tag.value}' has no human-readable label.`);
+    }
+    return display;
+}
+
 
 function buildOrigins(cardSet, primary, warnings, geographyReference, taxonomy) {
     const meta = primary.meta || {};
@@ -737,6 +763,8 @@ module.exports = {
     transformCardSet,
     buildDescription,
     cleanDisplayName,
+    buildTags,
+    tagDisplayName,
     extractNativeName,
     extractTranscription,
     productCodeForCardSet,

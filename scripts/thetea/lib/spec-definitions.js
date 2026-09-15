@@ -50,7 +50,16 @@ const GROUP_ICONS = {
     'SPEC-TT-GROUP-SOURCE': 'database',
 };
 
-const FILTERABLE_TYPES = new Set(['Option', 'Number', 'Range', 'Boolean']);
+const SHOPPER_FILTERABLE_TYPES = new Set(['Option']);
+const SHOPPER_FILTERABLE_KEYS = new Set([
+    'classification_origin.tea_type',
+    'atomic.shape',
+    'atomic.processing',
+    'atomic.roast_level',
+    'enrichment.caffeine_level',
+    'enrichment.difficulty',
+    'enrichment.price_tier',
+]);
 const COMPARABLE_TYPES = new Set(['Option', 'Number', 'Range', 'Boolean']);
 
 function buildSpecificationDefinitions(products, options = {}) {
@@ -128,14 +137,14 @@ function mergeSpecificationDefinition(groups, attributes, options, spec) {
     if (!groupCode || !attributeCode) return;
 
     const group = getOrCreateGroup(groups, groupCode, spec);
-    mergeName(group, spec.lang, spec.groupName || groupCode, 'group');
+    mergeName(group, spec.lang, spec.groupName || humanizeSemanticKey(spec.groupKey || '', 'group'), 'group');
     mergeSemanticKey(group, spec.groupKey);
 
     const attribute = getOrCreateAttribute(attributes, attributeCode, groupCode, spec);
     mergeInvariant(attribute, 'group', groupCode, `attribute ${attributeCode}`);
     mergeInvariant(attribute, 'type', spec.type, `attribute ${attributeCode}`);
     mergeOptionalInvariant(attribute, 'unit', spec.unit, `attribute ${attributeCode}`);
-    mergeName(attribute, spec.lang, spec.attributeName || attributeCode, 'attribute');
+    mergeName(attribute, spec.lang, spec.attributeName || humanizeSemanticKey(spec.attributeKey || '', 'attribute'), 'attribute');
     mergeSemanticKey(attribute, spec.attributeKey);
     attribute.order = Math.min(attribute.order, definitionOrder(spec.order));
 
@@ -143,7 +152,7 @@ function mergeSpecificationDefinition(groups, attributes, options, spec) {
     if (!optionCode || isLegacyOptionCode(optionCode)) return;
     const option = getOrCreateOption(options, optionCode, attributeCode, spec);
     mergeInvariant(option, 'attribute', attributeCode, `option ${optionCode}`);
-    mergeName(option, spec.lang, spec.optionName || optionCode, 'option');
+    mergeName(option, spec.lang, spec.optionName || humanizeSemanticKey(spec.optionKey || '', 'option'), 'option');
     mergeSemanticKey(option, spec.optionKey);
     option.order = Math.min(option.order, definitionOrder(spec.order));
 }
@@ -224,7 +233,7 @@ function finalizeAttributeDefinition(state, localeSummary) {
         unit: state.unit,
         order: state.order,
         published: true,
-        filterable: productFacing && FILTERABLE_TYPES.has(state.type),
+        filterable: productFacing && isShopperFilterable(state),
         comparable: productFacing && COMPARABLE_TYPES.has(state.type),
         translations: finalizeTranslations(state, 'attribute', localeSummary),
     });
@@ -241,15 +250,16 @@ function finalizeOptionDefinition(state, localeSummary) {
 }
 
 function finalizeTranslations(state, kind, localeSummary) {
+    const semanticKey = state.semanticKey || state.code;
     const fallbackName = state.names.get(DEFAULT_LANGUAGE)
         || [...state.names.values()][0]
-        || state.code;
+        || humanizeSemanticKey(semanticKey, kind);
     const requestedLocales = localeSummary.requiredLocales.length
         ? localeSummary.requiredLocales
-        : [...state.names.keys()];
+        : ([...state.names.keys()].length ? [...state.names.keys()] : [DEFAULT_LANGUAGE]);
     const localized = buildLocalizedTranslations({
         kind,
-        semanticKey: state.semanticKey || state.code,
+        semanticKey,
         fallbackName,
         locales: requestedLocales,
     });
@@ -273,6 +283,26 @@ function finalizeTranslations(state, kind, localeSummary) {
         .sort(([langA], [langB]) => localeOrder(langA) - localeOrder(langB)
             || langA.localeCompare(langB))
         .map(([lang, name]) => ({ lang, name }));
+}
+
+
+function isShopperFilterable(state) {
+    return SHOPPER_FILTERABLE_TYPES.has(state.type)
+        && SHOPPER_FILTERABLE_KEYS.has(String(state.semanticKey || '').trim().toLowerCase());
+}
+
+function humanizeSemanticKey(value, kind) {
+    const parts = String(value || '').trim().split('.').filter(Boolean);
+    const raw = parts[parts.length - 1] || (kind === 'group' ? 'Group' : 'Value');
+    const label = raw
+        .replace(/[_-]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .replace(/\b[a-z]/g, character => character.toUpperCase());
+    if (!label || /^(SPEC|TAG)(?:[-_]|$)/i.test(label)) {
+        throw new Error(`Missing human-readable ${kind} label for ${value}.`);
+    }
+    return label;
 }
 
 function normalizeLanguage(lang) {
@@ -376,5 +406,9 @@ function groupOrder(code) {
 
 module.exports = {
     GROUP_ORDER,
+    SHOPPER_FILTERABLE_KEYS,
+    SHOPPER_FILTERABLE_TYPES,
     buildSpecificationDefinitions,
+    humanizeSemanticKey,
+    isShopperFilterable,
 };
