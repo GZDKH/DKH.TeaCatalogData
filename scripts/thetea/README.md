@@ -101,6 +101,20 @@ node scripts/thetea/fetch-prod-products.js --snapshot=prod-products-2026-06-01
 
 Do not substitute the normal products list endpoint. Product DataExchange replace mode requires all dependent collections, including specifications, tags, catalog assignments, packages, prices, origins, related products, and cross-sells.
 
+Repair the legacy pu-erh filter labels after reviewing the scoped dry-run:
+
+```bash
+node scripts/thetea/repair-russian-filter-labels.js \\
+  --catalog-ref=sources/prod/catalog-reference/prod-2026-07-27.json
+```
+
+The command changes only missing `ru-RU` translations for the existing
+`Pressing Format`, `Factory`, and `Vintage Year` definitions plus their
+allowlisted options. It preserves IDs, ordering, types, and custom
+translations, and writes exact rollback payloads. Use `--remote-validate` to
+validate through AdminGateway; use `--apply --yes` only after the reviewed
+report and current live reference match.
+
 Generate a diagnostics-only ProductCatalog artifact without production references:
 
 ```bash

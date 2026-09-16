@@ -172,11 +172,17 @@ function buildMultipart(profile, records) {
     };
 }
 
-function requestImport(gatewayUrl, token, workspaceId, records, dryRun) {
+function requestImport(
+    gatewayUrl,
+    token,
+    workspaceId,
+    records,
+    dryRun,
+    profile = 'specification_attributes') {
     const url = new URL(
         dryRun ? '/api/v1/data-exchange/validate' : '/api/v1/data-exchange/import',
         gatewayUrl);
-    const { boundary, body } = buildMultipart('specification_attributes', records);
+    const { boundary, body } = buildMultipart(profile, records);
     const transport = url.protocol === 'https:' ? https : http;
     return new Promise((resolve, reject) => {
         const request = transport.request(url, {

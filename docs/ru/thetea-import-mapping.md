@@ -128,6 +128,12 @@ node scripts/thetea/repair-filter-definitions.js \
 
 Команда создаёт scoped diff, desired updates и точные rollback-записи в `reports/thetea/`. ID и операторские поля сохраняются; в AdminGateway обращаются только `--remote-validate` или отдельно согласованный `--apply --yes`.
 
+Старые pu-erh facets, появившиеся до реестра `SPEC-TT-*`, исправляются
+allowlist-командой `repair-russian-filter-labels.js`. Она добавляет только
+отсутствующие подписи `ru-RU` для формы прессовки, фабрики, года выпуска и их
+значений; пользовательские переводы и неизменяемые поля definitions не
+затрагиваются.
+
 ## Каталог и категории
 
 Все продукты идут в:

@@ -127,6 +127,11 @@ node scripts/thetea/repair-filter-definitions.js \
 
 The command writes a scoped diff, desired updates, and exact rollback records under `reports/thetea/`. It preserves IDs and operator-owned fields, and only `--remote-validate` or the separately approved `--apply --yes` path contacts AdminGateway.
 
+Legacy pu-erh facets that predate the `SPEC-TT-*` registry are repaired by the
+allowlisted `repair-russian-filter-labels.js` command. It adds only missing
+`ru-RU` labels for pressing format, factory, vintage year, and their values;
+custom translations and immutable definition fields remain untouched.
+
 ## Catalog and Category Mapping
 
 All products go into:
