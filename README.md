@@ -202,6 +202,19 @@ node scripts/thetea/validate-generated.js \
   --product-ref=sources/prod/product-reference/prod-products-2026-06-01
 ```
 
+Produce a read-only coverage and baseline matrix for product experience
+sections before planning an import. The audit reports coverage for sensory
+intensity, organoleptic profile, brewing, recipes, origin, and harvest. It
+fails closed for stale or missing references and never writes production:
+
+```bash
+node scripts/thetea/audit-sensory-readiness.js \
+  --artifact-dir=import/thetea/thetea-2026-06-01 \
+  --snapshot-root=sources/thetea/snapshots/thetea-2026-06-01 \
+  --product-ref=sources/prod/product-reference/prod-products-2026-06-01 \
+  --out=reports/thetea/thetea-2026-06-01-sensory-readiness
+```
+
 Check that the generated data will make the POS catalog visible instead of
 empty:
 
