@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "profile": {
+    "id": "tea",
+    "version": "1.0.0",
+    "sourceSystem": "my.teadb.org",
+    "target": {
+      "service": "ProductCatalogService",
+      "dataExchangeProfile": "products",
+      "catalogCode": "CATALOG-CHINESE-TEA"
+    },
+    "identity": {
+      "upsertKey": ["source.system", "source.externalId"],
+      "targetProductCode": "product.code",
+      "sourceRevision": "source.revision"
+    },
+    "files": {
+      "specificationGroups": "02-specifications/specification_groups.json",
+      "specificationAttributes": "02-specifications/specification_attributes.json",
+      "specificationOptions": "02-specifications/specification_attribute_options.json",
+      "products": "04-products/<category>/<product-code>.json"
+    }
+  },
+  "groups": [
+    {
+      "key": "classification_origin",
+      "targetCode": "SPEC-TT-GROUP-CLASSIFICATION-ORIGIN",
+      "labels": {"en-US": "Classification and Origin", "ru-RU": "Классификация и происхождение"}
+    },
+    {
+      "key": "atomic",
+      "targetCode": "SPEC-TT-GROUP-ATOMIC",
+      "labels": {"en-US": "Core Tea Facts", "ru-RU": "Основные свойства чая"}
+    },
+    {
+      "key": "organoleptic",
+      "targetCode": "SPEC-TT-GROUP-ORGANOLEPTIC",
+      "labels": {"en-US": "Organoleptic Profile", "ru-RU": "Органолептический профиль"},
+      "render": {
+        "section": "flavor-wheel",
+        "activateWhen": "any-value"
+      }
+    },
+    {
+      "key": "sensory",
+      "targetCode": "SPEC-TT-GROUP-SENSORY",
+      "labels": {"en-US": "Sensory Intensity", "ru-RU": "Интенсивность вкуса"},
+      "render": {
+        "section": "flavor-wheel",
+        "activateWhen": "any-value"
+      }
+    },
+    {
+      "key": "enrichment",
+      "targetCode": "SPEC-TT-GROUP-ENRICHMENT",
+      "labels": {"en-US": "Enrichment", "ru-RU": "Дополнительные характеристики"},
+      "render": {
+        "section": "flavor-wheel",
+        "activateWhen": "attribute:enrichment.flavor_tags"
+      }
+    },
+    {
+      "key": "brewing",
+      "targetCode": "SPEC-TT-GROUP-BREWING",
+      "labels": {"en-US": "Brewing", "ru-RU": "Заваривание"}
+    },
+    {
+      "key": "recipe",
+      "targetCode": "SPEC-TT-GROUP-RECIPE",
+      "labels": {"en-US": "Brewing Recipe", "ru-RU": "Рецепт заваривания"}
+    },
+    {
+      "key": "source",
+      "targetCode": "SPEC-TT-GROUP-SOURCE",
+      "labels": {"en-US": "Source Metadata", "ru-RU": "Метаданные источника"}
+    }
+  ],
+  "attributes": [
+    {
+      "key": "classification_origin.tea_type",
+      "group": "classification_origin",
+      "targetCode": "SPEC-TT-CLASSIFICATION-ORIGIN-TEA-TYPE",
+      "type": "Option",
+      "sourcePaths": ["meta.tea_type"],
+      "filterable": true
+    },
+    {
+      "key": "atomic.shape",
+      "group": "atomic",
+      "targetCode": "SPEC-TT-ATOMIC-SHAPE",
+      "type": "Option",
+      "sourcePaths": ["meta.shape", "sections.atomic.shape"],
+      "filterable": true
+    },
+    {
+      "key": "atomic.processing",
+      "group": "atomic",
+      "targetCode": "SPEC-TT-ATOMIC-PROCESSING",
+      "type": "Option",
+      "sourcePaths": ["meta.processing", "sections.atomic.processing"],
+      "filterable": true
+    },
+    {
+      "key": "organoleptic.taste",
+      "group": "organoleptic",
+      "targetCode": "SPEC-TT-FIELD-ORGANOLEPTIC-TASTE",
+      "type": "CustomText",
+      "sourcePaths": ["sections.organoleptic.taste", "sections.sensory.taste"]
+    },
+    {
+      "key": "organoleptic.liquor_aroma",
+      "group": "organoleptic",
+      "targetCode": "SPEC-TT-FIELD-ORGANOLEPTIC-LIQUOR-AROMA",
+      "type": "CustomText",
+      "sourcePaths": ["sections.organoleptic.liquor_aroma"]
+    },
+    {
+      "key": "organoleptic.dry_leaf_aroma",
+      "group": "organoleptic",
+      "targetCode": "SPEC-TT-FIELD-ORGANOLEPTIC-DRY-LEAF-AROMA",
+      "type": "CustomText",
+      "sourcePaths": ["sections.organoleptic.dry_leaf_aroma"]
+    },
+    {
+      "key": "organoleptic.liquor_color",
+      "group": "organoleptic",
+      "targetCode": "SPEC-TT-FIELD-ORGANOLEPTIC-LIQUOR-COLOR",
+      "type": "CustomText",
+      "sourcePaths": ["sections.organoleptic.liquor_color"]
+    },
+    {
+      "key": "organoleptic.spent_leaves",
+      "group": "organoleptic",
+      "targetCode": "SPEC-TT-FIELD-ORGANOLEPTIC-SPENT-LEAVES",
+      "type": "CustomText",
+      "sourcePaths": ["sections.organoleptic.spent_leaves"]
+    },
+    {
+      "key": "enrichment.flavor_tags",
+      "group": "enrichment",
+      "targetCode": "SPEC-TT-FIELD-ENRICHMENT-FLAVOR-TAGS",
+      "type": "List",
+      "valueEncoding": "json-array-string",
+      "sourcePaths": ["enrichment.flavor_tags"]
+    },
+    {
+      "key": "enrichment.food_pairings",
+      "group": "enrichment",
+      "targetCode": "SPEC-TT-FIELD-ENRICHMENT-FOOD-PAIRINGS",
+      "type": "List",
+      "valueEncoding": "json-array-string",
+      "sourcePaths": ["enrichment.food_pairings"]
+    },
+    {
+      "key": "brewing.water_temp",
+      "group": "brewing",
+      "targetCode": "SPEC-TT-FIELD-BREWING-WATER-TEMP",
+      "type": "Number",
+      "unit": "°C",
+      "sourcePaths": ["sections.brewing.water_temp"],
+      "filterable": false
+    },
+    {
+      "key": "recipe.steep_sec",
+      "group": "recipe",
+      "targetCodePattern": "SPEC-TT-RECIPE-{style}-STEEP-SEC",
+      "type": "Duration",
+      "unit": "s",
+      "sourcePaths": ["recipe[].steep_sec"],
+      "filterable": false
+    },
+    {
+      "key": "source.version",
+      "group": "source",
+      "targetCode": "SPEC-TT-SOURCE-VERSION",
+      "type": "CustomText",
+      "sourcePaths": ["meta.version"],
+      "showOnPage": false
+    }
+  ],
+  "attributePatterns": [
+    {
+      "keyPattern": "^sensory\\.descriptor_[a-z0-9-]+_intensity$",
+      "group": "sensory",
+      "targetCodePattern": "SPEC-TT-FIELD-SENSORY-{descriptor}-INTENSITY",
+      "type": "Number",
+      "sourcePaths": ["sensory[].intensity"],
+      "filterable": false
+    }
+  ],
+  "rules": {
+    "unknownAttribute": "error",
+    "unknownGroup": "error",
+    "missingValue": "omit-specification",
+    "duplicateAttributePerProduct": "error",
+    "sourceIdentity": "required-and-idempotent",
+    "targetCodes": "stable-and-immutable",
+    "productValueLimit": 4000,
+    "validateBeforeApply": true,
+    "applyMode": "dry-run-then-canary"
+  }
+}

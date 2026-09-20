@@ -1,0 +1,64 @@
+{
+  "profile": {
+    "id": "tea",
+    "version": "1.0.0",
+    "sourceSystem": "my.teadb.org"
+  },
+  "records": [
+    {
+      "source": {
+        "system": "my.teadb.org",
+        "externalId": "tea-card-12345",
+        "url": "https://my.teadb.org/tea/tea-card-12345",
+        "revision": "2026-09-20T00:00:00Z",
+        "retrievedAt": "2026-09-20T01:00:00Z"
+      },
+      "product": {
+        "code": "TEA-CN-DA-HONG-PAO-2024",
+        "sku": "DA-HONG-PAO-2024-CN",
+        "nativeName": "大红袍",
+        "translations": [
+          {"lang": "en-US", "name": "Da Hong Pao"},
+          {"lang": "ru-RU", "name": "Да Хун Пао"}
+        ],
+        "catalogs": [
+          {"catalog": "CATALOG-CHINESE-TEA", "category": "CAT-OOLONG", "catalogCurrency": "CNY"}
+        ]
+      },
+      "specifications": [
+        {
+          "key": "organoleptic.taste",
+          "group": "organoleptic",
+          "attribute": "SPEC-TT-FIELD-ORGANOLEPTIC-TASTE",
+          "type": "CustomText",
+          "value": "Roasted stone fruit with a mineral finish",
+          "sourcePath": "sections.organoleptic.taste"
+        },
+        {
+          "key": "organoleptic.liquor_aroma",
+          "group": "organoleptic",
+          "attribute": "SPEC-TT-FIELD-ORGANOLEPTIC-LIQUOR-AROMA",
+          "type": "CustomText",
+          "value": "Orchid and honey",
+          "sourcePath": "sections.organoleptic.liquor_aroma"
+        },
+        {
+          "key": "enrichment.flavor_tags",
+          "group": "enrichment",
+          "attribute": "SPEC-TT-FIELD-ENRICHMENT-FLAVOR-TAGS",
+          "type": "List",
+          "value": "[\"orchid\",\"honey\",\"mineral\"]",
+          "sourcePath": "enrichment.flavor_tags"
+        },
+        {
+          "key": "sensory.descriptor_floral_intensity",
+          "group": "sensory",
+          "attribute": "SPEC-TT-FIELD-SENSORY-DESCRIPTOR-FLORAL-INTENSITY",
+          "type": "Number",
+          "value": "4",
+          "sourcePath": "sensory[0].intensity"
+        }
+      ]
+    }
+  ]
+}
