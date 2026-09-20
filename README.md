@@ -23,6 +23,10 @@ DKH.TeaCatalogData/
 └── AGENTS.md / CLAUDE.md       # Agent context
 ```
 
+## Product template
+
+The repository-only Tea product-creation descriptor is documented in [`docs/tea-product-template.md`](docs/tea-product-template.md). It uses the generic ProductCatalog DataExchange profile and never creates tea-specific runtime definitions.
+
 ## Locales
 
 Production snapshots load every locale advertised by TheTea `/api/v2/meta.locales` using `--langs=all`. At the time of writing the public docs show 72 locales.

@@ -64,6 +64,8 @@ Therefore the repository artifact is a source-backed fill template, while the
 requested “Tea” choice in product creation still belongs to the existing
 generic ProductCatalog template capability.
 
+The repository now also provides `templates/tea.v1/product-creation-template.json`, a repository-only descriptor for that generic capability. It supplies safe defaults and references existing definitions without creating a tea runtime type or auto-creating definitions. Its product-specific category and variant references remain unresolved until an authenticated current catalog reference is available.
+
 ## Existing runtime ownership and coverage
 
 | Product layer | Existing owner and path | Current coverage | Decision |

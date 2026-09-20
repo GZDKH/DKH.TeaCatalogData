@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.xnata.com/catalog/product-creation-template/1.0.0.json",
+  "title": "Repository product-creation template descriptor",
+  "description": "A repository-only descriptor for applying existing generic ProductCatalog definitions; it is not a runtime tea type.",
+  "type": "object",
+  "required": ["kind", "template", "runtime", "source", "catalog", "productFields", "specifications", "productAttributes", "packages", "variants", "sections", "reviewBoundary", "apply"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {"type": "string"},
+    "kind": {"const": "product-creation-template"},
+    "template": {"$ref": "#/$defs/template"},
+    "runtime": {"$ref": "#/$defs/runtime"},
+    "source": {"$ref": "#/$defs/source"},
+    "catalog": {"$ref": "#/$defs/catalog"},
+    "productFields": {"type": "array", "items": {"$ref": "#/$defs/field"}},
+    "specifications": {"$ref": "#/$defs/specifications"},
+    "productAttributes": {"$ref": "#/$defs/productAttributes"},
+    "packages": {"$ref": "#/$defs/packages"},
+    "variants": {"$ref": "#/$defs/variants"},
+    "counterparties": {"type": "object"},
+    "sections": {"type": "array", "items": {"$ref": "#/$defs/section"}},
+    "reviewBoundary": {"$ref": "#/$defs/review"},
+    "examples": {"type": "array", "items": {"type": "object"}},
+    "apply": {"$ref": "#/$defs/apply"}
+  },
+  "$defs": {
+    "template": {
+      "type": "object", "required": ["id", "version", "labels", "repositoryOnly", "profile"], "additionalProperties": false,
+      "properties": {"id": {"const": "tea-product"}, "version": {"const": "1.0.0"}, "labels": {"type": "object", "required": ["en-US", "ru-RU"]}, "repositoryOnly": {"const": true}, "profile": {"type": "object", "required": ["id", "version"]}}
+    },
+    "runtime": {
+      "type": "object", "required": ["service", "dataExchangeProfile", "runtimeType", "definitionCreation", "referenceResolution"], "additionalProperties": false,
+      "properties": {"service": {"const": "ProductCatalogService"}, "dataExchangeProfile": {"const": "products"}, "runtimeType": {"type": ["null", "string"]}, "definitionCreation": {"const": "disabled"}, "referenceResolution": {"const": "existing-code-only"}}
+    },
+    "source": {"type": "object", "required": ["system", "identity", "revisionRequired"], "properties": {"system": {"type": "string"}, "identity": {"type": "array", "minItems": 2}, "revisionRequired": {"const": true}}},
+    "catalog": {"type": "object", "required": ["catalogCode", "categoryCode", "categoryRequired", "categoryResolution"], "properties": {"catalogCode": {"type": "string"}, "categoryCode": {"type": ["null", "string"]}, "categoryRequired": {"const": true}, "categoryResolution": {"const": "select-existing-code"}, "currency": {"type": "string"}}},
+    "field": {"type": "object", "required": ["path", "type", "required", "default", "editable"], "properties": {"path": {"type": "string"}, "type": {"type": "string"}, "required": {"type": "boolean"}, "default": {}, "editable": {"type": "boolean"}}},
+    "specifications": {"type": "object", "required": ["profileSource", "requiredKeys", "defaults", "explicitAttributes", "dynamicAttributes", "missingValue", "unknownDefinition", "duplicateKey", "sectionActivation"], "properties": {"profileSource": {"type": "string"}, "requiredKeys": {"type": "array", "maxItems": 0}, "defaults": {"type": "array", "maxItems": 0}, "explicitAttributes": {"type": "array"}, "dynamicAttributes": {"type": "array"}, "missingValue": {"const": "omit"}, "unknownDefinition": {"const": "error"}, "duplicateKey": {"const": "error"}, "sectionActivation": {"const": "only-when-selected-fields-have-values"}}},
+    "productAttributes": {"type": "object", "required": ["definitions", "options", "allowDefinitionCreation", "selection"], "properties": {"definitions": {"type": "array"}, "options": {"type": "array"}, "allowDefinitionCreation": {"const": false}, "selection": {"const": "existing-code-only"}}},
+    "packages": {"type": "object", "required": ["allowedCodes", "defaultCode", "defaultPolicy"], "properties": {"allowedCodes": {"type": "array", "minItems": 1}, "defaultCode": {"type": ["null", "string"]}, "defaultPolicy": {"const": "operator-selects-existing-offer"}}},
+    "variants": {"type": "object", "required": ["axes", "generateCombinations", "generateSellables", "applyMode"], "properties": {"axes": {"type": "array"}, "generateCombinations": {"const": false}, "generateSellables": {"const": false}, "applyMode": {"const": "manual-after-reference-canary"}}},
+    "section": {"type": "object", "required": ["id", "labels", "activateWhen", "dataOwner"], "properties": {"id": {"type": "string"}, "labels": {"type": "object", "required": ["en-US", "ru-RU"]}, "activateWhen": {}, "dataOwner": {"enum": ["product", "review"]}}},
+    "review": {"type": "object", "required": ["service", "sessionType", "privateByDefault", "publishAction", "productFactsImmutable", "fields"], "properties": {"service": {"const": "ReviewService"}, "sessionType": {"const": "structured-tasting"}, "privateByDefault": {"const": true}, "publishAction": {"const": "explicit-share"}, "productFactsImmutable": {"const": true}, "fields": {"type": "array", "minItems": 1}}},
+    "apply": {"type": "object", "required": ["sequence", "idempotencyKey", "applyAllowed", "requiresAuthenticatedRefs"], "properties": {"sequence": {"type": "array", "minItems": 1}, "idempotencyKey": {"const": ["source.system", "source.externalId"]}, "applyAllowed": {"const": false}, "requiresAuthenticatedRefs": {"const": true}}}
+  }
+}

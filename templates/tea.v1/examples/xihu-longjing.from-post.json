@@ -282,9 +282,9 @@
           "key": "source.category_code",
           "group": "source",
           "attribute": "SPEC-TT-SOURCE-CATEGORY-CODE",
-          "type": "Option",
+          "type": "CustomText",
           "sourcePath": "post.source",
-          "option": "SPEC-TT-OPT-SOURCE-CATEGORY-CODE-CHINA-GREEN-TEA"
+          "value": "CHINA-GREEN-TEA"
         },
         {
           "key": "atomic.oxidation",
@@ -420,7 +420,7 @@
           "key": "organoleptic.liquor_aroma",
           "group": "organoleptic",
           "attribute": "SPEC-TT-FIELD-ORGANOLEPTIC-LIQUOR-AROMA",
-          "type": "CustomMarkdownText",
+          "type": "CustomText",
           "sourcePath": "post.organoleptic",
           "value": "Clean, persistent, fresh. The same notes dominate — bean floral aroma, tender green sweetness, light chestnut roast. In tea from Shifeng zone — noticeable orchid nuance. Aroma unfolds gradually with each infusion."
         },
@@ -428,7 +428,7 @@
           "key": "organoleptic.liquor_color",
           "group": "organoleptic",
           "attribute": "SPEC-TT-FIELD-ORGANOLEPTIC-LIQUOR-COLOR",
-          "type": "CustomMarkdownText",
+          "type": "CustomText",
           "sourcePath": "post.organoleptic",
           "value": "Light green, clean and transparent, with tender yellowish-green shade (嫩绿明亮). In highest grade teas — crystal clear, \"alive.\""
         },
@@ -436,7 +436,7 @@
           "key": "organoleptic.spent_leaves",
           "group": "organoleptic",
           "attribute": "SPEC-TT-FIELD-ORGANOLEPTIC-SPENT-LEAVES",
-          "type": "CustomMarkdownText",
+          "type": "CustomText",
           "sourcePath": "post.organoleptic",
           "value": "Even, whole, elastic leaves and buds of light green color, preserving the form \"one bud — one leaf.\" Leaf tender, uniform, without damage."
         },

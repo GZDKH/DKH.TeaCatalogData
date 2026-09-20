@@ -66,6 +66,7 @@ thetea-package-offline-tests:
     # Do not add network fetches, production references, or apply commands.
     - node scripts/thetea/test-transform.js
     - node scripts/thetea/test-template-coverage.js
+    - node scripts/thetea/test-product-creation-template.js
     - node scripts/thetea/test-category-taxonomy.js
     - node scripts/thetea/test-materialize-d1-snapshot.js
     - node scripts/thetea/test-validate-d1-snapshot.js

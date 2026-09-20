@@ -1,0 +1,191 @@
+{
+  "$schema": "../schema.json",
+  "profile": {
+    "id": "tea",
+    "version": "1.0.0",
+    "sourceSystem": "tea.community"
+  },
+  "records": [
+    {
+      "source": {
+        "system": "tea.community",
+        "externalId": "yueyang-huangcha",
+        "url": "https://tea.community/ru-RU/products/yueyang-huangcha",
+        "revision": "manual-audit-2026-09-20",
+        "retrievedAt": "2026-09-20T00:00:00Z"
+      },
+      "product": {
+        "code": "TEA-CN-YUEYANG-HUANGCHA",
+        "sku": "YUEYANG-HUANGCHA-CN",
+        "published": false,
+        "order": 0,
+        "nativeName": "岳阳黄茶",
+        "transcription": "Yuèyáng huángchá",
+        "translations": [
+          {
+            "lang": "en-US",
+            "name": "Yueyang Huangcha",
+            "seo": "yueyang-huangcha",
+            "description": "Source-backed draft for Yueyang yellow tea. Producer and harvest year are intentionally unset until a product-specific source confirms them."
+          },
+          {
+            "lang": "ru-RU",
+            "name": "Юэян хуанча",
+            "seo": "yueyang-huangcha",
+            "description": "Черновик на основе источника для жёлтого чая Юэян. Производитель и год сбора намеренно не заполнены до подтверждения для конкретного продукта."
+          }
+        ],
+        "catalogs": [],
+        "tags": [],
+        "packages": [],
+        "origins": [
+          {
+            "country": "CN",
+            "state": "Hunan",
+            "city": "Yueyang"
+          }
+        ],
+        "related": [],
+        "crossSells": []
+      },
+      "specifications": [
+        {
+          "key": "classification_origin.tea_type",
+          "group": "classification_origin",
+          "attribute": "SPEC-TT-CLASSIFICATION-ORIGIN-TEA-TYPE",
+          "type": "Option",
+          "sourcePath": "article.classification",
+          "option": "SPEC-TT-OPT-CLASSIFICATION-ORIGIN-TEA-TYPE-YELLOW"
+        },
+        {
+          "key": "recipe.gongfu_water_temp",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-WATER-TEMP",
+          "type": "Number",
+          "sourcePath": "article.brewing.gongfu",
+          "value": "78"
+        },
+        {
+          "key": "recipe.gongfu_tea_grams",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-TEA-GRAMS",
+          "type": "Number",
+          "sourcePath": "article.brewing.gongfu",
+          "value": "5"
+        },
+        {
+          "key": "recipe.gongfu_water_ml",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-WATER-ML",
+          "type": "Number",
+          "sourcePath": "article.brewing.gongfu",
+          "value": "100"
+        },
+        {
+          "key": "recipe.gongfu_steep_sec",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-STEEP-SEC",
+          "type": "Duration",
+          "sourcePath": "article.brewing.gongfu",
+          "value": "10"
+        },
+        {
+          "key": "recipe.gongfu_increment_sec",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-INCREMENT-SEC",
+          "type": "Duration",
+          "sourcePath": "article.brewing.gongfu",
+          "value": "5"
+        },
+        {
+          "key": "recipe.gongfu_max_steeps",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-MAX-STEEPS",
+          "type": "Number",
+          "sourcePath": "article.brewing.gongfu",
+          "value": "4"
+        },
+        {
+          "key": "recipe.gongfu_rinse",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-RINSE",
+          "type": "Boolean",
+          "sourcePath": "article.brewing.gongfu",
+          "value": "false"
+        },
+        {
+          "key": "recipe.western_water_temp",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-WESTERN-WATER-TEMP",
+          "type": "Number",
+          "sourcePath": "article.brewing.western",
+          "value": "72"
+        },
+        {
+          "key": "recipe.western_tea_grams",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-WESTERN-TEA-GRAMS",
+          "type": "Number",
+          "sourcePath": "article.brewing.western",
+          "value": "2"
+        },
+        {
+          "key": "recipe.western_water_ml",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-WESTERN-WATER-ML",
+          "type": "Number",
+          "sourcePath": "article.brewing.western",
+          "value": "200"
+        },
+        {
+          "key": "recipe.western_steep_sec",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-WESTERN-STEEP-SEC",
+          "type": "Duration",
+          "sourcePath": "article.brewing.western",
+          "value": "180"
+        },
+        {
+          "key": "recipe.western_max_steeps",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-WESTERN-MAX-STEEPS",
+          "type": "Number",
+          "sourcePath": "article.brewing.western",
+          "value": "2"
+        },
+        {
+          "key": "recipe.western_rinse",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-WESTERN-RINSE",
+          "type": "Boolean",
+          "sourcePath": "article.brewing.western",
+          "value": "false"
+        },
+        {
+          "key": "harvest.main_months",
+          "group": "harvest",
+          "attribute": "SPEC-TT-HARVEST-MAIN-MONTHS",
+          "type": "List",
+          "sourcePath": "article.harvest",
+          "value": "[\"March\",\"April\"]"
+        },
+        {
+          "key": "harvest.peak_months",
+          "group": "harvest",
+          "attribute": "SPEC-TT-HARVEST-PEAK-MONTHS",
+          "type": "List",
+          "sourcePath": "article.harvest",
+          "value": "[\"April\"]"
+        },
+        {
+          "key": "brewing.source_recipe_note",
+          "group": "brewing",
+          "attribute": "SPEC-TT-FIELD-BREWING-SOURCE-RECIPE-NOTE",
+          "type": "CustomMarkdownText",
+          "sourcePath": "article.brewing",
+          "value": "The article also gives a general preparation of 80–85 °C, 3 g per 150 ml. It is preserved as source context alongside the separate gongfu and western recipes; the values are not averaged into one product temperature."
+        }
+      ]
+    }
+  ]
+}
