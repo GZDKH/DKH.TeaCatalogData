@@ -1,0 +1,747 @@
+{
+  "$schema": "./product-creation-template.schema.json",
+  "kind": "product-creation-template",
+  "template": {
+    "id": "tea-product",
+    "version": "1.0.0",
+    "labels": {
+      "en-US": "Tea",
+      "ru-RU": "Чай"
+    },
+    "repositoryOnly": true,
+    "profile": {
+      "id": "tea",
+      "version": "1.0.0"
+    }
+  },
+  "runtime": {
+    "service": "ProductCatalogService",
+    "dataExchangeProfile": "products",
+    "runtimeType": null,
+    "definitionCreation": "disabled",
+    "referenceResolution": "existing-code-only"
+  },
+  "source": {
+    "system": "my.teadb.org",
+    "identity": [
+      "source.system",
+      "source.externalId"
+    ],
+    "revisionRequired": true,
+    "freshness": "record-source-controlled"
+  },
+  "catalog": {
+    "catalogCode": "CATALOG-CHINESE-TEA",
+    "categoryCode": null,
+    "categoryRequired": true,
+    "categoryResolution": "select-existing-code",
+    "currency": "CNY"
+  },
+  "productFields": [
+    {
+      "path": "product.code",
+      "type": "code",
+      "required": true,
+      "default": null,
+      "editable": true
+    },
+    {
+      "path": "product.sku",
+      "type": "string",
+      "required": false,
+      "default": null,
+      "editable": true
+    },
+    {
+      "path": "product.nativeName",
+      "type": "string",
+      "required": false,
+      "default": null,
+      "editable": true
+    },
+    {
+      "path": "product.transcription",
+      "type": "string",
+      "required": false,
+      "default": null,
+      "editable": true
+    },
+    {
+      "path": "product.translations",
+      "type": "localized-list",
+      "required": true,
+      "default": [],
+      "editable": true
+    },
+    {
+      "path": "product.catalogs",
+      "type": "catalog-assignment-list",
+      "required": true,
+      "default": [],
+      "editable": true
+    },
+    {
+      "path": "product.published",
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "editable": true
+    },
+    {
+      "path": "product.order",
+      "type": "integer",
+      "required": false,
+      "default": 0,
+      "editable": true
+    },
+    {
+      "path": "product.brand",
+      "type": "existing-code",
+      "required": false,
+      "default": null,
+      "editable": true
+    },
+    {
+      "path": "product.manufacturer",
+      "type": "existing-code",
+      "required": false,
+      "default": null,
+      "editable": true
+    },
+    {
+      "path": "product.tags",
+      "type": "existing-code-list",
+      "required": false,
+      "default": [],
+      "editable": true
+    },
+    {
+      "path": "product.packages",
+      "type": "package-list",
+      "required": false,
+      "default": [],
+      "editable": true
+    },
+    {
+      "path": "product.origins",
+      "type": "origin-list",
+      "required": false,
+      "default": [],
+      "editable": true
+    },
+    {
+      "path": "product.media",
+      "type": "media-list",
+      "required": false,
+      "default": [],
+      "editable": true
+    },
+    {
+      "path": "product.catalogPrices",
+      "type": "catalog-price-list",
+      "required": false,
+      "default": [],
+      "editable": true
+    },
+    {
+      "path": "product.tierPrices",
+      "type": "tier-price-list",
+      "required": false,
+      "default": [],
+      "editable": true
+    },
+    {
+      "path": "product.related",
+      "type": "product-reference-list",
+      "required": false,
+      "default": [],
+      "editable": true
+    },
+    {
+      "path": "product.crossSells",
+      "type": "product-reference-list",
+      "required": false,
+      "default": [],
+      "editable": true
+    }
+  ],
+  "specifications": {
+    "profileSource": "./profile.json",
+    "requiredKeys": [],
+    "defaults": [],
+    "explicitAttributes": [
+      {
+        "key": "classification_origin.tea_type",
+        "group": "classification_origin",
+        "attributeCode": "SPEC-TT-CLASSIFICATION-ORIGIN-TEA-TYPE",
+        "type": "Option",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "meta.tea_type"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "source.category_code",
+        "group": "source",
+        "attributeCode": "SPEC-TT-SOURCE-CATEGORY-CODE",
+        "type": "CustomText",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "meta.category_code"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "atomic.oxidation",
+        "group": "atomic",
+        "attributeCode": "SPEC-TT-ATOMIC-OXIDATION",
+        "type": "Range",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "meta.oxidation_min",
+          "meta.oxidation_max"
+        ],
+        "activation": "value-present",
+        "unit": "%"
+      },
+      {
+        "key": "brewing.brew_temp",
+        "group": "brewing",
+        "attributeCode": "SPEC-TT-BREWING-BREW-TEMP",
+        "type": "Range",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "meta.brew_temp_min",
+          "meta.brew_temp_max"
+        ],
+        "activation": "value-present",
+        "unit": "°C"
+      },
+      {
+        "key": "atomic.shape",
+        "group": "atomic",
+        "attributeCode": "SPEC-TT-ATOMIC-SHAPE",
+        "type": "Option",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "meta.shape",
+          "sections.atomic.shape"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "atomic.processing",
+        "group": "atomic",
+        "attributeCode": "SPEC-TT-ATOMIC-PROCESSING",
+        "type": "Option",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "meta.processing",
+          "sections.atomic.processing"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "atomic.roast_level",
+        "group": "atomic",
+        "attributeCode": "SPEC-TT-ATOMIC-ROAST-LEVEL",
+        "type": "Option",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "meta.roast_level",
+          "sections.atomic.roast_level"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "classification_origin.gi_status",
+        "group": "classification_origin",
+        "attributeCode": "SPEC-TT-CLASSIFICATION-ORIGIN-GI-STATUS",
+        "type": "Boolean",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "meta.gi_status"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "classification_origin.gi_standard",
+        "group": "classification_origin",
+        "attributeCode": "SPEC-TT-CLASSIFICATION-ORIGIN-GI-STANDARD",
+        "type": "CustomText",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "meta.gi_standard"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "organoleptic.taste",
+        "group": "organoleptic",
+        "attributeCode": "SPEC-TT-FIELD-ORGANOLEPTIC-TASTE",
+        "type": "CustomText",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "sections.organoleptic.taste",
+          "sections.sensory.taste"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "organoleptic.liquor_aroma",
+        "group": "organoleptic",
+        "attributeCode": "SPEC-TT-FIELD-ORGANOLEPTIC-LIQUOR-AROMA",
+        "type": "CustomText",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "sections.organoleptic.liquor_aroma"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "organoleptic.dry_leaf_aroma",
+        "group": "organoleptic",
+        "attributeCode": "SPEC-TT-FIELD-ORGANOLEPTIC-DRY-LEAF-AROMA",
+        "type": "CustomText",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "sections.organoleptic.dry_leaf_aroma"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "organoleptic.liquor_color",
+        "group": "organoleptic",
+        "attributeCode": "SPEC-TT-FIELD-ORGANOLEPTIC-LIQUOR-COLOR",
+        "type": "CustomText",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "sections.organoleptic.liquor_color"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "organoleptic.spent_leaves",
+        "group": "organoleptic",
+        "attributeCode": "SPEC-TT-FIELD-ORGANOLEPTIC-SPENT-LEAVES",
+        "type": "CustomText",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "sections.organoleptic.spent_leaves"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "enrichment.flavor_tags",
+        "group": "enrichment",
+        "attributeCode": "SPEC-TT-ENRICHMENT-FLAVOR-TAGS",
+        "type": "List",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "enrichment.flavor_tags"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "enrichment.caffeine_level",
+        "group": "enrichment",
+        "attributeCode": "SPEC-TT-ENRICHMENT-CAFFEINE-LEVEL",
+        "type": "Option",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "enrichment.caffeine_level"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "enrichment.difficulty",
+        "group": "enrichment",
+        "attributeCode": "SPEC-TT-ENRICHMENT-DIFFICULTY",
+        "type": "Option",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "enrichment.difficulty"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "enrichment.price_tier",
+        "group": "enrichment",
+        "attributeCode": "SPEC-TT-ENRICHMENT-PRICE-TIER",
+        "type": "Option",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "enrichment.price_tier"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "enrichment.best_season",
+        "group": "enrichment",
+        "attributeCode": "SPEC-TT-ENRICHMENT-BEST-SEASON",
+        "type": "List",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "enrichment.best_season"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "enrichment.occasion",
+        "group": "enrichment",
+        "attributeCode": "SPEC-TT-ENRICHMENT-OCCASION",
+        "type": "List",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "enrichment.occasion"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "enrichment.food_pairings",
+        "group": "enrichment",
+        "attributeCode": "SPEC-TT-ENRICHMENT-FOOD-PAIRINGS",
+        "type": "List",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "enrichment.food_pairings"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "brewing.water_temp",
+        "group": "brewing",
+        "attributeCode": "SPEC-TT-FIELD-BREWING-WATER-TEMP",
+        "type": "Number",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "sections.brewing.water_temp"
+        ],
+        "activation": "value-present",
+        "unit": "°C"
+      },
+      {
+        "key": "source.version",
+        "group": "source",
+        "attributeCode": "SPEC-TT-SOURCE-VERSION",
+        "type": "CustomText",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "meta.version"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "source.last_updated",
+        "group": "source",
+        "attributeCode": "SPEC-TT-SOURCE-LAST-UPDATED",
+        "type": "Date",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "meta.last_updated"
+        ],
+        "activation": "value-present"
+      },
+      {
+        "key": "source.review_status",
+        "group": "source",
+        "attributeCode": "SPEC-TT-SOURCE-REVIEW-STATUS",
+        "type": "Option",
+        "required": false,
+        "default": null,
+        "sourcePaths": [
+          "meta.review_status"
+        ],
+        "activation": "value-present"
+      }
+    ],
+    "dynamicAttributes": [
+      {
+        "keyPattern": "^sensory\\.descriptor_[a-z0-9-]+_intensity$",
+        "group": "sensory",
+        "attributeCodePattern": "SPEC-TT-SENSORY-DESCRIPTOR-{descriptor}-INTENSITY",
+        "type": "Number",
+        "required": false,
+        "activation": "value-present",
+        "default": null
+      },
+      {
+        "keyPattern": "^recipe\\.[a-z0-9-]+_(water_temp|tea_grams|water_ml|max_steeps)$",
+        "group": "recipe",
+        "attributeCodePattern": "SPEC-TT-RECIPE-{style}-{field}",
+        "type": "Number",
+        "required": false,
+        "activation": "value-present",
+        "default": null
+      },
+      {
+        "keyPattern": "^recipe\\.[a-z0-9-]+_(steep_sec|increment_sec)$",
+        "group": "recipe",
+        "attributeCodePattern": "SPEC-TT-RECIPE-{style}-{field}",
+        "type": "Duration",
+        "required": false,
+        "activation": "value-present",
+        "unit": "s",
+        "default": null
+      },
+      {
+        "keyPattern": "^recipe\\.[a-z0-9-]+_rinse$",
+        "group": "recipe",
+        "attributeCodePattern": "SPEC-TT-RECIPE-{style}-RINSE",
+        "type": "Boolean",
+        "required": false,
+        "activation": "value-present",
+        "default": null
+      },
+      {
+        "keyPattern": "^harvest\\.[a-z0-9-]+_months$",
+        "group": "harvest",
+        "attributeCodePattern": "SPEC-TT-HARVEST-{phase}-MONTHS",
+        "type": "List",
+        "required": false,
+        "activation": "value-present",
+        "default": null
+      },
+      {
+        "keyPattern": "^(classification_origin|atomic|botany_material|terroir|production|organoleptic|chemistry|brewing|storage|history_culture|price_counterfeit|facts|comparison|health|contraindications|conclusion|source)\\.[a-z0-9_]+$",
+        "groupFromKey": "^([^.]*)\\.",
+        "attributeCodePattern": "SPEC-TT-FIELD-{group}-{field}",
+        "type": "CustomMarkdownText",
+        "required": false,
+        "activation": "value-present",
+        "default": null
+      }
+    ],
+    "missingValue": "omit",
+    "unknownDefinition": "error",
+    "duplicateKey": "error",
+    "units": "definition-owned",
+    "sectionActivation": "only-when-selected-fields-have-values"
+  },
+  "productAttributes": {
+    "definitionSource": "catalog-or-category-reference",
+    "required": false,
+    "definitions": [
+      {
+        "slot": "variant-axis",
+        "code": null,
+        "required": false,
+        "controlType": "select",
+        "allowCustomValue": false,
+        "definitionSource": "current-catalog-or-category-reference"
+      }
+    ],
+    "options": [
+      {
+        "slot": "variant-option",
+        "code": null,
+        "parentSlot": "variant-axis",
+        "definitionSource": "current-product-attribute-reference"
+      }
+    ],
+    "allowCustomValue": false,
+    "allowDefinitionCreation": false,
+    "selection": "existing-code-only",
+    "note": "The slots are resolved from the current catalog/category export before apply; null codes are deliberate and cannot be imported."
+  },
+  "packages": {
+    "definitionSource": "existing-package-reference",
+    "allowedCodes": [
+      "PKG-25G",
+      "PKG-50G",
+      "PKG-100G",
+      "PKG-250G",
+      "PKG-500G"
+    ],
+    "defaultCode": null,
+    "defaultPolicy": "operator-selects-existing-offer",
+    "note": "Package codes are import conventions and do not assert that a current offer exists."
+  },
+  "variants": {
+    "definitionSource": "catalog-or-category-reference",
+    "axes": [
+      {
+        "slot": "variant-axis",
+        "attributeSlot": "variant-axis",
+        "required": false,
+        "optionsSlot": "variant-option",
+        "source": "current-catalog-or-category-reference"
+      }
+    ],
+    "generateCombinations": false,
+    "generateSellables": false,
+    "applyMode": "manual-after-reference-canary",
+    "note": "Product-attribute links, option values, combinations and catalog sellables use their existing DataExchange profiles."
+  },
+  "counterparties": {
+    "service": "CounterpartyService",
+    "roles": [
+      "Brand",
+      "Manufacturer",
+      "Supplier",
+      "Distributor"
+    ],
+    "required": false,
+    "definitionCreation": false,
+    "note": "Only existing counterparty codes may be referenced; no Vendor entity is introduced."
+  },
+  "sections": [
+    {
+      "id": "flavor-wheel",
+      "labels": {
+        "en-US": "Flavor profile",
+        "ru-RU": "Вкусовой профиль"
+      },
+      "activateWhen": {
+        "anyOf": [
+          "organoleptic.*",
+          "sensory.*",
+          "enrichment.flavor_tags"
+        ]
+      },
+      "dataOwner": "product"
+    },
+    {
+      "id": "brewing-table",
+      "labels": {
+        "en-US": "Brewing recipes",
+        "ru-RU": "Рецепты заваривания"
+      },
+      "activateWhen": {
+        "anyOf": [
+          "recipe.*",
+          "brewing.*"
+        ]
+      },
+      "dataOwner": "product"
+    },
+    {
+      "id": "origin-map",
+      "labels": {
+        "en-US": "Origin",
+        "ru-RU": "Происхождение"
+      },
+      "activateWhen": {
+        "anyOf": [
+          "product.origins",
+          "terroir.*"
+        ]
+      },
+      "dataOwner": "product"
+    },
+    {
+      "id": "product-reading",
+      "labels": {
+        "en-US": "Tea profile",
+        "ru-RU": "Профиль чая"
+      },
+      "activateWhen": {
+        "anyOf": [
+          "classification_origin.*",
+          "atomic.*",
+          "botany_material.*",
+          "production.*",
+          "harvest.*"
+        ]
+      },
+      "dataOwner": "product"
+    },
+    {
+      "id": "product-review-form",
+      "labels": {
+        "en-US": "Tasting note",
+        "ru-RU": "Дегустационная заметка"
+      },
+      "activateWhen": "review-session-enabled",
+      "dataOwner": "review"
+    },
+    {
+      "id": "product-reviews-list",
+      "labels": {
+        "en-US": "Community ratings",
+        "ru-RU": "Оценки сообщества"
+      },
+      "activateWhen": "review-session-enabled",
+      "dataOwner": "review"
+    }
+  ],
+  "reviewBoundary": {
+    "service": "ReviewService",
+    "sessionType": "structured-tasting",
+    "privateByDefault": true,
+    "publishAction": "explicit-share",
+    "productFactsImmutable": true,
+    "fields": [
+      "overallRating",
+      "aroma",
+      "flavor",
+      "body",
+      "mouthfeel",
+      "aftertaste",
+      "intensity",
+      "recommendation",
+      "note"
+    ],
+    "scale": {
+      "overallRating": {
+        "min": 1,
+        "max": 5,
+        "step": 1
+      }
+    },
+    "note": "User observations and ratings never overwrite product specifications."
+  },
+  "examples": [
+    {
+      "path": "./examples/yueyang-huangcha.from-post.json",
+      "code": "TEA-CN-YUEYANG-HUANGCHA",
+      "status": "source-backed-review-required"
+    },
+    {
+      "path": "./examples/xihu-longjing.from-post.json",
+      "code": "TEA-CN-XIHU-LONGJING",
+      "status": "source-backed-review-required"
+    }
+  ],
+  "apply": {
+    "sequence": [
+      "resolve-existing-references",
+      "validate-export",
+      "validate-data-exchange-dry-run",
+      "review-diff",
+      "one-product-canary",
+      "read-back-and-re-export"
+    ],
+    "idempotencyKey": [
+      "source.system",
+      "source.externalId"
+    ],
+    "applyAllowed": false,
+    "requiresAuthenticatedRefs": true
+  }
+}
