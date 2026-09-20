@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "snapshotId": "prod-admin-2026-09-20",
+  "generatedAtUtc": "2026-09-20T22:26:36.809Z",
+  "source": {
+    "kind": "authenticated-admin-ui-download",
+    "host": "admin.xnata.com",
+    "page": "/ru-RU/catalogs/0be5b4fc-651b-4953-87d8-08d976ddb13d/imports",
+    "catalogId": "0be5b4fc-651b-4953-87d8-08d976ddb13d",
+    "catalogCode": "CATALOG-CHINESE-TEA",
+    "catalogName": "Китайский чай",
+    "capturedAtUtc": "2026-09-20T22:19:00Z",
+    "capturedAtEvidence": "download filename products_20260920_221900.json; exact server event time was not exposed by the UI",
+    "workspaceId": null,
+    "workspaceLabel": "XNATA Platform",
+    "workspaceEvidence": "authenticated UI commercial profile; UUID is intentionally unresolved",
+    "completeExport": true,
+    "pagination": "single downloaded system export; UI catalog count matched 526 products",
+    "liveTemplateEvidence": {
+      "specifications": "No specifications yet for this catalog.",
+      "variantAttributes": "No variant attributes yet for this catalog."
+    }
+  },
+  "files": {
+    "products": {
+      "path": "sources/prod/product-reference/prod-admin-2026-09-20/products.json",
+      "sha256": "0480b20703257638b6a2925e81270aa5c7de62c2e847ef1b475677a913f89e5f",
+      "bytes": 83588306
+    },
+    "template": {
+      "path": "sources/prod/product-reference/prod-admin-2026-09-20/products_template.json",
+      "sha256": "6691af43c76cc8a387ce410bc9fa5837a98ed4af3ca9cff000d75ccb38dec4f8",
+      "bytes": 14251
+    }
+  },
+  "coverage": {
+    "products": 526,
+    "productIds": 526,
+    "productCodes": 526,
+    "productSkus": 526,
+    "duplicateIds": 0,
+    "duplicateCodes": 0,
+    "duplicateSkus": 0,
+    "specifications": 18967,
+    "productsWithSpecifications": 526,
+    "tags": 3729,
+    "packages": 2631,
+    "catalogs": 3947,
+    "origins": 526,
+    "related": 526,
+    "crossSells": 0
+  },
+  "specificationCoverage": {
+    "types": {
+      "Number": 6388,
+      "CustomMarkdownText": 6377,
+      "Option": 1574,
+      "Duration": 1350,
+      "List": 1350,
+      "Boolean": 900,
+      "CustomText": 514,
+      "Date": 514
+    },
+    "groups": {
+      "SPEC-TT-GROUP-RECIPE": 5850,
+      "SPEC-TT-GROUP-SENSORY": 2248,
+      "SPEC-TT-GROUP-SOURCE": 2068,
+      "SPEC-TT-GROUP-ORGANOLEPTIC": 1759,
+      "SPEC-TT-GROUP-CHEMISTRY": 1734,
+      "SPEC-TT-GROUP-HARVEST": 1350,
+      "SPEC-TT-GROUP-BREWING": 1285,
+      "SPEC-TT-GROUP-BOTANY-MATERIAL": 748,
+      "SPEC-TT-GROUP-STORAGE": 713,
+      "SPEC-TT-GROUP-CLASSIFICATION-ORIGIN": 551,
+      "SPEC-TT-GROUP-TERROIR": 325,
+      "SPEC-TT-GROUP-HISTORY-CULTURE": 170,
+      "SPEC-TT-GROUP-PRICE-COUNTERFEIT": 151,
+      "SPEC-TT-GROUP-ATOMIC": 10,
+      "(missing)": 5
+    },
+    "distinctAttributes": 78,
+    "distinctOptions": 21,
+    "valuePresent": 17393,
+    "valueMinPresent": 0,
+    "valueMaxPresent": 0,
+    "showOnPageTrue": 16899,
+    "showOnPageFalse": 2068
+  },
+  "exchangeTemplate": {
+    "rows": 1,
+    "columns": 443,
+    "specificationColumns": [
+      "specs.lang",
+      "specs.group",
+      "specs.groupName",
+      "specs.attribute",
+      "specs.attributeName",
+      "specs.option",
+      "specs.optionName",
+      "specs.type",
+      "specs.value",
+      "specs.valueMin",
+      "specs.valueMax",
+      "specs.showOnPage",
+      "specs.order"
+    ]
+  },
+  "preparationStatus": {
+    "sourceExport": "captured-and-hashed",
+    "generatedArtifact": "not generated: source snapshot is the current phase output",
+    "productionWrite": false,
+    "workspaceResolution": "blocked: authenticated UI exposes label but not UUID; no guessed value is recorded"
+  }
+}
