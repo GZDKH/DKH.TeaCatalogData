@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-09-21",
+  "observationSource": "authenticated-admin-ui",
+  "workspaceLabel": "XNATA Platform",
+  "workspaceId": null,
+  "catalogId": "0be5b4fc-651b-4953-87d8-08d976ddb13d",
+  "catalogCode": "CATALOG-CHINESE-TEA",
+  "specificationDefinitionCount": 20,
+  "specificationDefinitions": [
+    { "name": "Тип чая", "code": "SPEC-TT-CLASSIFICATION-ORIGIN-TEA-TYPE", "id": "6ed9a380-dbc5-4f11-af37-d7e87e8d1d52", "options": ["Тёмный чай", "Зелёный чай", "Улун", "Puer", "Red", "Белый чай", "Жёлтый чай"] },
+    { "name": "Категория TheTea", "code": "SPEC-TT-SOURCE-CATEGORY-CODE" },
+    { "name": "Origin Country", "code": "SPEC-TT-CLASSIFICATION-ORIGIN-ORIGIN-COUNTRY" },
+    { "name": "Окисление", "code": "SPEC-TT-ATOMIC-OXIDATION" },
+    { "name": "Температура заваривания", "code": "SPEC-TT-BREWING-BREW-TEMP" },
+    { "name": "Province", "code": "SPEC-TT-CLASSIFICATION-ORIGIN-PROVINCE" },
+    { "name": "Форма листа", "code": "SPEC-TT-ATOMIC-SHAPE" },
+    { "name": "Обработка", "code": "SPEC-TT-ATOMIC-PROCESSING" },
+    { "name": "Factory", "code": "SPEC-BF8EE9A970E348C" },
+    { "name": "Pressing Format", "code": "SPEC-4304F36A0BF94F7" },
+    { "name": "Vintage Year", "code": "SPEC-06609725785E48F" },
+    { "name": "Test", "code": "SPEC-BE4BEAE11BB34FB" },
+    { "name": "Состав", "code": "SPEC-TEXTILE-COMPOSITION" },
+    { "name": "Применение", "code": "SPEC-TEXTILE-USE" },
+    { "name": "Фактура", "code": "SPEC-TEXTILE-TEXTURE" },
+    { "name": "Плотность", "code": "SPEC-TEXTILE-WEIGHT" },
+    { "name": "Эластичность", "code": "SPEC-TEXTILE-STRETCH" },
+    { "name": "Ширина", "code": "SPEC-TEXTILE-WIDTH" },
+    { "name": "MOQ", "code": "SPEC-TEXTILE-MOQ" },
+    { "name": "Статус", "code": "SPEC-TEXTILE-STATUS" }
+  ],
+  "productAttributeCount": 2,
+  "productAttributes": ["Вариант", "Вариант поставки Fabricora"],
+  "catalogTemplate": {
+    "specifications": "No specifications yet for this catalog.",
+    "variantAttributes": "No variant attributes yet for this catalog."
+  }
+}
