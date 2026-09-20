@@ -1,0 +1,678 @@
+{
+  "profile": {
+    "id": "tea",
+    "version": "1.0.0",
+    "sourceSystem": "thetea-content-d1"
+  },
+  "records": [
+    {
+      "source": {
+        "system": "thetea-content-d1",
+        "externalId": "xihu-longjing",
+        "revision": "smoke-2026-04-08",
+        "retrievedAt": "2026-09-20T00:00:00Z"
+      },
+      "product": {
+        "code": "TEA-CN-XIHU-LONGJING",
+        "sku": "XIHU-LONGJING-CN",
+        "published": false,
+        "order": 0,
+        "nativeName": "西湖龙井",
+        "transcription": "Xīhú lóngjǐng",
+        "translations": [
+          {
+            "lang": "en-US",
+            "name": "Xī Hú Lóngjǐng",
+            "transcription": "Xīhú lóngjǐng",
+            "description": "**Imperial green tea from West Lake: flat leaf, orchid and roasted chestnut aroma, sweet aftertaste.**\n\nXi Hu Long Jing (West Lake Dragon Well) is the most famous Chinese green tea, topping the list of 'China's Ten Famous Teas'. It is produced exclusively by hand in the vicinity of Hangzhou's West Lake from select buds and one to two leaves. It has a characteristic flat shape, a delicate bean-floral aroma, and a deep flavor with a bright umami note.\n\n**Tasting note:** Delicate, smooth infusion with expressive umami, notes of roasted chestnut, floral sweetness, and a long refreshing finish.\n\n## Brewing recipes\n- **gongfu:** 80°C, 5 g / 100 ml, 10s, 3 steeps\n- **western:** 75°C, 3 g / 200 ml, 180s, 2 steeps",
+            "seo": "xihu-longjing",
+            "metaTitle": "Xi Hu Long Jing: Description, History, and Taste of the Legendary Tea",
+            "metaDescription": "Xi Hu Long Jing — imperial green tea from Hangzhou. Learn all about the taste, aroma, legends, and proper brewing of the West Lake Dragon Well."
+          },
+          {
+            "lang": "ru-RU",
+            "name": "Си Ху Лун Цзин",
+            "transcription": "Xīhú lóngjǐng",
+            "seo": "xihu-longjing"
+          },
+          {
+            "lang": "zh-CN",
+            "name": "西湖龙井",
+            "transcription": "Xīhú lóngjǐng",
+            "seo": "xihu-longjing"
+          }
+        ],
+        "catalogs": [
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-GREEN-TEA",
+            "order": 1,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-REGION-ZHEJIANG",
+            "order": 2,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-SHAPE-FLAT",
+            "order": 3,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-PROC-CHAOQING",
+            "order": 4,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-ROAST-NONE",
+            "order": 5,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-SPEC-GI",
+            "order": 6,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-SPEC-TEN-FAMOUS-TEAS",
+            "order": 7,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-SPEC-UNESCO-ICH",
+            "order": 8,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-GREEN-LONGJING",
+            "order": 9,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-FAMILY-1",
+            "order": 10,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-BREW-GONGFU",
+            "order": 11,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-BREW-GAIWAN",
+            "order": 12,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-BREW-GLASS",
+            "order": 13,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-LEAF-SMALL",
+            "order": 14,
+            "published": true
+          },
+          {
+            "catalog": "CATALOG-CHINESE-TEA",
+            "catalogCurrency": "CNY",
+            "category": "CAT-FAMILY-2",
+            "order": 15,
+            "published": true
+          }
+        ],
+        "tags": [
+          {
+            "code": "TAG-TT-GI",
+            "name": "Gi",
+            "lang": "en-US"
+          },
+          {
+            "code": "TAG-TT-GREEN",
+            "name": "Green",
+            "lang": "en-US"
+          },
+          {
+            "code": "TAG-TT-TEN-FAMOUS-TEAS",
+            "name": "Ten Famous Teas",
+            "lang": "en-US"
+          },
+          {
+            "code": "TAG-TT-UNESCO-ICH",
+            "name": "Unesco Ich",
+            "lang": "en-US"
+          },
+          {
+            "code": "TAG-FLAVOR-CHESTNUT",
+            "name": "Chestnut",
+            "lang": "en-US"
+          },
+          {
+            "code": "TAG-FLAVOR-ORCHID",
+            "name": "Orchid",
+            "lang": "en-US"
+          },
+          {
+            "code": "TAG-FLAVOR-FLORAL",
+            "name": "Floral",
+            "lang": "en-US"
+          },
+          {
+            "code": "TAG-FLAVOR-ROASTED",
+            "name": "Roasted",
+            "lang": "en-US"
+          },
+          {
+            "code": "TAG-FLAVOR-NUTTY",
+            "name": "Nutty",
+            "lang": "en-US"
+          },
+          {
+            "code": "TAG-FLAVOR-UMAMI",
+            "name": "Umami",
+            "lang": "en-US"
+          },
+          {
+            "code": "TAG-FLAVOR-VEGETAL",
+            "name": "Vegetal",
+            "lang": "en-US"
+          }
+        ],
+        "packages": [
+          {
+            "package": "PKG-25G",
+            "packageName": "25g",
+            "packageUnit": "g",
+            "quantity": 25,
+            "default": false
+          },
+          {
+            "package": "PKG-50G",
+            "packageName": "50g",
+            "packageUnit": "g",
+            "quantity": 50,
+            "default": true
+          },
+          {
+            "package": "PKG-100G",
+            "packageName": "100g",
+            "packageUnit": "g",
+            "quantity": 100,
+            "default": false
+          },
+          {
+            "package": "PKG-250G",
+            "packageName": "250g",
+            "packageUnit": "g",
+            "quantity": 250,
+            "default": false
+          },
+          {
+            "package": "PKG-500G",
+            "packageName": "500g",
+            "packageUnit": "g",
+            "quantity": 500,
+            "default": false
+          }
+        ],
+        "origins": [
+          {
+            "country": "CN",
+            "state": "ZJ",
+            "city": "Hangzhou",
+            "altitude": {
+              "min": 100,
+              "max": 800,
+              "unit": "m"
+            },
+            "coordinates": {
+              "lat": 30.22,
+              "lng": 120.13
+            },
+            "translations": [
+              {
+                "lang": "en-US",
+                "place": "China, Zhèjiāng Province (浙江, Zhèjiāng), Hángzhōu City (杭州, Hángzhōu), vicinity of West Lake (西湖, Xīhú)",
+                "notes": "**Origin:** China, Zhèjiāng Province (浙江, Zhèjiāng), Hángzhōu City (杭州, Hángzhōu), vicinity of West Lake (西湖, Xīhú). The production territory covers the Xihu, Xiaoshan, Yuhang districts and 18 other counties of Hangzhou City, divided into three major zones: Xīhú (西湖), Qiantang (钱塘) and Yuèzhōu (越州). Only tea from the Xihu zone has the right to the full name \"Xi Hu Longjing.\"\n\n**Altitude:** 100–800 meters above sea level. The main mass of tea gardens is located at elevations of 100–200 m on hilly slopes.\n\n**Climate:** Hangzhou is located in the subtropical monsoon climate zone. Average annual temperature — about 16°C, annual precipitation — about 1500 mm, relative humidity — over 78%. In spring the region is often shrouded in fog, daily temperature fluctuations are 8–12°C, which favors the accumulation of L-theanine (tea amino acid) in leaves. A local saying describes this microclimate: \"In clear weather — morning and evening fog everywhere, in cloudy weather — all day mountains in clouds\" (晴时早晚遍地雾，阴雨成天满山云).\n\n**Soil:** Weakly acidic red soils (红壤, hóng rǎng) with pH 4.5–6.0, rich in organic matter and minerals. Soil acidity and mineral composition play a key role in forming the characteristic flavor profile of the tea.\n\n**Coordinates:** Approximately 30°15′ North latitude, 120°10′ East longitude."
+              }
+            ]
+          }
+        ],
+        "related": [],
+        "crossSells": []
+      },
+      "specifications": [
+        {
+          "key": "classification_origin.tea_type",
+          "group": "classification_origin",
+          "attribute": "SPEC-TT-CLASSIFICATION-ORIGIN-TEA-TYPE",
+          "type": "Option",
+          "sourcePath": "post.classification-origin",
+          "option": "SPEC-TT-OPT-CLASSIFICATION-ORIGIN-TEA-TYPE-GREEN"
+        },
+        {
+          "key": "source.category_code",
+          "group": "source",
+          "attribute": "SPEC-TT-SOURCE-CATEGORY-CODE",
+          "type": "Option",
+          "sourcePath": "post.source",
+          "option": "SPEC-TT-OPT-SOURCE-CATEGORY-CODE-CHINA-GREEN-TEA"
+        },
+        {
+          "key": "atomic.oxidation",
+          "group": "atomic",
+          "attribute": "SPEC-TT-ATOMIC-OXIDATION",
+          "type": "Range",
+          "sourcePath": "post.atomic",
+          "valueMin": 0,
+          "valueMax": 0
+        },
+        {
+          "key": "brewing.brew_temp",
+          "group": "brewing",
+          "attribute": "SPEC-TT-BREWING-BREW-TEMP",
+          "type": "Range",
+          "sourcePath": "post.brewing",
+          "valueMin": 80,
+          "valueMax": 90
+        },
+        {
+          "key": "atomic.shape",
+          "group": "atomic",
+          "attribute": "SPEC-TT-ATOMIC-SHAPE",
+          "type": "Option",
+          "sourcePath": "post.atomic",
+          "option": "SPEC-TT-OPT-ATOMIC-SHAPE-FLAT"
+        },
+        {
+          "key": "atomic.processing",
+          "group": "atomic",
+          "attribute": "SPEC-TT-ATOMIC-PROCESSING",
+          "type": "Option",
+          "sourcePath": "post.atomic",
+          "option": "SPEC-TT-OPT-ATOMIC-PROCESSING-CHAOQING"
+        },
+        {
+          "key": "atomic.roast_level",
+          "group": "atomic",
+          "attribute": "SPEC-TT-ATOMIC-ROAST-LEVEL",
+          "type": "Option",
+          "sourcePath": "post.atomic",
+          "option": "SPEC-TT-OPT-ATOMIC-ROAST-LEVEL-NONE"
+        },
+        {
+          "key": "source.version",
+          "group": "source",
+          "attribute": "SPEC-TT-SOURCE-VERSION",
+          "type": "CustomText",
+          "sourcePath": "post.source",
+          "value": "1.0"
+        },
+        {
+          "key": "source.last_updated",
+          "group": "source",
+          "attribute": "SPEC-TT-SOURCE-LAST-UPDATED",
+          "type": "Date",
+          "sourcePath": "post.source",
+          "value": "2026-04-08"
+        },
+        {
+          "key": "source.review_status",
+          "group": "source",
+          "attribute": "SPEC-TT-SOURCE-REVIEW-STATUS",
+          "type": "Option",
+          "sourcePath": "post.source",
+          "option": "SPEC-TT-OPT-SOURCE-REVIEW-STATUS-PUBLISHED"
+        },
+        {
+          "key": "botany_material.cultivar",
+          "group": "botany_material",
+          "attribute": "SPEC-TT-FIELD-BOTANY-MATERIAL-CULTIVAR",
+          "type": "CustomMarkdownText",
+          "sourcePath": "post.botany-material",
+          "value": "Several varieties of tea bush *Camellia sinensis* var. *sinensis* are used for producing Xi Hu Longjing:"
+        },
+        {
+          "key": "botany_material.pluck_standard",
+          "group": "botany_material",
+          "attribute": "SPEC-TT-FIELD-BOTANY-MATERIAL-PLUCK-STANDARD",
+          "type": "CustomMarkdownText",
+          "sourcePath": "post.botany-material",
+          "value": "Traditionally picked one bud and one-two upper leaves (一芽一叶, yī yá yī yè or 一芽二叶, yī yá èr yè). For highest grades — only bud with one barely unfolded leaf, or exclusively buds."
+        },
+        {
+          "key": "botany_material.raw_material",
+          "group": "botany_material",
+          "attribute": "SPEC-TT-FIELD-BOTANY-MATERIAL-RAW-MATERIAL",
+          "type": "CustomMarkdownText",
+          "sourcePath": "post.botany-material",
+          "value": "Highest. Only tender, undamaged buds and leaves of uniform size are used, without coarse leaves, stems and impurities. Freshly picked raw material must be processed on the same day."
+        },
+        {
+          "key": "brewing.tea_amount",
+          "group": "brewing",
+          "attribute": "SPEC-TT-FIELD-BREWING-TEA-AMOUNT",
+          "type": "CustomMarkdownText",
+          "sourcePath": "post.brewing",
+          "value": "3 g per 150 ml water."
+        },
+        {
+          "key": "brewing.teaware",
+          "group": "brewing",
+          "attribute": "SPEC-TT-FIELD-BREWING-TEAWARE",
+          "type": "CustomMarkdownText",
+          "sourcePath": "post.brewing",
+          "value": "Glass tumbler (玻璃杯, bōli bēi) — best option for observing \"dance\" of leaves in water. White porcelain gàiwǎn (白瓷盖碗, bái cí gàiwǎn) of 150 ml volume also suitable — allows more precise control of steeping time and better evaluation of aroma."
+        },
+        {
+          "key": "chemistry.alkaloids",
+          "group": "chemistry",
+          "attribute": "SPEC-TT-FIELD-CHEMISTRY-ALKALOIDS",
+          "type": "CustomMarkdownText",
+          "sourcePath": "post.chemistry",
+          "value": "Caffeine content — approximately 4.0–4.8% of dry mass (according to scientific publications — up to 4.81%, one of the highest indicators among Chinese green teas). Theobromine and theophylline are also present in smaller quantities."
+        },
+        {
+          "key": "chemistry.minerals",
+          "group": "chemistry",
+          "attribute": "SPEC-TT-FIELD-CHEMISTRY-MINERALS",
+          "type": "CustomMarkdownText",
+          "sourcePath": "post.chemistry",
+          "value": "Fluorine (promotes dental enamel protection), potassium, magnesium, zinc, iron, manganese, selenium."
+        },
+        {
+          "key": "chemistry.vitamins",
+          "group": "chemistry",
+          "attribute": "SPEC-TT-FIELD-CHEMISTRY-VITAMINS",
+          "type": "CustomMarkdownText",
+          "sourcePath": "post.chemistry",
+          "value": "Vitamin C — 100–300 mg per 100 g dry tea (in fresh leaf of \"one bud — one leaf\" standard — over 1%). B vitamins: B₁ (thiamine) — ≈0.5 mg/100 g, B₂ (riboflavin) — ≈1.5 mg/100 g, B₃ (pantothenic acid) — ≈1.8 mg/100 g, PP (nicotinic acid) — ≈6.5 mg/100 g. Also contains vitamin A, vitamin E, folic acid."
+        },
+        {
+          "key": "organoleptic.liquor_aroma",
+          "group": "organoleptic",
+          "attribute": "SPEC-TT-FIELD-ORGANOLEPTIC-LIQUOR-AROMA",
+          "type": "CustomMarkdownText",
+          "sourcePath": "post.organoleptic",
+          "value": "Clean, persistent, fresh. The same notes dominate — bean floral aroma, tender green sweetness, light chestnut roast. In tea from Shifeng zone — noticeable orchid nuance. Aroma unfolds gradually with each infusion."
+        },
+        {
+          "key": "organoleptic.liquor_color",
+          "group": "organoleptic",
+          "attribute": "SPEC-TT-FIELD-ORGANOLEPTIC-LIQUOR-COLOR",
+          "type": "CustomMarkdownText",
+          "sourcePath": "post.organoleptic",
+          "value": "Light green, clean and transparent, with tender yellowish-green shade (嫩绿明亮). In highest grade teas — crystal clear, \"alive.\""
+        },
+        {
+          "key": "organoleptic.spent_leaves",
+          "group": "organoleptic",
+          "attribute": "SPEC-TT-FIELD-ORGANOLEPTIC-SPENT-LEAVES",
+          "type": "CustomMarkdownText",
+          "sourcePath": "post.organoleptic",
+          "value": "Even, whole, elastic leaves and buds of light green color, preserving the form \"one bud — one leaf.\" Leaf tender, uniform, without damage."
+        },
+        {
+          "key": "terroir.soil",
+          "group": "terroir",
+          "attribute": "SPEC-TT-FIELD-TERROIR-SOIL",
+          "type": "CustomMarkdownText",
+          "sourcePath": "post.terroir",
+          "value": "Weakly acidic red soils (红壤, hóng rǎng) with pH 4.5–6.0, rich in organic matter and minerals. Soil acidity and mineral composition play a key role in forming the characteristic flavor profile of the tea."
+        },
+        {
+          "key": "recipe.gongfu_water_temp",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-WATER-TEMP",
+          "type": "Number",
+          "sourcePath": "post.recipe",
+          "value": "80"
+        },
+        {
+          "key": "recipe.gongfu_tea_grams",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-TEA-GRAMS",
+          "type": "Number",
+          "sourcePath": "post.recipe",
+          "value": "5"
+        },
+        {
+          "key": "recipe.gongfu_water_ml",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-WATER-ML",
+          "type": "Number",
+          "sourcePath": "post.recipe",
+          "value": "100"
+        },
+        {
+          "key": "recipe.gongfu_steep_sec",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-STEEP-SEC",
+          "type": "Duration",
+          "sourcePath": "post.recipe",
+          "value": "10"
+        },
+        {
+          "key": "recipe.gongfu_increment_sec",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-INCREMENT-SEC",
+          "type": "Duration",
+          "sourcePath": "post.recipe",
+          "value": "5"
+        },
+        {
+          "key": "recipe.gongfu_max_steeps",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-MAX-STEEPS",
+          "type": "Number",
+          "sourcePath": "post.recipe",
+          "value": "3"
+        },
+        {
+          "key": "recipe.gongfu_rinse",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-GONGFU-RINSE",
+          "type": "Boolean",
+          "sourcePath": "post.recipe",
+          "value": "false"
+        },
+        {
+          "key": "recipe.western_water_temp",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-WESTERN-WATER-TEMP",
+          "type": "Number",
+          "sourcePath": "post.recipe",
+          "value": "75"
+        },
+        {
+          "key": "recipe.western_tea_grams",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-WESTERN-TEA-GRAMS",
+          "type": "Number",
+          "sourcePath": "post.recipe",
+          "value": "3"
+        },
+        {
+          "key": "recipe.western_water_ml",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-WESTERN-WATER-ML",
+          "type": "Number",
+          "sourcePath": "post.recipe",
+          "value": "200"
+        },
+        {
+          "key": "recipe.western_steep_sec",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-WESTERN-STEEP-SEC",
+          "type": "Duration",
+          "sourcePath": "post.recipe",
+          "value": "180"
+        },
+        {
+          "key": "recipe.western_max_steeps",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-WESTERN-MAX-STEEPS",
+          "type": "Number",
+          "sourcePath": "post.recipe",
+          "value": "2"
+        },
+        {
+          "key": "recipe.western_rinse",
+          "group": "recipe",
+          "attribute": "SPEC-TT-RECIPE-WESTERN-RINSE",
+          "type": "Boolean",
+          "sourcePath": "post.recipe",
+          "value": "false"
+        },
+        {
+          "key": "harvest.early_months",
+          "group": "harvest",
+          "attribute": "SPEC-TT-HARVEST-EARLY-MONTHS",
+          "type": "List",
+          "sourcePath": "post.harvest",
+          "value": "[\"3\"]"
+        },
+        {
+          "key": "harvest.late_months",
+          "group": "harvest",
+          "attribute": "SPEC-TT-HARVEST-LATE-MONTHS",
+          "type": "List",
+          "sourcePath": "post.harvest",
+          "value": "[\"4\",\"5\"]"
+        },
+        {
+          "key": "harvest.peak_months",
+          "group": "harvest",
+          "attribute": "SPEC-TT-HARVEST-PEAK-MONTHS",
+          "type": "List",
+          "sourcePath": "post.harvest",
+          "value": "[\"4\"]"
+        },
+        {
+          "key": "sensory.descriptor_l_intensity",
+          "group": "sensory",
+          "attribute": "SPEC-TT-SENSORY-DESCRIPTOR-L-INTENSITY",
+          "type": "Number",
+          "sourcePath": "post.sensory",
+          "value": "5"
+        },
+        {
+          "key": "sensory.descriptor_mw_intensity",
+          "group": "sensory",
+          "attribute": "SPEC-TT-SENSORY-DESCRIPTOR-MW-INTENSITY",
+          "type": "Number",
+          "sourcePath": "post.sensory",
+          "value": "4"
+        },
+        {
+          "key": "sensory.descriptor_cz_intensity",
+          "group": "sensory",
+          "attribute": "SPEC-TT-SENSORY-DESCRIPTOR-CZ-INTENSITY",
+          "type": "Number",
+          "sourcePath": "post.sensory",
+          "value": "3"
+        },
+        {
+          "key": "sensory.descriptor_li_intensity",
+          "group": "sensory",
+          "attribute": "SPEC-TT-SENSORY-DESCRIPTOR-LI-INTENSITY",
+          "type": "Number",
+          "sourcePath": "post.sensory",
+          "value": "2"
+        },
+        {
+          "key": "sensory.descriptor_h_intensity",
+          "group": "sensory",
+          "attribute": "SPEC-TT-SENSORY-DESCRIPTOR-H-INTENSITY",
+          "type": "Number",
+          "sourcePath": "post.sensory",
+          "value": "1"
+        },
+        {
+          "key": "enrichment.caffeine_level",
+          "group": "enrichment",
+          "attribute": "SPEC-TT-ENRICHMENT-CAFFEINE-LEVEL",
+          "type": "Option",
+          "sourcePath": "post.enrichment",
+          "option": "SPEC-TT-OPT-ENRICHMENT-CAFFEINE-LEVEL-MEDIUM"
+        },
+        {
+          "key": "enrichment.difficulty",
+          "group": "enrichment",
+          "attribute": "SPEC-TT-ENRICHMENT-DIFFICULTY",
+          "type": "Option",
+          "sourcePath": "post.enrichment",
+          "option": "SPEC-TT-OPT-ENRICHMENT-DIFFICULTY-INTERMEDIATE"
+        },
+        {
+          "key": "enrichment.price_tier",
+          "group": "enrichment",
+          "attribute": "SPEC-TT-ENRICHMENT-PRICE-TIER",
+          "type": "Option",
+          "sourcePath": "post.enrichment",
+          "option": "SPEC-TT-OPT-ENRICHMENT-PRICE-TIER-PREMIUM"
+        },
+        {
+          "key": "enrichment.best_season",
+          "group": "enrichment",
+          "attribute": "SPEC-TT-ENRICHMENT-BEST-SEASON",
+          "type": "List",
+          "sourcePath": "post.enrichment",
+          "value": "[\"spring\"]"
+        },
+        {
+          "key": "enrichment.occasion",
+          "group": "enrichment",
+          "attribute": "SPEC-TT-ENRICHMENT-OCCASION",
+          "type": "List",
+          "sourcePath": "post.enrichment",
+          "value": "[\"morning\",\"afternoon\",\"focus\",\"relax\",\"social\",\"meditation\"]"
+        },
+        {
+          "key": "enrichment.flavor_tags",
+          "group": "enrichment",
+          "attribute": "SPEC-TT-ENRICHMENT-FLAVOR-TAGS",
+          "type": "List",
+          "sourcePath": "post.enrichment",
+          "value": "[\"chestnut\",\"orchid\",\"floral\",\"roasted\",\"nutty\",\"umami\",\"vegetal\"]"
+        },
+        {
+          "key": "enrichment.food_pairings",
+          "group": "enrichment",
+          "attribute": "SPEC-TT-ENRICHMENT-FOOD-PAIRINGS",
+          "type": "List",
+          "sourcePath": "post.enrichment",
+          "value": "[\"Chinese vegetarian dishes\",\"Tofu dishes\",\"Steamed scallops\",\"Lotus root slices\",\"Delicate rice cakes\"]"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Tea specification export profile
 
-`templates/tea.v1/profile.json` is the data contract for exporting tea facts from an external source such as `my.teadb.org`. It is deliberately stored with catalog data rather than in a storefront theme or service. `templates/tea.v1/product-template.json` is the fillable starting record; `examples/export.example.json` shows a populated sensory record. A future `coffee.v1` or `ceramics.v1` profile can use the same envelope and generic ProductCatalog DataExchange path.
+`templates/tea.v1/profile.json` is the data contract for exporting tea facts from an external source such as `my.teadb.org`. It is deliberately stored with catalog data rather than in a storefront theme or service. `templates/tea.v1/product-template.json` is the fillable starting record; `examples/xihu-longjing.from-post.json` is a real 50-specification product derived from the recorded Xī Hú Lóngjǐng post; `examples/post-coverage.json` records the field coverage measured across the 526-card TheTea content snapshot. A future `coffee.v1` or `ceramics.v1` profile can use the same envelope and generic ProductCatalog DataExchange path.
 
 The exporter writes `templates/tea.v1` records. The profile maps its stable semantic keys to the existing ProductCatalog codes. The resulting Admin DataExchange artifact keeps the current layout:
 

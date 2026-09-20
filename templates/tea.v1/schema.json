@@ -56,8 +56,16 @@
         "code": {"type": "string", "pattern": "^[A-Z0-9][A-Z0-9-]{0,99}$"},
         "sku": {"type": "string", "maxLength": 100},
         "nativeName": {"type": "string", "maxLength": 500},
+        "transcription": {"type": "string", "maxLength": 500},
+        "published": {"type": "boolean"},
+        "order": {"type": "integer", "minimum": 0},
         "translations": {"type": "array", "items": {"type": "object"}},
-        "catalogs": {"type": "array", "items": {"type": "object"}}
+        "catalogs": {"type": "array", "items": {"type": "object"}},
+        "tags": {"type": "array", "items": {"type": "object"}},
+        "packages": {"type": "array", "items": {"type": "object"}},
+        "origins": {"type": "array", "items": {"type": "object"}},
+        "related": {"type": "array", "items": {"type": "object"}},
+        "crossSells": {"type": "array", "items": {"type": "object"}}
       }
     },
     "specification": {
