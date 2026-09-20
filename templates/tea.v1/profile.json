@@ -33,6 +33,26 @@
       "labels": {"en-US": "Core Tea Facts", "ru-RU": "Основные свойства чая"}
     },
     {
+      "key": "botany_material",
+      "targetCode": "SPEC-TT-GROUP-BOTANY-MATERIAL",
+      "labels": {"en-US": "Botany and Raw Material", "ru-RU": "Ботаника и сырьё"}
+    },
+    {
+      "key": "terroir",
+      "targetCode": "SPEC-TT-GROUP-TERROIR",
+      "labels": {"en-US": "Terroir", "ru-RU": "Терруар"}
+    },
+    {
+      "key": "production",
+      "targetCode": "SPEC-TT-GROUP-PRODUCTION",
+      "labels": {"en-US": "Production", "ru-RU": "Производство"}
+    },
+    {
+      "key": "history_culture",
+      "targetCode": "SPEC-TT-GROUP-HISTORY-CULTURE",
+      "labels": {"en-US": "History and Culture", "ru-RU": "История и культура"}
+    },
+    {
       "key": "organoleptic",
       "targetCode": "SPEC-TT-GROUP-ORGANOLEPTIC",
       "labels": {"en-US": "Organoleptic Profile", "ru-RU": "Органолептический профиль"},
@@ -49,6 +69,11 @@
         "section": "flavor-wheel",
         "activateWhen": "any-value"
       }
+    },
+    {
+      "key": "chemistry",
+      "targetCode": "SPEC-TT-GROUP-CHEMISTRY",
+      "labels": {"en-US": "Chemical Composition", "ru-RU": "Химический состав"}
     },
     {
       "key": "enrichment",
@@ -68,6 +93,46 @@
       "key": "recipe",
       "targetCode": "SPEC-TT-GROUP-RECIPE",
       "labels": {"en-US": "Brewing Recipe", "ru-RU": "Рецепт заваривания"}
+    },
+    {
+      "key": "harvest",
+      "targetCode": "SPEC-TT-GROUP-HARVEST",
+      "labels": {"en-US": "Harvest", "ru-RU": "Сбор урожая"}
+    },
+    {
+      "key": "storage",
+      "targetCode": "SPEC-TT-GROUP-STORAGE",
+      "labels": {"en-US": "Storage", "ru-RU": "Хранение"}
+    },
+    {
+      "key": "price_counterfeit",
+      "targetCode": "SPEC-TT-GROUP-PRICE-COUNTERFEIT",
+      "labels": {"en-US": "Price and Authenticity", "ru-RU": "Цена и подлинность"}
+    },
+    {
+      "key": "facts",
+      "targetCode": "SPEC-TT-GROUP-FACTS",
+      "labels": {"en-US": "Facts", "ru-RU": "Факты"}
+    },
+    {
+      "key": "comparison",
+      "targetCode": "SPEC-TT-GROUP-COMPARISON",
+      "labels": {"en-US": "Comparison", "ru-RU": "Сравнение"}
+    },
+    {
+      "key": "health",
+      "targetCode": "SPEC-TT-GROUP-HEALTH",
+      "labels": {"en-US": "Health Notes", "ru-RU": "Заметки о пользе"}
+    },
+    {
+      "key": "contraindications",
+      "targetCode": "SPEC-TT-GROUP-CONTRAINDICATIONS",
+      "labels": {"en-US": "Contraindications", "ru-RU": "Противопоказания"}
+    },
+    {
+      "key": "conclusion",
+      "targetCode": "SPEC-TT-GROUP-CONCLUSION",
+      "labels": {"en-US": "Conclusion", "ru-RU": "Итог"}
     },
     {
       "key": "source",
@@ -184,15 +249,55 @@
     {
       "key": "enrichment.flavor_tags",
       "group": "enrichment",
-      "targetCode": "SPEC-TT-FIELD-ENRICHMENT-FLAVOR-TAGS",
+      "targetCode": "SPEC-TT-ENRICHMENT-FLAVOR-TAGS",
       "type": "List",
       "valueEncoding": "json-array-string",
       "sourcePaths": ["enrichment.flavor_tags"]
     },
     {
+      "key": "enrichment.caffeine_level",
+      "group": "enrichment",
+      "targetCode": "SPEC-TT-ENRICHMENT-CAFFEINE-LEVEL",
+      "type": "Option",
+      "sourcePaths": ["enrichment.caffeine_level"],
+      "filterable": true
+    },
+    {
+      "key": "enrichment.difficulty",
+      "group": "enrichment",
+      "targetCode": "SPEC-TT-ENRICHMENT-DIFFICULTY",
+      "type": "Option",
+      "sourcePaths": ["enrichment.difficulty"],
+      "filterable": true
+    },
+    {
+      "key": "enrichment.price_tier",
+      "group": "enrichment",
+      "targetCode": "SPEC-TT-ENRICHMENT-PRICE-TIER",
+      "type": "Option",
+      "sourcePaths": ["enrichment.price_tier"],
+      "filterable": true
+    },
+    {
+      "key": "enrichment.best_season",
+      "group": "enrichment",
+      "targetCode": "SPEC-TT-ENRICHMENT-BEST-SEASON",
+      "type": "List",
+      "valueEncoding": "json-array-string",
+      "sourcePaths": ["enrichment.best_season"]
+    },
+    {
+      "key": "enrichment.occasion",
+      "group": "enrichment",
+      "targetCode": "SPEC-TT-ENRICHMENT-OCCASION",
+      "type": "List",
+      "valueEncoding": "json-array-string",
+      "sourcePaths": ["enrichment.occasion"]
+    },
+    {
       "key": "enrichment.food_pairings",
       "group": "enrichment",
-      "targetCode": "SPEC-TT-FIELD-ENRICHMENT-FOOD-PAIRINGS",
+      "targetCode": "SPEC-TT-ENRICHMENT-FOOD-PAIRINGS",
       "type": "List",
       "valueEncoding": "json-array-string",
       "sourcePaths": ["enrichment.food_pairings"]
@@ -235,7 +340,7 @@
     {
       "keyPattern": "^sensory\\.descriptor_[a-z0-9-]+_intensity$",
       "group": "sensory",
-      "targetCodePattern": "SPEC-TT-FIELD-SENSORY-{descriptor}-INTENSITY",
+      "targetCodePattern": "SPEC-TT-SENSORY-DESCRIPTOR-{descriptor}-INTENSITY",
       "type": "Number",
       "sourcePaths": ["sensory[].intensity"],
       "filterable": false

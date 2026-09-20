@@ -15,14 +15,22 @@
       "product": {
         "code": "TEA-REPLACE-ME",
         "sku": "REPLACE-ME",
+        "published": false,
+        "order": 0,
         "nativeName": "",
+        "transcription": "",
         "translations": [
           {"lang": "en-US", "name": ""},
           {"lang": "ru-RU", "name": ""}
         ],
         "catalogs": [
           {"catalog": "CATALOG-CHINESE-TEA", "category": "CAT-REPLACE-ME", "catalogCurrency": "CNY"}
-        ]
+        ],
+        "tags": [],
+        "packages": [],
+        "origins": [],
+        "related": [],
+        "crossSells": []
       },
       "specifications": []
     }
