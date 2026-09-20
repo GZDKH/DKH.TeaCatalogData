@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.xnata.com/catalog/tea/1.0.0/export.json",
+  "title": "Tea specification export envelope",
+  "description": "Neutral source export mapped to the existing ProductCatalog product DataExchange contract.",
+  "type": "object",
+  "required": ["profile", "records"],
+  "additionalProperties": false,
+  "properties": {
+    "profile": {
+      "type": "object",
+      "required": ["id", "version"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"const": "tea"},
+        "version": {"const": "1.0.0"},
+        "sourceSystem": {"type": "string", "minLength": 1}
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/record"}
+    }
+  },
+  "$defs": {
+    "record": {
+      "type": "object",
+      "required": ["source", "product", "specifications"],
+      "additionalProperties": false,
+      "properties": {
+        "source": {"$ref": "#/$defs/source"},
+        "product": {"$ref": "#/$defs/product"},
+        "specifications": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/specification"}
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["system", "externalId", "revision", "retrievedAt"],
+      "additionalProperties": false,
+      "properties": {
+        "system": {"type": "string", "minLength": 1},
+        "externalId": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "format": "uri"},
+        "revision": {"type": "string", "minLength": 1},
+        "retrievedAt": {"type": "string", "format": "date-time"}
+      }
+    },
+    "product": {
+      "type": "object",
+      "required": ["code", "translations", "catalogs"],
+      "additionalProperties": false,
+      "properties": {
+        "code": {"type": "string", "pattern": "^[A-Z0-9][A-Z0-9-]{0,99}$"},
+        "sku": {"type": "string", "maxLength": 100},
+        "nativeName": {"type": "string", "maxLength": 500},
+        "translations": {"type": "array", "items": {"type": "object"}},
+        "catalogs": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "specification": {
+      "type": "object",
+      "required": ["key", "group", "attribute", "type", "sourcePath"],
+      "additionalProperties": false,
+      "properties": {
+        "key": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"},
+        "group": {"type": "string", "minLength": 1},
+        "attribute": {"type": "string", "pattern": "^[A-Z0-9][A-Z0-9-]{0,99}$"},
+        "option": {"type": "string", "pattern": "^[A-Z0-9][A-Z0-9-]{0,99}$"},
+        "type": {"enum": ["Option", "CustomText", "CustomMarkdownText", "Number", "Range", "List", "Duration", "Boolean", "Date"]},
+        "unit": {"type": "string", "maxLength": 10},
+        "value": {"type": "string", "maxLength": 4000},
+        "valueMin": {"type": "number"},
+        "valueMax": {"type": "number"},
+        "sourcePath": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {"if": {"properties": {"type": {"const": "Range"}}}, "then": {"required": ["valueMin", "valueMax"]}},
+        {"if": {"properties": {"type": {"const": "Option"}}}, "then": {"required": ["option"]}},
+        {"if": {"properties": {"type": {"enum": ["CustomText", "CustomMarkdownText", "Number", "List", "Duration", "Boolean", "Date"]}}}, "then": {"required": ["value"]}}
+      ]
+    }
+  }
+}
