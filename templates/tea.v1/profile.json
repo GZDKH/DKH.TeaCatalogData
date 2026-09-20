@@ -85,6 +85,30 @@
       "filterable": true
     },
     {
+      "key": "source.category_code",
+      "group": "source",
+      "targetCode": "SPEC-TT-SOURCE-CATEGORY-CODE",
+      "type": "CustomText",
+      "sourcePaths": ["meta.category_code"],
+      "showOnPage": false
+    },
+    {
+      "key": "atomic.oxidation",
+      "group": "atomic",
+      "targetCode": "SPEC-TT-ATOMIC-OXIDATION",
+      "type": "Range",
+      "unit": "%",
+      "sourcePaths": ["meta.oxidation_min", "meta.oxidation_max"]
+    },
+    {
+      "key": "brewing.brew_temp",
+      "group": "brewing",
+      "targetCode": "SPEC-TT-BREWING-BREW-TEMP",
+      "type": "Range",
+      "unit": "°C",
+      "sourcePaths": ["meta.brew_temp_min", "meta.brew_temp_max"]
+    },
+    {
       "key": "atomic.shape",
       "group": "atomic",
       "targetCode": "SPEC-TT-ATOMIC-SHAPE",
@@ -99,6 +123,28 @@
       "type": "Option",
       "sourcePaths": ["meta.processing", "sections.atomic.processing"],
       "filterable": true
+    },
+    {
+      "key": "atomic.roast_level",
+      "group": "atomic",
+      "targetCode": "SPEC-TT-ATOMIC-ROAST-LEVEL",
+      "type": "Option",
+      "sourcePaths": ["meta.roast_level", "sections.atomic.roast_level"],
+      "filterable": true
+    },
+    {
+      "key": "classification_origin.gi_status",
+      "group": "classification_origin",
+      "targetCode": "SPEC-TT-CLASSIFICATION-ORIGIN-GI-STATUS",
+      "type": "Boolean",
+      "sourcePaths": ["meta.gi_status"]
+    },
+    {
+      "key": "classification_origin.gi_standard",
+      "group": "classification_origin",
+      "targetCode": "SPEC-TT-CLASSIFICATION-ORIGIN-GI-STANDARD",
+      "type": "CustomText",
+      "sourcePaths": ["meta.gi_standard"]
     },
     {
       "key": "organoleptic.taste",
@@ -161,20 +207,27 @@
       "filterable": false
     },
     {
-      "key": "recipe.steep_sec",
-      "group": "recipe",
-      "targetCodePattern": "SPEC-TT-RECIPE-{style}-STEEP-SEC",
-      "type": "Duration",
-      "unit": "s",
-      "sourcePaths": ["recipe[].steep_sec"],
-      "filterable": false
-    },
-    {
       "key": "source.version",
       "group": "source",
       "targetCode": "SPEC-TT-SOURCE-VERSION",
       "type": "CustomText",
       "sourcePaths": ["meta.version"],
+      "showOnPage": false
+    },
+    {
+      "key": "source.last_updated",
+      "group": "source",
+      "targetCode": "SPEC-TT-SOURCE-LAST-UPDATED",
+      "type": "Date",
+      "sourcePaths": ["meta.last_updated"],
+      "showOnPage": false
+    },
+    {
+      "key": "source.review_status",
+      "group": "source",
+      "targetCode": "SPEC-TT-SOURCE-REVIEW-STATUS",
+      "type": "Option",
+      "sourcePaths": ["meta.review_status"],
       "showOnPage": false
     }
   ],
@@ -186,6 +239,48 @@
       "type": "Number",
       "sourcePaths": ["sensory[].intensity"],
       "filterable": false
+    },
+    {
+      "keyPattern": "^recipe\\.[a-z0-9-]+_(water_temp|tea_grams|water_ml|max_steeps)$",
+      "group": "recipe",
+      "targetCodePattern": "SPEC-TT-RECIPE-{style}-{field}",
+      "type": "Number",
+      "sourcePaths": ["recipe[].{field}"],
+      "filterable": false
+    },
+    {
+      "keyPattern": "^recipe\\.[a-z0-9-]+_(steep_sec|increment_sec)$",
+      "group": "recipe",
+      "targetCodePattern": "SPEC-TT-RECIPE-{style}-{field}",
+      "type": "Duration",
+      "unit": "s",
+      "sourcePaths": ["recipe[].{field}"],
+      "filterable": false
+    },
+    {
+      "keyPattern": "^recipe\\.[a-z0-9-]+_rinse$",
+      "group": "recipe",
+      "targetCodePattern": "SPEC-TT-RECIPE-{style}-RINSE",
+      "type": "Boolean",
+      "sourcePaths": ["recipe[].rinse"],
+      "filterable": false
+    },
+    {
+      "keyPattern": "^harvest\\.[a-z0-9-]+_months$",
+      "group": "harvest",
+      "targetCodePattern": "SPEC-TT-HARVEST-{phase}-MONTHS",
+      "type": "List",
+      "valueEncoding": "json-array-string",
+      "sourcePaths": ["harvest[].months"],
+      "filterable": false
+    },
+    {
+      "keyPattern": "^(classification_origin|atomic|botany_material|terroir|production|organoleptic|chemistry|brewing|storage|history_culture|price_counterfeit|facts|comparison|health|contraindications|conclusion|source)\\.[a-z0-9_]+$",
+      "groupFromKey": "^([^.]*)\\.",
+      "targetCodePattern": "SPEC-TT-FIELD-{group}-{field}",
+      "type": "CustomMarkdownText",
+      "sourcePaths": ["sections.{group}.{field}"],
+      "filterable": false
     }
   ],
   "rules": {
@@ -195,6 +290,7 @@
     "duplicateAttributePerProduct": "error",
     "sourceIdentity": "required-and-idempotent",
     "targetCodes": "stable-and-immutable",
+    "explicitAttributesOverridePatterns": true,
     "productValueLimit": 4000,
     "validateBeforeApply": true,
     "applyMode": "dry-run-then-canary"

@@ -1,0 +1,30 @@
+{
+  "profile": {
+    "id": "tea",
+    "version": "1.0.0",
+    "sourceSystem": "my.teadb.org"
+  },
+  "records": [
+    {
+      "source": {
+        "system": "my.teadb.org",
+        "externalId": "REPLACE_WITH_SOURCE_ID",
+        "revision": "REPLACE_WITH_SOURCE_REVISION",
+        "retrievedAt": "2026-09-20T00:00:00Z"
+      },
+      "product": {
+        "code": "TEA-REPLACE-ME",
+        "sku": "REPLACE-ME",
+        "nativeName": "",
+        "translations": [
+          {"lang": "en-US", "name": ""},
+          {"lang": "ru-RU", "name": ""}
+        ],
+        "catalogs": [
+          {"catalog": "CATALOG-CHINESE-TEA", "category": "CAT-REPLACE-ME", "catalogCurrency": "CNY"}
+        ]
+      },
+      "specifications": []
+    }
+  ]
+}
