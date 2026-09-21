@@ -585,3 +585,17 @@ Generated snapshots, generated import JSON, and reports are ignored by git by de
 The legacy checked-in markdown corpus and static import dataset have been removed. Commit curated mappings, tests, and docs. Commit generated product JSON only when explicitly requested for a controlled release.
 
 Check TheTea commercial/licensing approval before production load. The public API documentation currently marks content as preview/non-commercial, so the paid text API key should be paired with explicit permission for our intended use.
+
+## Source-backed fill-missing proposals
+
+Prepare a read-only, exact-match proposal over a complete ProductCatalog baseline:
+
+```bash
+node scripts/thetea/prepare-source-proposal.js \
+  --source-card=/path/to/raw/cards/en/<slug>.json \
+  --source-manifest=/path/to/manifest.json \
+  --field-pack=/path/to/raw/d1/field-packs/<slug>.json.gz \
+  --product-ref=/path/to/product-reference/<snapshot>
+```
+
+The output keeps existing values, records source evidence for every candidate, queues conflicts, and emits complete desired and rollback payloads for the existing exchange. See [`docs/source-backed-proposals.md`](../../docs/source-backed-proposals.md).

@@ -432,5 +432,6 @@ module.exports = {
     collectionDiff,
     diffProduct,
     sha256,
+    stableStringify,
     validateUpdateScope,
 };
