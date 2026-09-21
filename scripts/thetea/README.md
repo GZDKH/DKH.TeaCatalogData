@@ -311,6 +311,8 @@ node scripts/thetea/test-product-overlay.js
 node scripts/thetea/test-artifact-validator.js
 node scripts/thetea/test-generate-safety.js
 node scripts/thetea/test-reconcile-generated.js
+node scripts/thetea/test-sensory-descriptor-evidence.js
+node scripts/thetea/test-sensory-scale-review.js
 ```
 
 Validate through AdminGateway without writing:

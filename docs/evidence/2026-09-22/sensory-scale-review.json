@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "reportType": "tea-sensory-scale-review",
+  "generatedAt": "2026-09-22T00:00:00Z",
+  "status": "owner-approval-required",
+  "publishAllowed": false,
+  "source": {
+    "system": "TheTea",
+    "snapshotId": "thetea-content-d1-2026-08-12-all-dossiers",
+    "table": "tea_sensory",
+    "descriptorIds": ["Be", "Ch", "Cz", "Dt", "H", "L", "Li", "Lm", "Mn", "Mw", "O", "Pc", "Rb", "Sb", "Se"],
+    "observedDomain": [1, 2, 3, 4, 5],
+    "missingValueMeaning": "descriptor absent from the source array; it is not zero"
+  },
+  "candidateDictionary": {
+    "name": "Sensory Codes 2019",
+    "role": "label evidence only; it does not define TheTea intensity semantics",
+    "url": "https://www.coffeeproject.ru/images/blog/224/Sensory-Codes-2019.pdf",
+    "publisherPage": "https://cooffee.ru/industriya/tablicy-sensornyh-kodov-ot-aleksandra-cybaeva/"
+  },
+  "nonEquivalentScaleEvidence": [
+    {
+      "name": "tea.degree ten-axis rubric",
+      "url": "https://tea.degree/about",
+      "observedScale": { "min": 1, "max": 10 },
+      "reasonNotApplicable": "This is a separate session-level ten-axis assessment rubric, not a declared mapping for TheTea descriptor intensity values."
+    }
+  ],
+  "decision": {
+    "scaleId": null,
+    "min": null,
+    "max": null,
+    "zeroMeaning": null,
+    "anchors": null,
+    "unit": null,
+    "normalization": null,
+    "rationale": "TheTea payload exposes values 1-5 but declares no scale name, anchors, zero semantics, or conversion rule. Do not publish a normalized numeric axis or coerce the values to another scale."
+  },
+  "requiredOwnerApproval": [
+    "stable scale identifier and version",
+    "minimum and maximum values",
+    "whether zero is valid and what absence means",
+    "localized anchor descriptions",
+    "confirmation that all 15 descriptor IDs use the same scale",
+    "source owner or catalog owner and approval date"
+  ]
+}
