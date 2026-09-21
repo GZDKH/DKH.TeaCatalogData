@@ -92,6 +92,26 @@ assert(Array.isArray(outputPayloads.rollbackPayload));
 assert.strictEqual(outputPayloads.rollbackPayload.length, 1);
 assert.strictEqual(outputPayloads.rollbackPayload[0].code, proposal.productCode);
 
+const nonProductSpecificPrice = buildSourceBackedProposal({
+    sourceCard: card({
+        sections: {
+            price_counterfeit: {
+                price_category: { value: 'Wide range across several Yueyang teas.' },
+            },
+        },
+    }),
+    baselineProduct: product(),
+    sourceMetadata: metadata,
+});
+assert.strictEqual(nonProductSpecificPrice.eligible, false);
+assert.strictEqual(nonProductSpecificPrice.reviewQueue.length, 1);
+assert.strictEqual(nonProductSpecificPrice.reviewQueue[0].reason, 'non-product-specific-narrative');
+assert.strictEqual(
+    nonProductSpecificPrice.desiredProduct.specifications.some(item =>
+        item.attribute === 'SPEC-TT-FIELD-PRICE-COUNTERFEIT-PRICE-CATEGORY'),
+    false,
+);
+
 const falseMatch = buildSourceBackedProposal({
     sourceCard: card(),
     baselineProduct: product({ code: 'TEA-CN-OTHER' }),

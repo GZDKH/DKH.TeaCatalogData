@@ -28,6 +28,13 @@ function hasValue(value) {
     return true;
 }
 
+// This source field describes a range spanning multiple tea variants. It is
+// useful evidence for an operator, but cannot be treated as a fact of the
+// single product being reconciled without a product-specific price source.
+const REVIEW_ONLY_SOURCE_PATHS = new Map([
+    ['/sections/price_counterfeit/price_category', 'non-product-specific-narrative'],
+]);
+
 function sourceRevision(card, metadata = {}) {
     const parts = [
         metadata.snapshotId,
@@ -210,11 +217,15 @@ function mergeFillMissingProduct(baseline, candidate, card, metadata) {
             pointer: '/specifications',
             value: spec,
         };
+        const reviewReason = REVIEW_ONLY_SOURCE_PATHS.get(source.pointer);
         if (!before) {
-            desired.specifications = [...(desired.specifications || []), clone(spec)];
+            if (!reviewReason) {
+                desired.specifications = [...(desired.specifications || []), clone(spec)];
+            }
             add(proposalRecord({
                 path: `specifications[attribute=${attribute}]`,
-                action: 'apply',
+                action: reviewReason ? 'review' : 'apply',
+                reason: reviewReason,
                 before,
                 after: spec,
                 card,
