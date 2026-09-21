@@ -56,6 +56,17 @@ function readFieldPack(file, card) {
     })));
 }
 
+function buildOutputPayloads(proposal) {
+    if (!proposal?.eligible) {
+        return { desiredPayload: [], rollbackPayload: [] };
+    }
+
+    return {
+        desiredPayload: proposal.reconciliation?.desiredPayload || [proposal.desiredProduct],
+        rollbackPayload: proposal.reconciliation?.rollbackPayload || [],
+    };
+}
+
 function main() {
     const args = parseArgs();
     if (args.help || args.h) return usage();
@@ -103,6 +114,7 @@ function main() {
     };
     proposal.source.snapshotId = sourceManifest.snapshotId || null;
     proposal.source.sourceManifestSha256 = sourceManifestSha256;
+    const outputPayloads = buildOutputPayloads(proposal);
     proposal.reconciliation = proposal.reconciliation
         ? {
             ...proposal.reconciliation,
@@ -124,14 +136,8 @@ function main() {
     withStagedOutput(output, staging => {
         fs.writeFileSync(path.join(staging, 'proposal.json'), `${JSON.stringify(proposal, null, 2)}\n`);
         fs.writeFileSync(path.join(staging, 'proposals.json'), `${JSON.stringify(proposal.proposals, null, 2)}\n`);
-        const desiredPayload = proposal.eligible
-            ? (proposal.reconciliation?.desiredPayload || [proposal.desiredProduct])
-            : [];
-        const rollbackPayload = proposal.eligible
-            ? (proposal.reconciliation?.rollbackPayload || [])
-            : [];
-        fs.writeFileSync(path.join(staging, 'desired-products.json'), `${JSON.stringify(desiredPayload, null, 2)}\n`);
-        fs.writeFileSync(path.join(staging, 'rollback-products.json'), `${JSON.stringify(rollbackPayload, null, 2)}\n`);
+        fs.writeFileSync(path.join(staging, 'desired-products.json'), `${JSON.stringify(outputPayloads.desiredPayload, null, 2)}\n`);
+        fs.writeFileSync(path.join(staging, 'rollback-products.json'), `${JSON.stringify(outputPayloads.rollbackPayload, null, 2)}\n`);
     });
     console.log(`Eligible: ${proposal.eligible ? 'yes' : 'no'}`);
     console.log(`Product: ${proposal.productCode}`);
@@ -152,4 +158,4 @@ if (require.main === module) {
     }
 }
 
-module.exports = { main };
+module.exports = { buildOutputPayloads, main };
