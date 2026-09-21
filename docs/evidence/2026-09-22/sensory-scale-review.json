@@ -1,9 +1,10 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "reportType": "tea-sensory-scale-review",
   "generatedAt": "2026-09-22T00:00:00Z",
-  "status": "owner-approval-required",
-  "publishAllowed": false,
+  "status": "approved-source-native-scale",
+  "publishAllowed": true,
+  "publishPolicy": "source-native-values-only",
   "source": {
     "system": "TheTea",
     "snapshotId": "thetea-content-d1-2026-08-12-all-dossiers",
@@ -27,21 +28,21 @@
     }
   ],
   "decision": {
-    "scaleId": null,
-    "min": null,
-    "max": null,
-    "zeroMeaning": null,
+    "scaleId": "thetea-native-intensity",
+    "version": 1,
+    "kind": "ordinal",
+    "min": 1,
+    "max": 5,
+    "zeroMeaning": "invalid; absence is unknown",
     "anchors": null,
     "unit": null,
     "normalization": null,
-    "rationale": "TheTea payload exposes values 1-5 but declares no scale name, anchors, zero semantics, or conversion rule. Do not publish a normalized numeric axis or coerce the values to another scale."
+    "rationale": "The catalog owner approved preserving TheTea's native ordinal 1-5 values. No qualitative anchors are inferred, and values are never converted to the separate 1-10 rubric."
   },
-  "requiredOwnerApproval": [
-    "stable scale identifier and version",
-    "minimum and maximum values",
-    "whether zero is valid and what absence means",
-    "localized anchor descriptions",
-    "confirmation that all 15 descriptor IDs use the same scale",
-    "source owner or catalog owner and approval date"
-  ]
+  "approval": {
+    "authority": "catalog-owner",
+    "status": "approved",
+    "approvedAt": "2026-09-22",
+    "decision": "Preserve source-native 1-5 values; absence is unknown; zero is invalid; do not normalize to 1-10."
+  }
 }
