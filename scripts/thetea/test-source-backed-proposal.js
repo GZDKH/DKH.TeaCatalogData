@@ -7,6 +7,7 @@ const {
     assertFreshInputs,
     buildSourceBackedProposal,
 } = require('./lib/source-backed-proposal');
+const { buildOutputPayloads } = require('./prepare-source-proposal');
 
 function card(overrides = {}) {
     return {
@@ -83,6 +84,13 @@ assert(applied.every(item => item.evidence.sourceRevision === 'fixture-2026-09-2
 assert(applied.every(item => item.evidence.excerpt !== undefined));
 assert.strictEqual(proposal.desiredProduct.specifications.filter(item => item.attribute === 'SPEC-TT-RECIPE-GONGFU-RINSE').length, 1);
 assert.strictEqual(proposal.desiredProduct.specifications.find(item => item.attribute === 'SPEC-TT-FIELD-STORAGE-TEMPERATURE').value, '0');
+const outputPayloads = buildOutputPayloads(proposal);
+assert(Array.isArray(outputPayloads.desiredPayload));
+assert.strictEqual(outputPayloads.desiredPayload.length, 1);
+assert.strictEqual(outputPayloads.desiredPayload[0].code, proposal.productCode);
+assert(Array.isArray(outputPayloads.rollbackPayload));
+assert.strictEqual(outputPayloads.rollbackPayload.length, 1);
+assert.strictEqual(outputPayloads.rollbackPayload[0].code, proposal.productCode);
 
 const falseMatch = buildSourceBackedProposal({
     sourceCard: card(),
