@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "reportType": "tea-sensory-source-semantics-evidence",
+  "generatedAt": "2026-09-21T00:00:00Z",
+  "status": "review-required",
+  "publishAllowed": false,
+  "scope": {
+    "source": "TheTea",
+    "snapshotId": "thetea-content-d1-2026-07-27",
+    "cardSlug": "yueyang-huangcha",
+    "cardLang": "en",
+    "sourceCardPath": "sources/thetea/snapshots/thetea-content-d1-2026-07-27/raw/cards/en/yueyang-huangcha.json",
+    "sourceCardSha256": "725b5260cf9f2a518b6a4bf7dcb29659ca8e9edd215010d28bdb6cfb00c27ca9",
+    "sourceManifestSha256": "fb9bf10d2ed6a5ca1c89ceed87613255656970ddb9dd9d554a7636bed55238e9",
+    "productUrl": "https://tea.community/ru-RU/products/yueyang-huangcha"
+  },
+  "dictionary": {
+    "name": "Sensory Codes 2019",
+    "role": "candidate cross-domain lexicon; not an owner-approved TheTea semantic contract",
+    "url": "https://www.coffeeproject.ru/images/blog/224/Sensory-Codes-2019.pdf",
+    "publisherPage": "https://cooffee.ru/industriya/tablicy-sensornyh-kodov-ot-aleksandra-cybaeva/",
+    "retrievedAt": "2026-09-21",
+    "copyrightNotice": "Labels are recorded as evidence for review; no source content is redistributed beyond short names."
+  },
+  "intensity": {
+    "status": "unresolved",
+    "observedDomainInSnapshot": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "observedMinimum": 1,
+    "observedMaximum": 5,
+    "missingValueMeaning": "descriptor absent from the source array; never convert absence to zero",
+    "scaleEvidence": null,
+    "decision": "Do not expose numeric intensity as a normalized public scale until TheTea owner or catalog owner documents the scale."
+  },
+  "descriptors": [
+    {
+      "id": "Be",
+      "candidateLabel": "Butter",
+      "localizedLabels": {
+        "en-US": "Butter",
+        "ru-RU": "Масло"
+      },
+      "dictionaryGroup": "ANIMAL",
+      "dictionarySlot": 0,
+      "sourceValuesInYueyang": [
+        null
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "Ch",
+      "candidateLabel": "Cherry",
+      "localizedLabels": {
+        "en-US": "Cherry",
+        "ru-RU": "Вишня"
+      },
+      "dictionaryGroup": "FRUIT",
+      "dictionarySlot": 9,
+      "sourceValuesInYueyang": [
+        null
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "Cz",
+      "candidateLabel": "Caramelized",
+      "localizedLabels": {
+        "en-US": "Caramelized",
+        "ru-RU": "Карамелизированный"
+      },
+      "dictionaryGroup": "SWEET",
+      "dictionarySlot": 24,
+      "sourceValuesInYueyang": [
+        3
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "Dt",
+      "candidateLabel": "Date",
+      "localizedLabels": {
+        "en-US": "Date",
+        "ru-RU": "Финик"
+      },
+      "dictionaryGroup": "FRUIT",
+      "dictionarySlot": 9,
+      "sourceValuesInYueyang": [
+        null
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "H",
+      "candidateLabel": "Honey",
+      "localizedLabels": {
+        "en-US": "Honey",
+        "ru-RU": "Мёд"
+      },
+      "dictionaryGroup": "SWEET",
+      "dictionarySlot": 24,
+      "sourceValuesInYueyang": [
+        3
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "L",
+      "candidateLabel": "Lemon",
+      "localizedLabels": {
+        "en-US": "Lemon",
+        "ru-RU": "Лимон"
+      },
+      "dictionaryGroup": "FRUIT",
+      "dictionarySlot": 5,
+      "sourceValuesInYueyang": [
+        3
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "Li",
+      "candidateLabel": "Lichee",
+      "localizedLabels": {
+        "en-US": "Lichee",
+        "ru-RU": "Личи"
+      },
+      "dictionaryGroup": "FRUIT",
+      "dictionarySlot": 7,
+      "sourceValuesInYueyang": [
+        2
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "Lm",
+      "candidateLabel": "Lime",
+      "localizedLabels": {
+        "en-US": "Lime",
+        "ru-RU": "Лайм"
+      },
+      "dictionaryGroup": "FRUIT",
+      "dictionarySlot": 6,
+      "sourceValuesInYueyang": [
+        null
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "Mn",
+      "candidateLabel": "Magnolia",
+      "localizedLabels": {
+        "en-US": "Magnolia",
+        "ru-RU": "Магнолия"
+      },
+      "dictionaryGroup": "FLORAL",
+      "dictionarySlot": 1,
+      "sourceValuesInYueyang": [
+        null
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "Mw",
+      "candidateLabel": "Marshmallow",
+      "localizedLabels": {
+        "en-US": "Marshmallow",
+        "ru-RU": "Маршмеллоу"
+      },
+      "dictionaryGroup": "SWEET",
+      "dictionarySlot": 25,
+      "sourceValuesInYueyang": [
+        1
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "O",
+      "candidateLabel": "Orange",
+      "localizedLabels": {
+        "en-US": "Orange",
+        "ru-RU": "Апельсин"
+      },
+      "dictionaryGroup": "FRUIT",
+      "dictionarySlot": 7,
+      "sourceValuesInYueyang": [
+        null
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "Pc",
+      "candidateLabel": "Peach",
+      "localizedLabels": {
+        "en-US": "Peach",
+        "ru-RU": "Персик"
+      },
+      "dictionaryGroup": "FRUIT",
+      "dictionarySlot": 7,
+      "sourceValuesInYueyang": [
+        null
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "Rb",
+      "candidateLabel": "Raspberry",
+      "localizedLabels": {
+        "en-US": "Raspberry",
+        "ru-RU": "Малина"
+      },
+      "dictionaryGroup": "BERRY",
+      "dictionarySlot": 2,
+      "sourceValuesInYueyang": [
+        null
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "Sb",
+      "candidateLabel": "Strawberry",
+      "localizedLabels": {
+        "en-US": "Strawberry",
+        "ru-RU": "Клубника"
+      },
+      "dictionaryGroup": "BERRY",
+      "dictionarySlot": 2,
+      "sourceValuesInYueyang": [
+        null
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    },
+    {
+      "id": "Se",
+      "candidateLabel": "Sweet Aromatics",
+      "localizedLabels": {
+        "en-US": "Sweet Aromatics",
+        "ru-RU": "Сладкая ароматика"
+      },
+      "dictionaryGroup": "SWEET",
+      "dictionarySlot": 24,
+      "sourceValuesInYueyang": [
+        null
+      ],
+      "semanticStatus": "review-required",
+      "unit": null,
+      "scale": null
+    }
+  ]
+}
