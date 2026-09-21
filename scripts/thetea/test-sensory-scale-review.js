@@ -8,9 +8,14 @@ const report = JSON.parse(fs.readFileSync(filename, 'utf8'));
 
 assert.strictEqual(report.status, 'owner-approval-required');
 assert.strictEqual(report.publishAllowed, false);
+assert.deepStrictEqual(report.source.descriptorIds, ['Be', 'Ch', 'Cz', 'Dt', 'H', 'L', 'Li', 'Lm', 'Mn', 'Mw', 'O', 'Pc', 'Rb', 'Sb', 'Se']);
 assert.deepStrictEqual(report.source.observedDomain, [1, 2, 3, 4, 5]);
 assert.strictEqual(report.source.missingValueMeaning, 'descriptor absent from the source array; it is not zero');
 assert.strictEqual(report.decision.scaleId, null);
+assert.strictEqual(report.decision.min, null);
+assert.strictEqual(report.decision.max, null);
+assert.strictEqual(report.decision.zeroMeaning, null);
+assert.strictEqual(report.decision.anchors, null);
 assert.strictEqual(report.decision.normalization, null);
 assert.strictEqual(report.nonEquivalentScaleEvidence[0].observedScale.max, 10);
 assert(report.requiredOwnerApproval.length >= 5);
