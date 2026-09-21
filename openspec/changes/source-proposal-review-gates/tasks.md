@@ -1,0 +1,4 @@
+- [x] Add deterministic source-path review policy.
+- [x] Keep review evidence and exclude the field from the desired payload.
+- [x] Add regression coverage for eligibility, reason, and payload omission.
+- [ ] Merge through the GitLab MR and verify the authoritative post-main pipeline.
