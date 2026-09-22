@@ -24,11 +24,10 @@ The previous checked-in markdown corpus and static product/category JSON files w
 
 1. Fetch TheTea source payloads into ignored snapshots under `sources/thetea/snapshots/<id>/`.
    - Production snapshots use `--langs=all --field-langs=all`. Per-field details from `GET /api/v2/tea/{slug}/{lang}/field/{code}` are fetched by default for every TeaCard section field. Snapshots made with `--skip-fields`, `--skip-md`, `--skip-similar`, or partial field locales are diagnostics-only.
-2. Fetch current production ProductCatalog catalog/category/geography and complete specification-definition references under `sources/prod/catalog-reference/<id>.json`.
-3. Fetch the complete nested JSON `products` DataExchange baseline under `sources/prod/product-reference/<id>/`; never substitute the list endpoint.
-4. Generate the ignored, hashed artifact under `import/thetea/<id>/` with both exact references. The default catalog-assignment mode preserves unrelated placements; use `target-only` only for an approved catalog migration.
-5. Validate artifact parity, baseline preservation, and prod mapping before any AdminGateway import.
-6. Import through AdminGateway DataExchange only; never write directly to production DB.
+2. Fetch current production ProductCatalog catalog/category/geography/specification references and the complete nested `products` DataExchange baseline with the read-only `DKH.SetupTool --export-references` mode into `sources/prod/`; never substitute the products list endpoint. The older Node `fetch-prod-reference.js` and `fetch-prod-products.js` commands remain compatibility tools while operators migrate.
+3. Generate the ignored, hashed artifact under `import/thetea/<id>/` with both exact references. The default catalog-assignment mode preserves unrelated placements; use `target-only` only for an approved catalog migration.
+4. Validate artifact parity, baseline preservation, and prod mapping before any AdminGateway import.
+5. Import through AdminGateway DataExchange only; never write directly to production DB.
 
 ## Locales
 
@@ -39,19 +38,19 @@ Product translations use BCP 47 locale codes. DKH aliases TheTea `en` to `en-US`
 ## Commands
 
 ```bash
-node scripts/thetea/fetch-snapshot.js --snapshot=thetea-2026-06-01 --langs=all --field-langs=all --resume --concurrency=4
-node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-01
-node scripts/thetea/fetch-prod-products.js --snapshot=prod-products-2026-06-01
-node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-01 --out=import/thetea/thetea-2026-06-01 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json --product-ref=sources/prod/product-reference/prod-products-2026-06-01
-node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-06-01 --report=thetea-2026-06-01-prod-map --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json --product-ref=sources/prod/product-reference/prod-products-2026-06-01
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-01.json --product-ref=sources/prod/product-reference/prod-products-2026-06-01 --storefront-id=<storefront-uuid> --only=<product-code> --limit=1
-node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --resume --concurrency=4
-node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --replay
-node scripts/catalog-sources/project-artifact.js --artifact-dir=artifacts/catalog-sources/zzctea/zzctea-2026-07-27
-node scripts/catalog-sources/publish-commerce-observations.js --projection-dir=artifacts/catalog-source-projections/<source>/<snapshot> --only=<external-id> --storefront-code=<storefront-code> --catalog-code=<catalog-code> --admin-url="$ADMIN_GATEWAY_REST_BASE_URL"
-node scripts/catalog-sources/reconcile-projection.js --projection-dir=artifacts/catalog-source-projections/zzctea/zzctea-2026-07-27 --catalog-ref=sources/prod/catalog-reference/prod-2026-07-27.json --product-ref=sources/prod/product-reference/prod-products-2026-07-27 --only=17641
+(cd data/DKH.TeaCatalogData && node scripts/thetea/fetch-snapshot.js --snapshot=thetea-2026-06-01 --langs=all --field-langs=all --resume --concurrency=4)
+# From the GZDKH workspace root, run in a SOPS-provided shell; see scripts/thetea/README.md.
+dotnet run --project workers/DKH.SetupTool/DKH.SetupTool -- --export-references --snapshot=prod-canary-2026-09-22 --workspace-id=45bd2e57-d05a-4a81-90cc-a023702778be --output-root="$PWD/data/DKH.TeaCatalogData/sources/prod" --client-credentials
+(cd data/DKH.TeaCatalogData && node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-01 --out=import/thetea/thetea-2026-06-01 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-canary-2026-09-22.json --product-ref=sources/prod/product-reference/prod-canary-2026-09-22)
+(cd data/DKH.TeaCatalogData && node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-06-01 --report=thetea-2026-06-01-prod-map --catalog-ref=sources/prod/catalog-reference/prod-canary-2026-09-22.json --product-ref=sources/prod/product-reference/prod-canary-2026-09-22)
+(cd data/DKH.TeaCatalogData && node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-01 --catalog-ref=sources/prod/catalog-reference/prod-canary-2026-09-22.json --product-ref=sources/prod/product-reference/prod-canary-2026-09-22 --storefront-id=<storefront-uuid> --only=<product-code> --limit=1)
+(cd data/DKH.TeaCatalogData && node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --resume --concurrency=4)
+(cd data/DKH.TeaCatalogData && node scripts/catalog-sources/fetch-snapshot.js --source=zzctea --snapshot=zzctea-2026-07-27 --replay)
+(cd data/DKH.TeaCatalogData && node scripts/catalog-sources/project-artifact.js --artifact-dir=artifacts/catalog-sources/zzctea/zzctea-2026-07-27)
+(cd data/DKH.TeaCatalogData && node scripts/catalog-sources/publish-commerce-observations.js --projection-dir=artifacts/catalog-source-projections/<source>/<snapshot> --only=<external-id> --storefront-code=<storefront-code> --catalog-code=<catalog-code> --admin-url="$ADMIN_GATEWAY_REST_BASE_URL")
+(cd data/DKH.TeaCatalogData && node scripts/catalog-sources/reconcile-projection.js --projection-dir=artifacts/catalog-source-projections/zzctea/zzctea-2026-07-27 --catalog-ref=sources/prod/catalog-reference/prod-2026-07-27.json --product-ref=sources/prod/product-reference/prod-products-2026-07-27 --only=17641)
 # After source-access/legal clearance, run the complete resumable weekly refresh; it performs no production write
-node scripts/catalog-sources/update-zzctea-current.js --snapshot=<id> --catalog-ref=<catalog-ref.json> --product-ref=<product-reference-dir> --previous-media-dir=<verified-prior-media-dir> --minimum-request-interval-ms=1000
+(cd data/DKH.TeaCatalogData && node scripts/catalog-sources/update-zzctea-current.js --snapshot=<id> --catalog-ref=<catalog-ref.json> --product-ref=<product-reference-dir> --previous-media-dir=<verified-prior-media-dir> --minimum-request-interval-ms=1000)
 ```
 
 Use `--apply --yes` with `import-generated.js` only after explicit approval.
