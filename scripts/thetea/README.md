@@ -81,23 +81,32 @@ otherwise wait one minute instead of recording a burst of false source gaps.
 
 Treat `sources/thetea/snapshots/<id>/raw/` as the source of truth. It stores exact API responses and text payloads; `import/thetea/<id>/` is regenerated from that source. The snapshot also stores `raw/source/docs.html`, `raw/source/openapi.yaml`, and `raw/source/llms.txt`, so later audits can see which TheTea contract was used for the load.
 
-Fetch the current production ProductCatalog catalog/category reference through AdminGateway:
+Capture production ProductCatalog references and the complete nested JSON `products` DataExchange baseline with `DKH.SetupTool`. Run from the GZDKH workspace root. The command creates the catalog reference plus `products.json` and its completeness/hash manifest under this repository's ignored `sources/prod/` directory:
 
 ```bash
-node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-01
+dotnet run --project workers/DKH.SetupTool/DKH.SetupTool -- \
+  --export-references \
+  --snapshot=prod-canary-2026-09-22 \
+  --workspace-id=45bd2e57-d05a-4a81-90cc-a023702778be \
+  --output-root="$PWD/data/DKH.TeaCatalogData/sources/prod" \
+  --client-credentials
 ```
 
-The same immutable reference also captures the production China province and
-city dictionaries. Origin generation writes the province code and only accepts
-a city parsed from TheTea prose when it resolves uniquely in that province;
-otherwise the city is omitted and reported instead of being stored as a
-specification or an invented reference value.
-
-Fetch the complete, unpaged nested JSON `products` DataExchange baseline. The script writes `products.json` plus a completeness/hash manifest atomically:
+From the GZDKH workspace root, map the production endpoints and extract only the required SOPS key into the process environment. This does not print the file or write decrypted contents to disk:
 
 ```bash
-node scripts/thetea/fetch-prod-products.js --snapshot=prod-products-2026-06-01
+export Keycloak__BaseUrl=https://auth.xnata.com
+export Keycloak__Realm=dkh
+export Keycloak__ClientId=dkh-admin-gateway
+export Keycloak__ClientSecret="$(sops decrypt --input-type dotenv --output-type dotenv --extract '["ADMIN_GATEWAY_KEYCLOAK_SECRET"]' infra/DKH.Infrastructure/docker-compose/.env.prod.enc)"
+export AdminGateway__BaseUrl=https://admin.xnata.com
 ```
+
+Then run the SetupTool command above.
+
+The export is read-only and workspace-scoped. It refuses to overwrite an existing snapshot. The SOPS file is never passed to `dotnet` and no secret belongs in command arguments. The legacy `fetch-prod-reference.js` and `fetch-prod-products.js` commands remain temporarily available for compatibility; use SetupTool for new production snapshots.
+
+The catalog reference includes production China province and city dictionaries. Origin generation writes the province code and only accepts a city parsed from TheTea prose when it resolves uniquely in that province; otherwise the city is omitted and reported instead of being stored as a specification or an invented reference value.
 
 Do not substitute the normal products list endpoint. Product DataExchange replace mode requires all dependent collections, including specifications, tags, catalog assignments, packages, prices, origins, related products, and cross-sells.
 

@@ -170,7 +170,7 @@ CATALOG-CHINESE-TEA
 
 Поля `enrichment.flavor_tags`, `enrichment.occasion`, `enrichment.best_season`, `enrichment.caffeine_level`, `enrichment.difficulty`, `enrichment.price_tier` остаются тегами/спецификациями, а не ветками дерева категорий. Это фильтры и контекстные атрибуты, не стабильные разделы каталога.
 
-Перед импортом `fetch-prod-reference.js` должен сохранить текущие prod catalog/categories, а полный nested JSON export DataExchange profile `products` — production product baseline. Generation и все последующие validate/import команды используют одни и те же exact `--catalog-ref=...` и `--product-ref=...`; их SHA-256 записываются в `artifact-manifest.json`.
+Перед импортом используйте `DKH.SetupTool --export-references`: он сохраняет активные каталоги и категории, географию, определения спецификаций и полный nested JSON DataExchange profile `products` в одном workspace-scoped snapshot. Команда создает `sources/prod/catalog-reference/<snapshot>.json` и `sources/prod/product-reference/<snapshot>/`. Generation и все последующие validate/import команды должны использовать именно эти `--catalog-ref=...` и `--product-ref=...`; их SHA-256 записываются в `artifact-manifest.json`. Старые Node fetchers пока остаются только для совместимости.
 
 В отчете должно быть:
 
@@ -311,19 +311,26 @@ unfiltered bulk run проверяет все товары. Невалидное
 
 ## Команды первого импорта
 
+Сначала выгрузите production-справочники из корня workspace GZDKH:
+
 ```bash
-node scripts/thetea/fetch-snapshot.js --snapshot=thetea-2026-06-02 --langs=all --field-langs=all --concurrency=4 --resume
-node scripts/thetea/fetch-prod-reference.js --snapshot=prod-2026-06-02
-node scripts/thetea/fetch-prod-products.js --snapshot=prod-products-2026-06-02
-node scripts/thetea/generate-import.js --snapshot=thetea-2026-06-02 --out=import/thetea/thetea-2026-06-02 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --storefronts=shop-thetea,thetea-wiki
-node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-06-02 --report=thetea-2026-06-02-prod-map --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --storefront-id=<storefront-uuid> --only=TEA-CN-XIHU-LONGJING --limit=1
+# Запускайте из корня GZDKH внутри SOPS-shell; подробности — в scripts/thetea/README.md.
+dotnet run --project workers/DKH.SetupTool/DKH.SetupTool -- --export-references --snapshot=prod-canary-2026-09-22 --workspace-id=45bd2e57-d05a-4a81-90cc-a023702778be --output-root="$PWD/data/DKH.TeaCatalogData/sources/prod" --client-credentials
+```
+
+Команды TheTea snapshot и генерации запускайте из `data/DKH.TeaCatalogData`.
+
+```bash
+node scripts/thetea/fetch-snapshot.js --snapshot=thetea-2026-09-22 --langs=all --field-langs=all --concurrency=4 --resume
+node scripts/thetea/generate-import.js --snapshot=thetea-2026-09-22 --out=import/thetea/thetea-2026-09-22 --packages=standard --catalog-ref=sources/prod/catalog-reference/prod-canary-2026-09-22.json --product-ref=sources/prod/product-reference/prod-canary-2026-09-22 --storefronts=shop-thetea,thetea-wiki
+node scripts/thetea/validate-generated.js --dir=import/thetea/thetea-2026-09-22 --report=thetea-2026-09-22-prod-map --catalog-ref=sources/prod/catalog-reference/prod-canary-2026-09-22.json --product-ref=sources/prod/product-reference/prod-canary-2026-09-22
+node scripts/thetea/import-generated.js --snapshot=thetea-2026-09-22 --catalog-ref=sources/prod/catalog-reference/prod-canary-2026-09-22.json --product-ref=sources/prod/product-reference/prod-canary-2026-09-22 --storefront-id=<storefront-uuid> --only=TEA-CN-XIHU-LONGJING --limit=1
 ```
 
 Canary apply, только после отдельного явного согласования:
 
 ```bash
-node scripts/thetea/import-generated.js --snapshot=thetea-2026-06-02 --catalog-ref=sources/prod/catalog-reference/prod-2026-06-02.json --product-ref=sources/prod/product-reference/prod-products-2026-06-02 --storefront-id=<storefront-uuid> --only=TEA-CN-XIHU-LONGJING --limit=1 --apply --yes
+node scripts/thetea/import-generated.js --snapshot=thetea-2026-09-22 --catalog-ref=sources/prod/catalog-reference/prod-canary-2026-09-22.json --product-ref=sources/prod/product-reference/prod-canary-2026-09-22 --storefront-id=<storefront-uuid> --only=TEA-CN-XIHU-LONGJING --limit=1 --apply --yes
 ```
 
 Массовый product apply — отдельная команда и отдельное согласование после canary read-back. Routed article/FAQ content теперь fail-closed для exact product/article coverage: production apply не может его пропустить, а routed diff/verification log пишется рядом с ProductCatalog import log.
