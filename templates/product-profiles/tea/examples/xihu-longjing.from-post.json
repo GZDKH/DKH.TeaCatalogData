@@ -1,8 +1,7 @@
 {
   "profile": {
     "id": "tea",
-    "version": "1.0.0",
-    "sourceSystem": "thetea-content-d1"
+    "version": "1.0.0"
   },
   "records": [
     {
@@ -353,70 +352,6 @@
           "option": "SPEC-TT-OPT-SOURCE-REVIEW-STATUS-PUBLISHED"
         },
         {
-          "key": "botany_material.cultivar",
-          "group": "botany_material",
-          "attribute": "SPEC-TT-FIELD-BOTANY-MATERIAL-CULTIVAR",
-          "type": "CustomMarkdownText",
-          "sourcePath": "post.botany-material",
-          "value": "Several varieties of tea bush *Camellia sinensis* var. *sinensis* are used for producing Xi Hu Longjing:"
-        },
-        {
-          "key": "botany_material.pluck_standard",
-          "group": "botany_material",
-          "attribute": "SPEC-TT-FIELD-BOTANY-MATERIAL-PLUCK-STANDARD",
-          "type": "CustomMarkdownText",
-          "sourcePath": "post.botany-material",
-          "value": "Traditionally picked one bud and one-two upper leaves (一芽一叶, yī yá yī yè or 一芽二叶, yī yá èr yè). For highest grades — only bud with one barely unfolded leaf, or exclusively buds."
-        },
-        {
-          "key": "botany_material.raw_material",
-          "group": "botany_material",
-          "attribute": "SPEC-TT-FIELD-BOTANY-MATERIAL-RAW-MATERIAL",
-          "type": "CustomMarkdownText",
-          "sourcePath": "post.botany-material",
-          "value": "Highest. Only tender, undamaged buds and leaves of uniform size are used, without coarse leaves, stems and impurities. Freshly picked raw material must be processed on the same day."
-        },
-        {
-          "key": "brewing.tea_amount",
-          "group": "brewing",
-          "attribute": "SPEC-TT-FIELD-BREWING-TEA-AMOUNT",
-          "type": "CustomMarkdownText",
-          "sourcePath": "post.brewing",
-          "value": "3 g per 150 ml water."
-        },
-        {
-          "key": "brewing.teaware",
-          "group": "brewing",
-          "attribute": "SPEC-TT-FIELD-BREWING-TEAWARE",
-          "type": "CustomMarkdownText",
-          "sourcePath": "post.brewing",
-          "value": "Glass tumbler (玻璃杯, bōli bēi) — best option for observing \"dance\" of leaves in water. White porcelain gàiwǎn (白瓷盖碗, bái cí gàiwǎn) of 150 ml volume also suitable — allows more precise control of steeping time and better evaluation of aroma."
-        },
-        {
-          "key": "chemistry.alkaloids",
-          "group": "chemistry",
-          "attribute": "SPEC-TT-FIELD-CHEMISTRY-ALKALOIDS",
-          "type": "CustomMarkdownText",
-          "sourcePath": "post.chemistry",
-          "value": "Caffeine content — approximately 4.0–4.8% of dry mass (according to scientific publications — up to 4.81%, one of the highest indicators among Chinese green teas). Theobromine and theophylline are also present in smaller quantities."
-        },
-        {
-          "key": "chemistry.minerals",
-          "group": "chemistry",
-          "attribute": "SPEC-TT-FIELD-CHEMISTRY-MINERALS",
-          "type": "CustomMarkdownText",
-          "sourcePath": "post.chemistry",
-          "value": "Fluorine (promotes dental enamel protection), potassium, magnesium, zinc, iron, manganese, selenium."
-        },
-        {
-          "key": "chemistry.vitamins",
-          "group": "chemistry",
-          "attribute": "SPEC-TT-FIELD-CHEMISTRY-VITAMINS",
-          "type": "CustomMarkdownText",
-          "sourcePath": "post.chemistry",
-          "value": "Vitamin C — 100–300 mg per 100 g dry tea (in fresh leaf of \"one bud — one leaf\" standard — over 1%). B vitamins: B₁ (thiamine) — ≈0.5 mg/100 g, B₂ (riboflavin) — ≈1.5 mg/100 g, B₃ (pantothenic acid) — ≈1.8 mg/100 g, PP (nicotinic acid) — ≈6.5 mg/100 g. Also contains vitamin A, vitamin E, folic acid."
-        },
-        {
           "key": "organoleptic.liquor_aroma",
           "group": "organoleptic",
           "attribute": "SPEC-TT-FIELD-ORGANOLEPTIC-LIQUOR-AROMA",
@@ -439,14 +374,6 @@
           "type": "CustomText",
           "sourcePath": "post.organoleptic",
           "value": "Even, whole, elastic leaves and buds of light green color, preserving the form \"one bud — one leaf.\" Leaf tender, uniform, without damage."
-        },
-        {
-          "key": "terroir.soil",
-          "group": "terroir",
-          "attribute": "SPEC-TT-FIELD-TERROIR-SOIL",
-          "type": "CustomMarkdownText",
-          "sourcePath": "post.terroir",
-          "value": "Weakly acidic red soils (红壤, hóng rǎng) with pH 4.5–6.0, rich in organic matter and minerals. Soil acidity and mineral composition play a key role in forming the characteristic flavor profile of the tea."
         },
         {
           "key": "recipe.gongfu_water_temp",
@@ -575,46 +502,6 @@
           "type": "List",
           "sourcePath": "post.harvest",
           "value": "[\"4\"]"
-        },
-        {
-          "key": "sensory.descriptor_l_intensity",
-          "group": "sensory",
-          "attribute": "SPEC-TT-SENSORY-DESCRIPTOR-L-INTENSITY",
-          "type": "Number",
-          "sourcePath": "post.sensory",
-          "value": "5"
-        },
-        {
-          "key": "sensory.descriptor_mw_intensity",
-          "group": "sensory",
-          "attribute": "SPEC-TT-SENSORY-DESCRIPTOR-MW-INTENSITY",
-          "type": "Number",
-          "sourcePath": "post.sensory",
-          "value": "4"
-        },
-        {
-          "key": "sensory.descriptor_cz_intensity",
-          "group": "sensory",
-          "attribute": "SPEC-TT-SENSORY-DESCRIPTOR-CZ-INTENSITY",
-          "type": "Number",
-          "sourcePath": "post.sensory",
-          "value": "3"
-        },
-        {
-          "key": "sensory.descriptor_li_intensity",
-          "group": "sensory",
-          "attribute": "SPEC-TT-SENSORY-DESCRIPTOR-LI-INTENSITY",
-          "type": "Number",
-          "sourcePath": "post.sensory",
-          "value": "2"
-        },
-        {
-          "key": "sensory.descriptor_h_intensity",
-          "group": "sensory",
-          "attribute": "SPEC-TT-SENSORY-DESCRIPTOR-H-INTENSITY",
-          "type": "Number",
-          "sourcePath": "post.sensory",
-          "value": "1"
         },
         {
           "key": "enrichment.caffeine_level",

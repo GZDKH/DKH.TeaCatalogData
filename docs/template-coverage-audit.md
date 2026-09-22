@@ -5,7 +5,7 @@ program `gzdkh/agents/DKH.AgentRules#67`.
 
 This document separates the tea repository's source preparation files from the
 runtime capability that must be delivered by the existing ProductCatalog
-template and DataExchange flows. `templates/tea.v1` is repository data. It is
+template and DataExchange flows. `templates/product-profiles/tea` is repository data. It is
 not a ProductCatalog runtime type, a persisted service registry, or a second
 import format.
 
@@ -27,7 +27,7 @@ definition IDs or product facts.
 
 ## What the tea repository currently provides
 
-`templates/tea.v1/profile.json` currently declares 21 groups and 25 explicit
+`templates/product-profiles/tea/profile.json` currently declares 21 groups and 25 explicit
 attributes. The explicit attributes are:
 
 | Existing type | Count | Intended use |
@@ -40,15 +40,19 @@ attributes. The explicit attributes are:
 | `Number` | 1 | Brewing water temperature |
 | `Date` | 1 | Source last-updated date |
 
-The profile also contains dynamic patterns for sensory intensities, recipe
-numbers and durations, rinse flags, harvest lists, and narrative section
-fields. The narrative pattern is deliberately `CustomMarkdownText`; it must
-not be used for temperature, time, intensity, origin, rating, or other values
-that the storefront or filters need to calculate. A future typed definition
-must replace a specific narrative field only after its unit, scale, cardinality
-and source evidence are known.
+The profile contains only typed dynamic patterns for sensory intensities,
+recipe numbers and durations, rinse flags, and harvest lists. It has no broad
+text fallback. An unmapped source field is review-required; it never becomes a
+product specification merely because it matches a section name.
 
-`templates/tea.v1/product-template.json` is an empty source record with source
+`CustomMarkdownText` remains available only for an explicitly named,
+source-backed narrative definition. It cannot describe temperature, time,
+intensity, origin, rating, filter values, or any data a section calculates.
+The complete 75-definition inventory and its migration status live in
+`templates/product-profiles/tea/field-matrix.json` and
+`docs/tea-definition-migration-matrix.json`.
+
+`templates/product-profiles/tea/product-template.json` is an empty source record with source
 identity, product identity, locale slots, catalog/category placeholders and
 empty packages/origins/specifications. It does not currently represent a
 selectable saved product-creation template. In particular it does not declare:
@@ -64,7 +68,7 @@ Therefore the repository artifact is a source-backed fill template, while the
 requested “Tea” choice in product creation still belongs to the existing
 generic ProductCatalog template capability.
 
-The repository now also provides `templates/tea.v1/product-creation-template.json`, a repository-only descriptor for that generic capability. It supplies safe defaults and references existing definitions without creating a tea runtime type or auto-creating definitions. Its product-specific category and variant references remain unresolved until an authenticated current catalog reference is available.
+The repository now also provides `templates/product-profiles/tea/product-creation-template.json`, a repository-only descriptor for that generic capability. It supplies safe defaults and references existing definitions without creating a tea runtime type or auto-creating definitions. Its product-specific category and variant references remain unresolved until an authenticated current catalog reference is available.
 
 ## Existing runtime ownership and coverage
 
@@ -100,7 +104,7 @@ recorded for the next Beads tasks:
    tasting observations need a permitted typed subset, and
    `ReviewDataExchangeDto` currently omits stored review specifications.
 
-No gap authorizes a tea-specific entity, a `tea.v1` service contract, implicit
+No gap authorizes a tea-specific entity, a tea-specific service contract, implicit
 definition creation, or a replacement importer/exporter.
 
 ## Yueyang Huangcha acceptance case

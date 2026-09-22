@@ -3,7 +3,6 @@
   "profile": {
     "id": "tea",
     "version": "1.0.0",
-    "sourceSystem": "my.teadb.org",
     "target": {
       "service": "ProductCatalogService",
       "dataExchangeProfile": "products",
@@ -55,20 +54,12 @@
     {
       "key": "organoleptic",
       "targetCode": "SPEC-TT-GROUP-ORGANOLEPTIC",
-      "labels": {"en-US": "Organoleptic Profile", "ru-RU": "Органолептический профиль"},
-      "render": {
-        "section": "flavor-wheel",
-        "activateWhen": "any-value"
-      }
+      "labels": {"en-US": "Organoleptic Profile", "ru-RU": "Органолептический профиль"}
     },
     {
       "key": "sensory",
       "targetCode": "SPEC-TT-GROUP-SENSORY",
-      "labels": {"en-US": "Sensory Intensity", "ru-RU": "Интенсивность вкуса"},
-      "render": {
-        "section": "flavor-wheel",
-        "activateWhen": "any-value"
-      }
+      "labels": {"en-US": "Sensory Intensity", "ru-RU": "Интенсивность вкуса"}
     },
     {
       "key": "chemistry",
@@ -78,11 +69,7 @@
     {
       "key": "enrichment",
       "targetCode": "SPEC-TT-GROUP-ENRICHMENT",
-      "labels": {"en-US": "Enrichment", "ru-RU": "Дополнительные характеристики"},
-      "render": {
-        "section": "flavor-wheel",
-        "activateWhen": "attribute:enrichment.flavor_tags"
-      }
+      "labels": {"en-US": "Enrichment", "ru-RU": "Дополнительные характеристики"}
     },
     {
       "key": "brewing",
@@ -338,18 +325,38 @@
   ],
   "attributePatterns": [
     {
-      "keyPattern": "^sensory\\.descriptor_[a-z0-9-]+_intensity$",
-      "group": "sensory",
-      "targetCodePattern": "SPEC-TT-SENSORY-DESCRIPTOR-{descriptor}-INTENSITY",
-      "type": "Number",
-      "sourcePaths": ["sensory[].intensity"],
-      "filterable": false
-    },
-    {
-      "keyPattern": "^recipe\\.[a-z0-9-]+_(water_temp|tea_grams|water_ml|max_steeps)$",
+      "keyPattern": "^recipe\\.[a-z0-9-]+_water_temp$",
       "group": "recipe",
       "targetCodePattern": "SPEC-TT-RECIPE-{style}-{field}",
       "type": "Number",
+      "unit": "°C",
+      "sourcePaths": ["recipe[].{field}"],
+      "filterable": false
+    },
+    {
+      "keyPattern": "^recipe\\.[a-z0-9-]+_tea_grams$",
+      "group": "recipe",
+      "targetCodePattern": "SPEC-TT-RECIPE-{style}-{field}",
+      "type": "Number",
+      "unit": "g",
+      "sourcePaths": ["recipe[].{field}"],
+      "filterable": false
+    },
+    {
+      "keyPattern": "^recipe\\.[a-z0-9-]+_water_ml$",
+      "group": "recipe",
+      "targetCodePattern": "SPEC-TT-RECIPE-{style}-{field}",
+      "type": "Number",
+      "unit": "ml",
+      "sourcePaths": ["recipe[].{field}"],
+      "filterable": false
+    },
+    {
+      "keyPattern": "^recipe\\.[a-z0-9-]+_max_steeps$",
+      "group": "recipe",
+      "targetCodePattern": "SPEC-TT-RECIPE-{style}-{field}",
+      "type": "Number",
+      "unit": "count",
       "sourcePaths": ["recipe[].{field}"],
       "filterable": false
     },
@@ -378,14 +385,6 @@
       "valueEncoding": "json-array-string",
       "sourcePaths": ["harvest[].months"],
       "filterable": false
-    },
-    {
-      "keyPattern": "^(classification_origin|atomic|botany_material|terroir|production|organoleptic|chemistry|brewing|storage|history_culture|price_counterfeit|facts|comparison|health|contraindications|conclusion|source)\\.[a-z0-9_]+$",
-      "groupFromKey": "^([^.]*)\\.",
-      "targetCodePattern": "SPEC-TT-FIELD-{group}-{field}",
-      "type": "CustomMarkdownText",
-      "sourcePaths": ["sections.{group}.{field}"],
-      "filterable": false
     }
   ],
   "rules": {
@@ -398,6 +397,8 @@
     "explicitAttributesOverridePatterns": true,
     "productValueLimit": 4000,
     "validateBeforeApply": true,
-    "applyMode": "dry-run-then-canary"
+    "applyMode": "dry-run-then-canary",
+    "unmappedSourceField": "review-required",
+    "markdownMapping": "explicit-narrative-field-only"
   }
 }

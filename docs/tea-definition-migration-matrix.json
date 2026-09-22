@@ -4,7 +4,7 @@
   "evidence": "tea-domain-and-types-audit.md, refreshed 2026-09-20; source coverage report 2026-09-21",
   "definitionCount": 75,
   "invariants": [
-    "No tea-specific runtime registry or tea.v1 service profile is introduced.",
+    "No tea-specific runtime registry or service profile is introduced.",
     "ProductCatalog owns canonical product definitions and values.",
     "Unknown import fields/options/units fail validation or enter review; they never create definitions.",
     "CustomMarkdownText is authoritative only for narrative, history, caveats and source quotations.",

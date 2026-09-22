@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "profile": {
+    "id": "tea",
+    "version": "1.0.0",
+    "purpose": "Repository-only preparation contract for ordinary ProductCatalog data exchange."
+  },
+  "definitionInventory": {
+    "source": "../../../docs/tea-definition-migration-matrix.json",
+    "count": 75,
+    "stableCodePrefix": "SPEC-TT-",
+    "columns": {
+      "runtimeType": "currentType",
+      "targetTypedRepresentation": "targetRepresentation",
+      "cardinality": "cardinality",
+      "unit": "unit",
+      "allowedValuesOrScale": "scaleOrAllowedDomain",
+      "evidence": "sourceEvidence",
+      "requiredDefaultRule": "rule",
+      "editor": "templateEditor",
+      "importExport": "exchange",
+      "sectionAndReview": "sectionAndReviewSupport"
+    },
+    "unknownDefinition": "review-required",
+    "definitionCreation": "forbidden"
+  },
+  "valuePolicy": {
+    "requiredness": "Every product value is optional unless its existing ProductCatalog definition explicitly requires it.",
+    "inferredDefaults": "forbidden",
+    "unknownOptionOrUnit": "review-required",
+    "unprovenScale": "review-required",
+    "import": "existing-definition-and-option-code-only",
+    "export": "preserve-stable-code-type-unit-and-source-evidence",
+    "counterparty": "existing-CounterpartyService-reference-only"
+  },
+  "sectionEligibility": {
+    "machineReadableValue": "eligible-when-present",
+    "narrativeValue": "explicit-field-only",
+    "reviewRequiredValue": "ineligible",
+    "userObservation": "ReviewService-only-after-explicit-publication"
+  },
+  "executableMappings": {
+    "profile": "profile.json",
+    "productCreationDescriptor": "product-creation-template.json",
+    "explicitAttributeCount": 25,
+    "dynamicAttributeFamilies": [
+      {"name": "recipe-water-temperature", "type": "Number", "unit": "°C", "required": false, "default": null},
+      {"name": "recipe-tea-mass", "type": "Number", "unit": "g", "required": false, "default": null},
+      {"name": "recipe-water-volume", "type": "Number", "unit": "ml", "required": false, "default": null},
+      {"name": "recipe-max-infusions", "type": "Number", "unit": "count", "required": false, "default": null},
+      {"name": "recipe-duration", "type": "Duration", "unit": "s", "required": false, "default": null},
+      {"name": "recipe-rinse", "type": "Boolean", "unit": null, "required": false, "default": null},
+      {"name": "harvest-months", "type": "List", "unit": "month", "required": false, "default": null}
+    ],
+    "sensoryIntensity": "disabled-until-a-source-backed-scale-contract-exists",
+    "broadTextFallback": "forbidden"
+  }
+}

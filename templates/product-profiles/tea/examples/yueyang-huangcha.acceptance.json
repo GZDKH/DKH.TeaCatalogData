@@ -2,8 +2,7 @@
   "$schema": "../schema.json",
   "profile": {
     "id": "tea",
-    "version": "1.0.0",
-    "sourceSystem": "tea.community"
+    "version": "1.0.0"
   },
   "records": [
     {
@@ -11,7 +10,7 @@
         "system": "tea.community",
         "externalId": "yueyang-huangcha",
         "url": "https://tea.community/ru-RU/products/yueyang-huangcha",
-        "revision": "manual-audit-2026-09-20",
+        "revision": "recorded-product-page-2026-09-20",
         "retrievedAt": "2026-09-20T00:00:00Z"
       },
       "product": {
@@ -176,14 +175,6 @@
           "type": "List",
           "sourcePath": "article.harvest",
           "value": "[\"April\"]"
-        },
-        {
-          "key": "brewing.source_recipe_note",
-          "group": "brewing",
-          "attribute": "SPEC-TT-FIELD-BREWING-SOURCE-RECIPE-NOTE",
-          "type": "CustomMarkdownText",
-          "sourcePath": "article.brewing",
-          "value": "The article also gives a general preparation of 80–85 °C, 3 g per 150 ml. It is preserved as source context alongside the separate gongfu and western recipes; the values are not averaged into one product temperature."
         }
       ]
     }

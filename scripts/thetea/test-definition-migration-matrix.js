@@ -8,6 +8,14 @@ assert.strictEqual(matrix.schemaVersion, 1);
 assert.strictEqual(matrix.definitionCount, 75, 'the prepared tea definition set must remain complete');
 assert.strictEqual(matrix.definitions.length, 75);
 
+const fieldMatrix = JSON.parse(fs.readFileSync('templates/product-profiles/tea/field-matrix.json', 'utf8'));
+assert.strictEqual(fieldMatrix.definitionInventory.count, matrix.definitionCount);
+assert.strictEqual(fieldMatrix.definitionInventory.source, '../../../docs/tea-definition-migration-matrix.json');
+assert.deepStrictEqual(Object.keys(fieldMatrix.definitionInventory.columns).sort(), [
+    'allowedValuesOrScale', 'cardinality', 'editor', 'evidence', 'importExport',
+    'requiredDefaultRule', 'runtimeType', 'sectionAndReview', 'targetTypedRepresentation', 'unit',
+].sort());
+
 const required = [
     'code', 'currentType', 'targetRepresentation', 'disposition', 'owner',
     'cardinality', 'unit', 'scaleOrAllowedDomain', 'rule', 'sourceEvidence',
