@@ -1,13 +1,12 @@
 {
   "profile": {
     "id": "tea",
-    "version": "1.0.0",
-    "sourceSystem": "my.teadb.org"
+    "version": "1.0.0"
   },
   "records": [
     {
       "source": {
-        "system": "my.teadb.org",
+        "system": "REPLACE_WITH_SOURCE_SYSTEM",
         "externalId": "REPLACE_WITH_SOURCE_ID",
         "revision": "REPLACE_WITH_SOURCE_REVISION",
         "retrievedAt": "2026-09-20T00:00:00Z"

@@ -70,6 +70,7 @@ thetea-package-offline-tests:
     - node scripts/thetea/test-source-coverage-report.js
     - node scripts/thetea/test-definition-migration-matrix.js
     - node scripts/thetea/test-product-creation-template.js
+    - node scripts/thetea/test-portable-product-profile-contract.js
     - node scripts/thetea/test-category-taxonomy.js
     - node scripts/thetea/test-materialize-d1-snapshot.js
     - node scripts/thetea/test-validate-d1-snapshot.js

@@ -22,7 +22,7 @@
     "referenceResolution": "existing-code-only"
   },
   "source": {
-    "system": "my.teadb.org",
+    "system": null,
     "identity": [
       "source.system",
       "source.externalId"
@@ -482,21 +482,43 @@
     ],
     "dynamicAttributes": [
       {
-        "keyPattern": "^sensory\\.descriptor_[a-z0-9-]+_intensity$",
-        "group": "sensory",
-        "attributeCodePattern": "SPEC-TT-SENSORY-DESCRIPTOR-{descriptor}-INTENSITY",
-        "type": "Number",
-        "required": false,
-        "activation": "value-present",
-        "default": null
-      },
-      {
-        "keyPattern": "^recipe\\.[a-z0-9-]+_(water_temp|tea_grams|water_ml|max_steeps)$",
+        "keyPattern": "^recipe\\.[a-z0-9-]+_water_temp$",
         "group": "recipe",
         "attributeCodePattern": "SPEC-TT-RECIPE-{style}-{field}",
         "type": "Number",
         "required": false,
         "activation": "value-present",
+        "unit": "°C",
+        "default": null
+      },
+      {
+        "keyPattern": "^recipe\\.[a-z0-9-]+_tea_grams$",
+        "group": "recipe",
+        "attributeCodePattern": "SPEC-TT-RECIPE-{style}-{field}",
+        "type": "Number",
+        "required": false,
+        "activation": "value-present",
+        "unit": "g",
+        "default": null
+      },
+      {
+        "keyPattern": "^recipe\\.[a-z0-9-]+_water_ml$",
+        "group": "recipe",
+        "attributeCodePattern": "SPEC-TT-RECIPE-{style}-{field}",
+        "type": "Number",
+        "required": false,
+        "activation": "value-present",
+        "unit": "ml",
+        "default": null
+      },
+      {
+        "keyPattern": "^recipe\\.[a-z0-9-]+_max_steeps$",
+        "group": "recipe",
+        "attributeCodePattern": "SPEC-TT-RECIPE-{style}-{field}",
+        "type": "Number",
+        "required": false,
+        "activation": "value-present",
+        "unit": "count",
         "default": null
       },
       {
@@ -526,22 +548,14 @@
         "required": false,
         "activation": "value-present",
         "default": null
-      },
-      {
-        "keyPattern": "^(classification_origin|atomic|botany_material|terroir|production|organoleptic|chemistry|brewing|storage|history_culture|price_counterfeit|facts|comparison|health|contraindications|conclusion|source)\\.[a-z0-9_]+$",
-        "groupFromKey": "^([^.]*)\\.",
-        "attributeCodePattern": "SPEC-TT-FIELD-{group}-{field}",
-        "type": "CustomMarkdownText",
-        "required": false,
-        "activation": "value-present",
-        "default": null
       }
     ],
     "missingValue": "omit",
     "unknownDefinition": "error",
+    "unmappedSourceField": "review-required",
+    "markdownMapping": "explicit-narrative-field-only",
     "duplicateKey": "error",
-    "units": "definition-owned",
-    "sectionActivation": "only-when-selected-fields-have-values"
+    "units": "definition-owned"
   },
   "productAttributes": {
     "definitionSource": "catalog-or-category-reference",
@@ -610,115 +624,9 @@
     "definitionCreation": false,
     "note": "Only existing counterparty codes may be referenced; no Vendor entity is introduced."
   },
-  "sections": [
-    {
-      "id": "flavor-wheel",
-      "labels": {
-        "en-US": "Flavor profile",
-        "ru-RU": "Вкусовой профиль"
-      },
-      "activateWhen": {
-        "anyOf": [
-          "organoleptic.*",
-          "sensory.*",
-          "enrichment.flavor_tags"
-        ]
-      },
-      "dataOwner": "product"
-    },
-    {
-      "id": "brewing-table",
-      "labels": {
-        "en-US": "Brewing recipes",
-        "ru-RU": "Рецепты заваривания"
-      },
-      "activateWhen": {
-        "anyOf": [
-          "recipe.*",
-          "brewing.*"
-        ]
-      },
-      "dataOwner": "product"
-    },
-    {
-      "id": "origin-map",
-      "labels": {
-        "en-US": "Origin",
-        "ru-RU": "Происхождение"
-      },
-      "activateWhen": {
-        "anyOf": [
-          "product.origins",
-          "terroir.*"
-        ]
-      },
-      "dataOwner": "product"
-    },
-    {
-      "id": "product-reading",
-      "labels": {
-        "en-US": "Tea profile",
-        "ru-RU": "Профиль чая"
-      },
-      "activateWhen": {
-        "anyOf": [
-          "classification_origin.*",
-          "atomic.*",
-          "botany_material.*",
-          "production.*",
-          "harvest.*"
-        ]
-      },
-      "dataOwner": "product"
-    },
-    {
-      "id": "product-review-form",
-      "labels": {
-        "en-US": "Tasting note",
-        "ru-RU": "Дегустационная заметка"
-      },
-      "activateWhen": "review-session-enabled",
-      "dataOwner": "review"
-    },
-    {
-      "id": "product-reviews-list",
-      "labels": {
-        "en-US": "Community ratings",
-        "ru-RU": "Оценки сообщества"
-      },
-      "activateWhen": "review-session-enabled",
-      "dataOwner": "review"
-    }
-  ],
-  "reviewBoundary": {
-    "service": "ReviewService",
-    "sessionType": "structured-tasting",
-    "privateByDefault": true,
-    "publishAction": "explicit-share",
-    "productFactsImmutable": true,
-    "fields": [
-      "overallRating",
-      "aroma",
-      "flavor",
-      "body",
-      "mouthfeel",
-      "aftertaste",
-      "intensity",
-      "recommendation",
-      "note"
-    ],
-    "scale": {
-      "overallRating": {
-        "min": 1,
-        "max": 5,
-        "step": 1
-      }
-    },
-    "note": "User observations and ratings never overwrite product specifications."
-  },
   "examples": [
     {
-      "path": "./examples/yueyang-huangcha.from-post.json",
+      "path": "./examples/yueyang-huangcha.acceptance.json",
       "code": "TEA-CN-YUEYANG-HUANGCHA",
       "status": "source-backed-review-required"
     },

@@ -1,8 +1,8 @@
 # Tea specification export profile
 
-`templates/tea.v1/profile.json` is the data contract for exporting tea facts from an external source such as `my.teadb.org`. It is deliberately stored with catalog data rather than in a storefront theme or service. `templates/tea.v1/product-template.json` is the fillable starting record; `examples/xihu-longjing.from-post.json` is a real 50-specification product derived from the recorded Xī Hú Lóngjǐng post; `examples/post-coverage.json` records the field coverage measured across the 526-card TheTea content snapshot. A future `coffee.v1` or `ceramics.v1` profile can use the same envelope and generic ProductCatalog DataExchange path.
+`templates/product-profiles/tea/profile.json` is a repository data contract for preparing tea facts for the existing ProductCatalog DataExchange path. It has no external source default and no storefront binding. `product-template.json` is the fillable starting record; `examples/xihu-longjing.from-post.json` is a source-backed product record. Another product profile can use the same envelope without changing a platform service.
 
-The exporter writes `templates/tea.v1` records. The profile maps its stable semantic keys to the existing ProductCatalog codes. The resulting Admin DataExchange artifact keeps the current layout:
+The exporter writes `templates/product-profiles/tea` records. The profile maps stable semantic keys to existing ProductCatalog codes. The resulting Admin DataExchange artifact keeps the current layout:
 
 | Export profile | ProductCatalog artifact |
 | --- | --- |
@@ -11,11 +11,11 @@ The exporter writes `templates/tea.v1` records. The profile maps its stable sema
 | option values | `02-specifications/specification_attribute_options.json` |
 | `record.product` and mapped `record.specifications` | `04-products/<category>/<product-code>.json` |
 
-The profile covers metadata-owned fields (tea type, category, oxidation, brew temperature, processing, roast, GI and source state), standard enrichment and organoleptic fields, dynamic recipe/harvest/sensory fields, and remaining TheTea section fields through explicit patterns. Explicit definitions take precedence over a pattern. The export envelope carries source identity and revision separately from the ProductCatalog product. The converter must use `(source.system, source.externalId)` as an idempotent upsert key, preserve `source.revision` as provenance, and map only known profile keys. Unknown groups or attributes fail validation; they must not create ad-hoc fields that the storefront cannot render consistently.
+The profile covers metadata-owned fields (tea type, category, oxidation, brew temperature, processing, roast, GI and source state), standard enrichment and organoleptic fields, and typed dynamic recipe, harvest, and sensory fields. It has no section-name fallback. The export envelope carries source identity and revision separately from the ProductCatalog product. The converter must use `(source.system, source.externalId)` as an idempotent upsert key, preserve `source.revision` as provenance, and map only known profile keys. Unknown groups, attributes, options, units, and scales enter review; they must not create ad-hoc fields that the storefront cannot render consistently.
 
 ProductCatalog values use the existing representation: `Option` uses an option code, `List` uses a JSON array encoded as a string, `Number`, `Boolean`, `Date`, `Duration`, and text types use `value`, and `Range` uses `valueMin`/`valueMax`. A missing source value omits the specification. The `product.specifications` array must contain an attribute at most once.
 
-`organoleptic`, `sensory`, and the `enrichment.flavor_tags` mapping are the initial flavor-wheel inputs. The flavor section activates only when the canonical product has values in one of those groups. A product with no values does not render an empty tea-only section.
+`organoleptic`, `sensory`, and `enrichment.flavor_tags` are typed product data. A storefront theme may independently select those codes for a sensory section; the data package does not name or activate a section.
 
 The safe operational sequence is:
 

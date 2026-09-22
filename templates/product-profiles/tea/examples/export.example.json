@@ -1,15 +1,14 @@
 {
   "profile": {
     "id": "tea",
-    "version": "1.0.0",
-    "sourceSystem": "my.teadb.org"
+    "version": "1.0.0"
   },
   "records": [
     {
       "source": {
-        "system": "my.teadb.org",
-        "externalId": "tea-card-12345",
-        "url": "https://my.teadb.org/tea/tea-card-12345",
+        "system": "merchant-editorial",
+        "externalId": "merchant-tea-card-12345",
+        "url": "https://example.invalid/tea-card-12345",
         "revision": "2026-09-20T00:00:00Z",
         "retrievedAt": "2026-09-20T01:00:00Z"
       },
