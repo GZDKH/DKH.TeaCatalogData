@@ -22,6 +22,14 @@ The fill-missing policy is conservative:
 - a complete source range cannot replace a baseline range with a missing bound; that case is reported as `range-truncation`;
 - product matching is exact by ProductCatalog code derived from the source country and slug; fuzzy names never select a baseline.
 
+When a previous applied product is available, pass it as `sourceMetadata.lastAppliedProduct`.
+The proposal then records a provider-independent identity (`source system`, external ID and
+entity kind) and applies a three-way merge to source-owned translations, tea specifications,
+tea tags and origins. A destination value is updated only when it still equals the previous
+source value. A destination edit made after that source application is retained and reported
+as `three-way-conflict` for review. Product ID, price, stock, publication state, packages,
+variants and unrelated collections remain from the complete destination baseline.
+
 `desired-products.json` contains the complete nested product payload required by the existing replace-mode exchange. `rollback-products.json` contains the exact baseline product for every update. The payloads are empty when there is no change or when review is required. Before any later apply step, the recorded source and baseline hashes must still match; a changed input is stale and must be prepared again.
 
 The sample Yueyang card currently produces 30 unchanged source observations and no write proposal against the captured baseline. This is an expected result: the mechanism proves completeness without overwriting the current product.

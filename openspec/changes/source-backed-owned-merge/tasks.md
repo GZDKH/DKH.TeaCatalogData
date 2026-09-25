@@ -1,0 +1,4 @@
+- [x] Add provider-independent source identity to proposal records.
+- [x] Implement keyed three-way merges for source-owned collections.
+- [x] Preserve current destination values and emit review conflicts on manual drift.
+- [x] Add tests for source-owned updates, conflicts and commercial-field preservation.
