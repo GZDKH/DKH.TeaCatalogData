@@ -1,0 +1,6 @@
+- [x] Include all 284 section fields and 83 non-section leaves in a stable matrix.
+- [x] Reconcile all 89 legacy code rows with provider-independent canonical candidates.
+- [x] Detect type/unit/canonical collisions and retain explicit route/review dispositions.
+- [x] Reconcile 210 category definitions and 62 direct source maps across 13 axes.
+- [x] Preserve specification, attribute, variant, category membership and provenance boundaries.
+- [x] Add offline tests, CI coverage and a read-only operator command.
