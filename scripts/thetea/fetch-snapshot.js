@@ -276,6 +276,8 @@ async function main() {
         missingFieldDetailFiles: [],
         markdownFiles: [],
         mapFiles: [],
+        placesFiles: [],
+        referenceCoverage: [],
         similarFiles: [],
         sourceContractFiles: [],
         sourceContract: {
@@ -323,10 +325,39 @@ async function main() {
             if (!(resume && fs.existsSync(glossaryPath))) {
                 const glossary = await getJson(`/api/v2/glossary?lang=${encodeURIComponent(lang)}&limit=500`);
                 writeJson(glossaryPath, glossary);
+                manifest.referenceCoverage.push({
+                    endpoint: 'glossary',
+                    lang,
+                    requestedLimit: 500,
+                    reportedCount: glossary.count ?? null,
+                    returnedCount: Array.isArray(glossary.terms) ? glossary.terms.length : 0,
+                    possiblyTruncated: Array.isArray(glossary.terms) && glossary.terms.length >= 500,
+                });
             }
             manifest.files.push(`raw/glossary-${lang}.json`);
         } catch (error) {
             manifest.errors.push(issueFromError({ endpoint: 'glossary', lang }, error));
+        }
+
+        try {
+            const placesRel = `raw/places-${lang}.json`;
+            const placesPath = path.join(root, placesRel);
+            if (!(resume && fs.existsSync(placesPath))) {
+                const places = await getJson(`/api/v2/places?lang=${encodeURIComponent(lang)}&limit=200`);
+                writeJson(placesPath, places);
+                manifest.referenceCoverage.push({
+                    endpoint: 'places',
+                    lang,
+                    requestedLimit: 200,
+                    reportedCount: places.count ?? null,
+                    returnedCount: Array.isArray(places.places) ? places.places.length : 0,
+                    possiblyTruncated: Array.isArray(places.places) && places.places.length >= 200,
+                });
+            }
+            manifest.files.push(placesRel);
+            manifest.placesFiles.push(placesRel);
+        } catch (error) {
+            manifest.errors.push(issueFromError({ endpoint: 'places', lang }, error));
         }
 
         try {
@@ -378,9 +409,14 @@ async function main() {
     if (limit) entities = entities.slice(0, limit);
 
     manifest.entityInventory = entities;
-    manifest.slugs = entities.filter(item => item.entityKind === 'tea').map(item => item.slug);
+    manifest.slugs = entities
+        .filter(item => item.entityKind === 'tea' && !item.classificationConflict)
+        .map(item => item.slug);
     for (const duplicate of sourceInventory.duplicates) {
         manifest.warnings.push({ type: 'duplicate-source-entity', ...duplicate });
+    }
+    for (const conflict of sourceInventory.kindConflicts || []) {
+        manifest.warnings.push({ type: 'entity-kind-conflict', ...conflict });
     }
     for (const entity of entities) {
         if (entity.entityKind === 'unknown' || entity.classificationConflict) {
@@ -423,7 +459,8 @@ async function main() {
                 manifest.files.push(cardRel);
                 process.stdout.write('r');
             } else {
-                card = await getJson(`/api/v2/tea/${encodeURIComponent(slug)}?lang=${encodeURIComponent(lang)}`);
+                const route = entity.entityKind === 'infusion' ? 'infusion' : 'tea';
+                card = await getJson(`/api/v2/${route}/${encodeURIComponent(slug)}?lang=${encodeURIComponent(lang)}`);
                 writeJson(cardPath, card);
                 manifest.files.push(cardRel);
                 process.stdout.write('.');
