@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const { REPO_ROOT, loadDotEnv, parseArgs, csv, getTheTeaApiKey, requireArg } = require('./lib/env');
 const { requestJson, requestText } = require('./lib/http');
 const { localesFromMeta, resolveRequestedLocales } = require('./lib/locales');
@@ -8,6 +9,11 @@ const { extractFieldRefs } = require('./lib/field-details');
 const { classifyFetchIssue } = require('./lib/snapshot-errors');
 const { resolveFieldLocales, shouldFetchFieldsForLang } = require('./lib/snapshot-options');
 const { createRequestStartGate } = require('./lib/request-start-gate');
+const {
+    buildEntityInventory,
+    classifySourceEntity,
+    validateCardLanguage,
+} = require('./lib/source-entities');
 
 const API_BASE = 'https://api.thetea.app';
 
@@ -22,6 +28,10 @@ function ensureDir(dir) {
 function writeJson(file, value) {
     ensureDir(path.dirname(file));
     fs.writeFileSync(file, JSON.stringify(value, null, 2));
+}
+
+function sha256File(file) {
+    return crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
 }
 
 function readJson(file) {
@@ -126,6 +136,7 @@ async function writeTextSource(root, manifest, rel, endpoint, options = {}) {
         if (options.resume && fs.existsSync(target)) {
             manifest.files.push(rel);
             manifest.sourceContractFiles.push(rel);
+            manifest.sourceContract.fetched.push({ file: rel, endpoint, resumed: true, sha256: sha256File(target) });
             return;
         }
 
@@ -133,8 +144,11 @@ async function writeTextSource(root, manifest, rel, endpoint, options = {}) {
         fs.writeFileSync(target, await getText(endpoint));
         manifest.files.push(rel);
         manifest.sourceContractFiles.push(rel);
+        manifest.sourceContract.fetched.push({ file: rel, endpoint, sha256: sha256File(target) });
     } catch (error) {
-        manifest.errors.push(issueFromError({ endpoint }, error));
+        const issue = issueFromError({ endpoint }, error);
+        manifest.errors.push(issue);
+        manifest.sourceContract.failed.push(issue);
     }
 }
 
@@ -145,6 +159,33 @@ async function fetchAllTeas(lang, pageSize = 500) {
 
     while (true) {
         const page = await getJson(`/api/v2/teas?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(lang)}`);
+        const pageItems = page.items || [];
+        items.push(...pageItems);
+        pages.push({
+            offset,
+            count: page.count,
+            itemCount: pageItems.length,
+        });
+
+        if (pageItems.length < pageSize) break;
+        offset += pageItems.length;
+    }
+
+    return {
+        count: items.length,
+        offset: 0,
+        items,
+        pages,
+    };
+}
+
+async function fetchAllInfusions(lang, pageSize = 500) {
+    const items = [];
+    const pages = [];
+    let offset = 0;
+
+    while (true) {
+        const page = await getJson(`/api/v2/infusions?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(lang)}`);
         const pageItems = page.items || [];
         items.push(...pageItems);
         pages.push({
@@ -237,6 +278,17 @@ async function main() {
         mapFiles: [],
         similarFiles: [],
         sourceContractFiles: [],
+        sourceContract: {
+            expected: ['raw/source/docs.html', 'raw/source/openapi.yaml', 'raw/source/llms.txt', 'raw/source/skill.md'],
+            fetched: [],
+            failed: [],
+        },
+        entityInventory: [],
+        entityCardFiles: [],
+        missingEntityCardFiles: [],
+        entityObservations: [],
+        cardLanguageMismatches: [],
+        fieldCoverage: [],
         warnings: [],
         errors: [],
     };
@@ -291,7 +343,10 @@ async function main() {
         }
     }
 
-    const teasLang = langs.includes('en') ? 'en' : langs[0];
+    // Discovery is a language-neutral inventory. Always use the free English
+    // projection so a paid target locale can still be fetched and recorded as
+    // a per-card 402 instead of aborting before the snapshot exists.
+    const teasLang = 'en';
     const teasPath = path.join(raw, `teas-${teasLang}.json`);
     const teas = resume && fs.existsSync(teasPath)
         ? readJson(teasPath)
@@ -299,11 +354,44 @@ async function main() {
     writeJson(teasPath, teas);
     manifest.files.push(`raw/teas-${teasLang}.json`);
 
-    let items = teas.items || [];
-    if (only.size) items = items.filter(item => only.has(item.slug));
-    if (limit) items = items.slice(0, limit);
+    const infusionsRel = `raw/infusions-${teasLang}.json`;
+    const infusionsPath = path.join(root, infusionsRel);
+    let infusions;
+    try {
+        infusions = resume && fs.existsSync(infusionsPath)
+            ? readJson(infusionsPath)
+            : await fetchAllInfusions(teasLang);
+        writeJson(infusionsPath, infusions);
+        manifest.files.push(infusionsRel);
+    } catch (error) {
+        const issue = issueFromError({ endpoint: 'infusions', lang: teasLang }, error);
+        manifest.errors.push(issue);
+        infusions = { count: 0, offset: 0, items: [], pages: [] };
+    }
 
-    manifest.slugs = items.map(item => item.slug);
+    let sourceInventory = buildEntityInventory({
+        teas: teas.items || [],
+        infusions: infusions.items || [],
+    });
+    let entities = sourceInventory.entities;
+    if (only.size) entities = entities.filter(item => only.has(item.slug));
+    if (limit) entities = entities.slice(0, limit);
+
+    manifest.entityInventory = entities;
+    manifest.slugs = entities.filter(item => item.entityKind === 'tea').map(item => item.slug);
+    for (const duplicate of sourceInventory.duplicates) {
+        manifest.warnings.push({ type: 'duplicate-source-entity', ...duplicate });
+    }
+    for (const entity of entities) {
+        if (entity.entityKind === 'unknown' || entity.classificationConflict) {
+            manifest.warnings.push({
+                type: entity.classificationConflict ? 'entity-kind-conflict' : 'unknown-source-entity',
+                slug: entity.slug,
+                endpoint: entity.endpoint,
+                sourceKind: entity.sourceKind,
+            });
+        }
+    }
     const d1FieldPacks = loadD1FieldPacks(root, configuredFieldPacks, manifest.slugs);
     if (d1FieldPacks) {
         manifest.fieldSource = 'cloudflare-d1-packs';
@@ -317,14 +405,18 @@ async function main() {
             });
         }
     }
-    console.log(`Cards to fetch: ${manifest.slugs.length}`);
+    console.log(`Entities to fetch: ${entities.length} (${manifest.slugs.length} tea products)`);
     console.log(`Field source: ${d1FieldPacks ? 'Cloudflare D1 packs' : 'per-field API'}`);
 
-    const cardTasks = manifest.slugs.flatMap(slug => langs.map(lang => ({ slug, lang })));
-    await mapLimit(cardTasks, concurrency, async ({ slug, lang }) => {
-        const cardRel = `raw/cards/${lang}/${slug}.json`;
+    const cardTasks = entities.flatMap(entity => langs.map(lang => ({ entity, lang })));
+    await mapLimit(cardTasks, concurrency, async ({ entity, lang }) => {
+        const { slug } = entity;
+        const cardRel = entity.entityKind === 'tea'
+            ? `raw/cards/${lang}/${slug}.json`
+            : `raw/entities/${entity.entityKind}/cards/${lang}/${slug}.json`;
         const cardPath = path.join(root, cardRel);
         let card = null;
+        let cardLanguageValid = true;
         try {
             if (resume && fs.existsSync(cardPath)) {
                 card = readJson(cardPath);
@@ -336,13 +428,69 @@ async function main() {
                 manifest.files.push(cardRel);
                 process.stdout.write('.');
             }
+            const classification = classifySourceEntity(card, entity.entityKind);
+            const language = validateCardLanguage(card, lang);
+            manifest.entityObservations.push({
+                slug,
+                lang,
+                expectedKind: entity.entityKind,
+                actualKind: classification.kind,
+                classificationEvidence: classification.evidence,
+                classificationConflict: classification.conflict,
+                language: language.actual,
+            });
+            if (classification.kind !== entity.entityKind && classification.kind !== 'unknown') {
+                manifest.warnings.push({
+                    type: 'entity-kind-mismatch',
+                    slug,
+                    lang,
+                    expectedKind: entity.entityKind,
+                    actualKind: classification.kind,
+                });
+            }
+            if (!language.ok) {
+                const mismatch = {
+                    type: 'language-fallback',
+                    endpoint: 'card',
+                    slug,
+                    lang,
+                    requestedLang: language.requested,
+                    actualLang: language.actual,
+                    message: `TheTea returned ${language.actual} for requested ${language.requested}; English fallback is not accepted.`,
+                };
+                manifest.cardLanguageMismatches.push(mismatch);
+                manifest.errors.push(mismatch);
+                cardLanguageValid = false;
+            }
+            manifest.entityCardFiles.push(cardRel);
         } catch (error) {
-            manifest.errors.push({ endpoint: 'card', slug, lang, status: error.status, message: error.message });
+            const issue = issueFromError({ endpoint: 'card', slug, lang, entityKind: entity.entityKind }, error);
+            const classification = classifyFetchIssue(issue);
+            if (classification.kind === 'missing-entity-card') {
+                const missing = {
+                    ...issue,
+                    type: classification.kind,
+                    file: cardRel,
+                };
+                manifest.missingEntityCardFiles.push(missing);
+                manifest.warnings.push(missing);
+            } else {
+                manifest.errors.push({ ...issue, type: classification.kind });
+            }
             process.stdout.write('x');
         }
 
-        if (includeFields && !d1FieldPacks && card && shouldFetchFieldsForLang(lang, fieldLangs)) {
+        if (includeFields && !d1FieldPacks && card && cardLanguageValid && shouldFetchFieldsForLang(lang, fieldLangs)) {
             const fieldRefs = extractFieldRefs(card);
+            const fieldCoverage = {
+                slug,
+                lang,
+                entityKind: entity.entityKind,
+                expected: fieldRefs.map(ref => ({ section: ref.section, field: ref.field })),
+                fetched: [],
+                missing: [],
+            };
+            manifest.fieldCoverage.push(fieldCoverage);
             for (const ref of fieldRefs) {
                 const fieldRel = `raw/fields/${safePathPart(lang)}/${safePathPart(slug)}/${safePathPart(ref.section)}/${safePathPart(ref.field)}.json`;
                 const fieldPath = path.join(root, fieldRel);
@@ -363,6 +511,7 @@ async function main() {
                             status: missing.status,
                             message: missing.message,
                         });
+                        fieldCoverage.missing.push({ section: ref.section, field: ref.field, status: missing.status, type: missing.type });
                         continue;
                     }
 
@@ -371,6 +520,7 @@ async function main() {
                         writeJson(fieldPath, field);
                     }
                     manifest.fieldFiles.push(fieldRel);
+                    fieldCoverage.fetched.push({ section: ref.section, field: ref.field });
                 } catch (error) {
                     const issue = issueFromError({
                         endpoint: 'field',
@@ -398,14 +548,25 @@ async function main() {
                             status: issue.status,
                             message: issue.message,
                         });
+                        fieldCoverage.missing.push({ section: ref.section, field: ref.field, status: issue.status, type: classification.kind });
                     } else {
                         manifest.errors.push(issue);
                     }
                 }
             }
+        } else if (includeFields && !d1FieldPacks && shouldFetchFieldsForLang(lang, fieldLangs)) {
+            manifest.fieldCoverage.push({
+                slug,
+                lang,
+                entityKind: entity.entityKind,
+                expected: [],
+                fetched: [],
+                missing: [],
+                status: 'card-unavailable',
+            });
         }
 
-        if (includeMarkdown) {
+        if (includeMarkdown && entity.entityKind === 'tea') {
             const mdRel = `raw/markdown/${lang}/${slug}.md`;
             const mdPath = path.join(root, mdRel);
             try {

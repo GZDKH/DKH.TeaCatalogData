@@ -7,6 +7,9 @@ Production-safe import flow for data from `https://api.thetea.app` into the DKH 
 Authoritative import sources:
 
 - `GET /api/v2/teas` — slug list and coarse filters.
+- `GET /api/v2/infusions` — non-tea infusion inventory. The snapshot keeps this
+  inventory separate from product slugs and records the card-level kind when
+  TheTea disagrees (for example, an infusion list row whose card says `tea`).
 - `GET /api/v2/tea/{slug}` — canonical TeaCard: metadata, names, sections, recipe, harvest, sensory, tags, enrichment, SEO.
 - `GET /api/v2/tea/{slug}/{lang}/field/{code}` — per-field detail. The snapshot fetches this for every field discovered under each TeaCard `sections` object and generation overlays `value_md` / `value_num` onto the card before building descriptions and specs.
 - `GET /api/v2/tea/{slug}.md` — full localized Markdown page; stored as raw source content and routed to article sidecars, never flattened into specifications.
@@ -28,6 +31,15 @@ million localized section rows in hashed gzip field packs. Import generation
 overlays those packs and treats their Markdown-valued fields as the complete
 localized narrative source. Curated `tea_comparison.other_slug` rows are also
 eligible for product relations when Vectorize `/similar` output is unavailable.
+
+Discovery always uses the free English projection for `/teas` and `/infusions`.
+Requested locales are still fetched independently for cards, Markdown and
+field details, so a paid-locale `402`, a missing card `404`, or a throttled
+request `429` is retained in the snapshot manifest instead of being hidden by
+an English fallback. `manifest.entityInventory` records tea/category/infusion
+classification, `manifest.entityObservations` records card-level confirmation,
+and `manifest.fieldCoverage` records the expected, fetched and missing fields
+for every available card and locale.
 - `GET /api/v2/meta`, `/api/v2/family`, `/api/v2/glossary`, `/api/v2/map` — reference and map payloads for reports, category/origin checks, and later curation.
 
 Discovery-only methods:
