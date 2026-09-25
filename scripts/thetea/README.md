@@ -40,6 +40,21 @@ an English fallback. `manifest.entityInventory` records tea/category/infusion
 classification, `manifest.entityObservations` records card-level confirmation,
 and `manifest.fieldCoverage` records the expected, fetched and missing fields
 for every available card and locale.
+
+Build the immutable inventory and leaf disposition matrix before preparing an
+import:
+
+```bash
+node scripts/thetea/build-source-inventory.js \
+  --snapshot=sources/thetea/snapshots/<snapshot-id> \
+  --out=reports/thetea/<snapshot-id>/source-inventory
+```
+
+The report hashes the manifest and every captured source file, records each
+entity/locale card attempt, flags capped glossary/places responses and keeps
+the unsupported `/api/v2/infusion/{slug}` route as an explicit gap. Every raw
+leaf receives a disposition such as typed definition, routed content, source
+provenance or review required; no field is silently dropped.
 - `GET /api/v2/meta`, `/api/v2/family`, `/api/v2/glossary`, `/api/v2/map` — reference and map payloads for reports, category/origin checks, and later curation.
 
 Discovery-only methods:

@@ -78,6 +78,7 @@ thetea-package-offline-tests:
     - node scripts/thetea/test-artifact-validator.js
     - node scripts/thetea/test-generate-safety.js
     - node scripts/thetea/test-source-entities.js
+    - node scripts/thetea/test-build-source-inventory.js
     - node scripts/thetea/test-snapshot-errors.js
     - node scripts/thetea/test-snapshot-options.js
     - node scripts/thetea/test-field-details.js

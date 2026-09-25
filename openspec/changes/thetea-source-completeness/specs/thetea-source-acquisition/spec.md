@@ -34,3 +34,19 @@ schema drift can be compared across runs.
 - **WHEN** `/openapi.yaml` or `/llms.txt` changes
 - **THEN** the manifest records the new hash alongside the immutable payload
 - **AND** the run remains attributable to the captured contract
+
+### Requirement: emit an immutable leaf disposition matrix
+The acquisition tooling MUST emit a hash-bound inventory of each entity,
+locale, card attempt and observed source leaf. Every leaf MUST have an explicit
+disposition, including review-required or raw-source preservation, and source
+reference caps or unsupported routes MUST remain visible gaps.
+
+#### Scenario: capped reference endpoint
+- **WHEN** a glossary or places response reaches its documented request limit
+- **THEN** the inventory flags the response as possibly truncated
+- **AND** the report is ineligible for a complete import until the gap is resolved
+
+#### Scenario: unsupported infusion card route
+- **WHEN** `/api/v2/infusion/{slug}` returns 404
+- **THEN** the report keeps the status and response body as a source gap
+- **AND** it does not substitute `/api/v2/tea/{slug}` for the infusion entity

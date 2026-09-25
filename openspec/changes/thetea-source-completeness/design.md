@@ -1,7 +1,8 @@
 # Design
 
 `fetch-snapshot.js` uses English only for the language-neutral `/teas` and
-`/infusions` discovery lists. It then requests every resolved `--langs` and
+`/infusions` discovery lists. It also captures localized glossary and places
+projections with their server-side caps. It then requests every resolved `--langs` and
 `--field-langs` value independently. Existing tea cards retain their
 `raw/cards/<lang>/<slug>.json` path so generated import artifacts remain
 compatible. Category and infusion cards use `raw/entities/<kind>/cards/...`
@@ -17,6 +18,13 @@ The manifest is the audit boundary:
 - `cardLanguageMismatches` and `errors` retain 402/404/429 and language
   fallback evidence; a mismatched response is never used for detail extraction;
 - `sourceContract` stores the expected contract files and SHA-256 hashes.
+
+`build-source-inventory.js` hashes the immutable snapshot, enumerates every
+card and locale attempt, and emits a leaf disposition matrix. The dedicated
+`/api/v2/infusion/{slug}` route is authoritative for infusion cards; a 404 is
+reported as a source gap and the similarly named tea route is never used as a
+fallback. A slug present in both inventories is blocked until its entity kind
+is reviewed.
 
 The existing generation path consumes only tea slugs. Operators must resolve
 an entity mismatch or a missing paid-locale card before generating a complete

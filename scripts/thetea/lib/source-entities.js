@@ -67,9 +67,24 @@ function buildEntityInventory({ teas = [], infusions = [] } = {}) {
         byKey.set(key, entity);
     }
 
+    const bySlug = new Map();
+    for (const entity of byKey.values()) {
+        const list = bySlug.get(entity.slug) || [];
+        list.push(entity);
+        bySlug.set(entity.slug, list);
+    }
+    const kindConflicts = [];
+    for (const [slug, list] of bySlug.entries()) {
+        const kinds = [...new Set(list.map(item => item.entityKind))];
+        if (kinds.length < 2) continue;
+        kindConflicts.push({ slug, kinds: kinds.sort() });
+        for (const entity of list) entity.classificationConflict = true;
+    }
+
     return {
         entities: [...byKey.values()].sort((a, b) => a.entityKind.localeCompare(b.entityKind) || a.slug.localeCompare(b.slug)),
         duplicates,
+        kindConflicts,
     };
 }
 
