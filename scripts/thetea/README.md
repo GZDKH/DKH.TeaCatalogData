@@ -324,6 +324,26 @@ still requires a separately reviewed ID-addressed rename and SetupTool plan.
 The canonical namespace is `SPEC-TEA-*`; legacy `SPEC-TT-*` values are retained
 only as migration evidence and provenance bindings.
 
+Resolve the complete TheTea language registry against the live DKH culture
+registry before preparing a synchronization plan. The source meta response and
+destination registry are hashed into a read-only report. Neutral source
+languages can produce several target cultures through explicit inheritance;
+regional/manual values remain separate, and `tl` → `fil-PH`, script differences
+and unavailable cultures stay review-required:
+
+```bash
+node scripts/thetea/reconcile-locales.js \
+  --source-meta=sources/thetea/snapshots/<snapshot>/raw/meta.json \
+  --destination-registry=/absolute/path/to/reference-cultures.json \
+  --report=thetea-<snapshot>-locales
+```
+
+Every row records source language, target locale, derivation and review state.
+Inherited text is never counted as a native translation. The same policy is
+used for product names/descriptions/SEO, category and definition labels,
+origins, articles and FAQs; numeric values, units and stable IDs remain
+locale-independent.
+
 Validate or apply that exact plan through a resumable, read-back-verified runner.
 Every batch is validated first and recorded in `product-sync-checkpoint.json`.
 Apply automatically restores the current batch if read-back fails; the exact

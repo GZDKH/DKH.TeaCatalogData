@@ -1,0 +1,747 @@
+{
+  "schemaVersion": 1,
+  "mappingVersion": "2026-09-25",
+  "sourceCount": 72,
+  "policy": {
+    "sourceRegistry": "TheTea /api/v2/meta",
+    "destinationRegistry": "DKH.ReferenceService",
+    "unmappedPolicy": "review",
+    "fallbackLabel": "inherited-language",
+    "manualOverridePolicy": "preserve-regional-value",
+    "scriptPolicy": "review-ambiguous-script",
+    "numericAndStableIds": "language-independent"
+  },
+  "rows": [
+    {
+      "sourceCode": "AF",
+      "sourceBcp47": "af",
+      "currentProductLocale": "af",
+      "candidateTargetLocales": [
+        "af-ZA"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "AM",
+      "sourceBcp47": "am",
+      "currentProductLocale": "am",
+      "candidateTargetLocales": [
+        "am-ET"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "AR",
+      "sourceBcp47": "ar",
+      "currentProductLocale": "ar",
+      "candidateTargetLocales": [
+        "ar-EG",
+        "ar-SA"
+      ],
+      "direction": "rtl",
+      "disposition": "rtl; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "AZ",
+      "sourceBcp47": "az",
+      "currentProductLocale": "az",
+      "candidateTargetLocales": [
+        "az-AZ"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed; verify source script against target culture"
+    },
+    {
+      "sourceCode": "BE",
+      "sourceBcp47": "be",
+      "currentProductLocale": "be",
+      "candidateTargetLocales": [
+        "be-BY"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "BG",
+      "sourceBcp47": "bg",
+      "currentProductLocale": "bg",
+      "candidateTargetLocales": [
+        "bg-BG"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "BHO",
+      "sourceBcp47": "bho",
+      "currentProductLocale": "bho",
+      "candidateTargetLocales": [
+        "bho-IN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "BN",
+      "sourceBcp47": "bn",
+      "currentProductLocale": "bn",
+      "candidateTargetLocales": [
+        "bn-BD"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "BO",
+      "sourceBcp47": "bo",
+      "currentProductLocale": "bo",
+      "candidateTargetLocales": [
+        "bo-CN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "CA",
+      "sourceBcp47": "ca",
+      "currentProductLocale": "ca",
+      "candidateTargetLocales": [
+        "ca-ES"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "CS",
+      "sourceBcp47": "cs",
+      "currentProductLocale": "cs",
+      "candidateTargetLocales": [
+        "cs-CZ"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "DA",
+      "sourceBcp47": "da",
+      "currentProductLocale": "da",
+      "candidateTargetLocales": [
+        "da-DK"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "DE",
+      "sourceBcp47": "de",
+      "currentProductLocale": "de",
+      "candidateTargetLocales": [
+        "de-AT",
+        "de-CH",
+        "de-DE"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "EL",
+      "sourceBcp47": "el",
+      "currentProductLocale": "el",
+      "candidateTargetLocales": [
+        "el-GR"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "EN",
+      "sourceBcp47": "en",
+      "currentProductLocale": "en-US",
+      "candidateTargetLocales": [
+        "en-AU",
+        "en-CA",
+        "en-GB",
+        "en-US"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "ES",
+      "sourceBcp47": "es",
+      "currentProductLocale": "es",
+      "candidateTargetLocales": [
+        "es-AR",
+        "es-ES",
+        "es-MX"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "ET",
+      "sourceBcp47": "et",
+      "currentProductLocale": "et",
+      "candidateTargetLocales": [
+        "et-EE"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "FA",
+      "sourceBcp47": "fa",
+      "currentProductLocale": "fa",
+      "candidateTargetLocales": [
+        "fa-IR"
+      ],
+      "direction": "rtl",
+      "disposition": "rtl; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "FI",
+      "sourceBcp47": "fi",
+      "currentProductLocale": "fi",
+      "candidateTargetLocales": [
+        "fi-FI"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "FR",
+      "sourceBcp47": "fr",
+      "currentProductLocale": "fr",
+      "candidateTargetLocales": [
+        "fr-BE",
+        "fr-CA",
+        "fr-FR"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "GU",
+      "sourceBcp47": "gu",
+      "currentProductLocale": "gu",
+      "candidateTargetLocales": [
+        "gu-IN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "HE",
+      "sourceBcp47": "he",
+      "currentProductLocale": "he",
+      "candidateTargetLocales": [
+        "he-IL"
+      ],
+      "direction": "rtl",
+      "disposition": "rtl; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "HI",
+      "sourceBcp47": "hi",
+      "currentProductLocale": "hi",
+      "candidateTargetLocales": [
+        "hi-IN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "HR",
+      "sourceBcp47": "hr",
+      "currentProductLocale": "hr",
+      "candidateTargetLocales": [
+        "hr-HR"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "HU",
+      "sourceBcp47": "hu",
+      "currentProductLocale": "hu",
+      "candidateTargetLocales": [
+        "hu-HU"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "ID",
+      "sourceBcp47": "id",
+      "currentProductLocale": "id",
+      "candidateTargetLocales": [
+        "id-ID"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "IS",
+      "sourceBcp47": "is",
+      "currentProductLocale": "is",
+      "candidateTargetLocales": [
+        "is-IS"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "IT",
+      "sourceBcp47": "it",
+      "currentProductLocale": "it",
+      "candidateTargetLocales": [
+        "it-IT"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "JA",
+      "sourceBcp47": "ja",
+      "currentProductLocale": "ja",
+      "candidateTargetLocales": [
+        "ja-JP"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "KA",
+      "sourceBcp47": "ka",
+      "currentProductLocale": "ka",
+      "candidateTargetLocales": [
+        "ka-GE"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "KK",
+      "sourceBcp47": "kk",
+      "currentProductLocale": "kk",
+      "candidateTargetLocales": [
+        "kk-KZ"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "KM",
+      "sourceBcp47": "km",
+      "currentProductLocale": "km",
+      "candidateTargetLocales": [
+        "km-KH"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "KN",
+      "sourceBcp47": "kn",
+      "currentProductLocale": "kn",
+      "candidateTargetLocales": [
+        "kn-IN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "KO",
+      "sourceBcp47": "ko",
+      "currentProductLocale": "ko",
+      "candidateTargetLocales": [
+        "ko-KR"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "LO",
+      "sourceBcp47": "lo",
+      "currentProductLocale": "lo",
+      "candidateTargetLocales": [
+        "lo-LA"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "LT",
+      "sourceBcp47": "lt",
+      "currentProductLocale": "lt",
+      "candidateTargetLocales": [
+        "lt-LT"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "LV",
+      "sourceBcp47": "lv",
+      "currentProductLocale": "lv",
+      "candidateTargetLocales": [
+        "lv-LV"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "MG",
+      "sourceBcp47": "mg",
+      "currentProductLocale": "mg",
+      "candidateTargetLocales": [
+        "mg-MG"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "ML",
+      "sourceBcp47": "ml",
+      "currentProductLocale": "ml",
+      "candidateTargetLocales": [
+        "ml-IN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "MN",
+      "sourceBcp47": "mn",
+      "currentProductLocale": "mn",
+      "candidateTargetLocales": [
+        "mn-MN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "MR",
+      "sourceBcp47": "mr",
+      "currentProductLocale": "mr",
+      "candidateTargetLocales": [
+        "mr-IN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "MS",
+      "sourceBcp47": "ms",
+      "currentProductLocale": "ms",
+      "candidateTargetLocales": [
+        "ms-MY"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "MY",
+      "sourceBcp47": "my",
+      "currentProductLocale": "my",
+      "candidateTargetLocales": [
+        "my-MM"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "NE",
+      "sourceBcp47": "ne",
+      "currentProductLocale": "ne",
+      "candidateTargetLocales": [
+        "ne-NP"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "NL",
+      "sourceBcp47": "nl",
+      "currentProductLocale": "nl",
+      "candidateTargetLocales": [
+        "nl-NL"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "NO",
+      "sourceBcp47": "nb",
+      "currentProductLocale": "nb",
+      "candidateTargetLocales": [
+        "nb-NO"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "NY",
+      "sourceBcp47": "ny",
+      "currentProductLocale": "ny",
+      "candidateTargetLocales": [
+        "ny-MW"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "OR",
+      "sourceBcp47": "or",
+      "currentProductLocale": "or",
+      "candidateTargetLocales": [
+        "or-IN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "PA",
+      "sourceBcp47": "pa",
+      "currentProductLocale": "pa",
+      "candidateTargetLocales": [
+        "pa-IN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed; verify source script against target culture"
+    },
+    {
+      "sourceCode": "PL",
+      "sourceBcp47": "pl",
+      "currentProductLocale": "pl",
+      "candidateTargetLocales": [
+        "pl-PL"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "PT",
+      "sourceBcp47": "pt",
+      "currentProductLocale": "pt",
+      "candidateTargetLocales": [
+        "pt-BR",
+        "pt-PT"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "RO",
+      "sourceBcp47": "ro",
+      "currentProductLocale": "ro",
+      "candidateTargetLocales": [
+        "ro-RO"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "RU",
+      "sourceBcp47": "ru",
+      "currentProductLocale": "ru-RU",
+      "candidateTargetLocales": [
+        "ru-RU"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "SI",
+      "sourceBcp47": "si",
+      "currentProductLocale": "si",
+      "candidateTargetLocales": [
+        "si-LK"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "SK",
+      "sourceBcp47": "sk",
+      "currentProductLocale": "sk",
+      "candidateTargetLocales": [
+        "sk-SK"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "SL",
+      "sourceBcp47": "sl",
+      "currentProductLocale": "sl",
+      "candidateTargetLocales": [
+        "sl-SI"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "SR",
+      "sourceBcp47": "sr",
+      "currentProductLocale": "sr",
+      "candidateTargetLocales": [
+        "sr-RS"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed; verify source script against target culture"
+    },
+    {
+      "sourceCode": "SV",
+      "sourceBcp47": "sv",
+      "currentProductLocale": "sv",
+      "candidateTargetLocales": [
+        "sv-SE"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "SW",
+      "sourceBcp47": "sw",
+      "currentProductLocale": "sw",
+      "candidateTargetLocales": [
+        "sw-KE"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "TA",
+      "sourceBcp47": "ta",
+      "currentProductLocale": "ta",
+      "candidateTargetLocales": [
+        "ta-IN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "TE",
+      "sourceBcp47": "te",
+      "currentProductLocale": "te",
+      "candidateTargetLocales": [
+        "te-IN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "TH",
+      "sourceBcp47": "th",
+      "currentProductLocale": "th",
+      "candidateTargetLocales": [
+        "th-TH"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "TL",
+      "sourceBcp47": "tl",
+      "currentProductLocale": "tl",
+      "candidateTargetLocales": [
+        "fil-PH"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; REVIEW: Tagalog and Filipino are not an automatic code alias"
+    },
+    {
+      "sourceCode": "TR",
+      "sourceBcp47": "tr",
+      "currentProductLocale": "tr",
+      "candidateTargetLocales": [
+        "tr-TR"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "UK",
+      "sourceBcp47": "uk",
+      "currentProductLocale": "uk",
+      "candidateTargetLocales": [
+        "uk-UA"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "UR",
+      "sourceBcp47": "ur",
+      "currentProductLocale": "ur",
+      "candidateTargetLocales": [
+        "ur-PK"
+      ],
+      "direction": "rtl",
+      "disposition": "rtl; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "UZ",
+      "sourceBcp47": "uz",
+      "currentProductLocale": "uz",
+      "candidateTargetLocales": [
+        "uz-UZ"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed; verify source script against target culture"
+    },
+    {
+      "sourceCode": "VI",
+      "sourceBcp47": "vi",
+      "currentProductLocale": "vi",
+      "candidateTargetLocales": [
+        "vi-VN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    },
+    {
+      "sourceCode": "ZH",
+      "sourceBcp47": "zh-CN",
+      "currentProductLocale": "zh-CN",
+      "candidateTargetLocales": [
+        "zh-CN"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; exact source locale"
+    },
+    {
+      "sourceCode": "ZH-HK",
+      "sourceBcp47": "zh-HK",
+      "currentProductLocale": "zh-HK",
+      "candidateTargetLocales": [
+        "zh-HK"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; exact source locale"
+    },
+    {
+      "sourceCode": "ZH-TW",
+      "sourceBcp47": "zh-TW",
+      "currentProductLocale": "zh-TW",
+      "candidateTargetLocales": [
+        "zh-TW"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; exact source locale"
+    },
+    {
+      "sourceCode": "ZU",
+      "sourceBcp47": "zu",
+      "currentProductLocale": "zu",
+      "candidateTargetLocales": [
+        "zu-ZA"
+      ],
+      "direction": "ltr",
+      "disposition": "ltr; inherit source language; no regional adaptation claimed"
+    }
+  ]
+}
