@@ -13,6 +13,14 @@ function normalizeCode(value) {
     return String(value || '').trim().toUpperCase();
 }
 
+function sourceIdentity(sourceCard, metadata = {}) {
+    return {
+        system: metadata.sourceSystem || 'thetea',
+        externalId: metadata.externalId || sourceCard?.slug || null,
+        entityKind: sourceCard?.kind || sourceCard?.meta?.article_type || 'tea',
+    };
+}
+
 function sha256(value) {
     return crypto.createHash('sha256').update(value).digest('hex');
 }
@@ -357,6 +365,99 @@ function mergeFillMissingProduct(baseline, candidate, card, metadata) {
     return { desired, proposals, reviewQueue };
 }
 
+function mergeOwnedCollection({ base, current, incoming, field, keyFn, managed = () => true, card, metadata }) {
+    const baseItems = (base?.[field] || []).filter(managed);
+    const currentItems = (current?.[field] || []).filter(managed);
+    const incomingItems = (incoming?.[field] || []).filter(managed);
+    const baseByKey = new Map(baseItems.map((item, index) => [keyFn(item, index), item]));
+    const currentByKey = new Map(currentItems.map((item, index) => [keyFn(item, index), item]));
+    const incomingByKey = new Map(incomingItems.map((item, index) => [keyFn(item, index), item]));
+    const keys = [...new Set([...currentByKey.keys(), ...incomingByKey.keys(), ...baseByKey.keys()])];
+    const merged = [];
+    const proposals = [];
+    const conflicts = [];
+    const resolvedPaths = new Set();
+    const stable = value => value === undefined ? '__missing__' : stableStringify(value);
+
+    for (const key of keys) {
+        const before = baseByKey.get(key);
+        const actual = currentByKey.get(key);
+        const desired = incomingByKey.get(key);
+        const path = `${field}[key=${key}]`;
+        const pointer = `/${field}/${String(key).replace(/~/g, '~0').replace(/\//g, '~1')}`;
+        const currentEqualsBase = stable(actual) === stable(before);
+        const incomingEqualsBase = stable(desired) === stable(before);
+        const currentEqualsIncoming = stable(actual) === stable(desired);
+
+        if (incomingEqualsBase || currentEqualsIncoming) {
+            if (actual !== undefined) merged.push(clone(actual));
+            continue;
+        }
+        resolvedPaths.add(path);
+        if (currentEqualsBase) {
+            if (desired !== undefined) merged.push(clone(desired));
+            proposals.push(proposalRecord({
+                path,
+                action: desired === undefined ? 'remove' : 'apply',
+                reason: 'source-owned-update',
+                before: actual,
+                after: desired,
+                card,
+                metadata,
+                pointer,
+                excerptValue: desired,
+            }));
+            continue;
+        }
+        if (actual !== undefined) merged.push(clone(actual));
+        const record = proposalRecord({
+            path,
+            action: 'review',
+            reason: 'three-way-conflict',
+            before: actual,
+            after: desired,
+            card,
+            metadata,
+            pointer,
+            excerptValue: desired,
+        });
+        proposals.push(record);
+        conflicts.push(record);
+    }
+
+    return { merged, proposals, conflicts, resolvedPaths };
+}
+
+function mergeSourceOwnedCollections({ baseline, desired, lastApplied, incoming, card, metadata }) {
+    const result = clone(desired);
+    const proposals = [];
+    const reviewQueue = [];
+    const resolvedPaths = new Set();
+    const merge = (field, keyFn, managed) => {
+        const predicate = managed || (() => true);
+        const outcome = mergeOwnedCollection({
+            base: lastApplied,
+            current: baseline,
+            incoming,
+            field,
+            keyFn,
+            managed: predicate,
+            card,
+            metadata,
+        });
+        const unrelated = (result[field] || []).filter((item, index) => !predicate(item, index));
+        result[field] = [...unrelated, ...outcome.merged];
+        proposals.push(...outcome.proposals);
+        reviewQueue.push(...outcome.conflicts);
+        for (const path of outcome.resolvedPaths) resolvedPaths.add(path);
+    };
+    merge('translations', item => String(item.lang || '').toLowerCase());
+    merge('specifications', item => normalizeCode(item.attribute), item => normalizeCode(item.attribute).startsWith('SPEC-TT-'));
+    merge('tags', item => normalizeCode(item.code), item => normalizeCode(item.code).startsWith('TAG-TT-') || normalizeCode(item.code).startsWith('TAG-FLAVOR-'));
+    merge('origins', (_item, index) => String(index));
+    return { desired: result, proposals, reviewQueue, resolvedPaths };
+}
+
 function buildSourceBackedProposal({ sourceCard, baselineProduct, sourceMetadata = {} }) {
     if (!sourceCard || typeof sourceCard !== 'object') throw new Error('sourceCard must be an object.');
     if (!baselineProduct || typeof baselineProduct !== 'object') throw new Error('baselineProduct must be an object.');
@@ -376,6 +477,7 @@ function buildSourceBackedProposal({ sourceCard, baselineProduct, sourceMetadata
             productCode: expectedCode,
             source: {
                 externalId: sourceCard.slug || null,
+                identity: sourceIdentity(sourceCard, metadata),
                 articleUrl: sourceUrl(sourceCard, metadata),
                 revision: metadata.sourceRevision,
                 sourceSha256: metadata.sourceSha256,
@@ -430,6 +532,7 @@ function buildSourceBackedProposal({ sourceCard, baselineProduct, sourceMetadata
             productCode: expectedCode,
             source: {
                 externalId: sourceCard.slug || null,
+                identity: sourceIdentity(sourceCard, metadata),
                 articleUrl: sourceUrl(sourceCard, metadata),
                 revision: metadata.sourceRevision,
                 sourceSha256: metadata.sourceSha256,
@@ -452,6 +555,23 @@ function buildSourceBackedProposal({ sourceCard, baselineProduct, sourceMetadata
     }
 
     const merged = mergeFillMissingProduct(baselineProduct, transformed.product, sourceCard, metadata);
+    if (sourceMetadata.lastAppliedProduct) {
+        const owned = mergeSourceOwnedCollections({
+            baseline: baselineProduct,
+            desired: merged.desired,
+            lastApplied: sourceMetadata.lastAppliedProduct,
+            incoming: transformed.product,
+            card: sourceCard,
+            metadata,
+        });
+        const isResolved = proposal => owned.resolvedPaths.has(proposal.path)
+            || owned.resolvedPaths.has(proposal.path.replace('[attribute=', '[key='));
+        merged.proposals = merged.proposals.filter(proposal => !isResolved(proposal));
+        merged.reviewQueue = merged.reviewQueue.filter(proposal => !isResolved(proposal));
+        merged.desired = owned.desired;
+        merged.proposals.push(...owned.proposals);
+        merged.reviewQueue.push(...owned.reviewQueue);
+    }
     const reconciliation = buildReconciliation([merged.desired], [baselineProduct]);
     return {
         schemaVersion: 1,
@@ -460,6 +580,7 @@ function buildSourceBackedProposal({ sourceCard, baselineProduct, sourceMetadata
         productCode: expectedCode,
         source: {
             externalId: sourceCard.slug || null,
+            identity: sourceIdentity(sourceCard, metadata),
             articleUrl: sourceUrl(sourceCard, metadata),
             revision: metadata.sourceRevision,
             sourceSha256: metadata.sourceSha256,
@@ -503,5 +624,8 @@ module.exports = {
     hasValue,
     isRangeTruncated,
     sameSpecification,
+    mergeOwnedCollection,
+    mergeSourceOwnedCollections,
+    sourceIdentity,
     sourceRevision,
 };

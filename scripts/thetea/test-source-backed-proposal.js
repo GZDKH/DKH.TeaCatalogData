@@ -92,6 +92,56 @@ assert(Array.isArray(outputPayloads.rollbackPayload));
 assert.strictEqual(outputPayloads.rollbackPayload.length, 1);
 assert.strictEqual(outputPayloads.rollbackPayload[0].code, proposal.productCode);
 
+const sourceOwnedBase = product({
+    id: 'stable-product-id',
+    price: 88,
+    stock: 17,
+    published: true,
+    packages: [{ code: 'PKG-50G', quantity: 50 }],
+    variants: [{ code: 'VAR-50G', packageCode: 'PKG-50G' }],
+    specifications: [{
+        group: 'SPEC-TT-GROUP-CLASSIFICATION-ORIGIN',
+        attribute: 'SPEC-TT-CLASSIFICATION-ORIGIN-TEA-TYPE',
+        type: 'Option',
+        option: 'SPEC-TT-OPT-CLASSIFICATION-ORIGIN-TEA-TYPE-GREEN',
+    }],
+});
+const sourceOwnedLastApplied = JSON.parse(JSON.stringify(sourceOwnedBase));
+const sourceOwnedUpdate = buildSourceBackedProposal({
+    sourceCard: card(),
+    baselineProduct: sourceOwnedBase,
+    sourceMetadata: { ...metadata, lastAppliedProduct: sourceOwnedLastApplied },
+});
+assert.strictEqual(sourceOwnedUpdate.eligible, true);
+assert.deepStrictEqual(sourceOwnedUpdate.source.identity, {
+    system: 'thetea',
+    externalId: 'sample-tea',
+    entityKind: 'tea',
+});
+assert.strictEqual(sourceOwnedUpdate.desiredProduct.id, sourceOwnedBase.id);
+assert.strictEqual(sourceOwnedUpdate.desiredProduct.price, 88);
+assert.strictEqual(sourceOwnedUpdate.desiredProduct.stock, 17);
+assert.strictEqual(sourceOwnedUpdate.desiredProduct.published, true);
+assert.deepStrictEqual(sourceOwnedUpdate.desiredProduct.packages, sourceOwnedBase.packages);
+assert.deepStrictEqual(sourceOwnedUpdate.desiredProduct.variants, sourceOwnedBase.variants);
+assert.strictEqual(
+    sourceOwnedUpdate.desiredProduct.specifications.find(item => item.attribute === 'SPEC-TT-CLASSIFICATION-ORIGIN-TEA-TYPE').option,
+    'SPEC-TT-OPT-CLASSIFICATION-ORIGIN-TEA-TYPE-YELLOW');
+assert(sourceOwnedUpdate.proposals.some(item => item.reason === 'source-owned-update'));
+
+const manualDrift = JSON.parse(JSON.stringify(sourceOwnedBase));
+manualDrift.specifications[0].option = 'SPEC-TT-OPT-CLASSIFICATION-ORIGIN-TEA-TYPE-BLACK';
+const sourceOwnedConflict = buildSourceBackedProposal({
+    sourceCard: card(),
+    baselineProduct: manualDrift,
+    sourceMetadata: { ...metadata, lastAppliedProduct: sourceOwnedLastApplied },
+});
+assert.strictEqual(sourceOwnedConflict.eligible, false);
+assert(sourceOwnedConflict.reviewQueue.some(item => item.reason === 'three-way-conflict'));
+assert.strictEqual(
+    sourceOwnedConflict.desiredProduct.specifications.find(item => item.attribute === 'SPEC-TT-CLASSIFICATION-ORIGIN-TEA-TYPE').option,
+    'SPEC-TT-OPT-CLASSIFICATION-ORIGIN-TEA-TYPE-BLACK');
+
 const nonProductSpecificPrice = buildSourceBackedProposal({
     sourceCard: card({
         sections: {
