@@ -15,6 +15,19 @@ assert.strictEqual(
     'fatal');
 
 assert.strictEqual(
+    classifyFetchIssue({ endpoint: 'card', entityKind: 'infusion', status: 404 }).kind,
+    'missing-entity-card');
+assert.strictEqual(
+    classifyFetchIssue({ endpoint: 'card', entityKind: 'tea', status: 404 }).kind,
+    'fatal');
+assert.strictEqual(
+    classifyFetchIssue({ endpoint: 'card', status: 402 }).kind,
+    'language-not-entitled');
+assert.strictEqual(
+    classifyFetchIssue({ endpoint: 'card', status: 429 }).kind,
+    'rate-limited');
+
+assert.strictEqual(
     classifyFetchIssue({ endpoint: 'glossary', message: 'socket disconnected' }).kind,
     'fatal');
 
