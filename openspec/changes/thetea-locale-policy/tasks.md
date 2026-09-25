@@ -1,0 +1,5 @@
+- [x] Add a versioned 72-source-language policy with exact and candidate target cultures.
+- [x] Resolve one-to-many inheritance, regional overrides, RTL and script/alias review.
+- [x] Add per-field coverage and typed/content JSON round-trip helpers.
+- [x] Preserve unknown cultures and legacy neutral/specific locale rows for review.
+- [x] Add deterministic offline tests, CLI report and CI coverage.
