@@ -303,6 +303,27 @@ node scripts/thetea/reconcile-definitions.js \
   --report=thetea-2026-06-01-definitions
 ```
 
+For the complete provider-independent tea model, run the read-only
+reconciliation over all 284 section fields, 83 non-section paths, 89 legacy
+definition codes, and the 210-category/62-direct-map tea taxonomy. The report
+keeps specifications separate from configurable attributes and variants,
+records explicit reuse/rename/add/route/conflict dispositions, preserves IDs
+for rename candidates, and never creates or deletes definitions, categories or
+memberships. Pass the exact current catalog/category export to compare live
+IDs, types, units and hierarchy:
+
+```bash
+node scripts/thetea/reconcile-source-definitions.js \
+  --catalog-ref=sources/prod/catalog-reference/<snapshot>.json \
+  --report=thetea-<snapshot>-source-definitions
+```
+
+The output is `report.json` plus field, category and migration matrices under
+`reports/thetea/<name>/`. `applyAllowed` is always `false`; an eligible result
+still requires a separately reviewed ID-addressed rename and SetupTool plan.
+The canonical namespace is `SPEC-TEA-*`; legacy `SPEC-TT-*` values are retained
+only as migration evidence and provenance bindings.
+
 Validate or apply that exact plan through a resumable, read-back-verified runner.
 Every batch is validated first and recorded in `product-sync-checkpoint.json`.
 Apply automatically restores the current batch if read-back fails; the exact

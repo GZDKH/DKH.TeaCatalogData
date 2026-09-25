@@ -1,0 +1,3161 @@
+{
+  "status": "design-and-historical-reference-not-live-import",
+  "historicalReference": {
+    "file": "sources/prod/catalog-reference/prod-2026-07-27.json",
+    "fetchedAt": "2026-07-27T10:05:03.996Z",
+    "sha256": "91359dbb63eb622180da62aa5978f09ec52ea68ea2bd5a0a4bc2bf67b91da292",
+    "categories": 210,
+    "catalogCode": "CATALOG-CHINESE-TEA",
+    "catalogCategoryBindings": 27
+  },
+  "sourceCards": 627,
+  "directMappings": [
+    {
+      "sourcePath": "meta.tea_type",
+      "sourceValue": "green",
+      "categoryCode": "CAT-GREEN-TEA",
+      "axis": "CAT-BY-TYPE",
+      "sourceCardCount": 231,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": true
+    },
+    {
+      "sourcePath": "meta.tea_type",
+      "sourceValue": "white",
+      "categoryCode": "CAT-WHITE-TEA",
+      "axis": "CAT-BY-TYPE",
+      "sourceCardCount": 37,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.tea_type",
+      "sourceValue": "yellow",
+      "categoryCode": "CAT-YELLOW-TEA",
+      "axis": "CAT-BY-TYPE",
+      "sourceCardCount": 20,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.tea_type",
+      "sourceValue": "oolong",
+      "categoryCode": "CAT-OOLONG-TEA",
+      "axis": "CAT-BY-TYPE",
+      "sourceCardCount": 83,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.tea_type",
+      "sourceValue": "red",
+      "categoryCode": "CAT-RED-TEA",
+      "axis": "CAT-BY-TYPE",
+      "sourceCardCount": 125,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.tea_type",
+      "sourceValue": "dark",
+      "categoryCode": "CAT-DARK-TEA",
+      "axis": "CAT-BY-TYPE",
+      "sourceCardCount": 28,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.tea_type",
+      "sourceValue": "puer",
+      "categoryCode": "CAT-PUER-TEA",
+      "axis": "CAT-BY-TYPE",
+      "sourceCardCount": 59,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Anhui",
+      "categoryCode": "CAT-REGION-ANHUI",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 25,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Chongqing",
+      "categoryCode": "CAT-REGION-CHONGQING",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 7,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Fujian",
+      "categoryCode": "CAT-REGION-FUJIAN",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 87,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Guangdong",
+      "categoryCode": "CAT-REGION-GUANGDONG",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 48,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Guangxi",
+      "categoryCode": "CAT-REGION-GUANGXI",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 23,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Guizhou",
+      "categoryCode": "CAT-REGION-GUIZHOU",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 31,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Hainan",
+      "categoryCode": "CAT-REGION-HAINAN",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 16,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Henan",
+      "categoryCode": "CAT-REGION-HENAN",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 8,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Hubei",
+      "categoryCode": "CAT-REGION-HUBEI",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 25,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Hunan",
+      "categoryCode": "CAT-REGION-HUNAN",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 35,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Jiangsu",
+      "categoryCode": "CAT-REGION-JIANGSU",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 14,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Jiangxi",
+      "categoryCode": "CAT-REGION-JIANGXI",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 16,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Jilin",
+      "categoryCode": "CAT-REGION-JILIN",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 1,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Shaanxi",
+      "categoryCode": "CAT-REGION-SHAANXI",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 16,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Shandong",
+      "categoryCode": "CAT-REGION-SHANDONG",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 14,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Sichuan",
+      "categoryCode": "CAT-REGION-SICHUAN",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 30,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Taiwan",
+      "categoryCode": "CAT-REGION-TAIWAN",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 55,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Tibet",
+      "categoryCode": "CAT-REGION-TIBET",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 6,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Xinjiang",
+      "categoryCode": "CAT-REGION-XINJIANG",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 1,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Yunnan",
+      "categoryCode": "CAT-REGION-YUNNAN",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 81,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.province",
+      "sourceValue": "Zhejiang",
+      "categoryCode": "CAT-REGION-ZHEJIANG",
+      "axis": "CAT-BY-REGION",
+      "sourceCardCount": 41,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": true
+    },
+    {
+      "sourcePath": "meta.shape",
+      "sourceValue": "needle",
+      "categoryCode": "CAT-SHAPE-NEEDLE",
+      "axis": "CAT-BY-SHAPE",
+      "sourceCardCount": 35,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.shape",
+      "sourceValue": "flat",
+      "categoryCode": "CAT-SHAPE-FLAT",
+      "axis": "CAT-BY-SHAPE",
+      "sourceCardCount": 32,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": true
+    },
+    {
+      "sourcePath": "meta.shape",
+      "sourceValue": "strip",
+      "categoryCode": "CAT-SHAPE-STRIP",
+      "axis": "CAT-BY-SHAPE",
+      "sourceCardCount": 121,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.shape",
+      "sourceValue": "spiral",
+      "categoryCode": "CAT-SHAPE-SPIRAL",
+      "axis": "CAT-BY-SHAPE",
+      "sourceCardCount": 32,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.shape",
+      "sourceValue": "brick",
+      "categoryCode": "CAT-SHAPE-BRICK",
+      "axis": "CAT-BY-SHAPE",
+      "sourceCardCount": 11,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.shape",
+      "sourceValue": "pearl",
+      "categoryCode": "CAT-SHAPE-PEARL",
+      "axis": "CAT-BY-SHAPE",
+      "sourceCardCount": 46,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.shape",
+      "sourceValue": "cake",
+      "categoryCode": "CAT-SHAPE-CAKE",
+      "axis": "CAT-BY-SHAPE",
+      "sourceCardCount": 15,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.shape",
+      "sourceValue": "bud",
+      "categoryCode": "CAT-SHAPE-BUD",
+      "axis": "CAT-BY-SHAPE",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.shape",
+      "sourceValue": "powder",
+      "categoryCode": "CAT-SHAPE-POWDER",
+      "axis": "CAT-BY-SHAPE",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.shape",
+      "sourceValue": "tuo",
+      "categoryCode": "CAT-SHAPE-TUO",
+      "axis": "CAT-BY-SHAPE",
+      "sourceCardCount": 2,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.shape",
+      "sourceValue": "compressed",
+      "categoryCode": "CAT-SHAPE-COMPRESSED",
+      "axis": "CAT-BY-SHAPE",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.shape",
+      "sourceValue": "blooming",
+      "categoryCode": "CAT-SHAPE-BLOOMING",
+      "axis": "CAT-BY-SHAPE",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.processing",
+      "sourceValue": "chaoqing",
+      "categoryCode": "CAT-PROC-CHAOQING",
+      "axis": "CAT-BY-PROCESSING",
+      "sourceCardCount": 101,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": true
+    },
+    {
+      "sourcePath": "meta.processing",
+      "sourceValue": "hongqing",
+      "categoryCode": "CAT-PROC-HONGQING",
+      "axis": "CAT-BY-PROCESSING",
+      "sourceCardCount": 34,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.processing",
+      "sourceValue": "zhengqing",
+      "categoryCode": "CAT-PROC-ZHENGQING",
+      "axis": "CAT-BY-PROCESSING",
+      "sourceCardCount": 13,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.processing",
+      "sourceValue": "shaiqing",
+      "categoryCode": "CAT-PROC-SHAIQING",
+      "axis": "CAT-BY-PROCESSING",
+      "sourceCardCount": 43,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.processing",
+      "sourceValue": "shai_hong",
+      "categoryCode": "CAT-PROC-SHAI-HONG",
+      "axis": "CAT-BY-PROCESSING",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.processing",
+      "sourceValue": "tanbei",
+      "categoryCode": "CAT-PROC-TANBEI",
+      "axis": "CAT-BY-PROCESSING",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.processing",
+      "sourceValue": "wodui",
+      "categoryCode": "CAT-PROC-WODUI",
+      "axis": "CAT-BY-PROCESSING",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.processing",
+      "sourceValue": "smoked",
+      "categoryCode": "CAT-PROC-SMOKED",
+      "axis": "CAT-BY-PROCESSING",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.processing",
+      "sourceValue": "ctc",
+      "categoryCode": "CAT-PROC-CTC",
+      "axis": "CAT-BY-PROCESSING",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.processing",
+      "sourceValue": "orthodox",
+      "categoryCode": "CAT-PROC-ORTHODOX",
+      "axis": "CAT-BY-PROCESSING",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.processing",
+      "sourceValue": "shaded",
+      "categoryCode": "CAT-PROC-SHADED",
+      "axis": "CAT-BY-PROCESSING",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.processing",
+      "sourceValue": "cha_gao",
+      "categoryCode": "CAT-PROC-CHA-GAO",
+      "axis": "CAT-BY-PROCESSING",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.processing",
+      "sourceValue": "gan_jie",
+      "categoryCode": "CAT-PROC-GAN-JIE",
+      "axis": "CAT-BY-PROCESSING",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.roast_level",
+      "sourceValue": "none",
+      "categoryCode": "CAT-ROAST-NONE",
+      "axis": "CAT-BY-ROAST",
+      "sourceCardCount": 12,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": true
+    },
+    {
+      "sourcePath": "meta.roast_level",
+      "sourceValue": "light",
+      "categoryCode": "CAT-ROAST-LIGHT",
+      "axis": "CAT-BY-ROAST",
+      "sourceCardCount": 4,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.roast_level",
+      "sourceValue": "medium",
+      "categoryCode": "CAT-ROAST-MEDIUM",
+      "axis": "CAT-BY-ROAST",
+      "sourceCardCount": 1,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "meta.roast_level",
+      "sourceValue": "heavy",
+      "categoryCode": "CAT-ROAST-HEAVY",
+      "axis": "CAT-BY-ROAST",
+      "sourceCardCount": 7,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "tags[]",
+      "sourceValue": "gi",
+      "categoryCode": "CAT-SPEC-GI",
+      "axis": "CAT-BY-SPECIALTY",
+      "sourceCardCount": 416,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": true
+    },
+    {
+      "sourcePath": "tags[]",
+      "sourceValue": "unesco-ich",
+      "categoryCode": "CAT-SPEC-UNESCO-ICH",
+      "axis": "CAT-BY-SPECIALTY",
+      "sourceCardCount": 91,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": true
+    },
+    {
+      "sourcePath": "tags[]",
+      "sourceValue": "ten-famous-teas",
+      "categoryCode": "CAT-SPEC-TEN-FAMOUS-TEAS",
+      "axis": "CAT-BY-SPECIALTY",
+      "sourceCardCount": 87,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": true
+    },
+    {
+      "sourcePath": "tags[]",
+      "sourceValue": "three-needles",
+      "categoryCode": "CAT-SPEC-THREE-NEEDLES",
+      "axis": "CAT-BY-SPECIALTY",
+      "sourceCardCount": 5,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    },
+    {
+      "sourcePath": "tags[]",
+      "sourceValue": "needle-shape",
+      "categoryCode": "CAT-SPEC-NEEDLE-SHAPE",
+      "axis": "CAT-BY-SPECIALTY",
+      "sourceCardCount": 0,
+      "existsInHistoricalReference": true,
+      "historicallyBoundToCatalog": false
+    }
+  ],
+  "categoryInventory": [
+    {
+      "code": "CAT-BY-AGING",
+      "nameRu": "По выдержке",
+      "parent": null,
+      "lineage": [
+        "CAT-BY-AGING"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-AGING-LAOCAH",
+      "nameRu": "Старый чай (老茶)",
+      "parent": "CAT-BY-AGING",
+      "lineage": [
+        "CAT-BY-AGING",
+        "CAT-AGING-LAOCAH"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-BY-BREWING",
+      "nameRu": "По способу заваривания",
+      "parent": null,
+      "lineage": [
+        "CAT-BY-BREWING"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-BREW-GAIWAN",
+      "nameRu": "Гайвань",
+      "parent": "CAT-BY-BREWING",
+      "lineage": [
+        "CAT-BY-BREWING",
+        "CAT-BREW-GAIWAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-BREW-GLASS",
+      "nameRu": "Стеклянный стакан",
+      "parent": "CAT-BY-BREWING",
+      "lineage": [
+        "CAT-BY-BREWING",
+        "CAT-BREW-GLASS"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-BREW-GONGFU",
+      "nameRu": "Гунфу заваривание",
+      "parent": "CAT-BY-BREWING",
+      "lineage": [
+        "CAT-BY-BREWING",
+        "CAT-BREW-GONGFU"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-BREW-GRANDPA",
+      "nameRu": "Настаивание в кружке",
+      "parent": "CAT-BY-BREWING",
+      "lineage": [
+        "CAT-BY-BREWING",
+        "CAT-BREW-GRANDPA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-BREW-YIXING",
+      "nameRu": "Исинский чайник",
+      "parent": "CAT-BY-BREWING",
+      "lineage": [
+        "CAT-BY-BREWING",
+        "CAT-BREW-YIXING"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-BREW-ZISHA",
+      "nameRu": "Цзыша (紫砂)",
+      "parent": "CAT-BY-BREWING",
+      "lineage": [
+        "CAT-BY-BREWING",
+        "CAT-BREW-ZISHA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-BY-CULTIVAR",
+      "nameRu": "По культивару",
+      "parent": null,
+      "lineage": [
+        "CAT-BY-CULTIVAR"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-CULT-DAHONGPAO",
+      "nameRu": "Да Хун Пао (大红袍)",
+      "parent": "CAT-BY-CULTIVAR",
+      "lineage": [
+        "CAT-BY-CULTIVAR",
+        "CAT-CULT-DAHONGPAO"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-CULT-JINXUAN",
+      "nameRu": "Цзинь Сюань (金萱)",
+      "parent": "CAT-BY-CULTIVAR",
+      "lineage": [
+        "CAT-BY-CULTIVAR",
+        "CAT-CULT-JINXUAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-CULT-QINGXIN",
+      "nameRu": "Цин Синь (青心)",
+      "parent": "CAT-BY-CULTIVAR",
+      "lineage": [
+        "CAT-BY-CULTIVAR",
+        "CAT-CULT-QINGXIN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-CULT-ROUGUI",
+      "nameRu": "Жоу Гуй (肉桂)",
+      "parent": "CAT-BY-CULTIVAR",
+      "lineage": [
+        "CAT-BY-CULTIVAR",
+        "CAT-CULT-ROUGUI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-CULT-SHUIXIAN",
+      "nameRu": "Шуйсянь (水仙)",
+      "parent": "CAT-BY-CULTIVAR",
+      "lineage": [
+        "CAT-BY-CULTIVAR",
+        "CAT-CULT-SHUIXIAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-CULT-SIJICHUN",
+      "nameRu": "Сы Цзи Чунь (四季春)",
+      "parent": "CAT-BY-CULTIVAR",
+      "lineage": [
+        "CAT-BY-CULTIVAR",
+        "CAT-CULT-SIJICHUN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-BY-GRADE",
+      "nameRu": "По сорту/грейду",
+      "parent": null,
+      "lineage": [
+        "CAT-BY-GRADE"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-GRADE-GONGCHA",
+      "nameRu": "Гунча — Императорский чай (贡茶)",
+      "parent": "CAT-BY-GRADE",
+      "lineage": [
+        "CAT-BY-GRADE",
+        "CAT-GRADE-GONGCHA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-GRADE-MINGQIAN",
+      "nameRu": "Минцянь (明前)",
+      "parent": "CAT-BY-GRADE",
+      "lineage": [
+        "CAT-BY-GRADE",
+        "CAT-GRADE-MINGQIAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-GRADE-TEJI",
+      "nameRu": "Высший сорт (特级)",
+      "parent": "CAT-BY-GRADE",
+      "lineage": [
+        "CAT-BY-GRADE",
+        "CAT-GRADE-TEJI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-GRADE-YIJI",
+      "nameRu": "Первый сорт (一级)",
+      "parent": "CAT-BY-GRADE",
+      "lineage": [
+        "CAT-BY-GRADE",
+        "CAT-GRADE-YIJI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-BY-LEAF",
+      "nameRu": "По типу листа",
+      "parent": null,
+      "lineage": [
+        "CAT-BY-LEAF"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-LEAF-LARGE",
+      "nameRu": "Крупнолистовой (大叶)",
+      "parent": "CAT-BY-LEAF",
+      "lineage": [
+        "CAT-BY-LEAF",
+        "CAT-LEAF-LARGE"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-LEAF-MEDIUM",
+      "nameRu": "Среднелистовой (中叶)",
+      "parent": "CAT-BY-LEAF",
+      "lineage": [
+        "CAT-BY-LEAF",
+        "CAT-LEAF-MEDIUM"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-LEAF-SMALL",
+      "nameRu": "Мелколистовой (小叶)",
+      "parent": "CAT-BY-LEAF",
+      "lineage": [
+        "CAT-BY-LEAF",
+        "CAT-LEAF-SMALL"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-LEAF-TENDER",
+      "nameRu": "Нежный лист (嫩叶)",
+      "parent": "CAT-BY-LEAF",
+      "lineage": [
+        "CAT-BY-LEAF",
+        "CAT-LEAF-TENDER"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-BY-SEASON",
+      "nameRu": "По сезону сбора",
+      "parent": null,
+      "lineage": [
+        "CAT-BY-SEASON"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-SEASON-AUTUMN",
+      "nameRu": "Осенний чай",
+      "parent": "CAT-BY-SEASON",
+      "lineage": [
+        "CAT-BY-SEASON",
+        "CAT-SEASON-AUTUMN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-SEASON-SPRING",
+      "nameRu": "Весенний чай",
+      "parent": "CAT-BY-SEASON",
+      "lineage": [
+        "CAT-BY-SEASON",
+        "CAT-SEASON-SPRING"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-SEASON-WINTER",
+      "nameRu": "Зимний чай",
+      "parent": "CAT-BY-SEASON",
+      "lineage": [
+        "CAT-BY-SEASON",
+        "CAT-SEASON-WINTER"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-ROOT",
+      "nameRu": "Каталог чая",
+      "parent": null,
+      "lineage": [
+        "CAT-ROOT"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-BY-FAMILY",
+      "nameRu": "По семейству чая",
+      "parent": "CAT-ROOT",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-FAMILY"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-FAMILY-1",
+      "nameRu": "Система Лунцзин",
+      "parent": "CAT-BY-FAMILY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-FAMILY",
+        "CAT-FAMILY-1"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-FAMILY-10",
+      "nameRu": "Индэ Хунча",
+      "parent": "CAT-BY-FAMILY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-FAMILY",
+        "CAT-FAMILY-10"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-FAMILY-2",
+      "nameRu": "Чжэцзянские Зелёные Чаи",
+      "parent": "CAT-BY-FAMILY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-FAMILY",
+        "CAT-FAMILY-2"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-FAMILY-3",
+      "nameRu": "Уишаньские Утёсные Чаи",
+      "parent": "CAT-BY-FAMILY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-FAMILY",
+        "CAT-FAMILY-3"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-FAMILY-4",
+      "nameRu": "Фуцзяньские Белые Чаи",
+      "parent": "CAT-BY-FAMILY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-FAMILY",
+        "CAT-FAMILY-4"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-FAMILY-5",
+      "nameRu": "Южнофуцзяньские Улуны",
+      "parent": "CAT-BY-FAMILY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-FAMILY",
+        "CAT-FAMILY-5"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-FAMILY-6",
+      "nameRu": "Фуцзяньские Красные Чаи",
+      "parent": "CAT-BY-FAMILY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-FAMILY",
+        "CAT-FAMILY-6"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-FAMILY-7",
+      "nameRu": "Жасминовые Чаи",
+      "parent": "CAT-BY-FAMILY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-FAMILY",
+        "CAT-FAMILY-7"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-FAMILY-8",
+      "nameRu": "Высокогорные Улуны",
+      "parent": "CAT-BY-FAMILY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-FAMILY",
+        "CAT-FAMILY-8"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-FAMILY-9",
+      "nameRu": "Фениксовые Даньцуны",
+      "parent": "CAT-BY-FAMILY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-FAMILY",
+        "CAT-FAMILY-9"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-BY-PROCESSING",
+      "nameRu": "По обработке",
+      "parent": "CAT-ROOT",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-PROC-CHA-GAO",
+      "nameRu": "Чайная паста (Ча Гао)",
+      "parent": "CAT-BY-PROCESSING",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING",
+        "CAT-PROC-CHA-GAO"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-PROC-CHAOQING",
+      "nameRu": "Обжарка на сковороде",
+      "parent": "CAT-BY-PROCESSING",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING",
+        "CAT-PROC-CHAOQING"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-PROC-CTC",
+      "nameRu": "CTC (Cut-Tear-Curl)",
+      "parent": "CAT-BY-PROCESSING",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING",
+        "CAT-PROC-CTC"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-PROC-GAN-JIE",
+      "nameRu": "Цитрусовый чай (Гань Цзе Ча)",
+      "parent": "CAT-BY-PROCESSING",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING",
+        "CAT-PROC-GAN-JIE"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-PROC-HONGQING",
+      "nameRu": "Сушка пропеканием",
+      "parent": "CAT-BY-PROCESSING",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING",
+        "CAT-PROC-HONGQING"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-PROC-ORTHODOX",
+      "nameRu": "Ортодокс (传统制法)",
+      "parent": "CAT-BY-PROCESSING",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING",
+        "CAT-PROC-ORTHODOX"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-PROC-SHADED",
+      "nameRu": "Затенение (遮荫)",
+      "parent": "CAT-BY-PROCESSING",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING",
+        "CAT-PROC-SHADED"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-PROC-SHAI-HONG",
+      "nameRu": "Солнечная сушка красного (Шай Хун)",
+      "parent": "CAT-BY-PROCESSING",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING",
+        "CAT-PROC-SHAI-HONG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-PROC-SHAIQING",
+      "nameRu": "Солнечной сушки (晒青)",
+      "parent": "CAT-BY-PROCESSING",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING",
+        "CAT-PROC-SHAIQING"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-PROC-SMOKED",
+      "nameRu": "Копчёный (烟熏)",
+      "parent": "CAT-BY-PROCESSING",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING",
+        "CAT-PROC-SMOKED"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-PROC-TANBEI",
+      "nameRu": "Углеобжарка (炭焙)",
+      "parent": "CAT-BY-PROCESSING",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING",
+        "CAT-PROC-TANBEI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-PROC-WODUI",
+      "nameRu": "Во дуй (渥堆)",
+      "parent": "CAT-BY-PROCESSING",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING",
+        "CAT-PROC-WODUI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-PROC-ZHENGQING",
+      "nameRu": "Паровая обработка",
+      "parent": "CAT-BY-PROCESSING",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-PROCESSING",
+        "CAT-PROC-ZHENGQING"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-BY-REGION",
+      "nameRu": "По региону",
+      "parent": "CAT-ROOT",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-REGION-CHINA",
+      "nameRu": "Китай",
+      "parent": "CAT-BY-REGION",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-REGION-ANHUI",
+      "nameRu": "Аньхой",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-ANHUI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-CHONGQING",
+      "nameRu": "Чунцин",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-CHONGQING"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-FUJIAN",
+      "nameRu": "Фуцзянь",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-FUJIAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-GUANGDONG",
+      "nameRu": "Гуандун",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-GUANGDONG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-GUANGXI",
+      "nameRu": "Гуанси",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-GUANGXI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-GUIZHOU",
+      "nameRu": "Гуйчжоу",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-GUIZHOU"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-HAINAN",
+      "nameRu": "Хайнань",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-HAINAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-HENAN",
+      "nameRu": "Хэнань",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-HENAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-HUBEI",
+      "nameRu": "Хубэй",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-HUBEI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-HUNAN",
+      "nameRu": "Хунань",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-HUNAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-JIANGSU",
+      "nameRu": "Цзянсу",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-JIANGSU"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-JIANGXI",
+      "nameRu": "Цзянси",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-JIANGXI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-JILIN",
+      "nameRu": "Цзилинь",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-JILIN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-SHAANXI",
+      "nameRu": "Шэньси",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-SHAANXI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-SHANDONG",
+      "nameRu": "Шаньдун",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-SHANDONG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-SICHUAN",
+      "nameRu": "Сычуань",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-SICHUAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-TAIWAN",
+      "nameRu": "Тайвань",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-TAIWAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-TIBET",
+      "nameRu": "Тибет",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-TIBET"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-XINJIANG",
+      "nameRu": "Синьцзян",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-XINJIANG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-YUNNAN",
+      "nameRu": "Юньнань",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-YUNNAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-ZHEJIANG",
+      "nameRu": "Чжэцзян",
+      "parent": "CAT-REGION-CHINA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-CHINA",
+        "CAT-REGION-ZHEJIANG"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-REGION-GEORGIA",
+      "nameRu": "Грузия",
+      "parent": "CAT-BY-REGION",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-GEORGIA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-REGION-INDIA",
+      "nameRu": "Индия",
+      "parent": "CAT-BY-REGION",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-INDIA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-INDIA-ASSAM",
+      "nameRu": "Ассам",
+      "parent": "CAT-REGION-INDIA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-INDIA",
+        "CAT-INDIA-ASSAM"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-INDIA-DARJEELING",
+      "nameRu": "Дарджилинг",
+      "parent": "CAT-REGION-INDIA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-INDIA",
+        "CAT-INDIA-DARJEELING"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-INDIA-NILGIRI",
+      "nameRu": "Нилгири",
+      "parent": "CAT-REGION-INDIA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-INDIA",
+        "CAT-INDIA-NILGIRI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-REGION-INDONESIA",
+      "nameRu": "Индонезия",
+      "parent": "CAT-BY-REGION",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-INDONESIA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-REGION-JAPAN",
+      "nameRu": "Япония",
+      "parent": "CAT-BY-REGION",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-JAPAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-REGION-KENYA",
+      "nameRu": "Кения",
+      "parent": "CAT-BY-REGION",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-KENYA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-REGION-KOREA",
+      "nameRu": "Южная Корея",
+      "parent": "CAT-BY-REGION",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-KOREA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-KOREA-BALHYOCHA",
+      "nameRu": "Бальхёча (발효차)",
+      "parent": "CAT-REGION-KOREA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-KOREA",
+        "CAT-KOREA-BALHYOCHA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-KOREA-HWANGCHA",
+      "nameRu": "Хванча (황차)",
+      "parent": "CAT-REGION-KOREA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-KOREA",
+        "CAT-KOREA-HWANGCHA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-KOREA-NOKCHA",
+      "nameRu": "Нокча (녹차)",
+      "parent": "CAT-REGION-KOREA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-KOREA",
+        "CAT-KOREA-NOKCHA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-REGION-MALAWI",
+      "nameRu": "Малави",
+      "parent": "CAT-BY-REGION",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-MALAWI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-REGION-NEPAL",
+      "nameRu": "Непал",
+      "parent": "CAT-BY-REGION",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-NEPAL"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-REGION-OTHER",
+      "nameRu": "Другие регионы",
+      "parent": "CAT-BY-REGION",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-OTHER"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-REGION-RWANDA",
+      "nameRu": "Руанда",
+      "parent": "CAT-BY-REGION",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-RWANDA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-REGION-SRILANKA",
+      "nameRu": "Шри-Ланка (Цейлон)",
+      "parent": "CAT-BY-REGION",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-SRILANKA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-REGION-VIETNAM",
+      "nameRu": "Вьетнам",
+      "parent": "CAT-BY-REGION",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-REGION",
+        "CAT-REGION-VIETNAM"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-BY-ROAST",
+      "nameRu": "По уровню прожарки",
+      "parent": "CAT-ROOT",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-ROAST"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-ROAST-HEAVY",
+      "nameRu": "Сильная прожарка",
+      "parent": "CAT-BY-ROAST",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-ROAST",
+        "CAT-ROAST-HEAVY"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-ROAST-LIGHT",
+      "nameRu": "Легкая прожарка",
+      "parent": "CAT-BY-ROAST",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-ROAST",
+        "CAT-ROAST-LIGHT"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-ROAST-MEDIUM",
+      "nameRu": "Средняя прожарка",
+      "parent": "CAT-BY-ROAST",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-ROAST",
+        "CAT-ROAST-MEDIUM"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-ROAST-NONE",
+      "nameRu": "Без прожарки",
+      "parent": "CAT-BY-ROAST",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-ROAST",
+        "CAT-ROAST-NONE"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-BY-SHAPE",
+      "nameRu": "По форме листа",
+      "parent": "CAT-ROOT",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-SHAPE-BLOOMING",
+      "nameRu": "Связанный",
+      "parent": "CAT-BY-SHAPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE",
+        "CAT-SHAPE-BLOOMING"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SHAPE-BRICK",
+      "nameRu": "Кирпич",
+      "parent": "CAT-BY-SHAPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE",
+        "CAT-SHAPE-BRICK"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SHAPE-BUD",
+      "nameRu": "Почковый",
+      "parent": "CAT-BY-SHAPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE",
+        "CAT-SHAPE-BUD"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SHAPE-CAKE",
+      "nameRu": "Блин",
+      "parent": "CAT-BY-SHAPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE",
+        "CAT-SHAPE-CAKE"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SHAPE-COMPRESSED",
+      "nameRu": "Прессованный",
+      "parent": "CAT-BY-SHAPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE",
+        "CAT-SHAPE-COMPRESSED"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SHAPE-CURLED",
+      "nameRu": "Спиральный",
+      "parent": "CAT-BY-SHAPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE",
+        "CAT-SHAPE-CURLED"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-SHAPE-FLAT",
+      "nameRu": "Плоский лист",
+      "parent": "CAT-BY-SHAPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE",
+        "CAT-SHAPE-FLAT"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SHAPE-NEEDLE",
+      "nameRu": "Иглы",
+      "parent": "CAT-BY-SHAPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE",
+        "CAT-SHAPE-NEEDLE"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SHAPE-PEARL",
+      "nameRu": "Жемчужина",
+      "parent": "CAT-BY-SHAPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE",
+        "CAT-SHAPE-PEARL"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SHAPE-POWDER",
+      "nameRu": "Порошковый",
+      "parent": "CAT-BY-SHAPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE",
+        "CAT-SHAPE-POWDER"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SHAPE-SPIRAL",
+      "nameRu": "Спираль",
+      "parent": "CAT-BY-SHAPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE",
+        "CAT-SHAPE-SPIRAL"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SHAPE-STRIP",
+      "nameRu": "Полосовой лист",
+      "parent": "CAT-BY-SHAPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE",
+        "CAT-SHAPE-STRIP"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SHAPE-TUO",
+      "nameRu": "Гнездо (то)",
+      "parent": "CAT-BY-SHAPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SHAPE",
+        "CAT-SHAPE-TUO"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-BY-SPECIALTY",
+      "nameRu": "По особенностям",
+      "parent": "CAT-ROOT",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-AROMA-MIXIANG",
+      "nameRu": "Ми Сян — медовый аромат (蜜香)",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-AROMA-MIXIANG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-CERT-GI",
+      "nameRu": "ГИ — Географическое указание",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-CERT-GI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-CERT-UNESCO",
+      "nameRu": "ЮНЕСКО",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-CERT-UNESCO"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-SPEC-DASHU",
+      "nameRu": "Чай больших деревьев",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-DASHU"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-SPEC-FUSE",
+      "nameRu": "Селеновый чай (富硒茶)",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-FUSE"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-SPEC-GAOSHAN",
+      "nameRu": "Высокогорный чай",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-GAOSHAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-SPEC-GI",
+      "nameRu": "Географическое указание",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-GI"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SPEC-GONGFU",
+      "nameRu": "Чай Гунфу",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-GONGFU"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-SPEC-GONGYI",
+      "nameRu": "Связанный чай",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-GONGYI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-SPEC-GUSHU",
+      "nameRu": "Чай со старых деревьев",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-GUSHU"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-SPEC-LAOCONG",
+      "nameRu": "Лао Цун (老枞)",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-LAOCONG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-SPEC-NEEDLE-SHAPE",
+      "nameRu": "Форма иглы",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-NEEDLE-SHAPE"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SPEC-SHENGTAI",
+      "nameRu": "Экологический чай",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-SHENGTAI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-SPEC-SHOUGONG",
+      "nameRu": "Ручной чай",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-SHOUGONG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-SPEC-TAIDI",
+      "nameRu": "Плантационный (台地茶)",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-TAIDI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-SPEC-TEN-FAMOUS-TEAS",
+      "nameRu": "Десять знаменитых чаев",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-TEN-FAMOUS-TEAS"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SPEC-THREE-NEEDLES",
+      "nameRu": "Три иглы",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-THREE-NEEDLES"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SPEC-UNESCO-ICH",
+      "nameRu": "Нематериальное наследие UNESCO",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-UNESCO-ICH"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-SPEC-YABAO",
+      "nameRu": "Я Бао (芽苞)",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-YABAO"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-SPEC-YESHENG",
+      "nameRu": "Дикий чай",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-YESHENG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-SPEC-YOUJI",
+      "nameRu": "Органический чай",
+      "parent": "CAT-BY-SPECIALTY",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-SPECIALTY",
+        "CAT-SPEC-YOUJI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-BY-TYPE",
+      "nameRu": "По типу",
+      "parent": "CAT-ROOT",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "navigation/group; preserve hierarchy"
+    },
+    {
+      "code": "CAT-DARK-TEA",
+      "nameRu": "Темный чай",
+      "parent": "CAT-BY-TYPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-DARK-TEA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-DARK-ANHUA",
+      "nameRu": "Аньхуа Хэй Ча",
+      "parent": "CAT-DARK-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-DARK-TEA",
+        "CAT-DARK-ANHUA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-DARK-FUZHUAN",
+      "nameRu": "Фу Чжуань",
+      "parent": "CAT-DARK-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-DARK-TEA",
+        "CAT-DARK-FUZHUAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-DARK-LIUBAO",
+      "nameRu": "Люй Бао",
+      "parent": "CAT-DARK-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-DARK-TEA",
+        "CAT-DARK-LIUBAO"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-LIUBAO-AGED",
+      "nameRu": "Выдержанный (3-6 лет)",
+      "parent": "CAT-DARK-LIUBAO",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-DARK-TEA",
+        "CAT-DARK-LIUBAO",
+        "CAT-LIUBAO-AGED"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-LIUBAO-ANTIQUE",
+      "nameRu": "Антикварный (10+ лет)",
+      "parent": "CAT-DARK-LIUBAO",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-DARK-TEA",
+        "CAT-DARK-LIUBAO",
+        "CAT-LIUBAO-ANTIQUE"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-LIUBAO-NEW",
+      "nameRu": "Новый (1-3 года)",
+      "parent": "CAT-DARK-LIUBAO",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-DARK-TEA",
+        "CAT-DARK-LIUBAO",
+        "CAT-LIUBAO-NEW"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-LIUBAO-OLD",
+      "nameRu": "Старый (6-10 лет)",
+      "parent": "CAT-DARK-LIUBAO",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-DARK-TEA",
+        "CAT-DARK-LIUBAO",
+        "CAT-LIUBAO-OLD"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-GABA-TEA",
+      "nameRu": "ГАМК-чай (GABA)",
+      "parent": "CAT-BY-TYPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GABA-TEA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-GREEN-TEA",
+      "nameRu": "Зеленый чай",
+      "parent": "CAT-BY-TYPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA"
+      ],
+      "historicallyBoundToCatalog": true,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-GREEN-BILUOCHUN",
+      "nameRu": "Билочунь",
+      "parent": "CAT-GREEN-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-BILUOCHUN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-GREEN-GUAPIAN",
+      "nameRu": "Люань Гуапянь",
+      "parent": "CAT-GREEN-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-GUAPIAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-GREEN-JAPAN",
+      "nameRu": "Японский зелёный чай",
+      "parent": "CAT-GREEN-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-JAPAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-JAPAN-GENMAICHA",
+      "nameRu": "Генмайча",
+      "parent": "CAT-GREEN-JAPAN",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-JAPAN",
+        "CAT-JAPAN-GENMAICHA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-JAPAN-GYOKURO",
+      "nameRu": "Гёкуро",
+      "parent": "CAT-GREEN-JAPAN",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-JAPAN",
+        "CAT-JAPAN-GYOKURO"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-JAPAN-HOJICHA",
+      "nameRu": "Ходзича",
+      "parent": "CAT-GREEN-JAPAN",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-JAPAN",
+        "CAT-JAPAN-HOJICHA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-JAPAN-MATCHA",
+      "nameRu": "Матча",
+      "parent": "CAT-GREEN-JAPAN",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-JAPAN",
+        "CAT-JAPAN-MATCHA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-JAPAN-SENCHA",
+      "nameRu": "Сенча",
+      "parent": "CAT-GREEN-JAPAN",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-JAPAN",
+        "CAT-JAPAN-SENCHA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-GREEN-LONGJING",
+      "nameRu": "Лунцзин",
+      "parent": "CAT-GREEN-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-LONGJING"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-GREEN-MAOFENG",
+      "nameRu": "Маофэн",
+      "parent": "CAT-GREEN-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-MAOFENG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-GREEN-MAOJIAN",
+      "nameRu": "Маоцзянь (毛尖)",
+      "parent": "CAT-GREEN-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-MAOJIAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-GREEN-QUESHE",
+      "nameRu": "Цюэ Шэ (雀舌)",
+      "parent": "CAT-GREEN-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-QUESHE"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-GREEN-SONGZHEN",
+      "nameRu": "Сун Чжэнь (松针绿茶)",
+      "parent": "CAT-GREEN-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-SONGZHEN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-GREEN-XUEYA",
+      "nameRu": "Сюэ Я (雪芽绿茶)",
+      "parent": "CAT-GREEN-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-GREEN-TEA",
+        "CAT-GREEN-XUEYA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-HERBAL-TEA",
+      "nameRu": "Травяной чай",
+      "parent": "CAT-BY-TYPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-HERBAL-TEA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-HERBAL-ADAPTOGEN",
+      "nameRu": "Адаптогены",
+      "parent": "CAT-HERBAL-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-HERBAL-TEA",
+        "CAT-HERBAL-ADAPTOGEN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-HERBAL-BITTER",
+      "nameRu": "Горькие чаи (苦茶)",
+      "parent": "CAT-HERBAL-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-HERBAL-TEA",
+        "CAT-HERBAL-BITTER"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-HERBAL-FLOWER",
+      "nameRu": "Цветочные тизаны",
+      "parent": "CAT-HERBAL-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-HERBAL-TEA",
+        "CAT-HERBAL-FLOWER"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-HERBAL-CHRYSANTH",
+      "nameRu": "Хризантемовый чай",
+      "parent": "CAT-HERBAL-FLOWER",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-HERBAL-TEA",
+        "CAT-HERBAL-FLOWER",
+        "CAT-HERBAL-CHRYSANTH"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-HERBAL-OSMANTHUS",
+      "nameRu": "Османтусовый чай",
+      "parent": "CAT-HERBAL-FLOWER",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-HERBAL-TEA",
+        "CAT-HERBAL-FLOWER",
+        "CAT-HERBAL-OSMANTHUS"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-HERBAL-ROSE",
+      "nameRu": "Розовый чай",
+      "parent": "CAT-HERBAL-FLOWER",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-HERBAL-TEA",
+        "CAT-HERBAL-FLOWER",
+        "CAT-HERBAL-ROSE"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-HERBAL-GRAIN",
+      "nameRu": "Зерновые тизаны",
+      "parent": "CAT-HERBAL-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-HERBAL-TEA",
+        "CAT-HERBAL-GRAIN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-HERBAL-HONEYBUSH",
+      "nameRu": "Ханибуш",
+      "parent": "CAT-HERBAL-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-HERBAL-TEA",
+        "CAT-HERBAL-HONEYBUSH"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-HERBAL-ROOIBOS",
+      "nameRu": "Ройбуш",
+      "parent": "CAT-HERBAL-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-HERBAL-TEA",
+        "CAT-HERBAL-ROOIBOS"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-JASMINE-TEA",
+      "nameRu": "Жасминовый чай",
+      "parent": "CAT-BY-TYPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-JASMINE-TEA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-JASMINE-PEARL",
+      "nameRu": "Жасминовая жемчужина дракона",
+      "parent": "CAT-JASMINE-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-JASMINE-TEA",
+        "CAT-JASMINE-PEARL"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-JASMINE-YINZHEN",
+      "nameRu": "Жасминовые серебряные иглы",
+      "parent": "CAT-JASMINE-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-JASMINE-TEA",
+        "CAT-JASMINE-YINZHEN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-OOLONG-TEA",
+      "nameRu": "Улун",
+      "parent": "CAT-BY-TYPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-OOLONG-DANCONG",
+      "nameRu": "Даньцун",
+      "parent": "CAT-OOLONG-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-DANCONG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-DANCONG-GUIHUA",
+      "nameRu": "Гуй Хуа Сян",
+      "parent": "CAT-OOLONG-DANCONG",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-DANCONG",
+        "CAT-DANCONG-GUIHUA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-DANCONG-HUANGZHI",
+      "nameRu": "Хуан Чжи Сян",
+      "parent": "CAT-OOLONG-DANCONG",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-DANCONG",
+        "CAT-DANCONG-HUANGZHI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-DANCONG-MILAN",
+      "nameRu": "Ми Лань Сян",
+      "parent": "CAT-OOLONG-DANCONG",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-DANCONG",
+        "CAT-DANCONG-MILAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-DANCONG-ROUGUI",
+      "nameRu": "Жоу Гуй Сян",
+      "parent": "CAT-OOLONG-DANCONG",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-DANCONG",
+        "CAT-DANCONG-ROUGUI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-DANCONG-XINGREN",
+      "nameRu": "Син Жэнь Сян",
+      "parent": "CAT-OOLONG-DANCONG",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-DANCONG",
+        "CAT-DANCONG-XINGREN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-DANCONG-YASHI",
+      "nameRu": "Я Ши Сян",
+      "parent": "CAT-OOLONG-DANCONG",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-DANCONG",
+        "CAT-DANCONG-YASHI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-DANCONG-YULAN",
+      "nameRu": "Юй Лань Сян",
+      "parent": "CAT-OOLONG-DANCONG",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-DANCONG",
+        "CAT-DANCONG-YULAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-DANCONG-ZHILAN",
+      "nameRu": "Чжи Лань Сян",
+      "parent": "CAT-OOLONG-DANCONG",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-DANCONG",
+        "CAT-DANCONG-ZHILAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-OOLONG-GUANGDONG",
+      "nameRu": "Гуандунский улун",
+      "parent": "CAT-OOLONG-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-GUANGDONG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-OOLONG-MINNAN",
+      "nameRu": "Южно-Фуцзяньский",
+      "parent": "CAT-OOLONG-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-MINNAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-OOLONG-ROCK",
+      "nameRu": "Утёсный чай",
+      "parent": "CAT-OOLONG-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-ROCK"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-OOLONG-TAIWAN",
+      "nameRu": "Тайваньский улун",
+      "parent": "CAT-OOLONG-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-TAIWAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-OOLONG-TIEGUANYIN",
+      "nameRu": "Те Гуань Инь",
+      "parent": "CAT-OOLONG-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-TIEGUANYIN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-OOLONG-YUNNAN",
+      "nameRu": "Юньнаньский улун",
+      "parent": "CAT-OOLONG-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-OOLONG-TEA",
+        "CAT-OOLONG-YUNNAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "no direct TheTea mapping; preserve / explicit proposal only"
+    },
+    {
+      "code": "CAT-PUER-TEA",
+      "nameRu": "Пуэр",
+      "parent": "CAT-BY-TYPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-PUER-TEA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-PUER-SHENG",
+      "nameRu": "Шэн пуэр",
+      "parent": "CAT-PUER-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-PUER-TEA",
+        "CAT-PUER-SHENG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-PUER-SHU",
+      "nameRu": "Шу пуэр",
+      "parent": "CAT-PUER-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-PUER-TEA",
+        "CAT-PUER-SHU"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-PUER-YUEGUANG",
+      "nameRu": "Юэгуан Бай",
+      "parent": "CAT-PUER-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-PUER-TEA",
+        "CAT-PUER-YUEGUANG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-PURPLE-TEA",
+      "nameRu": "Пурпурный чай",
+      "parent": "CAT-BY-TYPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-PURPLE-TEA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-RED-TEA",
+      "nameRu": "Красный чай",
+      "parent": "CAT-BY-TYPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-RED-TEA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-RED-DIANHONG",
+      "nameRu": "Дянь Хун",
+      "parent": "CAT-RED-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-RED-TEA",
+        "CAT-RED-DIANHONG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-RED-GONGFU",
+      "nameRu": "Гунфу Хунча",
+      "parent": "CAT-RED-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-RED-TEA",
+        "CAT-RED-GONGFU"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-RED-JINJUNMEI",
+      "nameRu": "Цзинь Цзюнь Мэй",
+      "parent": "CAT-RED-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-RED-TEA",
+        "CAT-RED-JINJUNMEI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-RED-KEEMUN",
+      "nameRu": "Кимэнь",
+      "parent": "CAT-RED-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-RED-TEA",
+        "CAT-RED-KEEMUN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-RED-LAPSANG",
+      "nameRu": "Лапсанг Сушонг",
+      "parent": "CAT-RED-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-RED-TEA",
+        "CAT-RED-LAPSANG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-RED-XIAOZHONG",
+      "nameRu": "Сяо Чжун (小种)",
+      "parent": "CAT-RED-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-RED-TEA",
+        "CAT-RED-XIAOZHONG"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-RED-YINGDE",
+      "nameRu": "Индэ Хун",
+      "parent": "CAT-RED-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-RED-TEA",
+        "CAT-RED-YINGDE"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-WHITE-TEA",
+      "nameRu": "Белый чай",
+      "parent": "CAT-BY-TYPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-WHITE-TEA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    },
+    {
+      "code": "CAT-WHITE-BAIMUDAN",
+      "nameRu": "Белый пион",
+      "parent": "CAT-WHITE-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-WHITE-TEA",
+        "CAT-WHITE-BAIMUDAN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-WHITE-SHOUMEI",
+      "nameRu": "Шоу Мэй",
+      "parent": "CAT-WHITE-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-WHITE-TEA",
+        "CAT-WHITE-SHOUMEI"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-WHITE-YINZHEN",
+      "nameRu": "Серебряные иглы",
+      "parent": "CAT-WHITE-TEA",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-WHITE-TEA",
+        "CAT-WHITE-YINZHEN"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "existing inference rule; evidence review required"
+    },
+    {
+      "code": "CAT-YELLOW-TEA",
+      "nameRu": "Желтый чай",
+      "parent": "CAT-BY-TYPE",
+      "lineage": [
+        "CAT-ROOT",
+        "CAT-BY-TYPE",
+        "CAT-YELLOW-TEA"
+      ],
+      "historicallyBoundToCatalog": false,
+      "mappingDisposition": "direct source mapping exists"
+    }
+  ],
+  "liveProbe": {
+    "url": "https://tea.community/api/v1/catalog/chinese-tea/categories",
+    "status": 403,
+    "scope": "read-only public endpoint; no authentication attempted; not a current category inventory"
+  }
+}
