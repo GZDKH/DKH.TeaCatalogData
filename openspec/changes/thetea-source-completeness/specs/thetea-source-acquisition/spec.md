@@ -1,4 +1,9 @@
-## Requirements
+## Purpose
+
+Preserve complete TheTea source coverage and contract evidence before any
+ProductCatalog projection.
+
+## ADDED Requirements
 
 ### Requirement: classify source entities before projection
 The snapshot MUST record every discovered tea or infusion row with an entity kind
