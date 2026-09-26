@@ -49,6 +49,10 @@ function guid(value) {
     return { value: requireGuid(value, 'GUID_INVALID') };
 }
 
+function guidValue(value) {
+    return typeof value === 'string' ? value : value?.value;
+}
+
 class AdminGatewayClient {
     constructor(options = {}) {
         this.baseUrl = new URL(required(options.baseUrl, 'ADMIN_GATEWAY_URL_REQUIRED'));
@@ -124,6 +128,7 @@ class AdminGatewayClient {
     get(pathname) { return this.request('GET', pathname); }
     put(pathname, body) { return this.request('PUT', pathname, body); }
     post(pathname, body) { return this.request('POST', pathname, body); }
+    delete(pathname) { return this.request('DELETE', pathname); }
 }
 
 class ProductCatalogGrpcClient {
@@ -185,11 +190,13 @@ class ProductCatalogGrpcClient {
 
 const PROTOS = {
     curation: 'product_catalog/api/catalog_sellable_curation/v1/catalog_sellable_curation_service.proto',
+    productAttributeOptions: 'product_catalog/api/product_attribute_option_crud/v1/product_attribute_options_crud_service.proto',
     sellable: 'product_catalog/api/sellable_management/v1/sellable_management_service.proto',
     variant: 'product_catalog/api/variant_query/v1/variant_query_service.proto',
 };
 const SERVICES = {
     curation: 'proto.product_catalog.api.catalog_sellable_curation.v1.CatalogSellableCurationService',
+    productAttributeOptions: 'proto.product_catalog.api.product_attribute_option_crud.v1.ProductAttributeOptionsCrudService',
     sellable: 'proto.product_catalog.api.sellable_management.v1.SellableManagementService',
     variant: 'proto.product_catalog.api.variant_query.v1.VariantQueryService',
 };
@@ -216,12 +223,24 @@ class TieguanyinProductionClient {
         const product = products.find(item => String(item.code).toUpperCase() === productCode);
         const catalog = catalogs.find(item => String(item.code).toUpperCase() === catalogCode);
         if (!product || !catalog) {
-            return { products, catalogs, variantAttributes: [], combinations: [], sellables: [], placements: [], placementDetails: [] };
+            return {
+                products,
+                catalogs,
+                variantAttributes: [],
+                productAttributeOptions: [],
+                combinations: [],
+                sellables: [],
+                placements: [],
+                placementDetails: [],
+            };
         }
         const productId = product.id;
         const catalogId = catalog.id;
-        const [variantResponse, combinationsResponse, sellablesResponse, placementsResponse] = await Promise.all([
-            this.rest.get(`/api/v1/product-variant-attributes?productId=${productId}`),
+        const variantResponse = await this.rest.get(
+            `/api/v1/product-variant-attributes?productId=${productId}`,
+        );
+        const variantAttributes = variantResponse?.items || [];
+        const [combinationsResponse, sellablesResponse, placementsResponse, optionResponses] = await Promise.all([
             Promise.resolve(this.grpc.invoke(
                 PROTOS.variant,
                 method('variant', 'ListProductVariantCombinations'),
@@ -237,6 +256,8 @@ class TieguanyinProductionClient {
                 method('curation', 'ListCatalogSellables'),
                 { catalogId: guid(catalogId), productId: guid(productId), page: 1, pageSize: 1000 },
             )),
+            Promise.all(variantAttributes.map(attribute =>
+                this.fetchProductAttributeOptions(guidValue(attribute.productAttributeId)))),
         ]);
         const sellables = sellablesResponse.items || [];
         const placements = placementsResponse.items || [];
@@ -253,7 +274,8 @@ class TieguanyinProductionClient {
         return {
             products,
             catalogs,
-            variantAttributes: variantResponse?.items || [],
+            variantAttributes,
+            productAttributeOptions: optionResponses.flat(),
             combinations: combinationsResponse.combinations || [],
             sellables,
             placements,
@@ -266,6 +288,77 @@ class TieguanyinProductionClient {
             `/api/v1/product-variant-attribute-values?productVariantAttributeId=${attributeId}`,
             { values },
         );
+    }
+
+    fetchProductAttributeOptions(productAttributeId) {
+        if (!productAttributeId) return Promise.resolve([]);
+        const pageSize = 100;
+        const items = [];
+        const readPage = page => {
+            const response = this.grpc.invoke(
+                PROTOS.productAttributeOptions,
+                method('productAttributeOptions', 'GetProductAttributeOptions'),
+                {
+                    productAttributeId: guid(productAttributeId),
+                    pagination: { page, pageSize },
+                },
+            );
+            const pageItems = response.productAttributeOptions || [];
+            items.push(...pageItems);
+            const metadata = response.metadata || {};
+            const totalPages = Number(metadata.totalPages || metadata.total_pages || 0);
+            if (pageItems.length < pageSize || (totalPages > 0 && page >= totalPages)) {
+                return items;
+            }
+            return readPage(page + 1);
+        };
+        return Promise.resolve(readPage(1));
+    }
+
+    createProductAttributeOption(productAttributeId, translations, displayOrder) {
+        return this.rest.post(
+            `/api/v1/product-attribute-options?productAttributeId=${productAttributeId}`,
+            {
+                translations: Object.entries(translations).map(([languageCode, name]) => ({
+                    languageCode,
+                    name,
+                    description: '',
+                })),
+                displayOrder,
+                priceAdjustment: 0,
+                weightAdjustment: 0,
+                isPreselected: false,
+            },
+        ).then(response => response?.item || response);
+    }
+
+    updateProductAttributeOption(
+        productAttributeOptionId,
+        productAttributeId,
+        translations,
+        displayOrder,
+        priceAdjustment = 0,
+        weightAdjustment = 0,
+        isPreselected = false,
+    ) {
+        return this.rest.put(
+            `/api/v1/product-attribute-options/${productAttributeOptionId}?productAttributeId=${productAttributeId}`,
+            {
+                translations: Object.entries(translations).map(([languageCode, name]) => ({
+                    languageCode,
+                    name,
+                    description: '',
+                })),
+                displayOrder,
+                priceAdjustment,
+                weightAdjustment,
+                isPreselected,
+            },
+        ).then(() => ({ id: productAttributeOptionId }));
+    }
+
+    deleteProductAttributeOption(productAttributeOptionId) {
+        return this.rest.delete(`/api/v1/product-attribute-options/${productAttributeOptionId}`);
     }
 
     async fetchCurrency(currencyCode) {
