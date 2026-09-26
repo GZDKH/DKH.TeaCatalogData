@@ -136,3 +136,41 @@ Retail-price apply uses immutable price revisions. The released contracts do
 not provide a clear-current-price rollback; if the same run also created
 placements, the private rollback manifest is updated with the latest placement
 authority versions so placement rollback still works.
+
+## Localize existing grade values
+
+The imported grade axis keeps the supplier-native Chinese label in
+`customValue`. The storefront needs localized presentation without changing the
+variant value ID, combination, sellable, placement or price. The separate
+localization operator creates or reuses ProductAttribute options with `ru-RU`
+and `en-US` translations, stores the source label as the `zh-CN` translation,
+and then rebinds the existing values to those options.
+
+The default command is read-only and writes only a sanitized plan:
+
+```bash
+node scripts/catalog-sources/localize-thetea-shop-tieguanyin.js \
+  --run-id=tieguanyin-localization-dry-run
+```
+
+Apply requires both explicit switches and writes a private rollback manifest:
+
+```bash
+node scripts/catalog-sources/localize-thetea-shop-tieguanyin.js \
+  --run-id=tieguanyin-localization-apply \
+  --apply --yes
+```
+
+Rollback restores the original value payload first and then soft-deletes only
+options created by that run:
+
+```bash
+node scripts/catalog-sources/localize-thetea-shop-tieguanyin.js \
+  --rollback=artifacts/tieguanyin-grade-localization/<run-id>/rollback.json \
+  --yes
+```
+
+This operator does not publish prices, change combinations, or alter catalog
+placements. Translation labels are kept in the versioned
+`tieguanyin-grade-label-translations-2026-08-01.json` bundle and must be
+reviewed as merchant-facing copy before production apply.

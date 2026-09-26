@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "thetea-shop-tieguanyin-grade-label-translations-v1",
+  "sourceSnapshot": "tieguanyin-price-base-2026-08-01",
+  "labels": {
+    "Everyday": {
+      "ru-RU": "Повседневный",
+      "en-US": "Everyday"
+    },
+    "铁观音": {
+      "ru-RU": "Те Гуаньинь",
+      "en-US": "Tieguanyin"
+    },
+    "秋铁观音Y": {
+      "ru-RU": "Осенний Те Гуаньинь Y",
+      "en-US": "Autumn Tieguanyin Y"
+    },
+    "铁观音果香": {
+      "ru-RU": "Те Гуаньинь с фруктовым ароматом",
+      "en-US": "Tieguanyin Fruit Aroma"
+    },
+    "安溪铁观音果香": {
+      "ru-RU": "Те Гуаньинь Аньси с фруктовым ароматом",
+      "en-US": "Anxi Tieguanyin Fruit Aroma"
+    },
+    "铁观音毛茶": {
+      "ru-RU": "Те Гуаньинь Маоча",
+      "en-US": "Tieguanyin Maocha"
+    },
+    "铁观音果香2": {
+      "ru-RU": "Те Гуаньинь с фруктовым ароматом 2",
+      "en-US": "Tieguanyin Fruit Aroma 2"
+    },
+    "安溪花香铁观音": {
+      "ru-RU": "Те Гуаньинь Аньси с цветочным ароматом",
+      "en-US": "Anxi Tieguanyin Floral Aroma"
+    },
+    "铁观音果香F-A": {
+      "ru-RU": "Те Гуаньинь с фруктовым ароматом F-A",
+      "en-US": "Tieguanyin Fruit Aroma F-A"
+    },
+    "花香铁观音": {
+      "ru-RU": "Те Гуаньинь с цветочным ароматом",
+      "en-US": "Tieguanyin Floral Aroma"
+    },
+    "苦瓜铁观音": {
+      "ru-RU": "Те Гуаньинь с ароматом горькой дыни",
+      "en-US": "Bitter Melon Tieguanyin"
+    },
+    "手工花香铁观音": {
+      "ru-RU": "Ручной Те Гуаньинь с цветочным ароматом",
+      "en-US": "Handmade Tieguanyin Floral Aroma"
+    },
+    "秋铁观音消": {
+      "ru-RU": "Осенний Те Гуаньинь Сяо",
+      "en-US": "Autumn Tieguanyin Xiao"
+    },
+    "铁观音毛茶A": {
+      "ru-RU": "Те Гуаньинь Маоча A",
+      "en-US": "Tieguanyin Maocha A"
+    },
+    "铁观音果香手工": {
+      "ru-RU": "Ручной Те Гуаньинь с фруктовым ароматом",
+      "en-US": "Handmade Tieguanyin Fruit Aroma"
+    },
+    "2026春花香铁观音": {
+      "ru-RU": "Весенний Те Гуаньинь 2026 с цветочным ароматом",
+      "en-US": "2026 Spring Tieguanyin Floral Aroma"
+    },
+    "2026年花香铁观音": {
+      "ru-RU": "Те Гуаньинь 2026 с цветочным ароматом",
+      "en-US": "2026 Tieguanyin Floral Aroma"
+    },
+    "炭焙铁观音正味": {
+      "ru-RU": "Те Гуаньинь Чжэнвэй, обжаренный на углях",
+      "en-US": "Charcoal-baked Tieguanyin Zhengwei"
+    },
+    "2026果香铁观音": {
+      "ru-RU": "Те Гуаньинь 2026 с фруктовым ароматом",
+      "en-US": "2026 Tieguanyin Fruit Aroma"
+    },
+    "炭焙铁观音消正": {
+      "ru-RU": "Те Гуаньинь Сяочжэн, обжаренный на углях",
+      "en-US": "Charcoal-baked Tieguanyin Xiao Zheng"
+    },
+    "铁观音茶王": {
+      "ru-RU": "Те Гуаньинь «Чайный король»",
+      "en-US": "Tieguanyin Tea King"
+    },
+    "粒粒香铁观音": {
+      "ru-RU": "Те Гуаньинь «Аромат каждой гранулы»",
+      "en-US": "Tieguanyin Grain-by-grain Aroma"
+    },
+    "安溪高山手工花香铁观音": {
+      "ru-RU": "Высокогорный ручной Те Гуаньинь Аньси с цветочным ароматом",
+      "en-US": "Anxi High-mountain Handmade Tieguanyin Floral Aroma"
+    },
+    "高山正味铁观音（花香）": {
+      "ru-RU": "Высокогорный Те Гуаньинь Чжэнвэй с цветочным ароматом",
+      "en-US": "High-mountain Tieguanyin Zhengwei Floral Aroma"
+    },
+    "南崎观音王": {
+      "ru-RU": "Наньци Гуаньинь Ван",
+      "en-US": "Nanqi Guanyin King"
+    },
+    "安溪正味高山铁观音": {
+      "ru-RU": "Высокогорный Те Гуаньинь Аньси Чжэнвэй",
+      "en-US": "Anxi High-mountain Tieguanyin Zhengwei"
+    },
+    "手工高山果香铁观音": {
+      "ru-RU": "Ручной высокогорный Те Гуаньинь с фруктовым ароматом",
+      "en-US": "Handmade High-mountain Tieguanyin Fruit Aroma"
+    },
+    "20年老铁观音": {
+      "ru-RU": "Те Гуаньинь 20-летней выдержки",
+      "en-US": "20-year-aged Tieguanyin"
+    },
+    "秋茶高山铁观音": {
+      "ru-RU": "Высокогорный осенний чай Те Гуаньинь",
+      "en-US": "Autumn High-mountain Tieguanyin"
+    },
+    "传统工艺铁观音": {
+      "ru-RU": "Те Гуаньинь традиционной технологии",
+      "en-US": "Traditional-process Tieguanyin"
+    },
+    "2026春手工花香铁观音": {
+      "ru-RU": "Весенний ручной Те Гуаньинь 2026 с цветочным ароматом",
+      "en-US": "2026 Spring Handmade Tieguanyin Floral Aroma"
+    },
+    "传统工艺桂花香铁观音": {
+      "ru-RU": "Те Гуаньинь традиционной технологии с ароматом османтуса",
+      "en-US": "Traditional-process Tieguanyin Osmanthus Aroma"
+    }
+  }
+}
