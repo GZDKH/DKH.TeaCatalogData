@@ -69,6 +69,33 @@ assert.deepStrictEqual(
     });
 
 assert.deepStrictEqual(
+    decomposeTeaName('Shu Pu\'er Longzhu Menghai 熟普龙珠勐海'),
+    {
+        displayName: 'Shu Pu\'er Longzhu Menghai',
+        nativeName: '熟普龙珠勐海',
+        transcription: undefined,
+        editorialTitle: undefined,
+    });
+
+assert.deepStrictEqual(
+    decomposeTeaName('Jieyang Chaocha A 揭阳炒茶A'),
+    {
+        displayName: 'Jieyang Chaocha A',
+        nativeName: '揭阳炒茶A',
+        transcription: undefined,
+        editorialTitle: undefined,
+    });
+
+assert.deepStrictEqual(
+    decomposeTeaName('熟普龙珠勐海'),
+    {
+        displayName: '熟普龙珠勐海',
+        nativeName: undefined,
+        transcription: undefined,
+        editorialTitle: undefined,
+    });
+
+assert.deepStrictEqual(
     decomposeTeaName('Spring Tea (2026 Harvest)'),
     {
         displayName: 'Spring Tea (2026 Harvest)',

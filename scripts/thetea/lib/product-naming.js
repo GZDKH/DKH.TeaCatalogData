@@ -2,6 +2,7 @@ const CJK_RE = /[\u3400-\u9fff]/u;
 const COMPOSITE_ANNOTATION_RE =
     /[（(][^()（）]*[\u3400-\u9fff][^()（）]*[,，、][^()（）]*[)）]/u;
 const EDITORIAL_DELIMITER_RE = /(?:——|：)/u;
+const TRAILING_NATIVE_ALLOWED_RE = /^[\u3400-\u9fffA-Za-z0-9·・&＆'’\-]+$/u;
 
 function decomposeTeaName(value) {
     const original = normalizeText(value);
@@ -38,6 +39,17 @@ function decomposeTeaName(value) {
     if (editorialSplit) {
         displayName = editorialSplit;
         editorialTitle = editorialTitle || original;
+    }
+
+    // TheTea often appends the source-script name after a space instead of
+    // using the structured `(native, transcription)` form. Keep that value in
+    // ProductCatalog.nativeName so localized display names stay independent.
+    if (!nativeName) {
+        const trailing = splitTrailingNativeName(displayName);
+        if (trailing) {
+            displayName = trailing.displayName;
+            nativeName = trailing.nativeName;
+        }
     }
 
     return {
@@ -86,6 +98,20 @@ function parseAnnotation(content, before) {
         nativeName: nativeParts.length ? nativeParts.join(' · ') : undefined,
         transcription: transcriptionParts[0],
     };
+}
+
+function splitTrailingNativeName(value) {
+    const text = normalizeText(value);
+    if (!text) return null;
+    const match = text.match(/\s+([^\s]+)$/u);
+    if (!match) return null;
+    const suffix = normalizeText(match[1]);
+    const prefix = normalizeText(text.slice(0, match.index));
+    if (!prefix || !CJK_RE.test(suffix) || !TRAILING_NATIVE_ALLOWED_RE.test(suffix)) return null;
+    const hasNonHanWord = [...prefix].some(character =>
+        /[\p{L}\p{N}]/u.test(character) && !/[\p{Script=Han}]/u.test(character));
+    if (!hasNonHanWord) return null;
+    return { displayName: prefix, nativeName: suffix };
 }
 
 function splitEditorialDisplayName(value, options = {}) {
