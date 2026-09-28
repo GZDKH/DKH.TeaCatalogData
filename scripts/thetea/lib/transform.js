@@ -10,7 +10,7 @@ const { stripDefinitionMetadata } = require('./spec-contract');
 const { toProductLocale } = require('./locales');
 const { buildCategoryAssignments, PROVINCE_CATEGORY, TEA_TYPE_CATEGORY } = require('./category-taxonomy');
 const { resolveOriginLocation } = require('./origin-reference');
-const { decomposeTeaName } = require('./product-naming');
+const { containsCjk, decomposeTeaName } = require('./product-naming');
 const { inferTaxonomy } = require('./taxonomy-inference');
 const { packageDefinitionsFor } = require('./package-content');
 
@@ -719,9 +719,29 @@ function cleanDisplayName(name) {
 }
 
 function extractNativeName(card) {
-    const zh = card.names?.zh || card.names?.['zh-CN'];
-    if (!zh) return undefined;
-    return decomposeTeaName(zh).displayName || undefined;
+    const names = card.names || {};
+    // TheTea occasionally publishes a non-Chinese fallback under the bare `zh`
+    // key while a Chinese-script value is available under zh-HK/zh-TW. Never
+    // turn that fallback into ProductCatalog.nativeName: the field is the
+    // source/native name and is rendered on every localized storefront page.
+    const candidates = [
+        names['zh-CN'],
+        names.zh,
+        names['zh-HK'],
+        names['zh-TW'],
+        names['zh-hk'],
+        names['zh-tw'],
+        ...Object.entries(names)
+            .filter(([locale]) => locale.toLowerCase().startsWith('zh-'))
+            .map(([, value]) => value),
+    ];
+
+    for (const candidate of candidates) {
+        const displayName = decomposeTeaName(candidate).displayName;
+        if (displayName && containsCjk(displayName)) return displayName;
+    }
+
+    return undefined;
 }
 
 function extractTranscription(name) {

@@ -157,6 +157,18 @@ assert.strictEqual(anchaProduct.translations.find(t => t.lang === 'en-US')?.meta
 assert.strictEqual(anchaProduct.translations.find(t => t.lang === 'zh-CN')?.name, '安茶');
 assert.strictEqual(anchaProduct.translations.find(t => t.lang === 'zh-CN')?.transcription, 'ānchá');
 
+const zhFallbackProduct = transformCardSet({
+    en: {
+        ...xihu,
+        names: {
+            ...xihu.names,
+            zh: 'Хризантемовый чай',
+            'zh-hk': '菊花茶 (júhuā chá)',
+        },
+    },
+}).product;
+assert.strictEqual(zhFallbackProduct.nativeName, '菊花茶');
+
 assert(product.catalogs.some(c => c.category === 'CAT-GREEN-TEA'));
 assert(product.catalogs.some(c => c.category === 'CAT-REGION-ZHEJIANG'));
 assert(product.catalogs.some(c => c.category === 'CAT-SHAPE-FLAT'));
