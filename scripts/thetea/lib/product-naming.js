@@ -242,6 +242,7 @@ function canonicalNameKey(value) {
 
 module.exports = {
     auditProductNaming,
+    containsCjk,
     decomposeTeaName,
     hasCompositeNativeName,
     hasCompositeTranslationName,
