@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "method": "focused-review",
+  "result": "passed",
+  "capability_unavailable": true,
+  "base_sha": "e0592d43759e5f780f25cf261bfe1c85c1cea71a",
+  "reviewed_blobs": {
+    "scripts/thetea/lib/product-overlay.js": "aa84fb17eb4f4aa3d9cf7306a4bcc0c8f4637eb7",
+    "scripts/thetea/test-product-overlay.js": "0840cbd667d5dc40434d4d58af526ab472df38ce",
+    "sources/thetea/profiles/thetea-product-media-sync.catalog-chinese-tea.json": "3beb052e47362740214e9950899e0bd5bcd970d8"
+  },
+  "checks": [
+    {
+      "result": "passed",
+      "evidence": "Inspected exact origin/main...122ff0b product-overlay diff; malformed unrelated baseline specifications block overlay and preservation validation reports their loss. node scripts/thetea/test-product-overlay.js passed, including observed RED then GREEN regression cases."
+    },
+    {
+      "result": "passed",
+      "evidence": "Parsed the committed media profile recursively: 491 media.thetea.app URLs, no URL userinfo or credential-named query parameters, no nonempty credential-named fields, and no known private key, GitLab, AWS or OpenAI key patterns."
+    },
+    {
+      "result": "passed",
+      "evidence": "git diff --check origin/main...HEAD passed. Nine targeted TheTea offline tests passed on the reviewed source."
+    }
+  ],
+  "scope": "Focused credential exposure and unrelated baseline preservation review for the three gate-selected files. This is not a full security scan, production import approval, or acceptance of generated category definitions."
+}
