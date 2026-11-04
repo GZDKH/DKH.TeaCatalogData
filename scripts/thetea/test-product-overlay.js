@@ -60,6 +60,22 @@ const generated = {
 };
 
 const overlaid = overlayExistingProduct(generated, baseline);
+const malformedManualBaseline = {
+    ...baseline,
+    specifications: [
+        ...baseline.specifications,
+        { attribute: 'SPEC-MANUAL-MALFORMED', value: 'must not be discarded' },
+    ],
+};
+assert.throws(
+    () => overlayExistingProduct(generated, malformedManualBaseline),
+    /unrelated specification.*SPEC-MANUAL-MALFORMED/i,
+    'a malformed unrelated specification must block the overlay instead of being dropped');
+assert(
+    validateBaselinePreservation([overlaid], [malformedManualBaseline], {
+        ignoreInvalidBaselineSpecifications: true,
+    }).some(error => error.includes('SPEC-MANUAL-MALFORMED')),
+    'validation must report dropped unrelated specifications even when an old ignore option is set');
 assert.strictEqual(overlaid.sku, 'MANUAL-SKU');
 assert.strictEqual(overlaid.id, baseline.id);
 assert.strictEqual(overlaid.published, true);

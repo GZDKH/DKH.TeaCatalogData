@@ -8,6 +8,12 @@ function overlayExistingProduct(generated, baseline, options = {}) {
         throw new Error(`Cannot overlay ${generated.code} onto baseline product ${baseline.code}.`);
     }
 
+    const invalidUnrelatedSpec = collection(baseline.specifications, 'baseline specifications')
+        .find(spec => !isManagedSpecification(spec) && !isValidSpecificationForImport(spec));
+    if (invalidUnrelatedSpec) {
+        throw new Error(`${baseline.code}: unrelated specification ${invalidUnrelatedSpec.attribute || '<missing>'} is invalid; refusing to discard it.`);
+    }
+
     const result = {
         ...generated,
         ...baseline,
@@ -21,7 +27,7 @@ function overlayExistingProduct(generated, baseline, options = {}) {
         tags: mergeByKey(baseline.tags, generated.tags, item => normalizeCode(item.code)),
         specifications: [
             ...collection(baseline.specifications, 'baseline specifications')
-                .filter(spec => !isManagedSpecification(spec) && isValidSpecificationForImport(spec)),
+                .filter(spec => !isManagedSpecification(spec)),
             ...collection(generated.specifications, 'generated specifications'),
         ],
         catalogs: mergeCatalogAssignments(
@@ -64,10 +70,7 @@ function validateBaselinePreservation(products, baselineProducts, options = {}) 
         assertStructuralSubset(errors, baseline, generated, 'storePriceOverrides');
 
         const preservedSpecs = collection(baseline.specifications, 'baseline specifications')
-            .filter(spec => !isManagedSpecification(spec)
-                && (options.ignoreInvalidBaselineSpecifications === true
-                    ? isValidSpecificationForImport(spec)
-                    : true));
+            .filter(spec => !isManagedSpecification(spec));
         const generatedSpecs = new Map(collection(generated.specifications, 'generated specifications')
             .map(spec => [specificationKey(spec), stableStringify(spec)]));
         for (const spec of preservedSpecs) {
@@ -297,7 +300,6 @@ function stableStringify(value) {
 
 module.exports = {
     isManagedSpecification,
-    isValidSpecificationForImport,
     mergeManagedPackages,
     overlayExistingProduct,
     validateBaselinePreservation,

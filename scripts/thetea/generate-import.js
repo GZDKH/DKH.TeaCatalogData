@@ -34,7 +34,6 @@ const {
 const { normalizeProductForImport } = require('./lib/import-contract');
 const {
     isManagedSpecification,
-    isValidSpecificationForImport,
     mergeManagedPackages,
     overlayExistingProduct,
 } = require('./lib/product-overlay');
@@ -655,16 +654,6 @@ function main() {
         routedContent.metaobjects.push(...transformed.routedContent.metaobjects);
 
         const baseline = baselineByCode.get(normalizeCode(transformed.product.code));
-        const invalidBaselineSpecifications = (baseline?.specifications || [])
-            .filter(spec => !isManagedSpecification(spec) && !isValidSpecificationForImport(spec));
-        if (invalidBaselineSpecifications.length) {
-            lossEvents.push({
-                source: 'invalid-baseline-specifications-dropped',
-                product: transformed.product.code,
-                count: invalidBaselineSpecifications.length,
-            });
-            warnings.push(`${transformed.product.code}: dropped ${invalidBaselineSpecifications.length} malformed baseline specification(s) without group/type.`);
-        }
         const product = updateScope === 'packages'
             ? buildPackageOnlyProduct(transformed.product, baseline)
             : overlayExistingProduct(transformed.product, baseline, {
@@ -745,7 +734,6 @@ function main() {
         baselinePreservation: {
             catalogAssignmentMode,
             targetCatalog: catalogCode,
-            ignoreInvalidBaselineSpecifications: true,
         },
         allowedCatalogCodes: catalogAssignmentMode === 'target-only'
             ? [catalogCode]

@@ -96,7 +96,6 @@ function main() {
         baselinePreservation: {
             catalogAssignmentMode,
             targetCatalog,
-            ignoreInvalidBaselineSpecifications: true,
         },
         allowedCatalogCodes: catalogAssignmentMode === 'target-only'
             ? [targetCatalog]
