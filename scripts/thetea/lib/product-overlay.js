@@ -21,7 +21,7 @@ function overlayExistingProduct(generated, baseline, options = {}) {
         tags: mergeByKey(baseline.tags, generated.tags, item => normalizeCode(item.code)),
         specifications: [
             ...collection(baseline.specifications, 'baseline specifications')
-                .filter(spec => !isManagedSpecification(spec)),
+                .filter(spec => !isManagedSpecification(spec) && isValidSpecificationForImport(spec)),
             ...collection(generated.specifications, 'generated specifications'),
         ],
         catalogs: mergeCatalogAssignments(
@@ -64,7 +64,10 @@ function validateBaselinePreservation(products, baselineProducts, options = {}) 
         assertStructuralSubset(errors, baseline, generated, 'storePriceOverrides');
 
         const preservedSpecs = collection(baseline.specifications, 'baseline specifications')
-            .filter(spec => !isManagedSpecification(spec));
+            .filter(spec => !isManagedSpecification(spec)
+                && (options.ignoreInvalidBaselineSpecifications === true
+                    ? isValidSpecificationForImport(spec)
+                    : true));
         const generatedSpecs = new Map(collection(generated.specifications, 'generated specifications')
             .map(spec => [specificationKey(spec), stableStringify(spec)]));
         for (const spec of preservedSpecs) {
@@ -240,6 +243,12 @@ function isManagedSpecification(spec) {
         || normalizeCode(spec?.group).startsWith(`${MANAGED_SPEC_PREFIX}GROUP-`);
 }
 
+function isValidSpecificationForImport(spec) {
+    return Boolean(normalizeCode(spec?.group)
+        && normalizeCode(spec?.attribute)
+        && String(spec?.type || '').trim());
+}
+
 function catalogAssignmentKey(item) {
     return `${normalizeCode(item?.catalog)}|${normalizeCode(item?.category)}`;
 }
@@ -288,6 +297,7 @@ function stableStringify(value) {
 
 module.exports = {
     isManagedSpecification,
+    isValidSpecificationForImport,
     mergeManagedPackages,
     overlayExistingProduct,
     validateBaselinePreservation,

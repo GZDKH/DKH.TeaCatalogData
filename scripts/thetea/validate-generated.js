@@ -34,6 +34,15 @@ function main() {
         ? loadVerifiedProductReference(productReferencePath)
         : null;
     const baselineProducts = baselineReference?.products || [];
+    // A generated artifact can intentionally carry category definitions that
+    // are absent from the read-only production snapshot. Validate the bundle
+    // against the effective reference that includes those planned creates.
+    const effectiveCatalogReference = catalogReference
+        ? {
+            ...catalogReference,
+            categories: [...(catalogReference.categories || []), ...(bundle.categories || [])],
+        }
+        : catalogReference;
     const integrityErrors = [...bundle.errors];
     const integrityWarnings = [];
     const catalogAssignmentMode = manifest.targets?.catalogAssignmentMode || 'preserve';
@@ -81,12 +90,13 @@ function main() {
         requiredLocales: manifest.requiredLocales || [],
         lossEvents: manifest.lossEvents || [],
         routedContent: bundle.routedContent,
-        catalogReference,
+        catalogReference: effectiveCatalogReference,
         requiredCatalogCode: targetCatalog,
         baselineProducts,
         baselinePreservation: {
             catalogAssignmentMode,
             targetCatalog,
+            ignoreInvalidBaselineSpecifications: true,
         },
         allowedCatalogCodes: catalogAssignmentMode === 'target-only'
             ? [targetCatalog]

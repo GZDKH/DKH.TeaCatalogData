@@ -208,6 +208,10 @@ function readArtifactBundle(root) {
             '02-specifications/specification_attribute_options.json',
             errors),
     };
+    const categories = readOptionalArray(
+        resolvedRoot,
+        '03-categories/categories.json',
+        errors);
     const routedContent = {
         articles: readRoutedRecords(resolvedRoot, 'articles', errors),
         metaobjects: readRoutedRecords(resolvedRoot, 'metaobjects', errors),
@@ -272,6 +276,7 @@ function readArtifactBundle(root) {
         manifest: manifestValidation.manifest,
         products,
         definitions,
+        categories,
         catalogs,
         catalogBindings,
         routedContent,

@@ -235,6 +235,13 @@ function buildCategoryAssignments(card, warnings = [], inferredTaxonomy) {
     const inferred = inferredTaxonomy || inferTaxonomy(card);
     if (!inferredTaxonomy) warnings.push(...inferred.warnings);
 
+    // TheTea exposes flowers, herbs and dried botanicals through the same tea
+    // endpoint. Keep them in an explicit tea-catalog branch instead of leaving
+    // otherwise valid products without a catalog/category assignment.
+    if (String(meta.category_code || '').trim().toUpperCase() === 'FLOWERS AND DRY') {
+        codes.push('CAT-HERBAL-TEA');
+    }
+
     addMapped(codes, TEA_TYPE_CATEGORY, meta.tea_type, 'tea_type', card, warnings);
 
     const province = meta.province || inferred.province;
@@ -283,6 +290,17 @@ function buildTheTeaCategories(cards = [], options = {}) {
         category('CAT-BY-TYPE', 'CAT-ROOT', 1, names('By Type', 'По типу', '按类型', 'by-type')),
         ...orderedEntries(TEA_TYPE_CATEGORY, observed.teaTypes)
             .map(([value, code], index) => category(code, 'CAT-BY-TYPE', index + 1, TYPE_DETAILS[value])),
+        ...(observed.herbal ? [category(
+            'CAT-HERBAL-TEA',
+            'CAT-ROOT',
+            7,
+            names('Herbal and Botanical Tea', 'Травяные и ботанические напитки', '草本与植物茶', 'herbal-botanical-tea'),
+            {
+                en: 'Flowers, herbs and dried botanicals imported from TheTea.',
+                ru: 'Цветы, травы и сушёные растения из TheTea.',
+                zh: '来自 TheTea 的花、草本与干燥植物。',
+            },
+        )] : []),
         category('CAT-BY-REGION', 'CAT-ROOT', 2, names('By Region', 'По региону', '按地区', 'by-region')),
         category('CAT-REGION-CHINA', 'CAT-BY-REGION', 1, names('China', 'Китай', '中国', 'china')),
         ...orderedEntries(PROVINCE_CATEGORY, observed.provinces)
@@ -317,10 +335,14 @@ function collectObserved(cards) {
         processing: new Set(),
         roasts: new Set(),
         specialtyTags: new Set(),
+        herbal: false,
     };
 
     for (const card of cards || []) {
         const meta = card.meta || {};
+        if (String(meta.category_code || '').trim().toUpperCase() === 'FLOWERS AND DRY') {
+            result.herbal = true;
+        }
         if (TEA_TYPE_CATEGORY[meta.tea_type]) result.teaTypes.add(meta.tea_type);
         if (PROVINCE_CATEGORY[meta.province]) result.provinces.add(meta.province);
         if (SHAPE_CATEGORY[meta.shape]) result.shapes.add(meta.shape);

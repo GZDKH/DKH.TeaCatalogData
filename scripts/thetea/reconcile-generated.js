@@ -364,11 +364,16 @@ function main() {
     const updateScope = bundle.manifest.targets?.updateScope || 'full';
     const selected = selectProducts(bundle.products, args);
     if (!selected.length) throw new Error('No products selected.');
+    const baselinePreservation = {
+        ...catalogPolicy.baselinePreservation,
+        ignoreInvalidBaselineSpecifications: (bundle.manifest.lossEvents || [])
+            .some(event => event?.source === 'invalid-baseline-specifications-dropped'),
+    };
     const reconciliation = buildReconciliation(
         selected,
         reference.products,
         {
-            baselinePreservation: catalogPolicy.baselinePreservation,
+            baselinePreservation,
             updateScope,
         });
     const report = {

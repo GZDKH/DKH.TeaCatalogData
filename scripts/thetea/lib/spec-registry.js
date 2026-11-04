@@ -488,8 +488,15 @@ function buildSpecs(card, context = {}) {
         card.sensory || [],
         item => item.descriptor_id || item.descriptor,
         'sensory')) {
-        const canonicalDescriptor = context.canonicalSensoryLabels?.[rawDescriptor]
-            || sensory.descriptor;
+        // A catalog baseline may already own the stable identity for a descriptor
+        // code.  Treat an explicit null as an intentional request to keep the
+        // source-descriptor fallback instead of allowing one localized card to
+        // rename the shared attribute (for example H -> Honey).
+        const hasCanonicalDescriptor = Object.prototype.hasOwnProperty.call(
+            context.canonicalSensoryLabels || {}, rawDescriptor);
+        const canonicalDescriptor = hasCanonicalDescriptor
+            ? context.canonicalSensoryLabels[rawDescriptor]
+            : sensory.descriptor;
         const descriptor = normalizeCodePart(rawDescriptor).toLowerCase();
         const attributeField = `descriptor_${descriptor}_intensity`;
         const fallbackName = canonicalDescriptor

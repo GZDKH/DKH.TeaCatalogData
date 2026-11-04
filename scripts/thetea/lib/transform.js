@@ -34,9 +34,10 @@ function transformCardSet(cardSet, options = {}) {
         }
         : taxonomy;
     const code = productCodeForCardSet(cardSet);
-    const canonicalSensoryLabels = Object.fromEntries((primary.sensory || [])
-        .filter(item => item?.descriptor)
-        .map(item => [String(item.descriptor_id || item.descriptor), item.descriptor]));
+    const canonicalSensoryLabels = options.canonicalSensoryLabels
+        || Object.fromEntries((primary.sensory || [])
+            .filter(item => item?.descriptor)
+            .map(item => [String(item.descriptor_id || item.descriptor), item.descriptor]));
     const fieldRouting = collectFieldRouting(cardSet);
     const localizedSpecificationSets = Object.entries(cardSet)
         .filter(([, card]) => Boolean(card))

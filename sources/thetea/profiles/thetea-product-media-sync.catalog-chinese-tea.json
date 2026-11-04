@@ -1,0 +1,4467 @@
+{
+  "schemaVersion": 1,
+  "profileId": null,
+  "code": "thetea-products-catalog-chinese-tea",
+  "displayName": "TheTea product media → CATALOG-CHINESE-TEA",
+  "status": "disabled",
+  "targetWorkspaceId": "45bd2e57-d05a-4a81-90cc-a023702778be",
+  "targetCatalogId": "0be5b4fc-651b-4953-87d8-08d976ddb13d",
+  "sourceKind": "url_manifest",
+  "productMatchMode": "seo_slug",
+  "applyMode": "replace_managed",
+  "activate": false,
+  "sourceSettings": {
+    "urlPattern": null,
+    "urls": [],
+    "allowedHosts": [
+      "media.thetea.app"
+    ],
+    "allowedWidths": [
+      "400"
+    ],
+    "allowedFormats": [
+      "webp"
+    ],
+    "defaultWidth": "400",
+    "defaultFormat": "webp",
+    "items": [
+      {
+        "productRef": "2003-chennian-qing-xin-wulong",
+        "productSlug": "2003-chennian-qing-xin-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/2003-chennian-qing-xin-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Aged Qing Xin Oolong 2003 (2003陳年青心烏龍, 2003 chénnián qīng xīn wūlóng)"
+      },
+      {
+        "productRef": "7542",
+        "productSlug": "7542",
+        "sourceUrl": "https://media.thetea.app/tea/7542/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "7542 — the benchmark sheng cake"
+      },
+      {
+        "productRef": "7572-shu-bing",
+        "productSlug": "7572-shu-bing",
+        "sourceUrl": "https://media.thetea.app/tea/7572-shu-bing/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "7572 (唛号, màihào)"
+      },
+      {
+        "productRef": "ai-jiao-wulong",
+        "productSlug": "ai-jiao-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/ai-jiao-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ǎi Jiǎo Oolong (矮脚乌龙, ǎi jiǎo wūlóng)"
+      },
+      {
+        "productRef": "alishan-hongcha",
+        "productSlug": "alishan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/alishan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ālǐshān Hóng Chá (阿里山紅茶, Ālǐshān hóngchá)"
+      },
+      {
+        "productRef": "alishan-wulong",
+        "productSlug": "alishan-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/alishan-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ālǐshān Oolong (阿里山烏龍, Ālǐshān Wūlóng)"
+      },
+      {
+        "productRef": "alishan-zhu-lu-cha",
+        "productSlug": "alishan-zhu-lu-cha",
+        "sourceUrl": "https://media.thetea.app/tea/alishan-zhu-lu-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ālǐshān Zhū Lù Chá (阿里山珠露茶, Ālǐshān zhū lù chá)"
+      },
+      {
+        "productRef": "ancha",
+        "productSlug": "ancha",
+        "sourceUrl": "https://media.thetea.app/tea/ancha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ancha (安茶, ānchá): One Character, Different Teas — A Guide to 同名异物"
+      },
+      {
+        "productRef": "anhua-heicha",
+        "productSlug": "anhua-heicha",
+        "sourceUrl": "https://media.thetea.app/tea/anhua-heicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ānhuà Hēi Chá (安化黑茶, Ānhuà hēichá)"
+      },
+      {
+        "productRef": "anhua-song-zhen",
+        "productSlug": "anhua-song-zhen",
+        "sourceUrl": "https://media.thetea.app/tea/anhua-song-zhen/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ānhuà Sōng Zhēn (安化松针, Ānhuà sōng zhēn)"
+      },
+      {
+        "productRef": "anhua-tian-jian-heicha",
+        "productSlug": "anhua-tian-jian-heicha",
+        "sourceUrl": "https://media.thetea.app/tea/anhua-tian-jian-heicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ānhuà Tiān Jiān Hēi Chá (安化天尖黑茶, Ānhuà tiān jiān hēichá, Ānhuà tiān jiān hēichá)"
+      },
+      {
+        "productRef": "anji-baicha",
+        "productSlug": "anji-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/anji-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ānjí Báichá (安吉白茶, Ānjí báichá)"
+      },
+      {
+        "productRef": "anji-huangjin-ya",
+        "productSlug": "anji-huangjin-ya",
+        "sourceUrl": "https://media.thetea.app/tea/anji-huangjin-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ānjí Huángjīn Yá (安吉黄金芽, Ānjí huángjīn yá)"
+      },
+      {
+        "productRef": "anshun-pu-bu-hongcha",
+        "productSlug": "anshun-pu-bu-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/anshun-pu-bu-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ānshùn Pù Bù Hóng Chá (安顺瀑布红茶, Ānshùn pù bù hóngchá)"
+      },
+      {
+        "productRef": "anshun-pu-bu-lucha",
+        "productSlug": "anshun-pu-bu-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/anshun-pu-bu-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Anshun Pubu Lücha (安顺瀑布绿茶, Ānshùn Pùbù Lǜchá)"
+      },
+      {
+        "productRef": "ba-shan-que-she",
+        "productSlug": "ba-shan-que-she",
+        "sourceUrl": "https://media.thetea.app/tea/ba-shan-que-she/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bā Shān Què Shé (巴山雀舌, Bā shān què shé)"
+      },
+      {
+        "productRef": "bai-ji-guan",
+        "productSlug": "bai-ji-guan",
+        "sourceUrl": "https://media.thetea.app/tea/bai-ji-guan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bái Jī Guān (白鸡冠, bái jī guān)"
+      },
+      {
+        "productRef": "bai-jian",
+        "productSlug": "bai-jian",
+        "sourceUrl": "https://media.thetea.app/tea/bai-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bái Jiān (白尖, bái jiān)"
+      },
+      {
+        "productRef": "bai-lin-gongfu",
+        "productSlug": "bai-lin-gongfu",
+        "sourceUrl": "https://media.thetea.app/tea/bai-lin-gongfu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Báilín Gōngfū (白琳工夫, Bái lín gōngfū)"
+      },
+      {
+        "productRef": "bai-mao-hou",
+        "productSlug": "bai-mao-hou",
+        "sourceUrl": "https://media.thetea.app/tea/bai-mao-hou/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bái Máo Hóu (白毛猴, bái máo hóu)"
+      },
+      {
+        "productRef": "bai-moli-hua",
+        "productSlug": "bai-moli-hua",
+        "sourceUrl": "https://media.thetea.app/tea/bai-moli-hua/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jasmine Flowers (白茉莉花, *bái mòlì huā*)"
+      },
+      {
+        "productRef": "bai-mudan",
+        "productSlug": "bai-mudan",
+        "sourceUrl": "https://media.thetea.app/tea/bai-mudan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bái Mǔ Dàn (白牡丹, bái mǔdān)"
+      },
+      {
+        "productRef": "bai-mudan-lao-cha",
+        "productSlug": "bai-mudan-lao-cha",
+        "sourceUrl": "https://media.thetea.app/tea/bai-mudan-lao-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bái Mǔ Dàn Lǎo Chá (白牡丹老茶, bái mǔdān lǎo chá)"
+      },
+      {
+        "productRef": "bai-mudan-xin-cha",
+        "productSlug": "bai-mudan-xin-cha",
+        "sourceUrl": "https://media.thetea.app/tea/bai-mudan-xin-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bái Mǔdān Xīn Chá (白牡丹新茶, bái mǔdān xīn chá)"
+      },
+      {
+        "productRef": "baicha-longzhu",
+        "productSlug": "baicha-longzhu",
+        "sourceUrl": "https://media.thetea.app/tea/baicha-longzhu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Báichá Lóngzhū (白茶龙珠, báichá lóngzhū)"
+      },
+      {
+        "productRef": "baihao-yinzhen",
+        "productSlug": "baihao-yinzhen",
+        "sourceUrl": "https://media.thetea.app/tea/baihao-yinzhen/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bái Háo Yìn Zhèn (白毫银针, báiháo yínzhēn)"
+      },
+      {
+        "productRef": "baihao-yinzhen-lao-cha",
+        "productSlug": "baihao-yinzhen-lao-cha",
+        "sourceUrl": "https://media.thetea.app/tea/baihao-yinzhen-lao-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bái Háo Yìn Zhèn Lǎo Chá (白毫银针老茶, báiháo yínzhēn lǎo chá)"
+      },
+      {
+        "productRef": "baihao-yinzhen-xin-cha",
+        "productSlug": "baihao-yinzhen-xin-cha",
+        "sourceUrl": "https://media.thetea.app/tea/baihao-yinzhen-xin-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bái Háo Yìn Zhèn Xīn Chá (白毫银针新茶, báiháo yínzhēn xīn chá)"
+      },
+      {
+        "productRef": "baihe-hua",
+        "productSlug": "baihe-hua",
+        "sourceUrl": "https://media.thetea.app/tea/baihe-hua/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lily Flowers (百合花, bǎihé huā)"
+      },
+      {
+        "productRef": "baima-jun-hong",
+        "productSlug": "baima-jun-hong",
+        "sourceUrl": "https://media.thetea.app/tea/baima-jun-hong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Báimǎ Jùn Hóng (白马骏红, báimǎ jùn hóng)"
+      },
+      {
+        "productRef": "baima-ling-lucha",
+        "productSlug": "baima-ling-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/baima-ling-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Baima Ling Lü Chá (白马岭绿茶, báimǎ lǐng lǜchá)"
+      },
+      {
+        "productRef": "baisha-hongcha",
+        "productSlug": "baisha-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/baisha-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Báishā Hóng Chá (白沙红茶, báishā hóngchá)"
+      },
+      {
+        "productRef": "baisha-lu-cha",
+        "productSlug": "baisha-lu-cha",
+        "sourceUrl": "https://media.thetea.app/tea/baisha-lu-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Báishā Lú Chá (白沙绿茶, Báishā lǜ chá)"
+      },
+      {
+        "productRef": "ban-tian-yao",
+        "productSlug": "ban-tian-yao",
+        "sourceUrl": "https://media.thetea.app/tea/ban-tian-yao/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bàn Tiān Yāo (半天腰, bàn tiān yāo)"
+      },
+      {
+        "productRef": "ban-zhang",
+        "productSlug": "ban-zhang",
+        "sourceUrl": "https://media.thetea.app/tea/ban-zhang/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Banzhang 班章"
+      },
+      {
+        "productRef": "banan-yin-zhen",
+        "productSlug": "banan-yin-zhen",
+        "sourceUrl": "https://media.thetea.app/tea/banan-yin-zhen/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bānán Yín Zhēn (巴南银针, Bānán yín zhēn)"
+      },
+      {
+        "productRef": "banlan-hongcha",
+        "productSlug": "banlan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/banlan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bānlán Hóng Chá (斑兰红茶, Bānlán Hóngchá)"
+      },
+      {
+        "productRef": "baohongcha",
+        "productSlug": "baohongcha",
+        "sourceUrl": "https://media.thetea.app/tea/baohongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bǎohóngchá (宝洪茶, bǎohóngchá)"
+      },
+      {
+        "productRef": "baojing-huang-jin-hongcha",
+        "productSlug": "baojing-huang-jin-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/baojing-huang-jin-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bǎojìng Huáng Jīn Hóng Chá (保靖黄金红茶, Bǎojìng huáng jīn hóngchá)"
+      },
+      {
+        "productRef": "baojing-huang-jin-lucha",
+        "productSlug": "baojing-huang-jin-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/baojing-huang-jin-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bǎojìng Huáng Jìn Chá (保靖黄金茶, Bǎojìng Huángjīn Chá)"
+      },
+      {
+        "productRef": "bei-dou",
+        "productSlug": "bei-dou",
+        "sourceUrl": "https://media.thetea.app/tea/bei-dou/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bèidòu (北斗, běi dǒu)"
+      },
+      {
+        "productRef": "ben-shan",
+        "productSlug": "ben-shan",
+        "sourceUrl": "https://media.thetea.app/tea/ben-shan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Běnshān (本山, běn shān)"
+      },
+      {
+        "productRef": "biluo-hongcha",
+        "productSlug": "biluo-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/biluo-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Biluohong Chá (碧螺红茶, bìluó hóngchá)"
+      },
+      {
+        "productRef": "biluochun",
+        "productSlug": "biluochun",
+        "sourceUrl": "https://media.thetea.app/tea/biluochun/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bìluóchūn (碧螺春, bìluóchūn)"
+      },
+      {
+        "productRef": "boluo-hongcha",
+        "productSlug": "boluo-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/boluo-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bolo Hóng Chá (博罗红茶, Bóluó hóngchá)"
+      },
+      {
+        "productRef": "caihua-mao-jian",
+        "productSlug": "caihua-mao-jian",
+        "sourceUrl": "https://media.thetea.app/tea/caihua-mao-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Cǎihuā Máo Jiān (采花毛尖, Cǎihuā máo jiān)"
+      },
+      {
+        "productRef": "cangshan-xue-lu",
+        "productSlug": "cangshan-xue-lu",
+        "sourceUrl": "https://media.thetea.app/tea/cangshan-xue-lu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Cangshan Xue Lü (苍山雪绿, Cāngshān xuě lǜ)"
+      },
+      {
+        "productRef": "chayu-hongcha",
+        "productSlug": "chayu-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/chayu-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Cháyù Hóng Chá (察隅红茶, Cháyù Hóngchá)"
+      },
+      {
+        "productRef": "chuanhong-gong-fu",
+        "productSlug": "chuanhong-gong-fu",
+        "sourceUrl": "https://media.thetea.app/tea/chuanhong-gong-fu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Chuānhóng Gōngfū (川红工夫, Chuānhóng gōngfū)"
+      },
+      {
+        "productRef": "cui-luan-wulong",
+        "productSlug": "cui-luan-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/cui-luan-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Cuì Luán Oolong (翠巒烏龍, cuì luán wūlóng)"
+      },
+      {
+        "productRef": "cuiyu-wulong",
+        "productSlug": "cuiyu-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/cuiyu-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Taiwanese Jade Oolong (翠玉烏龍, cuìyù wūlóng)"
+      },
+      {
+        "productRef": "da-hong-gan",
+        "productSlug": "da-hong-gan",
+        "sourceUrl": "https://media.thetea.app/tea/da-hong-gan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Da Hong Gan (大红柑, dà hóng gān)"
+      },
+      {
+        "productRef": "da-hong-pao",
+        "productSlug": "da-hong-pao",
+        "sourceUrl": "https://media.thetea.app/tea/da-hong-pao/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dà Hóng Páo (大红袍, dà hóng páo)"
+      },
+      {
+        "productRef": "da-jin-ya-shu-pu-er",
+        "productSlug": "da-jin-ya-shu-pu-er",
+        "sourceUrl": "https://media.thetea.app/tea/da-jin-ya-shu-pu-er/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Da Jin Ya Shu Pu-erh (大金芽熟普洱, dà jīn yá shú pǔ'ěr)"
+      },
+      {
+        "productRef": "da-xue-shan",
+        "productSlug": "da-xue-shan",
+        "sourceUrl": "https://media.thetea.app/tea/da-xue-shan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dasueshan 大雪山"
+      },
+      {
+        "productRef": "da-yu-ling-wulong",
+        "productSlug": "da-yu-ling-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/da-yu-ling-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dàyǔlǐng Oolong (大禹嶺烏龍, dà yǔ lǐng wūlóng)"
+      },
+      {
+        "productRef": "dafu-long-jing",
+        "productSlug": "dafu-long-jing",
+        "sourceUrl": "https://media.thetea.app/tea/dafu-long-jing/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dàfú Lóng Jǐng (大佛龙井, Dàfú lóng jǐng)"
+      },
+      {
+        "productRef": "dali-gantong-cha",
+        "productSlug": "dali-gantong-cha",
+        "sourceUrl": "https://media.thetea.app/tea/dali-gantong-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dàlǐ Gǎn Tǒng Chá (大理感通茶, Dàlǐ gǎntōng chá)"
+      },
+      {
+        "productRef": "damai-cha",
+        "productSlug": "damai-cha",
+        "sourceUrl": "https://media.thetea.app/tea/damai-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Barley Tea (大麦茶, dàmài chá)"
+      },
+      {
+        "productRef": "dan-cong-mi-lan-xiang",
+        "productSlug": "dan-cong-mi-lan-xiang",
+        "sourceUrl": "https://media.thetea.app/tea/dan-cong-mi-lan-xiang/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dān Cóng Mì Lán Xiāng (单丛蜜兰香, dān cóng mì lán xiāng)"
+      },
+      {
+        "productRef": "dan-cong-song-zhong",
+        "productSlug": "dan-cong-song-zhong",
+        "sourceUrl": "https://media.thetea.app/tea/dan-cong-song-zhong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dān Cóng Sòng Zhǒng (单丛宋种, dān cóng sòng zhǒng)"
+      },
+      {
+        "productRef": "dan-cong-xing-ren-xiang",
+        "productSlug": "dan-cong-xing-ren-xiang",
+        "sourceUrl": "https://media.thetea.app/tea/dan-cong-xing-ren-xiang/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dān Cóng Xìng Rén Xiāng (单丛杏仁香, dān cóng xìng rén xiāng)"
+      },
+      {
+        "productRef": "dan-cong-ya-shi-xiang",
+        "productSlug": "dan-cong-ya-shi-xiang",
+        "sourceUrl": "https://media.thetea.app/tea/dan-cong-ya-shi-xiang/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dān Cóng Yā Shǐ Xiāng (单丛鸭屎香, dān cóng yā shǐ xiāng)"
+      },
+      {
+        "productRef": "dancong-bai-ruixiang",
+        "productSlug": "dancong-bai-ruixiang",
+        "sourceUrl": "https://media.thetea.app/tea/dancong-bai-ruixiang/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dàn Cóng Bái Ruǐ Xiāng (白瑞香单丛, dāncóng bái ruìxiāng)"
+      },
+      {
+        "productRef": "datian-mei-ren-cha",
+        "productSlug": "datian-mei-ren-cha",
+        "sourceUrl": "https://media.thetea.app/tea/datian-mei-ren-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dàtián Měi Rén Chá (大田美人茶, Dàtián měi rén chá)"
+      },
+      {
+        "productRef": "dayeqing",
+        "productSlug": "dayeqing",
+        "sourceUrl": "https://media.thetea.app/tea/dayeqing/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dàyèqīng (大叶青, dàyèqīng)"
+      },
+      {
+        "productRef": "dehong-gushu-lucha",
+        "productSlug": "dehong-gushu-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/dehong-gushu-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Green Tea from Ancient Trees of Déhóng (德宏古树绿茶, Déhóng Gǔshù Lǜ Chá)"
+      },
+      {
+        "productRef": "dengcun-lucha",
+        "productSlug": "dengcun-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/dengcun-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dengcun Lü Chá (邓村绿茶, Dèngcūn lǜchá)"
+      },
+      {
+        "productRef": "dianhong-da-jin-ya",
+        "productSlug": "dianhong-da-jin-ya",
+        "sourceUrl": "https://media.thetea.app/tea/dianhong-da-jin-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Diānhóng Dà Jīn Yá (滇红大金芽, Diānhóng dà jīn yá)"
+      },
+      {
+        "productRef": "dianhong-gongfu",
+        "productSlug": "dianhong-gongfu",
+        "sourceUrl": "https://media.thetea.app/tea/dianhong-gongfu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Diān Hóng Gōngfū (滇红工夫, Diānhóng gōngfū)"
+      },
+      {
+        "productRef": "dianhong-jin-luo",
+        "productSlug": "dianhong-jin-luo",
+        "sourceUrl": "https://media.thetea.app/tea/dianhong-jin-luo/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Diān Hóng Jīn Luó (滇红金螺, Diānhóng jīn luó)"
+      },
+      {
+        "productRef": "dianhong-jin-si",
+        "productSlug": "dianhong-jin-si",
+        "sourceUrl": "https://media.thetea.app/tea/dianhong-jin-si/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Diān Hóng Jīn Sī (滇红金丝, Diānhóng jīn sī)"
+      },
+      {
+        "productRef": "dianhong-jin-ya",
+        "productSlug": "dianhong-jin-ya",
+        "sourceUrl": "https://media.thetea.app/tea/dianhong-jin-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Diān Hóng Jīn Yá (滇红金芽, Diānhóng jīn yá)"
+      },
+      {
+        "productRef": "dianhong-jin-zhen",
+        "productSlug": "dianhong-jin-zhen",
+        "sourceUrl": "https://media.thetea.app/tea/dianhong-jin-zhen/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Diān Hóng Jīn Zhēn (滇红金针, Diānhóng jīn zhēn)"
+      },
+      {
+        "productRef": "dianhong-songzhen",
+        "productSlug": "dianhong-songzhen",
+        "sourceUrl": "https://media.thetea.app/tea/dianhong-songzhen/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Diān Hóng Sòng Zhèn (滇红松针, Diānhóng sōngzhēn)"
+      },
+      {
+        "productRef": "dianhong-ye-sheng",
+        "productSlug": "dianhong-ye-sheng",
+        "sourceUrl": "https://media.thetea.app/tea/dianhong-ye-sheng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Diān Hóng Yě Shēng (滇红野生, Diānhóng yě shēng)"
+      },
+      {
+        "productRef": "dinggu-da-fang",
+        "productSlug": "dinggu-da-fang",
+        "sourceUrl": "https://media.thetea.app/tea/dinggu-da-fang/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dinggudafang (顶谷大方, Dǐnggǔ dà fāng)"
+      },
+      {
+        "productRef": "dingjun-ming-mei",
+        "productSlug": "dingjun-ming-mei",
+        "sourceUrl": "https://media.thetea.app/tea/dingjun-ming-mei/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dìngjūn Míng Méi (定军茗眉, Dìngjūn míng méi)"
+      },
+      {
+        "productRef": "dong-ding-wulong",
+        "productSlug": "dong-ding-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/dong-ding-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dòng Dǐng Oolong (凍頂烏龍, dòng dǐng wūlóng)"
+      },
+      {
+        "productRef": "dongfang-meiren",
+        "productSlug": "dongfang-meiren",
+        "sourceUrl": "https://media.thetea.app/tea/dongfang-meiren/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dōngfāng Měirén (東方美人, dōngfāng měirén)"
+      },
+      {
+        "productRef": "dongshan-xiu-feng",
+        "productSlug": "dongshan-xiu-feng",
+        "sourceUrl": "https://media.thetea.app/tea/dongshan-xiu-feng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dōngshān Xiù Fēng (东山秀峰, Dōngshān xiù fēng)"
+      },
+      {
+        "productRef": "dongting-biluochun",
+        "productSlug": "dongting-biluochun",
+        "sourceUrl": "https://media.thetea.app/tea/dongting-biluochun/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dōng Tíng Bìluóchūn (洞庭碧螺春, Dòngtíng bìluóchūn)"
+      },
+      {
+        "productRef": "douyun-mao-jian",
+        "productSlug": "douyun-mao-jian",
+        "sourceUrl": "https://media.thetea.app/tea/douyun-mao-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dōuyún Máo Jiān (都匀毛尖, Dōuyún máo jiān)"
+      },
+      {
+        "productRef": "emei-huang-ya",
+        "productSlug": "emei-huang-ya",
+        "sourceUrl": "https://media.thetea.app/tea/emei-huang-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Éméi Huáng Yá (峨眉黄芽, Éméi huáng yá)"
+      },
+      {
+        "productRef": "emei-mao-feng",
+        "productSlug": "emei-mao-feng",
+        "sourceUrl": "https://media.thetea.app/tea/emei-mao-feng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Éméi Máo Fēng (峨眉毛峰, Éméi máo fēng)"
+      },
+      {
+        "productRef": "emei-xue-ya",
+        "productSlug": "emei-xue-ya",
+        "sourceUrl": "https://media.thetea.app/tea/emei-xue-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Éméi Xuě Yá (峨眉雪芽, Éméi xuě yá)"
+      },
+      {
+        "productRef": "emei-zhuyeqing",
+        "productSlug": "emei-zhuyeqing",
+        "sourceUrl": "https://media.thetea.app/tea/emei-zhuyeqing/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Éméi Zhúyèqīng (峨眉竹叶青, Éméi zhúyèqīng)"
+      },
+      {
+        "productRef": "enshi-yulu",
+        "productSlug": "enshi-yulu",
+        "sourceUrl": "https://media.thetea.app/tea/enshi-yulu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ēnshī Yùlù (恩施玉露, Ēnshī yùlù)"
+      },
+      {
+        "productRef": "fanjingshan-hongcha",
+        "productSlug": "fanjingshan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/fanjingshan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Fànjìngshān Hóng Chá (梵净山红茶, Fànjìngshān hóngchá)"
+      },
+      {
+        "productRef": "fanjingshan-lucha",
+        "productSlug": "fanjingshan-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/fanjingshan-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Fanjingshan Lü Chá (梵净山绿茶, Fànjìngshān lǜchá)"
+      },
+      {
+        "productRef": "feng-qing-hong-cha",
+        "productSlug": "feng-qing-hong-cha",
+        "sourceUrl": "https://media.thetea.app/tea/feng-qing-hong-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Fengqing Red Tea 凤庆红茶"
+      },
+      {
+        "productRef": "fenggang-xin-xi-cha",
+        "productSlug": "fenggang-xin-xi-cha",
+        "sourceUrl": "https://media.thetea.app/tea/fenggang-xin-xi-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Fenggang Zinc-Selenium Tea (凤冈锌硒茶, Fènggāng xīn xī chá)"
+      },
+      {
+        "productRef": "fengkai-hongcha",
+        "productSlug": "fengkai-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/fengkai-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Fēngkāi Hóng Chá (封開紅茶, Fēngkāi Hóngchá)"
+      },
+      {
+        "productRef": "fo-shou",
+        "productSlug": "fo-shou",
+        "sourceUrl": "https://media.thetea.app/tea/fo-shou/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Fó Shǒu (佛手, fó shǒu)"
+      },
+      {
+        "productRef": "fu-zhuan-cha",
+        "productSlug": "fu-zhuan-cha",
+        "sourceUrl": "https://media.thetea.app/tea/fu-zhuan-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Fú Zhuān Chá (茯砖茶, fú zhuān chá)"
+      },
+      {
+        "productRef": "fuding-baicha",
+        "productSlug": "fuding-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/fuding-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Fúdǐng Bái Chá (福鼎白茶, Fúdǐng báichá)"
+      },
+      {
+        "productRef": "fujian-gao-shan-hongcha",
+        "productSlug": "fujian-gao-shan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/fujian-gao-shan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Fújiàn Gāoshān Hóngchá (福建高山红茶, Fújiàn gāo shān hóngchá)"
+      },
+      {
+        "productRef": "fujian-xue-ya-hongcha",
+        "productSlug": "fujian-xue-ya-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/fujian-xue-ya-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Fújiàn Xuě Yá Hóng Chá (福建雪芽红茶, Fújiàn xuě yá hóngchá)"
+      },
+      {
+        "productRef": "fushou-shan-wulong",
+        "productSlug": "fushou-shan-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/fushou-shan-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Fúshòushān Oolong (福寿山乌龙, Fúshòu shān wūlóng)"
+      },
+      {
+        "productRef": "fuyao-xianzhi",
+        "productSlug": "fuyao-xianzhi",
+        "sourceUrl": "https://media.thetea.app/tea/fuyao-xianzhi/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Fúyáo Xiānzhī (浮瑶仙芝, Fúyáo xiānzhī)"
+      },
+      {
+        "productRef": "gaoqiao-yin-feng",
+        "productSlug": "gaoqiao-yin-feng",
+        "sourceUrl": "https://media.thetea.app/tea/gaoqiao-yin-feng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Gāoqiáo Yín Fēng (高桥银峰, Gāoqiáo yín fēng)"
+      },
+      {
+        "productRef": "gelao-yu-cui",
+        "productSlug": "gelao-yu-cui",
+        "sourceUrl": "https://media.thetea.app/tea/gelao-yu-cui/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Gēlǎo Yù Cuì (仡佬玉翠, Gēlǎo yù cuì)"
+      },
+      {
+        "productRef": "gongmei",
+        "productSlug": "gongmei",
+        "sourceUrl": "https://media.thetea.app/tea/gongmei/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Gòng Méi (贡眉, gòngméi)"
+      },
+      {
+        "productRef": "gongting-pu-er",
+        "productSlug": "gongting-pu-er",
+        "sourceUrl": "https://media.thetea.app/tea/gongting-pu-er/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Gong Ting Pu-erh (宫廷普洱, gōngtíng pǔ'ěr)"
+      },
+      {
+        "productRef": "gougunao-cha",
+        "productSlug": "gougunao-cha",
+        "sourceUrl": "https://media.thetea.app/tea/gougunao-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Gougounao Chá (狗牯脑茶, gǒugǔnǎo chá)"
+      },
+      {
+        "productRef": "gouqi",
+        "productSlug": "gouqi",
+        "sourceUrl": "https://media.thetea.app/tea/gouqi/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Goji Berries (枸杞, gǒuqǐ)"
+      },
+      {
+        "productRef": "gu-yi-hei-cha",
+        "productSlug": "gu-yi-hei-cha",
+        "sourceUrl": "https://media.thetea.app/tea/gu-yi-hei-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Gǔ Yī Hēi Chá (古黟黑茶, Gǔ yī hēi chá, Gǔ yī hēi chá)"
+      },
+      {
+        "productRef": "guangdong-dancong-hongcha",
+        "productSlug": "guangdong-dancong-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/guangdong-dancong-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Guǎngdōng Dāncóng Hóng Chá (广东单丛红茶, Guǎngdōng dāncóng hóngchá)"
+      },
+      {
+        "productRef": "guangxi-xue-ya",
+        "productSlug": "guangxi-xue-ya",
+        "sourceUrl": "https://media.thetea.app/tea/guangxi-xue-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Guǎngxī Xuě Yá (广西雪芽, Guǎngxī xuě yá)"
+      },
+      {
+        "productRef": "guangxi-zaochun-yinzhen-baicha",
+        "productSlug": "guangxi-zaochun-yinzhen-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/guangxi-zaochun-yinzhen-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Guǎngxī Early Spring Yìn Zhèn Bái Chá (广西早春银针白茶, Guǎngxī zǎochūn yínzhēn báichá)"
+      },
+      {
+        "productRef": "guiding-xue-ya",
+        "productSlug": "guiding-xue-ya",
+        "sourceUrl": "https://media.thetea.app/tea/guiding-xue-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Guìdìng Xuě Yá (贵定雪芽, Guìdìng xuě yá)"
+      },
+      {
+        "productRef": "guifei-wulong",
+        "productSlug": "guifei-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/guifei-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Guìfēi Oolong (貴妃烏龍, guìfēi wūlóng)"
+      },
+      {
+        "productRef": "guihua",
+        "productSlug": "guihua",
+        "sourceUrl": "https://media.thetea.app/tea/guihua/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Osmanthus Flowers (桂花, guìhuā)"
+      },
+      {
+        "productRef": "guihua-xiang-dancong",
+        "productSlug": "guihua-xiang-dancong",
+        "sourceUrl": "https://media.thetea.app/tea/guihua-xiang-dancong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Guī Huā Xiāng Dāncóng (桂花香单丛, guìhuā xiāng dāncóng)"
+      },
+      {
+        "productRef": "guilin-mao-jian",
+        "productSlug": "guilin-mao-jian",
+        "sourceUrl": "https://media.thetea.app/tea/guilin-mao-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Guìlín Máo Jiān (桂林毛尖, Guìlín máo jiān)"
+      },
+      {
+        "productRef": "guizhou-huangcha",
+        "productSlug": "guizhou-huangcha",
+        "sourceUrl": "https://media.thetea.app/tea/guizhou-huangcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Guìzhōu Huáng Chá (贵州黄茶, Guìzhōu huángchá)"
+      },
+      {
+        "productRef": "guizhou-leigongshan-cha",
+        "productSlug": "guizhou-leigongshan-cha",
+        "sourceUrl": "https://media.thetea.app/tea/guizhou-leigongshan-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Guìzhōu Léigōngshān Chá (贵州雷公山茶, Guìzhōu léigōngshān chá)"
+      },
+      {
+        "productRef": "guizhou-luzhu",
+        "productSlug": "guizhou-luzhu",
+        "sourceUrl": "https://media.thetea.app/tea/guizhou-luzhu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Guìzhōu Lú Zhú (贵州露珠, Guìzhōu lùzhū)"
+      },
+      {
+        "productRef": "guizhou-maodong-hongcha",
+        "productSlug": "guizhou-maodong-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/guizhou-maodong-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Guìzhōu Māodòng Hóng Chá (贵州猫洞红茶, Guìzhōu māodòng hóngchá)"
+      },
+      {
+        "productRef": "gulaocha",
+        "productSlug": "gulaocha",
+        "sourceUrl": "https://media.thetea.app/tea/gulaocha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Gǔláochá (古劳茶, gǔláochá)"
+      },
+      {
+        "productRef": "guzhang-mao-jian",
+        "productSlug": "guzhang-mao-jian",
+        "sourceUrl": "https://media.thetea.app/tea/guzhang-mao-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Gǔzhàng Máo Jiān (古丈毛尖, Gǔzhàng máo jiān)"
+      },
+      {
+        "productRef": "guzhuhong",
+        "productSlug": "guzhuhong",
+        "sourceUrl": "https://media.thetea.app/tea/guzhuhong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Guchuhong (顾渚红, Gùzhǔhóng)"
+      },
+      {
+        "productRef": "guzhuzi-sun",
+        "productSlug": "guzhuzi-sun",
+        "sourceUrl": "https://media.thetea.app/tea/guzhuzi-sun/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Gùzhǔ Zǐsǔn (顾渚紫笋, Gùzhǔ Zǐ Sǔn)"
+      },
+      {
+        "productRef": "hanzhong-xian-hao",
+        "productSlug": "hanzhong-xian-hao",
+        "sourceUrl": "https://media.thetea.app/tea/hanzhong-xian-hao/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Hànzhōng Xiān Háo (汉中仙毫, Hànzhōng xiān háo)"
+      },
+      {
+        "productRef": "he-hongcha",
+        "productSlug": "he-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/he-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Hé Hóng Chá (河红茶, hé hóngchá)"
+      },
+      {
+        "productRef": "hei-jin",
+        "productSlug": "hei-jin",
+        "sourceUrl": "https://media.thetea.app/tea/hei-jin/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Hēi Jīn (黑金, hēi jīn)"
+      },
+      {
+        "productRef": "heshan-hongcha",
+        "productSlug": "heshan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/heshan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Hèshān Hóng Chá (鶴山紅茶, Hèshān Hóngchá)"
+      },
+      {
+        "productRef": "hong-an-laojunmei",
+        "productSlug": "hong-an-laojunmei",
+        "sourceUrl": "https://media.thetea.app/tea/hong-an-laojunmei/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Hong'an Lǎojūnméi (红安老君眉, Hóng'ān lǎojūnméi)"
+      },
+      {
+        "productRef": "hong-feng-gao-xiang",
+        "productSlug": "hong-feng-gao-xiang",
+        "sourceUrl": "https://media.thetea.app/tea/hong-feng-gao-xiang/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Hóng Fèng Gāo Xiāng (红凤高香, hóng fèng gāo xiāng)"
+      },
+      {
+        "productRef": "hong-longzhu",
+        "productSlug": "hong-longzhu",
+        "sourceUrl": "https://media.thetea.app/tea/hong-longzhu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Hóng Lóngzhū (红龙珠, hóng lóngzhū)"
+      },
+      {
+        "productRef": "hong-qiao-mei",
+        "productSlug": "hong-qiao-mei",
+        "sourceUrl": "https://media.thetea.app/tea/hong-qiao-mei/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Hongqiaomei (红巧梅, hóng qiǎo méi)"
+      },
+      {
+        "productRef": "hongbaoshi-cha",
+        "productSlug": "hongbaoshi-cha",
+        "sourceUrl": "https://media.thetea.app/tea/hongbaoshi-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Hóngbǎoshí Chá (红宝石茶, Hóngbǎoshí chá)"
+      },
+      {
+        "productRef": "hongshui-wulong",
+        "productSlug": "hongshui-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/hongshui-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Hóngshuǐ Oolong (紅水烏龍, hóngshuǐ wūlóng)"
+      },
+      {
+        "productRef": "hua-gang-wulong",
+        "productSlug": "hua-gang-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/hua-gang-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huā Gāng Oolong (華崗/华冈乌龙, Huá Gāng Wūlóng)"
+      },
+      {
+        "productRef": "hua-juan",
+        "productSlug": "hua-juan",
+        "sourceUrl": "https://media.thetea.app/tea/hua-juan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huā Juǎn (花卷, huā juǎn)"
+      },
+      {
+        "productRef": "huaiji-hongcha",
+        "productSlug": "huaiji-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/huaiji-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huáijí Hóng Chá (怀集红茶, Huáijí hóngchá)"
+      },
+      {
+        "productRef": "huaiji-lucha",
+        "productSlug": "huaiji-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/huaiji-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huaiji Lü Chá (怀集绿茶, Huáijí lǜchá)"
+      },
+      {
+        "productRef": "huang-guanyin",
+        "productSlug": "huang-guanyin",
+        "sourceUrl": "https://media.thetea.app/tea/huang-guanyin/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huáng Guǎn Yìn (黄观音, huáng guānyīn)"
+      },
+      {
+        "productRef": "huang-meigui",
+        "productSlug": "huang-meigui",
+        "sourceUrl": "https://media.thetea.app/tea/huang-meigui/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huáng Méi Guī (黄玫瑰, huáng méiguī)"
+      },
+      {
+        "productRef": "huang-meigui-xiao-zhong",
+        "productSlug": "huang-meigui-xiao-zhong",
+        "sourceUrl": "https://media.thetea.app/tea/huang-meigui-xiao-zhong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huáng Méi Guī Xiǎo Zhǒng (黄玫瑰小种, huáng méigui xiǎo zhǒng)"
+      },
+      {
+        "productRef": "huang-zhi-xiang-dancong",
+        "productSlug": "huang-zhi-xiang-dancong",
+        "sourceUrl": "https://media.thetea.app/tea/huang-zhi-xiang-dancong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huáng Zhī Xiāng Dàn Cóng (黄栀香单丛, huáng zhī xiāng dāncóng)"
+      },
+      {
+        "productRef": "huangjin-gui",
+        "productSlug": "huangjin-gui",
+        "sourceUrl": "https://media.thetea.app/tea/huangjin-gui/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huángjīn Guì (黄金桂, huángjīn guì)"
+      },
+      {
+        "productRef": "huangshan-mao-feng",
+        "productSlug": "huangshan-mao-feng",
+        "sourceUrl": "https://media.thetea.app/tea/huangshan-mao-feng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huángshān Máofēng (黄山毛峰, Huángshān máo fēng)"
+      },
+      {
+        "productRef": "huangshan-yun-wu-cha",
+        "productSlug": "huangshan-yun-wu-cha",
+        "sourceUrl": "https://media.thetea.app/tea/huangshan-yun-wu-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huángshān Yún Wù (黄山云雾茶, Huángshān yún wù chá)"
+      },
+      {
+        "productRef": "huangyun-cui-zhu",
+        "productSlug": "huangyun-cui-zhu",
+        "sourceUrl": "https://media.thetea.app/tea/huangyun-cui-zhu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huángyún Cuì Zhú (黄云翠竹, Huángyún cuì zhú)"
+      },
+      {
+        "productRef": "hubei-qing-zhuan",
+        "productSlug": "hubei-qing-zhuan",
+        "sourceUrl": "https://media.thetea.app/tea/hubei-qing-zhuan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Húběi Qīng Zhuān (湖北青砖, Húběi qīng zhuān)"
+      },
+      {
+        "productRef": "hubei-zijing",
+        "productSlug": "hubei-zijing",
+        "sourceUrl": "https://media.thetea.app/tea/hubei-zijing/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Húběi Zī Jìng (湖北紫荆, Húběi zǐjīng)"
+      },
+      {
+        "productRef": "huidong-lucha",
+        "productSlug": "huidong-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/huidong-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huidong Lü Chá (惠东绿茶, Huìdōng lǜchá)"
+      },
+      {
+        "productRef": "huilong-lucha",
+        "productSlug": "huilong-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/huilong-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huilong Lü Chá (回龙绿茶, Huílóng lǜchá)"
+      },
+      {
+        "productRef": "huimingcha",
+        "productSlug": "huimingcha",
+        "sourceUrl": "https://media.thetea.app/tea/huimingcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huìmíngchá (惠明茶, huìmíngchá)"
+      },
+      {
+        "productRef": "huoshan-huang-da-cha",
+        "productSlug": "huoshan-huang-da-cha",
+        "sourceUrl": "https://media.thetea.app/tea/huoshan-huang-da-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huòshān Huángdàchá (霍山黄大茶, Huòshān huáng dà chá)"
+      },
+      {
+        "productRef": "huoshan-huang-ya",
+        "productSlug": "huoshan-huang-ya",
+        "sourceUrl": "https://media.thetea.app/tea/huoshan-huang-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Huòshān Huángyá (霍山黄芽, Huòshān huáng yá)"
+      },
+      {
+        "productRef": "jiangshan-lu-mu-dan",
+        "productSlug": "jiangshan-lu-mu-dan",
+        "sourceUrl": "https://media.thetea.app/tea/jiangshan-lu-mu-dan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jiangshan Lü Mǔ Dān (江山绿牡丹, Jiāngshān lǜ mǔ dān)"
+      },
+      {
+        "productRef": "jianyang-baicha",
+        "productSlug": "jianyang-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/jianyang-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jiànyáng Bái Chá (建阳白茶, Jiànyáng báichá)"
+      },
+      {
+        "productRef": "jiaogulan",
+        "productSlug": "jiaogulan",
+        "sourceUrl": "https://media.thetea.app/tea/jiaogulan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jiaogulan (绞股蓝, *jiǎogǔlán*)"
+      },
+      {
+        "productRef": "jietan-heicha",
+        "productSlug": "jietan-heicha",
+        "sourceUrl": "https://media.thetea.app/tea/jietan-heicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jiétān Hēi Chá (碣滩黑茶, Jiétān hēichá)"
+      },
+      {
+        "productRef": "jietan-hongcha",
+        "productSlug": "jietan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/jietan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jiétān Hóng Chá (碣滩红茶, Jiétān hóngchá)"
+      },
+      {
+        "productRef": "jietan-lucha",
+        "productSlug": "jietan-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/jietan-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jietan Lü Chá (碣滩绿茶, Jiétān lǜchá)"
+      },
+      {
+        "productRef": "jin-guanyin",
+        "productSlug": "jin-guanyin",
+        "sourceUrl": "https://media.thetea.app/tea/jin-guanyin/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jin Guanyin and Jin Mudan (金观音, 金牡丹)"
+      },
+      {
+        "productRef": "jin-jun-mei",
+        "productSlug": "jin-jun-mei",
+        "sourceUrl": "https://media.thetea.app/tea/jin-jun-mei/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jīn Jùn Méi (金骏眉, jīn jùn méi)"
+      },
+      {
+        "productRef": "jin-mao-hou-hongcha",
+        "productSlug": "jin-mao-hou-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/jin-mao-hou-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jīn Máo Hóu Hóng Chá (金毛猴红茶, jīn máo hóu hóngchá)"
+      },
+      {
+        "productRef": "jin-mudan",
+        "productSlug": "jin-mudan",
+        "sourceUrl": "https://media.thetea.app/tea/jin-mudan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jīn Mǔdān (金牡丹, jīn mǔdān)"
+      },
+      {
+        "productRef": "jin-xuan",
+        "productSlug": "jin-xuan",
+        "sourceUrl": "https://media.thetea.app/tea/jin-xuan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jīn Xuān (金萱, jīn xuān)"
+      },
+      {
+        "productRef": "jin-xuan-gaoshan-hongcha",
+        "productSlug": "jin-xuan-gaoshan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/jin-xuan-gaoshan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jīn Xuān Gāoshān Hóng Chá (金萱高山紅茶, jīn xuān gāoshān hóngchá)"
+      },
+      {
+        "productRef": "jin-xuan-gong-fu-hong",
+        "productSlug": "jin-xuan-gong-fu-hong",
+        "sourceUrl": "https://media.thetea.app/tea/jin-xuan-gong-fu-hong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jin Xuan Gongfuhong 金萱功夫红"
+      },
+      {
+        "productRef": "jin-zhen-bai-lian",
+        "productSlug": "jin-zhen-bai-lian",
+        "sourceUrl": "https://media.thetea.app/tea/jin-zhen-bai-lian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jinzhen Bailian 金针白莲"
+      },
+      {
+        "productRef": "jinding-hongcha",
+        "productSlug": "jinding-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/jinding-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jindding Hóng Chá (金鼎红茶, Jīndǐng hóngchá)"
+      },
+      {
+        "productRef": "jinding-lucha",
+        "productSlug": "jinding-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/jinding-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jindinglucha (金鼎绿茶, Jīndǐng lǜchá)"
+      },
+      {
+        "productRef": "jinfuyucui",
+        "productSlug": "jinfuyucui",
+        "sourceUrl": "https://media.thetea.app/tea/jinfuyucui/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jīnfúyùcuì (金佛玉翠, jīnfúyùcuì)"
+      },
+      {
+        "productRef": "jing-an-hongcha",
+        "productSlug": "jing-an-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/jing-an-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jing'an Hóng Chá (靖安红茶, Jìng'ān hóngchá)"
+      },
+      {
+        "productRef": "jing-shancha",
+        "productSlug": "jing-shancha",
+        "sourceUrl": "https://media.thetea.app/tea/jing-shancha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jìngshān Chá (径山茶, Jìngshān Chá, jìng shānchá)"
+      },
+      {
+        "productRef": "jingan-baicha",
+        "productSlug": "jingan-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/jingan-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jing'an Bái Chá (靖安白茶, Jìng'ān Báichá)"
+      },
+      {
+        "productRef": "jingang-bi-lu",
+        "productSlug": "jingang-bi-lu",
+        "sourceUrl": "https://media.thetea.app/tea/jingang-bi-lu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jingang Bi Lü (金刚碧绿, jīngāng bì lǜ)"
+      },
+      {
+        "productRef": "jinggang-cui-lu",
+        "productSlug": "jinggang-cui-lu",
+        "sourceUrl": "https://media.thetea.app/tea/jinggang-cui-lu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jinggang Cui Lü (井冈翠绿, Jǐnggāng cuì lǜ)"
+      },
+      {
+        "productRef": "jingting-lu-xue",
+        "productSlug": "jingting-lu-xue",
+        "sourceUrl": "https://media.thetea.app/tea/jingting-lu-xue/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jingting Lü Xuě (敬亭绿雪, Jìngtíng Lǜ Xuě)"
+      },
+      {
+        "productRef": "jingua-gongcha",
+        "productSlug": "jingua-gongcha",
+        "sourceUrl": "https://media.thetea.app/tea/jingua-gongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jīnguā Gòng Chá (金瓜贡茶, jīnguā gòngchá)"
+      },
+      {
+        "productRef": "jingxian-te-jian",
+        "productSlug": "jingxian-te-jian",
+        "sourceUrl": "https://media.thetea.app/tea/jingxian-te-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jīngxiàn Tè Jiān (泾县特尖, Jīngxiàn tè jiān)"
+      },
+      {
+        "productRef": "jingyang-fu-zhuan",
+        "productSlug": "jingyang-fu-zhuan",
+        "sourceUrl": "https://media.thetea.app/tea/jingyang-fu-zhuan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jīngyáng Fú Zhuān (泾阳茯砖, Jīngyáng fú zhuān)"
+      },
+      {
+        "productRef": "jinjing-mao-jian",
+        "productSlug": "jinjing-mao-jian",
+        "sourceUrl": "https://media.thetea.app/tea/jinjing-mao-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jīnjǐng Máo Jiān (金井毛尖, Jīnjǐng máo jiān)"
+      },
+      {
+        "productRef": "jinsha-gongcha",
+        "productSlug": "jinsha-gongcha",
+        "sourceUrl": "https://media.thetea.app/tea/jinsha-gongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jīnshā Gòng Chá (金沙贡茶, Jīnshā gòngchá)"
+      },
+      {
+        "productRef": "jintan-que-she",
+        "productSlug": "jintan-que-she",
+        "sourceUrl": "https://media.thetea.app/tea/jintan-que-she/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jīntán Quèshé (金坛雀舌, Jīntán què shé)"
+      },
+      {
+        "productRef": "jinyinhua",
+        "productSlug": "jinyinhua",
+        "sourceUrl": "https://media.thetea.app/tea/jinyinhua/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Honeysuckle Flowers (金银花, jīnyínhuā)"
+      },
+      {
+        "productRef": "jiuceng-shan-hongcha",
+        "productSlug": "jiuceng-shan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/jiuceng-shan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jiǔcéng Shān Hóng Chá (九层山红茶, Jiǔcéng shān hóngchá)"
+      },
+      {
+        "productRef": "jiuceng-shan-lucha",
+        "productSlug": "jiuceng-shan-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/jiuceng-shan-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jiǔcéng Shān Lú Chá (九层山绿茶, jiǔcéng shān lǜchá)"
+      },
+      {
+        "productRef": "jiuhua-fucha",
+        "productSlug": "jiuhua-fucha",
+        "sourceUrl": "https://media.thetea.app/tea/jiuhua-fucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jiǔhuá Fú Chá (九华佛茶, Jiǔhuá fúchá)"
+      },
+      {
+        "productRef": "jiuqu-hong-mei",
+        "productSlug": "jiuqu-hong-mei",
+        "sourceUrl": "https://media.thetea.app/tea/jiuqu-hong-mei/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Jiǔqū Hóng Méi (九曲红梅, jiǔqū hóng méi)"
+      },
+      {
+        "productRef": "ju-pu-ju-hong-ju-bai",
+        "productSlug": "ju-pu-ju-hong-ju-bai",
+        "sourceUrl": "https://media.thetea.app/tea/ju-pu-ju-hong-ju-bai/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ju Pu, Ju Hong, Ju Bai (橘普 · 橘红 · 橘白, jú pǔ · jú hóng · jú bái)"
+      },
+      {
+        "productRef": "juhua-cha",
+        "productSlug": "juhua-cha",
+        "sourceUrl": "https://media.thetea.app/tea/juhua-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Chrysanthemum Tea (菊花茶, júhuā chá)"
+      },
+      {
+        "productRef": "junshan-yin-zhen",
+        "productSlug": "junshan-yin-zhen",
+        "sourceUrl": "https://media.thetea.app/tea/junshan-yin-zhen/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Junshan Yinzhen (君山银针, Jūnshān yín zhēn)"
+      },
+      {
+        "productRef": "kaihua-long-ding",
+        "productSlug": "kaihua-long-ding",
+        "sourceUrl": "https://media.thetea.app/tea/kaihua-long-ding/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Kāihuà Lóng Dǐng (开化龙顶, Kāihuà lóng dǐng)"
+      },
+      {
+        "productRef": "kaiyang-fu-xi-cha",
+        "productSlug": "kaiyang-fu-xi-cha",
+        "sourceUrl": "https://media.thetea.app/tea/kaiyang-fu-xi-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Kāiyáng Fù Xī Chá (开阳富硒茶, Kāiyáng fù xī chá)"
+      },
+      {
+        "productRef": "kang-zhuan",
+        "productSlug": "kang-zhuan",
+        "sourceUrl": "https://media.thetea.app/tea/kang-zhuan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Kāng Zhuān (康砖, kāng zhuān, kāng zhuān)"
+      },
+      {
+        "productRef": "kanghe-cha",
+        "productSlug": "kanghe-cha",
+        "sourceUrl": "https://media.thetea.app/tea/kanghe-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Kānghé Chá (康禾茶, Kānghé chá)"
+      },
+      {
+        "productRef": "kuding-cha",
+        "productSlug": "kuding-cha",
+        "sourceUrl": "https://media.thetea.app/tea/kuding-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ku Ding (苦丁茶, *kǔdīng chá*)"
+      },
+      {
+        "productRef": "kugua-cha",
+        "productSlug": "kugua-cha",
+        "sourceUrl": "https://media.thetea.app/tea/kugua-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bitter Gourd Tea (苦瓜茶, kǔguā chá)"
+      },
+      {
+        "productRef": "kuqiaomai",
+        "productSlug": "kuqiaomai",
+        "sourceUrl": "https://media.thetea.app/tea/kuqiaomai/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Buckwheat Tea (苦荞茶, kǔ qiáo chá)"
+      },
+      {
+        "productRef": "lan-hudie",
+        "productSlug": "lan-hudie",
+        "sourceUrl": "https://media.thetea.app/tea/lan-hudie/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Blue Butterfly Pea Tea (蓝蝴蝶, lán húdié)"
+      },
+      {
+        "productRef": "lanling-mao-jian",
+        "productSlug": "lanling-mao-jian",
+        "sourceUrl": "https://media.thetea.app/tea/lanling-mao-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lánlǐng Máo Jiān (兰岭毛尖, Lánlǐng máo jiān)"
+      },
+      {
+        "productRef": "lao-cha-tou",
+        "productSlug": "lao-cha-tou",
+        "sourceUrl": "https://media.thetea.app/tea/lao-cha-tou/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Лао Ча Тоу"
+      },
+      {
+        "productRef": "lao-cha-wang",
+        "productSlug": "lao-cha-wang",
+        "sourceUrl": "https://media.thetea.app/tea/lao-cha-wang/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lǎo Chá Wáng (老茶王, lǎo chá wáng)"
+      },
+      {
+        "productRef": "laoshan-da-bai-hao",
+        "productSlug": "laoshan-da-bai-hao",
+        "sourceUrl": "https://media.thetea.app/tea/laoshan-da-bai-hao/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Láoshān Dà Bái Háo (崂山大白毫, Láoshān dà bái háo)"
+      },
+      {
+        "productRef": "laoshan-hongcha",
+        "productSlug": "laoshan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/laoshan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Láoshān Hóng Chá (崂山红茶, Láoshān hóngchá)"
+      },
+      {
+        "productRef": "laoshan-lucha",
+        "productSlug": "laoshan-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/laoshan-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Laoshan Lü Chá (崂山绿茶, Láoshān lǜchá)"
+      },
+      {
+        "productRef": "lechang-bai-maocha",
+        "productSlug": "lechang-bai-maocha",
+        "sourceUrl": "https://media.thetea.app/tea/lechang-bai-maocha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lèchāng Bái Máo Chá (乐昌白毛茶, Lèchāng bái máochá)"
+      },
+      {
+        "productRef": "leishan-yin-qiu-cha",
+        "productSlug": "leishan-yin-qiu-cha",
+        "sourceUrl": "https://media.thetea.app/tea/leishan-yin-qiu-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Léishān Yín Qiú Chá (雷山银球茶, Léishān yín qiú chá)"
+      },
+      {
+        "productRef": "li-shan-hong-wulong",
+        "productSlug": "li-shan-hong-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/li-shan-hong-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Líshān Hóng Oolong (梨山紅烏龍, Lí shān hóng wūlóng, Lí shān hóng wūlóng)"
+      },
+      {
+        "productRef": "li-shan-wulong",
+        "productSlug": "li-shan-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/li-shan-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Líshān Oolong (梨山烏龍, Lí shān wūlóng)"
+      },
+      {
+        "productRef": "lianyungang-yunwucha",
+        "productSlug": "lianyungang-yunwucha",
+        "sourceUrl": "https://media.thetea.app/tea/lianyungang-yunwucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Liányúngǎng Yúnwùchá (连云港云雾茶, Liányúngǎng yúnwùchá)"
+      },
+      {
+        "productRef": "lianzi-xin",
+        "productSlug": "lianzi-xin",
+        "sourceUrl": "https://media.thetea.app/tea/lianzi-xin/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lotus Plumule (莲子芯, liánzǐ xīn)"
+      },
+      {
+        "productRef": "lichuan-hong",
+        "productSlug": "lichuan-hong",
+        "sourceUrl": "https://media.thetea.app/tea/lichuan-hong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lìchuān Hóng (利川红, Lìchuān hóng)"
+      },
+      {
+        "productRef": "lijiang-lu-luo",
+        "productSlug": "lijiang-lu-luo",
+        "sourceUrl": "https://media.thetea.app/tea/lijiang-lu-luo/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lijiang Lü Luó (灕江绿螺, Líjiāng lǜ luó)"
+      },
+      {
+        "productRef": "linglong-lucha",
+        "productSlug": "linglong-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/linglong-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Linglun Lü Cha (玲珑绿茶, Línglóng lǜchá)"
+      },
+      {
+        "productRef": "lingtou-qi-lan",
+        "productSlug": "lingtou-qi-lan",
+        "sourceUrl": "https://media.thetea.app/tea/lingtou-qi-lan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lǐngtóu Qí Lán (岭头奇兰, Lǐngtóu qí lán)"
+      },
+      {
+        "productRef": "lingyun-baicha",
+        "productSlug": "lingyun-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/lingyun-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Língyún Bái Chá (凌云白茶, Língyún báichá)"
+      },
+      {
+        "productRef": "lingyun-hongcha",
+        "productSlug": "lingyun-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/lingyun-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Língyún Hóng Chá (凌云红茶, Língyún hóngchá)"
+      },
+      {
+        "productRef": "lingyun-lucha",
+        "productSlug": "lingyun-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/lingyun-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lingyun Green Tea (凌云绿茶, Língyún lǜchá)"
+      },
+      {
+        "productRef": "linzhi-chun-lu",
+        "productSlug": "linzhi-chun-lu",
+        "sourceUrl": "https://media.thetea.app/tea/linzhi-chun-lu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Linzhi Chun Lü (林芝春绿, Línzhī chūn lǜ)"
+      },
+      {
+        "productRef": "liping-xiangcha",
+        "productSlug": "liping-xiangcha",
+        "sourceUrl": "https://media.thetea.app/tea/liping-xiangcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lípíng Xiāng Chá (黎平香茶, Lípíng xiāngchá)"
+      },
+      {
+        "productRef": "liu-an-guapian",
+        "productSlug": "liu-an-guapian",
+        "sourceUrl": "https://media.thetea.app/tea/liu-an-guapian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Liú Ān Guà Piān (六安瓜片, Liù'ān guāpiàn)"
+      },
+      {
+        "productRef": "liu-an-heicha",
+        "productSlug": "liu-an-heicha",
+        "sourceUrl": "https://media.thetea.app/tea/liu-an-heicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Liú Ān Hēi Chá (六安黑茶, Liù'ān hēichá)"
+      },
+      {
+        "productRef": "liu-bao-cha",
+        "productSlug": "liu-bao-cha",
+        "sourceUrl": "https://media.thetea.app/tea/liu-bao-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Liù Bǎo Hēi Chá (六堡茶, Liù bǎo chá)"
+      },
+      {
+        "productRef": "liu-bao-cha-chuan-gu-dao",
+        "productSlug": "liu-bao-cha-chuan-gu-dao",
+        "sourceUrl": "https://media.thetea.app/tea/liu-bao-cha-chuan-gu-dao/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Terroirs of Liubao and the Tea Boat Route (六堡 · 茶船古道, liù bǎo · chá chuán gǔ dào)"
+      },
+      {
+        "productRef": "liulong-hongcha",
+        "productSlug": "liulong-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/liulong-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Liùlóng Hóng Chá (六龙红茶, Liùlóng hóngchá)"
+      },
+      {
+        "productRef": "liulong-lucha",
+        "productSlug": "liulong-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/liulong-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Liùlóng Lú Chá (六龙绿茶, Liùlóng lǜchá)"
+      },
+      {
+        "productRef": "lizhi-hongcha",
+        "productSlug": "lizhi-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/lizhi-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lìzhī Hóng Chá (荔枝红茶, lìzhī hóngchá)"
+      },
+      {
+        "productRef": "lizhi-wulong",
+        "productSlug": "lizhi-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/lizhi-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lìzhī Wūlóng (荔枝乌龙, lìzhī wūlóng)"
+      },
+      {
+        "productRef": "long-feng-xia-gao-shan-wulong",
+        "productSlug": "long-feng-xia-gao-shan-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/long-feng-xia-gao-shan-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lóng Fèng Xiá Gāoshān Oolong (龍鳳峽高山烏龍, lóng fèng xiá gāo shān wūlóng)"
+      },
+      {
+        "productRef": "longji-hongcha",
+        "productSlug": "longji-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/longji-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lóngjǐ Hóng Chá (龙脊红茶, Lóngjǐ Hóngchá)"
+      },
+      {
+        "productRef": "longji-lucha",
+        "productSlug": "longji-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/longji-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Longji Lü Chá (龙脊绿茶, Lóngjí lǜchá)"
+      },
+      {
+        "productRef": "lu-yang-chun",
+        "productSlug": "lu-yang-chun",
+        "sourceUrl": "https://media.thetea.app/tea/lu-yang-chun/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lü Yáng Chūn (绿杨春, lǜ yáng chūn)"
+      },
+      {
+        "productRef": "lubaoshi-cha",
+        "productSlug": "lubaoshi-cha",
+        "sourceUrl": "https://media.thetea.app/tea/lubaoshi-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lubaocha (绿宝石茶, lǜbǎoshí chá)"
+      },
+      {
+        "productRef": "luoshen-hua",
+        "productSlug": "luoshen-hua",
+        "sourceUrl": "https://media.thetea.app/tea/luoshen-hua/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Hibiscus (洛神花, luòshén huā)"
+      },
+      {
+        "productRef": "lushan-yun-wu",
+        "productSlug": "lushan-yun-wu",
+        "sourceUrl": "https://media.thetea.app/tea/lushan-yun-wu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Lúshān Yún Wù (庐山云雾, Lúshān yún wù)"
+      },
+      {
+        "productRef": "mabian-lucha",
+        "productSlug": "mabian-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/mabian-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mabian Lü Cha (马边绿茶, Mǎbiān lǜchá)"
+      },
+      {
+        "productRef": "macheng-gui-shan-hongcha",
+        "productSlug": "macheng-gui-shan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/macheng-gui-shan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Máchéng Guìshān Hóng Chá (麻城龟山红茶, Máchéng guī shān hóngchá)"
+      },
+      {
+        "productRef": "macheng-gui-shan-lucha",
+        "productSlug": "macheng-gui-shan-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/macheng-gui-shan-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Macheng Gui Shan Lü Chá (麻城龟山绿茶, Máchéng guī shān lǜchá)"
+      },
+      {
+        "productRef": "maoshan-qing-feng",
+        "productSlug": "maoshan-qing-feng",
+        "sourceUrl": "https://media.thetea.app/tea/maoshan-qing-feng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Máoshān Qīng Fēng (茅山青锋, Máoshān qīng fēng)"
+      },
+      {
+        "productRef": "maoxie-cha",
+        "productSlug": "maoxie-cha",
+        "sourceUrl": "https://media.thetea.app/tea/maoxie-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Máoxiè Chá (毛蟹茶, máoxiè chá)"
+      },
+      {
+        "productRef": "matu-lucha",
+        "productSlug": "matu-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/matu-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Matu Lü Chá (马图绿茶, Mǎtú lǜchá)"
+      },
+      {
+        "productRef": "mei-zhan-hongcha",
+        "productSlug": "mei-zhan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/mei-zhan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Méi Zhàn Hóng Chá (梅占红茶, méi zhàn hóngchá)"
+      },
+      {
+        "productRef": "mei-zhan-wulong",
+        "productSlug": "mei-zhan-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/mei-zhan-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Méi Zhàn Oolong (梅占乌龙, méi zhàn wūlóng)"
+      },
+      {
+        "productRef": "meigui-hua-cha",
+        "productSlug": "meigui-hua-cha",
+        "sourceUrl": "https://media.thetea.app/tea/meigui-hua-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Rose Tea (玫瑰花茶, *méiguī huā chá*)"
+      },
+      {
+        "productRef": "meiren-hongcha",
+        "productSlug": "meiren-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/meiren-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Méi Rén Hóng Chá (美人红茶, měirén hóngchá)"
+      },
+      {
+        "productRef": "meitan-cui-ya",
+        "productSlug": "meitan-cui-ya",
+        "sourceUrl": "https://media.thetea.app/tea/meitan-cui-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Méitán Cuì Yá (湄潭翠芽, Méitán cuì yá)"
+      },
+      {
+        "productRef": "mengding-gan-lu",
+        "productSlug": "mengding-gan-lu",
+        "sourceUrl": "https://media.thetea.app/tea/mengding-gan-lu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Méngdǐng Gānlù (蒙顶甘露, Méngdǐng gān lù)"
+      },
+      {
+        "productRef": "mengding-huang-ya",
+        "productSlug": "mengding-huang-ya",
+        "sourceUrl": "https://media.thetea.app/tea/mengding-huang-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Méngdǐng Huáng Yá (蒙顶黄芽, Méngdǐng huáng yá)"
+      },
+      {
+        "productRef": "mengding-mao-feng",
+        "productSlug": "mengding-mao-feng",
+        "sourceUrl": "https://media.thetea.app/tea/mengding-mao-feng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mèng Dǐng Máo Fēng (蒙顶毛峰, Méngdǐng máo fēng)"
+      },
+      {
+        "productRef": "mengdingshan-lu-mao-feng",
+        "productSlug": "mengdingshan-lu-mao-feng",
+        "sourceUrl": "https://media.thetea.app/tea/mengdingshan-lu-mao-feng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mengdingshan Lü Máo Fēng (蒙顶山绿毛峰, Méngdǐngshān lǜ máo fēng)"
+      },
+      {
+        "productRef": "mi-xiang-jin-ya-hongcha",
+        "productSlug": "mi-xiang-jin-ya-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/mi-xiang-jin-ya-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mì Xiāng Jīn Yá Hóng Chá (蜜香金芽紅茶, mì xiāng jīn yá hóngchá)"
+      },
+      {
+        "productRef": "mingjian-mi-xiang-hongcha",
+        "productSlug": "mingjian-mi-xiang-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/mingjian-mi-xiang-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mingjiān Mì Xiāng Hóng Chá (名間蜜香紅茶, Míngjiān mì xiāng hóngchá)"
+      },
+      {
+        "productRef": "mogan-huang-ya",
+        "productSlug": "mogan-huang-ya",
+        "sourceUrl": "https://media.thetea.app/tea/mogan-huang-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mògān Huáng Yá (莫干黄芽, Mògān huáng yá)"
+      },
+      {
+        "productRef": "moli-feng-yan",
+        "productSlug": "moli-feng-yan",
+        "sourceUrl": "https://media.thetea.app/tea/moli-feng-yan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mòlì Fèng Yǎn (茉莉凤眼, mòlì fèng yǎn)"
+      },
+      {
+        "productRef": "moli-longzhu",
+        "productSlug": "moli-longzhu",
+        "sourceUrl": "https://media.thetea.app/tea/moli-longzhu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mòlì Lǒng Zhú (茉莉龙珠, mòlì lóngzhū)"
+      },
+      {
+        "productRef": "moli-nu-er-huan",
+        "productSlug": "moli-nu-er-huan",
+        "sourceUrl": "https://media.thetea.app/tea/moli-nu-er-huan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Moli Nü'er Huán (茉莉女儿环, mòlì nǚ'ér huán)"
+      },
+      {
+        "productRef": "moli-piao-xue",
+        "productSlug": "moli-piao-xue",
+        "sourceUrl": "https://media.thetea.app/tea/moli-piao-xue/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mòlì Piāo Xuě (茉莉飘雪, mòlì piāo xuě)"
+      },
+      {
+        "productRef": "moli-yin-hao",
+        "productSlug": "moli-yin-hao",
+        "sourceUrl": "https://media.thetea.app/tea/moli-yin-hao/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mòlì Yín Háo (茉莉银毫, mòlì yín háo)"
+      },
+      {
+        "productRef": "moli-yinzhen",
+        "productSlug": "moli-yinzhen",
+        "sourceUrl": "https://media.thetea.app/tea/moli-yinzhen/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mòlì Yìn Zhèn (茉莉银针, mòlì yínzhēn)"
+      },
+      {
+        "productRef": "moli-yu-die",
+        "productSlug": "moli-yu-die",
+        "sourceUrl": "https://media.thetea.app/tea/moli-yu-die/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mòlì Yù Dié (茉莉玉蝶, mòlì yù dié)"
+      },
+      {
+        "productRef": "motuo-hongcha",
+        "productSlug": "motuo-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/motuo-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Moto Hóng Chá (墨脱红茶, Mòtuō hóngchá)"
+      },
+      {
+        "productRef": "motuo-lucha",
+        "productSlug": "motuo-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/motuo-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Motuo Lü Chá (墨脱绿茶, Mòtuō lǜchá)"
+      },
+      {
+        "productRef": "motuo-zhuancha",
+        "productSlug": "motuo-zhuancha",
+        "sourceUrl": "https://media.thetea.app/tea/motuo-zhuancha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Moto Zhuān Chá (墨脱砖茶, Mòtuō zhuānchá)"
+      },
+      {
+        "productRef": "mudan-hua",
+        "productSlug": "mudan-hua",
+        "sourceUrl": "https://media.thetea.app/tea/mudan-hua/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Peony Flowers (牡丹花, mǔdān huā)"
+      },
+      {
+        "productRef": "mudan-wang",
+        "productSlug": "mudan-wang",
+        "sourceUrl": "https://media.thetea.app/tea/mudan-wang/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mǔdān Wáng (牡丹王, mǔdān wáng)"
+      },
+      {
+        "productRef": "muzha-tieguanyin",
+        "productSlug": "muzha-tieguanyin",
+        "sourceUrl": "https://media.thetea.app/tea/muzha-tieguanyin/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Mùzhà Tiěguānyīn (木柵鐵觀音, Mùzhà tiěguānyīn)"
+      },
+      {
+        "productRef": "nai-xiang-wulong",
+        "productSlug": "nai-xiang-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/nai-xiang-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Nǎi Xiāng Oolong (奶香乌龙, nǎi xiāng wūlóng)"
+      },
+      {
+        "productRef": "nanchuan-hongcha",
+        "productSlug": "nanchuan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/nanchuan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Nánchuān Hóng Chá (南川红茶, Nánchuān hóngchá)"
+      },
+      {
+        "productRef": "nanchuan-lucha",
+        "productSlug": "nanchuan-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/nanchuan-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Nanchuan Lü Chá (南川绿茶, Nánchuān lǜchá)"
+      },
+      {
+        "productRef": "nanhai-hongcha",
+        "productSlug": "nanhai-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/nanhai-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Nánhǎi Hóng Chá (南海红茶, Nánhǎi hóngchá)"
+      },
+      {
+        "productRef": "nanhai-lucha",
+        "productSlug": "nanhai-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/nanhai-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Nanhai Lü Chá (南海绿茶, Nánhǎi lǜchá)"
+      },
+      {
+        "productRef": "nanjing-yuhua-cha",
+        "productSlug": "nanjing-yuhua-cha",
+        "sourceUrl": "https://media.thetea.app/tea/nanjing-yuhua-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Nánjīng Yǔhuā Chá (南京雨花茶, Nánjīng yǔhuā chá)"
+      },
+      {
+        "productRef": "nanyue-yunwucha",
+        "productSlug": "nanyue-yunwucha",
+        "sourceUrl": "https://media.thetea.app/tea/nanyue-yunwucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Nányuè Yúnwùchá (南岳云雾茶, Nányuè yúnwùchá)"
+      },
+      {
+        "productRef": "ninghong-gong-fu",
+        "productSlug": "ninghong-gong-fu",
+        "sourceUrl": "https://media.thetea.app/tea/ninghong-gong-fu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Nínghóng Gōngfū (宁红工夫, Nínghóng Gōngfū)"
+      },
+      {
+        "productRef": "ningmeng-pian",
+        "productSlug": "ningmeng-pian",
+        "sourceUrl": "https://media.thetea.app/tea/ningmeng-pian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dried Lemon Slices (柠檬片, níngméng piàn)"
+      },
+      {
+        "productRef": "ningqiang-que-she",
+        "productSlug": "ningqiang-que-she",
+        "sourceUrl": "https://media.thetea.app/tea/ningqiang-que-she/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Níngqiáng Què Shé (宁强雀舌, Níngqiáng què shé)"
+      },
+      {
+        "productRef": "nuwa-yin-feng",
+        "productSlug": "nuwa-yin-feng",
+        "sourceUrl": "https://media.thetea.app/tea/nuwa-yin-feng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Nüwa Yín Fēng (女娲银峰, Nǚwā yín fēng)"
+      },
+      {
+        "productRef": "panan-yun-feng",
+        "productSlug": "panan-yun-feng",
+        "sourceUrl": "https://media.thetea.app/tea/panan-yun-feng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Pan'an Yun Feng (磐安云峰, Pán'ān yún fēng)"
+      },
+      {
+        "productRef": "pingguo-hua",
+        "productSlug": "pingguo-hua",
+        "sourceUrl": "https://media.thetea.app/tea/pingguo-hua/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Apple Blossoms (苹果花, *píngguǒ huā*)"
+      },
+      {
+        "productRef": "pinghe-bai-ya-qi-lan",
+        "productSlug": "pinghe-bai-ya-qi-lan",
+        "sourceUrl": "https://media.thetea.app/tea/pinghe-bai-ya-qi-lan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Pínghé Báiyá Qílán (平和白芽奇兰, Pínghé bái yá qí lán)"
+      },
+      {
+        "productRef": "pingshui-zhucha",
+        "productSlug": "pingshui-zhucha",
+        "sourceUrl": "https://media.thetea.app/tea/pingshui-zhucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Píngshuǐ Zhūchá (平水珠茶, píngshuǐ zhūchá)"
+      },
+      {
+        "productRef": "pingwu-lucha",
+        "productSlug": "pingwu-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/pingwu-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Píngwǔ Green Tea (平武绿茶, Píngwǔ lǜchá)"
+      },
+      {
+        "productRef": "puan-hongcha",
+        "productSlug": "puan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/puan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Pǔān Hóng Chá (普安红茶, Pǔān hóngchá)"
+      },
+      {
+        "productRef": "pubu-mao-feng",
+        "productSlug": "pubu-mao-feng",
+        "sourceUrl": "https://media.thetea.app/tea/pubu-mao-feng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Pùbù Máo Fēng (瀑布毛峰, pùbù máo fēng)"
+      },
+      {
+        "productRef": "pujiang-chun-hao",
+        "productSlug": "pujiang-chun-hao",
+        "sourceUrl": "https://media.thetea.app/tea/pujiang-chun-hao/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Pǔjiāng Chūn Háo (浦江春毫, Pǔjiāng chūn háo)"
+      },
+      {
+        "productRef": "pujiang-que-she",
+        "productSlug": "pujiang-que-she",
+        "sourceUrl": "https://media.thetea.app/tea/pujiang-que-she/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Pújiāng Què Shé (蒲江雀舌, Pújiāng què shé)"
+      },
+      {
+        "productRef": "putuo-fucha",
+        "productSlug": "putuo-fucha",
+        "sourceUrl": "https://media.thetea.app/tea/putuo-fucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Pǔtuó Fú Chá (普陀佛茶, Pǔtuó fúchá)"
+      },
+      {
+        "productRef": "qi-lan",
+        "productSlug": "qi-lan",
+        "sourceUrl": "https://media.thetea.app/tea/qi-lan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Qí Lán (奇兰, qí lán)"
+      },
+      {
+        "productRef": "qian-liang-cha",
+        "productSlug": "qian-liang-cha",
+        "sourceUrl": "https://media.thetea.app/tea/qian-liang-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Qiān Liǎng Chá (千两茶, qiān liǎng chá, qiān liǎng chá)"
+      },
+      {
+        "productRef": "qiandao-yu-ye",
+        "productSlug": "qiandao-yu-ye",
+        "sourceUrl": "https://media.thetea.app/tea/qiandao-yu-ye/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Qiāndǎo Yù Yè (千岛玉叶, Qiāndǎo yù yè)"
+      },
+      {
+        "productRef": "qianjiazhai-bada",
+        "productSlug": "qianjiazhai-bada",
+        "sourceUrl": "https://media.thetea.app/tea/qianjiazhai-bada/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Qianjiazhai and Bada (千家寨 · 巴达, qiānjiāzhài · bādá)"
+      },
+      {
+        "productRef": "qimen-hongcha",
+        "productSlug": "qimen-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/qimen-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Qǐ Mèn Hóng Chá (祁門紅茶, Qímén Hóngchá)"
+      },
+      {
+        "productRef": "qimen-jinzhen",
+        "productSlug": "qimen-jinzhen",
+        "sourceUrl": "https://media.thetea.app/tea/qimen-jinzhen/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Qímén Jīnzhēn (祁门金针, Qímén jīnzhēn)"
+      },
+      {
+        "productRef": "qingcheng-xue-ya",
+        "productSlug": "qingcheng-xue-ya",
+        "sourceUrl": "https://media.thetea.app/tea/qingcheng-xue-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Qīngchéng Xuě Yá (青城雪芽, Qīngchéng xuě yá)"
+      },
+      {
+        "productRef": "qingliangshan-cha",
+        "productSlug": "qingliangshan-cha",
+        "sourceUrl": "https://media.thetea.app/tea/qingliangshan-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Qīngliángshān Chá (清凉山茶, Qīngliángshān chá)"
+      },
+      {
+        "productRef": "queshe-lucha",
+        "productSlug": "queshe-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/queshe-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Què Shé Lú Chá (雀舌绿茶, quèshé lǜchá)"
+      },
+      {
+        "productRef": "renhua-yin-hao",
+        "productSlug": "renhua-yin-hao",
+        "sourceUrl": "https://media.thetea.app/tea/renhua-yin-hao/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Rénhuà Yín Háo (仁化银毫, Rénhuà yín háo)"
+      },
+      {
+        "productRef": "renshen-pian",
+        "productSlug": "renshen-pian",
+        "sourceUrl": "https://media.thetea.app/tea/renshen-pian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ginseng Slices (人参片, *rénshēn piàn*)"
+      },
+      {
+        "productRef": "renshen-wulong",
+        "productSlug": "renshen-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/renshen-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ginseng Oolong (人参乌龙, rénshēn wūlóng)"
+      },
+      {
+        "productRef": "riyuetan-hongcha",
+        "productSlug": "riyuetan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/riyuetan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Rìyuètán Hóng Chá (日月潭紅茶, Rìyuètán hóngchá)"
+      },
+      {
+        "productRef": "rizhao-lucha",
+        "productSlug": "rizhao-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/rizhao-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Жичжао Люй Ча"
+      },
+      {
+        "productRef": "rou-gui",
+        "productSlug": "rou-gui",
+        "sourceUrl": "https://media.thetea.app/tea/rou-gui/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ròuguì (肉桂, ròu guì)"
+      },
+      {
+        "productRef": "rucheng-baimaocha",
+        "productSlug": "rucheng-baimaocha",
+        "sourceUrl": "https://media.thetea.app/tea/rucheng-baimaocha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Rǔchéng Bái Máo Chá (汝城白毛茶, Rǔchéng báimáochá)"
+      },
+      {
+        "productRef": "rushan-lucha",
+        "productSlug": "rushan-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/rushan-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Rushan Lü Chá (乳山绿茶, Rǔshān lǜchá)"
+      },
+      {
+        "productRef": "sangzhi-baicha",
+        "productSlug": "sangzhi-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/sangzhi-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Sāngzhí Bái Chá (桑植白茶, Sāngzhí báichá)"
+      },
+      {
+        "productRef": "sanqingshan-baicha",
+        "productSlug": "sanqingshan-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/sanqingshan-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Sānqīngshān Bái Chá (三清山白茶, sānqīngshān báichá)"
+      },
+      {
+        "productRef": "sanxia-biluochun",
+        "productSlug": "sanxia-biluochun",
+        "sourceUrl": "https://media.thetea.app/tea/sanxia-biluochun/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Sānxiá Bìluóchūn (三峽碧螺春, Sānxiá bìluóchūn)"
+      },
+      {
+        "productRef": "sanxia-long-jing",
+        "productSlug": "sanxia-long-jing",
+        "sourceUrl": "https://media.thetea.app/tea/sanxia-long-jing/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Sānxiá Lóng Jǐng (三峡龙井, Sānxiá lóng jǐng)"
+      },
+      {
+        "productRef": "sanxia-qingxin-hongcha",
+        "productSlug": "sanxia-qingxin-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/sanxia-qingxin-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Sanxi Qīng Xīn Hóng Chá (三峽青心紅茶, Sānxiá qīngxīn hóngchá)"
+      },
+      {
+        "productRef": "shangguan-xian-hu-cha",
+        "productSlug": "shangguan-xian-hu-cha",
+        "sourceUrl": "https://media.thetea.app/tea/shangguan-xian-hu-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shàngguǎn Xiān Hú Chá (上莞仙湖茶, Shàngguǎn xiān hú chá)"
+      },
+      {
+        "productRef": "shangnan-quan-ming",
+        "productSlug": "shangnan-quan-ming",
+        "sourceUrl": "https://media.thetea.app/tea/shangnan-quan-ming/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shāngnán Quán Míng (商南泉茗, Shāngnán quán míng)"
+      },
+      {
+        "productRef": "shangrao-bai-mei",
+        "productSlug": "shangrao-bai-mei",
+        "sourceUrl": "https://media.thetea.app/tea/shangrao-bai-mei/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shàngráo Bái Méi (上饶白眉, Shàngráo bái méi)"
+      },
+      {
+        "productRef": "shanlinxi-hong-wulong",
+        "productSlug": "shanlinxi-hong-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/shanlinxi-hong-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shānlínxī Hóng Oolong (杉林溪紅烏龍, Shānlínxī hóng wūlóng)"
+      },
+      {
+        "productRef": "shanlinxi-wulong",
+        "productSlug": "shanlinxi-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/shanlinxi-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shānlínxī Oolong (杉林溪烏龍, Shānlínxī wūlóng)"
+      },
+      {
+        "productRef": "shanzha-gan",
+        "productSlug": "shanzha-gan",
+        "sourceUrl": "https://media.thetea.app/tea/shanzha-gan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Dried Hawthorn (山楂干, shānzhā gān)"
+      },
+      {
+        "productRef": "shengzhou-hui-bai",
+        "productSlug": "shengzhou-hui-bai",
+        "sourceUrl": "https://media.thetea.app/tea/shengzhou-hui-bai/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shèngzhōu Huī Bái (嵊州辉白, Shèngzhōu huī bái)"
+      },
+      {
+        "productRef": "shennongjia-chao-qing",
+        "productSlug": "shennongjia-chao-qing",
+        "sourceUrl": "https://media.thetea.app/tea/shennongjia-chao-qing/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shénnóngjià Chǎo Qīng (神农架炒青, Shénnóngjià chǎo qīng)"
+      },
+      {
+        "productRef": "shennongjia-hongcha",
+        "productSlug": "shennongjia-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/shennongjia-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shénnóngjià Hóng Chá (神农架红茶, Shénnóngjià hóngchá)"
+      },
+      {
+        "productRef": "shi-ru",
+        "productSlug": "shi-ru",
+        "sourceUrl": "https://media.thetea.app/tea/shi-ru/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shi Ru 石乳"
+      },
+      {
+        "productRef": "shimen-yin-feng",
+        "productSlug": "shimen-yin-feng",
+        "sourceUrl": "https://media.thetea.app/tea/shimen-yin-feng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shímén Yín Fēng (石门银峰, Shímén yín fēng)"
+      },
+      {
+        "productRef": "shou-mei",
+        "productSlug": "shou-mei",
+        "sourceUrl": "https://media.thetea.app/tea/shou-mei/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shòu Méi (寿眉, shòu méi)"
+      },
+      {
+        "productRef": "shoumei-xin-cha",
+        "productSlug": "shoumei-xin-cha",
+        "sourceUrl": "https://media.thetea.app/tea/shoumei-xin-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shǒu Méi Xīn Chá (寿眉新茶, shòuméi xīn chá)"
+      },
+      {
+        "productRef": "shucheng-xiao-lan-hua",
+        "productSlug": "shucheng-xiao-lan-hua",
+        "sourceUrl": "https://media.thetea.app/tea/shucheng-xiao-lan-hua/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shūchéng Xiǎo Lán Huā (舒城小兰花, Shūchéng xiǎo lán huā)"
+      },
+      {
+        "productRef": "shui-jin-gui",
+        "productSlug": "shui-jin-gui",
+        "sourceUrl": "https://media.thetea.app/tea/shui-jin-gui/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shuǐ Jīn Guī (水金龟, shuǐ jīn guī)"
+      },
+      {
+        "productRef": "shui-xian",
+        "productSlug": "shui-xian",
+        "sourceUrl": "https://media.thetea.app/tea/shui-xian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shuǐ Xiān (水仙, shuǐ xiān)"
+      },
+      {
+        "productRef": "shuicheng-chuncha",
+        "productSlug": "shuicheng-chuncha",
+        "sourceUrl": "https://media.thetea.app/tea/shuicheng-chuncha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shuǐchéng Chún Chá (水城春茶, Shuǐchéng chūnchá)"
+      },
+      {
+        "productRef": "shuiman-cha",
+        "productSlug": "shuiman-cha",
+        "sourceUrl": "https://media.thetea.app/tea/shuiman-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Shuǐmǎn Chá (水满茶, shuǐmǎn chá)"
+      },
+      {
+        "productRef": "sichuan-bian-cha",
+        "productSlug": "sichuan-bian-cha",
+        "sourceUrl": "https://media.thetea.app/tea/sichuan-bian-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Sìchuān Biān Chá (四川边茶, Sìchuān biān chá, Sìchuān biān chá)"
+      },
+      {
+        "productRef": "siji-chun-hong-zhu",
+        "productSlug": "siji-chun-hong-zhu",
+        "sourceUrl": "https://media.thetea.app/tea/siji-chun-hong-zhu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Si Ji Chun 'Red Pearl' (四季春紅珠, sìjì chūn hóng zhū)"
+      },
+      {
+        "productRef": "sijichun",
+        "productSlug": "sijichun",
+        "sourceUrl": "https://media.thetea.app/tea/sijichun/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Sìjìchūn (四季春, sìjìchūn)"
+      },
+      {
+        "productRef": "songfeng-lucha",
+        "productSlug": "songfeng-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/songfeng-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Songfeng Lü Chá (松峰绿茶, Sōngfēng lǜchá)"
+      },
+      {
+        "productRef": "songluo-cha",
+        "productSlug": "songluo-cha",
+        "sourceUrl": "https://media.thetea.app/tea/songluo-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Songluocha (松萝茶, Sōngluó chá)"
+      },
+      {
+        "productRef": "songyang-yin-hou",
+        "productSlug": "songyang-yin-hou",
+        "sourceUrl": "https://media.thetea.app/tea/songyang-yin-hou/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Sōngyáng Yín Hóu (松阳银猴, Sōngyáng yín hóu)"
+      },
+      {
+        "productRef": "sui-yin-zi",
+        "productSlug": "sui-yin-zi",
+        "sourceUrl": "https://media.thetea.app/tea/sui-yin-zi/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Suì Yín Zī (碎银子, suì yín zi)"
+      },
+      {
+        "productRef": "taicha-18-hao-hongyu",
+        "productSlug": "taicha-18-hao-hongyu",
+        "sourceUrl": "https://media.thetea.app/tea/taicha-18-hao-hongyu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Taiwan Hong Yu No. 18 (臺茶18號紅玉, Táichá 18 hào hóngyù)"
+      },
+      {
+        "productRef": "taicha-18-hao-hongyu-baicha",
+        "productSlug": "taicha-18-hao-hongyu-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/taicha-18-hao-hongyu-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Taicha 18 Hào Hóngyù Bái Chá (臺茶18號紅玉白茶, Táichá 18 hào hóngyù báichá)"
+      },
+      {
+        "productRef": "taicha-23-hao-qiyun",
+        "productSlug": "taicha-23-hao-qiyun",
+        "sourceUrl": "https://media.thetea.app/tea/taicha-23-hao-qiyun/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Taiwan Qi Yun No. 23 (臺茶23號祁韻, Táichá 23 hào qíyùn)"
+      },
+      {
+        "productRef": "taicha-23-hao-qiyun-baicha",
+        "productSlug": "taicha-23-hao-qiyun-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/taicha-23-hao-qiyun-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Taicha 23 Hào Qǐ Yùn Bái Chá (臺茶23號祁韻白茶, Táichá 23 hào qíyùn báichá)"
+      },
+      {
+        "productRef": "taihu-cui-zhu",
+        "productSlug": "taihu-cui-zhu",
+        "sourceUrl": "https://media.thetea.app/tea/taihu-cui-zhu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tàihú Cuì Zhú (太湖翠竹, Tàihú cuì zhú)"
+      },
+      {
+        "productRef": "taiping-hou-kui",
+        "productSlug": "taiping-hou-kui",
+        "sourceUrl": "https://media.thetea.app/tea/taiping-hou-kui/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tàipíng Hóukuí (太平猴魁, Tàipíng hóu kuí)"
+      },
+      {
+        "productRef": "taishan-hongcha",
+        "productSlug": "taishan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/taishan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Táishān Hóng Chá (台山红茶, Táishān hóngchá)"
+      },
+      {
+        "productRef": "taishan-nu-er-cha",
+        "productSlug": "taishan-nu-er-cha",
+        "sourceUrl": "https://media.thetea.app/tea/taishan-nu-er-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Taishan Nü Ér Chá (泰山女儿茶, Tàishān nǚ ér chá)"
+      },
+      {
+        "productRef": "taishun-san-bei-xiang",
+        "productSlug": "taishun-san-bei-xiang",
+        "sourceUrl": "https://media.thetea.app/tea/taishun-san-bei-xiang/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tàishùn Sān Bēi Xiāng (泰顺三杯香, Tàishùn sān bēi xiāng)"
+      },
+      {
+        "productRef": "taiwan-jia-chun-qingxin-lucha",
+        "productSlug": "taiwan-jia-chun-qingxin-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/taiwan-jia-chun-qingxin-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Taiwanese Green Tea \"False Spring\" Qīng Xīn (臺灣「假春」青心綠茶, Táiwān 'jiǎ chūn' qīngxīn lǜchá)"
+      },
+      {
+        "productRef": "taiwan-jiancha",
+        "productSlug": "taiwan-jiancha",
+        "sourceUrl": "https://media.thetea.app/tea/taiwan-jiancha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Taiwanese Sencha (臺灣煎茶, Táiwān jiānchá)"
+      },
+      {
+        "productRef": "taiwan-mi-xiang-hongcha",
+        "productSlug": "taiwan-mi-xiang-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/taiwan-mi-xiang-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Táiwān Mì Xiāng Hóng Chá (臺灣蜜香紅茶, Táiwān mì xiāng hóngchá)"
+      },
+      {
+        "productRef": "taiwan-qingxin-baicha",
+        "productSlug": "taiwan-qingxin-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/taiwan-qingxin-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Táiwān Qīngxīn Bái Chá (臺灣青心白茶, Táiwān qīngxīn báichá)"
+      },
+      {
+        "productRef": "taiwan-sijichun-hongcha",
+        "productSlug": "taiwan-sijichun-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/taiwan-sijichun-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Táiwān Sì Jí Chún Hóng Chá (臺灣四季春紅茶, Táiwān sìjìchūn hóngchá)"
+      },
+      {
+        "productRef": "taiwan-sijichun-moli-wulong",
+        "productSlug": "taiwan-sijichun-moli-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/taiwan-sijichun-moli-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Taiwanese Jasmine Oolong Sìjìchūn (台灣四季春茉莉烏龍, Táiwān sìjìchūn mòlì wūlóng, Táiwān sìjìchūn mòlì wūlóng)"
+      },
+      {
+        "productRef": "taiwan-wuyi-hongcha",
+        "productSlug": "taiwan-wuyi-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/taiwan-wuyi-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Táiwān Wǔyí Hóng Chá (臺灣武夷紅茶, Táiwān Wǔyí hóngchá)"
+      },
+      {
+        "productRef": "taiwan-yan-xiaozhong-hongcha",
+        "productSlug": "taiwan-yan-xiaozhong-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/taiwan-yan-xiaozhong-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Táiwān Yān Xiǎo Zhǒng Hóng Chá (臺灣煙小種紅茶, Táiwān yān xiǎozhǒng hóngchá)"
+      },
+      {
+        "productRef": "taiwan-yesheng-shancha-hongcha",
+        "productSlug": "taiwan-yesheng-shancha-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/taiwan-yesheng-shancha-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Táiwān Yè Shěng Shān Chá Hóng Chá (臺灣野生山茶紅茶, Táiwān yěshēng shānchá hóngchá)"
+      },
+      {
+        "productRef": "taiwan-yuchi-asamu-hongcha",
+        "productSlug": "taiwan-yuchi-asamu-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/taiwan-yuchi-asamu-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Táiwān Yúchí Assam Hóng Chá (臺灣魚池阿薩姆紅茶, Táiwān Yúchí āsàmǔ hóngchá)"
+      },
+      {
+        "productRef": "tantang-maojian",
+        "productSlug": "tantang-maojian",
+        "sourceUrl": "https://media.thetea.app/tea/tantang-maojian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tántáng Máojiān (覃塘毛尖, Tántáng Máojiān)"
+      },
+      {
+        "productRef": "tanyang-gong-fu",
+        "productSlug": "tanyang-gong-fu",
+        "sourceUrl": "https://media.thetea.app/tea/tanyang-gong-fu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tǎnyáng Gōngfū (坦洋工夫, Tǎnyáng Gōngfū)"
+      },
+      {
+        "productRef": "taohua",
+        "productSlug": "taohua",
+        "sourceUrl": "https://media.thetea.app/tea/taohua/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Peach Blossoms (桃花, *táohuā*)"
+      },
+      {
+        "productRef": "taolin-lucha",
+        "productSlug": "taolin-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/taolin-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Taolin Lü Chá (桃林绿茶, Táolín lǜchá)"
+      },
+      {
+        "productRef": "taquan-yun-wu",
+        "productSlug": "taquan-yun-wu",
+        "sourceUrl": "https://media.thetea.app/tea/taquan-yun-wu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Taquanyun Wù (塔泉云雾, Tǎquán yún wù)"
+      },
+      {
+        "productRef": "tianfu-long-ya",
+        "productSlug": "tianfu-long-ya",
+        "sourceUrl": "https://media.thetea.app/tea/tianfu-long-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tiānfǔ Lóng Yá (天府龙芽, Tiānfǔ lóng yá)"
+      },
+      {
+        "productRef": "tianmuhu-baicha",
+        "productSlug": "tianmuhu-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/tianmuhu-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tiānmùhú Bái Chá (天目湖白茶, tiānmùhú báichá)"
+      },
+      {
+        "productRef": "tianshan-lucha",
+        "productSlug": "tianshan-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/tianshan-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tiānshān Lú Chá (天山绿茶, Tiānshān lǜchá)"
+      },
+      {
+        "productRef": "tiantai-huangcha",
+        "productSlug": "tiantai-huangcha",
+        "sourceUrl": "https://media.thetea.app/tea/tiantai-huangcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tiāntái Huáng Chá (天台黄茶, Tiāntái huángchá)"
+      },
+      {
+        "productRef": "tiantaishan-yunwucha",
+        "productSlug": "tiantaishan-yunwucha",
+        "sourceUrl": "https://media.thetea.app/tea/tiantaishan-yunwucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tiantishan Yúnwùchá (天台山云雾茶, Tiāntáishān yúnwùchá)"
+      },
+      {
+        "productRef": "tianzhu-jian-hao",
+        "productSlug": "tianzhu-jian-hao",
+        "sourceUrl": "https://media.thetea.app/tea/tianzhu-jian-hao/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tianzhujian Háo (天柱剑毫, Tiānzhù jiàn háo)"
+      },
+      {
+        "productRef": "tie-guanyin",
+        "productSlug": "tie-guanyin",
+        "sourceUrl": "https://media.thetea.app/tea/tie-guanyin/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tiěguānyīn (铁观音, tiě guānyīn)"
+      },
+      {
+        "productRef": "tie-luohan",
+        "productSlug": "tie-luohan",
+        "sourceUrl": "https://media.thetea.app/tea/tie-luohan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tiě Luóhàn (铁罗汉, tiě luóhàn)"
+      },
+      {
+        "productRef": "tong-mu-guan-hong-cha",
+        "productSlug": "tong-mu-guan-hong-cha",
+        "sourceUrl": "https://media.thetea.app/tea/tong-mu-guan-hong-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tongmu Pass Black Tea 桐木关红茶"
+      },
+      {
+        "productRef": "tongbai-hongcha",
+        "productSlug": "tongbai-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/tongbai-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tóngbǎi Hóng Chá (桐柏紅茶, Tóngbǎi Hóngchá)"
+      },
+      {
+        "productRef": "tongbai-yu-ye",
+        "productSlug": "tongbai-yu-ye",
+        "sourceUrl": "https://media.thetea.app/tea/tongbai-yu-ye/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tóngbǎi Yù Yè (桐柏玉叶, Tóngbǎi yù yè)"
+      },
+      {
+        "productRef": "tongcheng-xiao-hua",
+        "productSlug": "tongcheng-xiao-hua",
+        "sourceUrl": "https://media.thetea.app/tea/tongcheng-xiao-hua/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tóngchéng Xiǎo Huā (桐城小花, Tóngchéng xiǎo huā)"
+      },
+      {
+        "productRef": "tongjunmei",
+        "productSlug": "tongjunmei",
+        "sourceUrl": "https://media.thetea.app/tea/tongjunmei/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tóngjùnméi (铜骏眉, Tóngjùnméi)"
+      },
+      {
+        "productRef": "tongmu-yesheng-zheng-shan-xiao-zhong",
+        "productSlug": "tongmu-yesheng-zheng-shan-xiao-zhong",
+        "sourceUrl": "https://media.thetea.app/tea/tongmu-yesheng-zheng-shan-xiao-zhong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tóngmù Yěshēng Zhèngshān Xiǎozhǒng (桐木野生正山小种, Tóngmù yěshēng zhèng shān xiǎo zhǒng)"
+      },
+      {
+        "productRef": "tunlu",
+        "productSlug": "tunlu",
+        "sourceUrl": "https://media.thetea.app/tea/tunlu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Tunlü (屯绿, túnlǜ)"
+      },
+      {
+        "productRef": "wenshan-baozhong-cha",
+        "productSlug": "wenshan-baozhong-cha",
+        "sourceUrl": "https://media.thetea.app/tea/wenshan-baozhong-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wénshān Bāozhǒng (文山包種茶, Wénshān bāozhǒng chá)"
+      },
+      {
+        "productRef": "wenshan-hongcha",
+        "productSlug": "wenshan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/wenshan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wénshān Hóng Chá (文山紅茶, Wénshān hóngchá)"
+      },
+      {
+        "productRef": "wu-ling-wulong",
+        "productSlug": "wu-ling-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/wu-ling-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wǔlíng Oolong (武陵乌龙, wǔ líng wūlóng)"
+      },
+      {
+        "productRef": "wu-niu-zao-hong-cha",
+        "productSlug": "wu-niu-zao-hong-cha",
+        "sourceUrl": "https://media.thetea.app/tea/wu-niu-zao-hong-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wū Niú Zǎo Hóng Chá (乌牛早红茶, wū niú zǎo hóng chá)"
+      },
+      {
+        "productRef": "wu-yi-shan-mei-zhan-ya",
+        "productSlug": "wu-yi-shan-mei-zhan-ya",
+        "sourceUrl": "https://media.thetea.app/tea/wu-yi-shan-mei-zhan-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wuyishan Meizhan Ya 武夷山梅占芽"
+      },
+      {
+        "productRef": "wudang-dao-cha",
+        "productSlug": "wudang-dao-cha",
+        "sourceUrl": "https://media.thetea.app/tea/wudang-dao-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wǔdāng Dào Chá (武当道茶, Wǔdāng dào chá)"
+      },
+      {
+        "productRef": "wufeng-mao-jian",
+        "productSlug": "wufeng-mao-jian",
+        "sourceUrl": "https://media.thetea.app/tea/wufeng-mao-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wǔfēng Máo Jiān (五峰毛尖, Wǔfēng máo jiān)"
+      },
+      {
+        "productRef": "wujiatai-gongcha",
+        "productSlug": "wujiatai-gongcha",
+        "sourceUrl": "https://media.thetea.app/tea/wujiatai-gongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wǔjiātái Gòng Chá (伍家台贡茶, Wǔjiātái gòngchá)"
+      },
+      {
+        "productRef": "wuniu-zao",
+        "productSlug": "wuniu-zao",
+        "sourceUrl": "https://media.thetea.app/tea/wuniu-zao/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wūniú Zǎo (乌牛早, wūniú zǎo)"
+      },
+      {
+        "productRef": "wuxi-haocha",
+        "productSlug": "wuxi-haocha",
+        "sourceUrl": "https://media.thetea.app/tea/wuxi-haocha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wúxī Háo Chá (无锡毫茶, Wúxī háochá)"
+      },
+      {
+        "productRef": "wuyang-chun-yu",
+        "productSlug": "wuyang-chun-yu",
+        "sourceUrl": "https://media.thetea.app/tea/wuyang-chun-yu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wǔyáng Chūnyǔ (武阳春雨, Wǔyáng chūn yǔ)"
+      },
+      {
+        "productRef": "wuyi-wulong",
+        "productSlug": "wuyi-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/wuyi-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Taiwanese Oolong Wǔ (武夷烏龍, Wǔyí wūlóng)"
+      },
+      {
+        "productRef": "wuyuan-xian-zhi",
+        "productSlug": "wuyuan-xian-zhi",
+        "sourceUrl": "https://media.thetea.app/tea/wuyuan-xian-zhi/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wùyuán Xiān Zhī (婺源仙枝, Wùyuán xiān zhī)"
+      },
+      {
+        "productRef": "wuzhishan-hongcha",
+        "productSlug": "wuzhishan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/wuzhishan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wǔzhǐshān Hóng Chá (五指山红茶, Wǔzhǐshān hóngchá)"
+      },
+      {
+        "productRef": "wuzi-lucha",
+        "productSlug": "wuzi-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/wuzi-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Wǔzǐ Lú Chá (午子绿茶, Wǔzǐ Lǜchá)"
+      },
+      {
+        "productRef": "xi-gui",
+        "productSlug": "xi-gui",
+        "sourceUrl": "https://media.thetea.app/tea/xi-gui/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xi Gui (昔归, Xī Guī)"
+      },
+      {
+        "productRef": "xiangcao-lan-hongcha",
+        "productSlug": "xiangcao-lan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/xiangcao-lan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xiāngcǎo Lán Hóng Chá (香草兰红茶, xiāngcǎo lán hóngchá)"
+      },
+      {
+        "productRef": "xiangcao-lan-lucha",
+        "productSlug": "xiangcao-lan-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/xiangcao-lan-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xiangcao Lan Lü Chá (香草兰绿茶, xiāngcǎo lán lǜchá)"
+      },
+      {
+        "productRef": "xiangshan-gongcha",
+        "productSlug": "xiangshan-gongcha",
+        "sourceUrl": "https://media.thetea.app/tea/xiangshan-gongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xiāngshān Gòng Chá (香山贡茶, Xiāngshān gòngchá)"
+      },
+      {
+        "productRef": "xiangyuan-wu-ya",
+        "productSlug": "xiangyuan-wu-ya",
+        "sourceUrl": "https://media.thetea.app/tea/xiangyuan-wu-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xiàngyuán Wù Yá (象园雾芽, Xiàngyuán wù yá)"
+      },
+      {
+        "productRef": "xianrenzhang-cha",
+        "productSlug": "xianrenzhang-cha",
+        "sourceUrl": "https://media.thetea.app/tea/xianrenzhang-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xiānrénzhǎng Chá (仙人掌茶, xiānrénzhǎng chá)"
+      },
+      {
+        "productRef": "xianzhi-zhu-jian",
+        "productSlug": "xianzhi-zhu-jian",
+        "sourceUrl": "https://media.thetea.app/tea/xianzhi-zhu-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xianzhizhujian (仙芝竹尖, xiānzhī zhú jiān)"
+      },
+      {
+        "productRef": "xiazhou-bifeng",
+        "productSlug": "xiazhou-bifeng",
+        "sourceUrl": "https://media.thetea.app/tea/xiazhou-bifeng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xiázhōu Bìfēng (峡州碧峰, Xiázhōu bìfēng)"
+      },
+      {
+        "productRef": "xie-bei-cha",
+        "productSlug": "xie-bei-cha",
+        "sourceUrl": "https://media.thetea.app/tea/xie-bei-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xié Bèi Chá (斜背茶, xié bèi chá)"
+      },
+      {
+        "productRef": "xihu-longjing",
+        "productSlug": "xihu-longjing",
+        "sourceUrl": "https://media.thetea.app/tea/xihu-longjing/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xī Hú Lóngjǐng (西湖龙井, Xīhú lóngjǐng)"
+      },
+      {
+        "productRef": "xin-linyulu",
+        "productSlug": "xin-linyulu",
+        "sourceUrl": "https://media.thetea.app/tea/xin-linyulu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xīn Línyùlù (新林玉露, xīn línyùlù)"
+      },
+      {
+        "productRef": "xingning-dan-cong",
+        "productSlug": "xingning-dan-cong",
+        "sourceUrl": "https://media.thetea.app/tea/xingning-dan-cong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xinning Dān Cóng (兴宁单丛, Xīngníng dān cóng)"
+      },
+      {
+        "productRef": "xinhui-chenpi",
+        "productSlug": "xinhui-chenpi",
+        "sourceUrl": "https://media.thetea.app/tea/xinhui-chenpi/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xinhui Aged Mandarin Peel (新会陈皮, Xīnhuì chénpí)"
+      },
+      {
+        "productRef": "xinyang-baicha",
+        "productSlug": "xinyang-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/xinyang-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xìnyáng Bái Chá (信阳白茶, Xìnyáng báichá)"
+      },
+      {
+        "productRef": "xinyang-hong",
+        "productSlug": "xinyang-hong",
+        "sourceUrl": "https://media.thetea.app/tea/xinyang-hong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xìnyáng Hóng (信阳红, Xìnyáng hóng)"
+      },
+      {
+        "productRef": "xinyang-mao-jian",
+        "productSlug": "xinyang-mao-jian",
+        "sourceUrl": "https://media.thetea.app/tea/xinyang-mao-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xìnyáng Máojian (信阳毛尖, Xìnyáng máo jiān)"
+      },
+      {
+        "productRef": "xinyi-he-luo-hongcha",
+        "productSlug": "xinyi-he-luo-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/xinyi-he-luo-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xìnyí Hé Luó Hóng Chá (信宜合箩红茶, Xìnyí hé luó hóngchá)"
+      },
+      {
+        "productRef": "xinyi-he-luo-lucha",
+        "productSlug": "xinyi-he-luo-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/xinyi-he-luo-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xinyi He Luo Lü Chá (信宜合箩绿茶, Xìnyí hé luó lǜchá)"
+      },
+      {
+        "productRef": "xishan-cha",
+        "productSlug": "xishan-cha",
+        "sourceUrl": "https://media.thetea.app/tea/xishan-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xīshān Chá (西山茶, Xīshān chá)"
+      },
+      {
+        "productRef": "xuwen-lucha",
+        "productSlug": "xuwen-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/xuwen-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Xuwen Lü Chá (徐闻绿茶, Xúwén lǜchá)"
+      },
+      {
+        "productRef": "ya-an-heicha",
+        "productSlug": "ya-an-heicha",
+        "sourceUrl": "https://media.thetea.app/tea/ya-an-heicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ya'an Hēi Chá (雅安黑茶, Yǎ'ān hēichá)"
+      },
+      {
+        "productRef": "yan-song-xiao-zhong-hongcha",
+        "productSlug": "yan-song-xiao-zhong-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/yan-song-xiao-zhong-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yán Sōng Xiǎo Zhǒng Hóng Chá (岩松小种红茶, yán sōng xiǎo zhǒng hóngchá)"
+      },
+      {
+        "productRef": "yandang-mao-feng",
+        "productSlug": "yandang-mao-feng",
+        "sourceUrl": "https://media.thetea.app/tea/yandang-mao-feng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yàndàng Máofēng (雁荡毛峰, Yàndàng máo fēng)"
+      },
+      {
+        "productRef": "yangtian-xue-lu",
+        "productSlug": "yangtian-xue-lu",
+        "sourceUrl": "https://media.thetea.app/tea/yangtian-xue-lu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yangtian Xue Lü (仰天雪绿, Yǎngtiān xuě lǜ)"
+      },
+      {
+        "productRef": "yangxian-xue-ya",
+        "productSlug": "yangxian-xue-ya",
+        "sourceUrl": "https://media.thetea.app/tea/yangxian-xue-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yángxiàn Xuě Yá (阳羡雪芽, Yángxiàn Xuěyá)"
+      },
+      {
+        "productRef": "yangyan-gou-qing",
+        "productSlug": "yangyan-gou-qing",
+        "sourceUrl": "https://media.thetea.app/tea/yangyan-gou-qing/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yángyán Gōu Qīng (羊岩勾青, Yángyán gōu qīng)"
+      },
+      {
+        "productRef": "yantai-lucha",
+        "productSlug": "yantai-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/yantai-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yantai Lü Chá (烟台绿茶, Yāntái lǜchá)"
+      },
+      {
+        "productRef": "yi-wu",
+        "productSlug": "yi-wu",
+        "sourceUrl": "https://media.thetea.app/tea/yi-wu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yiwu 易武"
+      },
+      {
+        "productRef": "yibin-zaocha",
+        "productSlug": "yibin-zaocha",
+        "sourceUrl": "https://media.thetea.app/tea/yibin-zaocha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yíbīn Zǎochá (宜宾早茶, Yíbīn zǎochá)"
+      },
+      {
+        "productRef": "yigong-hongcha",
+        "productSlug": "yigong-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/yigong-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yìgòng Hóng Chá (易贡红茶, Yìgòng hóngchá)"
+      },
+      {
+        "productRef": "yihong-gong-fu",
+        "productSlug": "yihong-gong-fu",
+        "sourceUrl": "https://media.thetea.app/tea/yihong-gong-fu/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yíhóng Gōngfū (宜红工夫, Yíhóng gōngfū)"
+      },
+      {
+        "productRef": "yimeng-yu-ya",
+        "productSlug": "yimeng-yu-ya",
+        "sourceUrl": "https://media.thetea.app/tea/yimeng-yu-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yíméng Yù Yá (沂蒙玉芽, Yíméng yù yá)"
+      },
+      {
+        "productRef": "yin-jun-mei",
+        "productSlug": "yin-jun-mei",
+        "sourceUrl": "https://media.thetea.app/tea/yin-jun-mei/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yín Jùn Méi (银骏眉, yín jùn méi)"
+      },
+      {
+        "productRef": "yin-luo",
+        "productSlug": "yin-luo",
+        "sourceUrl": "https://media.thetea.app/tea/yin-luo/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yín Luó (银螺, yín luó)"
+      },
+      {
+        "productRef": "yin-si-lu-cha",
+        "productSlug": "yin-si-lu-cha",
+        "sourceUrl": "https://media.thetea.app/tea/yin-si-lu-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yín Sī Lú Chá (银丝绿茶, yín sī lǜ chá)"
+      },
+      {
+        "productRef": "ying-hong-1-hao",
+        "productSlug": "ying-hong-1-hao",
+        "sourceUrl": "https://media.thetea.app/tea/ying-hong-1-hao/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yinghong No. 1 (英红1号, yīng hóng 1 hào)"
+      },
+      {
+        "productRef": "ying-hong-jiu-hao",
+        "productSlug": "ying-hong-jiu-hao",
+        "sourceUrl": "https://media.thetea.app/tea/ying-hong-jiu-hao/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Ying Hong No. 9 (英红9号, yīng hóng jiǔ hào)"
+      },
+      {
+        "productRef": "yingde-hongcha",
+        "productSlug": "yingde-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/yingde-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yīngdé Hóngchá (英德红茶, Yīngdé hóngchá)"
+      },
+      {
+        "productRef": "yingde-lucha",
+        "productSlug": "yingde-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/yingde-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yīngdé Green Tea (英德绿茶, Yīngdé lǜchá)"
+      },
+      {
+        "productRef": "yingshan-yunwucha",
+        "productSlug": "yingshan-yunwucha",
+        "sourceUrl": "https://media.thetea.app/tea/yingshan-yunwucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yīngshān Yúnwùchá (英山云雾茶, Yīngshān yúnwùchá)"
+      },
+      {
+        "productRef": "yixing-hongcha",
+        "productSlug": "yixing-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/yixing-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yíxīng Hóng Chá (宜兴红茶, Yíxīng hóngchá)"
+      },
+      {
+        "productRef": "yong-de",
+        "productSlug": "yong-de",
+        "sourceUrl": "https://media.thetea.app/tea/yong-de/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yongde 永德"
+      },
+      {
+        "productRef": "yongchuan-xiu-ya",
+        "productSlug": "yongchuan-xiu-ya",
+        "sourceUrl": "https://media.thetea.app/tea/yongchuan-xiu-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yǒngchuān Xiù Yá (永川秀芽, Yǒngchuān xiù yá)"
+      },
+      {
+        "productRef": "yongfu-gao-shan-cha",
+        "productSlug": "yongfu-gao-shan-cha",
+        "sourceUrl": "https://media.thetea.app/tea/yongfu-gao-shan-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yǒngfú Gāo Shān Chá (永福高山茶, Yǒngfú gāo shān chá)"
+      },
+      {
+        "productRef": "yongtai-lucha",
+        "productSlug": "yongtai-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/yongtai-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yongtai Lü Chá (永泰绿茶, Yǒngtài lǜchá)"
+      },
+      {
+        "productRef": "yongxi-huo-qing",
+        "productSlug": "yongxi-huo-qing",
+        "sourceUrl": "https://media.thetea.app/tea/yongxi-huo-qing/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yǒngxī Huǒ Qīng (涌溪火青, Yǒngxī huǒ qīng)"
+      },
+      {
+        "productRef": "youqie-hei-wulong",
+        "productSlug": "youqie-hei-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/youqie-hei-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yóuqiè Hēi Wūlóng (油切黑乌龙, yóuqiè hēi wūlóng)"
+      },
+      {
+        "productRef": "yueguang-bai",
+        "productSlug": "yueguang-bai",
+        "sourceUrl": "https://media.thetea.app/tea/yueguang-bai/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yue Guang Bai (月光白, yuèguāng bái)"
+      },
+      {
+        "productRef": "yueguang-jin-zhi",
+        "productSlug": "yueguang-jin-zhi",
+        "sourceUrl": "https://media.thetea.app/tea/yueguang-jin-zhi/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yuèguāng Jīn Zhī (月光金枝, yuèguāng jīn zhī)"
+      },
+      {
+        "productRef": "yuexi-cui-lan",
+        "productSlug": "yuexi-cui-lan",
+        "sourceUrl": "https://media.thetea.app/tea/yuexi-cui-lan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yuèxī Cuì Lán (岳西翠兰, Yuèxī cuì lán)"
+      },
+      {
+        "productRef": "yuexiang-long-jing",
+        "productSlug": "yuexiang-long-jing",
+        "sourceUrl": "https://media.thetea.app/tea/yuexiang-long-jing/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yuèxiāng Lóngjǐng (越乡龙井, Yuèxiāng lóng jǐng)"
+      },
+      {
+        "productRef": "yueyang-huang-cha-zhuan",
+        "productSlug": "yueyang-huang-cha-zhuan",
+        "sourceUrl": "https://media.thetea.app/tea/yueyang-huang-cha-zhuan/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yuèyáng Huáng Chá Zhuān (岳阳黄茶砖, Yuèyáng huáng chá zhuān)"
+      },
+      {
+        "productRef": "yueyang-huang-ya",
+        "productSlug": "yueyang-huang-ya",
+        "sourceUrl": "https://media.thetea.app/tea/yueyang-huang-ya/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yuèyáng Huáng Yá (岳阳黄芽, Yuèyáng huáng yá)"
+      },
+      {
+        "productRef": "yueyang-huangcha",
+        "productSlug": "yueyang-huangcha",
+        "sourceUrl": "https://media.thetea.app/tea/yueyang-huangcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yuèyáng Huáng Chá (岳阳黄茶, Yuèyáng huángchá)"
+      },
+      {
+        "productRef": "yulan-xiang-dancong",
+        "productSlug": "yulan-xiang-dancong",
+        "sourceUrl": "https://media.thetea.app/tea/yulan-xiang-dancong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yù Làn Xiāng Dāncóng (玉兰香单丛, yùlán xiāng dāncóng)"
+      },
+      {
+        "productRef": "yun-nan-bai-cha",
+        "productSlug": "yun-nan-bai-cha",
+        "sourceUrl": "https://media.thetea.app/tea/yun-nan-bai-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yunnan White Tea 云南白茶"
+      },
+      {
+        "productRef": "yun-nan-hong-cha",
+        "productSlug": "yun-nan-hong-cha",
+        "sourceUrl": "https://media.thetea.app/tea/yun-nan-hong-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yunnan Red Tea 云南红茶"
+      },
+      {
+        "productRef": "yun-nan-hong-mao-feng",
+        "productSlug": "yun-nan-hong-mao-feng",
+        "sourceUrl": "https://media.thetea.app/tea/yun-nan-hong-mao-feng/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yunnan Red Mao Feng 云南红毛峰"
+      },
+      {
+        "productRef": "yun-nan-jin-ya-hong-cha",
+        "productSlug": "yun-nan-jin-ya-hong-cha",
+        "sourceUrl": "https://media.thetea.app/tea/yun-nan-jin-ya-hong-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yunnan Jinya Hongcha 云南金芽红茶"
+      },
+      {
+        "productRef": "yun-wu-lu-cha",
+        "productSlug": "yun-wu-lu-cha",
+        "sourceUrl": "https://media.thetea.app/tea/yun-wu-lu-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yunwu Lücha 云雾绿茶"
+      },
+      {
+        "productRef": "yunkeng-hongcha",
+        "productSlug": "yunkeng-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/yunkeng-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yǔnkēng Hóng Chá (陨坑红茶, Yǔnkēng hóngchá)"
+      },
+      {
+        "productRef": "yunkeng-lucha",
+        "productSlug": "yunkeng-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/yunkeng-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yǔnkēng Lú Chá (陨坑绿茶, Yǔnkēng lǜchá)"
+      },
+      {
+        "productRef": "yunlong-lucha",
+        "productSlug": "yunlong-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/yunlong-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yunlong Lü Chá (云龙绿茶, Yúnlóng lǜchá)"
+      },
+      {
+        "productRef": "yunnan-dali-cha-yinzhen",
+        "productSlug": "yunnan-dali-cha-yinzhen",
+        "sourceUrl": "https://media.thetea.app/tea/yunnan-dali-cha-yinzhen/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yúnnán Dàlǐ Chá Yìn Zhèn (云南大理茶银针, Yúnnán Dàlǐ chá yínzhēn)"
+      },
+      {
+        "productRef": "yunnan-gu-shu-hongcha",
+        "productSlug": "yunnan-gu-shu-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/yunnan-gu-shu-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yúnnán Gǔ Shù Hóng Chá (雲南古樹紅茶, Yúnnán Gǔ Shù Hóngchá)"
+      },
+      {
+        "productRef": "yunnan-jingdian-1938-hongcha",
+        "productSlug": "yunnan-jingdian-1938-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/yunnan-jingdian-1938-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yunnan Jingdian 1938 Hóng Chá (云南经典1938红茶, Yúnnán jīngdiǎn 1938 hóngchá)"
+      },
+      {
+        "productRef": "yunnan-jingmai-wulong",
+        "productSlug": "yunnan-jingmai-wulong",
+        "sourceUrl": "https://media.thetea.app/tea/yunnan-jingmai-wulong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yúnnán Jǐngmài Oolong (云南景迈乌龙, Yúnnán Jǐngmài wūlóng)"
+      },
+      {
+        "productRef": "yunnan-jingmai-yesheng-hongcha",
+        "productSlug": "yunnan-jingmai-yesheng-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/yunnan-jingmai-yesheng-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yúnnán Jǐngmài Yè Shěng Hóng Chá (云南景迈野生红茶, Yúnnán Jǐngmài yěshēng hóngchá)"
+      },
+      {
+        "productRef": "yunnan-lucha",
+        "productSlug": "yunnan-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/yunnan-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yunnan Lücha (云南绿茶, Yúnnán lǜchá)"
+      },
+      {
+        "productRef": "yunnan-matai-gushu-hongcha",
+        "productSlug": "yunnan-matai-gushu-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/yunnan-matai-gushu-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yúnnán Mǎtái Gǔshù Hóng Chá (云南马台古树红茶, Yúnnán Mǎtái gǔshù hóngchá)"
+      },
+      {
+        "productRef": "yunnan-wuliang-hongcha",
+        "productSlug": "yunnan-wuliang-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/yunnan-wuliang-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yúnnán Wúliàng Hóng Chá (云南无量红茶, Yúnnán wúliàng hóngchá)"
+      },
+      {
+        "productRef": "yunnan-yesheng-ziya-baicha",
+        "productSlug": "yunnan-yesheng-ziya-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/yunnan-yesheng-ziya-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yúnnán Yè Shěng Zī Yá Bái Chá (云南野生紫芽白茶, Yúnnán yěshēng zǐyá báichá)"
+      },
+      {
+        "productRef": "yunnan-yesheng-ziya-hongcha",
+        "productSlug": "yunnan-yesheng-ziya-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/yunnan-yesheng-ziya-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yúnnán Yěshēng Zǐyá Hóngchá (云南野生紫芽红茶, Yúnnán yěshēng zǐyá hóngchá)"
+      },
+      {
+        "productRef": "yunwu-gongcha",
+        "productSlug": "yunwu-gongcha",
+        "sourceUrl": "https://media.thetea.app/tea/yunwu-gongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Yúnwù Gòng Chá (云雾贡茶, yúnwù gòngchá)"
+      },
+      {
+        "productRef": "zangcha",
+        "productSlug": "zangcha",
+        "sourceUrl": "https://media.thetea.app/tea/zangcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zangcha (藏茶, zàngchá)"
+      },
+      {
+        "productRef": "zhangping-shui-xian",
+        "productSlug": "zhangping-shui-xian",
+        "sourceUrl": "https://media.thetea.app/tea/zhangping-shui-xian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhāngpíng Shuǐ Xiān (漳平水仙, Zhāngpíng shuǐ xiān)"
+      },
+      {
+        "productRef": "zhangping-shuixian-hongcha-bing",
+        "productSlug": "zhangping-shuixian-hongcha-bing",
+        "sourceUrl": "https://media.thetea.app/tea/zhangping-shuixian-hongcha-bing/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhāngpíng Shuì Xiān Hóng Chá Bǐng (漳平水仙红茶饼, Zhāngpíng shuǐxiān hóngchá bǐng)"
+      },
+      {
+        "productRef": "zhangzhou-liu-xiang",
+        "productSlug": "zhangzhou-liu-xiang",
+        "sourceUrl": "https://media.thetea.app/tea/zhangzhou-liu-xiang/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhāngzhōu Liú Xiāng (漳州流香, Zhāngzhōu liú xiāng)"
+      },
+      {
+        "productRef": "zhangzhou-se-zhong",
+        "productSlug": "zhangzhou-se-zhong",
+        "sourceUrl": "https://media.thetea.app/tea/zhangzhou-se-zhong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhāngzhōu Sè Zhǒng (漳州色种, Zhāngzhōu sè zhǒng)"
+      },
+      {
+        "productRef": "zhangzhou-yizhichun",
+        "productSlug": "zhangzhou-yizhichun",
+        "sourceUrl": "https://media.thetea.app/tea/zhangzhou-yizhichun/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhāngzhōu Yīzhīchūn (漳州一枝春, Zhāngzhōu yīzhīchūn)"
+      },
+      {
+        "productRef": "zhaoan-ba-xian",
+        "productSlug": "zhaoan-ba-xian",
+        "sourceUrl": "https://media.thetea.app/tea/zhaoan-ba-xian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhàoān Bā Xiān (诏安八仙, zhàoān bā xiān)"
+      },
+      {
+        "productRef": "zhaoping-hongcha",
+        "productSlug": "zhaoping-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/zhaoping-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhaopin Hóng Chá (昭平红茶, Zhāopíng hóngchá)"
+      },
+      {
+        "productRef": "zhaoping-lucha",
+        "productSlug": "zhaoping-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/zhaoping-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhaopin Lü Chá (昭平绿茶, Zhāopíng lǜchá)"
+      },
+      {
+        "productRef": "zhe-jiang-mao-jian",
+        "productSlug": "zhe-jiang-mao-jian",
+        "sourceUrl": "https://media.thetea.app/tea/zhe-jiang-mao-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhejiang Maojian 浙江毛尖"
+      },
+      {
+        "productRef": "zhejiang-songzhen",
+        "productSlug": "zhejiang-songzhen",
+        "sourceUrl": "https://media.thetea.app/tea/zhejiang-songzhen/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhèjiāng Sòng Zhèn (浙江松针, Zhèjiāng sōngzhēn)"
+      },
+      {
+        "productRef": "zheng-shan-xiao-zhong",
+        "productSlug": "zheng-shan-xiao-zhong",
+        "sourceUrl": "https://media.thetea.app/tea/zheng-shan-xiao-zhong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhèngshān Xiǎozhǒng (正山小种, zhèng shān xiǎo zhǒng)"
+      },
+      {
+        "productRef": "zhenghe-baicha",
+        "productSlug": "zhenghe-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/zhenghe-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhènghé Bái Chá (政和白茶, zhènghé báichá)"
+      },
+      {
+        "productRef": "zhengmei-cha",
+        "productSlug": "zhengmei-cha",
+        "sourceUrl": "https://media.thetea.app/tea/zhengmei-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhēngméi Chá (蒸酶茶, zhēngméi chá)"
+      },
+      {
+        "productRef": "zhengzhai-cha",
+        "productSlug": "zhengzhai-cha",
+        "sourceUrl": "https://media.thetea.app/tea/zhengzhai-cha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhèngzhái Chá (郑宅茶, Zhèngzhái chá)"
+      },
+      {
+        "productRef": "zherong-baicha",
+        "productSlug": "zherong-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/zherong-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhèróng Bái Chá (柘荣白茶, Zhèróng báichá)"
+      },
+      {
+        "productRef": "zhi-lan-xiang-dancong",
+        "productSlug": "zhi-lan-xiang-dancong",
+        "sourceUrl": "https://media.thetea.app/tea/zhi-lan-xiang-dancong/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhī Lán Xiāng Dàn Cóng (芝兰香单丛, zhī lán xiāng dāncóng)"
+      },
+      {
+        "productRef": "zhongqing-tuocha",
+        "productSlug": "zhongqing-tuocha",
+        "sourceUrl": "https://media.thetea.app/tea/zhongqing-tuocha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Chóngqìng Tuò Chá (重庆沱茶, Zhòngqìng tuóchá)"
+      },
+      {
+        "productRef": "zhu-ye-qing",
+        "productSlug": "zhu-ye-qing",
+        "sourceUrl": "https://media.thetea.app/tea/zhu-ye-qing/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhú Yè Qīng (竹叶青, zhú yè qīng)"
+      },
+      {
+        "productRef": "zhuji-ma-jian",
+        "productSlug": "zhuji-ma-jian",
+        "sourceUrl": "https://media.thetea.app/tea/zhuji-ma-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhūjì Mǎ Jiàn (诸暨马剑茶, Zhūjì Mǎ Jiàn Chá)"
+      },
+      {
+        "productRef": "zhuxi-maojian",
+        "productSlug": "zhuxi-maojian",
+        "sourceUrl": "https://media.thetea.app/tea/zhuxi-maojian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zhúxī Máojiān (竹溪毛尖, Zhúxī máojiān)"
+      },
+      {
+        "productRef": "zhuye",
+        "productSlug": "zhuye",
+        "sourceUrl": "https://media.thetea.app/tea/zhuye/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Bamboo Leaves (竹叶, zhúyè)"
+      },
+      {
+        "productRef": "zijin-hongcha",
+        "productSlug": "zijin-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/zijin-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zǐjīn Hóng Chá (紫金紅茶, Zǐjīn Hóngchá)"
+      },
+      {
+        "productRef": "zijuan-hongcha",
+        "productSlug": "zijuan-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/zijuan-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zǐjuān Hóng Chá (紫鵑紅茶, Zǐjuān Hóngchá)"
+      },
+      {
+        "productRef": "zixi-baicha",
+        "productSlug": "zixi-baicha",
+        "sourceUrl": "https://media.thetea.app/tea/zixi-baicha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zīxī Bái Chá (资溪白茶, Zīxī báichá)"
+      },
+      {
+        "productRef": "ziya-zijuan-puer",
+        "productSlug": "ziya-zijuan-puer",
+        "sourceUrl": "https://media.thetea.app/tea/ziya-zijuan-puer/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Purple Pu-erh (紫芽 / 紫娟, zǐyá / zǐjuān)"
+      },
+      {
+        "productRef": "ziyang-hongcha",
+        "productSlug": "ziyang-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/ziyang-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zǐyáng Hóng Chá (紫阳红茶, Zǐyáng hóngchá)"
+      },
+      {
+        "productRef": "ziyang-lucha",
+        "productSlug": "ziyang-lucha",
+        "sourceUrl": "https://media.thetea.app/tea/ziyang-lucha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zǐyáng Lú Chá (紫阳绿茶, Zǐyáng lǜchá)"
+      },
+      {
+        "productRef": "ziyang-mao-jian",
+        "productSlug": "ziyang-mao-jian",
+        "sourceUrl": "https://media.thetea.app/tea/ziyang-mao-jian/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zǐyáng Máo Jiān (紫阳毛尖, Zǐyáng máo jiān)"
+      },
+      {
+        "productRef": "zunyi-hongcha",
+        "productSlug": "zunyi-hongcha",
+        "sourceUrl": "https://media.thetea.app/tea/zunyi-hongcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zūnyì Hóng Chá (遵义红茶, Zūnyì hóngchá)"
+      },
+      {
+        "productRef": "zunyi-maofengcha",
+        "productSlug": "zunyi-maofengcha",
+        "sourceUrl": "https://media.thetea.app/tea/zunyi-maofengcha/400.webp",
+        "role": "gallery",
+        "sortOrder": 0,
+        "thumbnail": true,
+        "altText": "Zūnyì Máofēngchá (遵义毛峰茶, Zūnyì máofēngchá)"
+      }
+    ]
+  },
+  "sourceEvidence": {
+    "snapshotId": "thetea-20260926-live",
+    "endpoint": "/api/v2/teas?lang=en",
+    "sourceItemCount": 627,
+    "mediaItemCount": 491,
+    "missingMediaCount": 136,
+    "sourceUrlWidth": "400",
+    "sourceUrlFormat": "webp",
+    "generatedAt": "2026-09-26T00:00:00Z"
+  },
+  "runPolicy": {
+    "previewRequired": true,
+    "applyConfirmation": "APPLY",
+    "cleanupConfirmation": "CLEANUP",
+    "manualMediaPreserved": true,
+    "managedScope": "profile-owned attachments only",
+    "missingSourcePolicy": "leave product media unchanged"
+  }
+}
