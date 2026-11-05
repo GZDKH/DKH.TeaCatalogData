@@ -96,7 +96,7 @@ async function main(argv = process.argv.slice(2), environment = process.env) {
     const result = await runNoOpCanary(client, {
         catalogCode: args['catalog-code'] || 'CATALOG-CHINESE-TEA-SHOP',
         productCode: args['product-code'] || 'TEA-CN-TIE-GUANYIN',
-        expectedRows: Number(args['expected-rows'] || 25),
+        expectedRows: Number(args['expected-rows'] || 155),
         apply,
     });
     process.stdout.write(`${JSON.stringify(result)}\n`);

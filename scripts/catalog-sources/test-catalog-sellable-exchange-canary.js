@@ -4,14 +4,154 @@
 const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
+const http = require('http');
 const { HEADERS, rowsToCsv } = require('./thetea-shop/catalog-sellable-exchange');
 const {
     NO_OP_REASON,
+    CatalogSellableExchangeClient,
     requestAccessToken,
     runNoOpCanary,
 } = require('./thetea-shop/catalog-sellable-exchange-canary');
 const { parseCsv } = require('./lib/csv-records');
-const { parseAllowedDotenv, safeError } = require('./run-catalog-sellable-exchange-canary');
+const { main: runCanaryCli, parseAllowedDotenv, safeError } = require('./run-catalog-sellable-exchange-canary');
+
+async function assertRedirectsNeverReachAnotherOrigin() {
+    let destinationRequests = 0;
+    const destination = http.createServer((_request, response) => {
+        destinationRequests += 1;
+        response.writeHead(200, { 'Content-Type': 'application/json' });
+        response.end(JSON.stringify({ access_token: 'synthetic' }));
+    });
+    await new Promise(resolve => destination.listen(0, '127.0.0.1', resolve));
+    const redirector = http.createServer((_request, response) => {
+        response.writeHead(307, { Location: `http://127.0.0.1:${destination.address().port}/capture` });
+        response.end();
+    });
+    await new Promise(resolve => redirector.listen(0, '127.0.0.1', resolve));
+    try {
+        const baseUrl = `http://127.0.0.1:${redirector.address().port}`;
+        await assert.rejects(
+            requestAccessToken({ keycloakUrl: baseUrl, clientId: 'fixture', clientSecret: 'synthetic' }),
+            error => error.code === 'CANARY_HTTP_UNAVAILABLE',
+        );
+        const client = new CatalogSellableExchangeClient({
+            baseUrl,
+            workspaceId: '11111111-2222-4333-8444-555555555555',
+            token: 'synthetic',
+        });
+        await assert.rejects(client.request('/api/v1/data-exchange/template'),
+            error => error.code === 'CANARY_HTTP_UNAVAILABLE');
+        assert.equal(destinationRequests, 0, 'credentials must never be sent to a redirect destination');
+    } finally {
+        redirector.closeAllConnections();
+        destination.closeAllConnections();
+        await Promise.all([
+            new Promise(resolve => redirector.close(resolve)),
+            new Promise(resolve => destination.close(resolve)),
+        ]);
+    }
+}
+
+async function assertOversizedResponseStopsReading() {
+    let produced = 0;
+    let cancelled = false;
+    const stream = new ReadableStream({
+        pull(controller) {
+            if (produced === 20) {
+                controller.close();
+                return;
+            }
+            produced += 1;
+            controller.enqueue(new Uint8Array(1024 * 1024));
+        },
+        cancel() { cancelled = true; },
+    });
+    const client = new CatalogSellableExchangeClient({
+        baseUrl: 'https://gateway.example.test',
+        workspaceId: '11111111-2222-4333-8444-555555555555',
+        token: 'synthetic',
+        fetchImpl: async () => new Response(stream, { status: 200 }),
+    });
+    await assert.rejects(client.request('/api/v1/data-exchange/template'),
+        error => error.code === 'CANARY_RESPONSE_TOO_LARGE');
+    assert.ok(produced < 20, 'the response stream must stop before the full oversized body is buffered');
+    assert.equal(cancelled, true);
+}
+
+async function assertResponseBodyRespectsTimeout() {
+    const server = http.createServer((_request, response) => {
+        response.writeHead(200, { 'Content-Type': 'application/json' });
+        response.write('{');
+    });
+    await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+    try {
+        const result = requestAccessToken({
+            keycloakUrl: `http://127.0.0.1:${server.address().port}`,
+            clientId: 'fixture',
+            clientSecret: 'synthetic',
+            timeoutMs: 75,
+        }).then(() => 'unexpected-success', error => error.code || error.name);
+        const observed = await Promise.race([
+            result,
+            new Promise(resolve => setTimeout(() => resolve('body-timeout-not-enforced'), 500)),
+        ]);
+        assert.equal(observed, 'CANARY_HTTP_UNAVAILABLE');
+    } finally {
+        server.closeAllConnections();
+        await new Promise(resolve => server.close(resolve));
+    }
+}
+
+async function assertDefaultCanaryUsesCurrentRowCount() {
+    const rows = Array.from({ length: 155 }, (_, index) => ({
+        RowKey: `ROW-${index}`,
+        CatalogCode: 'CATALOG-CHINESE-TEA-SHOP',
+        ProductCode: 'TEA-CN-TIE-GUANYIN',
+        VariantAxisCode: 'FIXTURE',
+        VariantLabel: `Fixture ${index}`,
+        PackageCode: 'FIXTURE',
+        UnitQuantity: '1',
+        UnitCode: 'g',
+        DisplayOrder: String(index),
+        PublicationMode: 'request_only',
+    }));
+    let imports = 0;
+    const server = http.createServer((request, response) => {
+        const url = new URL(request.url, 'http://127.0.0.1');
+        if (url.pathname === '/api/v1/catalogs') {
+            response.setHeader('Content-Type', 'application/json');
+            response.end(JSON.stringify({ items: [{
+                id: '11111111-2222-4333-8444-555555555555',
+                code: 'CATALOG-CHINESE-TEA-SHOP',
+            }] }));
+        } else if (url.pathname === '/api/v1/data-exchange/template') {
+            response.end(rowsToCsv([]));
+        } else if (url.pathname === '/api/v1/data-exchange/export') {
+            response.end(rowsToCsv(rows));
+        } else if (url.pathname === '/api/v1/data-exchange/validate') {
+            response.setHeader('Content-Type', 'application/json');
+            response.end(JSON.stringify(validation(155)));
+        } else {
+            imports += 1;
+            response.writeHead(500);
+            response.end();
+        }
+    });
+    await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+    try {
+        const result = await runCanaryCli([], {
+            GATEWAY_URL: `http://127.0.0.1:${server.address().port}`,
+            PRODUCT_CATALOG_WORKSPACE_ID: '11111111-2222-4333-8444-555555555555',
+            ADMIN_GATEWAY_ACCESS_TOKEN: 'synthetic',
+        });
+        assert.equal(result.before.rows, 155);
+        assert.equal(result.apply.attempted, false);
+        assert.equal(imports, 0);
+    } finally {
+        server.closeAllConnections();
+        await new Promise(resolve => server.close(resolve));
+    }
+}
 
 const FIXTURE = path.join(
     __dirname,
@@ -74,6 +214,10 @@ class FakeClient {
 }
 
 async function main() {
+    await assertRedirectsNeverReachAnotherOrigin();
+    await assertOversizedResponseStopsReading();
+    await assertResponseBodyRespectsTimeout();
+    await assertDefaultCanaryUsesCurrentRowCount();
     assert.deepEqual(parseAllowedDotenv([
         '# encrypted values are piped in memory only',
         'ADMIN_GATEWAY_ORIGIN=https://admin-api.example.test',

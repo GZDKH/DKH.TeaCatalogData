@@ -2,7 +2,7 @@
 
 const { sha256, stableJson } = require('../lib/artifacts');
 const { MANAGED_PACKAGE_CONTENT } = require('../../thetea/lib/package-content');
-const { NORMALIZED_SCHEMA } = require('./tieguanyin-normalizer');
+const { CATALOG_CODE, NORMALIZED_SCHEMA, PRODUCT_CODE } = require('./tieguanyin-normalizer');
 const { createXlsx } = require('./deterministic-xlsx');
 
 const EXCHANGE_SCHEMA = 'catalog-sellable-variants-fixtures-v1';
@@ -64,11 +64,20 @@ function projectTieguanyinManifest(manifest) {
         source: manifest.source,
         summary: manifest.summary,
         exactCandidates: manifest.exactCandidates,
+        ...(Array.isArray(manifest.sourceOfferRows) ? { sourceOfferRows: manifest.sourceOfferRows } : {}),
         duplicateOfferCandidates: manifest.duplicateOfferCandidates,
         blockedObservations: manifest.blockedObservations,
     };
     if (manifest.manifestSha256 !== sha256(stableJson(manifestBinding))) {
         fail('CATALOG_SELLABLE_EXCHANGE_MANIFEST_HASH_MISMATCH');
+    }
+    if (Array.isArray(manifest.sourceOfferRows)) {
+        fail('CATALOG_SELLABLE_EXCHANGE_CURRENT_CONTRACT_UNSUPPORTED');
+    }
+    if (manifest.target?.catalogCode !== CATALOG_CODE ||
+        manifest.target?.productCode !== PRODUCT_CODE ||
+        manifest.target?.variantAxisCode !== 'TGY-GRADE') {
+        fail('CATALOG_SELLABLE_EXCHANGE_TARGET_INVALID');
     }
     const expectedSummary = {
         rowCount: 36,

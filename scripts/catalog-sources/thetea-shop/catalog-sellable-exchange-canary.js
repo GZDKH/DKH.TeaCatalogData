@@ -37,18 +37,39 @@ function safeBaseUrl(value, code) {
 
 async function readLimited(response) {
     const contentLength = Number(response.headers.get('content-length') || 0);
-    if (contentLength > MAX_RESPONSE_BYTES) fail('CANARY_RESPONSE_TOO_LARGE');
-    const body = Buffer.from(await response.arrayBuffer());
-    if (body.length > MAX_RESPONSE_BYTES) fail('CANARY_RESPONSE_TOO_LARGE');
-    return body;
+    if (contentLength > MAX_RESPONSE_BYTES) {
+        if (response.body) await response.body.cancel().catch(() => {});
+        fail('CANARY_RESPONSE_TOO_LARGE');
+    }
+    if (!response.body) return Buffer.alloc(0);
+    const reader = response.body.getReader();
+    const chunks = [];
+    let size = 0;
+    try {
+        for (;;) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            size += value.byteLength;
+            if (size > MAX_RESPONSE_BYTES) {
+                await reader.cancel().catch(() => {});
+                fail('CANARY_RESPONSE_TOO_LARGE');
+            }
+            chunks.push(Buffer.from(value));
+        }
+        return Buffer.concat(chunks, size);
+    } finally {
+        reader.releaseLock();
+    }
 }
 
 async function fetchWithTimeout(fetchImpl, url, init, timeoutMs) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), timeoutMs);
     try {
-        return await fetchImpl(url, { ...init, signal: controller.signal });
-    } catch {
+        const response = await fetchImpl(url, { ...init, redirect: 'error', signal: controller.signal });
+        return { response, body: await readLimited(response) };
+    } catch (error) {
+        if (error.code === 'CANARY_RESPONSE_TOO_LARGE') throw error;
         fail('CANARY_HTTP_UNAVAILABLE');
     } finally {
         clearTimeout(timeout);
@@ -67,12 +88,11 @@ async function requestAccessToken(options) {
         client_id: clientId,
         client_secret: clientSecret,
     });
-    const response = await fetchWithTimeout(fetchImpl, url, {
+    const { response, body: payload } = await fetchWithTimeout(fetchImpl, url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body,
     }, options.timeoutMs || 15_000);
-    const payload = await readLimited(response);
     if (!response.ok) fail(`KEYCLOAK_TOKEN_HTTP_${response.status}`);
     let parsed;
     try {
@@ -97,7 +117,7 @@ class CatalogSellableExchangeClient {
         if (url.origin !== this.baseUrl.origin || !url.pathname.startsWith('/api/v1/')) {
             fail('ADMIN_GATEWAY_PATH_FORBIDDEN');
         }
-        const response = await fetchWithTimeout(this.fetchImpl, url, {
+        const { response, body } = await fetchWithTimeout(this.fetchImpl, url, {
             ...init,
             headers: {
                 Accept: expected === 'json' ? 'application/json' : '*/*',
@@ -106,7 +126,6 @@ class CatalogSellableExchangeClient {
                 ...(init.headers || {}),
             },
         }, this.timeoutMs);
-        const body = await readLimited(response);
         if (!response.ok) fail(`ADMIN_GATEWAY_HTTP_${response.status}`);
         if (expected === 'buffer') return body;
         try {

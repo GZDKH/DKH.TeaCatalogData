@@ -4,6 +4,7 @@
 const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
+const { spawnSync } = require('child_process');
 const { sha256, stableJson } = require('./lib/artifacts');
 const { normalizeTieguanyinSnapshot } = require('./thetea-shop/tieguanyin-normalizer');
 const {
@@ -24,6 +25,17 @@ const FIXTURE_ROOT = path.join(
     ROOT,
     'scripts/catalog-sources/thetea-shop/fixtures/catalog-sellable-exchange',
 );
+const LEGACY_MANIFEST = path.join(FIXTURE_ROOT, 'legacy-normalized-manifest-2026-08-01.json');
+
+function legacyManifestHash(manifest) {
+    return sha256(stableJson({
+        source: manifest.source,
+        summary: manifest.summary,
+        exactCandidates: manifest.exactCandidates,
+        duplicateOfferCandidates: manifest.duplicateOfferCandidates,
+        blockedObservations: manifest.blockedObservations,
+    }));
+}
 
 function countWorksheetRows(sheet) {
     return [...sheet.matchAll(/<row r="\d+">/gu)].length;
@@ -31,7 +43,28 @@ function countWorksheetRows(sheet) {
 
 function main() {
     const source = JSON.parse(fs.readFileSync(SOURCE, 'utf8'));
-    const manifest = normalizeTieguanyinSnapshot(source);
+    const currentManifest = normalizeTieguanyinSnapshot(source);
+    assert.equal(currentManifest.exactCandidates.length, 155);
+    assert.ok(currentManifest.exactCandidates.every(candidate => candidate.publicationMode === 'public-retail'));
+    assert.throws(
+        () => projectTieguanyinManifest(currentManifest),
+        error => error.code === 'CATALOG_SELLABLE_EXCHANGE_CURRENT_CONTRACT_UNSUPPORTED',
+        'the historical request-only profile must not silently downgrade the current retail candidates',
+    );
+    const damagedCurrentManifest = structuredClone(currentManifest);
+    damagedCurrentManifest.sourceOfferRows[0].clientReference = 'tampered';
+    assert.throws(
+        () => projectTieguanyinManifest(damagedCurrentManifest),
+        error => error.code === 'CATALOG_SELLABLE_EXCHANGE_MANIFEST_HASH_MISMATCH',
+    );
+    const manifest = JSON.parse(fs.readFileSync(LEGACY_MANIFEST, 'utf8'));
+    const alteredTarget = structuredClone(manifest);
+    alteredTarget.target.variantAxisCode = 'UNTRUSTED-AXIS';
+    assert.throws(
+        () => projectTieguanyinManifest(alteredTarget),
+        error => error.code === 'CATALOG_SELLABLE_EXCHANGE_TARGET_INVALID',
+        'the unhashed legacy target must not redirect the historical projection',
+    );
     const projection = projectTieguanyinManifest(manifest);
     assert.deepEqual(projection.reviewedSource, {
         rowCount: 36,
@@ -53,10 +86,9 @@ function main() {
         row.RowKey === deriveRowKey(row)));
     assert.ok(projection.rows.every(row => row.VariantLabel === row.VariantLabel.normalize('NFC')));
     assert.ok(projection.rows.some(row => row.VariantLabel === '高山正味铁观音（花香）'));
-    const formulaSource = structuredClone(source);
-    formulaSource.rows[0].gradeLabel = '=HYPERLINK("https://example.invalid")';
-    formulaSource.rowsSha256 = sha256(stableJson(formulaSource.rows));
-    const formulaManifest = normalizeTieguanyinSnapshot(formulaSource);
+    const formulaManifest = structuredClone(manifest);
+    formulaManifest.exactCandidates[0].gradeLabel = '=HYPERLINK("https://example.invalid")';
+    formulaManifest.manifestSha256 = legacyManifestHash(formulaManifest);
     assert.throws(
         () => projectTieguanyinManifest(formulaManifest),
         error => error.code === 'CATALOG_SELLABLE_EXCHANGE_FORMULA_LABEL_BLOCKED',
@@ -69,6 +101,13 @@ function main() {
         assert.ok(expected.equals(second.fixtures.get(name)), `${name} must be deterministic`);
         assert.ok(fs.readFileSync(path.join(FIXTURE_ROOT, name)).equals(expected), `${name} drifted`);
     }
+    const generator = path.join(__dirname, 'generate-catalog-sellable-exchange-fixtures.js');
+    const currentGeneration = spawnSync(process.execPath, [generator], { encoding: 'utf8' });
+    assert.notEqual(currentGeneration.status, 0);
+    assert.match(currentGeneration.stderr, /CATALOG_SELLABLE_EXCHANGE_CURRENT_CONTRACT_UNSUPPORTED/);
+    const historicalCheck = spawnSync(process.execPath, [generator, '--check'], { encoding: 'utf8' });
+    assert.equal(historicalCheck.status, 0, historicalCheck.stderr);
+    assert.match(historicalCheck.stdout, /historical/i);
 
     const canonicalCsv = first.fixtures.get('tieguanyin-exact-25.csv').toString('utf8');
     const canonicalRecords = parseCsv(canonicalCsv);

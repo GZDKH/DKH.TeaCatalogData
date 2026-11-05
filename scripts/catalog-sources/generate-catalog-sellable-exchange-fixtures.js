@@ -15,11 +15,26 @@ const OUTPUT = path.join(
     ROOT,
     'scripts/catalog-sources/thetea-shop/fixtures/catalog-sellable-exchange',
 );
+const HISTORICAL_MANIFEST = path.join(OUTPUT, 'legacy-normalized-manifest-2026-08-01.json');
 
 function main() {
     const check = process.argv.includes('--check');
+    const historical = process.argv.includes('--historical');
     const snapshot = JSON.parse(fs.readFileSync(SOURCE, 'utf8'));
-    const manifest = normalizeTieguanyinSnapshot(snapshot);
+    const currentManifest = normalizeTieguanyinSnapshot(snapshot);
+    if (check) {
+        let currentUnsupported = false;
+        try {
+            buildFixtureSet(currentManifest);
+        } catch (error) {
+            if (error.code !== 'CATALOG_SELLABLE_EXCHANGE_CURRENT_CONTRACT_UNSUPPORTED') throw error;
+            currentUnsupported = true;
+        }
+        if (!currentUnsupported) throw new Error('CATALOG_SELLABLE_EXCHANGE_REVIEW_CURRENT_CONTRACT');
+    }
+    const manifest = check || historical
+        ? JSON.parse(fs.readFileSync(HISTORICAL_MANIFEST, 'utf8'))
+        : currentManifest;
     const { fixtures } = buildFixtureSet(manifest);
 
     if (!check) fs.mkdirSync(OUTPUT, { recursive: true });
@@ -34,7 +49,7 @@ function main() {
         }
     }
     process.stdout.write(
-        `Catalog sellable exchange fixtures ${check ? 'verified' : 'generated'}: ${fixtures.size} files.\n`,
+        `Historical catalog sellable exchange fixtures ${check ? 'verified' : 'generated'}: ${fixtures.size} files.\n`,
     );
 }
 
