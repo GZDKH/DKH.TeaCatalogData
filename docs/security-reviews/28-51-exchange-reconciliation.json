@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "method": "focused-review",
+  "result": "passed",
+  "capability_unavailable": true,
+  "base_sha": "e0592d43759e5f780f25cf261bfe1c85c1cea71a",
+  "reviewed_blobs": {
+    "scripts/catalog-sources/run-catalog-sellable-exchange-canary.js": "24d5f64f847994ef829d34669aefea965ecf2f2d",
+    "scripts/catalog-sources/test-catalog-sellable-exchange-canary.js": "71bab8162bc75cc46dad68dddd7c7d9e43c9361f",
+    "scripts/catalog-sources/thetea-shop/catalog-sellable-exchange-canary.js": "9e458071acba2ed4a011ce5155f7c15e23cd2f6b",
+    "scripts/catalog-sources/thetea-shop/catalog-sellable-exchange.js": "3b049086e4638186f98156329fa84aa3546bbeb3",
+    "scripts/catalog-sources/thetea-shop/fixtures/catalog-sellable-exchange/legacy-normalized-manifest-2026-08-01.json": "a8bd144417fcb0f382c4ac4ace33def168aa26f6",
+    "scripts/thetea/lib/product-overlay.js": "aa84fb17eb4f4aa3d9cf7306a4bcc0c8f4637eb7",
+    "scripts/thetea/test-product-overlay.js": "0840cbd667d5dc40434d4d58af526ab472df38ce",
+    "sources/thetea/profiles/thetea-product-media-sync.catalog-chinese-tea.json": "3beb052e47362740214e9950899e0bd5bcd970d8"
+  },
+  "checks": [
+    {
+      "result": "passed",
+      "evidence": "Reviewed the credentialed exchange client and CLI source and tests: HTTPS except loopback, origin/path restrictions, sanitized errors, explicit --apply --yes. node scripts/catalog-sources/test-catalog-sellable-exchange-canary.js passed, including RED-to-GREEN loopback checks blocking credential redirects, streaming size enforcement, response-body timeout, and default dry-run without import."
+    },
+    {
+      "result": "passed",
+      "evidence": "node scripts/catalog-sources/test-catalog-sellable-exchange.js and node scripts/catalog-sources/test-thetea-shop-tieguanyin.js passed. Current 155 public-retail candidates are unchanged and unsupported conversion fails closed; historical unhashed target-axis alteration is rejected, after a failing regression test."
+    },
+    {
+      "result": "passed",
+      "evidence": "Recursively parsed the historical source manifest and media profile: 1 and 491 URLs respectively; neither had URL userinfo, credential-named URL parameters or fields, or known private-key, GitLab, AWS or OpenAI key patterns. Test credentials in source are synthetic."
+    },
+    {
+      "result": "passed",
+      "evidence": "node scripts/thetea/test-product-overlay.js passed. Previously observed RED-to-GREEN regression tests ensure malformed unrelated baseline specifications block instead of silently disappearing."
+    },
+    {
+      "result": "passed",
+      "evidence": "git diff --check and historical fixture verification completed successfully for this source. Sensitive file blob identities and origin/main merge base are recorded above."
+    }
+  ],
+  "scope": "Focused review of credential transport, bounded reads, historical fixture integrity and baseline preservation; not a full security scan. No live canary or production apply was run; concurrency safety of a future apply remains unverified."
+}
