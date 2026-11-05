@@ -41,6 +41,21 @@ function countWorksheetRows(sheet) {
     return [...sheet.matchAll(/<row r="\d+">/gu)].length;
 }
 
+function zipCompressionMethods(buffer) {
+    const end = buffer.length - 22;
+    assert.equal(buffer.readUInt32LE(end), 0x06054B50);
+    const count = buffer.readUInt16LE(end + 10);
+    let cursor = buffer.readUInt32LE(end + 16);
+    const methods = [];
+    for (let index = 0; index < count; index++) {
+        assert.equal(buffer.readUInt32LE(cursor), 0x02014B50);
+        methods.push(buffer.readUInt16LE(cursor + 10));
+        cursor += 46 + buffer.readUInt16LE(cursor + 28) +
+            buffer.readUInt16LE(cursor + 30) + buffer.readUInt16LE(cursor + 32);
+    }
+    return methods;
+}
+
 function main() {
     const source = JSON.parse(fs.readFileSync(SOURCE, 'utf8'));
     const currentManifest = normalizeTieguanyinSnapshot(source);
@@ -140,6 +155,8 @@ function main() {
     ]) {
         const workbook = first.fixtures.get(name);
         assert.equal(workbook.readUInt32LE(0), 0x04034B50, `${name} must be a ZIP XLSX`);
+        assert.ok(zipCompressionMethods(workbook).every(method => method === 0),
+            `${name} must use stored ZIP entries for cross-runtime byte stability`);
         const entries = readZipEntries(workbook);
         assert.deepEqual([...entries.keys()], [
             '[Content_Types].xml',

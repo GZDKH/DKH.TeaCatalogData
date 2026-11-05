@@ -84,13 +84,14 @@ function createZip(entries) {
     for (const [name, source] of entries) {
         const nameBuffer = Buffer.from(name, 'utf8');
         const contents = Buffer.isBuffer(source) ? source : Buffer.from(source, 'utf8');
-        const compressed = zlib.deflateRawSync(contents, { level: 9 });
+        // Stored entries avoid zlib-version-dependent compressed bytes.
+        const compressed = contents;
         const checksum = crc32(contents);
         const localHeader = Buffer.alloc(30);
         localHeader.writeUInt32LE(0x04034B50, 0);
         localHeader.writeUInt16LE(20, 4);
         localHeader.writeUInt16LE(0x0800, 6);
-        localHeader.writeUInt16LE(8, 8);
+        localHeader.writeUInt16LE(0, 8);
         localHeader.writeUInt16LE(FIXED_DOS_TIME, 10);
         localHeader.writeUInt16LE(FIXED_DOS_DATE, 12);
         localHeader.writeUInt32LE(checksum, 14);
@@ -105,7 +106,7 @@ function createZip(entries) {
         centralHeader.writeUInt16LE(0x0314, 4);
         centralHeader.writeUInt16LE(20, 6);
         centralHeader.writeUInt16LE(0x0800, 8);
-        centralHeader.writeUInt16LE(8, 10);
+        centralHeader.writeUInt16LE(0, 10);
         centralHeader.writeUInt16LE(FIXED_DOS_TIME, 12);
         centralHeader.writeUInt16LE(FIXED_DOS_DATE, 14);
         centralHeader.writeUInt32LE(checksum, 16);
