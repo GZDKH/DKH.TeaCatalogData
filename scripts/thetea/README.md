@@ -10,6 +10,10 @@ that contract from the verified baseline. Existing package bindings, identities,
 unrelated catalogs, cross-sells and other baseline fields are preserved. Source
 package quantities/defaults and origin narratives remain source evidence; they
 are not recreated as fields owned by a different destination aggregate.
+Current product descriptions use localized source enrichment or the source
+classification/origin paragraphs when enrichment is absent, without adding
+English interface labels to other locales. Full narratives remain in knowledge
+articles and typed brewing data remains in specifications.
 Historical complete baselines retain their legacy replay format. Mixed contracts
 and current payloads containing retired fields fail validation.
 

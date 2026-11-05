@@ -13,7 +13,7 @@
     "scripts/thetea/lib/product-reference.js": "aa2f4e983b6338b843896bcd561e87b84a56e2aa",
     "scripts/thetea/lib/source-api.js": "ea794d85d168dd84403e571992bddce4273df121",
     "scripts/thetea/lib/source-product-identity.js": "55d13d71f187b3842608b1dae01f212ff40b58b0",
-    "scripts/thetea/test-current-product-contract.js": "1087e2826b2e5bf9786fc10c3d34b3883dcd9309",
+    "scripts/thetea/test-current-product-contract.js": "60538ff36ce3a8d102c83304c1d6f143024f43e7",
     "scripts/thetea/test-source-api.js": "e2f4e8a56a1eb6ac02d891d69672a656c475b071"
   },
   "checks": [
@@ -52,6 +52,10 @@
     {
       "result": "passed",
       "evidence": "Resume now consumes retained single-character place query responses before new searches; regression rejects unnecessary network queries when cached census is complete. Metadata reference keys reject path separators before use in filesystem paths. Exact per-kind counts and conflicting-row rejection remain unchanged."
+    },
+    {
+      "result": "passed",
+      "evidence": "Actual canary exposed missing descriptions on cards without enrichment and untranslated recipe labels. Current-contract projection now uses only localized source enrichment or classification/origin paragraphs; regression verifies no invented headings and unchanged legacy replay. Full narrative sidecars remain intact."
     }
   ]
 }

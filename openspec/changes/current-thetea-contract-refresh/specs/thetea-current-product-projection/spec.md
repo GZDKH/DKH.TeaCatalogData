@@ -23,3 +23,11 @@ The producer MUST retain complete legacy-baseline replay and MUST reject mixed c
 #### Scenario: Mixed baseline
 - **WHEN** a marked-complete baseline mixes packageBindings and legacy packages contracts
 - **THEN** generation fails before artifact publication
+
+### Requirement: Keep current descriptions localized and source-backed
+Current product descriptions MUST use localized source enrichment or classification/origin prose when enrichment is absent. They MUST NOT introduce untranslated interface labels. Full source narratives MUST remain available in knowledge sidecars. Historical replay MUST retain its existing description formatter.
+
+#### Scenario: New source card has no enrichment
+- **WHEN** a current-contract card contains localized classification and origin prose but no enrichment
+- **THEN** the product description contains that source prose without invented labels
+- **AND** its full article narrative remains in the knowledge bundle

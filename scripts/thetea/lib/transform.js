@@ -57,7 +57,7 @@ function transformCardSet(cardSet, options = {}) {
         .flatMap(item => item.specifications);
     const selectedSpecifications = selectCanonicalSpecifications(localizedSpecificationSets, code);
     const relationCandidates = collectRelationCandidates(cardSet, primary, warnings);
-    const productTranslations = buildTranslations(cardSet, primary, warnings);
+    const productTranslations = buildTranslations(cardSet, primary, warnings, options);
     const routed = buildRoutedContent(
         cardSet,
         code,
@@ -457,7 +457,7 @@ function localeRelationOrder(value) {
     return locale === 'en' || locale === 'en-us' ? 0 : 1;
 }
 
-function buildTranslations(cardSet, primary, warnings) {
+function buildTranslations(cardSet, primary, warnings, options = {}) {
     const translations = new Map();
     const primaryNaming = decomposeTeaName(primary.name);
 
@@ -471,7 +471,7 @@ function buildTranslations(cardSet, primary, warnings) {
         translations.set(bcp47, {
             name: naming.displayName,
             transcription: naming.transcription || primaryNaming.transcription,
-            description: buildDescription(card),
+            description: buildDescription(card, options),
             seo: seoSlug(card.slug || primary.slug),
             metaTitle: card.seo?.title || naming.editorialTitle,
             metaDescription: card.seo?.description,
@@ -499,9 +499,18 @@ function buildTranslations(cardSet, primary, warnings) {
         .filter(t => t.name);
 }
 
-function buildDescription(card) {
+function buildDescription(card, options = {}) {
     const enrichment = card.enrichment || {};
     const chunks = [];
+    if (options.sourceDescriptions === true) {
+        const summaries = [enrichment.one_liner, enrichment.summary, enrichment.tasting_note]
+            .filter(value => typeof value === 'string' && value.trim());
+        const origin = card.sections?.classification_origin || {};
+        const paragraphs = summaries.length ? summaries : ['category', 'type', 'origin']
+            .map(key => origin[key]?.value)
+            .filter(value => typeof value === 'string' && value.trim());
+        return [...new Set(paragraphs)].join('\n\n');
+    }
     if (enrichment.one_liner) chunks.push(`**${enrichment.one_liner}**`);
     if (enrichment.summary) chunks.push(enrichment.summary);
     if (enrichment.tasting_note) chunks.push(`**Tasting note:** ${enrichment.tasting_note}`);

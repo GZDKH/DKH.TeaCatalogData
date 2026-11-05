@@ -654,6 +654,7 @@ function main() {
             publishExisting: args.publish === true,
             packages: args.packages || 'default',
             productCode: record.code,
+            sourceDescriptions: currentProductContract,
             order: index + 1,
             productCodeBySlug,
             catalog: catalogCode,

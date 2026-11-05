@@ -61,3 +61,9 @@ assert.throws(() => resolveSourceProductCode('different-source', baseline.code, 
 assert.throws(() => resolveSourceProductCode('example', 'TEA-TW-EXAMPLE', byCode,
     baselineSourceIndex([baseline, { ...baseline, code: 'TEA-CN-DUPLICATE' }])), /ambiguous/);
 console.log('test-current-product-contract: OK');
+const { buildDescription } = require('./lib/transform');
+const localizedCard = {enrichment:{},sections:{classification_origin:{category:{value:'Горный зелёный чай.'},type:{value:'Зелёный чай.'},origin:{value:'Ханчжоу.'}}},recipe:[{style:'gongfu',water_temp:90,tea_grams:5,water_ml:100,steep_sec:10,max_steeps:4}]};
+assert.strictEqual(buildDescription(localizedCard,{sourceDescriptions:true}),'Горный зелёный чай.\n\nЗелёный чай.\n\nХанчжоу.');
+assert(!buildDescription(localizedCard,{sourceDescriptions:true}).includes('Brewing recipes'));
+assert(buildDescription(localizedCard).includes('Brewing recipes'));
+assert.strictEqual(buildDescription({...localizedCard,enrichment:{summary:'Источник о вкусе.',tasting_note:'Свежий аромат.'}},{sourceDescriptions:true}),'Источник о вкусе.\n\nСвежий аромат.');
