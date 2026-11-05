@@ -32,3 +32,6 @@ assert.strictEqual(
     'fatal');
 
 console.log('test-snapshot-errors: OK');
+
+assert.strictEqual(classifyFetchIssue({endpoint:'similar',status:404,body:'{"error":"no vector for that slug"}'}).kind,'missing-similarity-vector');
+assert.strictEqual(classifyFetchIssue({endpoint:'similar',status:503}).kind,'fatal');

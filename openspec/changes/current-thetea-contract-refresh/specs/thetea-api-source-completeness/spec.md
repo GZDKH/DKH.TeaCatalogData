@@ -33,3 +33,11 @@ The source command MUST return a failing exit status when its manifest contains 
 #### Scenario: Exhausted API retries
 - **WHEN** a required request fails after its retry policy
 - **THEN** the command exits unsuccessfully and preserves the source error
+
+### Requirement: Preserve documented similarity absence
+A similarity route 404 defined as no vector MUST be retained as raw absence evidence rather than a fatal capture error. Resume MUST reuse its recorded status; other unexpected similarity failures MUST remain fatal.
+
+#### Scenario: New article has no vector
+- **WHEN** the source similarity route returns its documented 404
+- **THEN** the snapshot retains the status and body in its hashed file inventory
+- **AND** no similar-tea relationship is invented

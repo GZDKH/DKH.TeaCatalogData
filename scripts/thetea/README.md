@@ -64,7 +64,10 @@ API-only acquisition can explicitly use `--field-source=card-sections` with
 canonical TeaCard response and records its source path and SHA-256 in field
 coverage. Generation verifies that evidence. It does not create fictitious
 per-field endpoint responses. The default remains `--field-source=endpoints`.
-Markdown and similar requests are retained in both modes.
+Markdown and similar requests are retained in both modes. A documented
+`similar` 404 (no vector for that slug) is preserved as a hash-bound absence
+marker and warning; it is not an acquisition failure or an invented relation.
+Resume reuses that exact absence evidence.
 
 Glossary references use documented offset pages. Places references use a bounded
 union of documented `kind`/`q` searches; distinct `(kind, hanzi, pinyin)` rows are

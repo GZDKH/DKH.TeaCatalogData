@@ -292,6 +292,7 @@ async function main() {
         placesFiles: [],
         referenceCoverage: [],
         similarFiles: [],
+        missingSimilarFiles: [],
         sourceContractFiles: [],
         sourceContract: {
             expected: ['raw/source/docs.html', 'raw/source/openapi.yaml', 'raw/source/llms.txt', 'raw/source/skill.md'],
@@ -630,7 +631,16 @@ async function main() {
         if (includeSimilar) {
             const similarRel = `raw/similar/${lang}/${slug}.json`;
             const similarPath = path.join(root, similarRel);
+            const missingRel = `raw/similar-missing/${lang}/${slug}.json`;
+            const missingPath = path.join(root, missingRel);
             try {
+                if (resumeLocale(lang) && fs.existsSync(missingPath)) {
+                    const missing = readJson(missingPath);
+                    manifest.files.push(missingRel);
+                    manifest.missingSimilarFiles.push(missingRel);
+                    manifest.warnings.push(missing);
+                    return;
+                }
                 if (!(resumeLocale(lang) && fs.existsSync(similarPath))) {
                     const similar = await getJson(`/api/v2/tea/${encodeURIComponent(slug)}/similar?lang=${encodeURIComponent(requestLocales[lang])}&limit=12`);
                     writeJson(similarPath, similar);
@@ -638,7 +648,16 @@ async function main() {
                 manifest.files.push(similarRel);
                 manifest.similarFiles.push(similarRel);
             } catch (error) {
-                manifest.errors.push(issueFromError({ endpoint: 'similar', slug, lang }, error));
+                const issue = issueFromError({ endpoint: 'similar', slug, lang }, error);
+                const classification = classifyFetchIssue(issue);
+                if (classification.kind === 'missing-similarity-vector') {
+                    const missing = { ...issue, type: classification.kind,
+                        requestedEndpoint: `/api/v2/tea/${slug}/similar?lang=${requestLocales[lang]}&limit=12` };
+                    writeJson(missingPath, missing);
+                    manifest.files.push(missingRel);
+                    manifest.missingSimilarFiles.push(missingRel);
+                    manifest.warnings.push(missing);
+                } else manifest.errors.push(issue);
             }
         }
     });

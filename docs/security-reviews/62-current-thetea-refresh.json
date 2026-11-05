@@ -6,7 +6,7 @@
   "capability_reason": "Exposed Codex Security Cloud tools require a separately requested Cloud task; no scoped local diff scan is available.",
   "base_sha": "0df90357ef3f496c18d55cf0dc65aa0f594fc90d",
   "reviewed_blobs": {
-    "scripts/thetea/fetch-snapshot.js": "3cbd0c087a1ff2588b276336b63eeb62068150f1",
+    "scripts/thetea/fetch-snapshot.js": "ec771033a017f02dc9a9dac944cf9b2118161dc5",
     "scripts/thetea/lib/complete-api-references.js": "be855a0f0cedc5203c429d62ed6e0634c40abf84",
     "scripts/thetea/lib/product-contract.js": "a9e018e5d52b795fd66a0a0dc70c09259e1ca4cb",
     "scripts/thetea/lib/product-overlay.js": "48a8b65900d1ca8ef72e2ecc7aa13bf0a2f50254",
@@ -56,6 +56,10 @@
     {
       "result": "passed",
       "evidence": "Actual canary exposed missing descriptions on cards without enrichment and untranslated recipe labels. Current-contract projection now uses only localized source enrichment or classification/origin paragraphs; regression verifies no invented headings and unchanged legacy replay. Full narrative sidecars remain intact."
+    },
+    {
+      "result": "passed",
+      "evidence": "Documented similar404 no-vector responses are recorded as immutable raw absence markers with exact status/body/request path; resume reuses these markers. Unexpected503 stays fatal. Snapshot-error regressions pass; no relation or translated content is synthesized."
     }
   ]
 }
