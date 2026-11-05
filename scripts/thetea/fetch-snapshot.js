@@ -370,8 +370,16 @@ async function main() {
         manifest.files.push(rel);
         return readJson(file);
     };
+    const priorPlaceQueries = Object.fromEntries(['toponym', 'tea_name', 'name'].map(kind => {
+        const directory = path.join(root, 'raw/reference-pages/places', kind);
+        const queries = resume && fs.existsSync(directory) ? fs.readdirSync(directory)
+            .filter(file => /^(?:[a-f0-9]{2}){1,4}\.json$/.test(file))
+            .map(file => Buffer.from(file.slice(0, -5), 'hex').toString('utf8')) : [];
+        return [kind, queries];
+    }));
     try {
-        const references = await fetchCompleteReferences({ meta, langs, fetch: cacheReference, seedText: JSON.stringify([teas, categories, infusions]) });
+        const references = await fetchCompleteReferences({ meta, langs, fetch: cacheReference,
+            seedText: JSON.stringify([teas, categories, infusions]), priorPlaceQueries });
         manifest.referenceCoverage.push(...references.coverage);
         manifest.placesFiles.push(...references.placesFiles);
     } catch (error) {

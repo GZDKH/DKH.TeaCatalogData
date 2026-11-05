@@ -6,8 +6,8 @@
   "capability_reason": "Exposed Codex Security Cloud tools require a separately requested Cloud task; no scoped local diff scan is available.",
   "base_sha": "0df90357ef3f496c18d55cf0dc65aa0f594fc90d",
   "reviewed_blobs": {
-    "scripts/thetea/fetch-snapshot.js": "6a6b63fa912170d7006efbe9e023c2b21abeb0b3",
-    "scripts/thetea/lib/complete-api-references.js": "bfde7e7d5e6adee1b9acf81a59874dca5dd80608",
+    "scripts/thetea/fetch-snapshot.js": "3cbd0c087a1ff2588b276336b63eeb62068150f1",
+    "scripts/thetea/lib/complete-api-references.js": "be855a0f0cedc5203c429d62ed6e0634c40abf84",
     "scripts/thetea/lib/product-contract.js": "a9e018e5d52b795fd66a0a0dc70c09259e1ca4cb",
     "scripts/thetea/lib/product-overlay.js": "48a8b65900d1ca8ef72e2ecc7aa13bf0a2f50254",
     "scripts/thetea/lib/product-reference.js": "aa2f4e983b6338b843896bcd561e87b84a56e2aa",
@@ -48,6 +48,10 @@
     {
       "result": "passed",
       "evidence": "Live API-only query census completed1808 place records:876toponyms562tea_names370names. Last ch\u00e1n ch\u00e1 record discovered using Hanzi from full tea inventory, outside glossary seeds. Discovery now precedes references and contributes query seeds; seeded capped-page regression passes. All72 glossary locales individually reconcile2623terms/188856localized rows."
+    },
+    {
+      "result": "passed",
+      "evidence": "Resume now consumes retained single-character place query responses before new searches; regression rejects unnecessary network queries when cached census is complete. Metadata reference keys reject path separators before use in filesystem paths. Exact per-kind counts and conflicting-row rejection remain unchanged."
     }
   ]
 }

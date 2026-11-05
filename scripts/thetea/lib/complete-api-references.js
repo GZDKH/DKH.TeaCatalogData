@@ -15,7 +15,7 @@ function mergeRows(target, rows, keyOf, context) {
 }
 function countsFromMeta(meta, property, key) {
     const rows = (meta.data || meta)[property];
-    if (!Array.isArray(rows) || !rows.length || rows.some(row => !row[key] || !Number.isInteger(row.count) || row.count < 0)) {
+    if (!Array.isArray(rows) || !rows.length || rows.some(row => !/^[a-z][a-z_]{0,39}$/.test(row[key] || '') || !Number.isInteger(row.count) || row.count < 0)) {
         throw new Error(`Source metadata has no valid ${property} census.`);
     }
     return rows.map(row => ({ key: row[key], count: row.count }));
@@ -27,7 +27,7 @@ function assertCounts(rows, expected, key, context) {
     }
     if (rows.length !== expected.reduce((sum, item) => sum + item.count, 0)) throw new Error(`${context}: unexpected records.`);
 }
-async function fetchCompleteReferences({ meta, langs, fetch, seedText = '' }) {
+async function fetchCompleteReferences({ meta, langs, fetch, seedText = '', priorPlaceQueries = {} }) {
     const placeCounts = countsFromMeta(meta, 'place_kinds', 'kind');
     const termCounts = countsFromMeta(meta, 'term_categories', 'category');
     const coverage = [];
@@ -60,7 +60,9 @@ async function fetchCompleteReferences({ meta, langs, fetch, seedText = '' }) {
     }));
     const places = new Map();
     for (const { key: kind, count } of placeCounts) {
-        const queries = ['', ...PLACE_ALPHABET, ...hanziSeeds];
+        const prior = priorPlaceQueries[kind] || [];
+        if (prior.some(q => typeof q !== 'string' || [...q].length > 1)) throw new Error('Invalid retained place query.');
+        const queries = [...new Set(['', ...prior, ...PLACE_ALPHABET, ...hanziSeeds])];
         for (const q of queries) {
             if ([...places.values()].filter(row => row.kind === kind).length === count) break;
             const token = q ? Buffer.from(q).toString('hex') : 'all';

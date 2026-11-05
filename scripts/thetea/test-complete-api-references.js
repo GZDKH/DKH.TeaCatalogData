@@ -28,6 +28,15 @@ async function main() {
             : {places:url.searchParams.get('q')==='罕'?[rarePlace]:commonPlaces};
     }});
     assert.strictEqual(seeded.coverage.find(row=>row.endpoint==='places').returnedCount,201);
+    const resumed = await fetchCompleteReferences({meta:{place_kinds:[{kind:'tea_name',count:201}],term_categories:[{category:'tasting',count:1}]},langs:['en'],priorPlaceQueries:{tea_name:['罕']},fetch:async (file,endpoint)=>{
+        const url=new URL(endpoint,'https://api.thetea.app');
+        if (url.pathname.endsWith('/glossary')) return {offset:0,terms:[{term_id:1,category:'tasting'}]};
+        const q=url.searchParams.get('q');
+        if(q && q!=='罕') throw Error('Unnecessary uncached query');
+        return {places:q==='罕'?[rarePlace]:commonPlaces};
+    }});
+    assert.strictEqual(resumed.coverage.find(row=>row.endpoint==='places').returnedCount,201);
+    await assert.rejects(fetchCompleteReferences({meta:{place_kinds:[{kind:'../unsafe',count:1}],term_categories:meta.term_categories},langs:['en'],fetch}), /valid place_kinds/);
     const card={sections:{origin:{cultivar:{value:'text',num:null,unit:null}}}};
     const bytes=Buffer.from(JSON.stringify(card));
     const evidence={slug:'tea',lang:'en',entityKind:'tea',source:'api-card-sections',sourceFile:'raw/cards/en/tea.json',sha256:crypto.createHash('sha256').update(bytes).digest('hex'),expected:[{section:'origin',field:'cultivar'}],fetched:[{section:'origin',field:'cultivar'}],missing:[]};
