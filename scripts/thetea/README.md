@@ -67,6 +67,9 @@ union of documented `kind`/`q` searches; distinct `(kind, hanzi, pinyin)` rows a
 reconciled against every metadata kind count. Full raw pages remain hash-bound.
 Any count gap, conflicting repeated record or acquisition error rejects current
 production generation; an error-bearing source command exits unsuccessfully.
+Request parameters use each `/meta.locales[].code` (for example `no`), while
+snapshot/output locale identities use its BCP47 code (`nb`). The request mapping
+is recorded; resume does not reuse responses made with an obsolete mapping.
 The documented `zh`/`zh-CN` alias is accepted without allowing English fallback.
 
 For complete Cloudflare D1 captures, use the resumable table exporter and

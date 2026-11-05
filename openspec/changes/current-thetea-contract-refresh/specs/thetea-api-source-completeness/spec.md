@@ -5,7 +5,7 @@ Allow API-only complete acquisition of every advertised locale with transparent 
 ## ADDED Requirements
 
 ### Requirement: Acquire every card field transparently
-Per-field endpoints MUST remain the default. The explicit card-sections mode MUST retain the complete canonical API card, its SHA-256 and every expected field leaf as acquisition evidence. It MUST NOT claim that endpoint responses were fetched. Locale aliases zh and zh-CN MUST be accepted as the documented same locale without accepting English or another Chinese locale as fallback.
+Per-field endpoints MUST remain the default. The explicit card-sections mode MUST retain the complete canonical API card, its SHA-256 and every expected field leaf as acquisition evidence. It MUST NOT claim that endpoint responses were fetched. API request parameters MUST use the metadata source code while retaining its BCP47 locale in snapshots and outputs; resume MUST NOT reuse obsolete request mappings. Locale aliases zh and zh-CN MUST be accepted as the documented same locale without accepting English or another Chinese locale as fallback.
 
 #### Scenario: Canonical API card acquisition
 - **WHEN** card-sections mode captures a valid localized card

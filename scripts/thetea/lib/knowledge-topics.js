@@ -1,4 +1,4 @@
-const { toProductLocale, canonicalLocale } = require('./locales');
+const { toProductLocale, toApiLocale } = require('./locales');
 const { articleDto } = require('./routed-content');
 
 function knowledgeTopicFromCards(slug, cards) {
@@ -7,7 +7,7 @@ function knowledgeTopicFromCards(slug, cards) {
     for (const [locale, card] of Object.entries(cards)) {
         if (card.kind !== 'category') throw new Error(`${slug}/${locale}: source is not a category article.`);
         if (Array.isArray(card.available_locales)
-            && !card.available_locales.map(canonicalLocale).includes(canonicalLocale(locale))) continue;
+            && !card.available_locales.map(toApiLocale).includes(toApiLocale(locale))) continue;
         if (!String(card.markdown || '').trim()) throw new Error(`${slug}/${locale}: missing source article Markdown.`);
         translations.push({ lang: toProductLocale(locale), title: card.name, markdown: card.markdown });
     }

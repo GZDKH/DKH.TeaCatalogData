@@ -6,15 +6,15 @@
   "capability_reason": "Exposed Codex Security Cloud tools require a separately requested Cloud task; no scoped local diff scan is available.",
   "base_sha": "0df90357ef3f496c18d55cf0dc65aa0f594fc90d",
   "reviewed_blobs": {
-    "scripts/thetea/fetch-snapshot.js": "5e6a8d07d334eb3ad3bc9b357ba8651864c843a9",
-    "scripts/thetea/lib/complete-api-references.js": "e437bad7471bfc324fd2b0f5d44f7593abef3271",
+    "scripts/thetea/fetch-snapshot.js": "33262c2d465a70483d158edbd2ed1bfbf0b597ab",
+    "scripts/thetea/lib/complete-api-references.js": "ab9c69f194bd7ab9a174c62cdace719c8de4de1d",
     "scripts/thetea/lib/product-contract.js": "a9e018e5d52b795fd66a0a0dc70c09259e1ca4cb",
     "scripts/thetea/lib/product-overlay.js": "48a8b65900d1ca8ef72e2ecc7aa13bf0a2f50254",
     "scripts/thetea/lib/product-reference.js": "aa2f4e983b6338b843896bcd561e87b84a56e2aa",
     "scripts/thetea/lib/source-api.js": "ea794d85d168dd84403e571992bddce4273df121",
     "scripts/thetea/lib/source-product-identity.js": "55d13d71f187b3842608b1dae01f212ff40b58b0",
     "scripts/thetea/test-current-product-contract.js": "1087e2826b2e5bf9786fc10c3d34b3883dcd9309",
-    "scripts/thetea/test-source-api.js": "15936fd9519ca642d161e7c301c4406a2432da4c"
+    "scripts/thetea/test-source-api.js": "e2f4e8a56a1eb6ac02d891d69672a656c475b071"
   },
   "checks": [
     {
@@ -40,6 +40,10 @@
     {
       "result": "passed",
       "evidence": "Reference recovery regression: all-locale glossary pages are captured independently before the places census; observed glossary Hanzi seed documented q searches for rows that have no Latin spelling. Exact per-category/per-kind count gates remain enforced; test-complete-api-references passes."
+    },
+    {
+      "result": "passed",
+      "evidence": "Live API alias diagnosis: metadata NO/bcp47nb; glossary nb returned0 and card nb empty sections, whereas request no returned500 glossary terms and11 card sections. Source requests now use metadata code and retain BCP47 identities; changed mappings invalidate resume cache. Locale, API-reference, knowledge and source-origin regression tests pass."
     }
   ]
 }

@@ -4,7 +4,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { REPO_ROOT, loadDotEnv, parseArgs, csv, getTheTeaApiKey, requireArg } = require('./lib/env');
 const { requestJson, requestText } = require('./lib/http');
-const { localesFromMeta, resolveRequestedLocales } = require('./lib/locales');
+const { localesFromMeta, resolveRequestedLocales, apiRequestLocale } = require('./lib/locales');
 const { extractFieldRefs } = require('./lib/field-details');
 const { classifyFetchIssue } = require('./lib/snapshot-errors');
 const { resolveFieldLocales, shouldFetchFieldsForLang } = require('./lib/snapshot-options');
@@ -161,7 +161,7 @@ async function fetchAllTeas(lang, pageSize = 500, resource = 'teas') {
     let offset = 0;
 
     while (true) {
-        const page = await getJson(`/api/v2/${resource}?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(lang)}`);
+        const page = await getJson(`/api/v2/${resource}?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(requestLocales[lang])}`);
         const pageItems = page.items || [];
         items.push(...pageItems);
         pages.push({
@@ -188,7 +188,7 @@ async function fetchAllInfusions(lang, pageSize = 500) {
     let offset = 0;
 
     while (true) {
-        const page = await getJson(`/api/v2/infusions?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(lang)}`);
+        const page = await getJson(`/api/v2/infusions?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(requestLocales[lang])}`);
         const pageItems = page.items || [];
         items.push(...pageItems);
         pages.push({
@@ -263,6 +263,10 @@ async function main() {
     if (langs.some(lang => !/^[a-z]{2,3}(?:-[a-z0-9]{2,8})*$/i.test(lang))) throw new Error('Unsafe source locale.');
     const fieldLangs = includeFields ? resolveFieldLocales(requestedFieldLangs, langs) : [];
     const availableLocales = localesFromMeta(meta);
+    const previousManifestPath = path.join(root, 'manifest.json');
+    const previousManifest = resume && fs.existsSync(previousManifestPath) ? readJson(previousManifestPath) : {};
+    const requestLocales = Object.fromEntries(langs.map(lang => [lang, apiRequestLocale(lang, meta)]));
+    const resumeLocale = lang => resume && (requestLocales[lang] === lang || previousManifest.requestLocales?.[lang] === requestLocales[lang]);
 
     const manifest = {
         snapshotId,
@@ -271,6 +275,7 @@ async function main() {
         requestedLangs: requestedLangs.length ? requestedLangs : ['all'],
         requestedFieldLangs: requestedFieldLangs.length ? requestedFieldLangs : ['all'],
         availableLocales,
+        requestLocales,
         langs,
         fieldLangs,
         includeMarkdown,
@@ -343,8 +348,8 @@ async function main() {
         try {
             const mapRel = `raw/map-${lang}.json`;
             const mapPath = path.join(root, mapRel);
-            if (!(resume && fs.existsSync(mapPath))) {
-                const map = await getJson(`/api/v2/map?lang=${encodeURIComponent(lang)}`);
+            if (!(resumeLocale(lang) && fs.existsSync(mapPath))) {
+                const map = await getJson(`/api/v2/map?lang=${encodeURIComponent(requestLocales[lang])}`);
                 writeJson(mapPath, map);
             }
             manifest.files.push(mapRel);
@@ -444,13 +449,13 @@ async function main() {
         let card = null;
         let cardLanguageValid = true;
         try {
-            if (resume && fs.existsSync(cardPath)) {
+            if (resumeLocale(lang) && fs.existsSync(cardPath)) {
                 card = readJson(cardPath);
                 manifest.files.push(cardRel);
                 process.stdout.write('r');
             } else {
                 const route = entity.entityKind === 'infusion' ? 'infusion' : 'tea';
-                card = await getJson(`/api/v2/${route}/${encodeURIComponent(slug)}?lang=${encodeURIComponent(lang)}`);
+                card = await getJson(`/api/v2/${route}/${encodeURIComponent(slug)}?lang=${encodeURIComponent(requestLocales[lang])}`);
                 writeJson(cardPath, card);
                 manifest.files.push(cardRel);
                 process.stdout.write('.');
@@ -529,7 +534,7 @@ async function main() {
                 const missingRel = `raw/field-missing/${safePathPart(lang)}/${safePathPart(slug)}/${safePathPart(ref.section)}/${safePathPart(ref.field)}.json`;
                 const missingPath = path.join(root, missingRel);
                 try {
-                    if (resume && fs.existsSync(missingPath)) {
+                    if (resumeLocale(lang) && fs.existsSync(missingPath)) {
                         const missing = readJson(missingPath);
                         manifest.files.push(missingRel);
                         manifest.missingFieldDetailFiles.push(missingRel);
@@ -547,8 +552,8 @@ async function main() {
                         continue;
                     }
 
-                    if (!(resume && fs.existsSync(fieldPath))) {
-                        const field = await getJson(`/api/v2/tea/${encodeURIComponent(slug)}/${encodeURIComponent(lang)}/field/${encodeURIComponent(ref.field)}`);
+                    if (!(resumeLocale(lang) && fs.existsSync(fieldPath))) {
+                        const field = await getJson(`/api/v2/tea/${encodeURIComponent(slug)}/${encodeURIComponent(requestLocales[lang])}/field/${encodeURIComponent(ref.field)}`);
                         writeJson(fieldPath, field);
                     }
                     manifest.fieldFiles.push(fieldRel);
@@ -602,8 +607,8 @@ async function main() {
             const mdRel = `raw/markdown/${lang}/${slug}.md`;
             const mdPath = path.join(root, mdRel);
             try {
-                if (!(resume && fs.existsSync(mdPath))) {
-                    const markdown = await getText(`/api/v2/tea/${encodeURIComponent(slug)}.md?lang=${encodeURIComponent(lang)}`);
+                if (!(resumeLocale(lang) && fs.existsSync(mdPath))) {
+                    const markdown = await getText(`/api/v2/tea/${encodeURIComponent(slug)}.md?lang=${encodeURIComponent(requestLocales[lang])}`);
                     ensureDir(path.dirname(mdPath));
                     fs.writeFileSync(mdPath, markdown);
                 }
@@ -618,8 +623,8 @@ async function main() {
             const similarRel = `raw/similar/${lang}/${slug}.json`;
             const similarPath = path.join(root, similarRel);
             try {
-                if (!(resume && fs.existsSync(similarPath))) {
-                    const similar = await getJson(`/api/v2/tea/${encodeURIComponent(slug)}/similar?lang=${encodeURIComponent(lang)}&limit=12`);
+                if (!(resumeLocale(lang) && fs.existsSync(similarPath))) {
+                    const similar = await getJson(`/api/v2/tea/${encodeURIComponent(slug)}/similar?lang=${encodeURIComponent(requestLocales[lang])}&limit=12`);
                     writeJson(similarPath, similar);
                 }
                 manifest.files.push(similarRel);

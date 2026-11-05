@@ -1,3 +1,4 @@
+const { apiRequestLocale } = require('./locales');
 // Only documented API routes/parameters are used. Raw pages are retained; a
 // bounded query census is qualified only by the source's exact metadata totals.
 const PLACE_ALPHABET = [...new Set('abcdefghijklmnopqrstuvwxyzāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜüêńňǹḿ')];
@@ -37,11 +38,12 @@ async function fetchCompleteReferences({ meta, langs, fetch }) {
     await Promise.all(Array.from({length: Math.min(4, langs.length)}, async () => {
       while (pending.length) {
         const lang = pending.shift();
+        const requestLang = apiRequestLocale(lang, meta);
         const terms = new Map();
         const files = [];
         for (let offset = 0; ; offset += 500) {
-            const rel = `raw/reference-pages/glossary/${lang}/${offset}.json`;
-            const page = await fetch(rel, `/api/v2/glossary?lang=${encodeURIComponent(lang)}&limit=500&offset=${offset}`);
+            const rel = `raw/reference-pages/glossary/${requestLang === lang ? lang : `${lang}/${requestLang}`}/${offset}.json`;
+            const page = await fetch(rel, `/api/v2/glossary?lang=${encodeURIComponent(requestLang)}&limit=500&offset=${offset}`);
             if (!Array.isArray(page.terms) || page.offset !== offset) throw new Error(`Invalid glossary pagination for ${lang}/${offset}.`);
             const before = terms.size;
             for (const term of page.terms) addHanzi(term.hanzi);
