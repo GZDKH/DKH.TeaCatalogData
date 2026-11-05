@@ -44,6 +44,10 @@ async function main() {
     assert.strictEqual(cardSectionDetails(input)[0].payload.value,'text');
     assert.throws(()=>cardSectionDetails({...input,bytes:Buffer.from('changed')}), /changed/);
     assert.throws(()=>cardSectionDetails({...input,manifest:{fieldCoverage:[{...evidence,fetched:[]}]}}), /Incomplete/);
+    const compact={...evidence,expectedCount:1,fetchedCount:1};
+    delete compact.expected; delete compact.fetched;
+    assert.strictEqual(cardSectionDetails({...input,manifest:{fieldCoverage:[compact]}})[0].payload.value,'text');
+    assert.throws(()=>cardSectionDetails({...input,manifest:{fieldCoverage:[{...compact,fetchedCount:0}]}}), /Incomplete/);
     console.log('test-complete-api-references: OK');
 }
 main().catch(error=>{console.error(error);process.exitCode=1;});

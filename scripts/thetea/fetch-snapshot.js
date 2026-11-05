@@ -525,7 +525,7 @@ async function main() {
             const refs = extractFieldRefs(card);
             manifest.fieldCoverage.push({ slug, lang, entityKind: entity.entityKind,
                 source: 'api-card-sections', sourceFile: cardRel, sha256: sha256File(cardPath),
-                expected: refs, fetched: refs, missing: [] });
+                expectedCount: refs.length, fetchedCount: refs.length, missing: [] });
         } else if (includeFields && !d1FieldPacks && card && cardLanguageValid && shouldFetchFieldsForLang(lang, fieldLangs)) {
             const fieldRefs = extractFieldRefs(card);
             const fieldCoverage = {

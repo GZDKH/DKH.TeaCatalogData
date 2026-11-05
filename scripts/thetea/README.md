@@ -62,7 +62,9 @@ Authoritative import sources:
 API-only acquisition can explicitly use `--field-source=card-sections` with
 `--langs=all --field-langs=all`. This retains every section field in the complete
 canonical TeaCard response and records its source path and SHA-256 in field
-coverage. Generation verifies that evidence. It does not create fictitious
+coverage. Field counts and the hash-bound raw card retain leaf completeness
+without duplicating millions of field names in the full snapshot manifest.
+Generation reconstructs the leaves from the raw card and verifies that evidence. It does not create fictitious
 per-field endpoint responses. The default remains `--field-source=endpoints`.
 Markdown and similar requests are retained in both modes. A documented
 `similar` 404 (no vector for that slug) is preserved as a hash-bound absence

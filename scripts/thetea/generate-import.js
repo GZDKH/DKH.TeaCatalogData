@@ -822,7 +822,7 @@ function main() {
             .reduce((sum, category) => sum + category.products.length, 0),
         fieldSource: manifest.fieldSource || 'per-field-api',
         capturedCardFieldCount: manifest.fieldSource === 'api-card-sections'
-            ? (manifest.fieldCoverage || []).reduce((sum, row) => sum + row.fetched.length, 0) : 0,
+            ? (manifest.fieldCoverage || []).reduce((sum, row) => sum + (row.fetchedCount ?? row.fetched?.length ?? 0), 0) : 0,
         fieldDetailFiles: manifest.fieldFiles?.length || 0,
         fieldPackFiles: manifest.fieldPackFiles?.length || 0,
         missingFieldDetailFiles: manifest.missingFieldDetailFiles?.length || 0,

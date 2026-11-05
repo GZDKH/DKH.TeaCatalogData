@@ -6,7 +6,7 @@
   "capability_reason": "Exposed Codex Security Cloud tools require a separately requested Cloud task; no scoped local diff scan is available.",
   "base_sha": "0df90357ef3f496c18d55cf0dc65aa0f594fc90d",
   "reviewed_blobs": {
-    "scripts/thetea/fetch-snapshot.js": "ec771033a017f02dc9a9dac944cf9b2118161dc5",
+    "scripts/thetea/fetch-snapshot.js": "1e997729a69ef6fe7faa1f0f25ee913dab29fc70",
     "scripts/thetea/lib/complete-api-references.js": "be855a0f0cedc5203c429d62ed6e0634c40abf84",
     "scripts/thetea/lib/product-contract.js": "a9e018e5d52b795fd66a0a0dc70c09259e1ca4cb",
     "scripts/thetea/lib/product-overlay.js": "48a8b65900d1ca8ef72e2ecc7aa13bf0a2f50254",
@@ -60,6 +60,10 @@
     {
       "result": "passed",
       "evidence": "Documented similar404 no-vector responses are recorded as immutable raw absence markers with exact status/body/request path; resume reuses these markers. Unexpected503 stays fatal. Snapshot-error regressions pass; no relation or translated content is synthesized."
+    },
+    {
+      "result": "passed",
+      "evidence": "Canonical-card completeness now records source SHA256 and exact leaf counts without duplicating millions of field references. Generation reconstructs every leaf from the hash-verified raw card; both historical array evidence and compact evidence are tested, and count mismatch fails. Source-inventory counts and generation diagnostics retain complete coverage."
     }
   ]
 }
