@@ -1,6 +1,7 @@
 const PRODUCT_LOCALE_ALIASES = {
     en: 'en-US',
     ru: 'ru-RU',
+    no: 'nb',
     zh: 'zh-CN',
     'zh-cn': 'zh-CN',
 };

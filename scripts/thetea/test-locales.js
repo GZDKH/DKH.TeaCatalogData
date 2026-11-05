@@ -41,6 +41,7 @@ assert.strictEqual(toProductLocale('zh'), 'zh-CN');
 assert.strictEqual(toProductLocale('zh-CN'), 'zh-CN');
 assert.strictEqual(toProductLocale('zh-HK'), 'zh-HK');
 assert.strictEqual(toProductLocale('nb'), 'nb');
+assert.strictEqual(toProductLocale('no'), 'nb');
 assert.strictEqual(toApiLocale('no'), 'nb');
 assert.strictEqual(toApiLocale('zh'), 'zh-CN');
 assert.strictEqual(toApiLocale('zh-hk'), 'zh-HK');
@@ -72,7 +73,7 @@ const { product } = transformCardSet({
     'zh-HK': { ...baseCard, lang: 'zh-HK', name: '西湖龍井' },
     nb: {
         ...baseCard,
-        lang: 'nb',
+        lang: 'no',
         name: 'Xi Hu Longjing norsk',
         similarEndpoint: { similar: [{ slug: 'anji-baicha', name: 'Anji Baicha', score: 0.91, reason: 'fresh green tea' }] },
     },
