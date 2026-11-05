@@ -7,7 +7,7 @@
   "base_sha": "0df90357ef3f496c18d55cf0dc65aa0f594fc90d",
   "reviewed_blobs": {
     "scripts/thetea/fetch-snapshot.js": "5e6a8d07d334eb3ad3bc9b357ba8651864c843a9",
-    "scripts/thetea/lib/complete-api-references.js": "7d1eaa4a9641c0b262d9641dae3b259ddbee48af",
+    "scripts/thetea/lib/complete-api-references.js": "e437bad7471bfc324fd2b0f5d44f7593abef3271",
     "scripts/thetea/lib/product-contract.js": "a9e018e5d52b795fd66a0a0dc70c09259e1ca4cb",
     "scripts/thetea/lib/product-overlay.js": "48a8b65900d1ca8ef72e2ecc7aa13bf0a2f50254",
     "scripts/thetea/lib/product-reference.js": "aa2f4e983b6338b843896bcd561e87b84a56e2aa",
@@ -36,6 +36,10 @@
     {
       "result": "passed",
       "evidence": "Native content preparation verifies artifact/source/reference hashes, exact selects identities, requires scoped destination GET or explicit absence and preserves publication/cover/unrelated translations. It refuses apply flags and performs no network or production writes."
+    },
+    {
+      "result": "passed",
+      "evidence": "Reference recovery regression: all-locale glossary pages are captured independently before the places census; observed glossary Hanzi seed documented q searches for rows that have no Latin spelling. Exact per-category/per-kind count gates remain enforced; test-complete-api-references passes."
     }
   ]
 }

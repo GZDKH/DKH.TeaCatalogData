@@ -31,9 +31,33 @@ async function fetchCompleteReferences({ meta, langs, fetch }) {
     const termCounts = countsFromMeta(meta, 'term_categories', 'category');
     const coverage = [];
     const placesFiles = [];
+    const hanziSeeds = new Set();
+    const addHanzi = text => { for (const char of String(text || '')) if (/\p{Script=Han}/u.test(char)) hanziSeeds.add(char); };
+    const pending = [...langs];
+    await Promise.all(Array.from({length: Math.min(4, langs.length)}, async () => {
+      while (pending.length) {
+        const lang = pending.shift();
+        const terms = new Map();
+        const files = [];
+        for (let offset = 0; ; offset += 500) {
+            const rel = `raw/reference-pages/glossary/${lang}/${offset}.json`;
+            const page = await fetch(rel, `/api/v2/glossary?lang=${encodeURIComponent(lang)}&limit=500&offset=${offset}`);
+            if (!Array.isArray(page.terms) || page.offset !== offset) throw new Error(`Invalid glossary pagination for ${lang}/${offset}.`);
+            const before = terms.size;
+            for (const term of page.terms) addHanzi(term.hanzi);
+            mergeRows(terms, page.terms, row => Number.isInteger(row.term_id) ? row.term_id : null, `glossary/${lang}`);
+            files.push(rel);
+            if (page.terms.length < 500) break;
+            if (terms.size === before || terms.size > 100000) throw new Error(`Non-progressing glossary pagination for ${lang}.`);
+        }
+        assertCounts([...terms.values()], termCounts, 'category', `glossary/${lang}`);
+        coverage.push({ endpoint: 'glossary', lang, returnedCount: terms.size,
+            expectedCount: terms.size, possiblyTruncated: false, strategy: 'metadata-counted-offset-pages', files });
+      }
+    }));
     const places = new Map();
     for (const { key: kind, count } of placeCounts) {
-        const queries = ['', ...PLACE_ALPHABET];
+        const queries = ['', ...PLACE_ALPHABET, ...hanziSeeds];
         for (const q of queries) {
             if ([...places.values()].filter(row => row.kind === kind).length === count) break;
             const token = q ? Buffer.from(q).toString('hex') : 'all';
@@ -51,25 +75,8 @@ async function fetchCompleteReferences({ meta, langs, fetch }) {
         }
     }
     assertCounts([...places.values()], placeCounts, 'kind', 'places');
-    for (const lang of langs) {
-        coverage.push({ endpoint: 'places', lang, returnedCount: places.size,
-            expectedCount: places.size, possiblyTruncated: false, strategy: 'metadata-counted-query-census', files: placesFiles });
-        const terms = new Map();
-        const files = [];
-        for (let offset = 0; ; offset += 500) {
-            const rel = `raw/reference-pages/glossary/${lang}/${offset}.json`;
-            const page = await fetch(rel, `/api/v2/glossary?lang=${encodeURIComponent(lang)}&limit=500&offset=${offset}`);
-            if (!Array.isArray(page.terms) || page.offset !== offset) throw new Error(`Invalid glossary pagination for ${lang}/${offset}.`);
-            const before = terms.size;
-            mergeRows(terms, page.terms, row => Number.isInteger(row.term_id) ? row.term_id : null, `glossary/${lang}`);
-            files.push(rel);
-            if (page.terms.length < 500) break;
-            if (terms.size === before || terms.size > 100000) throw new Error(`Non-progressing glossary pagination for ${lang}.`);
-        }
-        assertCounts([...terms.values()], termCounts, 'category', `glossary/${lang}`);
-        coverage.push({ endpoint: 'glossary', lang, returnedCount: terms.size,
-            expectedCount: terms.size, possiblyTruncated: false, strategy: 'metadata-counted-offset-pages', files });
-    }
+    for (const lang of langs) coverage.push({ endpoint: 'places', lang, returnedCount: places.size,
+        expectedCount: places.size, possiblyTruncated: false, strategy: 'metadata-counted-query-census', files: placesFiles });
     return { coverage, placesFiles };
 }
 module.exports = { fetchCompleteReferences, mergeRows, assertCounts, PLACE_ALPHABET };

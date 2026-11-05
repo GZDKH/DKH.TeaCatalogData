@@ -20,6 +20,14 @@ async function main() {
     assert(result.coverage.every(row=>!row.possiblyTruncated && row.files.length));
     await assert.rejects(fetchCompleteReferences({meta:{...meta,place_kinds:[{kind:'toponym',count:3}]},langs:['en'],fetch}), /2\/3/);
     await assert.rejects(fetchCompleteReferences({meta:{...meta,term_categories:[{category:'tasting',count:502}]},langs:['en'],fetch}), /501\/502/);
+    const commonPlaces = Array.from({length:200}, (_, i) => ({kind:'tea_name',hanzi:`茶${i}`,pinyin:'chá'}));
+    const rarePlace = {kind:'tea_name',hanzi:'罕',pinyin:null};
+    const seeded = await fetchCompleteReferences({meta:{place_kinds:[{kind:'tea_name',count:201}],term_categories:[{category:'tasting',count:1}]},langs:['en'],fetch:async (file,endpoint)=>{
+        const url=new URL(endpoint,'https://api.thetea.app');
+        return url.pathname.endsWith('/glossary') ? {offset:0,terms:[{term_id:1,category:'tasting',hanzi:'罕'}]}
+            : {places:url.searchParams.get('q')==='罕'?[rarePlace]:commonPlaces};
+    }});
+    assert.strictEqual(seeded.coverage.find(row=>row.endpoint==='places').returnedCount,201);
     const card={sections:{origin:{cultivar:{value:'text',num:null,unit:null}}}};
     const bytes=Buffer.from(JSON.stringify(card));
     const evidence={slug:'tea',lang:'en',entityKind:'tea',source:'api-card-sections',sourceFile:'raw/cards/en/tea.json',sha256:crypto.createHash('sha256').update(bytes).digest('hex'),expected:[{section:'origin',field:'cultivar'}],fetched:[{section:'origin',field:'cultivar'}],missing:[]};
