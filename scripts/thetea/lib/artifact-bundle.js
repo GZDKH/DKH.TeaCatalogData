@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const fs = require('fs');
+const { validateKnowledgeTopics } = require('./knowledge-topics');
 const path = require('path');
 const { readContentMediaDirectory } = require('./content-media');
 
@@ -33,6 +34,7 @@ function createArtifactManifest(root, metadata = {}) {
         generatedAt: metadata.generatedAt || new Date().toISOString(),
         requiredLocales: sortedUnique(metadata.requiredLocales),
         productCodes: sortedUnique(metadata.productCodes),
+        topicArticleCodes: sortedUnique(metadata.topicArticleCodes),
         products: [...(metadata.products || [])]
             .map(item => ({ code: String(item.code || ''), path: String(item.path || '') }))
             .sort((a, b) => a.code.localeCompare(b.code) || a.path.localeCompare(b.path)),
@@ -81,6 +83,7 @@ function verifyArtifactManifest(root) {
         errors.push(`Unsupported artifact schema version '${manifest.schemaVersion}'.`);
     }
     if (!Array.isArray(manifest.files)) errors.push('Artifact manifest files must be an array.');
+    if (manifest.topicArticleCodes !== undefined && !Array.isArray(manifest.topicArticleCodes)) errors.push('Artifact topicArticleCodes must be an array.');
     if (!Array.isArray(manifest.requiredLocales) || manifest.requiredLocales.length === 0) {
         errors.push('Artifact manifest requiredLocales must be a non-empty array.');
     }
@@ -215,7 +218,19 @@ function readArtifactBundle(root) {
     const routedContent = {
         articles: readRoutedRecords(resolvedRoot, 'articles', errors),
         metaobjects: readRoutedRecords(resolvedRoot, 'metaobjects', errors),
+        topics: listArtifactFiles(resolvedRoot).some(relativePath => relativePath.startsWith('06-routed-content/topics/'))
+            ? readRoutedRecords(resolvedRoot, 'topics', errors)
+            : [],
     };
+    try {
+        validateKnowledgeTopics(routedContent.topics);
+        if (JSON.stringify(sortedUnique(routedContent.topics.map(topic => topic.code)))
+            !== JSON.stringify(sortedUnique(manifestValidation.manifest?.topicArticleCodes))) {
+            errors.push('Knowledge topic codes differ from artifact manifest topicArticleCodes.');
+        }
+    } catch (error) {
+        errors.push(error.message);
+    }
     const catalogBindings = readRequiredArray(
         resolvedRoot,
         '05-catalog-bindings/catalogs.json',

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const { cardSectionDetails } = require('./lib/card-section-source');
 const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
@@ -38,7 +39,11 @@ const {
     overlayExistingProduct,
 } = require('./lib/product-overlay');
 const { loadVerifiedProductReference } = require('./lib/product-reference');
+const { usesCurrentProductContract, toCurrentProductContract } = require('./lib/product-contract');
 const { collectContentMedia } = require('./lib/content-media');
+const { knowledgeTopicFromCards } = require('./lib/knowledge-topics');
+const { baselineSourceIndex, resolveSourceProductCode } = require('./lib/source-product-identity');
+const { assertCurrentSourceReferences } = require('./lib/source-reference-coverage');
 
 loadDotEnv();
 
@@ -134,20 +139,25 @@ function loadCardSet({
     allowMissingFieldDetails,
     allowMissingMarkdown,
     warnings,
+    entityKind = 'tea',
 }) {
     const cardSet = {};
     const d1FieldPack = readD1FieldPack(snapshotRoot, slug);
     const noFieldDataExpected = (manifest.noFieldDataSlugs || []).includes(slug);
     for (const lang of langs) {
-        const file = path.join(snapshotRoot, 'raw', 'cards', lang, `${slug}.json`);
+        const file = entityKind === 'tea'
+            ? path.join(snapshotRoot, 'raw', 'cards', lang, `${slug}.json`)
+            : path.join(snapshotRoot, 'raw', 'entities', entityKind, 'cards', lang, `${slug}.json`);
         if (!fs.existsSync(file)) continue;
 
         const card = readJson(file);
-        const fieldDetails = d1FieldPack?.locales?.[lang]
-            || readFieldDetails(snapshotRoot, lang, slug);
+        const fieldDetails = manifest.fieldSource === 'api-card-sections'
+            ? cardSectionDetails({ card, bytes: fs.readFileSync(file), file: path.relative(snapshotRoot, file).split(path.sep).join('/'), manifest, slug, lang, entityKind })
+            : d1FieldPack?.locales?.[lang] || readFieldDetails(snapshotRoot, lang, slug);
         const fieldLangs = Array.isArray(manifest.fieldLangs) ? manifest.fieldLangs : null;
         const fieldsExpectedForLang = fieldLangs === null || fieldLangs.includes(lang);
         if (!fieldDetails.length
+            && manifest.fieldSource !== 'api-card-sections'
             && !allowMissingFieldDetails
             && fieldsExpectedForLang
             && !noFieldDataExpected) {
@@ -280,6 +290,7 @@ function writeGeneratedBundle(stagingRoot, artifact) {
     writeJson(path.join(stagingRoot, '05-catalog-bindings', 'catalogs.json'), [artifact.catalogBinding]);
     writeRoutedRecords(stagingRoot, 'articles', artifact.routedContent.articles);
     writeRoutedRecords(stagingRoot, 'metaobjects', artifact.routedContent.metaobjects);
+    if (artifact.routedContent.topics?.length) writeRoutedRecords(stagingRoot, 'topics', artifact.routedContent.topics);
     writeProductMedia(stagingRoot, artifact.productMedia);
     writeContentMedia(stagingRoot, artifact.contentMedia);
 
@@ -296,6 +307,7 @@ function writeGeneratedBundle(stagingRoot, artifact) {
         generatedAt: artifact.generatedAt,
         requiredLocales: artifact.requiredLocales,
         productCodes: artifact.products.map(product => product.code),
+        topicArticleCodes: (artifact.routedContent.topics || []).map(topic => topic.code),
         products: artifact.productRecords.map(record => ({
             code: record.product.code,
             path: record.relativePath,
@@ -519,8 +531,17 @@ function main() {
         ? loadVerifiedProductReference(productReferencePath)
         : null;
     const baselineProducts = baselineReference?.products || [];
+    const currentProductContract = baselineProducts.length > 0 && usesCurrentProductContract(baselineProducts[0]);
+    if (currentProductContract && updateScope === 'packages') {
+        throw new Error('Package quantities/defaults are outside the current product contract; use the catalog sellable-variant workflow.');
+    }
     const baselineByCode = new Map(baselineProducts.map(product => [normalizeCode(product.code), product]));
+    const baselineBySource = baselineSourceIndex(baselineProducts);
     const manifest = readJson(manifestPath);
+    if (currentProductContract) {
+        if (manifest.errors?.length || manifest.cardLanguageMismatches?.length) throw new Error('Current production projection requires a source snapshot without acquisition errors.');
+        assertCurrentSourceReferences(manifest);
+    }
     const requestedLangs = csv(args.langs);
     const langs = requestedLangs.length
         ? requestedLangs.map(canonicalLocale)
@@ -528,7 +549,7 @@ function main() {
     const requiredLocales = [...new Set(langs.map(toProductLocale).filter(Boolean))];
     const allowMissingFieldDetails = args['allow-missing-field-details'] === true;
     const hasFieldDetails = Boolean(
-        manifest.fieldFiles?.length || manifest.fieldPackFiles?.length);
+        manifest.fieldFiles?.length || manifest.fieldPackFiles?.length || (manifest.fieldSource === 'api-card-sections' && manifest.fieldCoverage?.length));
     if (!allowMissingFieldDetails && (manifest.includeFields === false || !hasFieldDetails)) {
         throw new Error('Snapshot has no per-field endpoint details. Re-fetch without --skip-fields or pass --allow-missing-field-details for diagnostics only.');
     }
@@ -557,7 +578,8 @@ function main() {
             warnings.push(`No cards found for slug ${slug}; skipped.`);
             continue;
         }
-        const code = productCodeForCardSet({ [primary.lang || 'en']: primary });
+        const code = resolveSourceProductCode(slug,
+            productCodeForCardSet({ [primary.lang || 'en']: primary }), baselineByCode, baselineBySource);
         if (codes.has(code)) throw new Error(`Duplicate generated product code ${code}.`);
         codes.add(code);
         records.push({
@@ -602,7 +624,7 @@ function main() {
     const taxonomyAudits = [];
     const definitionObservationMap = new Map();
     const lossEvents = [];
-    const routedContent = { articles: [], metaobjects: [] };
+    const routedContent = { articles: [], metaobjects: [], topics: [] };
     const productRecords = [];
 
     for (const [index, record] of records.entries()) {
@@ -631,6 +653,7 @@ function main() {
             publish: args.publish === true,
             publishExisting: args.publish === true,
             packages: args.packages || 'default',
+            productCode: record.code,
             order: index + 1,
             productCodeBySlug,
             catalog: catalogCode,
@@ -656,7 +679,7 @@ function main() {
         const baseline = baselineByCode.get(normalizeCode(transformed.product.code));
         const product = updateScope === 'packages'
             ? buildPackageOnlyProduct(transformed.product, baseline)
-            : overlayExistingProduct(transformed.product, baseline, {
+            : overlayExistingProduct(currentProductContract ? toCurrentProductContract(transformed.product) : transformed.product, baseline, {
                 publishExisting: args.publish === true,
                 catalogAssignmentMode,
                 targetCatalog: catalogCode,
@@ -668,6 +691,16 @@ function main() {
             product: normalizedProduct,
             relativePath: productRelativePath(normalizedProduct, record.primary),
         });
+    }
+
+    if (updateScope !== 'packages') {
+        for (const entity of manifest.entityInventory || []) {
+            if (entity.entityKind !== 'category' || entity.classificationConflict) continue;
+            const slug = assertSafeSlug(entity.slug);
+            const cards = loadCardSet({ snapshotRoot, manifest, langs, slug, allowMissingFieldDetails,
+                allowMissingMarkdown, warnings, entityKind: 'category' });
+            routedContent.topics.push(knowledgeTopicFromCards(slug, cards));
+        }
     }
 
     const family = fs.existsSync(path.join(snapshotRoot, 'raw', 'family.json'))
@@ -770,6 +803,7 @@ function main() {
         relations: validation.relationCounts,
         lossEvents,
         routedContentCounts: validation.routedContentCounts,
+        topicArticleCount: routedContent.topics.length,
         productNaming: validation.productNaming,
         catalogMapping: validation.catalogMapping,
         catalogPlacement,
@@ -785,6 +819,9 @@ function main() {
         catalogBindingCategoryCount: catalogBinding.categories.length,
         catalogBindingProductAssignmentCount: catalogBinding.categories
             .reduce((sum, category) => sum + category.products.length, 0),
+        fieldSource: manifest.fieldSource || 'per-field-api',
+        capturedCardFieldCount: manifest.fieldSource === 'api-card-sections'
+            ? (manifest.fieldCoverage || []).reduce((sum, row) => sum + row.fetched.length, 0) : 0,
         fieldDetailFiles: manifest.fieldFiles?.length || 0,
         fieldPackFiles: manifest.fieldPackFiles?.length || 0,
         missingFieldDetailFiles: manifest.missingFieldDetailFiles?.length || 0,

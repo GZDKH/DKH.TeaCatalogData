@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "delivery_owner": "codex-thetea-01a1ac6a",
+  "stage": "implementation",
+  "task_file": "tasks.md",
+  "next_action": "Qualify API source census, then independent review and canary/readback before separately approved mass apply.",
+  "tasks": {},
+  "tracking_note": "User instructions require all task tracking in Beads and prohibit Markdown TODO lists. tasks.md contains acceptance prose; empty checklist consistency is not execution evidence. Actual step denis-u6e and GitLab issue62 remain in progress.",
+  "acceptance_pending": [
+    "API source qualification",
+    "independent current-head review",
+    "merge and main CI",
+    "canary/readback",
+    "mass approval and full reconciliation"
+  ]
+}

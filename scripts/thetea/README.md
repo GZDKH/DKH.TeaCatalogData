@@ -2,6 +2,46 @@
 
 Production-safe import flow for data from `https://api.thetea.app` into the DKH ProductCatalog DataExchange schema.
 
+## Current destination contract
+
+A current complete ProductCatalog baseline contains `packageBindings`, not the
+retired product `packages`, pricing, or `origins` collections. Generation detects
+that contract from the verified baseline. Existing package bindings, identities,
+unrelated catalogs, cross-sells and other baseline fields are preserved. Source
+package quantities/defaults and origin narratives remain source evidence; they
+are not recreated as fields owned by a different destination aggregate.
+Historical complete baselines retain their legacy replay format. Mixed contracts
+and current payloads containing retired fields fail validation.
+
+The snapshot captures `/categories` independently from `/teas`. Category cards
+become knowledge topics under `06-routed-content/topics`, never products or
+invented product specifications. Source-only locale availability is respected;
+an unavailable translation is not fabricated.
+
+Prepare native SetupTool content records without making a remote write:
+
+```bash
+node scripts/thetea/prepare-setup-tool-content.js \
+  --dir=import/thetea/<artifact> \
+  --catalog-ref=sources/prod/catalog-reference/<reference>.json \
+  --product-ref=sources/prod/product-reference/<reference> \
+  --snapshot-root=sources/thetea/snapshots/<snapshot> \
+  --content-ref=<scoped-content-reference.json> \
+  --storefront-id=<storefront-uuid> \
+  --out=reports/thetea/<artifact>/setup-content
+```
+
+Selection by `--only=<exact-slug-or-code>` is exact. `--topics-only` prepares only
+knowledge topics. The content reference must contain the scoped full GET result
+(or an explicit null for a verified 404) for each selected article. Existing
+publication state, cover and unrelated translations are preserved. New content is a draft unless `--publish` is explicitly used.
+The prepared records and source manifest digest are recorded separately from the
+immutable input bundle. Execute through SetupTool's existing routed-content mode
+after reviewing destination ownership and the selected canary. A larger apply
+still requires its separate approval and readback. New-product creation also
+retains its separate approved path; the ordinary update-only resync does not
+implicitly authorize it.
+
 ## Source Methods
 
 Authoritative import sources:
@@ -14,6 +54,20 @@ Authoritative import sources:
 - `GET /api/v2/tea/{slug}/{lang}/field/{code}` — per-field detail. The snapshot fetches this for every field discovered under each TeaCard `sections` object and generation overlays `value_md` / `value_num` onto the card before building descriptions and specs.
 - `GET /api/v2/tea/{slug}.md` — full localized Markdown page; stored as raw source content and routed to article sidecars, never flattened into specifications.
 - `GET /api/v2/tea/{slug}/similar` — localized similar-tea fallback for `related[]`; curated `enrichment.similar_teas` wins, then endpoint results are resolved, deduplicated, self-filtered, and capped at 12.
+
+API-only acquisition can explicitly use `--field-source=card-sections` with
+`--langs=all --field-langs=all`. This retains every section field in the complete
+canonical TeaCard response and records its source path and SHA-256 in field
+coverage. Generation verifies that evidence. It does not create fictitious
+per-field endpoint responses. The default remains `--field-source=endpoints`.
+Markdown and similar requests are retained in both modes.
+
+Glossary references use documented offset pages. Places references use a bounded
+union of documented `kind`/`q` searches; distinct `(kind, hanzi, pinyin)` rows are
+reconciled against every metadata kind count. Full raw pages remain hash-bound.
+Any count gap, conflicting repeated record or acquisition error rejects current
+production generation; an error-bearing source command exits unsuccessfully.
+The documented `zh`/`zh-CN` alias is accepted without allowing English fallback.
 
 For complete Cloudflare D1 captures, use the resumable table exporter and
 compact materialization flow:

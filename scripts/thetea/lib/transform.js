@@ -33,7 +33,7 @@ function transformCardSet(cardSet, options = {}) {
             categoryCodes: [],
         }
         : taxonomy;
-    const code = productCodeForCardSet(cardSet);
+    const code = options.productCode || productCodeForCardSet(cardSet);
     const canonicalSensoryLabels = options.canonicalSensoryLabels
         || Object.fromEntries((primary.sensory || [])
             .filter(item => item?.descriptor)

@@ -62,8 +62,10 @@ function normalizeReferenceCollections(product) {
             spec.unit = referenceCode(spec.unit, `${product.code}.specifications[${index}].unit`);
         }
     }
-    for (const [index, item] of (product.packages || []).entries()) {
-        item.package = referenceCode(item.package, `${product.code}.packages[${index}].package`);
+    for (const field of ['packages', 'packageBindings']) {
+        for (const [index, item] of (product[field] || []).entries()) {
+            item.package = referenceCode(item.package, `${product.code}.${field}[${index}].package`);
+        }
     }
     for (const [index, assignment] of (product.catalogs || []).entries()) {
         const catalog = assignment.catalog;
