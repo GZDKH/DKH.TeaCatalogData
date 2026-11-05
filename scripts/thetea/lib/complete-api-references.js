@@ -27,13 +27,14 @@ function assertCounts(rows, expected, key, context) {
     }
     if (rows.length !== expected.reduce((sum, item) => sum + item.count, 0)) throw new Error(`${context}: unexpected records.`);
 }
-async function fetchCompleteReferences({ meta, langs, fetch }) {
+async function fetchCompleteReferences({ meta, langs, fetch, seedText = '' }) {
     const placeCounts = countsFromMeta(meta, 'place_kinds', 'kind');
     const termCounts = countsFromMeta(meta, 'term_categories', 'category');
     const coverage = [];
     const placesFiles = [];
     const hanziSeeds = new Set();
     const addHanzi = text => { for (const char of String(text || '')) if (/\p{Script=Han}/u.test(char)) hanziSeeds.add(char); };
+    addHanzi(seedText);
     const pending = [...langs];
     await Promise.all(Array.from({length: Math.min(4, langs.length)}, async () => {
       while (pending.length) {

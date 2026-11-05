@@ -64,7 +64,9 @@ Markdown and similar requests are retained in both modes.
 
 Glossary references use documented offset pages. Places references use a bounded
 union of documented `kind`/`q` searches; distinct `(kind, hanzi, pinyin)` rows are
-reconciled against every metadata kind count. Full raw pages remain hash-bound.
+reconciled against every metadata kind count. Glossary and full discovery
+inventory Hanzi seed additional queries, including names whose common pinyin
+queries are capped. Full raw pages remain hash-bound.
 Any count gap, conflicting repeated record or acquisition error rejects current
 production generation; an error-bearing source command exits unsuccessfully.
 Request parameters use each `/meta.locales[].code` (for example `no`), while

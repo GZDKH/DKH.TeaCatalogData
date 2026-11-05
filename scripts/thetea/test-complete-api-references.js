@@ -22,9 +22,9 @@ async function main() {
     await assert.rejects(fetchCompleteReferences({meta:{...meta,term_categories:[{category:'tasting',count:502}]},langs:['en'],fetch}), /501\/502/);
     const commonPlaces = Array.from({length:200}, (_, i) => ({kind:'tea_name',hanzi:`茶${i}`,pinyin:'chá'}));
     const rarePlace = {kind:'tea_name',hanzi:'罕',pinyin:null};
-    const seeded = await fetchCompleteReferences({meta:{place_kinds:[{kind:'tea_name',count:201}],term_categories:[{category:'tasting',count:1}]},langs:['en'],fetch:async (file,endpoint)=>{
+    const seeded = await fetchCompleteReferences({meta:{place_kinds:[{kind:'tea_name',count:201}],term_categories:[{category:'tasting',count:1}]},langs:['en'],seedText:'罕',fetch:async (file,endpoint)=>{
         const url=new URL(endpoint,'https://api.thetea.app');
-        return url.pathname.endsWith('/glossary') ? {offset:0,terms:[{term_id:1,category:'tasting',hanzi:'罕'}]}
+        return url.pathname.endsWith('/glossary') ? {offset:0,terms:[{term_id:1,category:'tasting',hanzi:'茶'}]}
             : {places:url.searchParams.get('q')==='罕'?[rarePlace]:commonPlaces};
     }});
     assert.strictEqual(seeded.coverage.find(row=>row.endpoint==='places').returnedCount,201);

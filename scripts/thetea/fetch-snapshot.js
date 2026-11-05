@@ -331,34 +331,6 @@ async function main() {
     writeJson(familyPath, family);
     manifest.files.push('raw/family.json');
 
-    const cacheReference = async (rel, endpoint) => {
-        const file = path.join(root, rel);
-        if (!(resume && fs.existsSync(file))) writeJson(file, await getJson(endpoint));
-        manifest.files.push(rel);
-        return readJson(file);
-    };
-    try {
-        const references = await fetchCompleteReferences({ meta, langs, fetch: cacheReference });
-        manifest.referenceCoverage.push(...references.coverage);
-        manifest.placesFiles.push(...references.placesFiles);
-    } catch (error) {
-        manifest.errors.push(issueFromError({ endpoint: 'complete-references' }, error));
-    }
-    for (const lang of langs) {
-        try {
-            const mapRel = `raw/map-${lang}.json`;
-            const mapPath = path.join(root, mapRel);
-            if (!(resumeLocale(lang) && fs.existsSync(mapPath))) {
-                const map = await getJson(`/api/v2/map?lang=${encodeURIComponent(requestLocales[lang])}`);
-                writeJson(mapPath, map);
-            }
-            manifest.files.push(mapRel);
-            manifest.mapFiles.push(mapRel);
-        } catch (error) {
-            manifest.errors.push(issueFromError({ endpoint: 'map', lang }, error));
-        }
-    }
-
     // Discovery is a language-neutral inventory. Always use the free English
     // projection so a paid target locale can still be fetched and recorded as
     // a per-card 402 instead of aborting before the snapshot exists.
@@ -390,6 +362,34 @@ async function main() {
         const issue = issueFromError({ endpoint: 'infusions', lang: teasLang }, error);
         manifest.errors.push(issue);
         infusions = { count: 0, offset: 0, items: [], pages: [] };
+    }
+
+    const cacheReference = async (rel, endpoint) => {
+        const file = path.join(root, rel);
+        if (!(resume && fs.existsSync(file))) writeJson(file, await getJson(endpoint));
+        manifest.files.push(rel);
+        return readJson(file);
+    };
+    try {
+        const references = await fetchCompleteReferences({ meta, langs, fetch: cacheReference, seedText: JSON.stringify([teas, categories, infusions]) });
+        manifest.referenceCoverage.push(...references.coverage);
+        manifest.placesFiles.push(...references.placesFiles);
+    } catch (error) {
+        manifest.errors.push(issueFromError({ endpoint: 'complete-references' }, error));
+    }
+    for (const lang of langs) {
+        try {
+            const mapRel = `raw/map-${lang}.json`;
+            const mapPath = path.join(root, mapRel);
+            if (!(resumeLocale(lang) && fs.existsSync(mapPath))) {
+                const map = await getJson(`/api/v2/map?lang=${encodeURIComponent(requestLocales[lang])}`);
+                writeJson(mapPath, map);
+            }
+            manifest.files.push(mapRel);
+            manifest.mapFiles.push(mapRel);
+        } catch (error) {
+            manifest.errors.push(issueFromError({ endpoint: 'map', lang }, error));
+        }
     }
 
     let sourceInventory = buildEntityInventory({
