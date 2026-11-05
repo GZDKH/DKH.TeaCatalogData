@@ -296,6 +296,13 @@ assert(unlabelledSensoryResult.product.specifications.some(
 assert(!unlabelledSensoryResult.lossEvents.some(
     event => event.source === 'sensory-without-label'));
 
+const baselineOwnedSensoryResult = transformCardSet({ en: xihu }, {
+    canonicalSensoryLabels: { L: null },
+});
+assert(baselineOwnedSensoryResult.product.specifications.some(
+    spec => spec.attribute === 'SPEC-TT-SENSORY-DESCRIPTOR-L-INTENSITY'
+        && spec.attributeName === 'Sensory Source Descriptor L Intensity'));
+
 const missingFaqCard = JSON.parse(JSON.stringify(zhCnXihu));
 missingFaqCard.enrichment.faq = [];
 const faqFallbackResult = transformCardSet({ en: xihu, 'zh-CN': missingFaqCard });

@@ -1,0 +1,976 @@
+{
+  "schemaVersion": "thetea-shop-tieguanyin-grade-manifest-v1",
+  "source": {
+    "url": "https://shop.thetea.app/tea/tie-guanyin",
+    "capturedAt": "2026-08-15T23:07:29Z",
+    "priceBaseDate": "2026-08-01",
+    "currencyCode": "CNY",
+    "priceTerms": "EXW",
+    "stockPublished": false,
+    "sellerIdentityVerified": false,
+    "mediaLicenseVerified": false,
+    "rowsSha256": "523f340be8ccd3d8f4231560a52bd2f01b251fdd3687d6f0a23a66316f7c8792"
+  },
+  "target": {
+    "productCode": "TEA-CN-TIE-GUANYIN",
+    "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+    "variantAxisCode": "TGY-GRADE"
+  },
+  "summary": {
+    "rowCount": 36,
+    "uniqueGradeLabelCount": 31,
+    "fixedPackageRowCount": 29,
+    "uniqueFixedPackageCandidateCount": 25,
+    "duplicateFixedPackageKeyCount": 4,
+    "weightOnlyRowCount": 7
+  },
+  "exactCandidates": [
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "铁观音",
+      "gradeValueCode": "TGY-GRADE-08E9AC6580DA",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-0984E5EFA5A1",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 1,
+          "packageAmount": "44",
+          "perKgAmount": "88",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "秋铁观音Y",
+      "gradeValueCode": "TGY-GRADE-8CBE89BECCC4",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-48A05EB9789E",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 2,
+          "packageAmount": "58",
+          "perKgAmount": "116",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "铁观音果香",
+      "gradeValueCode": "TGY-GRADE-E50E26F1D58F",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-4467C8001715",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 3,
+          "packageAmount": "82",
+          "perKgAmount": "164",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        },
+        {
+          "sourceOrder": 4,
+          "packageAmount": "90",
+          "perKgAmount": "180",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "安溪铁观音果香",
+      "gradeValueCode": "TGY-GRADE-477A06A8BE6C",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-ADF620418164",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 5,
+          "packageAmount": "100",
+          "perKgAmount": "200",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "铁观音毛茶",
+      "gradeValueCode": "TGY-GRADE-3BEA014F7E98",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-284C6AB1F714",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 6,
+          "packageAmount": "100",
+          "perKgAmount": "200",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "铁观音果香2",
+      "gradeValueCode": "TGY-GRADE-4F0274B97766",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-DC4495839CE0",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 7,
+          "packageAmount": "120",
+          "perKgAmount": "240",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "铁观音果香F-A",
+      "gradeValueCode": "TGY-GRADE-9826A5562675",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-DAC682E02850",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 10,
+          "packageAmount": "124",
+          "perKgAmount": "248",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "花香铁观音",
+      "gradeValueCode": "TGY-GRADE-192D2E1A1B27",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-0ABAFEFE8553",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 11,
+          "packageAmount": "150",
+          "perKgAmount": "300",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        },
+        {
+          "sourceOrder": 15,
+          "packageAmount": "166",
+          "perKgAmount": "332",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "手工花香铁观音",
+      "gradeValueCode": "TGY-GRADE-A2ADB6FB9214",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-A9C9655C99E5",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 13,
+          "packageAmount": "164",
+          "perKgAmount": "328",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "秋铁观音消",
+      "gradeValueCode": "TGY-GRADE-C72EFE1027BD",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-90ECF1B3A545",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 14,
+          "packageAmount": "166",
+          "perKgAmount": "332",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "铁观音毛茶A",
+      "gradeValueCode": "TGY-GRADE-BB9D658F5A0D",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-D0B24118FAC4",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 16,
+          "packageAmount": "190",
+          "perKgAmount": "380",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "2026春花香铁观音",
+      "gradeValueCode": "TGY-GRADE-A5289E1A8EF4",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-12814CE2490D",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 18,
+          "packageAmount": "240",
+          "perKgAmount": "480",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        },
+        {
+          "sourceOrder": 20,
+          "packageAmount": "280",
+          "perKgAmount": "560",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "2026年花香铁观音",
+      "gradeValueCode": "TGY-GRADE-0C5755E11DC1",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-101BB5239C64",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 19,
+          "packageAmount": "240",
+          "perKgAmount": "480",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "炭焙铁观音正味",
+      "gradeValueCode": "TGY-GRADE-3016018C24A4",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-8A8A975FFB28",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 21,
+          "packageAmount": "300",
+          "perKgAmount": "600",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "2026果香铁观音",
+      "gradeValueCode": "TGY-GRADE-01ED07A66A5A",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-E089C96886FF",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 22,
+          "packageAmount": "320",
+          "perKgAmount": "640",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "炭焙铁观音消正",
+      "gradeValueCode": "TGY-GRADE-33F55AE8FC82",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-611C19692E94",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 23,
+          "packageAmount": "340",
+          "perKgAmount": "680",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "铁观音茶王",
+      "gradeValueCode": "TGY-GRADE-4911CE01BE6A",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-0399270C6EE9",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 24,
+          "packageAmount": "360",
+          "perKgAmount": "720",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        },
+        {
+          "sourceOrder": 35,
+          "packageAmount": "900",
+          "perKgAmount": "1800",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "粒粒香铁观音",
+      "gradeValueCode": "TGY-GRADE-630D06D7F315",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-FD162625A529",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 25,
+          "packageAmount": "360",
+          "perKgAmount": "720",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "高山正味铁观音（花香）",
+      "gradeValueCode": "TGY-GRADE-A844194E5573",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-5BA3F5A1B937",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 27,
+          "packageAmount": null,
+          "perKgAmount": "800",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "安溪正味高山铁观音",
+      "gradeValueCode": "TGY-GRADE-ABA6FBADEF7E",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-58C095F6CB81",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 29,
+          "packageAmount": "460",
+          "perKgAmount": "920",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "手工高山果香铁观音",
+      "gradeValueCode": "TGY-GRADE-312C75D74B57",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-FCD404C73F98",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 30,
+          "packageAmount": "500",
+          "perKgAmount": "1000",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "20年老铁观音",
+      "gradeValueCode": "TGY-GRADE-43B9C74306CB",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-074E33C67AFF",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 31,
+          "packageAmount": "520",
+          "perKgAmount": "1040",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "秋茶高山铁观音",
+      "gradeValueCode": "TGY-GRADE-553734C93F1F",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-D2C5E6A40112",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 32,
+          "packageAmount": "520",
+          "perKgAmount": "1040",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "2026春手工花香铁观音",
+      "gradeValueCode": "TGY-GRADE-AB43691261CE",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-E041E255F519",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 34,
+          "packageAmount": "560",
+          "perKgAmount": "1120",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    },
+    {
+      "productCode": "TEA-CN-TIE-GUANYIN",
+      "catalogCode": "CATALOG-CHINESE-TEA-SHOP",
+      "gradeLabel": "传统工艺桂花香铁观音",
+      "gradeValueCode": "TGY-GRADE-E5D11E513815",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sellableInternalCode": "TEA-CN-TIE-GUANYIN-500G-1432F923D8AB",
+      "publicationMode": "request-only",
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 36,
+          "packageAmount": "1060",
+          "perKgAmount": "2120",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ]
+    }
+  ],
+  "duplicateOfferCandidates": [
+    {
+      "gradeLabel": "铁观音果香",
+      "gradeValueCode": "TGY-GRADE-E50E26F1D58F",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 3,
+          "packageAmount": "82",
+          "perKgAmount": "164",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        },
+        {
+          "sourceOrder": 4,
+          "packageAmount": "90",
+          "perKgAmount": "180",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ],
+      "blockedReason": "seller-and-commercial-authority-missing"
+    },
+    {
+      "gradeLabel": "花香铁观音",
+      "gradeValueCode": "TGY-GRADE-192D2E1A1B27",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 11,
+          "packageAmount": "150",
+          "perKgAmount": "300",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        },
+        {
+          "sourceOrder": 15,
+          "packageAmount": "166",
+          "perKgAmount": "332",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ],
+      "blockedReason": "seller-and-commercial-authority-missing"
+    },
+    {
+      "gradeLabel": "2026春花香铁观音",
+      "gradeValueCode": "TGY-GRADE-A5289E1A8EF4",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 18,
+          "packageAmount": "240",
+          "perKgAmount": "480",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        },
+        {
+          "sourceOrder": 20,
+          "packageAmount": "280",
+          "perKgAmount": "560",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ],
+      "blockedReason": "seller-and-commercial-authority-missing"
+    },
+    {
+      "gradeLabel": "铁观音茶王",
+      "gradeValueCode": "TGY-GRADE-4911CE01BE6A",
+      "package": {
+        "kind": "exact-weight",
+        "quantity": "500",
+        "unitCode": "g"
+      },
+      "sourcePriceObservations": [
+        {
+          "sourceOrder": 24,
+          "packageAmount": "360",
+          "perKgAmount": "720",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        },
+        {
+          "sourceOrder": 35,
+          "packageAmount": "900",
+          "perKgAmount": "1800",
+          "currencyCode": "CNY",
+          "observedPriceBaseDate": "2026-08-01",
+          "priceTerms": "EXW",
+          "kind": "source-reference",
+          "retailPrice": false,
+          "publicationAllowed": false
+        }
+      ],
+      "blockedReason": "seller-and-commercial-authority-missing"
+    }
+  ],
+  "blockedObservations": [
+    {
+      "sourceOrder": 8,
+      "gradeLabel": "安溪花香铁观音",
+      "gradeValueCode": "TGY-GRADE-D4A8ECF93DC8",
+      "sourcePriceObservation": {
+        "packageAmount": null,
+        "perKgAmount": "240",
+        "currencyCode": "CNY",
+        "observedPriceBaseDate": "2026-08-01",
+        "priceTerms": "EXW",
+        "kind": "source-reference",
+        "retailPrice": false,
+        "publicationAllowed": false
+      },
+      "blockedReason": "exact-sale-quantity-missing"
+    },
+    {
+      "sourceOrder": 9,
+      "gradeLabel": "安溪铁观音果香",
+      "gradeValueCode": "TGY-GRADE-477A06A8BE6C",
+      "sourcePriceObservation": {
+        "packageAmount": null,
+        "perKgAmount": "240",
+        "currencyCode": "CNY",
+        "observedPriceBaseDate": "2026-08-01",
+        "priceTerms": "EXW",
+        "kind": "source-reference",
+        "retailPrice": false,
+        "publicationAllowed": false
+      },
+      "blockedReason": "exact-sale-quantity-missing"
+    },
+    {
+      "sourceOrder": 12,
+      "gradeLabel": "苦瓜铁观音",
+      "gradeValueCode": "TGY-GRADE-1235585735F0",
+      "sourcePriceObservation": {
+        "packageAmount": null,
+        "perKgAmount": "320",
+        "currencyCode": "CNY",
+        "observedPriceBaseDate": "2026-08-01",
+        "priceTerms": "EXW",
+        "kind": "source-reference",
+        "retailPrice": false,
+        "publicationAllowed": false
+      },
+      "blockedReason": "exact-sale-quantity-missing"
+    },
+    {
+      "sourceOrder": 17,
+      "gradeLabel": "铁观音果香手工",
+      "gradeValueCode": "TGY-GRADE-D549C0CF8F12",
+      "sourcePriceObservation": {
+        "packageAmount": null,
+        "perKgAmount": "400",
+        "currencyCode": "CNY",
+        "observedPriceBaseDate": "2026-08-01",
+        "priceTerms": "EXW",
+        "kind": "source-reference",
+        "retailPrice": false,
+        "publicationAllowed": false
+      },
+      "blockedReason": "exact-sale-quantity-missing"
+    },
+    {
+      "sourceOrder": 26,
+      "gradeLabel": "安溪高山手工花香铁观音",
+      "gradeValueCode": "TGY-GRADE-714727A75520",
+      "sourcePriceObservation": {
+        "packageAmount": null,
+        "perKgAmount": "800",
+        "currencyCode": "CNY",
+        "observedPriceBaseDate": "2026-08-01",
+        "priceTerms": "EXW",
+        "kind": "source-reference",
+        "retailPrice": false,
+        "publicationAllowed": false
+      },
+      "blockedReason": "exact-sale-quantity-missing"
+    },
+    {
+      "sourceOrder": 28,
+      "gradeLabel": "南崎观音王",
+      "gradeValueCode": "TGY-GRADE-284BA158BBD2",
+      "sourcePriceObservation": {
+        "packageAmount": null,
+        "perKgAmount": "800",
+        "currencyCode": "CNY",
+        "observedPriceBaseDate": "2026-08-01",
+        "priceTerms": "EXW",
+        "kind": "source-reference",
+        "retailPrice": false,
+        "publicationAllowed": false
+      },
+      "blockedReason": "exact-sale-quantity-missing"
+    },
+    {
+      "sourceOrder": 33,
+      "gradeLabel": "传统工艺铁观音",
+      "gradeValueCode": "TGY-GRADE-3284617F3294",
+      "sourcePriceObservation": {
+        "packageAmount": null,
+        "perKgAmount": "1040",
+        "currencyCode": "CNY",
+        "observedPriceBaseDate": "2026-08-01",
+        "priceTerms": "EXW",
+        "kind": "source-reference",
+        "retailPrice": false,
+        "publicationAllowed": false
+      },
+      "blockedReason": "exact-sale-quantity-missing"
+    }
+  ],
+  "manifestSha256": "3d6c7362972ac3db89d6e3e69a3482afbcb1bf93ead18b4d7994252ecc736d1c"
+}

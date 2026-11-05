@@ -8,6 +8,12 @@ function overlayExistingProduct(generated, baseline, options = {}) {
         throw new Error(`Cannot overlay ${generated.code} onto baseline product ${baseline.code}.`);
     }
 
+    const invalidUnrelatedSpec = collection(baseline.specifications, 'baseline specifications')
+        .find(spec => !isManagedSpecification(spec) && !isValidSpecificationForImport(spec));
+    if (invalidUnrelatedSpec) {
+        throw new Error(`${baseline.code}: unrelated specification ${invalidUnrelatedSpec.attribute || '<missing>'} is invalid; refusing to discard it.`);
+    }
+
     const result = {
         ...generated,
         ...baseline,
@@ -238,6 +244,12 @@ function assertUniqueSpecificationAttributes(specifications, productCode) {
 function isManagedSpecification(spec) {
     return normalizeCode(spec?.attribute).startsWith(MANAGED_SPEC_PREFIX)
         || normalizeCode(spec?.group).startsWith(`${MANAGED_SPEC_PREFIX}GROUP-`);
+}
+
+function isValidSpecificationForImport(spec) {
+    return Boolean(normalizeCode(spec?.group)
+        && normalizeCode(spec?.attribute)
+        && String(spec?.type || '').trim());
 }
 
 function catalogAssignmentKey(item) {

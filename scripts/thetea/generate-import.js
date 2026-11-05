@@ -587,6 +587,10 @@ function main() {
             .map(category => normalizeCode(category.code))
             .filter(Boolean))
         : null;
+    const existingSensoryAttributeCodes = new Set(
+        (catalogReference?.specificationAttributes || [])
+            .map(attribute => normalizeCode(attribute.code))
+            .filter(code => code.startsWith('SPEC-TT-SENSORY-DESCRIPTOR-')));
     const catalogCode = String(args.catalog || 'CATALOG-CHINESE-TEA').toUpperCase();
     const storefrontTargetCodes = (csv(args.storefronts).length
         ? csv(args.storefronts)
@@ -611,6 +615,18 @@ function main() {
             allowMissingMarkdown: allowMissingMarkdown || hasD1NarrativeSource,
             warnings,
         });
+        const primarySensory = cardSet.en || cardSet['en-US'] || Object.values(cardSet)[0];
+        const canonicalSensoryLabels = Object.fromEntries(
+            (primarySensory?.sensory || [])
+                .filter(item => item?.descriptor_id || item?.descriptor)
+                .map(item => {
+                    const descriptor = String(item.descriptor_id || item.descriptor);
+                    const descriptorCode = descriptor.toUpperCase().replace(/[^A-Z0-9]+/g, '-');
+                    const attributeCode = `SPEC-TT-SENSORY-DESCRIPTOR-${descriptorCode}-INTENSITY`;
+                    return [descriptor, existingSensoryAttributeCodes.has(attributeCode)
+                        ? null
+                        : item.descriptor];
+                }));
         const transformed = transformCardSet(cardSet, {
             publish: args.publish === true,
             publishExisting: args.publish === true,
@@ -621,6 +637,7 @@ function main() {
             knownCategories: existingCategoryCodes || new Set(),
             geographyReference: catalogReference?.geography,
             inferCatalogTaxonomy: Boolean(catalogReference),
+            canonicalSensoryLabels,
         });
         warnings.push(...transformed.warnings);
         taxonomyAudits.push({
@@ -656,7 +673,18 @@ function main() {
     const family = fs.existsSync(path.join(snapshotRoot, 'raw', 'family.json'))
         ? readJson(path.join(snapshotRoot, 'raw', 'family.json'))
         : null;
-    const categories = buildTheTeaCategories(primaryCards, { family, existingCategoryCodes });
+    const categories = [
+        ...buildTheTeaCategories(primaryCards, { family, existingCategoryCodes }),
+    ];
+    categories.push(...ensureAssignedCategoryDefinitions(products, catalogReference, categories));
+    const effectiveCatalogReference = catalogReference
+        ? {
+            ...catalogReference,
+            categories: mergeCatalogBindingCategories(
+                catalogReference.categories || [],
+                categories),
+        }
+        : catalogReference;
     const definitions = buildSpecificationDefinitions(products, {
         observations: updateScope === 'packages'
             ? []
@@ -681,7 +709,7 @@ function main() {
             catalogBindingCategoriesForProducts(
                 products,
                 catalogCode,
-                catalogReference?.categories),
+                effectiveCatalogReference?.categories),
             categories),
         products,
     });
@@ -700,7 +728,7 @@ function main() {
         requiredLocales,
         lossEvents,
         routedContent,
-        catalogReference,
+        catalogReference: effectiveCatalogReference,
         requiredCatalogCode: catalogCode,
         baselineProducts,
         baselinePreservation: {
@@ -908,6 +936,70 @@ function definitionObservationSignature(value) {
 function normalizeCode(value) {
     const code = value && typeof value === 'object' ? value.code : value;
     return String(code || '').trim().toUpperCase();
+}
+
+function humanizeCategoryCode(code) {
+    const normalized = String(code || '').replace(/^CAT-/, '').toLowerCase();
+    const words = normalized.split('-').filter(Boolean).map(word =>
+        word.replace(/\b\w/g, char => char.toUpperCase()));
+    const joined = words.join(' ');
+    if (normalized.startsWith('brew-zisha')) return {
+        en: 'Zisha Brewing',
+        ru: 'Заваривание в исинском чайнике',
+        zh: '紫砂壶冲泡',
+    };
+    if (normalized.startsWith('oolong-taiwan')) return {
+        en: 'Taiwanese Oolong Tea',
+        ru: 'Тайваньский улун',
+        zh: '台湾乌龙茶',
+    };
+    if (normalized.startsWith('family-')) return {
+        en: `Tea Family ${normalized.slice('family-'.length)}`,
+        ru: `Семейство чая ${normalized.slice('family-'.length)}`,
+        zh: `茶系 ${normalized.slice('family-'.length)}`,
+    };
+    if (normalized.startsWith('cult-')) return {
+        en: `${joined.slice('Cult '.length)} Cultivar`,
+        ru: `Культивар ${joined.slice('Cult '.length)}`,
+        zh: `${joined.slice('Cult '.length)} 品种`,
+    };
+    if (normalized.startsWith('herbal-')) return {
+        en: `Herbal ${joined.slice('Herbal '.length)} Tea`,
+        ru: `Травяной чай: ${joined.slice('Herbal '.length)}`,
+        zh: `草本茶：${joined.slice('Herbal '.length)}`,
+    };
+    return { en: joined || code, ru: joined || code, zh: joined || code };
+}
+
+function fallbackCategoryDefinition(code, order) {
+    const names = humanizeCategoryCode(code);
+    return {
+        code,
+        parent: 'CAT-ROOT',
+        order,
+        published: true,
+        translations: [
+            { lang: 'en-US', name: names.en, seo: String(code).toLowerCase() },
+            { lang: 'ru-RU', name: names.ru, seo: String(code).toLowerCase() },
+            { lang: 'zh-CN', name: names.zh, seo: String(code).toLowerCase() },
+        ],
+    };
+}
+
+function ensureAssignedCategoryDefinitions(products, reference, categories) {
+    const known = new Set([
+        ...flattenCategories(reference?.categories || []).map(category => normalizeCode(category.code)),
+        ...(categories || []).map(category => normalizeCode(category.code)),
+    ]);
+    const missing = new Set();
+    for (const product of products || []) {
+        for (const assignment of product.catalogs || []) {
+            const code = normalizeCode(assignment.category);
+            if (code && !known.has(code)) missing.add(code);
+        }
+    }
+    const start = (categories || []).length + 100;
+    return [...missing].sort().map((code, index) => fallbackCategoryDefinition(code, start + index));
 }
 
 if (require.main === module) {

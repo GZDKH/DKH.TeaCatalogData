@@ -42,6 +42,39 @@ node scripts/catalog-sources/test-thetea-shop-tieguanyin.js
 When the page changes, add a new dated fixture and review the normalized diff.
 Do not edit an existing dated fixture or silently replace its `rowsSha256`.
 
+## Historical exact-sellable exchange fixtures
+
+The `fixtures/catalog-sellable-exchange/` directory preserves a historical
+25-row `request_only` projection as CSV and XLSX, along with conflict and
+blocked-row cases. These are offline test inputs, not a current desired list
+or evidence that any production catalog is ready for publication. The frozen
+historical manifest and `expected.json` bind the fixtures to their source.
+
+The current normalizer produces 155 `public-retail` candidates across five
+package sizes. The ProductCatalog `catalog_sellable_variants` exchange profile
+accepts `request_only`, and the local package definitions do not establish a
+1 kg package code. `catalog-sellable-exchange.js` therefore rejects conversion
+of the current manifest to the historical exchange profile instead of changing
+its publication mode or guessing a package identity. Running the generator
+without a flag also refuses that conversion.
+
+Verify the boundary and historical fixtures offline, or explicitly regenerate
+the historical files:
+
+```bash
+node scripts/catalog-sources/generate-catalog-sellable-exchange-fixtures.js --check
+node scripts/catalog-sources/test-catalog-sellable-exchange.js
+node scripts/catalog-sources/generate-catalog-sellable-exchange-fixtures.js --historical
+```
+
+Do not edit the generated CSV/XLSX files by hand. A changed source manifest,
+row identity, ordering or workbook byte changes the checked evidence hashes.
+
+`run-catalog-sellable-exchange-canary.js` reads a fresh gateway export and
+checks its no-op dry-run, defaulting to 155 expected rows. It does not use the
+historical fixture as a current export. Apply requires both `--apply` and
+`--yes`; the offline tests do not establish the live catalog state.
+
 ## Exact-grade importer
 
 `reconcile-thetea-shop-tieguanyin.js` is a purpose-limited production operator
