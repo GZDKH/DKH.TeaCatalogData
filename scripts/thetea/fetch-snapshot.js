@@ -155,40 +155,13 @@ async function writeTextSource(root, manifest, rel, endpoint, options = {}) {
     }
 }
 
-async function fetchAllTeas(lang, pageSize = 500, resource = 'teas') {
+async function fetchInventory(resource, requestLocale, pageSize = 500) {
     const items = [];
     const pages = [];
     let offset = 0;
 
     while (true) {
-        const page = await getJson(`/api/v2/${resource}?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(requestLocales[lang])}`);
-        const pageItems = page.items || [];
-        items.push(...pageItems);
-        pages.push({
-            offset,
-            count: page.count,
-            itemCount: pageItems.length,
-        });
-
-        if (pageItems.length < pageSize) break;
-        offset += pageItems.length;
-    }
-
-    return {
-        count: items.length,
-        offset: 0,
-        items,
-        pages,
-    };
-}
-
-async function fetchAllInfusions(lang, pageSize = 500) {
-    const items = [];
-    const pages = [];
-    let offset = 0;
-
-    while (true) {
-        const page = await getJson(`/api/v2/infusions?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(requestLocales[lang])}`);
+        const page = await getJson(`/api/v2/${resource}?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(requestLocale)}`);
         const pageItems = page.items || [];
         items.push(...pageItems);
         pages.push({
@@ -266,7 +239,7 @@ async function main() {
     const previousManifestPath = path.join(root, 'manifest.json');
     const previousManifest = resume && fs.existsSync(previousManifestPath) ? readJson(previousManifestPath) : {};
     const requestLocales = Object.fromEntries(langs.map(lang => [lang, apiRequestLocale(lang, meta)]));
-    const resumeLocale = lang => resume && (requestLocales[lang] === lang || previousManifest.requestLocales?.[lang] === requestLocales[lang]);
+    const resumeLocale = lang => resume && (previousManifest.requestLocales?.[lang] ?? lang) === requestLocales[lang];
 
     const manifest = {
         snapshotId,
@@ -336,17 +309,18 @@ async function main() {
     // projection so a paid target locale can still be fetched and recorded as
     // a per-card 402 instead of aborting before the snapshot exists.
     const teasLang = 'en';
+    const discoveryLocale = apiRequestLocale(teasLang, meta);
     const teasPath = path.join(raw, `teas-${teasLang}.json`);
     const teas = resume && fs.existsSync(teasPath)
         ? readJson(teasPath)
-        : await fetchAllTeas(teasLang);
+        : await fetchInventory('teas', discoveryLocale);
     writeJson(teasPath, teas);
     manifest.files.push(`raw/teas-${teasLang}.json`);
     const categoriesRel = `raw/categories-${teasLang}.json`;
     const categoriesPath = path.join(root, categoriesRel);
     const categories = resume && fs.existsSync(categoriesPath)
         ? readJson(categoriesPath)
-        : await fetchAllTeas(teasLang, 500, 'categories');
+        : await fetchInventory('categories', discoveryLocale);
     writeJson(categoriesPath, categories);
     manifest.files.push(categoriesRel);
 
@@ -356,7 +330,7 @@ async function main() {
     try {
         infusions = resume && fs.existsSync(infusionsPath)
             ? readJson(infusionsPath)
-            : await fetchAllInfusions(teasLang);
+            : await fetchInventory('infusions', discoveryLocale);
         writeJson(infusionsPath, infusions);
         manifest.files.push(infusionsRel);
     } catch (error) {

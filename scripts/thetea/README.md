@@ -10,6 +10,11 @@ that contract from the verified baseline. Existing package bindings, identities,
 unrelated catalogs, cross-sells and other baseline fields are preserved. Source
 package quantities/defaults and origin narratives remain source evidence; they
 are not recreated as fields owned by a different destination aggregate.
+An existing product's catalog placement keeps its order and publication state.
+API production generation requires every advertised locale and complete fields,
+Markdown, and similarity evidence. Similarity responses must be in the hashed
+snapshot inventory. A scoped canary can use a selected product set with all locales.
+
 Current product descriptions use localized source enrichment or the source
 classification/origin paragraphs when enrichment is absent, without adding
 English interface labels to other locales. Full narratives remain in knowledge

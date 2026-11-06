@@ -35,3 +35,12 @@ assert.strictEqual(preserved.coverImageAttachmentId,'existing-cover');
 assert.strictEqual(preserved.translations.find(item=>item.languageCode==='ja').title,'手動の翻訳');
 assert.throws(()=>prepareRecords({routedContent:{articles:[],metaobjects:[],topics:[topic]}},{},{articles:[]}), /Missing or duplicate/);
 assert.strictEqual(prepareRecords({routedContent:{articles:[],metaobjects:[],topics:[topic]}},{},{articles:[{slug:'bai-cha',post:null}]})[0].blogPost.publish,false);
+
+const topicBundle = { routedContent: { articles: [], metaobjects: [], topics: [topic] } };
+const existingDraft = { slug: 'bai-cha', isDraft: true, translations: [], coverImageAttachmentId: null };
+assert.strictEqual(prepareRecords(topicBundle, { publish: true }, {
+    articles: [{ slug: 'bai-cha', post: existingDraft }],
+})[0].blogPost.publish, false);
+for (const post of [false, '', { ...existingDraft, coverImageAttachmentId: undefined }]) {
+    assert.throws(() => prepareRecords(topicBundle, {}, { articles: [{ slug: 'bai-cha', post }] }), /Incomplete content reference/);
+}

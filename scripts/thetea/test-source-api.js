@@ -39,3 +39,48 @@ assert.strictEqual(apiRequestLocale('nb',localeMeta),'no');
 assert.strictEqual(apiRequestLocale('zh-CN',localeMeta),'zh');
 assert.strictEqual(apiRequestLocale('en',localeMeta),'en');
 assert.throws(()=>apiRequestLocale('nb',{locales:[{code:'../bad',bcp47:'nb'}]}),/Unsafe/);
+
+async function checkFreshDiscovery() {
+    const fs = require('node:fs');
+    const os = require('node:os');
+    const path = require('node:path');
+    const vm = require('node:vm');
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'thetea-fresh-'));
+    const env = require('./lib/env');
+    const inventoryRequests = [];
+    const requests = {
+        '/api/v2/meta': { locales: [{ bcp47: 'en' }, { bcp47: 'ru' }],
+            place_kinds: [{ kind: 'name', count: 0 }], term_categories: [{ category: 'tea', count: 0 }] },
+        '/api/v2/family': {}, '/api/v2/glossary': { terms: [], offset: 0 }, '/api/v2/map': {},
+    };
+    try {
+        await vm.runInNewContext(fs.readFileSync(path.join(__dirname, 'fetch-snapshot.js'), 'utf8'), {
+            Buffer,
+            console: { log() {}, error(message) { throw new Error(message); } },
+            process: { env: {}, stdout: { write() {} }, exit(code) { throw new Error(`Exit ${code}`); } },
+            require(name) {
+                if (name === './lib/env') return { ...env, REPO_ROOT: root, loadDotEnv() {}, getTheTeaApiKey: () => '',
+                    parseArgs: () => ({ snapshot: 'fresh', langs: 'ru', 'min-interval-ms': '0' }) };
+                if (name === './lib/http') return {
+                    requestText: async () => ({ body: 'fixture' }),
+                    async requestJson(url) {
+                        const route = new URL(url);
+                        if (['/api/v2/teas', '/api/v2/infusions', '/api/v2/categories'].includes(route.pathname)) {
+                            inventoryRequests.push([route.pathname, route.searchParams.get('lang')]);
+                            return { items: [], count: 0 };
+                        }
+                        assert(Object.hasOwn(requests, route.pathname), `Unexpected request ${route.pathname}`);
+                        return requests[route.pathname];
+                    },
+                };
+                return require(name);
+            },
+        });
+        assert.deepStrictEqual(inventoryRequests, [
+            ['/api/v2/teas', 'en'], ['/api/v2/categories', 'en'], ['/api/v2/infusions', 'en'],
+        ]);
+    } finally {
+        fs.rmSync(root, { recursive: true, force: true });
+    }
+}
+checkFreshDiscovery().catch(error => { console.error(error); process.exitCode = 1; });

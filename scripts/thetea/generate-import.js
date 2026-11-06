@@ -118,8 +118,10 @@ function readTextIfExists(file) {
     return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
 }
 
-function readSimilar(snapshotRoot, lang, slug) {
-    const file = path.join(snapshotRoot, 'raw', 'similar', lang, `${slug}.json`);
+function readSimilar(snapshotRoot, lang, slug, listedSimilar) {
+    const relative = `raw/similar/${lang}/${slug}.json`;
+    if (listedSimilar && !listedSimilar.has(relative)) return null;
+    const file = path.join(snapshotRoot, relative);
     return fs.existsSync(file) ? readJson(file) : null;
 }
 
@@ -140,6 +142,7 @@ function loadCardSet({
     allowMissingMarkdown,
     warnings,
     entityKind = 'tea',
+    listedSimilar,
 }) {
     const cardSet = {};
     const d1FieldPack = readD1FieldPack(snapshotRoot, slug);
@@ -171,7 +174,7 @@ function loadCardSet({
             warnings.push(`No markdown endpoint file found for ${slug}/${lang}.`);
         }
 
-        const similar = readSimilar(snapshotRoot, lang, slug);
+        const similar = readSimilar(snapshotRoot, lang, slug, listedSimilar);
         if (similar) enriched.similarEndpoint = similar;
         cardSet[lang] = enriched;
     }
@@ -546,6 +549,21 @@ function main() {
     const langs = requestedLangs.length
         ? requestedLangs.map(canonicalLocale)
         : (manifest.langs || ['en']).map(canonicalLocale);
+    const isCurrentApiSource = currentProductContract && manifest.fieldSource !== 'cloudflare-d1-packs';
+    if (isCurrentApiSource) {
+        const advertised = new Set((manifest.availableLocales || []).map(canonicalLocale));
+        const captured = new Set((manifest.langs || []).map(canonicalLocale));
+        const selected = new Set(langs);
+        if (!advertised.size || selected.size !== advertised.size || captured.size !== advertised.size
+            || [...advertised].some(lang => !selected.has(lang) || !captured.has(lang))) {
+            throw new Error('Current production projection requires every advertised locale in the source and output.');
+        }
+        if (!manifest.includeSimilar || !manifest.includeMarkdown || !manifest.includeFields
+            || args['allow-missing-field-details'] || args['allow-missing-markdown'] || args['allow-partial-field-locales']) {
+            throw new Error('Current production projection requires complete fields, Markdown and similarity evidence.');
+        }
+    }
+    const listedSimilar = isCurrentApiSource ? new Set(manifest.similarFiles || []) : undefined;
     const requiredLocales = [...new Set(langs.map(toProductLocale).filter(Boolean))];
     const allowMissingFieldDetails = args['allow-missing-field-details'] === true;
     const hasFieldDetails = Boolean(
@@ -636,6 +654,7 @@ function main() {
             allowMissingFieldDetails,
             allowMissingMarkdown: allowMissingMarkdown || hasD1NarrativeSource,
             warnings,
+            listedSimilar,
         });
         const primarySensory = cardSet.en || cardSet['en-US'] || Object.values(cardSet)[0];
         const canonicalSensoryLabels = Object.fromEntries(
@@ -699,7 +718,7 @@ function main() {
             if (entity.entityKind !== 'category' || entity.classificationConflict) continue;
             const slug = assertSafeSlug(entity.slug);
             const cards = loadCardSet({ snapshotRoot, manifest, langs, slug, allowMissingFieldDetails,
-                allowMissingMarkdown, warnings, entityKind: 'category' });
+                allowMissingMarkdown, warnings, entityKind: 'category', listedSimilar });
             routedContent.topics.push(knowledgeTopicFromCards(slug, cards));
         }
     }

@@ -67,3 +67,14 @@ assert.strictEqual(buildDescription(localizedCard,{sourceDescriptions:true}),'Г
 assert(!buildDescription(localizedCard,{sourceDescriptions:true}).includes('Brewing recipes'));
 assert(buildDescription(localizedCard).includes('Brewing recipes'));
 assert.strictEqual(buildDescription({...localizedCard,enrichment:{summary:'Источник о вкусе.',tasting_note:'Свежий аромат.'}},{sourceDescriptions:true}),'Источник о вкусе.\n\nСвежий аромат.');
+
+const hiddenPlacement = { catalog: 'CHINESE-TEA', category: 'GREEN', order: 99, published: false };
+const placedBaseline = { ...baseline, catalogs: [hiddenPlacement, ...baseline.catalogs] };
+const refreshed = overlayExistingProduct(current, placedBaseline);
+assert.deepStrictEqual(refreshed.catalogs.find(item => item.catalog === 'CHINESE-TEA'), hiddenPlacement);
+assert.deepStrictEqual(validateBaselinePreservation([refreshed], [placedBaseline]), []);
+assert(validateBaselinePreservation([{ ...refreshed, catalogs: [
+    { ...hiddenPlacement, order: 1, published: true }, ...baseline.catalogs,
+] }], [placedBaseline]).some(error => error.includes('reordered or republished')));
+assert.throws(() => resolveSourceProductCode('example', baseline.code, byCode,
+    baselineSourceIndex([baseline, { ...baseline, code: 'TEA-CN-DUPLICATE' }])), /ambiguous/);

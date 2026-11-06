@@ -6,15 +6,15 @@
   "capability_reason": "Exposed Codex Security Cloud tools require a separately requested Cloud task; no scoped local diff scan is available.",
   "base_sha": "0df90357ef3f496c18d55cf0dc65aa0f594fc90d",
   "reviewed_blobs": {
-    "scripts/thetea/fetch-snapshot.js": "1e997729a69ef6fe7faa1f0f25ee913dab29fc70",
+    "scripts/thetea/fetch-snapshot.js": "42756911dc7b24414fe79b135ab397311e88c9ef",
     "scripts/thetea/lib/complete-api-references.js": "be855a0f0cedc5203c429d62ed6e0634c40abf84",
     "scripts/thetea/lib/product-contract.js": "a9e018e5d52b795fd66a0a0dc70c09259e1ca4cb",
-    "scripts/thetea/lib/product-overlay.js": "48a8b65900d1ca8ef72e2ecc7aa13bf0a2f50254",
+    "scripts/thetea/lib/product-overlay.js": "707be18189ebe26bf936bcaeb84a6159566280eb",
     "scripts/thetea/lib/product-reference.js": "aa2f4e983b6338b843896bcd561e87b84a56e2aa",
     "scripts/thetea/lib/source-api.js": "ea794d85d168dd84403e571992bddce4273df121",
-    "scripts/thetea/lib/source-product-identity.js": "55d13d71f187b3842608b1dae01f212ff40b58b0",
-    "scripts/thetea/test-current-product-contract.js": "60538ff36ce3a8d102c83304c1d6f143024f43e7",
-    "scripts/thetea/test-source-api.js": "e2f4e8a56a1eb6ac02d891d69672a656c475b071"
+    "scripts/thetea/lib/source-product-identity.js": "8a89c21989bb3fc9dc5b307381fb5e3e922cbb94",
+    "scripts/thetea/test-current-product-contract.js": "ee1e7f86fb73af1e35e8feab3451d990b1983bcb",
+    "scripts/thetea/test-source-api.js": "c0dc7261a95b0ea92b0d32cfb5c08dbfb6c48f69"
   },
   "checks": [
     {
@@ -64,6 +64,10 @@
     {
       "result": "passed",
       "evidence": "Canonical-card completeness now records source SHA256 and exact leaf counts without duplicating millions of field references. Generation reconstructs every leaf from the hash-verified raw card; both historical array evidence and compact evidence are tested, and count mismatch fails. Source-inventory counts and generation diagnostics retain complete coverage."
+    },
+    {
+      "result": "passed",
+      "evidence": "Independent review of 9cb0bf2 found fresh inventory scope, locale/resume, baseline placement, identity ambiguity and routed-state issues. Corrections preserve exact-origin authorization and bind similarity reads to the hashed inventory. All52 offline CI commands and targeted regressions passed."
     }
   ]
 }
