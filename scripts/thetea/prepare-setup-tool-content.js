@@ -19,15 +19,19 @@ function prepareRecords(bundle, args = {}, contentReference) {
         const references = contentReference?.articles?.filter(item => item.slug === dto.slug);
         if (contentReference && references?.length !== 1) throw new Error(`Missing or duplicate content reference for ${dto.slug}.`);
         const existing = references?.[0]?.post;
-        if (existing) {
-            if (existing.slug !== dto.slug || typeof existing.isDraft !== 'boolean' || !Array.isArray(existing.translations)) throw new Error(`Incomplete content reference for ${dto.slug}.`);
+        if (contentReference && existing !== null) {
+            if (!existing || existing.slug !== dto.slug || typeof existing.isDraft !== 'boolean'
+                || !Array.isArray(existing.translations) || !Object.hasOwn(existing, 'coverImageAttachmentId')
+                || (existing.coverImageAttachmentId !== null && (typeof existing.coverImageAttachmentId !== 'string' || !existing.coverImageAttachmentId.trim()))) {
+                throw new Error(`Incomplete content reference for ${dto.slug}.`);
+            }
             const translations = new Map(existing.translations.map(item => [item.languageCode.toLowerCase(), item]));
             for (const item of dto.translations) translations.set(item.languageCode.toLowerCase(), item);
             dto.translations = [...translations.values()];
-            dto.coverImageAttachmentId = existing.coverImageAttachmentId ?? null;
+            dto.coverImageAttachmentId = existing.coverImageAttachmentId;
         }
         return { recordKey: `ARTICLE:${dto.slug}`, blogPost: { ...dto,
-            publish: args.publish === true || Boolean(existing && !existing.isDraft) } };
+            publish: existing ? !existing.isDraft : args.publish === true } };
     });
     if (faqs.length) {
         records.unshift({

@@ -15,7 +15,8 @@ function buildCatalogBindingCatalog(options = {}) {
             const list = productsByCategory.get(categoryCode) || [];
             list.push({
                 product: product.code,
-                order: Number.isFinite(product.order) ? product.order : list.length + 1,
+                order: Number.isFinite(assignment.order) ? assignment.order
+                    : Number.isFinite(product.order) ? product.order : list.length + 1,
                 published: assignment.published !== false,
             });
             productsByCategory.set(categoryCode, list);

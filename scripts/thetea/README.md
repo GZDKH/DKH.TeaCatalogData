@@ -10,6 +10,11 @@ that contract from the verified baseline. Existing package bindings, identities,
 unrelated catalogs, cross-sells and other baseline fields are preserved. Source
 package quantities/defaults and origin narratives remain source evidence; they
 are not recreated as fields owned by a different destination aggregate.
+An existing product's catalog placement keeps its order and publication state.
+API production generation requires every advertised locale and complete fields,
+Markdown, and similarity evidence. Similarity responses must be in the hashed
+snapshot inventory. A scoped canary can use a selected product set with all locales.
+
 Current product descriptions use localized source enrichment or the source
 classification/origin paragraphs when enrichment is absent, without adding
 English interface labels to other locales. Full narratives remain in knowledge
@@ -80,7 +85,8 @@ Any count gap, conflicting repeated record or acquisition error rejects current
 production generation; an error-bearing source command exits unsuccessfully.
 Request parameters use each `/meta.locales[].code` (for example `no`), while
 snapshot/output locale identities use its BCP47 code (`nb`). The request mapping
-is recorded; resume does not reuse responses made with an obsolete mapping.
+is recorded. If it changes, start a fresh snapshot so cached evidence stays
+bound to the request code used to capture it.
 The documented `zh`/`zh-CN` alias is accepted without allowing English fallback.
 
 For complete Cloudflare D1 captures, use the resumable table exporter and
@@ -694,6 +700,12 @@ product artifacts with `targets.articleCoverage: exact-product-slug`, product
 apply also plans and applies the matching routed article/FAQ records through
 Storefront APIs; pass `--storefront-id=<storefront-uuid>` or set
 `THETEA_STOREFRONT_ID`.
+
+For current product refreshes, use the product payload's scoped `catalogs`
+assignments. Exclude the `catalogs` DataExchange profile from the refresh
+manifest. The catalog profile replaces category membership for the entire
+catalog, so the generated `05-catalog-bindings` projection is review evidence
+for this workflow.
 
 You can still diff or apply routed articles and localized product FAQ
 metaobjects directly through the supported Storefront APIs:

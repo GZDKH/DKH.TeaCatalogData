@@ -155,40 +155,13 @@ async function writeTextSource(root, manifest, rel, endpoint, options = {}) {
     }
 }
 
-async function fetchAllTeas(lang, pageSize = 500, resource = 'teas') {
+async function fetchInventory(resource, requestLocale, pageSize = 500) {
     const items = [];
     const pages = [];
     let offset = 0;
 
     while (true) {
-        const page = await getJson(`/api/v2/${resource}?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(requestLocales[lang])}`);
-        const pageItems = page.items || [];
-        items.push(...pageItems);
-        pages.push({
-            offset,
-            count: page.count,
-            itemCount: pageItems.length,
-        });
-
-        if (pageItems.length < pageSize) break;
-        offset += pageItems.length;
-    }
-
-    return {
-        count: items.length,
-        offset: 0,
-        items,
-        pages,
-    };
-}
-
-async function fetchAllInfusions(lang, pageSize = 500) {
-    const items = [];
-    const pages = [];
-    let offset = 0;
-
-    while (true) {
-        const page = await getJson(`/api/v2/infusions?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(requestLocales[lang])}`);
+        const page = await getJson(`/api/v2/${resource}?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(requestLocale)}`);
         const pageItems = page.items || [];
         items.push(...pageItems);
         pages.push({
@@ -266,7 +239,12 @@ async function main() {
     const previousManifestPath = path.join(root, 'manifest.json');
     const previousManifest = resume && fs.existsSync(previousManifestPath) ? readJson(previousManifestPath) : {};
     const requestLocales = Object.fromEntries(langs.map(lang => [lang, apiRequestLocale(lang, meta)]));
-    const resumeLocale = lang => resume && (requestLocales[lang] === lang || previousManifest.requestLocales?.[lang] === requestLocales[lang]);
+    const changedLocale = langs.find(lang => previousManifest.requestLocales?.[lang]
+        && previousManifest.requestLocales[lang] !== requestLocales[lang]);
+    if (changedLocale) {
+        throw new Error(`Source request code changed for ${changedLocale}. Use a new snapshot to keep the retained evidence bound to its original request.`);
+    }
+    const resumeLocale = lang => resume && (previousManifest.requestLocales?.[lang] ?? lang) === requestLocales[lang];
 
     const manifest = {
         snapshotId,
@@ -336,17 +314,18 @@ async function main() {
     // projection so a paid target locale can still be fetched and recorded as
     // a per-card 402 instead of aborting before the snapshot exists.
     const teasLang = 'en';
+    const discoveryLocale = apiRequestLocale(teasLang, meta);
     const teasPath = path.join(raw, `teas-${teasLang}.json`);
     const teas = resume && fs.existsSync(teasPath)
         ? readJson(teasPath)
-        : await fetchAllTeas(teasLang);
+        : await fetchInventory('teas', discoveryLocale);
     writeJson(teasPath, teas);
     manifest.files.push(`raw/teas-${teasLang}.json`);
     const categoriesRel = `raw/categories-${teasLang}.json`;
     const categoriesPath = path.join(root, categoriesRel);
     const categories = resume && fs.existsSync(categoriesPath)
         ? readJson(categoriesPath)
-        : await fetchAllTeas(teasLang, 500, 'categories');
+        : await fetchInventory('categories', discoveryLocale);
     writeJson(categoriesPath, categories);
     manifest.files.push(categoriesRel);
 
@@ -356,7 +335,7 @@ async function main() {
     try {
         infusions = resume && fs.existsSync(infusionsPath)
             ? readJson(infusionsPath)
-            : await fetchAllInfusions(teasLang);
+            : await fetchInventory('infusions', discoveryLocale);
         writeJson(infusionsPath, infusions);
         manifest.files.push(infusionsRel);
     } catch (error) {
@@ -564,6 +543,7 @@ async function main() {
                     if (!(resumeLocale(lang) && fs.existsSync(fieldPath))) {
                         const field = await getJson(`/api/v2/tea/${encodeURIComponent(slug)}/${encodeURIComponent(requestLocales[lang])}/field/${encodeURIComponent(ref.field)}`);
                         writeJson(fieldPath, field);
+                        fs.rmSync(missingPath, { force: true });
                     }
                     manifest.fieldFiles.push(fieldRel);
                     fieldCoverage.fetched.push({ section: ref.section, field: ref.field });
@@ -582,6 +562,7 @@ async function main() {
                             endpoint: `/api/v2/tea/${slug}/${lang}/field/${ref.field}`,
                             ...issue,
                         });
+                        fs.rmSync(fieldPath, { force: true });
                         manifest.files.push(missingRel);
                         manifest.missingFieldDetailFiles.push(missingRel);
                         manifest.warnings.push({
@@ -644,6 +625,7 @@ async function main() {
                 if (!(resumeLocale(lang) && fs.existsSync(similarPath))) {
                     const similar = await getJson(`/api/v2/tea/${encodeURIComponent(slug)}/similar?lang=${encodeURIComponent(requestLocales[lang])}&limit=12`);
                     writeJson(similarPath, similar);
+                    fs.rmSync(missingPath, { force: true });
                 }
                 manifest.files.push(similarRel);
                 manifest.similarFiles.push(similarRel);
@@ -654,6 +636,7 @@ async function main() {
                     const missing = { ...issue, type: classification.kind,
                         requestedEndpoint: `/api/v2/tea/${slug}/similar?lang=${requestLocales[lang]}&limit=12` };
                     writeJson(missingPath, missing);
+                    fs.rmSync(similarPath, { force: true });
                     manifest.files.push(missingRel);
                     manifest.missingSimilarFiles.push(missingRel);
                     manifest.warnings.push(missing);
