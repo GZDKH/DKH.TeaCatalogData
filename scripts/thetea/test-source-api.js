@@ -88,6 +88,13 @@ async function checkFreshDiscovery() {
         resume = true;
         await assert.rejects(run, /Source request code changed for ru/);
         assert.equal(JSON.parse(fs.readFileSync(manifestPath, 'utf8')).requestLocales.ru, 'rus');
+        delete previous.requestLocales;
+        fs.writeFileSync(manifestPath, JSON.stringify(previous));
+        const metaPath = path.join(path.dirname(manifestPath), 'raw/meta.json');
+        const legacyMeta = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
+        legacyMeta.locales.find(locale => locale.bcp47 === 'ru').code = 'rus';
+        fs.writeFileSync(metaPath, JSON.stringify(legacyMeta));
+        await assert.rejects(run, /Source request code changed for ru/);
     } finally {
         fs.rmSync(root, { recursive: true, force: true });
     }

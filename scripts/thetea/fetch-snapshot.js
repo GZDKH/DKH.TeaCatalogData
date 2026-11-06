@@ -237,10 +237,11 @@ async function main() {
     const fieldLangs = includeFields ? resolveFieldLocales(requestedFieldLangs, langs) : [];
     const availableLocales = localesFromMeta(meta);
     const previousManifestPath = path.join(root, 'manifest.json');
-    const previousManifest = resume && fs.existsSync(previousManifestPath) ? readJson(previousManifestPath) : {};
+    const hasPreviousManifest = resume && fs.existsSync(previousManifestPath);
+    const previousManifest = hasPreviousManifest ? readJson(previousManifestPath) : {};
     const requestLocales = Object.fromEntries(langs.map(lang => [lang, apiRequestLocale(lang, meta)]));
-    const changedLocale = langs.find(lang => previousManifest.requestLocales?.[lang]
-        && previousManifest.requestLocales[lang] !== requestLocales[lang]);
+    const changedLocale = hasPreviousManifest && langs.find(lang => (previousManifest.langs || []).includes(lang)
+        && (previousManifest.requestLocales?.[lang] ?? lang) !== requestLocales[lang]);
     if (changedLocale) {
         throw new Error(`Source request code changed for ${changedLocale}. Use a new snapshot to keep the retained evidence bound to its original request.`);
     }
