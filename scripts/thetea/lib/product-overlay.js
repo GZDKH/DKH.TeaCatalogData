@@ -1,4 +1,5 @@
 const { isManagedPackageCode } = require('./package-content');
+const { usesCurrentProductContract } = require('./product-contract');
 
 const MANAGED_SPEC_PREFIX = 'SPEC-TT-';
 
@@ -41,6 +42,11 @@ function overlayExistingProduct(generated, baseline, options = {}) {
     };
 
     if (options.publishExisting === true) result.published = generated.published;
+    if (usesCurrentProductContract(baseline)) {
+        delete result.origins;
+        delete result.packages;
+        result.packageBindings = collection(baseline.packageBindings, 'baseline packageBindings');
+    }
     assertUniqueSpecificationAttributes(result.specifications, result.code);
     return result;
 }
@@ -64,10 +70,14 @@ function validateBaselinePreservation(products, baselineProducts, options = {}) 
             'catalogs',
             catalogAssignmentKey);
         assertKeySubset(errors, baseline, generated, 'tags', item => normalizeCode(item.code));
-        assertUnmanagedPackagesPreserved(errors, baseline, generated);
-        assertStructuralSubset(errors, baseline, generated, 'tierPrices');
-        assertStructuralSubset(errors, baseline, generated, 'catalogPrices');
-        assertStructuralSubset(errors, baseline, generated, 'storePriceOverrides');
+        if (usesCurrentProductContract(baseline)) {
+            assertStructuralSubset(errors, baseline, generated, 'packageBindings');
+        } else {
+            assertUnmanagedPackagesPreserved(errors, baseline, generated);
+            assertStructuralSubset(errors, baseline, generated, 'tierPrices');
+            assertStructuralSubset(errors, baseline, generated, 'catalogPrices');
+            assertStructuralSubset(errors, baseline, generated, 'storePriceOverrides');
+        }
 
         const preservedSpecs = collection(baseline.specifications, 'baseline specifications')
             .filter(spec => !isManagedSpecification(spec));

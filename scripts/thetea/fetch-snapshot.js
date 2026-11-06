@@ -4,11 +4,13 @@ const path = require('path');
 const crypto = require('crypto');
 const { REPO_ROOT, loadDotEnv, parseArgs, csv, getTheTeaApiKey, requireArg } = require('./lib/env');
 const { requestJson, requestText } = require('./lib/http');
-const { localesFromMeta, resolveRequestedLocales } = require('./lib/locales');
+const { localesFromMeta, resolveRequestedLocales, apiRequestLocale } = require('./lib/locales');
 const { extractFieldRefs } = require('./lib/field-details');
 const { classifyFetchIssue } = require('./lib/snapshot-errors');
 const { resolveFieldLocales, shouldFetchFieldsForLang } = require('./lib/snapshot-options');
 const { createRequestStartGate } = require('./lib/request-start-gate');
+const { sourceHeaders } = require('./lib/source-api');
+const { fetchCompleteReferences } = require('./lib/complete-api-references');
 const {
     buildEntityInventory,
     classifySourceEntity,
@@ -101,19 +103,20 @@ function loadD1FieldPacks(snapshotRoot, configuredPath, slugs = []) {
     };
 }
 
-function headers() {
-    const key = getTheTeaApiKey();
-    return key ? { Authorization: `Bearer ${key}` } : {};
+function headers(url) {
+    return sourceHeaders(url, getTheTeaApiKey());
 }
 
 async function getJson(endpoint) {
     await waitForRequestStart();
-    return requestJson(`${API_BASE}${endpoint}`, { headers: headers(), timeoutMs: 30000, retries: 2 });
+    const url = `${API_BASE}${endpoint}`;
+    return requestJson(url, { headers: headers(url), timeoutMs: 30000, retries: 2 });
 }
 
 async function getText(endpoint) {
     await waitForRequestStart();
-    const response = await requestText(endpointUrl(endpoint), { headers: headers(), timeoutMs: 30000, retries: 2 });
+    const url = endpointUrl(endpoint);
+    const response = await requestText(url, { headers: headers(url), timeoutMs: 30000, retries: 2 });
     return response.body;
 }
 
@@ -152,13 +155,13 @@ async function writeTextSource(root, manifest, rel, endpoint, options = {}) {
     }
 }
 
-async function fetchAllTeas(lang, pageSize = 500) {
+async function fetchAllTeas(lang, pageSize = 500, resource = 'teas') {
     const items = [];
     const pages = [];
     let offset = 0;
 
     while (true) {
-        const page = await getJson(`/api/v2/teas?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(lang)}`);
+        const page = await getJson(`/api/v2/${resource}?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(requestLocales[lang])}`);
         const pageItems = page.items || [];
         items.push(...pageItems);
         pages.push({
@@ -185,7 +188,7 @@ async function fetchAllInfusions(lang, pageSize = 500) {
     let offset = 0;
 
     while (true) {
-        const page = await getJson(`/api/v2/infusions?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(lang)}`);
+        const page = await getJson(`/api/v2/infusions?limit=${pageSize}&offset=${offset}&lang=${encodeURIComponent(requestLocales[lang])}`);
         const pageItems = page.items || [];
         items.push(...pageItems);
         pages.push({
@@ -220,6 +223,7 @@ async function mapLimit(items, limit, worker) {
 async function main() {
     const args = parseArgs();
     const snapshotId = requireArg(args, 'snapshot');
+    if (!/^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(snapshotId)) throw new Error('Unsafe snapshot identifier.');
     const requestedLangs = csv(args.langs);
     const requestedFieldLangs = csv(args['field-langs']);
     const only = new Set(csv(args.only));
@@ -239,6 +243,9 @@ async function main() {
     const includeFields = args['skip-fields'] !== true;
     const includeSimilar = args['skip-similar'] !== true;
     const configuredFieldPacks = args['d1-field-packs'];
+    const cardSections = args['field-source'] === 'card-sections';
+    if (args['field-source'] && !['card-sections', 'endpoints'].includes(args['field-source'])) throw new Error('Unknown field source.');
+    if (cardSections && (!includeFields || configuredFieldPacks)) throw new Error('Card sections require fields and cannot use D1 packs.');
 
     const root = path.join(REPO_ROOT, 'sources', 'thetea', 'snapshots', snapshotId);
     const raw = path.join(root, 'raw');
@@ -253,8 +260,13 @@ async function main() {
         ? readJson(metaPath)
         : await getJson('/api/v2/meta');
     const langs = resolveRequestedLocales(requestedLangs, meta);
+    if (langs.some(lang => !/^[a-z]{2,3}(?:-[a-z0-9]{2,8})*$/i.test(lang))) throw new Error('Unsafe source locale.');
     const fieldLangs = includeFields ? resolveFieldLocales(requestedFieldLangs, langs) : [];
     const availableLocales = localesFromMeta(meta);
+    const previousManifestPath = path.join(root, 'manifest.json');
+    const previousManifest = resume && fs.existsSync(previousManifestPath) ? readJson(previousManifestPath) : {};
+    const requestLocales = Object.fromEntries(langs.map(lang => [lang, apiRequestLocale(lang, meta)]));
+    const resumeLocale = lang => resume && (requestLocales[lang] === lang || previousManifest.requestLocales?.[lang] === requestLocales[lang]);
 
     const manifest = {
         snapshotId,
@@ -263,6 +275,7 @@ async function main() {
         requestedLangs: requestedLangs.length ? requestedLangs : ['all'],
         requestedFieldLangs: requestedFieldLangs.length ? requestedFieldLangs : ['all'],
         availableLocales,
+        requestLocales,
         langs,
         fieldLangs,
         includeMarkdown,
@@ -279,6 +292,7 @@ async function main() {
         placesFiles: [],
         referenceCoverage: [],
         similarFiles: [],
+        missingSimilarFiles: [],
         sourceContractFiles: [],
         sourceContract: {
             expected: ['raw/source/docs.html', 'raw/source/openapi.yaml', 'raw/source/llms.txt', 'raw/source/skill.md'],
@@ -318,62 +332,6 @@ async function main() {
     writeJson(familyPath, family);
     manifest.files.push('raw/family.json');
 
-    for (const lang of langs) {
-        try {
-            const glossaryRel = `raw/glossary-${lang}.json`;
-            const glossaryPath = path.join(root, glossaryRel);
-            if (!(resume && fs.existsSync(glossaryPath))) {
-                const glossary = await getJson(`/api/v2/glossary?lang=${encodeURIComponent(lang)}&limit=500`);
-                writeJson(glossaryPath, glossary);
-                manifest.referenceCoverage.push({
-                    endpoint: 'glossary',
-                    lang,
-                    requestedLimit: 500,
-                    reportedCount: glossary.count ?? null,
-                    returnedCount: Array.isArray(glossary.terms) ? glossary.terms.length : 0,
-                    possiblyTruncated: Array.isArray(glossary.terms) && glossary.terms.length >= 500,
-                });
-            }
-            manifest.files.push(`raw/glossary-${lang}.json`);
-        } catch (error) {
-            manifest.errors.push(issueFromError({ endpoint: 'glossary', lang }, error));
-        }
-
-        try {
-            const placesRel = `raw/places-${lang}.json`;
-            const placesPath = path.join(root, placesRel);
-            if (!(resume && fs.existsSync(placesPath))) {
-                const places = await getJson(`/api/v2/places?lang=${encodeURIComponent(lang)}&limit=200`);
-                writeJson(placesPath, places);
-                manifest.referenceCoverage.push({
-                    endpoint: 'places',
-                    lang,
-                    requestedLimit: 200,
-                    reportedCount: places.count ?? null,
-                    returnedCount: Array.isArray(places.places) ? places.places.length : 0,
-                    possiblyTruncated: Array.isArray(places.places) && places.places.length >= 200,
-                });
-            }
-            manifest.files.push(placesRel);
-            manifest.placesFiles.push(placesRel);
-        } catch (error) {
-            manifest.errors.push(issueFromError({ endpoint: 'places', lang }, error));
-        }
-
-        try {
-            const mapRel = `raw/map-${lang}.json`;
-            const mapPath = path.join(root, mapRel);
-            if (!(resume && fs.existsSync(mapPath))) {
-                const map = await getJson(`/api/v2/map?lang=${encodeURIComponent(lang)}`);
-                writeJson(mapPath, map);
-            }
-            manifest.files.push(mapRel);
-            manifest.mapFiles.push(mapRel);
-        } catch (error) {
-            manifest.errors.push(issueFromError({ endpoint: 'map', lang }, error));
-        }
-    }
-
     // Discovery is a language-neutral inventory. Always use the free English
     // projection so a paid target locale can still be fetched and recorded as
     // a per-card 402 instead of aborting before the snapshot exists.
@@ -384,6 +342,13 @@ async function main() {
         : await fetchAllTeas(teasLang);
     writeJson(teasPath, teas);
     manifest.files.push(`raw/teas-${teasLang}.json`);
+    const categoriesRel = `raw/categories-${teasLang}.json`;
+    const categoriesPath = path.join(root, categoriesRel);
+    const categories = resume && fs.existsSync(categoriesPath)
+        ? readJson(categoriesPath)
+        : await fetchAllTeas(teasLang, 500, 'categories');
+    writeJson(categoriesPath, categories);
+    manifest.files.push(categoriesRel);
 
     const infusionsRel = `raw/infusions-${teasLang}.json`;
     const infusionsPath = path.join(root, infusionsRel);
@@ -400,13 +365,51 @@ async function main() {
         infusions = { count: 0, offset: 0, items: [], pages: [] };
     }
 
+    const cacheReference = async (rel, endpoint) => {
+        const file = path.join(root, rel);
+        if (!(resume && fs.existsSync(file))) writeJson(file, await getJson(endpoint));
+        manifest.files.push(rel);
+        return readJson(file);
+    };
+    const priorPlaceQueries = Object.fromEntries(['toponym', 'tea_name', 'name'].map(kind => {
+        const directory = path.join(root, 'raw/reference-pages/places', kind);
+        const queries = resume && fs.existsSync(directory) ? fs.readdirSync(directory)
+            .filter(file => /^(?:[a-f0-9]{2}){1,4}\.json$/.test(file))
+            .map(file => Buffer.from(file.slice(0, -5), 'hex').toString('utf8')) : [];
+        return [kind, queries];
+    }));
+    try {
+        const references = await fetchCompleteReferences({ meta, langs, fetch: cacheReference,
+            seedText: JSON.stringify([teas, categories, infusions]), priorPlaceQueries });
+        manifest.referenceCoverage.push(...references.coverage);
+        manifest.placesFiles.push(...references.placesFiles);
+    } catch (error) {
+        manifest.errors.push(issueFromError({ endpoint: 'complete-references' }, error));
+    }
+    for (const lang of langs) {
+        try {
+            const mapRel = `raw/map-${lang}.json`;
+            const mapPath = path.join(root, mapRel);
+            if (!(resumeLocale(lang) && fs.existsSync(mapPath))) {
+                const map = await getJson(`/api/v2/map?lang=${encodeURIComponent(requestLocales[lang])}`);
+                writeJson(mapPath, map);
+            }
+            manifest.files.push(mapRel);
+            manifest.mapFiles.push(mapRel);
+        } catch (error) {
+            manifest.errors.push(issueFromError({ endpoint: 'map', lang }, error));
+        }
+    }
+
     let sourceInventory = buildEntityInventory({
         teas: teas.items || [],
         infusions: infusions.items || [],
+        categories: categories.items || [],
     });
     let entities = sourceInventory.entities;
     if (only.size) entities = entities.filter(item => only.has(item.slug));
     if (limit) entities = entities.slice(0, limit);
+    if (entities.some(entity => !/^[a-z0-9][a-z0-9_-]*$/i.test(entity.slug))) throw new Error('Unsafe source slug.');
 
     manifest.entityInventory = entities;
     manifest.slugs = entities
@@ -441,8 +444,9 @@ async function main() {
             });
         }
     }
+    if (cardSections) manifest.fieldSource = 'api-card-sections';
     console.log(`Entities to fetch: ${entities.length} (${manifest.slugs.length} tea products)`);
-    console.log(`Field source: ${d1FieldPacks ? 'Cloudflare D1 packs' : 'per-field API'}`);
+    console.log(`Field source: ${d1FieldPacks ? 'Cloudflare D1 packs' : cardSections ? 'canonical API card sections' : 'per-field API'}`);
 
     const cardTasks = entities.flatMap(entity => langs.map(lang => ({ entity, lang })));
     await mapLimit(cardTasks, concurrency, async ({ entity, lang }) => {
@@ -454,13 +458,13 @@ async function main() {
         let card = null;
         let cardLanguageValid = true;
         try {
-            if (resume && fs.existsSync(cardPath)) {
+            if (resumeLocale(lang) && fs.existsSync(cardPath)) {
                 card = readJson(cardPath);
                 manifest.files.push(cardRel);
                 process.stdout.write('r');
             } else {
                 const route = entity.entityKind === 'infusion' ? 'infusion' : 'tea';
-                card = await getJson(`/api/v2/${route}/${encodeURIComponent(slug)}?lang=${encodeURIComponent(lang)}`);
+                card = await getJson(`/api/v2/${route}/${encodeURIComponent(slug)}?lang=${encodeURIComponent(requestLocales[lang])}`);
                 writeJson(cardPath, card);
                 manifest.files.push(cardRel);
                 process.stdout.write('.');
@@ -517,7 +521,12 @@ async function main() {
             process.stdout.write('x');
         }
 
-        if (includeFields && !d1FieldPacks && card && cardLanguageValid && shouldFetchFieldsForLang(lang, fieldLangs)) {
+        if (cardSections && card && cardLanguageValid && shouldFetchFieldsForLang(lang, fieldLangs)) {
+            const refs = extractFieldRefs(card);
+            manifest.fieldCoverage.push({ slug, lang, entityKind: entity.entityKind,
+                source: 'api-card-sections', sourceFile: cardRel, sha256: sha256File(cardPath),
+                expectedCount: refs.length, fetchedCount: refs.length, missing: [] });
+        } else if (includeFields && !d1FieldPacks && card && cardLanguageValid && shouldFetchFieldsForLang(lang, fieldLangs)) {
             const fieldRefs = extractFieldRefs(card);
             const fieldCoverage = {
                 slug,
@@ -534,7 +543,7 @@ async function main() {
                 const missingRel = `raw/field-missing/${safePathPart(lang)}/${safePathPart(slug)}/${safePathPart(ref.section)}/${safePathPart(ref.field)}.json`;
                 const missingPath = path.join(root, missingRel);
                 try {
-                    if (resume && fs.existsSync(missingPath)) {
+                    if (resumeLocale(lang) && fs.existsSync(missingPath)) {
                         const missing = readJson(missingPath);
                         manifest.files.push(missingRel);
                         manifest.missingFieldDetailFiles.push(missingRel);
@@ -552,8 +561,8 @@ async function main() {
                         continue;
                     }
 
-                    if (!(resume && fs.existsSync(fieldPath))) {
-                        const field = await getJson(`/api/v2/tea/${encodeURIComponent(slug)}/${encodeURIComponent(lang)}/field/${encodeURIComponent(ref.field)}`);
+                    if (!(resumeLocale(lang) && fs.existsSync(fieldPath))) {
+                        const field = await getJson(`/api/v2/tea/${encodeURIComponent(slug)}/${encodeURIComponent(requestLocales[lang])}/field/${encodeURIComponent(ref.field)}`);
                         writeJson(fieldPath, field);
                     }
                     manifest.fieldFiles.push(fieldRel);
@@ -603,12 +612,12 @@ async function main() {
             });
         }
 
-        if (includeMarkdown && entity.entityKind === 'tea') {
+        if (includeMarkdown && ['tea', 'category'].includes(entity.entityKind)) {
             const mdRel = `raw/markdown/${lang}/${slug}.md`;
             const mdPath = path.join(root, mdRel);
             try {
-                if (!(resume && fs.existsSync(mdPath))) {
-                    const markdown = await getText(`/api/v2/tea/${encodeURIComponent(slug)}.md?lang=${encodeURIComponent(lang)}`);
+                if (!(resumeLocale(lang) && fs.existsSync(mdPath))) {
+                    const markdown = await getText(`/api/v2/tea/${encodeURIComponent(slug)}.md?lang=${encodeURIComponent(requestLocales[lang])}`);
                     ensureDir(path.dirname(mdPath));
                     fs.writeFileSync(mdPath, markdown);
                 }
@@ -622,15 +631,33 @@ async function main() {
         if (includeSimilar) {
             const similarRel = `raw/similar/${lang}/${slug}.json`;
             const similarPath = path.join(root, similarRel);
+            const missingRel = `raw/similar-missing/${lang}/${slug}.json`;
+            const missingPath = path.join(root, missingRel);
             try {
-                if (!(resume && fs.existsSync(similarPath))) {
-                    const similar = await getJson(`/api/v2/tea/${encodeURIComponent(slug)}/similar?lang=${encodeURIComponent(lang)}&limit=12`);
+                if (resumeLocale(lang) && fs.existsSync(missingPath)) {
+                    const missing = readJson(missingPath);
+                    manifest.files.push(missingRel);
+                    manifest.missingSimilarFiles.push(missingRel);
+                    manifest.warnings.push(missing);
+                    return;
+                }
+                if (!(resumeLocale(lang) && fs.existsSync(similarPath))) {
+                    const similar = await getJson(`/api/v2/tea/${encodeURIComponent(slug)}/similar?lang=${encodeURIComponent(requestLocales[lang])}&limit=12`);
                     writeJson(similarPath, similar);
                 }
                 manifest.files.push(similarRel);
                 manifest.similarFiles.push(similarRel);
             } catch (error) {
-                manifest.errors.push(issueFromError({ endpoint: 'similar', slug, lang }, error));
+                const issue = issueFromError({ endpoint: 'similar', slug, lang }, error);
+                const classification = classifyFetchIssue(issue);
+                if (classification.kind === 'missing-similarity-vector') {
+                    const missing = { ...issue, type: classification.kind,
+                        requestedEndpoint: `/api/v2/tea/${slug}/similar?lang=${requestLocales[lang]}&limit=12` };
+                    writeJson(missingPath, missing);
+                    manifest.files.push(missingRel);
+                    manifest.missingSimilarFiles.push(missingRel);
+                    manifest.warnings.push(missing);
+                } else manifest.errors.push(issue);
             }
         }
     });
@@ -649,6 +676,7 @@ async function main() {
     console.log(`Warnings: ${manifest.warnings.length}`);
     console.log(`Errors: ${manifest.errors.length}`);
     if (manifest.errors.length) {
+        process.exitCode = 1;
         console.log('First errors:');
         for (const error of manifest.errors.slice(0, 8)) {
             console.log(`- ${error.endpoint} ${error.slug || ''} ${error.lang || ''}: ${error.status || ''} ${error.message.slice(0, 160)}`);

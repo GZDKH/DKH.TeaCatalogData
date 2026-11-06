@@ -3,6 +3,7 @@ const { ATTRIBUTE_TYPES } = require('./spec-contract');
 const { isManagedSpecification, validateBaselinePreservation } = require('./product-overlay');
 const { auditProductNaming } = require('./product-naming');
 const { MANAGED_PACKAGE_CONTENT } = require('./package-content');
+const { usesCurrentProductContract, validateCurrentProductContract } = require('./product-contract');
 
 const CODE_RE = /^[A-Z0-9][A-Z0-9_-]{1,99}$/;
 const ATTRIBUTE_TYPE_SET = new Set(ATTRIBUTE_TYPES);
@@ -596,6 +597,22 @@ function validateScalarCode(value, label, errors) {
 }
 
 function validatePackages(product, productLabel, knownPackages, warnings, errors) {
+    if (usesCurrentProductContract(product)) {
+        try {
+            validateCurrentProductContract(product, productLabel);
+        } catch (error) {
+            errors.push(error.message);
+            return;
+        }
+        const seen = new Set();
+        for (const [index, binding] of product.packageBindings.entries()) {
+            const code = validateCode(binding?.package, `${productLabel}: packageBindings[${index}].package`, errors);
+            if (seen.has(code)) errors.push(`${productLabel}: duplicate package binding ${code}.`);
+            seen.add(code);
+            if (code && !knownPackages.has(code)) warnings.push(`${productLabel}: package ${code} is not in known package set.`);
+        }
+        return;
+    }
     if (!Array.isArray(product.packages)) {
         errors.push(`${productLabel}: packages must be an array.`);
         return;

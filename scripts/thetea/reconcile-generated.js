@@ -16,6 +16,7 @@ const COLLECTION_KEYS = {
     tags: item => normalizeCode(item?.code),
     catalogs: item => `${normalizeCode(item?.catalog)}|${normalizeCode(item?.category)}`,
     packages: item => normalizeCode(item?.package),
+    packageBindings: item => normalizeCode(item?.package),
     related: item => `${normalizeCode(item?.product)}|${normalizeCode(item?.catalog)}`,
     crossSells: item => `${normalizeCode(item?.product)}|${normalizeCode(item?.catalog)}`,
 };
@@ -119,7 +120,7 @@ function canonicalCollectionItem(field, item) {
         copy.catalogCurrency = canonicalReference(catalogCurrency);
         return removeUndefined(copy);
     }
-    if (field === 'packages') {
+    if (field === 'packages' || field === 'packageBindings') {
         copy.package = canonicalReference(copy.package);
         return removeUndefined(copy);
     }

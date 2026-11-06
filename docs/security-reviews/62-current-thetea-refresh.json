@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "method": "focused-review",
+  "result": "passed",
+  "capability_unavailable": true,
+  "capability_reason": "Exposed Codex Security Cloud tools require a separately requested Cloud task; no scoped local diff scan is available.",
+  "base_sha": "0df90357ef3f496c18d55cf0dc65aa0f594fc90d",
+  "reviewed_blobs": {
+    "scripts/thetea/fetch-snapshot.js": "1e997729a69ef6fe7faa1f0f25ee913dab29fc70",
+    "scripts/thetea/lib/complete-api-references.js": "be855a0f0cedc5203c429d62ed6e0634c40abf84",
+    "scripts/thetea/lib/product-contract.js": "a9e018e5d52b795fd66a0a0dc70c09259e1ca4cb",
+    "scripts/thetea/lib/product-overlay.js": "48a8b65900d1ca8ef72e2ecc7aa13bf0a2f50254",
+    "scripts/thetea/lib/product-reference.js": "aa2f4e983b6338b843896bcd561e87b84a56e2aa",
+    "scripts/thetea/lib/source-api.js": "ea794d85d168dd84403e571992bddce4273df121",
+    "scripts/thetea/lib/source-product-identity.js": "55d13d71f187b3842608b1dae01f212ff40b58b0",
+    "scripts/thetea/test-current-product-contract.js": "60538ff36ce3a8d102c83304c1d6f143024f43e7",
+    "scripts/thetea/test-source-api.js": "e2f4e8a56a1eb6ac02d891d69672a656c475b071"
+  },
+  "checks": [
+    {
+      "result": "passed",
+      "evidence": "All52 maintained offline CI commands passed; strict OpenSpec current-thetea-contract-refresh validation passed; git diff --check passed."
+    },
+    {
+      "result": "passed",
+      "evidence": "Source request authorization is restricted to exact https://api.thetea.app origin; external skill document receives no bearer token. Regression fixtures cover HTTP, subdomain lookalikes and credentialed URLs. Snapshot, slug and locale paths are validated before writes."
+    },
+    {
+      "result": "passed",
+      "evidence": "Current complete-baseline guard rejects mixed contracts and retired commerce fields. Overlay fixtures preserve unrelated collections and bindings. Stable TEA-only source identity rejects ambiguity without absorbing other providers."
+    },
+    {
+      "result": "passed",
+      "evidence": "API card-section provenance verifies exact raw bytes SHA256 and complete expected/fetched leaves. Metadata-counted references fail closed on conflict or missing counts; source errors return unsuccessful exit and reject current generation."
+    },
+    {
+      "result": "passed",
+      "evidence": "Native content preparation verifies artifact/source/reference hashes, exact selects identities, requires scoped destination GET or explicit absence and preserves publication/cover/unrelated translations. It refuses apply flags and performs no network or production writes."
+    },
+    {
+      "result": "passed",
+      "evidence": "Reference recovery regression: all-locale glossary pages are captured independently before the places census; observed glossary Hanzi seed documented q searches for rows that have no Latin spelling. Exact per-category/per-kind count gates remain enforced; test-complete-api-references passes."
+    },
+    {
+      "result": "passed",
+      "evidence": "Live API alias diagnosis: metadata NO/bcp47nb; glossary nb returned0 and card nb empty sections, whereas request no returned500 glossary terms and11 card sections. Source requests now use metadata code and retain BCP47 identities; changed mappings invalidate resume cache. Locale, API-reference, knowledge and source-origin regression tests pass."
+    },
+    {
+      "result": "passed",
+      "evidence": "Live API-only query census completed1808 place records:876toponyms562tea_names370names. Last ch\u00e1n ch\u00e1 record discovered using Hanzi from full tea inventory, outside glossary seeds. Discovery now precedes references and contributes query seeds; seeded capped-page regression passes. All72 glossary locales individually reconcile2623terms/188856localized rows."
+    },
+    {
+      "result": "passed",
+      "evidence": "Resume now consumes retained single-character place query responses before new searches; regression rejects unnecessary network queries when cached census is complete. Metadata reference keys reject path separators before use in filesystem paths. Exact per-kind counts and conflicting-row rejection remain unchanged."
+    },
+    {
+      "result": "passed",
+      "evidence": "Actual canary exposed missing descriptions on cards without enrichment and untranslated recipe labels. Current-contract projection now uses only localized source enrichment or classification/origin paragraphs; regression verifies no invented headings and unchanged legacy replay. Full narrative sidecars remain intact."
+    },
+    {
+      "result": "passed",
+      "evidence": "Documented similar404 no-vector responses are recorded as immutable raw absence markers with exact status/body/request path; resume reuses these markers. Unexpected503 stays fatal. Snapshot-error regressions pass; no relation or translated content is synthesized."
+    },
+    {
+      "result": "passed",
+      "evidence": "Canonical-card completeness now records source SHA256 and exact leaf counts without duplicating millions of field references. Generation reconstructs every leaf from the hash-verified raw card; both historical array evidence and compact evidence are tested, and count mismatch fails. Source-inventory counts and generation diagnostics retain complete coverage."
+    }
+  ]
+}

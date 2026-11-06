@@ -1,6 +1,7 @@
 const PRODUCT_LOCALE_ALIASES = {
     en: 'en-US',
     ru: 'ru-RU',
+    no: 'nb',
     zh: 'zh-CN',
     'zh-cn': 'zh-CN',
 };
@@ -44,6 +45,15 @@ function localesFromMeta(meta) {
     return result;
 }
 
+function apiRequestLocale(locale, meta) {
+    const canonical = canonicalLocale(locale);
+    const rows = (meta?.data || meta)?.locales || [];
+    const match = rows.find(row => canonicalLocale(row.bcp47 || row.code) === canonical);
+    const code = String(match?.code || canonical).toLowerCase();
+    if (!/^[a-z]{2,3}(?:-[a-z0-9]{2,8})*$/i.test(code)) throw new Error('Unsafe source request locale.');
+    return code;
+}
+
 function resolveRequestedLocales(requested, meta) {
     const requestedList = (requested || [])
         .map(canonicalLocale)
@@ -84,6 +94,7 @@ function d1LocaleCandidates(apiLocale) {
 }
 
 module.exports = {
+    apiRequestLocale,
     canonicalLocale,
     d1LocaleCandidates,
     localesFromMeta,

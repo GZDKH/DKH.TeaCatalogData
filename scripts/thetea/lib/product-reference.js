@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { sha256, writeJson } = require('./artifact-bundle');
 const { WORKSPACE_ID_PATTERN } = require('./catalog-workspace');
+const { CURRENT_PRODUCT_COLLECTIONS, usesCurrentProductContract, validateCurrentProductContract } = require('./product-contract');
 
 const PRODUCT_REFERENCE_MANIFEST_FILE = 'product-reference-manifest.json';
 const PRODUCT_REFERENCE_SCHEMA_VERSION = 1;
@@ -43,12 +44,17 @@ function validateProductArray(value, label = 'Product reference') {
         if (!code) throw new Error(`${label}[${index}] has no product code.`);
         if (seen.has(code)) throw new Error(`${label} contains duplicate product code ${code}.`);
         seen.add(code);
-        for (const field of REPLACE_MODE_COLLECTIONS) {
+        if (usesCurrentProductContract(product)) validateCurrentProductContract(product, `${label}[${index}] ${code}`);
+        const collections = usesCurrentProductContract(product) ? CURRENT_PRODUCT_COLLECTIONS : REPLACE_MODE_COLLECTIONS;
+        for (const field of collections) {
             if (!Array.isArray(product[field])) {
                 throw new Error(
                     `${label}[${index}] ${code} is not a complete nested products export: ${field} must be an array.`);
             }
         }
+    }
+    if (new Set(value.map(usesCurrentProductContract)).size !== 1) {
+        throw new Error(`${label} mixes legacy and current product contracts.`);
     }
     return value;
 }

@@ -78,9 +78,13 @@ thetea-package-offline-tests:
     - node scripts/thetea/test-materialize-d1-snapshot.js
     - node scripts/thetea/test-validate-d1-snapshot.js
     - node scripts/thetea/test-product-overlay.js
+    - node scripts/thetea/test-current-product-contract.js
     - node scripts/thetea/test-artifact-validator.js
     - node scripts/thetea/test-generate-safety.js
     - node scripts/thetea/test-source-entities.js
+    - node scripts/thetea/test-source-api.js
+    - node scripts/thetea/test-complete-api-references.js
+    - node scripts/thetea/test-knowledge-topics.js
     - node scripts/thetea/test-build-source-inventory.js
     - node scripts/thetea/test-snapshot-errors.js
     - node scripts/thetea/test-snapshot-options.js

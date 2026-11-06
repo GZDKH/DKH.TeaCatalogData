@@ -1,4 +1,4 @@
-const { canonicalLocale } = require('./locales');
+const { canonicalLocale, toApiLocale } = require('./locales');
 
 const ENTITY_KINDS = Object.freeze(['tea', 'category', 'infusion', 'unknown']);
 
@@ -52,10 +52,11 @@ function normalizeEntity(record, endpoint, endpointKind) {
     };
 }
 
-function buildEntityInventory({ teas = [], infusions = [] } = {}) {
+function buildEntityInventory({ teas = [], infusions = [], categories = [] } = {}) {
     const entities = [
         ...teas.map(item => normalizeEntity(item, 'teas', 'tea')),
         ...infusions.map(item => normalizeEntity(item, 'infusions', 'infusion')),
+        ...categories.map(item => normalizeEntity(item, 'categories', 'category')),
     ].filter(item => item.slug);
     const byKey = new Map();
     const duplicates = [];
@@ -92,7 +93,7 @@ function validateCardLanguage(card, requestedLang) {
     const requested = canonicalLocale(requestedLang);
     const actual = canonicalLocale(card?.lang || card?.meta?.lang);
     if (!requested || !actual) return { ok: true, requested, actual: actual || null };
-    return { ok: requested === actual, requested, actual };
+    return { ok: toApiLocale(requested) === toApiLocale(actual), requested, actual };
 }
 
 module.exports = {
