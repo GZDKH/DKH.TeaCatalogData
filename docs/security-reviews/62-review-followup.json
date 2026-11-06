@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "method": "focused-review",
+  "result": "passed",
+  "capability_unavailable": true,
+  "capability_reason": "Exposed Codex Security Cloud tools require a separately requested Cloud task; no scoped local diff scan is available.",
+  "base_sha": "cb0aeb05c43e203aa20b62f4ca966ec8629a3909",
+  "reviewed_blobs": {
+    "scripts/thetea/lib/product-overlay.js": "707be18189ebe26bf936bcaeb84a6159566280eb",
+    "scripts/thetea/lib/source-product-identity.js": "8a89c21989bb3fc9dc5b307381fb5e3e922cbb94",
+    "scripts/thetea/test-current-product-contract.js": "bfe9179ebdb9f0e8443ca7815f3ba9c44eb43b1b"
+  },
+  "checks": [
+    {
+      "result": "passed",
+      "evidence": "Independent findings on the original source were reproduced, then corrected. Cold inventory resolves English explicitly and no change broadens source credential origin. Existing placement/cover/publish metadata is preserved and malformed references fail closed. Similarity requires one hashed success or absence receipt, and fresh evidence clears mutually exclusive stale snapshot cache entries."
+    },
+    {
+      "result": "passed",
+      "evidence": "All 52 maintained offline CI commands passed, including fresh discovery without a cache, preservation of unpublished catalog placement and knowledge draft, and current field evidence checks."
+    },
+    {
+      "result": "passed",
+      "evidence": "Alias-change regression rejects resume before requests or mutation of the prior manifest. Verified similarity absence validates the recorded request and documented status/body as well as the hashed file membership."
+    }
+  ]
+}

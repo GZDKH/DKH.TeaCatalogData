@@ -15,6 +15,7 @@ function overlayExistingProduct(generated, baseline, options = {}) {
         throw new Error(`${baseline.code}: unrelated specification ${invalidUnrelatedSpec.attribute || '<missing>'} is invalid; refusing to discard it.`);
     }
 
+    const currentContract = usesCurrentProductContract(baseline);
     const result = {
         ...generated,
         ...baseline,
@@ -34,7 +35,8 @@ function overlayExistingProduct(generated, baseline, options = {}) {
         catalogs: mergeCatalogAssignments(
             baseline.catalogs,
             generated.catalogs,
-            options),
+            options,
+            currentContract),
         origins: collection(generated.origins, 'generated origins'),
         related: mergeRelations(generated.related, baseline.related),
         crossSells: collection(baseline.crossSells, 'baseline crossSells'),
@@ -42,7 +44,7 @@ function overlayExistingProduct(generated, baseline, options = {}) {
     };
 
     if (options.publishExisting === true) result.published = generated.published;
-    if (usesCurrentProductContract(baseline)) {
+    if (currentContract) {
         delete result.origins;
         delete result.packages;
         result.packageBindings = collection(baseline.packageBindings, 'baseline packageBindings');
@@ -71,6 +73,15 @@ function validateBaselinePreservation(products, baselineProducts, options = {}) 
             catalogAssignmentKey);
         assertKeySubset(errors, baseline, generated, 'tags', item => normalizeCode(item.code));
         if (usesCurrentProductContract(baseline)) {
+            const observedCatalogs = new Map(collection(generated.catalogs, 'generated catalogs')
+                .map(item => [catalogAssignmentKey(item), item]));
+            for (const placement of expectedCatalogs) {
+                const key = catalogAssignmentKey(placement);
+                const observed = observedCatalogs.get(key);
+                if (observed && (placement.order !== observed.order || placement.published !== observed.published)) {
+                    errors.push(`${baseline.code}: existing catalog placement ${key} would be reordered or republished.`);
+                }
+            }
             assertStructuralSubset(errors, baseline, generated, 'packageBindings');
         } else {
             assertUnmanagedPackagesPreserved(errors, baseline, generated);
@@ -96,11 +107,11 @@ function validateBaselinePreservation(products, baselineProducts, options = {}) 
     return errors;
 }
 
-function mergeCatalogAssignments(baselineCatalogs, generatedCatalogs, options) {
-    return mergeByKey(
-        baselineCatalogAssignments(baselineCatalogs, options),
-        generatedCatalogs,
-        catalogAssignmentKey);
+function mergeCatalogAssignments(baselineCatalogs, generatedCatalogs, options, preserveExisting) {
+    const baseline = baselineCatalogAssignments(baselineCatalogs, options);
+    return preserveExisting
+        ? mergeByKey(generatedCatalogs, baseline, catalogAssignmentKey)
+        : mergeByKey(baseline, generatedCatalogs, catalogAssignmentKey);
 }
 
 function baselineCatalogAssignments(value, options = {}) {
